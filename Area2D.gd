@@ -29,6 +29,7 @@ func _execPlayerTouch(target):
 		ProjectSettings.get("Actual_Map").init()
 		ProjectSettings.get("Actual_Map").set_connections()
 #
+#
 		#load("res://" + get_groups()[0].replace(" ", "_") + ".tscn").instance().init()
 		#ProjectSettings.get("Actual_Map").init()
 		#get_parent().init()
