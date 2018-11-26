@@ -1,0 +1,36 @@
+extends Node2D
+
+#export(String, FILE, "*.tres") var animation
+export(Animation) var animation
+export(bool)var wait_finished = false
+var i = 0
+var count = false
+onready var animationPlayer = get_parent().get_parent().get_parent().get_node("AnimationPlayer")
+
+func _init():
+	add_user_signal("finished")
+	
+func _ready():
+	pass
+
+func _process(delta):
+	if count:
+		i += 1
+
+func run():
+	print("show animation started")
+	if animation != null:
+		animationPlayer.add_animation(animation.get_name(), animation)
+		animationPlayer.play(animation.get_name())
+		ProjectSettings.get("Player").can_interact = false
+		if wait_finished:
+			while animationPlayer.is_playing():
+				yield(get_tree(), "idle_frame")
+			wait_finished = false
+		while i < 1:
+			count = true
+			yield(get_tree(), "idle_frame")
+		count = false
+	animationPlayer.remove_animation(animation.get_name())
+	print("show animation finished")
+	emit_signal("finished")

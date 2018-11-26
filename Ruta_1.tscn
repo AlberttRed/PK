@@ -1,0 +1,284 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://map.gd" type="Script" id=1]
+[ext_resource path="res://TileSet_GBA.tres" type="TileSet" id=2]
+[ext_resource path="res://Logics/event/NPC.scn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/trchar001.png" type="Texture" id=4]
+[ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=5]
+[ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=6]
+[ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Sprites/Characters/trback001.png" type="Texture" id=8]
+[ext_resource path="res://Area2D.gd" type="Script" id=9]
+[ext_resource path="res://Logics/effect_areas/enconter_area.scn" type="PackedScene" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 31.3469, 13.0891 )
+
+[node name="Ruta_1" type="Node2D"]
+
+script = ExtResource( 1 )
+N_connection = null
+S_connection = null
+E_connection = null
+W_connection = null
+N_connection_pos = null
+S_connection_pos = null
+E_connection_pos = null
+W_connection_pos = null
+
+[node name="CapaTerra_" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -589838, 0, 0, -589837, 0, 0, -589836, 0, 0, -589835, 0, 0, -589834, 0, 0, -589833, 0, 0, -589832, 0, 0, -589831, 0, 0, -589830, 0, 0, -589829, 0, 0, -589828, 0, 0, -589827, 0, 0, -589826, 0, 0, -589825, 0, 0, -655360, 0, 0, -655359, 0, 0, -655358, 0, 0, -655357, 0, 0, -655356, 0, 0, -655355, 0, 0, -655354, 0, 0, -655353, 0, 0, -655352, 0, 0, -655351, 0, 0, -524302, 0, 0, -524301, 0, 0, -524300, 0, 0, -524299, 0, 0, -524298, 0, 0, -524297, 0, 0, -524296, 0, 0, -524295, 0, 0, -524294, 0, 0, -524293, 0, 0, -524292, 0, 0, -524291, 0, 0, -524290, 0, 0, -524289, 0, 0, -589824, 0, 0, -589823, 0, 0, -589822, 0, 0, -589821, 0, 0, -589820, 0, 0, -589819, 0, 0, -589818, 0, 0, -589817, 0, 0, -589816, 0, 0, -589815, 0, 0, -458766, 0, 0, -458765, 0, 0, -458764, 0, 0, -458763, 0, 0, -458762, 0, 0, -458761, 0, 0, -458760, 0, 0, -458759, 0, 0, -458758, 0, 0, -458757, 0, 0, -458756, 0, 0, -458755, 0, 0, -458754, 0, 0, -458753, 0, 0, -524288, 0, 0, -524287, 0, 0, -524286, 0, 0, -524285, 0, 0, -524284, 0, 0, -524283, 0, 0, -524282, 0, 0, -524281, 0, 0, -524280, 0, 0, -524279, 0, 0, -393230, 0, 0, -393229, 0, 0, -393228, 0, 0, -393227, 0, 0, -393226, 0, 0, -393225, 0, 0, -393224, 0, 0, -393223, 0, 0, -393222, 0, 0, -393221, 0, 0, -393220, 0, 0, -393219, 0, 0, -393218, 0, 0, -393217, 0, 0, -458752, 0, 0, -458751, 0, 0, -458750, 0, 0, -458749, 0, 0, -458748, 0, 0, -458747, 0, 0, -458746, 0, 0, -458745, 0, 0, -458744, 0, 0, -458743, 0, 0, -327694, 0, 0, -327693, 0, 0, -327692, 0, 0, -327691, 0, 0, -327690, 0, 0, -327689, 0, 0, -327688, 0, 0, -327687, 0, 0, -327686, 0, 0, -327685, 0, 0, -327684, 0, 0, -327683, 0, 0, -327682, 0, 0, -327681, 0, 0, -393216, 0, 0, -393215, 0, 0, -393214, 0, 0, -393213, 0, 0, -393212, 0, 0, -393211, 0, 0, -393210, 0, 0, -393209, 0, 0, -393208, 0, 0, -393207, 0, 0, -262158, 0, 0, -262157, 0, 0, -262156, 0, 0, -262155, 0, 0, -262154, 0, 0, -262153, 0, 0, -262152, 0, 0, -262151, 0, 0, -262150, 0, 0, -262149, 0, 0, -262148, 0, 0, -262147, 0, 0, -262146, 0, 0, -262145, 0, 0, -327680, 0, 0, -327679, 0, 0, -327678, 0, 0, -327677, 0, 0, -327676, 0, 0, -327675, 0, 0, -327674, 0, 0, -327673, 0, 0, -327672, 0, 0, -327671, 0, 0, -196622, 0, 0, -196621, 0, 0, -196620, 0, 0, -196619, 0, 0, -196618, 0, 0, -196617, 0, 0, -196616, 0, 0, -196615, 0, 0, -196614, 0, 0, -196613, 0, 0, -196612, 0, 0, -196611, 0, 0, -196610, 0, 0, -196609, 0, 0, -262144, 0, 0, -262143, 0, 0, -262142, 0, 0, -262141, 0, 0, -262140, 0, 0, -262139, 0, 0, -262138, 0, 0, -262137, 0, 0, -262136, 0, 0, -262135, 0, 0, -131086, 0, 0, -131085, 0, 0, -131084, 0, 0, -131083, 0, 0, -131082, 0, 0, -131081, 0, 0, -131080, 0, 0, -131079, 0, 0, -131078, 0, 0, -131077, 0, 0, -131076, 0, 0, -131075, 0, 0, -131074, 0, 0, -131073, 0, 0, -196608, 0, 0, -196607, 0, 0, -196606, 0, 0, -196605, 0, 0, -196604, 0, 0, -196603, 0, 0, -196602, 0, 0, -196601, 0, 0, -196600, 0, 0, -196599, 0, 0, -65550, 0, 0, -65549, 0, 0, -65548, 0, 0, -65547, 0, 0, -65546, 0, 0, -65545, 0, 0, -65544, 0, 0, -65543, 0, 0, -65542, 0, 0, -65541, 0, 0, -65540, 0, 0, -65539, 0, 0, -65538, 0, 0, -65537, 0, 0, -131072, 0, 0, -131071, 0, 0, -131070, 0, 0, -131069, 0, 0, -131068, 0, 0, -131067, 0, 0, -131066, 0, 0, -131065, 0, 0, -131064, 0, 0, -131063, 0, 0, -14, 0, 0, -13, 0, 0, -12, 0, 0, -11, 0, 0, -10, 0, 0, -9, 0, 0, -8, 0, 0, -7, 0, 0, -6, 0, 0, -5, 0, 0, -4, 0, 0, -3, 0, 0, -2, 0, 0, -1, 0, 0, -65536, 0, 0, -65535, 0, 0, -65534, 0, 0, -65533, 0, 0, -65532, 0, 0, -65531, 0, 0, -65530, 0, 0, -65529, 0, 0, -65528, 0, 0, -65527, 0, 0, 65522, 0, 0, 65523, 0, 0, 65524, 0, 0, 65525, 0, 0, 65526, 0, 0, 65527, 0, 0, 65528, 0, 0, 65529, 0, 0, 65530, 0, 0, 65531, 0, 0, 65532, 0, 0, 65533, 0, 0, 65534, 0, 0, 65535, 0, 0, 0, 0, 0, 1, 0, 0, 2, 0, 0, 3, 0, 0, 4, 0, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 0, 0, 9, 0, 0, 131058, 0, 0, 131059, 0, 0, 131060, 0, 0, 131061, 0, 0, 131062, 0, 0, 131063, 0, 0, 131064, 0, 0, 131065, 0, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 0, 0, 131070, 0, 0, 131071, 0, 0, 65536, 0, 0, 65537, 0, 0, 65538, 0, 0, 65539, 0, 0, 65540, 0, 0, 65541, 1, 0, 65542, 0, 0, 65543, 1, 0, 65544, 0, 0, 65545, 0, 0, 196594, 0, 0, 196595, 0, 0, 196596, 0, 0, 196597, 0, 0, 196598, 0, 0, 196599, 0, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 131072, 0, 0, 131073, 0, 0, 131074, 0, 0, 131075, 0, 0, 131076, 0, 0, 131077, 0, 0, 131078, 0, 0, 131079, 1, 0, 131080, 0, 0, 131081, 0, 0, 262130, 0, 0, 262131, 0, 0, 262132, 0, 0, 262133, 0, 0, 262134, 0, 0, 262135, 0, 0, 262136, 0, 0, 262137, 0, 0, 262138, 0, 0, 262139, 0, 0, 262140, 0, 0, 262141, 0, 0, 262142, 0, 0, 262143, 0, 0, 196608, 0, 0, 196609, 0, 0, 196610, 0, 0, 196611, 0, 0, 196612, 0, 0, 196613, 0, 0, 196614, 0, 0, 196615, 0, 0, 196616, 0, 0, 196617, 0, 0, 327666, 0, 0, 327667, 0, 0, 327668, 0, 0, 327669, 0, 0, 327670, 0, 0, 327671, 0, 0, 327672, 0, 0, 327673, 0, 0, 327674, 0, 0, 327675, 0, 0, 327676, 0, 0, 327677, 0, 0, 327678, 0, 0, 327679, 0, 0, 262144, 0, 0, 262145, 0, 0, 262146, 0, 0, 262147, 0, 0, 262148, 0, 0, 262149, 0, 0, 262150, 0, 0, 262151, 0, 0, 262152, 0, 0, 262153, 0, 0, 393202, 0, 0, 393203, 0, 0, 393204, 0, 0, 393205, 0, 0, 393206, 0, 0, 393207, 0, 0, 393208, 0, 0, 393209, 0, 0, 393210, 0, 0, 393211, 0, 0, 393212, 0, 0, 393213, 0, 0, 393214, 0, 0, 393215, 0, 0, 327680, 0, 0, 327681, 0, 0, 327682, 0, 0, 327683, 0, 0, 327684, 0, 0, 327685, 0, 0, 327686, 0, 0, 327687, 0, 0, 327688, 0, 0, 327689, 0, 0, 458738, 38, 0, 458739, 41, 0, 458740, 38, 0, 458741, 41, 0, 458742, 38, 0, 458743, 41, 0, 458744, 38, 0, 458745, 41, 0, 458746, 38, 0, 458747, 41, 0, 458748, 38, 0, 458749, 41, 0, 458750, 0, 0, 458751, 0, 0, 393216, 38, 0, 393217, 41, 0, 393218, 38, 0, 393219, 41, 0, 393220, 38, 0, 393221, 41, 0, 393222, 38, 0, 393223, 41, 0, 393224, 38, 0, 393225, 41, 0, 524274, 0, 0, 524275, 44, 0, 524276, 0, 0, 524277, 44, 0, 524278, 2, 0, 524279, 44, 0, 524280, 2, 0, 524281, 44, 0, 524282, 2, 0, 524283, 44, 0, 524284, 0, 0, 524285, 44, 0, 524286, 0, 0, 524287, 0, 0, 458752, 0, 0, 458753, 44, 0, 458754, 0, 0, 458755, 44, 0, 458756, 0, 0, 458757, 44, 0, 458758, 0, 0, 458759, 44, 0, 458760, 0, 0, 458761, 44, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+
+[node name="CapaTerra2_" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 262130, 45, 0, 262131, 42, 0, 262142, 5, 0, 262143, 5, 0, 196616, 45, 0, 196617, 42, 0, 327666, 46, 0, 327667, 47, 0, 327668, 57, 0, 327669, 57, 0, 327670, 57, 0, 327671, 57, 0, 327672, 57, 0, 327673, 57, 0, 327674, 57, 0, 327675, 57, 0, 327676, 57, 0, 327677, 57, 0, 327678, 5, 0, 327679, 5, 0, 262144, 57, 0, 262145, 57, 0, 262146, 57, 0, 262147, 57, 0, 262148, 57, 0, 262149, 57, 0, 262150, 57, 0, 262151, 57, 0, 262152, 46, 0, 262153, 47, 0, 393202, 48, 0, 393203, 49, 0, 393214, 5, 0, 393215, 5, 0, 327688, 48, 0, 327689, 49, 0, 458750, 5, 0, 458751, 5, 0, 524274, 45, 0, 524276, 45, 0, 524278, 45, 0, 524280, 45, 0, 524282, 45, 0, 524284, 45, 0, 524286, 5, 0, 524287, 5, 0, 458752, 45, 0, 458754, 45, 0, 458756, 45, 0, 458758, 45, 0, 458760, 45, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+
+[node name="Eventos_" type="YSort" parent="." index="2"]
+
+sort_enabled = true
+
+[node name="NPC" parent="Eventos_" index="0" instance=ExtResource( 3 )]
+
+position = Vector2( -112, 80 )
+Imagen = ExtResource( 4 )
+Interact = true
+sprite_cols = 4
+sprite_rows = 4
+direction = 2
+
+[node name="pages" parent="Eventos_/NPC" index="1"]
+
+editor/display_folded = true
+
+[node name="event_page" parent="Eventos_/NPC/pages" index="0" instance=ExtResource( 5 )]
+
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_msg" parent="Eventos_/NPC/pages/event_page" index="0" instance=ExtResource( 6 )]
+
+text = "Hola"
+
+[node name="Trainer" parent="Eventos_/NPC" index="4" instance=ExtResource( 7 )]
+
+battle_back_sprite = ExtResource( 8 )
+partner = null
+
+[node name="pkm1" parent="Eventos_/NPC/Trainer" index="0"]
+
+hp_EVs = 0
+attack_EVs = 0
+spAttack_EVs = 0
+defense_EVs = 0
+spDefense_EVs = 0
+speed_EVs = 0
+hp_IVs = 0
+attack_IVs = 0
+spAttack_IVs = 0
+defense_IVs = 0
+spDefense_IVs = 0
+speed_IVs = 0
+ability_id = null
+nature_id = null
+held_item_id = null
+
+[node name="pkm2" parent="Eventos_/NPC/Trainer" index="1"]
+
+hp_EVs = 0
+attack_EVs = 0
+spAttack_EVs = 0
+defense_EVs = 0
+spDefense_EVs = 0
+speed_EVs = 0
+hp_IVs = 0
+attack_IVs = 0
+spAttack_IVs = 0
+defense_IVs = 0
+spDefense_IVs = 0
+speed_IVs = 0
+ability_id = null
+nature_id = null
+held_item_id = null
+
+[node name="pkm3" parent="Eventos_/NPC/Trainer" index="2"]
+
+hp_EVs = 0
+attack_EVs = 0
+spAttack_EVs = 0
+defense_EVs = 0
+spDefense_EVs = 0
+speed_EVs = 0
+hp_IVs = 0
+attack_IVs = 0
+spAttack_IVs = 0
+defense_IVs = 0
+spDefense_IVs = 0
+speed_IVs = 0
+ability_id = null
+nature_id = null
+held_item_id = null
+
+[node name="pkm4" parent="Eventos_/NPC/Trainer" index="3"]
+
+hp_EVs = 0
+attack_EVs = 0
+spAttack_EVs = 0
+defense_EVs = 0
+spDefense_EVs = 0
+speed_EVs = 0
+hp_IVs = 0
+attack_IVs = 0
+spAttack_IVs = 0
+defense_IVs = 0
+spDefense_IVs = 0
+speed_IVs = 0
+ability_id = null
+nature_id = null
+held_item_id = null
+
+[node name="pkm5" parent="Eventos_/NPC/Trainer" index="4"]
+
+hp_EVs = 0
+attack_EVs = 0
+spAttack_EVs = 0
+defense_EVs = 0
+spDefense_EVs = 0
+speed_EVs = 0
+hp_IVs = 0
+attack_IVs = 0
+spAttack_IVs = 0
+defense_IVs = 0
+spDefense_IVs = 0
+speed_IVs = 0
+ability_id = null
+nature_id = null
+held_item_id = null
+
+[node name="pkm6" parent="Eventos_/NPC/Trainer" index="5"]
+
+hp_EVs = 0
+attack_EVs = 0
+spAttack_EVs = 0
+defense_EVs = 0
+spDefense_EVs = 0
+speed_EVs = 0
+hp_IVs = 0
+attack_IVs = 0
+spAttack_IVs = 0
+defense_IVs = 0
+spDefense_IVs = 0
+speed_IVs = 0
+ability_id = null
+nature_id = null
+held_item_id = null
+
+[node name="CapaAlta_" type="TileMap" parent="." index="3"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( 393202, 36, 0, 393203, 37, 0, 393204, 36, 0, 393205, 37, 0, 393206, 36, 0, 393207, 37, 0, 393208, 36, 0, 393209, 37, 0, 393210, 36, 0, 393211, 37, 0, 393212, 36, 0, 393213, 37, 0, 327680, 36, 0, 327681, 37, 0, 327682, 36, 0, 327683, 37, 0, 327684, 36, 0, 327685, 37, 0, 327686, 36, 0, 327687, 37, 0, 327688, 36, 0, 327689, 37, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+
+[node name="Area2D_" type="Area2D" parent="." index="4"]
+
+visible = false
+position = Vector2( -56, -13 )
+scale = Vector2( 12.25, 9.59375 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 9 )
+_sections_unfolded = [ "Collision" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_" index="0"]
+
+position = Vector2( 0, -3.51333 )
+scale = Vector2( 1, 2.32599 )
+shape = SubResource( 1 )
+
+[node name="Pasable" type="Node2D" parent="Area2D_" index="1"]
+
+[node name="EncounterAreas_" type="Node2D" parent="." index="5"]
+
+[node name="encounter_area" parent="EncounterAreas_" index="0" instance=ExtResource( 10 )]
+
+position = Vector2( -32, 176 )
+scale = Vector2( 1, 2.5 )
+pkm_id1 = 13
+pkm_id2 = 13
+pkm_id3 = 13
+pkm_id4 = 13
+pkm_id5 = 14
+pkm_id6 = 14
+pkm_id7 = 14
+pkm_id8 = 10
+pkm_id9 = 10
+pkm_id10 = 15
+min_lvl = 1
+max_lvl = 5
+encounter_rate = 10.0
+
+[node name="CollisionPolygon2D" parent="EncounterAreas_/encounter_area" index="0"]
+
+polygon = PoolVector2Array( -32, 0, 32, 0, 32, -64, -32, -64 )
+
+
+[editable path="Eventos_/NPC"]
+[editable path="Eventos_/NPC/Trainer"]
+[editable path="EncounterAreas_/encounter_area"]

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Logics/event/commands/cmd_move.gd" type="Script" id=1]
+
+
+[node name="cmd_move" type="Node"]
+
+script = ExtResource( 1 )
+Target = null
+movesArray = null
+
+

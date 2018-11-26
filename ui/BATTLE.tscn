@@ -1,0 +1,3349 @@
+[gd_scene load_steps=86 format=2]
+
+[ext_resource path="res://ui/BATTLE.gd" type="Script" id=1]
+[ext_resource path="res://Sprites/Battlebacks/battlebgField.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Battlebacks/playerbaseFieldNight.png" type="Texture" id=3]
+[ext_resource path="res://ui/battle/battleBase.gd" type="Script" id=4]
+[ext_resource path="res://ui/BattlePictures/small_ball.png" type="Texture" id=5]
+[ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=6]
+[ext_resource path="res://Sprites/Characters/trback001.png" type="Texture" id=7]
+[ext_resource path="res://Sprites/Battlebacks/enemybaseFieldNight.png" type="Texture" id=8]
+[ext_resource path="res://Sprites/Battlers/390.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Battlers/387.png" type="Texture" id=10]
+[ext_resource path="res://Sprites/Characters/trainer007.png" type="Texture" id=11]
+[ext_resource path="res://Sprites/Characters/trainer004.png" type="Texture" id=12]
+[ext_resource path="res://ui/BattlePictures/ball00.png" type="Texture" id=13]
+[ext_resource path="res://ui/BattlePictures/battlePlayerBoxS.png" type="Texture" id=14]
+[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=15]
+[ext_resource path="res://ui/BattlePictures/pixel.png" type="Texture" id=16]
+[ext_resource path="res://ui/BattlePictures/HPbar_overlay.png" type="Texture" id=17]
+[ext_resource path="res://ui/BattlePictures/EXPbar_overlay.png" type="Texture" id=18]
+[ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://ui/BattlePictures/battleStatuses.png" type="Texture" id=20]
+[ext_resource path="res://ui/BattlePictures/battlePlayerBoxD.png" type="Texture" id=21]
+[ext_resource path="res://ui/BattlePictures/battleFoeBoxS.png" type="Texture" id=22]
+[ext_resource path="res://ui/BattlePictures/battleFoeBoxD.png" type="Texture" id=23]
+[ext_resource path="res://ui/BattlePictures/battleLineup.png" type="Texture" id=24]
+[ext_resource path="res://ui/BattlePictures/ballnormal.png" type="Texture" id=25]
+[ext_resource path="res://ui/BattlePictures/ballstatus.PNG" type="Texture" id=26]
+[ext_resource path="res://ui/BattlePictures/ballfainted.png" type="Texture" id=27]
+[ext_resource path="res://ui/Battle_MessageBox_Style.tres" type="StyleBox" id=28]
+[ext_resource path="res://ui/Battle_Options_MessageBox_Style.tres" type="StyleBox" id=29]
+[ext_resource path="res://ui/HGSS_Font_Style.tres" type="DynamicFont" id=30]
+[ext_resource path="res://ui/BattlePictures/battleCommandButtons.png" type="Texture" id=31]
+[ext_resource path="res://ui/Battle_Moves_MessageBox_Style.tres" type="StyleBox" id=32]
+[ext_resource path="res://ui/BattlePictures/types.png" type="Texture" id=33]
+[ext_resource path="res://ui/BattlePictures/battleFightButtons.png" type="Texture" id=34]
+[ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=35]
+[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=36]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=37]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=38]
+[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=39]
+[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=40]
+[ext_resource path="res://ui/BattleAnimations/Stat_Up_Animation.tres" type="Animation" id=41]
+[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=42]
+[ext_resource path="res://ui/BattlePictures/ball00_open.png" type="Texture" id=43]
+[ext_resource path="res://ui/BattleAnimations/OverlayStatDown.png" type="Texture" id=44]
+[ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=45]
+
+[sub_resource type="Shader" id=1]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 color:hint_color;
+uniform sampler2D frame1:hint_white;
+uniform float whitening;
+uniform int frame_size;
+uniform int frames;
+uniform float anim_time;
+
+void fragment()
+{
+	    ivec2 texsize = textureSize(TEXTURE,0);
+    float uv_frame_size = float(frame_size) / float(texsize.y);
+    float frame_time = anim_time / float(frames);
+    float time = mod(TIME, anim_time);
+    float frame = floor(time / frame_time);
+
+    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
+	
+	vec4 texture_color = texture(TEXTURE, UV);
+	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=2]
+
+render_priority = 0
+shader = SubResource( 1 )
+shader_param/color = null
+shader_param/whitening = null
+shader_param/frame_size = 5
+shader_param/frames = 8
+shader_param/anim_time = 1.0
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=3]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 color:hint_color;
+uniform sampler2D frame1:hint_white;
+uniform float whitening;
+uniform int frame_size;
+uniform int frames;
+uniform float anim_time;
+
+void fragment()
+{
+	    ivec2 texsize = textureSize(TEXTURE,0);
+    float uv_frame_size = float(frame_size) / float(texsize.y);
+    float frame_time = anim_time / float(frames);
+    float time = mod(TIME, anim_time);
+    float frame = floor(time / frame_time);
+
+    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
+	
+	vec4 texture_color = texture(TEXTURE, UV);
+	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=4]
+
+render_priority = 0
+shader = SubResource( 3 )
+shader_param/color = null
+shader_param/whitening = null
+shader_param/frame_size = 5
+shader_param/frames = 8
+shader_param/anim_time = 1.0
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=5]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 color:hint_color;
+uniform sampler2D frame1:hint_white;
+uniform float whitening;
+uniform int frame_size;
+uniform int frames;
+uniform float anim_time;
+
+void fragment()
+{
+	    ivec2 texsize = textureSize(TEXTURE,0);
+    float uv_frame_size = float(frame_size) / float(texsize.y);
+    float frame_time = anim_time / float(frames);
+    float time = mod(TIME, anim_time);
+    float frame = floor(time / frame_time);
+
+    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
+	
+	vec4 texture_color = texture(TEXTURE, UV);
+	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=6]
+
+render_priority = 0
+shader = SubResource( 5 )
+shader_param/color = null
+shader_param/whitening = null
+shader_param/frame_size = 5
+shader_param/frames = 8
+shader_param/anim_time = 1.0
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="Shader" id=7]
+
+code = "shader_type canvas_item;
+render_mode unshaded;
+
+uniform vec4 color:hint_color;
+uniform sampler2D frame1:hint_white;
+uniform float whitening;
+uniform int frame_size;
+uniform int frames;
+uniform float anim_time;
+
+void fragment()
+{
+	    ivec2 texsize = textureSize(TEXTURE,0);
+    float uv_frame_size = float(frame_size) / float(texsize.y);
+    float frame_time = anim_time / float(frames);
+    float time = mod(TIME, anim_time);
+    float frame = floor(time / frame_time);
+
+    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
+	
+	vec4 texture_color = texture(TEXTURE, UV);
+	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
+	
+}"
+
+[sub_resource type="ShaderMaterial" id=8]
+
+render_priority = 0
+shader = SubResource( 7 )
+shader_param/color = null
+shader_param/whitening = null
+shader_param/frame_size = 5
+shader_param/frames = 8
+shader_param/anim_time = 1.0
+_sections_unfolded = [ "shader_param" ]
+
+[sub_resource type="DynamicFont" id=9]
+
+size = 26
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxTexture" id=10]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 0, 130, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=11]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 46, 130, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="StyleBoxTexture" id=12]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 92, 130, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+_sections_unfolded = [ "Axis Stretch", "Content Margin", "Expand Margin", "Margin", "Modulate", "Resource" ]
+
+[sub_resource type="StyleBoxTexture" id=13]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 31 )
+region_rect = Rect2( 0, 138, 130, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="DynamicFont" id=14]
+
+size = 26
+use_mipmaps = false
+use_filter = false
+extra_spacing_space = -10
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+
+[sub_resource type="DynamicFont" id=15]
+
+size = 26
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxTexture" id=16]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 34 )
+region_rect = Rect2( 0, 828, 192, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="DynamicFont" id=17]
+
+size = 22
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxTexture" id=18]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 34 )
+region_rect = Rect2( 0, 828, 192, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="DynamicFont" id=19]
+
+size = 22
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxTexture" id=20]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 34 )
+region_rect = Rect2( 0, 828, 192, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="DynamicFont" id=21]
+
+size = 22
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="StyleBoxTexture" id=22]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 34 )
+region_rect = Rect2( 0, 828, 192, 46 )
+margin_left = 0.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 0.0
+expand_margin_bottom = 0.0
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = true
+
+[sub_resource type="DynamicFont" id=23]
+
+size = 22
+use_mipmaps = false
+use_filter = false
+font_data = ExtResource( 19 )
+_sections_unfolded = [ "Font", "Settings" ]
+
+[sub_resource type="AtlasTexture" id=24]
+
+flags = 0
+region = Rect2( 0, 0, 0, 0 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="Animation" id=25]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 36 ), SubResource( 24 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.4, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=26]
+
+length = 1.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/playerBase/trainer_player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 207, -80 ), Vector2( 10, -80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
+}
+
+[sub_resource type="Animation" id=27]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/enemyParty/ball5:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=28]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, -96 ), Vector2( 143.5, -96 ), Vector2( 180, -40 ), Vector2( 200, 50 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/playerBase/pkmn_player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
+}
+
+[sub_resource type="Animation" id=29]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 36 ), SubResource( 24 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.4, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=30]
+
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/enemyBase/pokeball1:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 125, 67 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/enemyBase/trainer_enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 62.461, -47.388 ), Vector2( 235, -47.388 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/enemyBase/pokeball1:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ), ExtResource( 43 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 1.1, 1.4, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ 1.0, 1.0, 0.0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.1, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 235, -47.388 ), Vector2( 142.461, 52.612 ), Vector2( 62.461, -47.388 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Background/enemyParty/ball1:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 182, 4.5 ), Vector2( 182, 4.5 ), Vector2( 520, 4.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Background/enemyParty/ball2:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.2, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 150, 4.5 ), Vector2( 150, 4.5 ), Vector2( 520, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Background/enemyParty/ball3:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.5, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 118, 4.5 ), Vector2( 118, 4.5 ), Vector2( 520, 4.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Background/enemyParty/ball4:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.7, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 86, 4.5 ), Vector2( 86, 4.5 ), Vector2( 520, 4.5 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Background/enemyParty/ball5:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 54, 4.5 ), Vector2( 54, 4.5 ), Vector2( 520, 4.5 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Background/enemyParty/ball6:position")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 22, 4.5 ), Vector2( 22, 4.5 ), Vector2( 520, 4.5 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Background/enemyParty/ball1:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Background/enemyParty/ball2:modulate")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Background/enemyParty/ball3:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Background/enemyParty/ball4:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Background/enemyParty/ball5:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Background/enemyParty/ball6:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Background/enemyParty/ball1:rotation_degrees")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Background/enemyParty/ball2:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.2, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Background/enemyParty/ball3:rotation_degrees")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0.5, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Background/enemyParty/ball4:rotation_degrees")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.7, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Background/enemyParty/ball5:rotation_degrees")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("Background/enemyParty/ball6:rotation_degrees")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 1.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, 720.0 ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("Background/HPbar_enemyS:position")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 1.5, 1.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -140, 70 ), Vector2( 116, 70 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("Background/enemyParty/party_bar:position")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 21.522, 23.3062 ), Vector2( 200, 23.3062 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Background/enemyParty/party_bar:modulate")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0.1, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+
+[sub_resource type="Animation" id=31]
+
+length = 1.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/playerBase/trainer_player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 207, -80 ), Vector2( 10, -80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/playerParty/party_bar:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -339.5, 23.5 ), Vector2( -600, 23.5 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/playerParty/ball1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -502, 4.5 ), Vector2( -840, 4.5 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/playerParty/ball2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -470, 4.5 ), Vector2( -840, 4.5 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Background/playerParty/ball3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0.3, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -438, 4.5 ), Vector2( -840, 4.5 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("Background/playerParty/ball4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0.4, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -406, 4.5 ), Vector2( -840, 4.5 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("Background/playerParty/ball5:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0.5, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -374, 4.5 ), Vector2( -840, 4.5 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("Background/playerParty/ball6:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0.6, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -342, 4.5 ), Vector2( -840, 4.5 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("Background/playerParty/ball1:rotation_degrees")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -720.0 ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("Background/playerParty/ball2:rotation_degrees")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -720.0 ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("Background/playerParty/ball3:rotation_degrees")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -720.0 ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("Background/playerParty/ball4:rotation_degrees")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -720.0 ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("Background/playerParty/ball5:rotation_degrees")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -720.0 ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("Background/playerParty/ball6:rotation_degrees")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ 0.0, -720.0 ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("Background/playerParty/ball1:modulate")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("Background/playerParty/party_bar:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("Background/playerParty/ball2:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("Background/playerParty/ball3:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("Background/playerParty/ball4:modulate")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("Background/playerParty/ball5:modulate")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("Background/playerParty/ball6:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0.1, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("Background/HPbar_playerS:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0.9, 1.2 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 236 ), Vector2( 396, 236 ) ]
+}
+
+[sub_resource type="Animation" id=32]
+
+length = 1.2
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 1, 2, 3 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/playerBase/trainer_player:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 207, -80 ), Vector2( 10, -80 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0.2, 0.9 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
+}
+
+[sub_resource type="Animation" id=33]
+
+length = 2.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -10, -96.663 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 235, -47.388 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 2 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=34]
+
+length = 1.5
+loop = false
+step = 0.1
+
+[sub_resource type="Animation" id=35]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 10, -96 ), Vector2( 143.5, -96 ), Vector2( 180, -40 ), Vector2( 200, 50 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/playerBase/pkmn_player:rotation_degrees")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
+}
+
+[sub_resource type="AtlasTexture" id=36]
+
+flags = 0
+region = Rect2( 0, 0, 0, 0 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="Animation" id=37]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 44 ), SubResource( 36 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.4, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ -8, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="AtlasTexture" id=38]
+
+flags = 0
+region = Rect2( 0, 0, 0, 0 )
+margin = Rect2( 0, 0, 0, 0 )
+filter_clip = false
+
+[sub_resource type="Animation" id=39]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 35 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 45 ), SubResource( 38 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.4, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
+
+[sub_resource type="Animation" id=40]
+
+length = 1.5
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("Background/playerBase:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( -500, 240 ), Vector2( -148, 240 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Background/enemyBase:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.8 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 510, 111 ), Vector2( 257, 111 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Background/HPbar_enemyS:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.8, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -140, 70 ), Vector2( -140, 70 ), Vector2( 116, 70 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Background/HPbar_playerS:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.8, 1.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 650, 236 ), Vector2( 650, 236 ), Vector2( 396, 236 ) ]
+}
+
+[node name="BATTLE" type="Control" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+script = ExtResource( 1 )
+active_pokemon_node = null
+
+[node name="Background" type="Sprite" parent="." index="0"]
+
+texture = ExtResource( 2 )
+centered = false
+_sections_unfolded = [ "Offset" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="playerBase" type="Sprite" parent="Background" index="0"]
+
+editor/display_folded = true
+position = Vector2( -148, 240 )
+texture = ExtResource( 3 )
+centered = false
+script = ExtResource( 4 )
+_sections_unfolded = [ "Offset", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pkmn_player" type="Sprite" parent="Background/playerBase" index="0"]
+
+material = SubResource( 2 )
+position = Vector2( -10, -96.663 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Material", "Offset", "Transform" ]
+
+[node name="pkmn_player_ally" type="Sprite" parent="Background/playerBase" index="1"]
+
+material = SubResource( 4 )
+position = Vector2( 116, -36 )
+texture = ExtResource( 5 )
+_sections_unfolded = [ "Material", "Offset", "Transform" ]
+
+[node name="trainer_player" type="Sprite" parent="Background/playerBase" index="2"]
+
+position = Vector2( 180, -80 )
+texture = ExtResource( 6 )
+centered = false
+hframes = 5
+_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform" ]
+
+[node name="trainer_player_ally" type="Sprite" parent="Background/playerBase" index="3"]
+
+position = Vector2( 280, -80 )
+texture = ExtResource( 7 )
+centered = false
+hframes = 5
+_sections_unfolded = [ "Animation", "Material", "Offset", "Transform" ]
+
+[node name="enemyBase" type="Sprite" parent="Background" index="1"]
+
+editor/display_folded = true
+position = Vector2( 257, 111 )
+texture = ExtResource( 8 )
+centered = false
+script = ExtResource( 4 )
+_sections_unfolded = [ "Animation", "Offset", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="pkmn_enemy_ally" type="Sprite" parent="Background/enemyBase" index="0"]
+
+visible = false
+material = SubResource( 6 )
+position = Vector2( 16, -72 )
+texture = ExtResource( 9 )
+centered = false
+region_rect = Rect2( 88, 59, 95, 45 )
+_sections_unfolded = [ "Material", "Offset", "Transform" ]
+
+[node name="pkmn_enemy" type="Sprite" parent="Background/enemyBase" index="1"]
+
+visible = false
+material = SubResource( 8 )
+position = Vector2( 96, -56 )
+texture = ExtResource( 10 )
+centered = false
+region_rect = Rect2( 88, 59, 95, 45 )
+_sections_unfolded = [ "Material", "Offset", "Transform" ]
+
+[node name="trainer_enemy_ally" type="Sprite" parent="Background/enemyBase" index="2"]
+
+position = Vector2( 36, -64 )
+texture = ExtResource( 11 )
+centered = false
+region_rect = Rect2( 88, 59, 95, 45 )
+_sections_unfolded = [ "Material", "Offset", "Transform" ]
+
+[node name="trainer_enemy" type="Sprite" parent="Background/enemyBase" index="3"]
+
+position = Vector2( 108, -56 )
+texture = ExtResource( 12 )
+centered = false
+region_rect = Rect2( 88, 59, 95, 45 )
+_sections_unfolded = [ "Material", "Offset", "Transform" ]
+
+[node name="pokeball1" type="Sprite" parent="Background/enemyBase" index="4"]
+
+visible = false
+position = Vector2( 174, 60 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="pokeball2" type="Sprite" parent="Background/enemyBase" index="5"]
+
+visible = false
+position = Vector2( 96, 48 )
+texture = ExtResource( 13 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="HPbar_playerS" type="Sprite" parent="Background" index="2"]
+
+position = Vector2( 650, 236 )
+texture = ExtResource( 14 )
+script = ExtResource( 15 )
+_sections_unfolded = [ "Offset", "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="Background/HPbar_playerS" index="0"]
+
+[node name="background" type="TextureRect" parent="Background/HPbar_playerS/health_bar" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+
+[node name="health" type="TextureRect" parent="Background/HPbar_playerS/health_bar" index="1"]
+
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/health_bar" index="2"]
+
+position = Vector2( 40, 1 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="exp_bar" type="Node2D" parent="Background/HPbar_playerS" index="1"]
+
+[node name="background" type="TextureRect" parent="Background/HPbar_playerS/exp_bar" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -90.0
+margin_top = 33.0
+margin_right = 102.0
+margin_bottom = 39.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+
+[node name="exp" type="TextureRect" parent="Background/HPbar_playerS/exp_bar" index="1"]
+
+modulate = Color( 0.282353, 0.564706, 0.972549, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -90.0
+margin_top = 33.0
+margin_right = 102.0
+margin_bottom = 39.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/exp_bar" index="2"]
+
+position = Vector2( 6, 37 )
+texture = ExtResource( 18 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lblActualHP" type="Label" parent="Background/HPbar_playerS" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -4.0
+margin_top = -3.0
+margin_right = 60.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "40"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerS" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 125.0
+margin_bottom = 29.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "/40"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblLevel" type="Label" parent="Background/HPbar_playerS" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_top = -33.0
+margin_right = 104.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblName" type="Label" parent="Background/HPbar_playerS" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -95.0
+margin_top = -33.0
+margin_right = 29.0
+margin_bottom = -10.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pikachu"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Status" type="Sprite" parent="Background/HPbar_playerS" index="6"]
+
+position = Vector2( -50, 1 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 44, 16 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="HPbar_playerD" type="Sprite" parent="Background" index="3"]
+
+position = Vector2( 642, 185 )
+texture = ExtResource( 21 )
+script = ExtResource( 15 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD" index="0"]
+
+position = Vector2( 0, 12 )
+
+[node name="background" type="TextureRect" parent="Background/HPbar_playerD/health_bar" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+
+[node name="health" type="TextureRect" parent="Background/HPbar_playerD/health_bar" index="1"]
+
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerD/health_bar" index="2"]
+
+position = Vector2( 40, 1 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lblLevel" type="Label" parent="Background/HPbar_playerD" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_top = -24.0
+margin_right = 104.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblName" type="Label" parent="Background/HPbar_playerD" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -95.0
+margin_top = -25.0
+margin_right = 29.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pikachu"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Status" type="Sprite" parent="Background/HPbar_playerD" index="3"]
+
+position = Vector2( -50, 12.6415 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 44, 16 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 145.0
+margin_top = -250.0
+margin_right = 185.0
+margin_bottom = -236.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 114.0
+margin_top = -259.0
+margin_right = 154.0
+margin_bottom = -245.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HPbar_playerD2" type="Sprite" parent="Background" index="4"]
+
+editor/display_folded = true
+position = Vector2( 653, 239 )
+texture = ExtResource( 21 )
+script = ExtResource( 15 )
+_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD2" index="0"]
+
+position = Vector2( 0, 12 )
+
+[node name="background" type="TextureRect" parent="Background/HPbar_playerD2/health_bar" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+
+[node name="health" type="TextureRect" parent="Background/HPbar_playerD2/health_bar" index="1"]
+
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Rect", "Visibility" ]
+
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerD2/health_bar" index="2"]
+
+position = Vector2( 40, 1 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lblLevel" type="Label" parent="Background/HPbar_playerD2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 40.0
+margin_top = -24.0
+margin_right = 104.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblName" type="Label" parent="Background/HPbar_playerD2" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -95.0
+margin_top = -25.0
+margin_right = 29.0
+margin_bottom = -2.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pikachu"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Status" type="Sprite" parent="Background/HPbar_playerD2" index="3"]
+
+position = Vector2( -50, 12.6415 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 44, 16 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD2" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 89.0
+margin_top = -281.0
+margin_right = 129.0
+margin_bottom = -267.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD2" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 113.0
+margin_top = -292.0
+margin_right = 153.0
+margin_bottom = -278.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HPbar_enemyS" type="Sprite" parent="Background" index="5"]
+
+editor/display_folded = true
+position = Vector2( -140, 70 )
+texture = ExtResource( 22 )
+script = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyS" index="0"]
+
+editor/display_folded = true
+position = Vector2( -18, 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="background" type="TextureRect" parent="Background/HPbar_enemyS/health_bar" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+
+[node name="health" type="TextureRect" parent="Background/HPbar_enemyS/health_bar" index="1"]
+
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="overlay" type="Sprite" parent="Background/HPbar_enemyS/health_bar" index="2"]
+
+position = Vector2( 40, 1 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lblLevel" type="Label" parent="Background/HPbar_enemyS" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_top = -22.0
+margin_right = 88.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblName" type="Label" parent="Background/HPbar_enemyS" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -110.0
+margin_top = -22.0
+margin_right = -46.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Abra"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Status" type="Sprite" parent="Background/HPbar_enemyS" index="3"]
+
+position = Vector2( -68, 13 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 44, 16 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyS" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1153.0
+margin_top = -112.0
+margin_right = 1193.0
+margin_bottom = -98.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyS" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1177.0
+margin_top = -123.0
+margin_right = 1217.0
+margin_bottom = -109.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HPbar_enemyD" type="Sprite" parent="Background" index="6"]
+
+editor/display_folded = true
+position = Vector2( -134, 36 )
+texture = ExtResource( 23 )
+script = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD" index="0"]
+
+editor/display_folded = true
+position = Vector2( -18, 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="background" type="TextureRect" parent="Background/HPbar_enemyD/health_bar" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+
+[node name="health" type="TextureRect" parent="Background/HPbar_enemyD/health_bar" index="1"]
+
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD/health_bar" index="2"]
+
+position = Vector2( 40, 1 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_top = -22.0
+margin_right = 88.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblName" type="Label" parent="Background/HPbar_enemyD" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -110.0
+margin_top = -22.0
+margin_right = -46.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Abra"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Status" type="Sprite" parent="Background/HPbar_enemyD" index="3"]
+
+position = Vector2( -68, 13 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 44, 16 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1419.0
+margin_top = -78.0
+margin_right = 1459.0
+margin_bottom = -64.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1443.0
+margin_top = -89.0
+margin_right = 1483.0
+margin_bottom = -75.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="HPbar_enemyD2" type="Sprite" parent="Background" index="7"]
+
+editor/display_folded = true
+position = Vector2( -143, 90 )
+texture = ExtResource( 23 )
+script = ExtResource( 15 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD2" index="0"]
+
+editor/display_folded = true
+position = Vector2( -18, 12 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="background" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+
+[node name="health" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar" index="1"]
+
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 16 )
+expand = true
+stretch_mode = 0
+_sections_unfolded = [ "Visibility" ]
+
+[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD2/health_bar" index="2"]
+
+position = Vector2( 40, 1 )
+texture = ExtResource( 17 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD2" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 24.0
+margin_top = -22.0
+margin_right = 88.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblName" type="Label" parent="Background/HPbar_enemyD2" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = -110.0
+margin_top = -22.0
+margin_right = -46.0
+margin_bottom = 1.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 9 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Abra"
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="Status" type="Sprite" parent="Background/HPbar_enemyD2" index="3"]
+
+position = Vector2( -68, 13 )
+texture = ExtResource( 20 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 44, 16 )
+_sections_unfolded = [ "Region", "Transform" ]
+
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD2" index="4"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1457.0
+margin_top = -143.0
+margin_right = 1497.0
+margin_bottom = -129.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD2" index="5"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 1433.0
+margin_top = -132.0
+margin_right = 1473.0
+margin_bottom = -118.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="playerParty" type="Node2D" parent="Background" index="8"]
+
+position = Vector2( 820, 230 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="party_bar" type="Sprite" parent="Background/playerParty" index="0"]
+
+position = Vector2( -339.5, 23.5 )
+rotation = 3.14159
+texture = ExtResource( 24 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="ball1" type="Sprite" parent="Background/playerParty" index="1"]
+
+position = Vector2( -502, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball2" type="Sprite" parent="Background/playerParty" index="2"]
+
+position = Vector2( -470, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball3" type="Sprite" parent="Background/playerParty" index="3"]
+
+position = Vector2( -438, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball4" type="Sprite" parent="Background/playerParty" index="4"]
+
+position = Vector2( -406, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball5" type="Sprite" parent="Background/playerParty" index="5"]
+
+position = Vector2( -374, 4.5 )
+texture = ExtResource( 26 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball6" type="Sprite" parent="Background/playerParty" index="6"]
+
+position = Vector2( -342, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="enemyParty" type="Node2D" parent="Background" index="9"]
+
+position = Vector2( 10, 105 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="party_bar" type="Sprite" parent="Background/enemyParty" index="0"]
+
+position = Vector2( 21.522, 23.3062 )
+texture = ExtResource( 24 )
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="ball1" type="Sprite" parent="Background/enemyParty" index="1"]
+
+position = Vector2( 182, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball2" type="Sprite" parent="Background/enemyParty" index="2"]
+
+position = Vector2( 150, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball3" type="Sprite" parent="Background/enemyParty" index="3"]
+
+position = Vector2( 118, 4.5 )
+texture = ExtResource( 26 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball4" type="Sprite" parent="Background/enemyParty" index="4"]
+
+position = Vector2( 86, 4.5 )
+texture = ExtResource( 25 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball5" type="Sprite" parent="Background/enemyParty" index="5"]
+
+position = Vector2( 54, 4.5 )
+rotation = 4.18879
+texture = ExtResource( 27 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="ball6" type="Sprite" parent="Background/enemyParty" index="6"]
+
+position = Vector2( 22, 4.5 )
+rotation = 12.5664
+texture = ExtResource( 27 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+
+[node name="Panel_MessageBox" type="Panel" parent="." index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 288.0
+margin_right = 512.0
+margin_bottom = 384.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = ExtResource( 28 )
+_sections_unfolded = [ "custom_styles" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Panel_Commands" type="Panel" parent="." index="2"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 288.0
+margin_right = 512.0
+margin_bottom = 384.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = ExtResource( 29 )
+_sections_unfolded = [ "Material", "Visibility", "custom_styles" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label_Text" type="Label" parent="Panel_Commands" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 21.0
+margin_top = 24.0
+margin_right = 229.0
+margin_bottom = 82.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 30 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_constants/line_spacing = 14
+text = "¿Qué debería hacer Pikachu?"
+autowrap = true
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Margin", "custom_colors", "custom_constants", "custom_fonts" ]
+
+[node name="Commands" type="Node2D" parent="Panel_Commands" index="1"]
+
+[node name="Luchar" type="Panel" parent="Panel_Commands/Commands" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 252.0
+margin_top = 6.0
+margin_right = 382.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_right = NodePath("../Mochila")
+focus_neighbour_bottom = NodePath("../Pokemon")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 10 )
+_sections_unfolded = [ "Rect", "Visibility", "custom_styles" ]
+
+[node name="Pokemon" type="Panel" parent="Panel_Commands/Commands" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 252.0
+margin_top = 48.0
+margin_right = 382.0
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_top = NodePath("../Luchar")
+focus_neighbour_right = NodePath("../Huir")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 11 )
+_sections_unfolded = [ "Focus", "Rect", "Visibility", "custom_styles" ]
+
+[node name="Mochila" type="Panel" parent="Panel_Commands/Commands" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 378.0
+margin_top = 6.0
+margin_right = 508.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath("../Luchar")
+focus_neighbour_bottom = NodePath("../Huir")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 12 )
+_sections_unfolded = [ "Focus", "Visibility", "custom_styles" ]
+
+[node name="Huir" type="Panel" parent="Panel_Commands/Commands" index="3"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 378.0
+margin_top = 48.0
+margin_right = 508.0
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath("../Pokemon")
+focus_neighbour_top = NodePath("../Mochila")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 13 )
+_sections_unfolded = [ "Focus", "Visibility", "custom_styles" ]
+
+[node name="Panel_Moves" type="Panel" parent="." index="3"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_top = 288.0
+margin_right = 512.0
+margin_bottom = 384.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = ExtResource( 32 )
+_sections_unfolded = [ "custom_styles" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="lblPP" type="Label" parent="Panel_Moves" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 398.0
+margin_top = 44.0
+margin_right = 443.0
+margin_bottom = 82.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 14 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "PP:"
+align = 1
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_colors", "custom_fonts" ]
+
+[node name="lblActualPP" type="Label" parent="Panel_Moves" index="1"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 433.0
+margin_top = 47.0
+margin_right = 460.0
+margin_bottom = 79.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "40"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="lblTotalPP" type="Label" parent="Panel_Moves" index="2"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 458.0
+margin_top = 47.0
+margin_right = 494.0
+margin_bottom = 79.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 15 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "/40"
+align = 2
+valign = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+
+[node name="MoveType" type="Sprite" parent="Panel_Moves" index="3"]
+
+position = Vector2( 448, 36 )
+texture = ExtResource( 33 )
+vframes = 24
+_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
+
+[node name="Moves" type="Node2D" parent="Panel_Moves" index="4"]
+
+[node name="Move1" type="Panel" parent="Panel_Moves/Moves" index="0"]
+
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 6.0
+margin_right = 196.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_right = NodePath("../Move2")
+focus_neighbour_bottom = NodePath("../Move3")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 16 )
+_sections_unfolded = [ "Focus", "custom_styles" ]
+
+[node name="lblMove1" type="Label" parent="Panel_Moves/Moves/Move1" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 21.0
+margin_top = 14.0
+margin_right = 172.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 17 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Impactrueno"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Move2" type="Panel" parent="Panel_Moves/Moves" index="1"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_top = 6.0
+margin_right = 384.0
+margin_bottom = 52.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath("../Move1")
+focus_neighbour_bottom = NodePath("../Move4")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 18 )
+_sections_unfolded = [ "Focus", "Rect", "custom_styles" ]
+
+[node name="lblMove2" type="Label" parent="Panel_Moves/Moves/Move2" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 21.0
+margin_top = 14.0
+margin_right = 172.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 19 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Gruñido"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Move3" type="Panel" parent="Panel_Moves/Moves" index="2"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 4.0
+margin_top = 48.0
+margin_right = 196.0
+margin_bottom = 94.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_top = NodePath("../Move1")
+focus_neighbour_right = NodePath("../Move4")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 20 )
+_sections_unfolded = [ "Focus", "Rect", "custom_styles" ]
+
+[node name="lblMove3" type="Label" parent="Panel_Moves/Moves/Move3" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 14.0
+margin_right = 171.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 21 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Onda Trueno"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Move4" type="Panel" parent="Panel_Moves/Moves" index="3"]
+
+editor/display_folded = true
+visible = false
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 192.0
+margin_top = 49.0
+margin_right = 384.0
+margin_bottom = 95.0
+rect_pivot_offset = Vector2( 0, 0 )
+focus_neighbour_left = NodePath("../Move3")
+focus_neighbour_top = NodePath("../Move2")
+focus_mode = 2
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+custom_styles/panel = SubResource( 22 )
+_sections_unfolded = [ "Focus", "Rect", "custom_styles" ]
+
+[node name="lblMove4" type="Label" parent="Panel_Moves/Moves/Move4" index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 20.0
+margin_top = 13.0
+margin_right = 171.0
+margin_bottom = 39.0
+rect_pivot_offset = Vector2( 0, 0 )
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Rayo"
+align = 1
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Rect", "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="." index="4"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Heal = SubResource( 25 )
+anims/ShowPokemon_enemy = ExtResource( 37 )
+anims/ShowPokemon_player = ExtResource( 38 )
+anims/ShowPokemon_player_wild = SubResource( 26 )
+anims/ShowTrainers_parties_animation = ExtResource( 39 )
+anims/Show_Pokemon_back = SubResource( 27 )
+anims/Show_Pokemon_prova = SubResource( 28 )
+anims/Stat_Down = ExtResource( 40 )
+anims/Stat_Up = ExtResource( 41 )
+anims/Wild_Start = ExtResource( 42 )
+blend_times = [  ]
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="5"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Heal = SubResource( 29 )
+anims/ShowPokemon_enemy = SubResource( 30 )
+anims/ShowPokemon_player = SubResource( 31 )
+anims/ShowPokemon_player_wild = SubResource( 32 )
+anims/ShowTrainers_parties = SubResource( 33 )
+anims/Show_Pokemon_back = SubResource( 34 )
+anims/Show_Pokemon_prova = SubResource( 35 )
+anims/Stat_Down = SubResource( 37 )
+anims/Stat_Up = SubResource( 39 )
+anims/Wild_Start = SubResource( 40 )
+blend_times = [  ]
+
+[connection signal="focus_entered" from="Panel_Commands/Commands/Luchar" to="." method="_on_Luchar_focus_entered"]
+
+[connection signal="focus_entered" from="Panel_Commands/Commands/Pokemon" to="." method="_on_Pokmon_focus_entered"]
+
+[connection signal="focus_entered" from="Panel_Commands/Commands/Mochila" to="." method="_on_Mochila_focus_entered"]
+
+[connection signal="focus_entered" from="Panel_Commands/Commands/Huir" to="." method="_on_Huir_focus_entered"]
+
+[connection signal="focus_entered" from="Panel_Moves/Moves/Move1" to="." method="_on_Move1_focus_entered"]
+
+[connection signal="focus_entered" from="Panel_Moves/Moves/Move2" to="." method="_on_Move2_focus_entered"]
+
+[connection signal="focus_entered" from="Panel_Moves/Moves/Move3" to="." method="_on_Move3_focus_entered"]
+
+[connection signal="focus_entered" from="Panel_Moves/Moves/Move4" to="." method="_on_Move4_focus_entered"]
+
+

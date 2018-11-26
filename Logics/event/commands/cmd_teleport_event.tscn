@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://cmd_teleport_event.gd" type="Script" id=1]
+
+[node name="cmd_teleport_event" type="Node" index="0"]
+
+script = ExtResource( 1 )
+Evento = null
+Map_XY = null
+
+

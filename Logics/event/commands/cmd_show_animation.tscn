@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Logics/event/commands/cmd_show_animation.gd" type="Script" id=1]
+[ext_resource path="res://animations/Close_door.tres" type="Animation" id=2]
+[ext_resource path="res://animations/Open_door.tres" type="Animation" id=3]
+[ext_resource path="res://Sprites/door1.png" type="Texture" id=4]
+
+[node name="cmd_show_animation" type="Node2D"]
+
+position = Vector2( -16, 16 )
+z_index = -1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+animation = null
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="0"]
+
+root_node = NodePath("..")
+autoplay = ""
+playback_process_mode = 1
+playback_default_blend_time = 0.0
+playback_speed = 1.0
+anims/Close_door = ExtResource( 2 )
+anims/Open_door = ExtResource( 3 )
+blend_times = [  ]
+
+[node name="Sprite" type="Sprite" parent="." index="1"]
+
+texture = ExtResource( 4 )
+vframes = 4
+_sections_unfolded = [ "Animation", "Offset", "Region", "Visibility", "Z Index" ]
+
+

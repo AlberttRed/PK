@@ -1,0 +1,598 @@
+[gd_scene load_steps=28 format=2]
+
+[ext_resource path="res://map.gd" type="Script" id=1]
+[ext_resource path="res://TileSet_GBA.tres" type="TileSet" id=2]
+[ext_resource path="res://Logics/event/NPC.scn" type="PackedScene" id=3]
+[ext_resource path="res://Sprites/NPC 06.png" type="Texture" id=4]
+[ext_resource path="res://Sprites/trchar042.png" type="Texture" id=5]
+[ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=6]
+[ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=7]
+[ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=8]
+[ext_resource path="res://Sprites/door1.png" type="Texture" id=9]
+[ext_resource path="res://animations/Open_door.tres" type="Animation" id=10]
+[ext_resource path="res://Logics/event/commands/cmd_play_animation.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Logics/event/commands/cmd_set_through.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=15]
+[ext_resource path="res://animations/Close_door.tres" type="Animation" id=16]
+[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=17]
+[ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Sprites/door2.png" type="Texture" id=20]
+[ext_resource path="res://Area2D.gd" type="Script" id=21]
+
+[sub_resource type="Animation" id=1]
+
+resource_name = "Close_door"
+length = 0.5
+loop = false
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 2, 1, 0 ]
+}
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Animation" id=2]
+
+resource_name = "Close_door"
+length = 0.5
+loop = false
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 2, 1, 0 ]
+}
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Animation" id=3]
+
+resource_name = "Open_door"
+length = 0.5
+loop = false
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Animation" id=4]
+
+resource_name = "Close_door"
+length = 0.5
+loop = false
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 2, 1, 0 ]
+}
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="Animation" id=5]
+
+resource_name = "Open_door"
+length = 0.5
+loop = false
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+_sections_unfolded = [ "Resource" ]
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 29.9707, 29.7674 )
+
+[node name="Pueblo_Paleta" type="Node2D"]
+
+z_index = -1
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Z Index" ]
+N_connection = "res://Ruta_1.tscn"
+S_connection = null
+E_connection = null
+W_connection = null
+N_connection_pos = Vector2( 64, -608 )
+S_connection_pos = null
+E_connection_pos = null
+W_connection_pos = null
+
+[node name="CapaTerra_" type="TileMap" parent="." index="0"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -720896, 9, 0, -720895, 10, 0, -589836, 43, 0, -589835, 44, 0, -589834, 39, 0, -589833, 40, 0, -589832, 39, 0, -589831, 40, 0, -589830, 39, 0, -589829, 40, 0, -589828, 39, 0, -589827, 40, 0, -589826, 39, 0, -589825, 40, 0, -655360, 15, 0, -655359, 14, 0, -655358, 39, 0, -655357, 40, 0, -655356, 39, 0, -655355, 40, 0, -655354, 39, 0, -655353, 40, 0, -655352, 39, 0, -655351, 40, 0, -655350, 43, 0, -655349, 44, 0, -524298, 9, 0, -524297, 7, 0, -524296, 7, 0, -524295, 7, 0, -524294, 7, 0, -524293, 7, 0, -524292, 7, 0, -524291, 7, 0, -524290, 7, 0, -524289, 7, 0, -589824, 35, 0, -589823, 34, 0, -589822, 7, 0, -589821, 7, 0, -589820, 7, 0, -589819, 7, 0, -589818, 7, 0, -589817, 7, 0, -589816, 7, 0, -589815, 8, 0, -458764, 43, 0, -458763, 44, 0, -458762, 15, 0, -458761, 12, 0, -458760, 12, 0, -458759, 12, 0, -458758, 12, 0, -458757, 12, 0, -458756, 12, 0, -458755, 12, 0, -458754, 12, 0, -458753, 12, 0, -524288, 12, 0, -524287, 12, 0, -524286, 12, 0, -524285, 12, 0, -524284, 12, 0, -524283, 12, 0, -524282, 12, 0, -524281, 12, 0, -524280, 12, 0, -524279, 13, 0, -524278, 43, 0, -524277, 44, 0, -393226, 15, 0, -393225, 16, 0, -393224, 21, 0, -393223, 60, 0, -393222, 66, 0, -393221, 67, 0, -393220, 68, 0, -393219, 69, 0, -393218, 17, 0, -393217, 12, 0, -458752, 16, 0, -458751, 21, 0, -458750, 60, 0, -458749, 66, 0, -458748, 67, 0, -458747, 68, 0, -458746, 69, 0, -458745, 17, 0, -458744, 12, 0, -458743, 13, 0, -327692, 43, 0, -327691, 44, 0, -327690, 15, 0, -327689, 13, 0, -327688, 0, 0, -327687, 59, 0, -327686, 70, 0, -327685, 71, 0, -327684, 72, 0, -327683, 73, 0, -327682, 11, 0, -327681, 12, 0, -393216, 13, 0, -393215, 0, 0, -393214, 0, 0, -393213, 70, 0, -393212, 71, 0, -393211, 72, 0, -393210, 73, 0, -393209, 11, 0, -393208, 12, 0, -393207, 13, 0, -393206, 43, 0, -393205, 44, 0, -262154, 15, 0, -262153, 13, 0, -262152, 0, 0, -262151, 0, 0, -262150, 77, 0, -262149, 78, 0, -262148, 79, 0, -262147, 75, 0, -262146, 11, 0, -262145, 12, 0, -327680, 13, 0, -327679, 2, 0, -327678, 0, 0, -327677, 77, 0, -327676, 78, 0, -327675, 79, 0, -327674, 75, 0, -327673, 11, 0, -327672, 12, 0, -327671, 13, 0, -196620, 43, 0, -196619, 44, 0, -196618, 15, 0, -196617, 13, 0, -196616, 0, 0, -196615, 4, 0, -196614, 80, 0, -196613, 4, 0, -196612, 4, 0, -196611, 4, 0, -196610, 11, 0, -196609, 12, 0, -262144, 13, 0, -262143, 2, 0, -262142, 2, 0, -262141, 80, 0, -262140, 2, 0, -262139, 2, 0, -262138, 2, 0, -262137, 11, 0, -262136, 12, 0, -262135, 13, 0, -262134, 43, 0, -262133, 44, 0, -131082, 15, 0, -131081, 18, 0, -131080, 7, 0, -131074, 19, 0, -131073, 12, 0, -196608, 18, 0, -196607, 7, 0, -196601, 19, 0, -196600, 12, 0, -196599, 13, 0, -65548, 43, 0, -65547, 44, 0, -65546, 15, 0, -65545, 12, 0, -65544, 12, 0, -65543, 12, 0, -65542, 12, 0, -65541, 12, 0, -65540, 12, 0, -65539, 12, 0, -65538, 12, 0, -65537, 12, 0, -131072, 12, 0, -131071, 12, 0, -131070, 12, 0, -131069, 12, 0, -131068, 12, 0, -131067, 12, 0, -131066, 12, 0, -131065, 12, 0, -131064, 12, 0, -131063, 13, 0, -131062, 43, 0, -131061, 44, 0, -10, 15, 0, -9, 12, 0, -8, 12, 0, -7, 12, 0, -6, 12, 0, -5, 12, 0, -4, 12, 0, -3, 12, 0, -2, 12, 0, -1, 12, 0, -65536, 16, 0, -65535, 21, 0, -65534, 21, 0, -65533, 21, 0, -65532, 21, 0, -65531, 21, 0, -65530, 21, 0, -65529, 21, 0, -65528, 27, 0, -65527, 13, 0, 65524, 43, 0, 65525, 44, 0, 65526, 15, 0, 65527, 12, 0, 65528, 16, 0, 65529, 21, 0, 65530, 21, 0, 65531, 21, 0, 65532, 21, 0, 65533, 21, 0, 65534, 17, 0, 65535, 12, 0, 0, 13, 0, 1, 1, 0, 2, 4, 0, 3, 4, 0, 4, 4, 0, 5, 0, 0, 6, 0, 0, 7, 0, 0, 8, 15, 0, 9, 13, 0, 10, 43, 0, 11, 44, 0, 131062, 15, 0, 131063, 12, 0, 131064, 0, 0, 131065, 1, 0, 131066, 0, 0, 131067, 0, 0, 131068, 0, 0, 131069, 4, 0, 131070, 11, 0, 131071, 12, 0, 65536, 13, 0, 65537, 1, 0, 65538, 4, 0, 65539, 0, 0, 65540, 4, 0, 65541, 1, 0, 65542, 0, 0, 65543, 1, 0, 65544, 15, 0, 65545, 13, 0, 196596, 43, 0, 196597, 44, 0, 196598, 15, 0, 196599, 12, 0, 196600, 1, 0, 196601, 1, 0, 196602, 1, 0, 196603, 1, 0, 196604, 0, 0, 196605, 4, 0, 196606, 11, 0, 196607, 12, 0, 131072, 13, 0, 131073, 1, 0, 131074, 4, 0, 131075, 4, 0, 131076, 94, 0, 131077, 0, 0, 131078, 0, 0, 131079, 1, 0, 131080, 15, 0, 131081, 13, 0, 131082, 43, 0, 131083, 44, 0, 262134, 15, 0, 262135, 12, 0, 262136, 1, 0, 262137, 1, 0, 262138, 0, 0, 262139, 0, 0, 262140, 4, 0, 262141, 4, 0, 262142, 4, 0, 262143, 12, 0, 196608, 0, 0, 196609, 0, 0, 196610, 4, 0, 196611, 0, 0, 196612, 1, 0, 196613, 1, 0, 196614, 0, 0, 196615, 7, 0, 196616, 35, 0, 196617, 13, 0, 327668, 43, 0, 327669, 44, 0, 327670, 15, 0, 327671, 12, 0, 327672, 1, 0, 327673, 1, 0, 327674, 0, 0, 327675, 4, 0, 327676, 4, 0, 327677, 4, 0, 327678, 4, 0, 327679, 12, 0, 262144, 16, 0, 262145, 21, 0, 262146, 21, 0, 262147, 21, 0, 262148, 21, 0, 262149, 21, 0, 262150, 21, 0, 262151, 17, 0, 262152, 12, 0, 262153, 13, 0, 262154, 43, 0, 262155, 44, 0, 393206, 15, 0, 393207, 12, 0, 393208, 12, 0, 393209, 12, 0, 393210, 12, 0, 393211, 12, 0, 393212, 12, 0, 393213, 12, 0, 393214, 12, 0, 393215, 12, 0, 327680, 32, 0, 327681, 30, 0, 327682, 30, 0, 327683, 30, 0, 327684, 30, 0, 327685, 30, 0, 327686, 30, 0, 327687, 33, 0, 327688, 12, 0, 327689, 13, 0, 458740, 43, 0, 458741, 44, 0, 458742, 24, 0, 458743, 21, 0, 458744, 21, 0, 458745, 21, 0, 458746, 21, 0, 458747, 21, 0, 458748, 21, 0, 458749, 21, 0, 458750, 12, 0, 458751, 12, 0, 393216, 12, 0, 393217, 12, 0, 393218, 12, 0, 393219, 12, 0, 393220, 12, 0, 393221, 12, 0, 393222, 12, 0, 393223, 12, 0, 393224, 12, 0, 393225, 13, 0, 393226, 43, 0, 393227, 44, 0, 524278, 2, 0, 524279, 2, 0, 524280, 2, 0, 524281, 2, 0, 524282, 2, 0, 524287, 21, 0, 458752, 21, 0, 458753, 21, 0, 458754, 21, 0, 458755, 21, 0, 458756, 21, 0, 458757, 21, 0, 458758, 21, 0, 458759, 21, 0, 458760, 21, 0, 458761, 22, 0, 589812, 43, 0, 589813, 44, 0, 589814, 2, 0, 589815, 2, 0, 589816, 2, 0, 589817, 2, 0, 589818, 2, 0, 524294, 0, 0, 524295, 0, 0, 524296, 0, 0, 524297, 0, 0, 524298, 43, 0, 524299, 44, 0 )
+_sections_unfolded = [ "Cell", "Transform", "Z Index" ]
+
+[node name="CapaTerra2_" type="TileMap" parent="." index="1"]
+
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -655372, 38, 0, -655371, 41, 0, -655370, 38, 0, -655369, 41, 0, -655368, 38, 0, -655367, 41, 0, -655366, 38, 0, -655365, 41, 0, -655364, 38, 0, -655363, 41, 0, -655362, 38, 0, -655361, 41, 0, -720894, 38, 0, -720893, 41, 0, -720892, 38, 0, -720891, 41, 0, -720890, 38, 0, -720889, 41, 0, -720888, 38, 0, -720887, 41, 0, -720886, 38, 0, -720885, 41, 0, -524300, 38, 0, -524299, 41, 0, -589814, 38, 0, -589813, 41, 0, -393228, 38, 0, -393227, 41, 0, -458742, 38, 0, -458741, 41, 0, -393214, 59, 0, -262156, 38, 0, -262155, 41, 0, -262151, 74, 0, -327678, 74, 0, -327670, 38, 0, -327669, 41, 0, -196616, 54, 0, -196615, 76, 0, -196613, 81, 0, -196612, 82, 0, -196611, 83, 0, -262143, 54, 0, -262142, 76, 0, -262140, 81, 0, -262139, 82, 0, -262138, 83, 0, -131084, 38, 0, -131083, 41, 0, -131079, 19, 0, -131078, 12, 0, -131077, 18, 0, -131076, 7, 0, -131075, 7, 0, -196606, 19, 0, -196605, 12, 0, -196604, 18, 0, -196603, 7, 0, -196602, 7, 0, -196598, 38, 0, -196597, 41, 0, -65540, 12, 0, -65539, 12, 0, -12, 38, 0, -11, 41, 0, -65535, 88, 0, -65534, 116, 0, -65533, 117, 0, -65532, 118, 0, -65531, 119, 0, -65530, 113, 0, -65529, 110, 0, -65526, 38, 0, -65525, 41, 0, 65529, 57, 0, 65530, 57, 0, 65531, 57, 0, 65532, 57, 0, 65533, 51, 0, 1, 86, 0, 2, 104, 0, 3, 105, 0, 4, 106, 0, 5, 107, 0, 6, 108, 0, 7, 109, 0, 131060, 38, 0, 131061, 41, 0, 131064, 13, 0, 131065, 50, 0, 131066, 50, 0, 131067, 50, 0, 131068, 50, 0, 65537, 85, 0, 65538, 99, 0, 65539, 100, 0, 65541, 102, 0, 65542, 103, 0, 65543, 98, 0, 65546, 38, 0, 65547, 41, 0, 196600, 13, 0, 196601, 50, 0, 196602, 50, 0, 196603, 50, 0, 196604, 50, 0, 131073, 84, 0, 131074, 92, 0, 131075, 93, 0, 131077, 95, 0, 131078, 96, 0, 131079, 97, 0, 262132, 38, 0, 262133, 41, 0, 262136, 13, 0, 262137, 52, 0, 262142, 11, 0, 196608, 18, 0, 196609, 7, 0, 196610, 7, 0, 196611, 19, 0, 196612, 12, 0, 196613, 18, 0, 196614, 7, 0, 196618, 38, 0, 196619, 41, 0, 327672, 18, 0, 327673, 7, 0, 327674, 7, 0, 327675, 7, 0, 327676, 7, 0, 327677, 7, 0, 327678, 19, 0, 393204, 38, 0, 393205, 41, 0, 327681, 57, 0, 327682, 57, 0, 327683, 57, 0, 327684, 51, 0, 327685, 57, 0, 327686, 57, 0, 327690, 38, 0, 327691, 41, 0, 458747, 120, 0, 458748, 121, 0, 458749, 121, 0, 458750, 122, 0, 524276, 38, 0, 524277, 41, 0, 524283, 123, 0, 524284, 125, 0, 524285, 125, 0, 524286, 124, 0, 458762, 38, 0, 458763, 41, 0, 589814, 36, 0, 589815, 37, 0, 589816, 36, 0, 589817, 37, 0, 589819, 123, 0, 589820, 125, 0, 589821, 125, 0, 589822, 124, 0, 589823, 2, 0, 524288, 2, 0, 524289, 2, 0, 524290, 2, 0, 524291, 2, 0, 524292, 2, 0, 524293, 2, 0, 524294, 36, 0, 524295, 37, 0, 524296, 36, 0, 524297, 37, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+
+[node name="Eventos_" type="YSort" parent="." index="2"]
+
+sort_enabled = true
+
+[node name="Chico" parent="Eventos_" index="0" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( 16, 208 )
+Pasable = true
+Imagen = ExtResource( 4 )
+Interact = true
+sprite_cols = 4
+sprite_rows = 4
+
+[node name="Chica" parent="Eventos_" index="1" instance=ExtResource( 3 )]
+
+editor/display_folded = true
+position = Vector2( -208, 144 )
+Imagen = ExtResource( 5 )
+Interact = true
+sprite_cols = 4
+sprite_rows = 4
+direction = 3
+
+[node name="event_page" parent="Eventos_/Chica/pages" index="0" instance=ExtResource( 6 )]
+
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_msg" parent="Eventos_/Chica/pages/event_page" index="0" instance=ExtResource( 7 )]
+
+text = "Yo le dije hola pero ella no lo sabía, no entendía porque siempre ella a mí me lo decía, te puedo asegurar que luego fui a la alcaldia y lo unico que me dijeron es que era así cada dia. Lo entiendes?"
+
+[node name="EVENT" parent="Eventos_" index="2" instance=ExtResource( 8 )]
+
+position = Vector2( -112, -80 )
+scale = Vector2( 0.5, 0.5 )
+gravity_point = true
+_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform", "Visibility" ]
+Pasable = false
+
+[node name="event_page" parent="Eventos_/EVENT/pages" index="0" instance=ExtResource( 6 )]
+
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="Porta_Lab" parent="Eventos_" index="3" instance=ExtResource( 8 )]
+
+position = Vector2( 144, 80 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index" ]
+Pasable = false
+PlayerTouch = true
+
+[node name="Sprite" parent="Eventos_/Porta_Lab" index="1"]
+
+texture = ExtResource( 9 )
+vframes = 4
+_sections_unfolded = [ "Animation", "Material", "Offset", "Transform", "Visibility", "Z Index" ]
+
+[node name="AnimationPlayer" parent="Eventos_/Porta_Lab" index="2"]
+
+anims/Close_door = SubResource( 1 )
+anims/Open_door = ExtResource( 10 )
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="pages" parent="Eventos_/Porta_Lab" index="3"]
+
+_sections_unfolded = [ "Pause" ]
+
+[node name="event_page" parent="Eventos_/Porta_Lab/pages" index="0" instance=ExtResource( 6 )]
+
+_sections_unfolded = [ "Pause" ]
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page" index="0" instance=ExtResource( 11 )]
+
+animation = ExtResource( 10 )
+wait_finished = true
+
+[node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page" index="1" instance=ExtResource( 12 )]
+
+Through = true
+
+[node name="cmd_move" parent="Eventos_/Porta_Lab/pages/event_page" index="2" instance=ExtResource( 13 )]
+
+nodePath = null
+movesArray = [ "up" ]
+
+[node name="cmd_wait_move_completion" parent="Eventos_/Porta_Lab/pages/event_page" index="3" instance=ExtResource( 14 )]
+
+[node name="cmd_set_through2" parent="Eventos_/Porta_Lab/pages/event_page" index="4" instance=ExtResource( 12 )]
+
+[node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page" index="5" instance=ExtResource( 15 )]
+
+Transparent = true
+
+[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page" index="6" instance=ExtResource( 11 )]
+
+animation = ExtResource( 16 )
+wait_finished = true
+
+[node name="cmd_FadeOut" parent="Eventos_/Porta_Lab/pages/event_page" index="7" instance=ExtResource( 17 )]
+
+speed = 4
+
+[node name="cmd_setTransparent2" parent="Eventos_/Porta_Lab/pages/event_page" index="8" instance=ExtResource( 15 )]
+
+[node name="cmd_teleport_player" parent="Eventos_/Porta_Lab/pages/event_page" index="9" instance=ExtResource( 18 )]
+
+world_scene = "res://Laboratorio_Oak.tscn"
+Map_XY = Vector2( 16, 176 )
+
+[node name="event_page2" parent="Eventos_/Porta_Lab/pages" index="1" instance=ExtResource( 6 )]
+
+_sections_unfolded = [ "Pause" ]
+condition1 = "exit_door"
+condition2 = null
+condition3 = null
+
+[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page2" index="0" instance=ExtResource( 11 )]
+
+animation = ExtResource( 10 )
+wait_finished = true
+
+[node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page2" index="1" instance=ExtResource( 12 )]
+
+Through = true
+
+[node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page2" index="2" instance=ExtResource( 15 )]
+
+[node name="cmd_move" parent="Eventos_/Porta_Lab/pages/event_page2" index="3" instance=ExtResource( 13 )]
+
+nodePath = null
+movesArray = [ "down" ]
+
+[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page2" index="4" instance=ExtResource( 11 )]
+
+animation = ExtResource( 16 )
+wait_finished = true
+
+[node name="cmd_set_through2" parent="Eventos_/Porta_Lab/pages/event_page2" index="5" instance=ExtResource( 12 )]
+
+[node name="cmd_set_globalVariable" parent="Eventos_/Porta_Lab/pages/event_page2" index="6" instance=ExtResource( 19 )]
+
+Gvariable_name = "exit_door"
+
+[node name="Porta_CasaRival" parent="Eventos_" index="4" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+position = Vector2( 112, -112 )
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index" ]
+Pasable = false
+PlayerTouch = true
+
+[node name="shape" parent="Eventos_/Porta_CasaRival" index="0"]
+
+_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+
+[node name="Sprite" parent="Eventos_/Porta_CasaRival" index="1"]
+
+z_index = -1
+texture = ExtResource( 20 )
+vframes = 4
+_sections_unfolded = [ "Animation", "Offset", "Visibility", "Z Index" ]
+
+[node name="AnimationPlayer" parent="Eventos_/Porta_CasaRival" index="2"]
+
+anims/Close_door = SubResource( 2 )
+anims/Open_door = SubResource( 3 )
+_sections_unfolded = [ "Playback Options" ]
+
+[node name="pages" parent="Eventos_/Porta_CasaRival" index="3"]
+
+editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
+
+[node name="event_page" parent="Eventos_/Porta_CasaRival/pages" index="0" instance=ExtResource( 6 )]
+
+_sections_unfolded = [ "Pause" ]
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page" index="0" instance=ExtResource( 11 )]
+
+animation = ExtResource( 10 )
+wait_finished = true
+
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaRival/pages/event_page" index="1" instance=ExtResource( 12 )]
+
+Through = true
+
+[node name="cmd_move" parent="Eventos_/Porta_CasaRival/pages/event_page" index="2" instance=ExtResource( 13 )]
+
+nodePath = null
+movesArray = [ "up" ]
+
+[node name="cmd_wait_move_completion" parent="Eventos_/Porta_CasaRival/pages/event_page" index="3" instance=ExtResource( 14 )]
+
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="4" instance=ExtResource( 12 )]
+
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page" index="5" instance=ExtResource( 15 )]
+
+Transparent = true
+
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="6" instance=ExtResource( 11 )]
+
+animation = ExtResource( 16 )
+wait_finished = true
+
+[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaRival/pages/event_page" index="7" instance=ExtResource( 17 )]
+
+speed = 4
+
+[node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="8" instance=ExtResource( 15 )]
+
+[node name="cmd_teleport_player" parent="Eventos_/Porta_CasaRival/pages/event_page" index="9" instance=ExtResource( 18 )]
+
+world_scene = "res://Laboratorio_Oak.tscn"
+Map_XY = Vector2( 16, 176 )
+
+[node name="event_page2" parent="Eventos_/Porta_CasaRival/pages" index="1" instance=ExtResource( 6 )]
+
+_sections_unfolded = [ "Pause" ]
+condition1 = "exit_door"
+condition2 = null
+condition3 = null
+
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="0" instance=ExtResource( 12 )]
+
+Through = true
+
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="1" instance=ExtResource( 11 )]
+
+animation = ExtResource( 10 )
+wait_finished = true
+
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="2" instance=ExtResource( 15 )]
+
+[node name="cmd_move" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="3" instance=ExtResource( 13 )]
+
+nodePath = null
+movesArray = [ "down" ]
+
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="4" instance=ExtResource( 11 )]
+
+animation = ExtResource( 16 )
+wait_finished = true
+
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="5" instance=ExtResource( 12 )]
+
+[node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="6" instance=ExtResource( 19 )]
+
+Gvariable_name = "exit_door"
+
+[node name="Porta_CasaProta" parent="Eventos_" index="5" instance=ExtResource( 8 )]
+
+editor/display_folded = true
+position = Vector2( -176, -112 )
+z_index = -1
+_sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index" ]
+Pasable = false
+PlayerTouch = true
+
+[node name="Sprite" parent="Eventos_/Porta_CasaProta" index="1"]
+
+texture = ExtResource( 20 )
+vframes = 4
+
+[node name="AnimationPlayer" parent="Eventos_/Porta_CasaProta" index="2"]
+
+anims/Close_door = SubResource( 4 )
+anims/Open_door = SubResource( 5 )
+
+[node name="pages" parent="Eventos_/Porta_CasaProta" index="3"]
+
+_sections_unfolded = [ "Pause" ]
+
+[node name="event_page" parent="Eventos_/Porta_CasaProta/pages" index="0" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page" index="0" instance=ExtResource( 11 )]
+
+animation = ExtResource( 10 )
+wait_finished = true
+
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page" index="1" instance=ExtResource( 12 )]
+
+Through = true
+
+[node name="cmd_move" parent="Eventos_/Porta_CasaProta/pages/event_page" index="2" instance=ExtResource( 13 )]
+
+nodePath = null
+movesArray = [ "up" ]
+
+[node name="cmd_wait_move_completion" parent="Eventos_/Porta_CasaProta/pages/event_page" index="3" instance=ExtResource( 14 )]
+
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="4" instance=ExtResource( 12 )]
+
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page" index="5" instance=ExtResource( 15 )]
+
+Transparent = true
+
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="6" instance=ExtResource( 11 )]
+
+animation = ExtResource( 16 )
+wait_finished = true
+
+[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaProta/pages/event_page" index="7" instance=ExtResource( 17 )]
+
+speed = 4
+
+[node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="8" instance=ExtResource( 15 )]
+
+[node name="cmd_teleport_player" parent="Eventos_/Porta_CasaProta/pages/event_page" index="9" instance=ExtResource( 18 )]
+
+world_scene = "res://Laboratorio_Oak.tscn"
+Map_XY = Vector2( 16, 176 )
+
+[node name="event_page2" parent="Eventos_/Porta_CasaProta/pages" index="1" instance=ExtResource( 6 )]
+
+editor/display_folded = true
+_sections_unfolded = [ "Pause" ]
+condition1 = "exit_door"
+condition2 = null
+condition3 = null
+
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="0" instance=ExtResource( 12 )]
+
+Through = true
+
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="1" instance=ExtResource( 11 )]
+
+animation = ExtResource( 10 )
+wait_finished = true
+
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="2" instance=ExtResource( 15 )]
+
+[node name="cmd_move" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="3" instance=ExtResource( 13 )]
+
+nodePath = null
+movesArray = [ "down" ]
+
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="4" instance=ExtResource( 11 )]
+
+animation = ExtResource( 16 )
+wait_finished = true
+
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="5" instance=ExtResource( 12 )]
+
+[node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="6" instance=ExtResource( 19 )]
+
+Gvariable_name = "exit_door"
+
+[node name="CapaAlta_" type="TileMap" parent="." index="3"]
+
+position = Vector2( 1, -1 )
+mode = 0
+tile_set = ExtResource( 2 )
+cell_size = Vector2( 32, 32 )
+cell_quadrant_size = 16
+cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+cell_half_offset = 2
+cell_tile_origin = 0
+cell_y_sort = false
+cell_clip_uv = false
+collision_use_kinematic = false
+collision_friction = 1.0
+collision_bounce = 0.0
+collision_layer = 1
+collision_mask = 1
+occluder_light_mask = 1
+format = 1
+tile_data = PoolIntArray( -458759, 61, 0, -458758, 62, 0, -458757, 63, 0, -458756, 64, 0, -458755, 65, 0, -524286, 61, 0, -524285, 62, 0, -524284, 63, 0, -524283, 64, 0, -524282, 65, 0, -262152, 55, 0, -327679, 55, 0, -131071, 89, 0, -131070, 90, 0, -131069, 91, 0, -131068, 115, 0, -131067, 114, 0, -131066, 112, 0, -131065, 111, 0, 65540, 101, 0 )
+_sections_unfolded = [ "Cell", "Transform" ]
+
+[node name="Area2D_" type="Area2D" parent="." index="4"]
+
+visible = false
+position = Vector2( 6.00001, -56 )
+scale = Vector2( 12.8125, 10.75 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 21 )
+_sections_unfolded = [ "Collision", "Transform", "Visibility" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_" index="0"]
+
+position = Vector2( 0, 2.97674 )
+shape = SubResource( 6 )
+
+[node name="Pasable" type="Node2D" parent="Area2D_" index="1"]
+
+
+[editable path="Eventos_/Chica"]
+[editable path="Eventos_/EVENT"]
+[editable path="Eventos_/Porta_Lab"]
+[editable path="Eventos_/Porta_CasaRival"]
+[editable path="Eventos_/Porta_CasaProta"]
