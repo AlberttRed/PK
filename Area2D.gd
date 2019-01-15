@@ -15,7 +15,7 @@ func _ready():
 #	pass
 
 func _execPlayerTouch(target):
-	if target.is_in_group("Player"):
+	if target.is_in_group("Player") and !is_in_group("NPC") and !is_in_group("Evento"):
 #		if ProjectSettings.get("Global_World").faded:
 #			target.get_parent().can_interact = false
 #			ProjectSettings.get("Global_World").get_node("AnimationPlayer").play("FadeIn", -1, 2)
@@ -26,7 +26,8 @@ func _execPlayerTouch(target):
 		print("map_entered")
 		ProjectSettings.set("Actual_Map", parent_map)
 		print("Player touch Map: " + get_groups()[0])
-		ProjectSettings.get("Actual_Map").init()
+		print("Parent map: " + parent_map.get_name())
+#		ProjectSettings.get("Actual_Map").init()
 		ProjectSettings.get("Actual_Map").set_connections()
 #
 #

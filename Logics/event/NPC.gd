@@ -15,7 +15,9 @@ export (bool)var Interact = false
 export (bool)var DirectionFix = false
 export (bool)var PlayerTouch = false
 export (bool)var EventTouch = false
+export (Vector2)var OffsetSprite = Vector2(0,4)
 const GRID = 32
+var eventTarget = null
 
 export (int)var sprite_cols = 1
 export (int)var sprite_rows = 1
@@ -41,15 +43,13 @@ func _ready():
 	get_node("Sprite").visible = !Transparent
 	world = get_world_2d().get_direct_space_state()
 	if Pasable:
-		var n = Node2D.new()
-		n.set_name("Pasable")
-		add_child(n)
+		makePasable()
 	if Imagen != null:
 		get_node("Sprite").texture = Imagen
 		get_node("Sprite").hframes = sprite_cols
 		get_node("Sprite").vframes = sprite_rows
-		get_node("Sprite").offset = Vector2(0,4)
-		get_node("Sprite").set_position(Vector2(0,-24))
+		get_node("Sprite").offset = OffsetSprite
+		get_node("Sprite").set_position(Vector2(0,-24))#-24
 		get_node("Sprite").frame = direction*4
 		#if Imagen.get_width() / 32 > 1:
 			#get_node("Sprite").hframes = (Imagen.get_width() / 32)/2
@@ -86,6 +86,9 @@ func _process(delta):
 #        print(area.get_name())
 
 func exec(from = direction):
+	if eventTarget == ProjectSettings.get("Player"):
+		ProjectSettings.get("Player").active_events.push_back(self)
+	GLOBAL.running_events.push_back(self)
 	if (current_page == null):
 		return
 	if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
@@ -108,6 +111,9 @@ func exec(from = direction):
 		if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
 			get_node("Sprite").frame = direction*4
 		player.can_interact = true
+	if eventTarget == ProjectSettings.get("Player"):
+		ProjectSettings.get("Player").active_events.erase(self)
+	GLOBAL.running_events.erase(self)
 
 func exec_this_page(page):
 	if (page<0 or page>=get_node("pages").get_child_count()):
@@ -123,10 +129,15 @@ func _execEventTouch(target):
 		exec()
 	
 func _execPlayerTouch(target):
-	
 	if target.is_in_group("Player"):
+		print("PLAYER TOUCH")
+		eventTarget = target.get_parent()
 		exec()
 		
 func trainerRange():
 	pass
 
+func makePasable():
+	var n = Node2D.new()
+	n.set_name("Pasable")
+	get_node("Area2D").add_child(n)

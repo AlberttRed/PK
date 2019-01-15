@@ -34,6 +34,9 @@ export(bool) var contact_flag = false
 export(int) var move_effect = 1 #id de la funció que s'ocupa de calcular el mal d'aquest moviment
 #var functions = MOVE_FUNCTIONS.hola()
 
+func get_name():
+	return DB.moves[id].Name
+
 func doMove(move,from,to):
 #	var ran = 0.85
 #	var damages = ""

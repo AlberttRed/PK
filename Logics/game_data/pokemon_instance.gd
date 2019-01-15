@@ -75,7 +75,10 @@ var mod_special = 0
 func _ready():
 	# Initialization here
 	pass
-	
+
+func get_name():
+	return DB.pokemons[pkm_id].Name
+
 func get_actual_hp():
 	return hp
 	
@@ -177,6 +180,13 @@ func hasAlly():
 	
 func hasFullHealth():
 	return hp == max_hp
+	
+func hasMove(move_id):
+	for m in movements:
+		if m.id == move_id:
+			return true
+	print("has move " + DB.moves[move_id].Name + "?")
+	return false
 
 func is_type(type): return type == "Pokemon" or .is_type(type)
 func    get_type(): return "Pokemon"

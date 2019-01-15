@@ -102,12 +102,14 @@ sort_enabled = true
 position = Vector2( 80, -80 )
 Pasable = false
 Imagen = ExtResource( 4 )
+BlockPlayerAtEnd = false
 
 [node name="pkb2" parent="Eventos_" index="1" instance=ExtResource( 3 )]
 
 position = Vector2( 112, -80 )
 Pasable = false
 Imagen = ExtResource( 4 )
+BlockPlayerAtEnd = false
 
 [node name="pkb3" parent="Eventos_" index="2" instance=ExtResource( 3 )]
 
@@ -115,6 +117,7 @@ position = Vector2( 144, -80 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index" ]
 Pasable = false
 Imagen = ExtResource( 4 )
+BlockPlayerAtEnd = false
 
 [node name="pokedex" parent="Eventos_" index="3" instance=ExtResource( 3 )]
 
@@ -122,6 +125,7 @@ editor/display_folded = true
 position = Vector2( -48, -176 )
 Pasable = false
 Imagen = ExtResource( 5 )
+BlockPlayerAtEnd = false
 
 [node name="pokedex2" parent="Eventos_" index="4" instance=ExtResource( 3 )]
 
@@ -129,12 +133,14 @@ editor/display_folded = true
 position = Vector2( -16, -176 )
 Pasable = false
 Imagen = ExtResource( 5 )
+BlockPlayerAtEnd = false
 
 [node name="event" parent="Eventos_" index="5" instance=ExtResource( 3 )]
 
 position = Vector2( 16, 208 )
 Pasable = false
 PlayerTouch = true
+BlockPlayerAtEnd = false
 
 [node name="event_page" parent="Eventos_/event/pages" index="0" instance=ExtResource( 6 )]
 

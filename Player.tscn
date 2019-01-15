@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/trchar000.png" type="Texture" id=2]
@@ -7,12 +7,31 @@
 [ext_resource path="res://Sprites/Characters/trainer000.png" type="Texture" id=5]
 [ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=6]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+
+resource_name = "jump"
+length = 1.0
+loop = false
+step = 0.5
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0, -24 ), Vector2( 0, -48 ), Vector2( 0, -24 ) ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
 
 custom_solver_bias = 0.0
 extents = Vector2( 10, 10 )
 
-[node name="Player" type="KinematicBody2D" groups=[
+[node name="Player" type="KinematicBody2D" index="0" groups=[
 "Player",
 ]]
 
@@ -40,6 +59,8 @@ _sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
 [node name="AnimationPlayer" parent="." index="1" instance=ExtResource( 3 )]
 
+anims/jump = SubResource( 1 )
+
 [node name="Area2D" type="Area2D" parent="." index="2" groups=[
 "Player",
 ]]
@@ -57,7 +78,7 @@ _sections_unfolded = [ "Pickable", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
 
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]

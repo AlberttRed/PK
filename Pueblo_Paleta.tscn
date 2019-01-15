@@ -1,26 +1,31 @@
-[gd_scene load_steps=28 format=2]
+[gd_scene load_steps=33 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://TileSet_GBA.tres" type="TileSet" id=2]
 [ext_resource path="res://Logics/event/NPC.scn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/NPC 06.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/trchar042.png" type="Texture" id=5]
-[ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=6]
-[ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=7]
-[ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=8]
-[ext_resource path="res://Sprites/door1.png" type="Texture" id=9]
-[ext_resource path="res://animations/Open_door.tres" type="Animation" id=10]
-[ext_resource path="res://Logics/event/commands/cmd_play_animation.tscn" type="PackedScene" id=11]
-[ext_resource path="res://Logics/event/commands/cmd_set_through.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=15]
-[ext_resource path="res://animations/Close_door.tres" type="Animation" id=16]
-[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=17]
-[ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=18]
+[ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=5]
+[ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=6]
+[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Logics/event/commands/cmd_set_through.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=10]
+[ext_resource path="res://Sprites/trchar042.png" type="Texture" id=11]
+[ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=12]
+[ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Sprites/door1.png" type="Texture" id=14]
+[ext_resource path="res://animations/Open_door.tres" type="Animation" id=15]
+[ext_resource path="res://Logics/event/commands/cmd_play_animation.tscn" type="PackedScene" id=16]
+[ext_resource path="res://animations/Close_door.tres" type="Animation" id=17]
+[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=18]
 [ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Sprites/door2.png" type="Texture" id=20]
-[ext_resource path="res://Area2D.gd" type="Script" id=21]
+[ext_resource path="res://Sprites/Characters/Object tree 1.png" type="Texture" id=21]
+[ext_resource path="res://cmd_cut.tscn" type="PackedScene" id=22]
+[ext_resource path="res://Logics/event/roca.scn" type="PackedScene" id=23]
+[ext_resource path="res://Area2D.gd" type="Script" id=24]
+[ext_resource path="res://Logics/effect_areas/ledge_area.scn" type="PackedScene" id=25]
+[ext_resource path="res://Logics/effect_areas/surf_area.scn" type="PackedScene" id=26]
 
 [sub_resource type="Animation" id=1]
 
@@ -186,53 +191,145 @@ _sections_unfolded = [ "Cell", "Transform" ]
 [node name="Eventos_" type="YSort" parent="." index="2"]
 
 sort_enabled = true
+_sections_unfolded = [ "Transform" ]
 
 [node name="Chico" parent="Eventos_" index="0" instance=ExtResource( 3 )]
 
-editor/display_folded = true
 position = Vector2( 16, 208 )
-Pasable = true
 Imagen = ExtResource( 4 )
 Interact = true
+OffsetSprite = Vector2( 0, 4 )
 sprite_cols = 4
 sprite_rows = 4
+
+[node name="event_page" parent="Eventos_/Chico/pages" index="0" instance=ExtResource( 5 )]
+
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_msg2" parent="Eventos_/Chico/pages/event_page" index="0" instance=ExtResource( 6 )]
+
+text = "DFSVSDFSVSD"
+can_cancel = false
+default_at_cancel = ""
+
+[node name="cmd_msg3" parent="Eventos_/Chico/pages/event_page" index="1" instance=ExtResource( 6 )]
+
+text = "lyrrr"
+can_cancel = false
+default_at_cancel = ""
+
+[node name="cmd_move" parent="Eventos_/Chico/pages/event_page" index="2" instance=ExtResource( 7 )]
+
+nodePath = NodePath("../../..")
+movesArray = [ "left", "up", "up", "up", "right", "up", "up", "up", "up", "up" ]
+
+[node name="cmd_wait_move_completion" parent="Eventos_/Chico/pages/event_page" index="3" instance=ExtResource( 8 )]
+
+[node name="cmd_set_through" parent="Eventos_/Chico/pages/event_page" index="4" instance=ExtResource( 9 )]
+
+Through = true
+nodePath = NodePath("../../..")
+
+[node name="cmd_setTransparent" parent="Eventos_/Chico/pages/event_page" index="5" instance=ExtResource( 10 )]
+
+Transparent = true
+nodePath = NodePath("../../..")
 
 [node name="Chica" parent="Eventos_" index="1" instance=ExtResource( 3 )]
 
 editor/display_folded = true
 position = Vector2( -208, 144 )
-Imagen = ExtResource( 5 )
+Imagen = ExtResource( 11 )
 Interact = true
+OffsetSprite = Vector2( 0, 4 )
 sprite_cols = 4
 sprite_rows = 4
 direction = 3
 
-[node name="event_page" parent="Eventos_/Chica/pages" index="0" instance=ExtResource( 6 )]
+[node name="event_page" parent="Eventos_/Chica/pages" index="0" instance=ExtResource( 5 )]
 
 condition1 = null
 condition2 = null
 condition3 = null
 
-[node name="cmd_msg" parent="Eventos_/Chica/pages/event_page" index="0" instance=ExtResource( 7 )]
+[node name="cmd_msg" parent="Eventos_/Chica/pages/event_page" index="0" instance=ExtResource( 6 )]
 
-text = "Yo le dije hola pero ella no lo sabía, no entendía porque siempre ella a mí me lo decía, te puedo asegurar que luego fui a la alcaldia y lo unico que me dijeron es que era así cada dia. Lo entiendes?"
+text = "aasda asda asdad adsad asdasd asdasd asasd asda dasdasd sa."
+choices = [ "SI", "NO" ]
+can_cancel = true
+default_at_cancel = "Choice2"
 
-[node name="EVENT" parent="Eventos_" index="2" instance=ExtResource( 8 )]
+[node name="Choice1" type="Node" parent="Eventos_/Chica/pages/event_page/cmd_msg" index="0"]
 
-position = Vector2( -112, -80 )
+[node name="cmd_msg" parent="Eventos_/Chica/pages/event_page/cmd_msg/Choice1" index="0" instance=ExtResource( 6 )]
+
+text = "aasda asda asdad adsad asdasd asdasd asasd asda dasdasd sa."
+can_cancel = false
+default_at_cancel = ""
+
+[node name="Choice2" type="Node" parent="Eventos_/Chica/pages/event_page/cmd_msg" index="1"]
+
+[node name="cmd_msg2" parent="Eventos_/Chica/pages/event_page/cmd_msg/Choice2" index="0" instance=ExtResource( 6 )]
+
+text = "VDSVDSVDSDSFV"
+can_cancel = false
+default_at_cancel = ""
+
+[node name="cmd_msg3" parent="Eventos_/Chica/pages/event_page" index="1" instance=ExtResource( 6 )]
+
+text = "dsds"
+can_cancel = false
+default_at_cancel = ""
+
+[node name="EVENT3" parent="Eventos_" index="2" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+position = Vector2( -50, -80 )
 scale = Vector2( 0.5, 0.5 )
 gravity_point = true
 _sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform", "Visibility" ]
 Pasable = false
+PlayerTouch = true
 
-[node name="event_page" parent="Eventos_/EVENT/pages" index="0" instance=ExtResource( 6 )]
+[node name="pages" parent="Eventos_/EVENT3" index="3"]
+
+editor/display_folded = true
+
+[node name="event_page" parent="Eventos_/EVENT3/pages" index="0" instance=ExtResource( 5 )]
 
 condition1 = null
 condition2 = null
 condition3 = null
 
-[node name="Porta_Lab" parent="Eventos_" index="3" instance=ExtResource( 8 )]
+[node name="cmd_move" parent="Eventos_/EVENT3/pages/event_page" index="0" instance=ExtResource( 7 )]
 
+movesArray = [ "right", "down", "down", "down" ]
+
+[node name="EVENT2" parent="Eventos_" index="3" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+position = Vector2( -240, -50 )
+scale = Vector2( 0.5, 0.5 )
+gravity_point = true
+_sections_unfolded = [ "Audio Bus", "Collision", "Pickable", "Transform", "Visibility" ]
+PlayerTouch = true
+BlockPlayerAtEnd = true
+
+[node name="event_page" parent="Eventos_/EVENT2/pages" index="0" instance=ExtResource( 5 )]
+
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_teleport_player" parent="Eventos_/EVENT2/pages/event_page" index="0" instance=ExtResource( 13 )]
+
+Map_XY = Vector2( -50, -80 )
+
+[node name="Porta_Lab" parent="Eventos_" index="4" instance=ExtResource( 12 )]
+
+editor/display_folded = true
 position = Vector2( 144, 80 )
 _sections_unfolded = [ "Collision", "Pickable", "Transform", "Visibility", "Z Index" ]
 Pasable = false
@@ -240,100 +337,103 @@ PlayerTouch = true
 
 [node name="Sprite" parent="Eventos_/Porta_Lab" index="1"]
 
-texture = ExtResource( 9 )
+texture = ExtResource( 14 )
 vframes = 4
 _sections_unfolded = [ "Animation", "Material", "Offset", "Transform", "Visibility", "Z Index" ]
 
 [node name="AnimationPlayer" parent="Eventos_/Porta_Lab" index="2"]
 
 anims/Close_door = SubResource( 1 )
-anims/Open_door = ExtResource( 10 )
+anims/Open_door = ExtResource( 15 )
 _sections_unfolded = [ "Playback Options" ]
 
 [node name="pages" parent="Eventos_/Porta_Lab" index="3"]
 
 _sections_unfolded = [ "Pause" ]
 
-[node name="event_page" parent="Eventos_/Porta_Lab/pages" index="0" instance=ExtResource( 6 )]
+[node name="event_page" parent="Eventos_/Porta_Lab/pages" index="0" instance=ExtResource( 5 )]
 
 _sections_unfolded = [ "Pause" ]
 condition1 = null
 condition2 = null
 condition3 = null
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page" index="0" instance=ExtResource( 11 )]
+[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page" index="0" instance=ExtResource( 16 )]
 
-animation = ExtResource( 10 )
+animation = ExtResource( 15 )
 wait_finished = true
 
-[node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page" index="1" instance=ExtResource( 12 )]
+[node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page" index="1" instance=ExtResource( 9 )]
 
 Through = true
 
-[node name="cmd_move" parent="Eventos_/Porta_Lab/pages/event_page" index="2" instance=ExtResource( 13 )]
+[node name="cmd_move" parent="Eventos_/Porta_Lab/pages/event_page" index="2" instance=ExtResource( 7 )]
 
-nodePath = null
 movesArray = [ "up" ]
 
-[node name="cmd_wait_move_completion" parent="Eventos_/Porta_Lab/pages/event_page" index="3" instance=ExtResource( 14 )]
+[node name="cmd_wait_move_completion" parent="Eventos_/Porta_Lab/pages/event_page" index="3" instance=ExtResource( 8 )]
 
-[node name="cmd_set_through2" parent="Eventos_/Porta_Lab/pages/event_page" index="4" instance=ExtResource( 12 )]
+[node name="cmd_set_through2" parent="Eventos_/Porta_Lab/pages/event_page" index="4" instance=ExtResource( 9 )]
 
-[node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page" index="5" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page" index="5" instance=ExtResource( 10 )]
 
 Transparent = true
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page" index="6" instance=ExtResource( 11 )]
+[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page" index="6" instance=ExtResource( 16 )]
 
-animation = ExtResource( 16 )
+animation = ExtResource( 17 )
 wait_finished = true
 
-[node name="cmd_FadeOut" parent="Eventos_/Porta_Lab/pages/event_page" index="7" instance=ExtResource( 17 )]
+[node name="cmd_FadeOut" parent="Eventos_/Porta_Lab/pages/event_page" index="7" instance=ExtResource( 18 )]
 
 speed = 4
 
-[node name="cmd_setTransparent2" parent="Eventos_/Porta_Lab/pages/event_page" index="8" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent2" parent="Eventos_/Porta_Lab/pages/event_page" index="8" instance=ExtResource( 10 )]
 
-[node name="cmd_teleport_player" parent="Eventos_/Porta_Lab/pages/event_page" index="9" instance=ExtResource( 18 )]
+[node name="cmd_teleport_player" parent="Eventos_/Porta_Lab/pages/event_page" index="9" instance=ExtResource( 13 )]
 
 world_scene = "res://Laboratorio_Oak.tscn"
 Map_XY = Vector2( 16, 176 )
 
-[node name="event_page2" parent="Eventos_/Porta_Lab/pages" index="1" instance=ExtResource( 6 )]
+[node name="event_page2" parent="Eventos_/Porta_Lab/pages" index="1" instance=ExtResource( 5 )]
 
 _sections_unfolded = [ "Pause" ]
 condition1 = "exit_door"
 condition2 = null
 condition3 = null
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page2" index="0" instance=ExtResource( 11 )]
+[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page2" index="0" instance=ExtResource( 16 )]
 
-animation = ExtResource( 10 )
+animation = ExtResource( 15 )
 wait_finished = true
 
-[node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page2" index="1" instance=ExtResource( 12 )]
+[node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page2" index="1" instance=ExtResource( 9 )]
 
 Through = true
+nodePath = NodePath("")
 
-[node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page2" index="2" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page2" index="2" instance=ExtResource( 10 )]
 
-[node name="cmd_move" parent="Eventos_/Porta_Lab/pages/event_page2" index="3" instance=ExtResource( 13 )]
+[node name="cmd_move" parent="Eventos_/Porta_Lab/pages/event_page2" index="3" instance=ExtResource( 7 )]
 
-nodePath = null
 movesArray = [ "down" ]
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page2" index="4" instance=ExtResource( 11 )]
+[node name="cmd_wait_move_completion2" parent="Eventos_/Porta_Lab/pages/event_page2" index="4" instance=ExtResource( 8 )]
 
-animation = ExtResource( 16 )
+[node name="cmd_set_through2" parent="Eventos_/Porta_Lab/pages/event_page2" index="5" instance=ExtResource( 9 )]
+
+nodePath = NodePath("")
+
+[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page2" index="6" instance=ExtResource( 16 )]
+
+animation = ExtResource( 17 )
 wait_finished = true
 
-[node name="cmd_set_through2" parent="Eventos_/Porta_Lab/pages/event_page2" index="5" instance=ExtResource( 12 )]
-
-[node name="cmd_set_globalVariable" parent="Eventos_/Porta_Lab/pages/event_page2" index="6" instance=ExtResource( 19 )]
+[node name="cmd_set_globalVariable" parent="Eventos_/Porta_Lab/pages/event_page2" index="7" instance=ExtResource( 19 )]
 
 Gvariable_name = "exit_door"
 
-[node name="Porta_CasaRival" parent="Eventos_" index="4" instance=ExtResource( 8 )]
+[node name="Porta_CasaRival" parent="Eventos_" index="5" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 position = Vector2( 112, -112 )
@@ -350,7 +450,6 @@ _sections_unfolded = [ "Material", "Transform", "Visibility" ]
 z_index = -1
 texture = ExtResource( 20 )
 vframes = 4
-_sections_unfolded = [ "Animation", "Offset", "Visibility", "Z Index" ]
 
 [node name="AnimationPlayer" parent="Eventos_/Porta_CasaRival" index="2"]
 
@@ -363,86 +462,84 @@ _sections_unfolded = [ "Playback Options" ]
 editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
 
-[node name="event_page" parent="Eventos_/Porta_CasaRival/pages" index="0" instance=ExtResource( 6 )]
+[node name="event_page" parent="Eventos_/Porta_CasaRival/pages" index="0" instance=ExtResource( 5 )]
 
 _sections_unfolded = [ "Pause" ]
 condition1 = null
 condition2 = null
 condition3 = null
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page" index="0" instance=ExtResource( 11 )]
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page" index="0" instance=ExtResource( 16 )]
 
-animation = ExtResource( 10 )
+animation = ExtResource( 15 )
 wait_finished = true
 
-[node name="cmd_set_through" parent="Eventos_/Porta_CasaRival/pages/event_page" index="1" instance=ExtResource( 12 )]
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaRival/pages/event_page" index="1" instance=ExtResource( 9 )]
 
 Through = true
 
-[node name="cmd_move" parent="Eventos_/Porta_CasaRival/pages/event_page" index="2" instance=ExtResource( 13 )]
+[node name="cmd_move" parent="Eventos_/Porta_CasaRival/pages/event_page" index="2" instance=ExtResource( 7 )]
 
-nodePath = null
 movesArray = [ "up" ]
 
-[node name="cmd_wait_move_completion" parent="Eventos_/Porta_CasaRival/pages/event_page" index="3" instance=ExtResource( 14 )]
+[node name="cmd_wait_move_completion" parent="Eventos_/Porta_CasaRival/pages/event_page" index="3" instance=ExtResource( 8 )]
 
-[node name="cmd_set_through2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="4" instance=ExtResource( 12 )]
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="4" instance=ExtResource( 9 )]
 
-[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page" index="5" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page" index="5" instance=ExtResource( 10 )]
 
 Transparent = true
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="6" instance=ExtResource( 11 )]
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="6" instance=ExtResource( 16 )]
 
-animation = ExtResource( 16 )
+animation = ExtResource( 17 )
 wait_finished = true
 
-[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaRival/pages/event_page" index="7" instance=ExtResource( 17 )]
+[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaRival/pages/event_page" index="7" instance=ExtResource( 18 )]
 
 speed = 4
 
-[node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="8" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaRival/pages/event_page" index="8" instance=ExtResource( 10 )]
 
-[node name="cmd_teleport_player" parent="Eventos_/Porta_CasaRival/pages/event_page" index="9" instance=ExtResource( 18 )]
+[node name="cmd_teleport_player" parent="Eventos_/Porta_CasaRival/pages/event_page" index="9" instance=ExtResource( 13 )]
 
 world_scene = "res://Laboratorio_Oak.tscn"
 Map_XY = Vector2( 16, 176 )
 
-[node name="event_page2" parent="Eventos_/Porta_CasaRival/pages" index="1" instance=ExtResource( 6 )]
+[node name="event_page2" parent="Eventos_/Porta_CasaRival/pages" index="1" instance=ExtResource( 5 )]
 
 _sections_unfolded = [ "Pause" ]
 condition1 = "exit_door"
 condition2 = null
 condition3 = null
 
-[node name="cmd_set_through" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="0" instance=ExtResource( 12 )]
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="0" instance=ExtResource( 9 )]
 
 Through = true
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="1" instance=ExtResource( 11 )]
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="1" instance=ExtResource( 16 )]
 
-animation = ExtResource( 10 )
+animation = ExtResource( 15 )
 wait_finished = true
 
-[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="2" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="2" instance=ExtResource( 10 )]
 
-[node name="cmd_move" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="3" instance=ExtResource( 13 )]
+[node name="cmd_move" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="3" instance=ExtResource( 7 )]
 
-nodePath = null
 movesArray = [ "down" ]
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="4" instance=ExtResource( 11 )]
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="4" instance=ExtResource( 16 )]
 
-animation = ExtResource( 16 )
+animation = ExtResource( 17 )
 wait_finished = true
 
-[node name="cmd_set_through2" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="5" instance=ExtResource( 12 )]
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="5" instance=ExtResource( 9 )]
 
 [node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaRival/pages/event_page2" index="6" instance=ExtResource( 19 )]
 
 Gvariable_name = "exit_door"
 
-[node name="Porta_CasaProta" parent="Eventos_" index="5" instance=ExtResource( 8 )]
+[node name="Porta_CasaProta" parent="Eventos_" index="6" instance=ExtResource( 12 )]
 
 editor/display_folded = true
 position = Vector2( -176, -112 )
@@ -465,7 +562,7 @@ anims/Open_door = SubResource( 5 )
 
 _sections_unfolded = [ "Pause" ]
 
-[node name="event_page" parent="Eventos_/Porta_CasaProta/pages" index="0" instance=ExtResource( 6 )]
+[node name="event_page" parent="Eventos_/Porta_CasaProta/pages" index="0" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
@@ -473,45 +570,44 @@ condition1 = null
 condition2 = null
 condition3 = null
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page" index="0" instance=ExtResource( 11 )]
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page" index="0" instance=ExtResource( 16 )]
 
-animation = ExtResource( 10 )
+animation = ExtResource( 15 )
 wait_finished = true
 
-[node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page" index="1" instance=ExtResource( 12 )]
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page" index="1" instance=ExtResource( 9 )]
 
 Through = true
 
-[node name="cmd_move" parent="Eventos_/Porta_CasaProta/pages/event_page" index="2" instance=ExtResource( 13 )]
+[node name="cmd_move" parent="Eventos_/Porta_CasaProta/pages/event_page" index="2" instance=ExtResource( 7 )]
 
-nodePath = null
 movesArray = [ "up" ]
 
-[node name="cmd_wait_move_completion" parent="Eventos_/Porta_CasaProta/pages/event_page" index="3" instance=ExtResource( 14 )]
+[node name="cmd_wait_move_completion" parent="Eventos_/Porta_CasaProta/pages/event_page" index="3" instance=ExtResource( 8 )]
 
-[node name="cmd_set_through2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="4" instance=ExtResource( 12 )]
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="4" instance=ExtResource( 9 )]
 
-[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page" index="5" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page" index="5" instance=ExtResource( 10 )]
 
 Transparent = true
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="6" instance=ExtResource( 11 )]
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="6" instance=ExtResource( 16 )]
 
-animation = ExtResource( 16 )
+animation = ExtResource( 17 )
 wait_finished = true
 
-[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaProta/pages/event_page" index="7" instance=ExtResource( 17 )]
+[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaProta/pages/event_page" index="7" instance=ExtResource( 18 )]
 
 speed = 4
 
-[node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="8" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaProta/pages/event_page" index="8" instance=ExtResource( 10 )]
 
-[node name="cmd_teleport_player" parent="Eventos_/Porta_CasaProta/pages/event_page" index="9" instance=ExtResource( 18 )]
+[node name="cmd_teleport_player" parent="Eventos_/Porta_CasaProta/pages/event_page" index="9" instance=ExtResource( 13 )]
 
 world_scene = "res://Laboratorio_Oak.tscn"
 Map_XY = Vector2( 16, 176 )
 
-[node name="event_page2" parent="Eventos_/Porta_CasaProta/pages" index="1" instance=ExtResource( 6 )]
+[node name="event_page2" parent="Eventos_/Porta_CasaProta/pages" index="1" instance=ExtResource( 5 )]
 
 editor/display_folded = true
 _sections_unfolded = [ "Pause" ]
@@ -519,36 +615,57 @@ condition1 = "exit_door"
 condition2 = null
 condition3 = null
 
-[node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="0" instance=ExtResource( 12 )]
+[node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="0" instance=ExtResource( 9 )]
 
 Through = true
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="1" instance=ExtResource( 11 )]
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="1" instance=ExtResource( 16 )]
 
-animation = ExtResource( 10 )
+animation = ExtResource( 15 )
 wait_finished = true
 
-[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="2" instance=ExtResource( 15 )]
+[node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="2" instance=ExtResource( 10 )]
 
-[node name="cmd_move" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="3" instance=ExtResource( 13 )]
+[node name="cmd_move" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="3" instance=ExtResource( 7 )]
 
-nodePath = null
 movesArray = [ "down" ]
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="4" instance=ExtResource( 11 )]
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="4" instance=ExtResource( 16 )]
 
-animation = ExtResource( 16 )
+animation = ExtResource( 17 )
 wait_finished = true
 
-[node name="cmd_set_through2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="5" instance=ExtResource( 12 )]
+[node name="cmd_set_through2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="5" instance=ExtResource( 9 )]
 
 [node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="6" instance=ExtResource( 19 )]
 
 Gvariable_name = "exit_door"
 
+[node name="Arbol" parent="Eventos_" index="7" instance=ExtResource( 12 )]
+
+editor/display_folded = true
+Pasable = false
+Imagen = ExtResource( 21 )
+Interact = true
+DirectionFix = true
+sprite_cols = 4
+sprite_rows = 4
+OffsetSprite = Vector2( 0, 12 )
+
+[node name="event_page" parent="Eventos_/Arbol/pages" index="0" instance=ExtResource( 5 )]
+
+condition1 = null
+condition2 = null
+condition3 = null
+
+[node name="cmd_cut" parent="Eventos_/Arbol/pages/event_page" index="0" instance=ExtResource( 22 )]
+
+[node name="Roca" parent="Eventos_" index="8" instance=ExtResource( 23 )]
+
+position = Vector2( 144, 112 )
+
 [node name="CapaAlta_" type="TileMap" parent="." index="3"]
 
-position = Vector2( 1, -1 )
 mode = 0
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
@@ -580,7 +697,7 @@ linear_damp = 0.1
 angular_damp = 1.0
 audio_bus_override = false
 audio_bus_name = "Master"
-script = ExtResource( 21 )
+script = ExtResource( 24 )
 _sections_unfolded = [ "Collision", "Transform", "Visibility" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_" index="0"]
@@ -590,9 +707,39 @@ shape = SubResource( 6 )
 
 [node name="Pasable" type="Node2D" parent="Area2D_" index="1"]
 
+[node name="EncounterAreas_" type="Node2D" parent="." index="5"]
 
+_sections_unfolded = [ "Transform" ]
+
+[node name="ledge_area" parent="EncounterAreas_" index="0" instance=ExtResource( 25 )]
+
+editor/display_folded = true
+position = Vector2( -10, 10 )
+cells_jump = 2
+direction = "down"
+
+[node name="CollisionPolygon2D" parent="EncounterAreas_/ledge_area" index="0"]
+
+polygon = PoolVector2Array( -20, -10, -20, 20, 10, 20, 10, -10 )
+
+[node name="PlayerTouch" type="Node2D" parent="EncounterAreas_/ledge_area" index="1"]
+
+[node name="surf_area" parent="EncounterAreas_" index="1" instance=ExtResource( 26 )]
+
+[node name="CollisionPolygon2D" parent="EncounterAreas_/surf_area" index="0"]
+
+polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
+
+
+[editable path="Eventos_/Chico"]
 [editable path="Eventos_/Chica"]
-[editable path="Eventos_/EVENT"]
+[editable path="Eventos_/Chica/pages/event_page/cmd_msg/Choice1/cmd_msg"]
+[editable path="Eventos_/EVENT3"]
+[editable path="Eventos_/EVENT2"]
 [editable path="Eventos_/Porta_Lab"]
 [editable path="Eventos_/Porta_CasaRival"]
 [editable path="Eventos_/Porta_CasaProta"]
+[editable path="Eventos_/Arbol"]
+[editable path="Eventos_/Roca"]
+[editable path="EncounterAreas_/ledge_area"]
+[editable path="EncounterAreas_/surf_area"]

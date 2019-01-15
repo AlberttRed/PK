@@ -18,7 +18,7 @@ func _process(delta):
 		i += 1
 
 func run():
-	ProjectSettings.get("Player").can_interact = false
+	#ProjectSettings.get("Player").can_interact = false
 	print("set Gvariable started")
 	if Gvariable_name != null:
 		GLOBAL.get_node(Gvariable_name).state = state

@@ -1,7 +1,7 @@
 extends Node
 
 export(NodePath) onready var nodePath
-var Target setget set_Target,get_Target
+var Target
 #Cada posició será una comanda per moure el jugador. Comandes disponibles up, left, right, down, look_up, look_left, look_right, look_down
 export(Array, String) var movesArray
 
@@ -9,14 +9,13 @@ var direction = Vector2(0,0)
 var startPos = Vector2(0,0)
 var moving = false setget set_moving,get_moving
 var can_interact = true setget set_can_interact,get_can_interact
-var moved = false
+var moved = true
 const SPEED = 2
 const GRID = 32
 
 var Event
 var originalEvent
 var world
-
 
 var sprite
 var animationPlayer
@@ -36,69 +35,55 @@ var resultRight
 
 func _init():
 	add_user_signal("finished")
-	add_user_signal("step")
 	add_user_signal("finished_movement")
-	#set_physics_process(false)
+	set_physics_process(false)
 
 func _ready():
 	pass
 
 func run():
-	set_physics_process(true)
 	print("move event started")
-	if GLOBAL.movingEvent == null:
-		if nodePath == null:
-			Target = ProjectSettings.get("Player")
-			Target.can_interact = false
-		else:
-			print(nodePath)
-			Target = get_node(nodePath)
+	if nodePath == null:
+		Target = ProjectSettings.get("Player")
 	else:
-		Target = GLOBAL.movingEvent
+		print(nodePath)
+		Target = get_node(nodePath)
 	animationPlayer = Target.get_node("AnimationPlayer")
 	Target.world = Target.get_world_2d().get_direct_space_state()
 	i = 0
 	moved = false
-	print(str(movesArray.size()) + " and " + str(Target) + " and " + str(!moved))
-	if get_parent() != null:
-		get_parent().cmd_move_on = true
+
+	Input.action_press("ui_right")
+	Input.action_release("ui_right")
+#	if(Target == ProjectSettings.get("Player")):
+#		Target.can_interact = false
+	Target.can_interact = false
+	get_parent().cmd_move_on = true
 	set_physics_process(true)
-	print("dw")
+	#while !moved:
+	#yield(self, "finished_movement")
+#	if(Target == ProjectSettings.get("Player")):
+#		Target.can_interact = true
 	emit_signal("finished")
 
-func _physics_process(delta):
-	print("AAAAAAAAAAAAAAAAAA")
-	if movesArray.size() != 0 and Target != null and !moved:
-		print("sa mou sa mou sa mou")
-		if Target == ProjectSettings.get("Player"):
-			if i < movesArray.size() and !moved and !moving:
-				moving = true
-				for move in movesArray:
-					print(str(i) + " UN PAS " + move)
-					if ProjectSettings.get("Player").jumping:
-						yield(ProjectSettings.get("Player"), "jump")
-					set_physics_process(false)
-					Input.action_press("ui_" + move + "_event")
-					yield(ProjectSettings.get("Player"), "step")
-					Input.action_release("ui_" + move + "_event")
-					i += 1
-			print("STOP ")
-			moved = true
-			moving = false
-			i = 0
-			set_physics_process(false)
-			while ProjectSettings.get("Player").animationPlayer.is_playing():
-				yield(get_tree(), "idle_frame")
-			print("move event finished")
-			emit_signal("finished_movement")
-			if get_parent() != null:
-				get_parent().cmd_move_on = false
-		else:
-			resultUp = null
-			resultDown = null
-			resultLeft = null
-			resultRight = null
 
+
+func _physics_process(delta):
+	if movesArray.size() != 0 and Target != null and !moved:
+
+		if !moving and i < movesArray.size() and Target == ProjectSettings.get("Player"):
+			GLOBAL.move(movesArray[i])
+			i += 1
+			get_parent().cmd_move_on = false
+		else:
+
+			#for move in movesArray:
+					#if continuous:
+			resultUp = null
+			resultDown = null#world.intersect_point(Vector2(0, 0))
+			resultLeft = null#world.intersect_point(Vector2(0, 0))
+			resultRight = null#world.intersect_point(Vector2(0, 0))
+			#Target.world = Target.get_world_2d().get_direct_space_state()
 			if !Target.Through:
 				resultUp = Target.world.intersect_point(Target.get_position() + Vector2(0, -GRID))
 				resultDown = Target.world.intersect_point(Target.get_position() + Vector2(0, GRID))
@@ -123,7 +108,6 @@ func _physics_process(delta):
 					elif colliderIsPlayerTouch(resultUp) and colliderIsNotPasable(resultUp):
 		#					if can_interact:
 							interact_at_collide(resultUp)
-					emit_signal("step")
 				elif movesArray[i] == "down":# and can_interact and !GUI.is_visible():#!GUI.is_visible():
 					i += 1
 					if step2:
@@ -143,7 +127,6 @@ func _physics_process(delta):
 					down = true
 					left = false
 					right = false
-					emit_signal("step")
 				elif movesArray[i] == "left":# and can_interact and !GUI.is_visible():#!GUI.is_visible():
 					i += 1
 					if step2:
@@ -163,13 +146,13 @@ func _physics_process(delta):
 					down = false
 					left = true
 					right = false
-					emit_signal("step")
 				elif movesArray[i] == "right":# and can_interact and !GUI.is_visible():#!GUI.is_visible():
 					i += 1
 					if step2:
 						animationPlayer.play("walk_right_step2")
 					else:
 						animationPlayer.play("walk_right_step1")
+
 					if resultRight == null or resultRight.empty() or !colliderIsNotPasable(resultRight):#resultRight[resultRight.size()-1].collider.has_node("Pasable"):
 						moving = true
 						direction = Vector2(1, 0)
@@ -182,7 +165,6 @@ func _physics_process(delta):
 					down = false
 					left = false
 					right = true
-					emit_signal("step")
 				else:
 					continuous = false
 			else:
@@ -194,18 +176,13 @@ func _physics_process(delta):
 					if i >= movesArray.size():
 						moved = true
 						print("move event finished")
-						if get_parent() != null:
-							get_parent().cmd_move_on = false
+						get_parent().cmd_move_on = false
 						emit_signal("finished_movement")
 						set_physics_process(false)
 	else:
-		i=0
 		moved = true
-		if get_parent() != null:
-			get_parent().cmd_move_on = false
-		set_physics_process(false)
+		get_parent().cmd_move_on = false
 		#print("move event finished")
-		print("move event finished")
 		emit_signal("finished_movement")
 
 
@@ -244,10 +221,3 @@ func set_moving(move):
 
 func get_moving():
 	return moving
-
-
-func set_Target(t):
-	Target = t
-
-func get_Target():
-	return Target

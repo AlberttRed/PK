@@ -14,6 +14,8 @@ var Player = ProjectSettings.get("Player")
 var target = ProjectSettings.get("Global_World")
 var comptador = 0
 
+var strength_on = false
+
 	
 func _ready():
 	pass
@@ -58,8 +60,8 @@ func load_map(deletePrevious, scene = self, pos = null):
 	print("Loaded Map: " + scene.get_name())
 #	ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
 #	ProjectSettings.set("Actual_Map", scene)	
-
-
+	init()
+	strength_on = false
 	for N in scene.get_children():		
 		N.add_to_group(scene.get_name())
 

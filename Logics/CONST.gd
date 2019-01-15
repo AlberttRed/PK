@@ -391,7 +391,21 @@ class ABILITIES:
 	const GUARDIA_METALICA = 230
 	const GUARDIA_ESPECTRO = 231
 	const ARMADURA_PRISMA = 232
-	
+
+class MOVES:
+	const CORTE = 15
+	const SURF = 57
+	const FUERZA = 70
+
+class MEDALS:
+	const ROCA = "Roca"
+	const CASCADA = "Cascada"
+	const TRUENO = "Trueno"
+	const ARCOIRIS = "Arcoíris"
+	const ALMA = "Alma"
+	const PANTANO = "Pantano"
+	const VOLCAN = "Volcán"
+	const TIERRA = "Tierra"
 
 func ready():
 	# Initialization here

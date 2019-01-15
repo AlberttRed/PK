@@ -9,7 +9,7 @@ func _ready():
 
 
 func run():
-	
+	#ProjectSettings.get("Player").can_interact = false
 	while get_parent().cmd_move_on:
 		yield(get_tree(), "idle_frame")
 

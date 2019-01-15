@@ -99,6 +99,7 @@ text = "Hola"
 
 [node name="Trainer" parent="Eventos_/NPC" index="4" instance=ExtResource( 7 )]
 
+editor/display_folded = true
 battle_back_sprite = ExtResource( 8 )
 partner = null
 
@@ -233,6 +234,7 @@ _sections_unfolded = [ "Cell", "Transform" ]
 
 [node name="Area2D_" type="Area2D" parent="." index="4"]
 
+editor/display_folded = true
 visible = false
 position = Vector2( -56, -13 )
 scale = Vector2( 12.25, 9.59375 )
@@ -260,6 +262,7 @@ shape = SubResource( 1 )
 
 position = Vector2( -32, 176 )
 scale = Vector2( 1, 2.5 )
+_sections_unfolded = [ "Audio Bus", "Collision", "Material", "Pause", "Pickable", "Transform", "Visibility", "Z Index" ]
 pkm_id1 = 13
 pkm_id2 = 13
 pkm_id3 = 13
@@ -277,6 +280,7 @@ encounter_rate = 10.0
 [node name="CollisionPolygon2D" parent="EncounterAreas_/encounter_area" index="0"]
 
 polygon = PoolVector2Array( -32, 0, 32, 0, 32, -64, -32, -64 )
+_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 
 
 [editable path="Eventos_/NPC"]

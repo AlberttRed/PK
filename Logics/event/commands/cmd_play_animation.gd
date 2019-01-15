@@ -22,7 +22,6 @@ func run():
 	if animation != null:
 		animationPlayer.add_animation(animation.get_name(), animation)
 		animationPlayer.play(animation.get_name())
-		ProjectSettings.get("Player").can_interact = false
 		if wait_finished:
 			while animationPlayer.is_playing():
 				yield(get_tree(), "idle_frame")

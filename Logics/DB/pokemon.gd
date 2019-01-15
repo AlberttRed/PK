@@ -104,11 +104,10 @@ func make_wild(level):
 
 	for idx in learnable_indexes:
 		var move = move_instance_script.new()
-		move.id = learn_move_id[idx]
+		move.id = CONST.MOVES.FUERZA#learn_move_id[idx]
 		move.pp = DB.moves[move.id].pp
 		move.max_pp = move.pp
 		p.movements.push_back(move)
-
 	return p
 
 func move_is_greater(a, b):

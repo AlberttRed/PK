@@ -18,17 +18,20 @@ func _process(delta):
 		i += 1
 
 func run():
-	ProjectSettings.get("Player").can_interact = false
-	print("set through started")
+	print("set through to " + str(Through) + " started")
 	if nodePath == null:
+		print("TARGET THROUGH: Player")
 		Target = ProjectSettings.get("Player")
 	else:
-		print(nodePath)
+		print("TARGET THROUGH: " + nodePath)
 		Target = get_node(nodePath)
 	Target.Through = Through
+	if Target != ProjectSettings.get("Player"):
+		GLOBAL.running_events.back().makePasable()
 	while i < 1:
 		count = true
 		yield(get_tree(), "idle_frame")
 	count = false
-	print("set through finished")
+	i = 0
+	print("set through to " + str(Through) + " finished")
 	emit_signal("finished")

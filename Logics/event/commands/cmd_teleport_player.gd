@@ -7,6 +7,8 @@ var Player = null
 var Scene = null
 var wworld = null
 var aScene = null
+var i = 0
+var count = false
 
 onready var animationPlayer = ProjectSettings.get("Global_World").get_node("AnimationPlayer")
 
@@ -16,6 +18,9 @@ func _init():
 func _ready():
 	Player = ProjectSettings.get("Player")
 
+func _process(delta):
+	if count:
+		i += 1
 
 func run():
 	print("teleport event started")
@@ -32,7 +37,7 @@ func run():
 #						node.call_deferred("free")
 #					elif node == get_parent().get_parent().get_parent():
 #						node.hide()
-				Player.can_interact = true
+
 		
 				Player.set_position(Map_XY)
 							
@@ -41,12 +46,14 @@ func run():
 					yield(get_tree(), "idle_frame")
 				ProjectSettings.get("Global_World").faded = false			
 				
-				get_parent().get_parent().get_parent().call_deferred("free")
+				#get_parent().get_parent().get_parent().call_deferred("free")
 		else:
 			Player.set_position(Map_XY)
-		
-
-
+			while i < 1:
+				count = true
+				yield(get_tree(), "idle_frame")
+	i = 0
+	count = false
 	print("teleport event finished")
 	emit_signal("finished")
 

@@ -1,0 +1,75 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/selarrow.png" type="Texture" id=1]
+[ext_resource path="res://font/new_dynamicfont.tres" type="DynamicFont" id=2]
+
+[sub_resource type="StyleBoxTexture" id=3]
+
+content_margin_left = -1.0
+content_margin_right = -1.0
+content_margin_top = -1.0
+content_margin_bottom = -1.0
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 14, 32 )
+margin_left = 12.0
+margin_right = 0.0
+margin_top = 0.0
+margin_bottom = 0.0
+expand_margin_left = 0.0
+expand_margin_right = 0.0
+expand_margin_top = 2.0
+expand_margin_bottom = 0.0
+axis_stretch_vertical = 2
+modulate_color = Color( 1, 1, 1, 1 )
+draw_center = false
+_sections_unfolded = [ "Axis Stretch", "Content Margin", "Expand Margin", "Margin", "Modulate", "Resource" ]
+
+[node name="Choice" type="Panel"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 73.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 0
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 3
+custom_styles/panel = SubResource( 3 )
+_sections_unfolded = [ "Material", "Size Flags", "custom_styles" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="ChoiceText" type="Label" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 16.0
+margin_top = 1.0
+margin_right = 2.0
+margin_bottom = -1.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 2
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 4
+custom_fonts/font = ExtResource( 2 )
+custom_colors/font_color = Color( 0.341176, 0.341176, 0.313726, 1 )
+text = "Sí"
+valign = 3
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+_sections_unfolded = [ "Anchor", "Grow Direction", "Margin", "Rect", "custom_colors", "custom_fonts" ]
+__meta__ = {
+"_edit_lock_": true
+}
+
+

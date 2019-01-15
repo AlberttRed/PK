@@ -1,7 +1,7 @@
 
 extends Panel
 
-const MAX_CHARS_PER_LINE = 42
+const MAX_CHARS_PER_LINE = 41
 
 export(String,MULTILINE) var msg = "¡Hola a todos! ¡Bienvenidos al mundo de POKÉMON! ¡Me llamo OAK! ¡Pero la gente me llama el PROFESOR POKÉMON!"
 
@@ -23,8 +23,9 @@ func _ready():
 	#show_msg("¡Hola a todos! ¡Bienvenidos al mundo de POKÉMON! ¡Me llamo OAK! ¡Pero la gente me llama el PROFESOR POKÉMON!")
 	hide()
 
-func show_msg(text="", wait = null, obj = null, sig = ""):
+func show_msg(text="", wait = null, obj = null, sig = "", close = true):
 	if (text.empty()):
+		print("sierrate")
 		hide()
 		return
 	print("msg")
@@ -42,6 +43,7 @@ func show_msg(text="", wait = null, obj = null, sig = ""):
 	while (label.visible_characters < label.text.length()-1):
 		label.visible_characters += 1
 		if (text[label.visible_characters]=='\n'):
+			print(str(label.visible_characters))
 			if (skp >= 1):
 				if wait == null:
 					next.show()
@@ -65,15 +67,18 @@ func show_msg(text="", wait = null, obj = null, sig = ""):
 		next.show()
 		next.get_node("AnimationPlayer").play("Idle")
 		#if !writing:
-		while (!INPUT.ui_accept.is_action_just_pressed()):#(!Input.is_action_pressed("ui_accept")):
+		while (!INPUT.ui_accept.is_action_just_pressed() and close):#(!Input.is_action_pressed("ui_accept")):
 			yield(get_tree(), "idle_frame")
 		emit_signal("input")
 		next.get_node("AnimationPlayer").stop()		
 		next.hide()
-		hide()
+		if close:
+			print("dew")
+			hide()
 	if wait != null:
 		wait(wait)
 		yield(self, "finished_waiting")
+		hide()
 	emit_signal("finished")
 
 func clear_msg():
@@ -140,7 +145,9 @@ func autoclip(text=""):
 				lines.append(w)
 	text = ""
 	for l in range(lines.size()-1):
+		#print(lines[l])
 		text += lines[l] + "\n"
+	#print(lines[lines.size()-1])
 	text += lines[lines.size()-1]
 	writing = false
 	return text

@@ -20,6 +20,14 @@ func _ready():
 
 func is_type(type): return type == "Trainer" or .is_type(type)
 func    get_type(): return "Trainer"
+
+func has_pokemon(pk):
+	for p in party:
+		if p == pk:
+			return true
+	return false
+	
+
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
