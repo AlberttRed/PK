@@ -5,111 +5,30 @@
 [ext_resource path="res://FadeOut.tres" type="Animation" id=3]
 
 [node name="World" type="Node2D"]
-
 script = ExtResource( 1 )
 actual_scene = "res://Pueblo_Paleta.tscn"
 
-[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
+[node name="CanvasModulate" type="CanvasModulate" parent="."]
 
-color = Color( 1, 1, 1, 1 )
-
-[node name="CapaTerra_" type="TileMap" parent="CanvasModulate" index="0"]
-
-mode = 0
-tile_set = null
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
+[node name="CapaTerra_" type="TileMap" parent="CanvasModulate"]
 format = 1
-tile_data = PoolIntArray(  )
 
-[node name="CapaTerra2_" type="TileMap" parent="CanvasModulate" index="1"]
-
-mode = 0
-tile_set = null
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
+[node name="CapaTerra2_" type="TileMap" parent="CanvasModulate"]
 format = 1
-tile_data = PoolIntArray(  )
 
-[node name="CapaTerra3_" type="TileMap" parent="CanvasModulate" index="2"]
-
-mode = 0
-tile_set = null
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
+[node name="CapaTerra3_" type="TileMap" parent="CanvasModulate"]
 format = 1
-tile_data = PoolIntArray(  )
 
-[node name="Eventos_" type="YSort" parent="CanvasModulate" index="3"]
+[node name="Eventos_" type="YSort" parent="CanvasModulate"]
 
-sort_enabled = true
-
-[node name="CapaAlta_" type="TileMap" parent="CanvasModulate" index="4"]
-
-mode = 0
-tile_set = null
-cell_size = Vector2( 64, 64 )
-cell_quadrant_size = 16
-cell_custom_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
-cell_half_offset = 2
-cell_tile_origin = 0
-cell_y_sort = false
-cell_clip_uv = false
-collision_use_kinematic = false
-collision_friction = 1.0
-collision_bounce = 0.0
-collision_layer = 1
-collision_mask = 1
-occluder_light_mask = 1
+[node name="CapaAlta_" type="TileMap" parent="CanvasModulate"]
 format = 1
-tile_data = PoolIntArray(  )
 
-[node name="Area2D_" type="Node2D" parent="CanvasModulate" index="5"]
+[node name="Area2D_" type="Node2D" parent="CanvasModulate"]
 
-[node name="EncounterAreas_" type="Node2D" parent="CanvasModulate" index="6"]
+[node name="EncounterAreas_" type="Node2D" parent="CanvasModulate"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeIn = ExtResource( 2 )
 anims/FadeOut = ExtResource( 3 )
-blend_times = [  ]
-
 

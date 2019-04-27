@@ -10,6 +10,7 @@ var focused_command
 var battlers = []
 var weatherEffectsFlag
 var fieldEffectsFlag = []
+var esCombateDoble
 
 var pokemons = []
 var actions = []
@@ -17,6 +18,8 @@ var moves_target = []
 
 var player_active_pokemons = []
 var enemy_active_pokemons = []
+
+var finish_battle = false
 
 export(NodePath)var active_pokemon_node
 
@@ -85,6 +88,7 @@ func _ready():
 	add_user_signal("select")
 	add_user_signal("action_selected")
 	add_user_signal("initialized")
+	add_user_signal("turn_finished")
 	
 	ProjectSettings.set("Battle_AnimationPlayer", anim)
 	hide()
@@ -109,6 +113,7 @@ func get_active_pokemon():
 	return active_pokemon
 #func _init(trainer, is_playable, trainer_node, pkmn_node, hp_bar_S_node, hp_bar_D_node, base_node, party_node, allies, enemies, doble):
 func start_battle(doble, trainer1, trainer2, trainer3 = null, trainer4 = null):
+	esCombateDoble = doble
 	GUI.msg.get_stylebox("panel", "" ).set_texture(load("res://ui/BattlePictures/battleMessage.png"))
 	battlers.push_back(Battler.new(trainer1,trainer1.is_playable,trainerplayer_sprite,[player_sprite, player_ally_sprite],HPbar_playerS,[HPbar_playerD1,HPbar_playerD2],player_base_sprite,player_party,trainer3,[trainer2, trainer4],doble,CONST.BATTLE.BACK_SINGLE_SPRITE_POS,[CONST.BATTLE.BACK_DOUBLE1_SPRITE_POS,CONST.BATTLE.BACK_DOUBLE2_SPRITE_POS],trainer1.battle_back_sprite,true,[null, null]))
 	battlers.push_back(Battler.new(trainer2,trainer2.is_playable,trainerenemy_sprite,[enemy_sprite,enemy_ally_sprite],HPbar_enemyS,[HPbar_enemyD1,HPbar_enemyD2],enemy_base_sprite,enemy_party,trainer4,[trainer1, trainer3],doble,CONST.BATTLE.FRONT_SINGLE_SPRITE_POS,[CONST.BATTLE.FRONT_DOUBLE1_SPRITE_POS,CONST.BATTLE.FRONT_DOUBLE2_SPRITE_POS],trainer2.battle_front_sprite,false,[pokeball1, pokeball2]))
@@ -121,6 +126,7 @@ func start_battle(doble, trainer1, trainer2, trainer3 = null, trainer4 = null):
 	else:
 		battlers.push_back(null)
 
+	set_pokemons()
 	init_enemies()
 	
 	if !doble:
@@ -153,30 +159,32 @@ func start_battle(doble, trainer1, trainer2, trainer3 = null, trainer4 = null):
 		init_trainer_battle(doble)
 		yield(self, "initialized")
 		
-	for b in battlers:
-		if b != null:
-			for p in b.active_pokemon:
-				active_pokemon = p
-				if b.is_playable:
-					print("size: " + str(b.active_pokemon.size()))
-					active()
-					commands.get_node("Label_Text").text = "¿Qué debe hacer " + str(active_pokemon.nickname) + "?"
-					commands.show()
-					commands.get_node("Commands").get_node("Luchar").grab_focus()
-					yield(self, "action_selected")
-					
-				else:
-					# FALTA APLICAR IA
-					actions.push_back(Command.new(active_pokemon.movements[0].get_name(), active_pokemon, active_pokemon.movements[0], select_move_targets(active_pokemon.movements[0]), false))					
-				anim.stop()
-	#		actions.push_back(Command.new("Huir", 4))
-	#		actions.push_back(Command.new("Luchar", 1))
-	#		actions.push_back(trainer1.movements[0])
-	#		actions.push_back(Command.new("Objeto", 3))
-	#		actions.push_back(Command.new("Cambio", 2))
-	set_actions_priority()
-	update_turn()
-	
+		
+	while !finish_battle:
+		for b in battlers:
+			if b != null:
+				for p in b.active_pokemon:
+					active_pokemon = p
+					if b.is_playable:
+						print("size: " + str(b.active_pokemon.size()))
+						active()
+						commands.get_node("Label_Text").text = "¿Qué debe hacer " + str(active_pokemon.nickname) + "?"
+						commands.show()
+						commands.get_node("Commands").get_node("Luchar").grab_focus()
+						yield(self, "action_selected")
+						
+					else:
+						# FALTA APLICAR IA
+						actions.push_back(Command.new(active_pokemon.movements[0].get_name(), active_pokemon, active_pokemon.movements[0], select_move_targets(active_pokemon.movements[0]), false))					
+					anim.stop()
+		#		actions.push_back(Command.new("Huir", 4))
+		#		actions.push_back(Command.new("Luchar", 1))
+		#		actions.push_back(trainer1.movements[0])
+		#		actions.push_back(Command.new("Objeto", 3))
+		#		actions.push_back(Command.new("Cambio", 2))
+		set_actions_priority()
+		update_turn()
+		yield(self, "turn_finished")
 			
 func init_wild_battle(double):
 	
@@ -264,6 +272,8 @@ func init_trainer_battle(double):
 			while anim.is_playing():
 				yield(get_tree(), "idle_frame")	
 			battlers[0].showPokemon()
+			while pokemons[0].node.get_node("AnimationPlayer").is_playing():
+				yield(get_tree(), "idle_frame")	
 			if battlers[2] != null:
 				battlers[2].showPokemon()
 			while anim.is_playing():
@@ -394,6 +404,7 @@ func _input(event):
 				emit_signal("action_selected")
 			elif focused_command.get_name() == "Move1" and !move:
 				if active_pokemon.movements[0].pp > 0:
+					
 					actions.push_back(Command.new(active_pokemon.movements[0].get_name(), active_pokemon, active_pokemon.movements[0], select_move_targets(active_pokemon.movements[0]), true))
 					#actions.push_back(active_pokemon.movements[0])
 #					if enemy_active_pokemons.size() > 1:
@@ -527,10 +538,7 @@ func update_pps(m):
 	TotalPP.text = "/" + str(active_pokemon.movements[m].max_pp)
 	
 func is_double_battle():
-	if battlers.size() > 2:
-		return true
-	else:
-		return false
+	return esCombateDoble
 		
 func is_wild_battle():
 	var count = 0
@@ -542,16 +550,35 @@ func is_wild_battle():
 	return true
 		
 func set_pokemons():
-	pokemons.push_back(battlers[0])
-	player_active_pokemons.push_back(battlers[0])
-	if battlers[2] != null:
-		pokemons.push_back(battlers[2].party[0])
-		player_active_pokemons.push_back(battlers[2].party[0])
+	pokemons.push_back(battlers[0].party[0])
+	player_active_pokemons.push_back(battlers[0].party[0])
+	battlers[0].party[0].battle_position = CONST.BATTLE.SINGLE_BACK_SLOT
+	if is_double_battle():
+		battlers[0].party[0].battle_position = CONST.BATTLE.DOUBLE_BACK_SLOT_1
+		if battlers[2] != null:
+			pokemons.push_back(battlers[2].party[0])
+			player_active_pokemons.push_back(battlers[2].party[0])
+			battlers[2].party[0].battle_position = CONST.BATTLE.DOUBLE_BACK_SLOT_2
+		else:
+			pokemons.push_back(battlers[0].party[1])
+			player_active_pokemons.push_back(battlers[0].party[1])
+			battlers[0].party[1].battle_position = CONST.BATTLE.DOUBLE_BACK_SLOT_2
+
 	pokemons.push_back(battlers[1].party[0])
 	enemy_active_pokemons.push_back(battlers[1].party[0])
-	if battlers[3] != null:
-		pokemons.push_back(battlers[3].party[0])
-		enemy_active_pokemons.push_back(battlers[3].party[0])
+	battlers[1].party[0].battle_position = CONST.BATTLE.SINGLE_FRONT_SLOT
+	if is_double_battle():
+		battlers[1].party[0].battle_position = CONST.BATTLE.DOUBLE_FRONT_SLOT_1
+		if battlers[3] != null:
+			pokemons.push_back(battlers[3].party[0])
+			enemy_active_pokemons.push_back(battlers[3].party[0])
+			battlers[3].party[0].battle_position = CONST.BATTLE.DOUBLE_FRONT_SLOT_2
+		else:
+			pokemons.push_back(battlers[1].party[1])
+			enemy_active_pokemons.push_back(battlers[1].party[1])
+			battlers[1].party[1].battle_position = CONST.BATTLE.DOUBLE_FRONT_SLOT_2
+			
+	
 
 func set_actions_priority():
 	print("Unsorted array: ")
@@ -597,6 +624,8 @@ func update_turn():
 			commands.hide()
 			hide()
 	GUI.clear_msg()
+	actions.clear()
+	emit_signal("turn_finished")
 			
 func init_enemies():
 	battlers[0].enemies.push_back(battlers[1])
@@ -830,71 +859,76 @@ class Battler:
 						p.enemies.push_back(p_en)
 			
 			var animplayer
-			if GUI.battle.get_node("AnimationPlayer" + str(i)).is_playing():
-				animplayer = GUI.battle.get_node("AnimationPlayer" + str(i+1))
-			else:
-				animplayer = GUI.battle.get_node("AnimationPlayer" + str(i))
-			animplayer.add_animation(p.node.name, Animation.new())
-			#anim.clear_caches()
-			var animation = animplayer.get_animation(p.node.name)#str(p.pkm_id))#"Show_Pokemon_back")
-			animation.length = 1.5
-			#animation.clear()
-			if doble:
-				final_position = p.battle_double_position
-			else:
-				if back:
-					final_position = p.back_single_position
-				else:
-					final_position = p.front_single_position				
+			
 			if back:
-				animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(0, "Background/" + base.name + "/" + p.node.name + ":position") #pkmn_player
-				animation.track_insert_key(0, 0.0, CONST.BATTLE.BACK_BALL_POS)
-				animation.track_insert_key(0, 0.4, final_position + Vector2(59.8,-24))
-				animation.track_insert_key(0, 0.7, final_position + Vector2(85.6,16))
-				animation.track_insert_key(0, 0.9, final_position + Vector2(108,160))
-				animation.track_insert_key(0, 1.0, final_position + Vector2(80,100))
-				animation.track_insert_key(0, 1.5, (final_position))
-				
-					
-				animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(1, "Background/"+ base.name + "/" + p.node.name + ":rotation_degrees")
-				animation.track_insert_key(1, 0.0, 0)
-				animation.track_insert_key(1, 0.2, 180)
-				animation.track_insert_key(1, 0.4, 360)
-				animation.track_insert_key(1, 0.6, 540)
-				animation.track_insert_key(1, 0.8, 720)
-				animation.track_insert_key(1, 0.9, 900)
-				animation.track_insert_key(1, 1.0, 0)
-		
-				animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(2, "Background/"+ base.name + "/" + p.node.name + ":scale")
-				animation.track_insert_key(2, 0.9, Vector2(0.00001,0.00001))
-				animation.track_insert_key(2, 1.5, Vector2(1,1))
-		
-				animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(3, "Background/"+ base.name + "/" + p.node.name + ":material:shader_param/whitening")
-				animation.track_insert_key(3, 1.0, 1)
-				animation.track_insert_key(3, 1.4, 1)
-				animation.track_insert_key(3, 1.5, 0)
-				
-				animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(4, "Background/"+ base.name + "/" + p.node.name + ":texture")
-				animation.track_insert_key(4, 0.0, load("res://ui/BattlePictures/small_ball.png"))			
-				animation.track_insert_key(4, 1.0, load("res://Sprites/Battlers/" + str(p.pkm_id).pad_zeros(3) + "b.png"))
-				
-				animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(5, "Background/"+ base.name + "/" + p.node.name + ":centered")
-				animation.track_insert_key(5, 0.0, true)
-				animation.track_insert_key(5, 1.0, false)
-				
-				animation.add_track(Animation.TYPE_VALUE)
-				animation.track_set_path(6, "Background/" + p.hp_bar.name + ":position")
-				animation.track_insert_key(6, 0.0, p.hp_bar.get_position())
-				animation.track_insert_key(6, 1.0, p.hp_bar.get_position())
-				animation.track_insert_key(6, 1.5,  p.hp_bar.get_position() - Vector2(254,0))
+				animplayer = p.node.get_node("AnimationPlayer")
+				p.node.get_node("Sprite").texture = load("res://Sprites/Battlers/" + str(p.pkm_id).pad_zeros(3) + "b.png")
+#				animation.add_track(Animation.TYPE_VALUE)
+#				animation.track_set_path(0, "Background/" + base.name + "/" + p.node.name + ":position") #pkmn_player
+#				animation.track_insert_key(0, 0.0, CONST.BATTLE.BACK_BALL_POS)
+#				animation.track_insert_key(0, 0.4, final_position + Vector2(59.8,-24))
+#				animation.track_insert_key(0, 0.7, final_position + Vector2(85.6,16))
+#				animation.track_insert_key(0, 0.9, final_position + Vector2(108,160))
+#				animation.track_insert_key(0, 1.0, final_position + Vector2(80,100))
+#				animation.track_insert_key(0, 1.5, (final_position))
+#
+#
+#				animation.add_track(Animation.TYPE_VALUE)
+#				animation.track_set_path(1, "Background/"+ base.name + "/" + p.node.name + ":rotation_degrees")
+#				animation.track_insert_key(1, 0.0, 0)
+#				animation.track_insert_key(1, 0.2, 180)
+#				animation.track_insert_key(1, 0.4, 360)
+#				animation.track_insert_key(1, 0.6, 540)
+#				animation.track_insert_key(1, 0.8, 720)
+#				animation.track_insert_key(1, 0.9, 900)
+#				animation.track_insert_key(1, 1.0, 0)
+#
+#				animation.add_track(Animation.TYPE_VALUE)
+#				animation.track_set_path(2, "Background/"+ base.name + "/" + p.node.name + ":scale")
+#				animation.track_insert_key(2, 0.9, Vector2(0.00001,0.00001))
+#				animation.track_insert_key(2, 1.5, Vector2(1,1))
+#
+#				animation.add_track(Animation.TYPE_VALUE)
+#				animation.track_set_path(3, "Background/"+ base.name + "/" + p.node.name + ":material:shader_param/whitening")
+#				animation.track_insert_key(3, 1.0, 1)
+#				animation.track_insert_key(3, 1.4, 1)
+#				animation.track_insert_key(3, 1.5, 0)
+#
+#				animation.add_track(Animation.TYPE_VALUE)
+#				animation.track_set_path(4, "Background/"+ base.name + "/" + p.node.name + ":texture")
+#				animation.track_insert_key(4, 0.0, load("res://ui/BattlePictures/small_ball.png"))			
+#				animation.track_insert_key(4, 1.0, load("res://Sprites/Battlers/" + str(p.pkm_id).pad_zeros(3) + "b.png"))
+#
+#				animation.add_track(Animation.TYPE_VALUE)
+#				animation.track_set_path(5, "Background/"+ base.name + "/" + p.node.name + ":centered")
+#				animation.track_insert_key(5, 0.0, true)
+#				animation.track_insert_key(5, 1.0, false)
+#
+#				animation.add_track(Animation.TYPE_VALUE)
+#				animation.track_set_path(6, "Background/" + p.hp_bar.name + ":position")
+#				animation.track_insert_key(6, 0.0, p.hp_bar.get_position())
+#				animation.track_insert_key(6, 1.0, p.hp_bar.get_position())
+#				animation.track_insert_key(6, 1.5,  p.hp_bar.get_position() - Vector2(254,0))
+				animplayer.play("Show_Pokemon_Slot" + str(p.battle_position))
 			else:
 				
+				if GUI.battle.get_node("AnimationPlayer" + str(i)).is_playing():
+					animplayer = GUI.battle.get_node("AnimationPlayer" + str(i+1))
+				else:
+					animplayer = GUI.battle.get_node("AnimationPlayer" + str(i))
+				animplayer.add_animation(p.node.name, Animation.new())
+				#anim.clear_caches()
+				var animation = animplayer.get_animation(p.node.name)#str(p.pkm_id))#"Show_Pokemon_back")
+				animation.length = 1.5
+				#animation.clear()
+				if doble:
+					final_position = p.battle_double_position
+				else:
+					if back:
+						final_position = p.back_single_position
+					else:
+						final_position = p.front_single_position	
+					
 				animation.add_track(Animation.TYPE_VALUE)
 				animation.track_set_path(0, "Background/" + base.name + "/" + p.pokeball_node.name + ":texture") #pkmn_player
 				animation.track_insert_key(0, 0.0, load("res://ui/BattlePictures/ball00_open.png"))
@@ -948,7 +982,7 @@ class Battler:
 	#			animation.track_insert_key(1, 0.0, preload("res://ui/BattlePictures/ball00.png"))
 			
 			
-			animplayer.play(p.node.name)#"Show_Pokemon_back")
+				animplayer.play(p.node.name)#"Show_Pokemon_back")
 			i += 1
 			
 #		wait(10)

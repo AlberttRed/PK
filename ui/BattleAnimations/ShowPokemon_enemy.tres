@@ -7,7 +7,7 @@ length = 2.0
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyBase/trainer_enemy:position")
+tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy_ally/trainer:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ Vector2( 108, -56 ), Vector2( 235, -56 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/trainer_enemy_ally:position")
+tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy_ally/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -271,7 +271,7 @@ tracks/21/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("Background/enemyBase/pokeball1:visible")
+tracks/22/path = NodePath("Background/enemyBase/pkmn_enemy_ally/pokeball:visible")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -283,7 +283,7 @@ tracks/22/keys = {
 "values": [ true ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("Background/enemyBase/pokeball2:visible")
+tracks/23/path = NodePath("Background/enemyBase/pkmn_enemy_ally/pokeball:visible")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false

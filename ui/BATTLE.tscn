@@ -1,425 +1,122 @@
-[gd_scene load_steps=86 format=2]
+[gd_scene load_steps=84 format=2]
 
 [ext_resource path="res://ui/BATTLE.gd" type="Script" id=1]
-[ext_resource path="res://Sprites/Battlebacks/battlebgField.png" type="Texture" id=2]
+[ext_resource path="res://Sprites/Battlebacks/battlebgFieldNight.png" type="Texture" id=2]
 [ext_resource path="res://Sprites/Battlebacks/playerbaseFieldNight.png" type="Texture" id=3]
 [ext_resource path="res://ui/battle/battleBase.gd" type="Script" id=4]
-[ext_resource path="res://ui/BattlePictures/small_ball.png" type="Texture" id=5]
-[ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=6]
-[ext_resource path="res://Sprites/Characters/trback001.png" type="Texture" id=7]
-[ext_resource path="res://Sprites/Battlebacks/enemybaseFieldNight.png" type="Texture" id=8]
-[ext_resource path="res://Sprites/Battlers/390.png" type="Texture" id=9]
-[ext_resource path="res://Sprites/Battlers/387.png" type="Texture" id=10]
-[ext_resource path="res://Sprites/Characters/trainer007.png" type="Texture" id=11]
-[ext_resource path="res://Sprites/Characters/trainer004.png" type="Texture" id=12]
-[ext_resource path="res://ui/BattlePictures/ball00.png" type="Texture" id=13]
-[ext_resource path="res://ui/BattlePictures/battlePlayerBoxS.png" type="Texture" id=14]
-[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=15]
-[ext_resource path="res://ui/BattlePictures/pixel.png" type="Texture" id=16]
-[ext_resource path="res://ui/BattlePictures/HPbar_overlay.png" type="Texture" id=17]
-[ext_resource path="res://ui/BattlePictures/EXPbar_overlay.png" type="Texture" id=18]
-[ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://ui/BattlePictures/battleStatuses.png" type="Texture" id=20]
-[ext_resource path="res://ui/BattlePictures/battlePlayerBoxD.png" type="Texture" id=21]
-[ext_resource path="res://ui/BattlePictures/battleFoeBoxS.png" type="Texture" id=22]
-[ext_resource path="res://ui/BattlePictures/battleFoeBoxD.png" type="Texture" id=23]
-[ext_resource path="res://ui/BattlePictures/battleLineup.png" type="Texture" id=24]
-[ext_resource path="res://ui/BattlePictures/ballnormal.png" type="Texture" id=25]
-[ext_resource path="res://ui/BattlePictures/ballstatus.PNG" type="Texture" id=26]
-[ext_resource path="res://ui/BattlePictures/ballfainted.png" type="Texture" id=27]
-[ext_resource path="res://ui/Battle_MessageBox_Style.tres" type="StyleBox" id=28]
-[ext_resource path="res://ui/Battle_Options_MessageBox_Style.tres" type="StyleBox" id=29]
-[ext_resource path="res://ui/HGSS_Font_Style.tres" type="DynamicFont" id=30]
-[ext_resource path="res://ui/BattlePictures/battleCommandButtons.png" type="Texture" id=31]
-[ext_resource path="res://ui/Battle_Moves_MessageBox_Style.tres" type="StyleBox" id=32]
-[ext_resource path="res://ui/BattlePictures/types.png" type="Texture" id=33]
-[ext_resource path="res://ui/BattlePictures/battleFightButtons.png" type="Texture" id=34]
-[ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=35]
-[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=36]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=37]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=38]
-[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=39]
-[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=40]
-[ext_resource path="res://ui/BattleAnimations/Stat_Up_Animation.tres" type="Animation" id=41]
-[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=42]
-[ext_resource path="res://ui/BattlePictures/ball00_open.png" type="Texture" id=43]
-[ext_resource path="res://ui/BattleAnimations/OverlayStatDown.png" type="Texture" id=44]
-[ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=45]
+[ext_resource path="res://ui/BattleAnimations/shader_white.tres" type="Material" id=5]
+[ext_resource path="res://Sprites/Battlers/025b.png" type="Texture" id=6]
+[ext_resource path="res://ui/BattleAnimations/1. Destructor/Destructor.tres" type="Animation" id=7]
+[ext_resource path="res://ui/BattleAnimations/Hurt.tres" type="Animation" id=8]
+[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot0.tres" type="Animation" id=9]
+[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot1.tres" type="Animation" id=10]
+[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot2.tres" type="Animation" id=11]
+[ext_resource path="res://ui/BattleAnimations/Stat_Up_Animation.tres" type="Animation" id=12]
+[ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=13]
+[ext_resource path="res://ui/BattlePictures/ball00.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/Characters/trback002.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Battlebacks/enemybaseFieldSandNight.png" type="Texture" id=16]
+[ext_resource path="res://ui/BattleAnimations/1. Destructor/DestructorOK.tres" type="Animation" id=17]
+[ext_resource path="res://Sprites/Characters/trainer036.png" type="Texture" id=18]
+[ext_resource path="res://Sprites/Battlers/567.png" type="Texture" id=19]
+[ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=20]
+[ext_resource path="res://Sprites/Characters/trainer035.png" type="Texture" id=21]
+[ext_resource path="res://ui/BattlePictures/battlePlayerBoxS.png" type="Texture" id=22]
+[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=23]
+[ext_resource path="res://ui/BattlePictures/pixel.png" type="Texture" id=24]
+[ext_resource path="res://ui/BattlePictures/HPbar_overlay.png" type="Texture" id=25]
+[ext_resource path="res://ui/BattlePictures/EXPbar_overlay.png" type="Texture" id=26]
+[ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=27]
+[ext_resource path="res://ui/BattlePictures/battleStatuses.png" type="Texture" id=28]
+[ext_resource path="res://ui/BattlePictures/battlePlayerBoxD.png" type="Texture" id=29]
+[ext_resource path="res://ui/BattlePictures/battleFoeBoxS.png" type="Texture" id=30]
+[ext_resource path="res://ui/BattlePictures/battleFoeBoxD.png" type="Texture" id=31]
+[ext_resource path="res://ui/BattlePictures/battleLineup.png" type="Texture" id=32]
+[ext_resource path="res://ui/BattlePictures/ballnormal.png" type="Texture" id=33]
+[ext_resource path="res://ui/BattlePictures/ballstatus.PNG" type="Texture" id=34]
+[ext_resource path="res://ui/BattlePictures/ballfainted.png" type="Texture" id=35]
+[ext_resource path="res://ui/Battle_MessageBox_Style.tres" type="StyleBox" id=36]
+[ext_resource path="res://ui/Battle_Options_MessageBox_Style.tres" type="StyleBox" id=37]
+[ext_resource path="res://ui/HGSS_Font_Style.tres" type="DynamicFont" id=38]
+[ext_resource path="res://ui/BattlePictures/battleCommandButtons.png" type="Texture" id=39]
+[ext_resource path="res://ui/Battle_Moves_MessageBox_Style.tres" type="StyleBox" id=40]
+[ext_resource path="res://ui/BattlePictures/types.png" type="Texture" id=41]
+[ext_resource path="res://ui/BattlePictures/battleFightButtons.png" type="Texture" id=42]
+[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=43]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=44]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=45]
+[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=46]
+[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=47]
+[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=48]
+[ext_resource path="res://ui/BattlePictures/ball00_open.png" type="Texture" id=49]
+[ext_resource path="res://ui/BattleAnimations/OverlayStatDown.png" type="Texture" id=50]
+[ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=51]
 
-[sub_resource type="Shader" id=1]
+[sub_resource type="DynamicFont" id=1]
+size = 26
+font_data = ExtResource( 27 )
 
-code = "shader_type canvas_item;
-render_mode unshaded;
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 0, 130, 46 )
 
-uniform vec4 color:hint_color;
-uniform sampler2D frame1:hint_white;
-uniform float whitening;
-uniform int frame_size;
-uniform int frames;
-uniform float anim_time;
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 46, 130, 46 )
 
-void fragment()
-{
-	    ivec2 texsize = textureSize(TEXTURE,0);
-    float uv_frame_size = float(frame_size) / float(texsize.y);
-    float frame_time = anim_time / float(frames);
-    float time = mod(TIME, anim_time);
-    float frame = floor(time / frame_time);
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 92, 130, 46 )
 
-    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
-	
-	vec4 texture_color = texture(TEXTURE, UV);
-	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
-	
-}"
+[sub_resource type="StyleBoxTexture" id=5]
+texture = ExtResource( 39 )
+region_rect = Rect2( 0, 138, 130, 46 )
 
-[sub_resource type="ShaderMaterial" id=2]
+[sub_resource type="DynamicFont" id=6]
+size = 26
+extra_spacing_space = -10
+font_data = ExtResource( 27 )
 
-render_priority = 0
-shader = SubResource( 1 )
-shader_param/color = null
-shader_param/whitening = null
-shader_param/frame_size = 5
-shader_param/frames = 8
-shader_param/anim_time = 1.0
-_sections_unfolded = [ "shader_param" ]
+[sub_resource type="DynamicFont" id=7]
+size = 26
+font_data = ExtResource( 27 )
 
-[sub_resource type="Shader" id=3]
-
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 color:hint_color;
-uniform sampler2D frame1:hint_white;
-uniform float whitening;
-uniform int frame_size;
-uniform int frames;
-uniform float anim_time;
-
-void fragment()
-{
-	    ivec2 texsize = textureSize(TEXTURE,0);
-    float uv_frame_size = float(frame_size) / float(texsize.y);
-    float frame_time = anim_time / float(frames);
-    float time = mod(TIME, anim_time);
-    float frame = floor(time / frame_time);
-
-    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
-	
-	vec4 texture_color = texture(TEXTURE, UV);
-	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
-	
-}"
-
-[sub_resource type="ShaderMaterial" id=4]
-
-render_priority = 0
-shader = SubResource( 3 )
-shader_param/color = null
-shader_param/whitening = null
-shader_param/frame_size = 5
-shader_param/frames = 8
-shader_param/anim_time = 1.0
-_sections_unfolded = [ "shader_param" ]
-
-[sub_resource type="Shader" id=5]
-
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 color:hint_color;
-uniform sampler2D frame1:hint_white;
-uniform float whitening;
-uniform int frame_size;
-uniform int frames;
-uniform float anim_time;
-
-void fragment()
-{
-	    ivec2 texsize = textureSize(TEXTURE,0);
-    float uv_frame_size = float(frame_size) / float(texsize.y);
-    float frame_time = anim_time / float(frames);
-    float time = mod(TIME, anim_time);
-    float frame = floor(time / frame_time);
-
-    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
-	
-	vec4 texture_color = texture(TEXTURE, UV);
-	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
-	
-}"
-
-[sub_resource type="ShaderMaterial" id=6]
-
-render_priority = 0
-shader = SubResource( 5 )
-shader_param/color = null
-shader_param/whitening = null
-shader_param/frame_size = 5
-shader_param/frames = 8
-shader_param/anim_time = 1.0
-_sections_unfolded = [ "shader_param" ]
-
-[sub_resource type="Shader" id=7]
-
-code = "shader_type canvas_item;
-render_mode unshaded;
-
-uniform vec4 color:hint_color;
-uniform sampler2D frame1:hint_white;
-uniform float whitening;
-uniform int frame_size;
-uniform int frames;
-uniform float anim_time;
-
-void fragment()
-{
-	    ivec2 texsize = textureSize(TEXTURE,0);
-    float uv_frame_size = float(frame_size) / float(texsize.y);
-    float frame_time = anim_time / float(frames);
-    float time = mod(TIME, anim_time);
-    float frame = floor(time / frame_time);
-
-    vec2 uv = vec2(UV.x, UV.y + (uv_frame_size*frame));
-	
-	vec4 texture_color = texture(TEXTURE, UV);
-	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
-	
-}"
-
-[sub_resource type="ShaderMaterial" id=8]
-
-render_priority = 0
-shader = SubResource( 7 )
-shader_param/color = null
-shader_param/whitening = null
-shader_param/frame_size = 5
-shader_param/frames = 8
-shader_param/anim_time = 1.0
-_sections_unfolded = [ "shader_param" ]
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 42 )
+region_rect = Rect2( 0, 828, 192, 46 )
 
 [sub_resource type="DynamicFont" id=9]
-
-size = 26
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Settings" ]
+size = 22
+font_data = ExtResource( 27 )
 
 [sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 42 )
+region_rect = Rect2( 0, 828, 192, 46 )
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 31 )
-region_rect = Rect2( 0, 0, 130, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="StyleBoxTexture" id=11]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 31 )
-region_rect = Rect2( 0, 46, 130, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
+[sub_resource type="DynamicFont" id=11]
+size = 22
+font_data = ExtResource( 27 )
 
 [sub_resource type="StyleBoxTexture" id=12]
+texture = ExtResource( 42 )
+region_rect = Rect2( 0, 828, 192, 46 )
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 31 )
-region_rect = Rect2( 0, 92, 130, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-_sections_unfolded = [ "Axis Stretch", "Content Margin", "Expand Margin", "Margin", "Modulate", "Resource" ]
+[sub_resource type="DynamicFont" id=13]
+size = 22
+font_data = ExtResource( 27 )
 
-[sub_resource type="StyleBoxTexture" id=13]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 31 )
-region_rect = Rect2( 0, 138, 130, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="DynamicFont" id=14]
-
-size = 26
-use_mipmaps = false
-use_filter = false
-extra_spacing_space = -10
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Extra Spacing", "Font", "Settings" ]
+[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 42 )
+region_rect = Rect2( 0, 828, 192, 46 )
 
 [sub_resource type="DynamicFont" id=15]
-
-size = 26
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="StyleBoxTexture" id=16]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 34 )
-region_rect = Rect2( 0, 828, 192, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="DynamicFont" id=17]
-
 size = 22
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Settings" ]
+font_data = ExtResource( 27 )
 
-[sub_resource type="StyleBoxTexture" id=18]
+[sub_resource type="AtlasTexture" id=16]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 34 )
-region_rect = Rect2( 0, 828, 192, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="DynamicFont" id=19]
-
-size = 22
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="StyleBoxTexture" id=20]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 34 )
-region_rect = Rect2( 0, 828, 192, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="DynamicFont" id=21]
-
-size = 22
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="StyleBoxTexture" id=22]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-texture = ExtResource( 34 )
-region_rect = Rect2( 0, 828, 192, 46 )
-margin_left = 0.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-
-[sub_resource type="DynamicFont" id=23]
-
-size = 22
-use_mipmaps = false
-use_filter = false
-font_data = ExtResource( 19 )
-_sections_unfolded = [ "Font", "Settings" ]
-
-[sub_resource type="AtlasTexture" id=24]
-
-flags = 0
-region = Rect2( 0, 0, 0, 0 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="Animation" id=25]
-
+[sub_resource type="Animation" id=17]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
@@ -430,7 +127,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -442,7 +139,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 36 ), SubResource( 24 ) ]
+"values": [ ExtResource( 43 ), SubResource( 16 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -493,13 +190,10 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=26]
-
+[sub_resource type="Animation" id=18]
 length = 1.2
-loop = false
-step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/0/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -511,7 +205,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/trainer_player:position")
+tracks/1/path = NodePath("Background/playerBase/pkmn_player/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -535,11 +229,8 @@ tracks/2/keys = {
 "values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
 }
 
-[sub_resource type="Animation" id=27]
-
+[sub_resource type="Animation" id=19]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/enemyParty/ball5:position")
 tracks/0/interp = 1
@@ -553,11 +244,8 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=28]
-
+[sub_resource type="Animation" id=20]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
 tracks/0/interp = 1
@@ -583,11 +271,8 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
 }
 
-[sub_resource type="Animation" id=29]
-
+[sub_resource type="Animation" id=21]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
@@ -598,7 +283,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -610,7 +295,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 36 ), SubResource( 24 ) ]
+"values": [ ExtResource( 43 ), SubResource( 16 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -661,13 +346,10 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=30]
-
+[sub_resource type="Animation" id=22]
 length = 2.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyBase/pokeball1:position")
+tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy_ally/pokeball:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -679,7 +361,7 @@ tracks/0/keys = {
 "values": [ Vector2( 125, 67 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/trainer_enemy:position")
+tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy_ally/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -691,7 +373,7 @@ tracks/1/keys = {
 "values": [ Vector2( 62.461, -47.388 ), Vector2( 235, -47.388 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/enemyBase/pokeball1:texture")
+tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy_ally/pokeball:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -700,7 +382,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 13 ), ExtResource( 43 ) ]
+"values": [ ExtResource( 14 ), ExtResource( 49 ) ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:scale")
@@ -712,7 +394,7 @@ tracks/3/keys = {
 "times": PoolRealArray( 0, 1.1, 1.5 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1e-05, 1e-05 ), Vector2( 1e-05, 1e-05 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
 tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -991,13 +673,10 @@ tracks/26/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=31]
-
+[sub_resource type="Animation" id=23]
 length = 1.2
-loop = false
-step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/0/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1009,7 +688,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/trainer_player:position")
+tracks/1/path = NodePath("Background/playerBase/pkmn_player/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1273,13 +952,10 @@ tracks/22/keys = {
 "values": [ Vector2( 650, 236 ), Vector2( 396, 236 ) ]
 }
 
-[sub_resource type="Animation" id=32]
-
+[sub_resource type="Animation" id=24]
 length = 1.2
-loop = false
-step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/0/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1291,7 +967,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/trainer_player:position")
+tracks/1/path = NodePath("Background/playerBase/pkmn_player/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1315,11 +991,8 @@ tracks/2/keys = {
 "values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
 }
 
-[sub_resource type="Animation" id=33]
-
+[sub_resource type="Animation" id=25]
 length = 2.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
 tracks/0/interp = 1
@@ -1345,7 +1018,7 @@ tracks/1/keys = {
 "values": [ Vector2( 235, -47.388 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/2/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1357,17 +1030,11 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=34]
-
+[sub_resource type="Animation" id=26]
 length = 1.5
-loop = false
-step = 0.1
 
-[sub_resource type="Animation" id=35]
-
+[sub_resource type="Animation" id=27]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
 tracks/0/interp = 1
@@ -1393,18 +1060,10 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=36]
+[sub_resource type="AtlasTexture" id=28]
 
-flags = 0
-region = Rect2( 0, 0, 0, 0 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="Animation" id=37]
-
+[sub_resource type="Animation" id=29]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
@@ -1415,7 +1074,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -1427,7 +1086,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 44 ), SubResource( 36 ) ]
+"values": [ ExtResource( 50 ), SubResource( 28 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -1478,18 +1137,10 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=38]
+[sub_resource type="AtlasTexture" id=30]
 
-flags = 0
-region = Rect2( 0, 0, 0, 0 )
-margin = Rect2( 0, 0, 0, 0 )
-filter_clip = false
-
-[sub_resource type="Animation" id=39]
-
+[sub_resource type="Animation" id=31]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
@@ -1500,7 +1151,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 35 ) ]
+"values": [ ExtResource( 20 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -1512,7 +1163,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 45 ), SubResource( 38 ) ]
+"values": [ ExtResource( 51 ), SubResource( 30 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -1563,11 +1214,8 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=40]
-
+[sub_resource type="Animation" id=32]
 length = 1.5
-loop = false
-step = 0.1
 tracks/0/type = "value"
 tracks/0/path = NodePath("Background/playerBase:position")
 tracks/0/interp = 1
@@ -1617,1733 +1265,943 @@ tracks/3/keys = {
 "values": [ Vector2( 650, 236 ), Vector2( 650, 236 ), Vector2( 396, 236 ) ]
 }
 
-[node name="BATTLE" type="Control" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="BATTLE" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_lock_": true
+}
+_sections_unfolded = [ "Rect" ]
 active_pokemon_node = null
 
-[node name="Background" type="Sprite" parent="." index="0"]
-
+[node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 centered = false
-_sections_unfolded = [ "Offset" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="playerBase" type="Sprite" parent="Background" index="0"]
-
-editor/display_folded = true
-position = Vector2( -148, 240 )
+[node name="playerBase" type="Sprite" parent="Background"]
+position = Vector2( -128, 240 )
 texture = ExtResource( 3 )
 centered = false
 script = ExtResource( 4 )
-_sections_unfolded = [ "Offset", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pkmn_player" type="Sprite" parent="Background/playerBase" index="0"]
+[node name="pkmn_player" type="Node2D" parent="Background/playerBase"]
+self_modulate = Color( 1, 1, 1, 0 )
 
-material = SubResource( 2 )
-position = Vector2( -10, -96.663 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
+[node name="FrameAnimations" type="Node2D" parent="Background/playerBase/pkmn_player"]
+position = Vector2( 0, 72 )
 
-[node name="pkmn_player_ally" type="Sprite" parent="Background/playerBase" index="1"]
-
-material = SubResource( 4 )
-position = Vector2( 116, -36 )
-texture = ExtResource( 5 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
-
-[node name="trainer_player" type="Sprite" parent="Background/playerBase" index="2"]
-
-position = Vector2( 180, -80 )
+[node name="Sprite" type="Sprite" parent="Background/playerBase/pkmn_player"]
+material = ExtResource( 5 )
+position = Vector2( 208, -16 )
 texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/playerBase/pkmn_player"]
+anims/Destructor = ExtResource( 7 )
+anims/Hurt = ExtResource( 8 )
+anims/Show_Pokemon_Slot0 = ExtResource( 9 )
+anims/Show_Pokemon_Slot1 = ExtResource( 10 )
+anims/Show_Pokemon_Slot2 = ExtResource( 11 )
+anims/Stat_Up_Animation = ExtResource( 12 )
+
+[node name="trainer" type="Sprite" parent="Background/playerBase/pkmn_player"]
+visible = false
+position = Vector2( 144, -80 )
+texture = ExtResource( 13 )
 centered = false
 hframes = 5
-_sections_unfolded = [ "Animation", "Material", "Offset", "Region", "Transform" ]
 
-[node name="trainer_player_ally" type="Sprite" parent="Background/playerBase" index="3"]
+[node name="pokeball" type="Sprite" parent="Background/playerBase/pkmn_player"]
+position = Vector2( -52.287, 7.54276 )
+texture = ExtResource( 14 )
 
-position = Vector2( 280, -80 )
-texture = ExtResource( 7 )
+[node name="pkmn_player_ally" type="Node2D" parent="Background/playerBase"]
+
+[node name="FrameAnimations" type="Node2D" parent="Background/playerBase/pkmn_player_ally"]
+
+[node name="Sprite" type="Sprite" parent="Background/playerBase/pkmn_player_ally"]
+position = Vector2( 288, 0 )
+texture = ExtResource( 6 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/playerBase/pkmn_player_ally"]
+anims/Destructor = ExtResource( 7 )
+anims/Hurt = ExtResource( 8 )
+anims/Show_Pokemon_Slot0 = ExtResource( 9 )
+anims/Show_Pokemon_Slot1 = ExtResource( 10 )
+anims/Show_Pokemon_Slot2 = ExtResource( 11 )
+anims/Stat_Up_Animation = ExtResource( 12 )
+
+[node name="trainer" type="Sprite" parent="Background/playerBase/pkmn_player_ally"]
+visible = false
+position = Vector2( 224, -80 )
+texture = ExtResource( 15 )
 centered = false
 hframes = 5
-_sections_unfolded = [ "Animation", "Material", "Offset", "Transform" ]
 
-[node name="enemyBase" type="Sprite" parent="Background" index="1"]
+[node name="pokeball" type="Sprite" parent="Background/playerBase/pkmn_player_ally"]
+position = Vector2( -157.457, 79.6429 )
+texture = ExtResource( 14 )
 
-editor/display_folded = true
-position = Vector2( 257, 111 )
-texture = ExtResource( 8 )
+[node name="enemyBase" type="Sprite" parent="Background"]
+position = Vector2( 256, 112 )
+texture = ExtResource( 16 )
 centered = false
 script = ExtResource( 4 )
-_sections_unfolded = [ "Animation", "Offset", "Transform" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pkmn_enemy_ally" type="Sprite" parent="Background/enemyBase" index="0"]
+[node name="pkmn_enemy_ally" type="Node2D" parent="Background/enemyBase"]
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/enemyBase/pkmn_enemy_ally"]
+anims/Destructor = ExtResource( 7 )
+anims/DestructorOK = ExtResource( 17 )
+anims/Hurt = ExtResource( 8 )
+anims/Stat_Up_Animation = ExtResource( 12 )
+
+[node name="FrameAnimations" type="Node2D" parent="Background/enemyBase/pkmn_enemy_ally"]
+position = Vector2( 73.5032, 85.6775 )
+
+[node name="trainer" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
 visible = false
-material = SubResource( 6 )
-position = Vector2( 16, -72 )
-texture = ExtResource( 9 )
+position = Vector2( 84, -58 )
+texture = ExtResource( 18 )
 centered = false
 region_rect = Rect2( 88, 59, 95, 45 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
 
-[node name="pkmn_enemy" type="Sprite" parent="Background/enemyBase" index="1"]
-
+[node name="Sprite" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
 visible = false
-material = SubResource( 8 )
-position = Vector2( 96, -56 )
-texture = ExtResource( 10 )
-centered = false
-region_rect = Rect2( 88, 59, 95, 45 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
+position = Vector2( 176, -34 )
+texture = ExtResource( 19 )
 
-[node name="trainer_enemy_ally" type="Sprite" parent="Background/enemyBase" index="2"]
-
-position = Vector2( 36, -64 )
-texture = ExtResource( 11 )
-centered = false
-region_rect = Rect2( 88, 59, 95, 45 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
-
-[node name="trainer_enemy" type="Sprite" parent="Background/enemyBase" index="3"]
-
-position = Vector2( 108, -56 )
-texture = ExtResource( 12 )
-centered = false
-region_rect = Rect2( 88, 59, 95, 45 )
-_sections_unfolded = [ "Material", "Offset", "Transform" ]
-
-[node name="pokeball1" type="Sprite" parent="Background/enemyBase" index="4"]
-
+[node name="pokeball" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
 visible = false
-position = Vector2( 174, 60 )
-texture = ExtResource( 13 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="pokeball2" type="Sprite" parent="Background/enemyBase" index="5"]
-
-visible = false
-position = Vector2( 96, 48 )
-texture = ExtResource( 13 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="HPbar_playerS" type="Sprite" parent="Background" index="2"]
-
-position = Vector2( 650, 236 )
+position = Vector2( 76, 24 )
 texture = ExtResource( 14 )
-script = ExtResource( 15 )
-_sections_unfolded = [ "Offset", "Transform" ]
+
+[node name="pkmn_enemy" type="Node2D" parent="Background/enemyBase"]
+material = ExtResource( 20 )
+use_parent_material = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/enemyBase/pkmn_enemy"]
+anims/Destructor = ExtResource( 7 )
+anims/Hurt = ExtResource( 8 )
+anims/Stat_Up_Animation = ExtResource( 12 )
+
+[node name="FrameAnimations" type="Node2D" parent="Background/enemyBase/pkmn_enemy"]
+position = Vector2( 70, 89 )
+
+[node name="Sprite" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
+position = Vector2( 128, -34 )
+texture = ExtResource( 19 )
+
+[node name="pokeball" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
+visible = false
+position = Vector2( -76, 24 )
+texture = ExtResource( 14 )
+
+[node name="trainer" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
+visible = false
+position = Vector2( 38, -58 )
+texture = ExtResource( 21 )
+centered = false
+region_rect = Rect2( 88, 59, 95, 45 )
+
+[node name="HPbar_playerS" type="Sprite" parent="Background"]
+editor/display_folded = true
+position = Vector2( 650, 236 )
+texture = ExtResource( 22 )
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="health_bar" type="Node2D" parent="Background/HPbar_playerS" index="0"]
+[node name="health_bar" type="Node2D" parent="Background/HPbar_playerS"]
 
-[node name="background" type="TextureRect" parent="Background/HPbar_playerS/health_bar" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="background" type="TextureRect" parent="Background/HPbar_playerS/health_bar"]
 margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
 
-[node name="health" type="TextureRect" parent="Background/HPbar_playerS/health_bar" index="1"]
-
+[node name="health" type="TextureRect" parent="Background/HPbar_playerS/health_bar"]
 modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Visibility" ]
 
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/health_bar" index="2"]
-
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 17 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 25 )
 
-[node name="exp_bar" type="Node2D" parent="Background/HPbar_playerS" index="1"]
+[node name="exp_bar" type="Node2D" parent="Background/HPbar_playerS"]
 
-[node name="background" type="TextureRect" parent="Background/HPbar_playerS/exp_bar" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="background" type="TextureRect" parent="Background/HPbar_playerS/exp_bar"]
 margin_left = -90.0
 margin_top = 33.0
 margin_right = 102.0
 margin_bottom = 39.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
 
-[node name="exp" type="TextureRect" parent="Background/HPbar_playerS/exp_bar" index="1"]
-
+[node name="exp" type="TextureRect" parent="Background/HPbar_playerS/exp_bar"]
 modulate = Color( 0.282353, 0.564706, 0.972549, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = -90.0
 margin_top = 33.0
 margin_right = 102.0
 margin_bottom = 39.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Visibility" ]
 
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/exp_bar" index="2"]
-
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/exp_bar"]
 position = Vector2( 6, 37 )
-texture = ExtResource( 18 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 26 )
 
-[node name="lblActualHP" type="Label" parent="Background/HPbar_playerS" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblActualHP" type="Label" parent="Background/HPbar_playerS"]
 margin_left = -4.0
 margin_top = -3.0
 margin_right = 60.0
 margin_bottom = 29.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "40"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerS" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerS"]
 margin_left = 61.0
 margin_top = -3.0
 margin_right = 125.0
 margin_bottom = 29.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "/40"
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblLevel" type="Label" parent="Background/HPbar_playerS" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblLevel" type="Label" parent="Background/HPbar_playerS"]
 margin_left = 40.0
 margin_top = -33.0
 margin_right = 104.0
 margin_bottom = -10.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblName" type="Label" parent="Background/HPbar_playerS" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblName" type="Label" parent="Background/HPbar_playerS"]
 margin_left = -95.0
 margin_top = -33.0
 margin_right = 29.0
 margin_bottom = -10.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pikachu"
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Status" type="Sprite" parent="Background/HPbar_playerS" index="6"]
-
+[node name="Status" type="Sprite" parent="Background/HPbar_playerS"]
 position = Vector2( -50, 1 )
-texture = ExtResource( 20 )
+texture = ExtResource( 28 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="HPbar_playerD" type="Sprite" parent="Background" index="3"]
-
+[node name="HPbar_playerD" type="Sprite" parent="Background"]
+editor/display_folded = true
 position = Vector2( 642, 185 )
-texture = ExtResource( 21 )
-script = ExtResource( 15 )
-_sections_unfolded = [ "Offset", "Transform" ]
+texture = ExtResource( 29 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD" index="0"]
-
+[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD"]
 position = Vector2( 0, 12 )
 
-[node name="background" type="TextureRect" parent="Background/HPbar_playerD/health_bar" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="background" type="TextureRect" parent="Background/HPbar_playerD/health_bar"]
 margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
 
-[node name="health" type="TextureRect" parent="Background/HPbar_playerD/health_bar" index="1"]
-
+[node name="health" type="TextureRect" parent="Background/HPbar_playerD/health_bar"]
 modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerD/health_bar" index="2"]
-
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerD/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 17 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 25 )
 
-[node name="lblLevel" type="Label" parent="Background/HPbar_playerD" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblLevel" type="Label" parent="Background/HPbar_playerD"]
 margin_left = 40.0
 margin_top = -24.0
 margin_right = 104.0
 margin_bottom = -1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblName" type="Label" parent="Background/HPbar_playerD" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblName" type="Label" parent="Background/HPbar_playerD"]
 margin_left = -95.0
 margin_top = -25.0
 margin_right = 29.0
 margin_bottom = -2.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pikachu"
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Status" type="Sprite" parent="Background/HPbar_playerD" index="3"]
-
+[node name="Status" type="Sprite" parent="Background/HPbar_playerD"]
 position = Vector2( -50, 12.6415 )
-texture = ExtResource( 20 )
+texture = ExtResource( 28 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD"]
 margin_left = 145.0
 margin_top = -250.0
 margin_right = 185.0
 margin_bottom = -236.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD"]
 margin_left = 114.0
 margin_top = -259.0
 margin_right = 154.0
 margin_bottom = -245.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="HPbar_playerD2" type="Sprite" parent="Background" index="4"]
-
+[node name="HPbar_playerD2" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( 653, 239 )
-texture = ExtResource( 21 )
-script = ExtResource( 15 )
-_sections_unfolded = [ "Offset", "Transform" ]
+texture = ExtResource( 29 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD2" index="0"]
-
+[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD2"]
 position = Vector2( 0, 12 )
 
-[node name="background" type="TextureRect" parent="Background/HPbar_playerD2/health_bar" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="background" type="TextureRect" parent="Background/HPbar_playerD2/health_bar"]
 margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
 
-[node name="health" type="TextureRect" parent="Background/HPbar_playerD2/health_bar" index="1"]
-
+[node name="health" type="TextureRect" parent="Background/HPbar_playerD2/health_bar"]
 modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Rect", "Visibility" ]
 
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerD2/health_bar" index="2"]
-
+[node name="overlay" type="Sprite" parent="Background/HPbar_playerD2/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 17 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 25 )
 
-[node name="lblLevel" type="Label" parent="Background/HPbar_playerD2" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblLevel" type="Label" parent="Background/HPbar_playerD2"]
 margin_left = 40.0
 margin_top = -24.0
 margin_right = 104.0
 margin_bottom = -1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblName" type="Label" parent="Background/HPbar_playerD2" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblName" type="Label" parent="Background/HPbar_playerD2"]
 margin_left = -95.0
 margin_top = -25.0
 margin_right = 29.0
 margin_bottom = -2.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pikachu"
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Status" type="Sprite" parent="Background/HPbar_playerD2" index="3"]
-
+[node name="Status" type="Sprite" parent="Background/HPbar_playerD2"]
 position = Vector2( -50, 12.6415 )
-texture = ExtResource( 20 )
+texture = ExtResource( 28 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD2" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD2"]
 margin_left = 89.0
 margin_top = -281.0
 margin_right = 129.0
 margin_bottom = -267.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD2" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD2"]
 margin_left = 113.0
 margin_top = -292.0
 margin_right = 153.0
 margin_bottom = -278.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="HPbar_enemyS" type="Sprite" parent="Background" index="5"]
-
+[node name="HPbar_enemyS" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( -140, 70 )
-texture = ExtResource( 22 )
-script = ExtResource( 15 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 30 )
+script = ExtResource( 23 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyS" index="0"]
-
+[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyS"]
 editor/display_folded = true
 position = Vector2( -18, 12 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="background" type="TextureRect" parent="Background/HPbar_enemyS/health_bar" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="background" type="TextureRect" parent="Background/HPbar_enemyS/health_bar"]
 margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
 
-[node name="health" type="TextureRect" parent="Background/HPbar_enemyS/health_bar" index="1"]
-
+[node name="health" type="TextureRect" parent="Background/HPbar_enemyS/health_bar"]
 modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Visibility" ]
 
-[node name="overlay" type="Sprite" parent="Background/HPbar_enemyS/health_bar" index="2"]
-
+[node name="overlay" type="Sprite" parent="Background/HPbar_enemyS/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 17 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 25 )
 
-[node name="lblLevel" type="Label" parent="Background/HPbar_enemyS" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblLevel" type="Label" parent="Background/HPbar_enemyS"]
 margin_left = 24.0
 margin_top = -22.0
 margin_right = 88.0
 margin_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblName" type="Label" parent="Background/HPbar_enemyS" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblName" type="Label" parent="Background/HPbar_enemyS"]
 margin_left = -110.0
 margin_top = -22.0
 margin_right = -46.0
 margin_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Abra"
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Status" type="Sprite" parent="Background/HPbar_enemyS" index="3"]
-
+[node name="Status" type="Sprite" parent="Background/HPbar_enemyS"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 20 )
+texture = ExtResource( 28 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyS" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyS"]
 margin_left = 1153.0
 margin_top = -112.0
 margin_right = 1193.0
 margin_bottom = -98.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyS" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyS"]
 margin_left = 1177.0
 margin_top = -123.0
 margin_right = 1217.0
 margin_bottom = -109.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="HPbar_enemyD" type="Sprite" parent="Background" index="6"]
-
-editor/display_folded = true
+[node name="HPbar_enemyD" type="Sprite" parent="Background"]
 position = Vector2( -134, 36 )
-texture = ExtResource( 23 )
-script = ExtResource( 15 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 31 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD" index="0"]
-
-editor/display_folded = true
+[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD"]
 position = Vector2( -18, 12 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="background" type="TextureRect" parent="Background/HPbar_enemyD/health_bar" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="background" type="TextureRect" parent="Background/HPbar_enemyD/health_bar"]
 margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
 
-[node name="health" type="TextureRect" parent="Background/HPbar_enemyD/health_bar" index="1"]
-
+[node name="health" type="TextureRect" parent="Background/HPbar_enemyD/health_bar"]
 modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Visibility" ]
 
-[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD/health_bar" index="2"]
-
+[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 17 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 25 )
 
-[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD"]
 margin_left = 24.0
 margin_top = -22.0
 margin_right = 88.0
 margin_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblName" type="Label" parent="Background/HPbar_enemyD" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblName" type="Label" parent="Background/HPbar_enemyD"]
 margin_left = -110.0
 margin_top = -22.0
 margin_right = -46.0
 margin_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Abra"
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Status" type="Sprite" parent="Background/HPbar_enemyD" index="3"]
-
+[node name="Status" type="Sprite" parent="Background/HPbar_enemyD"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 20 )
+texture = ExtResource( 28 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD"]
 margin_left = 1419.0
 margin_top = -78.0
 margin_right = 1459.0
 margin_bottom = -64.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD"]
 margin_left = 1443.0
 margin_top = -89.0
 margin_right = 1483.0
 margin_bottom = -75.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="HPbar_enemyD2" type="Sprite" parent="Background" index="7"]
-
+[node name="HPbar_enemyD2" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( -143, 90 )
-texture = ExtResource( 23 )
-script = ExtResource( 15 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 31 )
+script = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD2" index="0"]
-
+[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD2"]
 editor/display_folded = true
 position = Vector2( -18, 12 )
-_sections_unfolded = [ "Transform" ]
 
-[node name="background" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="background" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar"]
 margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
 
-[node name="health" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar" index="1"]
-
+[node name="health" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar"]
 modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 1
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-texture = ExtResource( 16 )
+texture = ExtResource( 24 )
 expand = true
-stretch_mode = 0
-_sections_unfolded = [ "Visibility" ]
 
-[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD2/health_bar" index="2"]
-
+[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD2/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 17 )
-_sections_unfolded = [ "Transform" ]
+texture = ExtResource( 25 )
 
-[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD2" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD2"]
 margin_left = 24.0
 margin_top = -22.0
 margin_right = 88.0
 margin_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblName" type="Label" parent="Background/HPbar_enemyD2" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblName" type="Label" parent="Background/HPbar_enemyD2"]
 margin_left = -110.0
 margin_top = -22.0
 margin_right = -46.0
 margin_bottom = 1.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Abra"
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="Status" type="Sprite" parent="Background/HPbar_enemyD2" index="3"]
-
+[node name="Status" type="Sprite" parent="Background/HPbar_enemyD2"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 20 )
+texture = ExtResource( 28 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
-_sections_unfolded = [ "Region", "Transform" ]
 
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD2" index="4"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD2"]
 margin_left = 1457.0
 margin_top = -143.0
 margin_right = 1497.0
 margin_bottom = -129.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD2" index="5"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD2"]
 margin_left = 1433.0
 margin_top = -132.0
 margin_right = 1473.0
 margin_bottom = -118.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
 
-[node name="playerParty" type="Node2D" parent="Background" index="8"]
-
+[node name="playerParty" type="Node2D" parent="Background"]
+editor/display_folded = true
 position = Vector2( 820, 230 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="party_bar" type="Sprite" parent="Background/playerParty" index="0"]
-
+[node name="party_bar" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -339.5, 23.5 )
 rotation = 3.14159
-texture = ExtResource( 24 )
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+texture = ExtResource( 32 )
 
-[node name="ball1" type="Sprite" parent="Background/playerParty" index="1"]
-
+[node name="ball1" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -502, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="ball2" type="Sprite" parent="Background/playerParty" index="2"]
-
+[node name="ball2" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -470, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="ball3" type="Sprite" parent="Background/playerParty" index="3"]
-
+[node name="ball3" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -438, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="ball4" type="Sprite" parent="Background/playerParty" index="4"]
-
+[node name="ball4" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -406, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="ball5" type="Sprite" parent="Background/playerParty" index="5"]
+[node name="ball5" type="Sprite" parent="Background/playerParty"]
+position = Vector2( -490.5, 4.5 )
+texture = ExtResource( 34 )
 
-position = Vector2( -374, 4.5 )
-texture = ExtResource( 26 )
-_sections_unfolded = [ "Transform", "Visibility" ]
-
-[node name="ball6" type="Sprite" parent="Background/playerParty" index="6"]
-
+[node name="ball6" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -342, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="enemyParty" type="Node2D" parent="Background" index="9"]
-
+[node name="enemyParty" type="Node2D" parent="Background"]
+editor/display_folded = true
 position = Vector2( 10, 105 )
-_sections_unfolded = [ "Material", "Transform", "Visibility", "Z Index" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="party_bar" type="Sprite" parent="Background/enemyParty" index="0"]
-
+[node name="party_bar" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 21.522, 23.3062 )
-texture = ExtResource( 24 )
-_sections_unfolded = [ "Material", "Transform", "Visibility" ]
+texture = ExtResource( 32 )
 
-[node name="ball1" type="Sprite" parent="Background/enemyParty" index="1"]
-
+[node name="ball1" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 182, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="ball2" type="Sprite" parent="Background/enemyParty" index="2"]
-
+[node name="ball2" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 150, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="ball3" type="Sprite" parent="Background/enemyParty" index="3"]
-
+[node name="ball3" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 118, 4.5 )
-texture = ExtResource( 26 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 34 )
 
-[node name="ball4" type="Sprite" parent="Background/enemyParty" index="4"]
-
+[node name="ball4" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 86, 4.5 )
-texture = ExtResource( 25 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 33 )
 
-[node name="ball5" type="Sprite" parent="Background/enemyParty" index="5"]
-
+[node name="ball5" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 54, 4.5 )
-rotation = 4.18879
-texture = ExtResource( 27 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+rotation = 2.49671e-006
+texture = ExtResource( 35 )
 
-[node name="ball6" type="Sprite" parent="Background/enemyParty" index="6"]
-
+[node name="ball6" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 22, 4.5 )
 rotation = 12.5664
-texture = ExtResource( 27 )
-_sections_unfolded = [ "Transform", "Visibility" ]
+texture = ExtResource( 35 )
 
-[node name="Panel_MessageBox" type="Panel" parent="." index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Panel_MessageBox" type="Panel" parent="."]
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = ExtResource( 28 )
-_sections_unfolded = [ "custom_styles" ]
+custom_styles/panel = ExtResource( 36 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Panel_Commands" type="Panel" parent="." index="2"]
-
+[node name="Panel_Commands" type="Panel" parent="."]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = ExtResource( 29 )
-_sections_unfolded = [ "Material", "Visibility", "custom_styles" ]
+custom_styles/panel = ExtResource( 37 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Label_Text" type="Label" parent="Panel_Commands" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Label_Text" type="Label" parent="Panel_Commands"]
 margin_left = 21.0
 margin_top = 24.0
 margin_right = 229.0
 margin_bottom = 82.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = ExtResource( 30 )
+custom_fonts/font = ExtResource( 38 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = 14
 text = "¿Qué debería hacer Pikachu?"
 autowrap = true
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Margin", "custom_colors", "custom_constants", "custom_fonts" ]
 
-[node name="Commands" type="Node2D" parent="Panel_Commands" index="1"]
+[node name="Commands" type="Node2D" parent="Panel_Commands"]
 
-[node name="Luchar" type="Panel" parent="Panel_Commands/Commands" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Luchar" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 252.0
 margin_top = 6.0
 margin_right = 382.0
 margin_bottom = 52.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_right = NodePath("../Mochila")
 focus_neighbour_bottom = NodePath("../Pokemon")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 10 )
-_sections_unfolded = [ "Rect", "Visibility", "custom_styles" ]
+custom_styles/panel = SubResource( 2 )
 
-[node name="Pokemon" type="Panel" parent="Panel_Commands/Commands" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Pokemon" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 252.0
 margin_top = 48.0
 margin_right = 382.0
 margin_bottom = 94.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_top = NodePath("../Luchar")
 focus_neighbour_right = NodePath("../Huir")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 11 )
-_sections_unfolded = [ "Focus", "Rect", "Visibility", "custom_styles" ]
+custom_styles/panel = SubResource( 3 )
 
-[node name="Mochila" type="Panel" parent="Panel_Commands/Commands" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Mochila" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 378.0
 margin_top = 6.0
 margin_right = 508.0
 margin_bottom = 52.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../Luchar")
 focus_neighbour_bottom = NodePath("../Huir")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 12 )
-_sections_unfolded = [ "Focus", "Visibility", "custom_styles" ]
+custom_styles/panel = SubResource( 4 )
 
-[node name="Huir" type="Panel" parent="Panel_Commands/Commands" index="3"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="Huir" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 378.0
 margin_top = 48.0
 margin_right = 508.0
 margin_bottom = 94.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../Pokemon")
 focus_neighbour_top = NodePath("../Mochila")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 13 )
-_sections_unfolded = [ "Focus", "Visibility", "custom_styles" ]
+custom_styles/panel = SubResource( 5 )
 
-[node name="Panel_Moves" type="Panel" parent="." index="3"]
-
+[node name="Panel_Moves" type="Panel" parent="."]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = ExtResource( 32 )
-_sections_unfolded = [ "custom_styles" ]
+custom_styles/panel = ExtResource( 40 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lblPP" type="Label" parent="Panel_Moves" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblPP" type="Label" parent="Panel_Moves"]
 margin_left = 398.0
 margin_top = 44.0
 margin_right = 443.0
 margin_bottom = 82.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PP:"
 align = 1
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_colors", "custom_fonts" ]
 
-[node name="lblActualPP" type="Label" parent="Panel_Moves" index="1"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblActualPP" type="Label" parent="Panel_Moves"]
 margin_left = 433.0
 margin_top = 47.0
 margin_right = 460.0
 margin_bottom = 79.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "40"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="lblTotalPP" type="Label" parent="Panel_Moves" index="2"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblTotalPP" type="Label" parent="Panel_Moves"]
 margin_left = 458.0
 margin_top = 47.0
 margin_right = 494.0
 margin_bottom = 79.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "/40"
 align = 2
 valign = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 
-[node name="MoveType" type="Sprite" parent="Panel_Moves" index="3"]
-
+[node name="MoveType" type="Sprite" parent="Panel_Moves"]
 position = Vector2( 448, 36 )
-texture = ExtResource( 33 )
+texture = ExtResource( 41 )
 vframes = 24
-_sections_unfolded = [ "Animation", "Offset", "Region", "Transform" ]
 
-[node name="Moves" type="Node2D" parent="Panel_Moves" index="4"]
+[node name="Moves" type="Node2D" parent="Panel_Moves"]
 
-[node name="Move1" type="Panel" parent="Panel_Moves/Moves" index="0"]
-
+[node name="Move1" type="Panel" parent="Panel_Moves/Moves"]
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 4.0
 margin_top = 6.0
 margin_right = 196.0
 margin_bottom = 52.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_right = NodePath("../Move2")
 focus_neighbour_bottom = NodePath("../Move3")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 16 )
-_sections_unfolded = [ "Focus", "custom_styles" ]
+custom_styles/panel = SubResource( 8 )
 
-[node name="lblMove1" type="Label" parent="Panel_Moves/Moves/Move1" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblMove1" type="Label" parent="Panel_Moves/Moves/Move1"]
 margin_left = 21.0
 margin_top = 14.0
 margin_right = 172.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Impactrueno"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Move2" type="Panel" parent="Panel_Moves/Moves" index="1"]
-
+[node name="Move2" type="Panel" parent="Panel_Moves/Moves"]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 192.0
 margin_top = 6.0
 margin_right = 384.0
 margin_bottom = 52.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../Move1")
 focus_neighbour_bottom = NodePath("../Move4")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 18 )
-_sections_unfolded = [ "Focus", "Rect", "custom_styles" ]
+custom_styles/panel = SubResource( 10 )
 
-[node name="lblMove2" type="Label" parent="Panel_Moves/Moves/Move2" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblMove2" type="Label" parent="Panel_Moves/Moves/Move2"]
 margin_left = 21.0
 margin_top = 14.0
 margin_right = 172.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 19 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gruñido"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "custom_fonts" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Move3" type="Panel" parent="Panel_Moves/Moves" index="2"]
-
+[node name="Move3" type="Panel" parent="Panel_Moves/Moves"]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 4.0
 margin_top = 48.0
 margin_right = 196.0
 margin_bottom = 94.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_top = NodePath("../Move1")
 focus_neighbour_right = NodePath("../Move4")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 20 )
-_sections_unfolded = [ "Focus", "Rect", "custom_styles" ]
+custom_styles/panel = SubResource( 12 )
 
-[node name="lblMove3" type="Label" parent="Panel_Moves/Moves/Move3" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblMove3" type="Label" parent="Panel_Moves/Moves/Move3"]
 margin_left = 20.0
 margin_top = 14.0
 margin_right = 171.0
 margin_bottom = 40.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Onda Trueno"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Move4" type="Panel" parent="Panel_Moves/Moves" index="3"]
-
+[node name="Move4" type="Panel" parent="Panel_Moves/Moves"]
 editor/display_folded = true
 visible = false
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
 margin_left = 192.0
 margin_top = 49.0
 margin_right = 384.0
 margin_bottom = 95.0
-rect_pivot_offset = Vector2( 0, 0 )
 focus_neighbour_left = NodePath("../Move3")
 focus_neighbour_top = NodePath("../Move2")
 focus_mode = 2
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 1
-custom_styles/panel = SubResource( 22 )
-_sections_unfolded = [ "Focus", "Rect", "custom_styles" ]
+custom_styles/panel = SubResource( 14 )
 
-[node name="lblMove4" type="Label" parent="Panel_Moves/Moves/Move4" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="lblMove4" type="Label" parent="Panel_Moves/Moves/Move4"]
 margin_left = 20.0
 margin_top = 13.0
 margin_right = 171.0
 margin_bottom = 39.0
-rect_pivot_offset = Vector2( 0, 0 )
-mouse_filter = 2
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
-size_flags_vertical = 4
-custom_fonts/font = SubResource( 23 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Rayo"
 align = 1
-percent_visible = 1.0
-lines_skipped = 0
-max_lines_visible = -1
-_sections_unfolded = [ "Rect", "custom_fonts" ]
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="AnimationPlayer1" type="AnimationPlayer" parent="." index="4"]
+[node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
+anims/Heal = SubResource( 17 )
+anims/ShowPokemon_enemy = ExtResource( 44 )
+anims/ShowPokemon_player = ExtResource( 45 )
+anims/ShowPokemon_player_wild = SubResource( 18 )
+anims/ShowTrainers_parties_animation = ExtResource( 46 )
+anims/Show_Pokemon_back = SubResource( 19 )
+anims/Show_Pokemon_prova = SubResource( 20 )
+anims/Stat_Down = ExtResource( 47 )
+anims/Stat_Up = ExtResource( 12 )
+anims/Wild_Start = ExtResource( 48 )
 
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Heal = SubResource( 25 )
-anims/ShowPokemon_enemy = ExtResource( 37 )
-anims/ShowPokemon_player = ExtResource( 38 )
-anims/ShowPokemon_player_wild = SubResource( 26 )
-anims/ShowTrainers_parties_animation = ExtResource( 39 )
-anims/Show_Pokemon_back = SubResource( 27 )
-anims/Show_Pokemon_prova = SubResource( 28 )
-anims/Stat_Down = ExtResource( 40 )
-anims/Stat_Up = ExtResource( 41 )
-anims/Wild_Start = ExtResource( 42 )
-blend_times = [  ]
-
-[node name="AnimationPlayer2" type="AnimationPlayer" parent="." index="5"]
-
-root_node = NodePath("..")
-autoplay = ""
-playback_process_mode = 1
-playback_default_blend_time = 0.0
-playback_speed = 1.0
-anims/Heal = SubResource( 29 )
-anims/ShowPokemon_enemy = SubResource( 30 )
-anims/ShowPokemon_player = SubResource( 31 )
-anims/ShowPokemon_player_wild = SubResource( 32 )
-anims/ShowTrainers_parties = SubResource( 33 )
-anims/Show_Pokemon_back = SubResource( 34 )
-anims/Show_Pokemon_prova = SubResource( 35 )
-anims/Stat_Down = SubResource( 37 )
-anims/Stat_Up = SubResource( 39 )
-anims/Wild_Start = SubResource( 40 )
-blend_times = [  ]
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+anims/Heal = SubResource( 21 )
+anims/ShowPokemon_enemy = SubResource( 22 )
+anims/ShowPokemon_player = SubResource( 23 )
+anims/ShowPokemon_player_wild = SubResource( 24 )
+anims/ShowTrainers_parties = SubResource( 25 )
+anims/Show_Pokemon_back = SubResource( 26 )
+anims/Show_Pokemon_prova = SubResource( 27 )
+anims/Stat_Down = SubResource( 29 )
+anims/Stat_Up = SubResource( 31 )
+anims/Wild_Start = SubResource( 32 )
 
 [connection signal="focus_entered" from="Panel_Commands/Commands/Luchar" to="." method="_on_Luchar_focus_entered"]
-
 [connection signal="focus_entered" from="Panel_Commands/Commands/Pokemon" to="." method="_on_Pokmon_focus_entered"]
-
 [connection signal="focus_entered" from="Panel_Commands/Commands/Mochila" to="." method="_on_Mochila_focus_entered"]
-
 [connection signal="focus_entered" from="Panel_Commands/Commands/Huir" to="." method="_on_Huir_focus_entered"]
-
 [connection signal="focus_entered" from="Panel_Moves/Moves/Move1" to="." method="_on_Move1_focus_entered"]
-
 [connection signal="focus_entered" from="Panel_Moves/Moves/Move2" to="." method="_on_Move2_focus_entered"]
-
 [connection signal="focus_entered" from="Panel_Moves/Moves/Move3" to="." method="_on_Move3_focus_entered"]
-
 [connection signal="focus_entered" from="Panel_Moves/Moves/Move4" to="." method="_on_Move4_focus_entered"]
-
-

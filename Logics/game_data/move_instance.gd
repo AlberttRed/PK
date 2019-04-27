@@ -20,11 +20,14 @@ func get_priority():
 	return DB.moves[id].priority
 	
 func doMove(from,to):
-	DB.moves[id].doMove(self,from,to)
 	DB.moves[id].ShowAnimation(from,to)
+	yield(DB.moves[id], "animation_done")
+	DB.moves[id].doMove(self,from,to)
+	yield(DB.moves[id], "move_done")
+	
 func ShowAnimation(from,to):
 	DB.moves[id].ShowAnimation(from,to)
-
+	yield(DB.moves[id], "animation_done")
 
 func is_type(type): return type == "Move" or .is_type(type)
 func    get_type(): return "Move"

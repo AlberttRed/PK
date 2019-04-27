@@ -79,6 +79,7 @@ sort_enabled = true
 position = Vector2( -112, 80 )
 Imagen = ExtResource( 4 )
 Interact = true
+OffsetSprite = Vector2( 0, 4 )
 sprite_cols = 4
 sprite_rows = 4
 direction = 2
@@ -96,10 +97,11 @@ condition3 = null
 [node name="cmd_msg" parent="Eventos_/NPC/pages/event_page" index="0" instance=ExtResource( 6 )]
 
 text = "Hola"
+can_cancel = false
+default_at_cancel = ""
 
 [node name="Trainer" parent="Eventos_/NPC" index="4" instance=ExtResource( 7 )]
 
-editor/display_folded = true
 battle_back_sprite = ExtResource( 8 )
 partner = null
 

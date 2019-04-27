@@ -46,6 +46,7 @@ var front_single_position = CONST.BATTLE.FRONT_SINGLE_SPRITE_POS
 var back_single_position =  CONST.BATTLE.BACK_SINGLE_SPRITE_POS
 var battle_double_position
 var pokeball_node
+var battle_position
 #class move_instance:
 #	var id = 1
 #	var pp = 5
@@ -72,6 +73,9 @@ var mod_speed = 0
 var mod_hp = 0
 var mod_special = 0
 
+func _init():
+	add_user_signal("hp_updated")
+	
 func _ready():
 	# Initialization here
 	pass
@@ -137,9 +141,9 @@ func print_pokemon():
 	print("SPEED: " + str(get_speed()))
 	
 func update_HP(damage):
-	hp_bar.set_health(damage)
+	hp_bar.update_health(damage)
 	yield(hp_bar, "hp_updated")
-	
+	emit_signal("hp_updated")
 	
 		
 #func get_attack():

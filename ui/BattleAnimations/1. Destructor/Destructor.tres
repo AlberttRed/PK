@@ -1,0 +1,345 @@
+[gd_resource type="Animation" format=2]
+
+[resource]
+
+resource_name = "Destructor"
+length = 1.0
+loop = false
+step = 0.1
+tracks/0/type = "value"
+tracks/0/path = NodePath("pkmn/FrameAnimations/bubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -29.6047, -39.3306 ), Vector2( -34.8751, -39.3306 ), Vector2( -38.434, -40.6247 ), Vector2( -42.6399, -41.5953 ), Vector2( -48.1738, -42.9129 ), Vector2( -52.0562, -42.9129 ), Vector2( -58.8504, -42.5894 ), Vector2( -63.5937, -42.0624 ), Vector2( -80.986, -34.4203 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pkmn/FrameAnimations/bubble2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -19.3074, -29.7104 ), Vector2( -22.4697, -28.1293 ), Vector2( -26.0285, -29.4234 ), Vector2( -28.6168, -28.4528 ), Vector2( -30.7249, -27.6623 ), Vector2( -33.6367, -25.7211 ), Vector2( -36.8721, -24.1034 ), Vector2( -40.5613, -21.4682 ), Vector2( -53.4738, -14.6167 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pkmn/FrameAnimations/bubble3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10.5388, -15.8998 ), Vector2( -12.647, -13.2646 ), Vector2( -14.2647, -11.6469 ), Vector2( -15.5588, -9.70572 ), Vector2( -18.9845, -7.33404 ), Vector2( -21.2493, -5.39284 ), Vector2( -24.161, -2.48103 ), Vector2( -27.8503, -0.10936 ), Vector2( -34.9653, 5.68808 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pkmn/FrameAnimations/bubble4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("pkmn/FrameAnimations/bubble:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.883789, 0.78125, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("pkmn/FrameAnimations/bubble2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("pkmn/FrameAnimations/bubble3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("pkmn/FrameAnimations/bubble4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("pkmn/FrameAnimations/bubble5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("pkmn/FrameAnimations/bubble6:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("pkmn/FrameAnimations/bubble7:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("pkmn/FrameAnimations/bubble8:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("pkmn/FrameAnimations/star:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.968814, 0.976563, 0.728607, 1 ), Color( 0.984131, 1, 0.492188, 1 ), Color( 0.980103, 1, 0.363281, 1 ), Color( 0.96875, 1, 0, 1 ), Color( 0.96875, 1, 0, 0.389725 ), Color( 0.96875, 1, 0, 0.259804 ), Color( 0.96875, 1, 0, 0.129922 ), Color( 0.96875, 1, 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("pkmn/FrameAnimations/bubble5:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.03331, -19.9761 ), Vector2( -1.23708, -18.6585 ), Vector2( -2.85474, -19.6291 ), Vector2( -2.85474, -19.6291 ), Vector2( -3.38177, -18.048 ), Vector2( -5.32297, -16.7538 ), Vector2( -8.23477, -14.8126 ), Vector2( -10.87, -12.441 ), Vector2( -16.9309, -6.90706 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("pkmn/FrameAnimations/bubble6:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17.4416, -49.6043 ), Vector2( 20.0299, -51.869 ), Vector2( 23.2652, -54.1338 ), Vector2( 24.8463, -56.2419 ), Vector2( 28.8894, -59.0958 ), Vector2( 32.7718, -62.0076 ), Vector2( 35.934, -63.3252 ), Vector2( 52.0087, -74.9201 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("pkmn/FrameAnimations/bubble7:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 27.947, -60.2967 ), Vector2( 31.8294, -62.885 ), Vector2( 36.0353, -65.7968 ), Vector2( 39.7246, -67.1144 ), Vector2( 45.1946, -69.4926 ), Vector2( 48.7535, -72.0809 ), Vector2( 52.7063, -74.9796 ), Vector2( 75.896, -89.2097 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("pkmn/FrameAnimations/bubble8:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.5703, -36.4605 ), Vector2( 40.0116, -37.4311 ), Vector2( 51.0117, -40.6664 ), Vector2( 53.6469, -41.1934 ), Vector2( 61.9708, -40.7178 ), Vector2( 66.1767, -40.7178 ), Vector2( 70.6565, -41.2448 ), Vector2( 90.4205, -41.7718 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("pkmn/FrameAnimations/star:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.6, 0.6 ), Vector2( 0.7, 0.7 ), Vector2( 0.8, 0.8 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("pkmn/FrameAnimations/bubble:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.3, 0.3 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("pkmn/FrameAnimations/bubble2:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.15, 0.15 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("pkmn/FrameAnimations/bubble3:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.15, 0.15 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("pkmn/FrameAnimations/bubble4:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("pkmn/FrameAnimations/bubble5:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("pkmn/FrameAnimations/bubble6:scale")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("pkmn/FrameAnimations/bubble7:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("pkmn/FrameAnimations/bubble8:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 0.65, 0.65 ), Vector2( 0.55, 0.55 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("pkmn/Sprite:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ), Vector2( 1, 0.9 ), Vector2( 1, 0.95 ), Vector2( 1, 1 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("pkmn/Sprite:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 7 ), Vector2( 0, 14 ), Vector2( 0, 7 ), Vector2( 0, 0 ) ]
+}
+

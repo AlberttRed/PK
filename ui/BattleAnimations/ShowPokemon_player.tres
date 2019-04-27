@@ -7,7 +7,7 @@ length = 1.2
 loop = false
 step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/trainer_player:frame")
+tracks/0/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,7 +19,7 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/trainer_player_ally:frame")
+tracks/1/path = NodePath("Background/playerBase/pkmn_player_ally/trainer:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -31,7 +31,7 @@ tracks/1/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/playerBase/trainer_player:position")
+tracks/2/path = NodePath("Background/playerBase/pkmn_player/trainer:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -43,7 +43,7 @@ tracks/2/keys = {
 "values": [ Vector2( 10, -80 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/playerBase/trainer_player_ally:position")
+tracks/3/path = NodePath("Background/playerBase/pkmn_player_ally/trainer:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false

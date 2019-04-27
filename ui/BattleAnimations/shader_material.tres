@@ -1,7 +1,8 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=2]
+[gd_resource type="ShaderMaterial" load_steps=3 format=2]
+
+[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=1]
 
 [sub_resource type="Shader" id=1]
-
 code = "shader_type canvas_item;
 render_mode unshaded;
 
@@ -26,16 +27,13 @@ void fragment()
 	COLOR = vec4(mix(texture_color.rgb, vec3(1,1,1), whitening), texture_color.a) * texture(frame1, uv + vec2(0, 0));
 	
 }"
-_sections_unfolded = [ "Resource" ]
 
 [resource]
-
-render_priority = 0
 shader = SubResource( 1 )
 shader_param/color = null
 shader_param/whitening = 0.4
 shader_param/frame_size = 5
 shader_param/frames = 8
 shader_param/anim_time = 1.0
-_sections_unfolded = [ "Resource", "shader_param" ]
+shader_param/frame1 = ExtResource( 1 )
 

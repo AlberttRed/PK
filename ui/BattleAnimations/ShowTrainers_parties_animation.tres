@@ -16,7 +16,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( -480, 240 ), Vector2( -148, 240 ) ]
+"values": [ Vector2( -480, 240 ), Vector2( -128, 240 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase:position")
@@ -28,6 +28,6 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Vector2( 520, 111 ), Vector2( 257, 111 ) ]
+"values": [ Vector2( 520, 112 ), Vector2( 256, 112 ) ]
 }
 

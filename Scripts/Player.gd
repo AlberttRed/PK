@@ -222,7 +222,7 @@ func isSurfingArea(result):
 func colliderIsNotPasable(result):
 	for r in result:
 		if !r.collider.has_node("Pasable"):
-			print(r.collider.get_name() + " is not pasable")
+			print(r.get_name() + " is not pasable")
 			return true
 	print("PASABLE")
 	return false

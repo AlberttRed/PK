@@ -3,6 +3,9 @@
 importer="texture"
 type="StreamTexture"
 path="res://.import/battlebgCave.png-6e0894a5d1d3ad1bbffce6832d609225.stex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
@@ -14,6 +17,7 @@ dest_files=[ "res://.import/battlebgCave.png-6e0894a5d1d3ad1bbffce6832d609225.st
 compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
+compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
 flags/filter=false
@@ -23,6 +27,7 @@ flags/srgb=2
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
+process/invert_color=false
 stream=false
 size_limit=0
 detect_3d=true

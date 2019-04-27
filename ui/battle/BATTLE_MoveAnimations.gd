@@ -6,7 +6,88 @@ var animations = {"Move_Animation001":Move_Animation001, "Move_Animation002":Mov
 #	functions["Move_Function002"] = Move_Function002.new()
 #	print("FUNCTIONS")
 
-class Move_Animation001:# extends "res://Logics/game_data/move_instance.gd":#"res://Logics/DB/pokemon_move.gd":	
+class Move_Animation001:# extends "res://Logics/game_data/move_instance.gd":#"res://Logics/DB/pokemon_move.gd":
+	
+	func _init():
+		add_user_signal("animation_done")
+		
+	func ShowAnimation(from,to):
+		
+		print(to.node.get_name())
+		var spritesheet = load("res://ui/BattleAnimations/1. Destructor/destructor_frames.png")
+		var n = Sprite.new()
+		n.set_name("star")
+		n.hframes = 2
+		n.frame = 0
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n = Sprite.new()
+		n.set_name("bubble")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n = Sprite.new()
+		n.set_name("bubble2")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n = Sprite.new()
+		n.set_name("bubble3")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n = Sprite.new()
+		n.set_name("bubble4")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n = Sprite.new()
+		n.set_name("bubble5")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n = Sprite.new()
+		n.set_name("bubble6")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n.set_name("bubble7")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		n.set_name("bubble8")
+		n.hframes = 2
+		n.frame = 1
+		n.texture = spritesheet
+		to.node.get_node("FrameAnimations").add_child(n)
+		
+		to.node.get_node("AnimationPlayer").play("Destructor")		
+		yield(to.node.get_node("AnimationPlayer"), "animation_finished")
+		to.node.get_node("AnimationPlayer").play("Hurt")		
+		yield(to.node.get_node("AnimationPlayer"), "animation_finished")
+		for c in to.node.get_node("FrameAnimations").get_children():
+			print(c.get_name())
+			if c.get_name() != "AnimationPlayer":
+				GLOBAL.queue(c)
+		emit_signal("animation_done")
+
+
+class Move_Animation002:# extends "res://Logics/game_data/move_instance.gd":#"res://Logics/DB/pokemon_move.gd":
+	func ShowAnimation(from,to):
+		ProjectSettings.get("Battle_AnimationPlayer").play("Stat_Down")
+		
+class Move_Animation003:# extends "res://Logics/game_data/move_instance.gd":#"res://Logics/DB/pokemon_move.gd":
+	func ShowAnimation(from,to):
+		ProjectSettings.get("Battle_AnimationPlayer").play("Heal")
+		
+class Move_Animation999:# extends "res://Logics/game_data/move_instance.gd":#"res://Logics/DB/pokemon_move.gd":	
 	func ShowAnimation(from,to):
 		var anim = ProjectSettings.get("Battle_AnimationPlayer")
 		if anim.has_animation("001"):
@@ -49,11 +130,3 @@ class Move_Animation001:# extends "res://Logics/game_data/move_instance.gd":#"re
 		animation.track_insert_key(5, 0.0, 1.0)
 		animation.track_insert_key(5, 1.5, 0.0)
 		anim.play("001")
-
-class Move_Animation002:# extends "res://Logics/game_data/move_instance.gd":#"res://Logics/DB/pokemon_move.gd":
-	func ShowAnimation(from,to):
-		ProjectSettings.get("Battle_AnimationPlayer").play("Stat_Down")
-		
-class Move_Animation003:# extends "res://Logics/game_data/move_instance.gd":#"res://Logics/DB/pokemon_move.gd":
-	func ShowAnimation(from,to):
-		ProjectSettings.get("Battle_AnimationPlayer").play("Heal")

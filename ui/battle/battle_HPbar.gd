@@ -17,9 +17,11 @@ func init(max_value, current_value):
 	self.max_value = max_value
 	self.current_value = clamp(current_value, 0, max_value)
 	
-	update()
+	set_health()
 	
-func set_health(value):
+func update_health(value):
+	print("mal: " + str(value))
+	print("vida actual: " + str(current_value))
 	var hp
 	if value < 0:
 		hp = -1
@@ -32,11 +34,22 @@ func set_health(value):
 		current_value = clamp(current_value+hp, 0, max_value)
 		current = current + 1
 		update()
+		yield(get_tree(), "idle_frame")
+	print("vida final: " + str(current_value))
 	emit_signal("hp_updated")
+	
+	
+func set_health():
+	var percentage = current_value / max_value
+	print("resta percentatge: " + str(percentage))
+	actual_hp.text = str(current_value)
+	health_bar.rect_scale = Vector2(percentage, 1)
 	
 func update():
 	
-	var percentage = current_value / max_value
+	#var percentage = current_value / max_value
+	var percentage = 100.0 / float(max_value) / 100.0
+	print("percentatge: " + str(percentage))
 	actual_hp.text = str(current_value)
-	health_bar.rect_scale = Vector2(percentage, 1)
+	health_bar.rect_scale = Vector2(health_bar.rect_scale.x-percentage, 1)
 	

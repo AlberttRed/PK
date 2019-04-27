@@ -1,0 +1,559 @@
+﻿	Destructor,abef
+	Golpe Kárate,abefh
+	Doble Bofetón,abef
+	Puño Cometa,abefj
+	Megapuño,abefj
+	Día de Pago,bef
+	Puño Fuego,abefj
+	Puño Hielo,abefj
+	Puño Trueno,abefj
+	Arañazo,abef
+	Agarre,abef
+	Guillotina,abe
+	Viento Cortante,befh
+	Danza Espada,d
+	Corte,abef
+	Tornado,bef
+	Ataque Ala,abef
+	Remolino,bce
+	Vuelo,abef
+	Atadura,abef
+	Atizar,a
+	Látigo Cepa,abef
+	Pisotón,abe
+	Doble Patada,abef
+	Megapatada,abef
+	Patada Salto,abefl
+	Patada Giro,abe
+	Ataque Arena,bce
+	Golpe Cabeza,abe
+	Cornada,abef
+	Ataque Furia,abef
+	Perforador,abe
+	Placaje,abef
+	Golpe Cuerpo,abef
+	Constricción,abef
+	Derribo,abef
+	Golpe,abef
+	Doble Filo,abef
+	Látigo,bce
+	Picotazo Ven,bef
+	Doble Ataque,bef
+	Pin Misil,bef
+	Malicioso,bce
+	Mordisco,abei
+	Gruñido,bcek
+	Rugido,bcek
+	Canto,bcek
+	Supersónico,bcek
+	Bomba Sónica,bef
+	Anulación,bce
+	Ácido,bef
+	Ascuas,bef
+	Lanzallamas,be
+	Neblina,d
+	Pistola Agua,bef
+	Hidrobomba,bef
+	Surf,bef
+	Rayo Hielo,bef
+	Ventisca,bef
+	Psicorrayo,bef
+	Rayo Burbuja,bef
+	Rayo Aurora,bef
+	Hiperrayo,bef
+	Picotazo,abef
+	Pico Taladro,abef
+	Sumisión,abef
+	Patada Baja,abef
+	Contraataque,abf
+	Mov. Sísmico,abef
+	Fuerza,abef
+	Absorber,bef
+	Megaagotar,bef
+	Drenadoras,bce
+	Desarrollo,d
+	Hoja Afilada,befh
+	Rayo Solar,bef
+	Polvo Veneno,bcel
+	Paralizador,bcel
+	Somnífero,bcel
+	Danza Pétalo,abef
+	Disparo Demora,bce
+	Furia Dragón,bef
+	Giro Fuego,bef
+	Impactrueno,bef
+	Rayo,bef
+	Onda Trueno,bce
+	Trueno,bef
+	Lanzarrocas,bef
+	Terremoto,bef
+	Fisura,be
+	Excavar,abef
+	Tóxico,bce
+	Confusión,bef
+	Psíquico,bef
+	Hipnosis,bce
+	Meditación,d
+	Agilidad,d
+	Ataque Rápido,abef
+	Furia,abef
+	Teletransporte,
+	Tinieblas,bef
+	Mimético,b
+	Chirrido,bcek
+	Doble Equipo,d
+	Recuperación,d
+	Fortaleza,d
+	Reducción,d
+	Pantalla de Humo,bce
+	Rayo Confuso,bce
+	Refugio,d
+	Rizo Defensa,d
+	Barrera,d
+	Pantalla de Luz,d
+	Niebla,
+	Reflejo,d
+	Foco Energía,d
+	Venganza,abf
+	Metrónomo,
+	Mov. Espejo,
+	Autodestrucción,bef
+	Bomba Huevo,befn
+	Lengüetazo,abef
+	Polución,bef
+	Residuos,bef
+	Hueso Palo,be
+	Llamarada,bef
+	Cascada,abe
+	Tenaza,abef
+	Rapidez,bef
+	Cabezazo,abef
+	Clavo Cañón,bef
+	Restricción,abef
+	Amnesia,d
+	Kinético,bce
+	Amortiguador,d
+	Pat. Salto Alta,abefl
+	Deslumbrar,bce
+	Come Sueños,bef
+	Gas Venenoso,bce
+	Presa,befn
+	Chupavidas,abef
+	Beso Amoroso,bce
+	Ataque Aéreo,befh
+	Transformación,
+	Burbuja,bef
+	Puño Mareo,abefj
+	Espora,bcel
+	Destello,bce
+	Psicoonda,bef
+	Salpicadura,
+	Armadura Ácida,d
+	Martillazo,abefh
+	Explosión,bef
+	Golpes Furia,abef
+	Huesomerang,bef
+	Descanso,d
+	Avalancha,be
+	Hipercolmillo,abe
+	Afilar,d
+	Conversión,d
+	Triataque,bef
+	Superdiente,abef
+	Cuchillada,abefh
+	Sustituto,d
+	Forcejeo,abf
+	Esquema,
+	Triple Patada,abef
+	Ladrón,abef
+	Telaraña,bce
+	Telépata,be
+	Pesadilla,be
+	Rueda Fuego,abefg
+	Ronquido,bek
+	Maldición,
+	Azote,abef
+	Conversión2,
+	Aerochorro,befh
+	Esporagodón,bcel
+	Inversión,abef
+	Rencor,bce
+	Nieve Polvo,bef
+	Protección,
+	Ultrapuño,abefj
+	Cara Susto,bce
+	Finta,abef
+	Beso Dulce,bce
+	Tambor,d
+	Bomba Lodo,befn
+	Bofetón Lodo,bef
+	Pulpocañón,befn
+	Púas,c
+	Electrocañón,befn
+	Profecía,bce
+	Mismo Destino,
+	Canto Mortal,k
+	Viento Hielo,bef
+	Detección,
+	Ataque Óseo,bef
+	Fijar Blanco,be
+	Enfado,abef
+	Tormenta Arena,
+	Gigadrenado,bef
+	Aguante,
+	Encanto,bce
+	Desenrollar,abef
+	Falsotortazo,abef
+	Contoneo,bce
+	Batido,d
+	Chispa,abef
+	Corte Furia,abef
+	Ala de Acero,abef
+	Mal de Ojo,bce
+	Atracción,bce
+	Sonámbulo,
+	Campana Cura,d
+	Retribución,abef
+	Presente,be
+	Frustración,abef
+	Velo Sagrado,d
+	Divide Dolor,be
+	Fuego Sagrado,befg
+	Magnitud,bef
+	Puño Dinámico,abefj
+	Megacuerno,abef
+	Dragoaliento,bef
+	Relevo,
+	Otra Vez,bce
+	Persecución,abe
+	Giro Rápido,abef
+	Dulce Aroma,bce
+	Cola Férrea,abef
+	Garra Metal,abef
+	Tiro Vital,abef
+	Sol Matinal,d
+	Síntesis,d
+	Luz Lunar,d
+	Poder Oculto,bef
+	Tajo Cruzado,abefh
+	Ciclón,be
+	Danza Lluvia,
+	Día Soleado,
+	Triturar,abefi
+	Manto Espejo,bf
+	Más Psique,
+	Veloc. Extrema,abef
+	Poder Pasado,bef
+	Bola Sombra,befn
+	Premonición,
+	Golpe Roca,abef
+	Torbellino,bef
+	Paliza,bef
+	Sorpresa,abe
+	Alboroto,befk
+	Reserva,d
+	Escupir,bf
+	Tragar,d
+	Onda Ígnea,bef
+	Granizo,
+	Tormento,bce
+	Camelo,bce
+	Fuego Fatuo,bce
+	Legado,be
+	Imagen,abef
+	Puño Certero,abfj
+	Estímulo,abef
+	Señuelo,
+	Adaptación,
+	Carga,d
+	Mofa,bce
+	Refuerzo,
+	Truco,be
+	Imitación,
+	Deseo,d
+	Ayuda,
+	Arraigo,d
+	Fuerza Bruta,abef
+	Capa Mágica,
+	Reciclaje,d
+	Desquite,abef
+	Demolición,abef
+	Bostezo,bce
+	Desarme,abef
+	Esfuerzo,abef
+	Estallido,bef
+	Intercambio,be
+	Cerca,d
+	Alivio,d
+	Rabia,
+	Robo,
+	Daño Secreto,be
+	Buceo,abef
+	Empujón,abef
+	Camuflaje,d
+	Ráfaga,d
+	Resplandor,bef
+	Bola Neblina,befn
+	Danza Pluma,bce
+	Danza Caos,bce
+	Patada Ígnea,abefh
+	Chapoteo Lodo,
+	Bola Hielo,abefn
+	Brazo Pincho,abe
+	Relajo,d
+	Vozarrón,befk
+	Colmillo Ven,abefi
+	Garra Brutal,abef
+	Anillo Ígneo,bef
+	Hidrocañón,bef
+	Puño Meteoro,abefj
+	Impresionar,abe
+	Meteorobola,befn
+	Aromaterapia,d
+	Llanto Falso,bce
+	Aire Afilado,befh
+	Sofoco,bef
+	Rastreo,bce
+	Tumba Rocas,bef
+	Viento Plata,bef
+	Eco Metálico,bcek
+	Silbato,bcek
+	Cosquillas,bce
+	Masa Cósmica,d
+	Salpicar,bef
+	Doble Rayo,bef
+	Puño Sombra,abefj
+	Paranormal,be
+	Gancho Alto,abefj
+	Bucle Arena,bef
+	Frío Polar,be
+	Agua Lodosa,bef
+	Recurrente,befn
+	Golpe Aéreo,abef
+	Carámbano,bef
+	Defensa Férrea,d
+	Bloqueo,bce
+	Aullido,d
+	Garra Dragón,abef
+	Planta Feroz,bef
+	Corpulencia,d
+	Bote,abef
+	Disparo Lodo,bef
+	Cola Veneno,abefh
+	Antojo,abef
+	Placaje Eléc,abef
+	Hoja Mágica,bef
+	Hidrochorro,
+	Paz Mental,d
+	Hoja Aguda,abefh
+	Danza Dragón,d
+	Pedrada,bef
+	Onda Voltio,bef
+	Hidropulso,befm
+	Deseo Oculto,
+	Psicoataque,bef
+	Respiro,d
+	Gravedad,
+	Gran Ojo,bce
+	Espabila,abef
+	Machada,abefj
+	Giro Bola,abefn
+	Deseo Cura,d
+	Salmuera,bef
+	Don Natural,be
+	Amago,f
+	Picoteo,abef
+	Viento Afín,d
+	Acupresión,
+	Represión Metal,bf
+	Ida y Vuelta,abef
+	A Bocajarro,abef
+	Vendetta,abef
+	Buena Baza,abef
+	Embargo,bce
+	Lanzamiento,bef
+	Psicocambio,be
+	As Oculto,abef
+	Anticura,bce
+	Estrujón,abef
+	Truco Fuerza,d
+	Bilis,bce
+	Conjuro,d
+	Yo Primero,b
+	Copión,
+	Cambia Fuerza,be
+	Cambia Defensa,be
+	Castigo,abef
+	Última Baza,abef
+	Abatidoras,bce
+	Golpe Bajo,abef
+	Púas Tóxicas,c
+	Cambia Almas,be
+	Acua Aro,d
+	Levitón,d
+	Envite Ígneo,abefg
+	Palmeo,abef
+	Esfera Aural,befmn
+	Pulimento,d
+	Puya Nociva,abef
+	Pulso Umbrío,bem
+	Tajo Umbrío,abefh
+	Acua Cola,abef
+	Bomba Germen,befn
+	Tajo Aéreo,be
+	Tijera X,abef
+	Zumbido,befk
+	Pulso Dragón,befm
+	Carga Dragón,abef
+	Joya de Luz,bef
+	Puño Drenaje,abefj
+	Onda Vacío,bef
+	Onda Certera,befn
+	Energibola,befn
+	Pájaro Osado,abef
+	Tierra Viva,bef
+	Trapicheo,be
+	Giga Impacto,abef
+	Maquinación,d
+	Puño Bala,abefj
+	Alud,abef
+	Canto Helado,bef
+	Garra Umbría,abefh
+	Colmillo Rayo,abei
+	Colmillo Hielo,abei
+	Colmillo Ígneo,abei
+	Sombra Vil,abef
+	Bomba Fango,befn
+	Psicocorte,befh
+	Cabezazo Zen,abe
+	Disparo Espejo,bef
+	Foco Resplandor,bef
+	Treparrocas,abef
+	Despejar,bce
+	Espacio Raro,
+	Cometa Draco,bef
+	Chispazo,bef
+	Humareda,bef
+	Lluevehojas,bef
+	Latigazo,abef
+	Romperrocas,befn
+	Veneno X,abefh
+	Lanza Mugre,bef
+	Cabeza de Hierro,abe
+	Bomba Imán,befn
+	Roca Afilada,befh
+	Seducción,bce
+	Trampa Rocas,c
+	Hierba Lazo,abef
+	Cháchara,bfk
+	Sentencia,bef
+	Picadura,abef
+	Rayo Carga,bef
+	Mazazo,abef
+	Acua Jet,abef
+	Al Ataque,befh
+	A Defender,d
+	Auxilio,d
+	Testarazo,abef
+	Doble Golpe,abef
+	Distorsión,bef
+	Corte Vacío,befh
+	Danza Lunar,d
+	Agarrón,abef
+	Lluvia Ígnea,bef
+	Brecha Negra,bce
+	Fogonazo,bef
+	Viento Aciago,bef
+	Golpe Umbrío,aef
+	Afilagarras,d
+	Vastaguardia,
+	Isoguardia,b
+	Isofuerza,b
+	Zona Extraña,
+	Psicocarga,bef
+	Carga Tóxica,bef
+	Aligerar,d
+	Polvo Ira,l
+	Telequinesis,bce
+	Zona Mágica,
+	Antiaéreo,bef
+	Llave Corsé,abef
+	Pirotecnia,bef
+	Onda Tóxica,bef
+	Danza Aleteo,d
+	Cuerpo Pesado,abef
+	Sincrorruido,bef
+	Bola Voltio,befn
+	Anegar,bce
+	Nitrocarga,abef
+	Enrosque,d
+	Puntapié,abef
+	Bomba Ácida,befn
+	Juego Sucio,abef
+	Onda Simple,bce
+	Danza Amiga,bce
+	Cede Paso,
+	Canon,befk
+	Eco Voz,befk
+	Guardia Baja,abef
+	Niebla Clara,bef
+	Poder Reserva,bef
+	Anticipo,
+	Cambio Banda,
+	Escaldar,befg
+	Rompecoraza,d
+	Pulso Cura,bc
+	Infortunio,bef
+	Caída Libre,abef
+	Cambio de Marcha,d
+	Llave Giro,abef
+	Calcinación,bef
+	Último Lugar,bce
+	Acróbata,abef
+	Clonatipo,bd
+	Represalia,abef
+	Sacrificio,abf
+	Ofrenda,be
+	Infierno,bef
+	Voto Agua,bef
+	Voto Fuego,bef
+	Voto Planta,bef
+	Voltiocambio,bef
+	Estoicismo,bef
+	Terratemblor,bef
+	Vaho Gélido,bef
+	Cola Dragón,abef
+	Avivar,d
+	Electrotela,bef
+	Voltio Cruel,abef
+	Taladradora,abefh
+	Golpe Bis,abef
+	Arrumaco,abe
+	Asta Drenaje,abef
+	Espada Santa,abef
+	Concha Filo,abef
+	Golpe Calor,abef
+	Ciclón de Hojas,bef
+	Rodillo de Púas,abe
+	Rizo Algodón,d
+	Pulso Noche,bef
+	Onda Mental,bef
+	Plumerazo,abef
+	Vendaval,bef
+	Ariete,abef
+	Rueda Doble,abef
+	Bomba Ígnea,befn
+	Tecno Shock,bef
+	Canto Arcaico,befk
+	Sable Místico,bef
+	Mundo Gélido,bef
+	Ataque Fulgor,abef
+	Llama Azul,bef
+	Danza Llama,bef
+	Rayo Gélido,bef
+	Llama Gélida,bef
+	Alarido,befk
+	Chuzos,be
+	V de Fuego,abef
+	Llama Fusión,befg
+	Rayo Fusión,bef

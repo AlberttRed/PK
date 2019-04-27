@@ -34,6 +34,11 @@ export(bool) var contact_flag = false
 export(int) var move_effect = 1 #id de la funció que s'ocupa de calcular el mal d'aquest moviment
 #var functions = MOVE_FUNCTIONS.hola()
 
+
+func _init():
+	add_user_signal("move_done")
+	add_user_signal("animation_done")
+	
 func get_name():
 	return DB.moves[id].Name
 
@@ -44,11 +49,15 @@ func doMove(move,from,to):
 #		damages = damages + str(get_damage(from,to,ran)) + ", "
 #		ran = ran + 0.01
 #	print(damages)
-	to.update_HP(-get_damage(from,to))
 	MOVE_FUNCTIONS.functions["Move_Function" + str(self.move_effect).pad_zeros(3)].new().ApplyDamage(move,from,to)
+	yield(MOVE_FUNCTIONS.functions["Move_Function" + str(self.move_effect).pad_zeros(3)].new(), "move_done")
+	
+	emit_signal("move_done")
 	
 func ShowAnimation(from,to):	
 	MOVE_ANIMATIONS.animations["Move_Animation" + str(self.move_effect).pad_zeros(3)].new().ShowAnimation(from,to)
+	yield(MOVE_ANIMATIONS.animations["Move_Animation" + str(self.move_effect).pad_zeros(3)].new(), "animation_done")
+	emit_signal("animation_done")
 	
 func is_special():
 	return damage_class_id == CONST.DAMAGE_CLASS.ESPECIAL
