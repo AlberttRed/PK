@@ -69,9 +69,9 @@ func _ready():
 		add_child(n)
 		
 	player=ProjectSettings.get("Player")
-	if (get_node("pages").get_child_count() > 0):
-		print("PAGES IN")
-		current_page = return_current_page(get_node("pages").get_child(0))
+#	if (get_node("pages").get_child_count() > 0):
+#		print("PAGES IN")
+#		current_page = return_current_page(get_node("pages").get_child(0))
 		
 func _process(delta):
 	if AutoRun:
@@ -146,15 +146,16 @@ func _execPlayerTouch(target):
 
 func return_current_page(curr):
 	for c in get_node("pages").get_children():
-			if c.condition1 != null:
-				if GLOBAL.get_node(c.condition1).state:
-					print(GLOBAL.get_node(c.condition1).state)
+			if !c.condition1.empty():
+				print("CONDITION: " + get_name())
+				if GLOBAL.get_node(c.condition1).get_state():
+					print(GLOBAL.get_node(c.condition1).get_state())
 					return c
-			elif c.condition2 != null:
-				if GLOBAL.get_node(c.condition2).state:
+			elif !c.condition2.empty():
+				if GLOBAL.get_node(c.condition2).get_state():
 					return c
-			elif c.condition3 != null:
-				if GLOBAL.get_node(c.condition3).state:
+			elif !c.condition3.empty():
+				if GLOBAL.get_node(c.condition3).get_state():
 					return c
 	return curr
 	

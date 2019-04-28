@@ -128,7 +128,7 @@ func _physics_process(delta):
 					animationPlayer.play("walk_left_step2")
 				else:
 					animationPlayer.play("walk_left_step1")
-
+			print("RESULT LEFT: " + str(resultLeft))
 			if resultLeft == null or resultLeft.empty() or !colliderIsNotPasable(resultLeft) or (isSurfingArea(resultLeft) and surfing):
 				if (!isSurfingArea(world.intersect_point(get_position() + Vector2(-GRID, 0))) and surfing):
 					quit_surf()
@@ -136,6 +136,7 @@ func _physics_process(delta):
 				direction = Vector2(-step, 0)
 				startPos = get_position()
 				continuous = true
+				print("OU MAMA")
 			elif colliderIsPlayerTouch(resultLeft) and colliderIsNotPasable(resultLeft):
 				if can_interact:# and !Through:				
 					interact_at_collide(resultLeft)
@@ -222,7 +223,7 @@ func isSurfingArea(result):
 func colliderIsNotPasable(result):
 	for r in result:
 		if !r.collider.has_node("Pasable"):
-			print(r.get_name() + " is not pasable")
+			print(r.collider.get_name() + " is not pasable")
 			return true
 	print("PASABLE")
 	return false
@@ -240,8 +241,9 @@ func colliderIsPlayerTouch(result):
 	return false
 	
 func interact(result, from):
-	#print(from)
+	
 	for dictionary in result:
+		print("INTERACT")
 		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.has_node("Interact"):
 			if dictionary.collider.is_in_group("NPC"):
 				dictionary.collider.get_parent().exec(from)

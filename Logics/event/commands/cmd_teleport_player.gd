@@ -27,7 +27,7 @@ func run():
 	if Map_XY != null and Player != null:
 #		while Player.get_moving():
 #			yield(get_tree(), "idle_frame")
-		if world_scene != null:
+		if !world_scene.empty():
 #			Player.get_parent().remove_child(Player)
 				Scene = load(world_scene).instance()
 	#			print("World: " + wworld.get_name())

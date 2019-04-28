@@ -7,6 +7,8 @@ func _ready():
 	# Initialization here
 	pass
 
+func get_state():
+	return state
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

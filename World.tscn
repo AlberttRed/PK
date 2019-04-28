@@ -31,4 +31,3 @@ format = 1
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeIn = ExtResource( 2 )
 anims/FadeOut = ExtResource( 3 )
-

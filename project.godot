@@ -28,6 +28,13 @@ GAME_DATA="*res://Logics/GAME_DATA.scn"
 INPUT="*res://Logics/INPUT.scn"
 GUI="*res://ui/GUI.tscn"
 
+[debug]
+
+gdscript/warnings/unused_class_variable=false
+gdscript/warnings/unused_argument=false
+gdscript/warnings/unused_signal=false
+gdscript/warnings/return_value_discarded=false
+
 [display]
 
 window/size/width=512

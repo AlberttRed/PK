@@ -35,22 +35,22 @@ func init():
 	
 func set_connections():
 	var Scene
-	if N_connection != null and N_connection_pos != null:
+	if !N_connection.empty() and N_connection_pos != null:
 		if target.get_parent().get_tree().get_nodes_in_group(N_connection.split("/")[2].split(".")[0]).size() <= 0:		
 			print("N connected")
 			Scene = load(N_connection).instance()
 			load_map(false, Scene, N_connection_pos)
-	if S_connection != null and S_connection_pos != null:
+	if !S_connection.empty() and S_connection_pos != null:
 		if target.get_parent().get_tree().get_nodes_in_group(S_connection.split("/")[2].split(".")[0]).size() <= 0:		
 			print("S connected")
 			Scene = load(S_connection).instance()
 			load_map(false, Scene, S_connection_pos)
-	if E_connection != null and E_connection_pos != null:
+	if !E_connection.empty() and E_connection_pos != null:
 		if target.get_parent().get_tree().get_nodes_in_group(E_connection.split("/")[2].split(".")[0]).size() <= 0:		
 			print("E connected")
 			Scene = load(E_connection).instance()
 			load_map(false, Scene, E_connection_pos)
-	if W_connection != null and W_connection_pos != null:
+	if !W_connection.empty() and W_connection_pos != null:
 		if target.get_parent().get_tree().get_nodes_in_group(W_connection.split("/")[2].split(".")[0]).size() <= 0:		
 			print("W connected")
 			Scene = load(W_connection).instance()

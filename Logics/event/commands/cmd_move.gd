@@ -47,7 +47,7 @@ func run():
 	set_physics_process(true)
 	print("move event started")
 	if GLOBAL.movingEvent == null:
-		if nodePath == null:
+		if nodePath.is_empty():# == null:
 			Target = ProjectSettings.get("Player")
 			Target.can_interact = false
 		else:
