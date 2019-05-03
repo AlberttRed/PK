@@ -1272,8 +1272,6 @@ script = ExtResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
-_sections_unfolded = [ "Rect" ]
-active_pokemon_node = null
 
 [node name="Background" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -1283,6 +1281,7 @@ __meta__ = {
 }
 
 [node name="playerBase" type="Sprite" parent="Background"]
+editor/display_folded = true
 position = Vector2( -128, 240 )
 texture = ExtResource( 3 )
 centered = false
@@ -1734,6 +1733,7 @@ margin_right = 1217.0
 margin_bottom = -109.0
 
 [node name="HPbar_enemyD" type="Sprite" parent="Background"]
+editor/display_folded = true
 position = Vector2( -134, 36 )
 texture = ExtResource( 31 )
 script = ExtResource( 23 )

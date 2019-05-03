@@ -13,14 +13,13 @@ export(Vector2) var W_connection_pos
 var Player = ProjectSettings.get("Player") 
 var target = ProjectSettings.get("Global_World")
 var comptador = 0
+export(NodePath) var map_area
+var area
 
 var strength_on = false
 
 	
-func _ready():
-	pass
-		
-#
+
 #
 func init():
 	comptador += 1
@@ -60,13 +59,16 @@ func load_map(deletePrevious, scene = self, pos = null):
 	print("Loaded Map: " + scene.get_name())
 #	ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
 #	ProjectSettings.set("Actual_Map", scene)	
+	
 	init()
+	
 	strength_on = false
 	for N in scene.get_children():		
 		N.add_to_group(scene.get_name())
 
 		if (N.get_name().split("_")[0].replace("@", "") + "_") == "Area2D_":
 			N.parent_map = scene
+			#area = N
 			
 		scene.remove_child(N)
 		target.get_node("CanvasModulate").get_node(N.get_name()).add_child(N)
@@ -92,6 +94,12 @@ func load_map(deletePrevious, scene = self, pos = null):
 		
 	if deletePrevious:
 		GLOBAL.destroy(ProjectSettings.get("Previous_Map"))
+		
+func get_area(tree):
+	for n in tree.get_nodes_in_group(get_name()):
+		if n.get_name() == "Area2D_":
+			return n
+	return null
 #		for node in get_tree().get_nodes_in_group(ProjectSettings.get("Previous_Map").get_name()):
 #			if node.get_name() != "Eventos_" and node != get_parent().get_parent().get_parent():
 #				node.call_deferred("free")

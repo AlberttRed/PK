@@ -66,4 +66,5 @@ is_playable = true
 [node name="pkm1" parent="Trainer" index="0"]
 pkm_id = 1
 
+
 [editable path="Trainer"]

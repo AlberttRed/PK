@@ -10,8 +10,9 @@ func _ready():
 	ProjectSettings.set("Global_World", self)
 	ProjectSettings.set("Eventos", get_node("CanvasModulate/Eventos_"))
 	ProjectSettings.set("Actual_Map", load(actual_scene).instance())
+	print(ProjectSettings.get("Actual_Map").get_node("Area2D_").get_name())
 	ProjectSettings.get("Actual_Map").load_map(false)
-
+	#print("hala madrid: " + ProjectSettings.get("Actual_Map").area.get_name())
 #	Player.set_position(Vector2(-16, -48))
 	#ProjectSettings.get("Actual_Map").init()
 	#get_child(0).init(Vector2(-16, -48))

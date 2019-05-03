@@ -76,10 +76,10 @@ func _physics_process(delta):
 	resultLeft = null#world.intersect_point(Vector2(0, 0))
 	resultRight = null#world.intersect_point(Vector2(0, 0))
 	if !Through and step == 1:
-		resultUp = world.intersect_point(get_position() + Vector2(0, -GRID))
-		resultDown = world.intersect_point(get_position() + Vector2(0, GRID))
-		resultLeft = world.intersect_point(get_position() + Vector2(-GRID, 0))
-		resultRight = world.intersect_point(get_position() + Vector2(GRID, 0))
+		resultUp = intersect_point(get_position() + Vector2(0, -GRID))
+		resultDown = intersect_point(get_position() + Vector2(0, GRID))
+		resultLeft = intersect_point(get_position() + Vector2(-GRID, 0))
+		resultRight = intersect_point(get_position() + Vector2(GRID, 0))
 	if !moving:				
 		if ((Input.is_action_pressed("ui_up") and can_interact and active_events.size() == 0)  or Input.is_action_pressed("ui_up_event")) and !GUI.is_visible():	
 			facing = "up"			
@@ -89,7 +89,7 @@ func _physics_process(delta):
 				else:
 					animationPlayer.play("walk_up_step1")
 			if resultUp == null or resultUp.empty() or !colliderIsNotPasable(resultUp) or (isSurfingArea(resultUp) and surfing):
-				if (!isSurfingArea(world.intersect_point(get_position() + Vector2(0, -GRID))) and surfing):
+				if (!isSurfingArea(intersect_point(get_position() + Vector2(0, -GRID))) and surfing):
 					quit_surf()
 				moving = true
 				direction = Vector2(0, -step)
@@ -109,7 +109,7 @@ func _physics_process(delta):
 
 			if resultDown == null or resultDown.empty() or !colliderIsNotPasable(resultDown) or (isSurfingArea(resultDown) and surfing):
 				#print("surfing: " + str(surfing) + " area: " + str(isSurfingArea(world.intersect_point(get_position() + Vector2(-GRID, 0)))))
-				if (!isSurfingArea(world.intersect_point(get_position() + Vector2(0, GRID))) and surfing):
+				if (!isSurfingArea(intersect_point(get_position() + Vector2(0, GRID))) and surfing):
 					quit_surf()
 				moving = true
 				direction = Vector2(0, step)
@@ -128,9 +128,13 @@ func _physics_process(delta):
 					animationPlayer.play("walk_left_step2")
 				else:
 					animationPlayer.play("walk_left_step1")
+			#if !resultLeft == null:
+#				for r in resultLeft:
+#					print("RESULT LEFT: " + ProjectSettings.get("Actual_Map").area.get_name())#str(r.rid.get_id()))
+#			#print("area map: " + str(ProjectSettings.get("Actual_Map").area))
 			print("RESULT LEFT: " + str(resultLeft))
 			if resultLeft == null or resultLeft.empty() or !colliderIsNotPasable(resultLeft) or (isSurfingArea(resultLeft) and surfing):
-				if (!isSurfingArea(world.intersect_point(get_position() + Vector2(-GRID, 0))) and surfing):
+				if (!isSurfingArea(intersect_point(get_position() + Vector2(-GRID, 0))) and surfing):
 					quit_surf()
 				moving = true
 				direction = Vector2(-step, 0)
@@ -138,6 +142,7 @@ func _physics_process(delta):
 				continuous = true
 				print("OU MAMA")
 			elif colliderIsPlayerTouch(resultLeft) and colliderIsNotPasable(resultLeft):
+				print("RESULT LEFT: " + str(resultLeft))
 				if can_interact:# and !Through:				
 					interact_at_collide(resultLeft)
 			emit_signal("step")
@@ -151,7 +156,7 @@ func _physics_process(delta):
 
 			if resultRight == null or resultRight.empty() or !colliderIsNotPasable(resultRight) or (isSurfingArea(resultRight) and surfing):
 				print("cap dins")
-				if (!isSurfingArea(world.intersect_point(get_position() + Vector2(GRID, 0))) and surfing):
+				if (!isSurfingArea(intersect_point(get_position() + Vector2(GRID, 0))) and surfing):
 					quit_surf()
 				moving = true
 				direction = Vector2(step, 0)
@@ -195,13 +200,13 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !GUI.is_visible():	
 		print(facing)
 		if facing == "up":
-			interact(world.intersect_point(get_position() + Vector2(0, -GRID)), 0)
+			interact(intersect_point(get_position() + Vector2(0, -GRID)), 0)
 		elif facing == "left":
-			interact(world.intersect_point(get_position() + Vector2(-GRID, 0)), 8)
+			interact(intersect_point(get_position() + Vector2(-GRID, 0)), 8)
 		elif facing == "right":
-			interact(world.intersect_point(get_position() + Vector2(GRID, 0)), 4)
+			interact(intersect_point(get_position() + Vector2(GRID, 0)), 4)
 		elif facing == "down":
-			interact(world.intersect_point(get_position() + Vector2(0, GRID)), 12)
+			interact(intersect_point(get_position() + Vector2(0, GRID)), 12)
 	
 	if event.is_action_pressed("ui_cancel") and !GUI.is_visible():	
 		print("Player: " + str(get_parent().get_position()))
@@ -231,7 +236,7 @@ func colliderIsNotPasable(result):
 func colliderIsPlayerTouch(result):
 	for r in result:
 		print(r.collider.get_name())
-		if r.collider.get_name() != "Area2D_":# and r.collider.has_node("PlayerTouch"):
+		if r.collider.get_name() != "Area2D_" and r.collider.has_node("PlayerTouch"):
 #			if r.collider.is_in_group("surf_area") and surfing:
 #				return false
 #			else:
@@ -307,10 +312,10 @@ func jump(direction, cells_jump):
 		var cell = 1
 		var jumping_frame = 0
 		print("start jump " + direction)
-		resultUp = world.intersect_point(get_position() + Vector2(0, -GRID*int(cells_jump)))
-		resultDown = world.intersect_point(get_position() + Vector2(0, GRID*int(cells_jump)))
-		resultLeft = world.intersect_point(get_position() + Vector2(-GRID*int(cells_jump), 0))
-		resultRight = world.intersect_point(get_position() + Vector2(GRID*int(cells_jump), 0))
+		resultUp = intersect_point(get_position() + Vector2(0, -GRID*int(cells_jump)))
+		resultDown = intersect_point(get_position() + Vector2(0, GRID*int(cells_jump)))
+		resultLeft = intersect_point(get_position() + Vector2(-GRID*int(cells_jump), 0))
+		resultRight = intersect_point(get_position() + Vector2(GRID*int(cells_jump), 0))
 
 		if direction == "up" and (resultUp == null or resultUp.empty() or !colliderIsNotPasable(resultUp)):
 			match get_node("Sprite").frame:
@@ -389,16 +394,16 @@ func push(object):
 		match facing:
 			"up":
 				cmd.direction = Vector2(0, -1)
-				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, -GRID))
+				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, -GRID), 32, [ ], 2147483647, true, true)
 			"right":
 				cmd.direction = Vector2(1, 0)
-				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(GRID, 0))
+				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(GRID, 0), 32, [ ], 2147483647, true, true)
 			"left":
 				cmd.direction = Vector2(-1, 0)
-				cmd.result =  object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(-GRID, 0))
+				cmd.result =  object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(-GRID, 0), 32, [ ], 2147483647, true, true)
 			"down":
 				cmd.direction = Vector2(0, 1)
-				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, GRID))
+				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, GRID), 32, [ ], 2147483647, true, true)
 		cmd.can_move = !colliderIsNotPasable(cmd.result)
 		cmd.startPos = object.get_parent().get_position()
 		
@@ -409,3 +414,7 @@ func push(object):
 			#yield(move.run(), "finished_movement")
 		print("apa siau")
 		pushing = false
+
+
+func intersect_point(position):
+	return world.intersect_point(position, 32, [ProjectSettings.get("Actual_Map").get_area(get_tree())], 2147483647, true, true)
