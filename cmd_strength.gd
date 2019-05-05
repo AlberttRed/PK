@@ -19,7 +19,7 @@ func _ready():
 
 func run():
 	print("Strength started")
-	var animationPlayer = GLOBAL.running_events.back().get_node("AnimationPlayer")
+	#var animationPlayer = GLOBAL.running_events.back().get_node("AnimationPlayer")
 	if !ProjectSettings.get("Actual_Map").strength_on:
 		GUI.show_msg("Es una roca enorme, pero un POKéMON podría moverla.")
 		while (GUI.is_visible()):

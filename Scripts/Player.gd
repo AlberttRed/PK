@@ -98,6 +98,8 @@ func _physics_process(delta):
 			elif colliderIsPlayerTouch(resultUp) and colliderIsNotPasable(resultUp):
 				if can_interact: #and !Through:
 					interact_at_collide(resultUp)
+			else:
+				print("PAM")
 			emit_signal("step")
 		elif ((Input.is_action_pressed("ui_down") and can_interact and active_events.size() == 0) or Input.is_action_pressed("ui_down_event")) and !GUI.is_visible():
 			facing = "down"
@@ -308,8 +310,8 @@ func look(direction):
 			
 func jump(direction, cells_jump):
 		var original_speed = SPEED
-		var original_grid = GRID
-		var cell = 1
+		#var original_grid = GRID
+		#var cell = 1
 		var jumping_frame = 0
 		print("start jump " + direction)
 		resultUp = intersect_point(get_position() + Vector2(0, -GRID*int(cells_jump)))
@@ -417,4 +419,6 @@ func push(object):
 
 
 func intersect_point(position):
-	return world.intersect_point(position, 32, [ProjectSettings.get("Actual_Map").get_area(get_tree())], 2147483647, true, true)
+	if weakref(ProjectSettings.get("Actual_Map")).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
+		return world.intersect_point(position, 32, [ProjectSettings.get("Actual_Map").get_area(get_tree())], 2147483647, true, true)
+	#return world.intersect_point(position, 32, [], 2147483647, true, true)

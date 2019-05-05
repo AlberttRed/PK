@@ -39,9 +39,7 @@ func set_page(page):
 func _ready():
 	add_to_group(get_parent().get_parent().get_name())
 	if Pasable:
-		var n = Node2D.new()
-		n.set_name("Pasable")
-		add_child(n)
+		makePasable()
 	if Imagen != null:
 		initialFrame = get_node("Sprite").frame
 		get_node("Sprite").texture = Imagen
@@ -83,8 +81,8 @@ func _process(delta):
 #        print(area.get_name())
 
 func exec(from = initialFrame):
-	print("event " + get_name() + " started")
 	if !running:
+		print("event " + get_name() + " started")
 		if eventTarget == ProjectSettings.get("Player"):
 			ProjectSettings.get("Player").active_events.push_back(self)
 		GLOBAL.running_events.push_back(self)
@@ -117,6 +115,8 @@ func exec(from = initialFrame):
 		GLOBAL.running_events.erase(self)
 		if deleteAtEnd:
 			remove()
+	else:
+		print("event " + get_name() + " is already running!")
 
 func exec_this_page(page):
 	print("exec_this-page")
@@ -166,3 +166,9 @@ func remove():
     	queue_free()
 	else:
     	call_deferred("free")
+		
+func makePasable():
+	if !has_node("Pasable"):
+		var n = Node2D.new()
+		n.set_name("Pasable")
+		add_child(n)
