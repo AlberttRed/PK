@@ -38,7 +38,7 @@ func set_connections():
 		if target.get_parent().get_tree().get_nodes_in_group(N_connection.split("/")[2].split(".")[0]).size() <= 0:		
 			print("N connected")
 			Scene = load(N_connection).instance()
-			load_map(false, Scene, N_connection_pos)
+			call_deferred("load_map", false, Scene, N_connection_pos)
 	if !S_connection.empty() and S_connection_pos != null:
 		if target.get_parent().get_tree().get_nodes_in_group(S_connection.split("/")[2].split(".")[0]).size() <= 0:		
 			print("S connected")
@@ -59,7 +59,6 @@ func load_map(deletePrevious, scene = self, pos = null):
 	print("Loaded Map: " + scene.get_name())
 #	ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
 #	ProjectSettings.set("Actual_Map", scene)	
-	
 	init()
 	
 	strength_on = false

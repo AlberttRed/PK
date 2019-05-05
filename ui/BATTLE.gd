@@ -833,7 +833,7 @@ class Battler:
 	
 	func showPokemon(pokemons = active_pokemon):
 		var final_position
-		var anim = ProjectSettings.get("Battle_AnimationPlayer")
+		#var anim = ProjectSettings.get("Battle_AnimationPlayer")
 		var i = 1
 		
 		if doble:

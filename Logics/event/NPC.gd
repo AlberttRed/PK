@@ -40,6 +40,7 @@ func set_page(page):
 
 func _ready():
 	add_to_group(get_parent().get_parent().get_name())
+	add_to_group("NPC")
 	get_node("Sprite").visible = !Transparent
 	world = get_world_2d().get_direct_space_state()
 	if Pasable:

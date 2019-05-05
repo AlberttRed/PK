@@ -31,6 +31,7 @@ func run():
 #			Player.get_parent().remove_child(Player)
 				Scene = load(world_scene).instance()
 	#			print("World: " + wworld.get_name())
+				Player.set_position(Vector2(99999,99999))
 				Scene.load_map(true)
 #				for node in get_tree().get_nodes_in_group(ProjectSettings.get("Previous_Map").get_name()):
 #					if node.get_name() != "Eventos_" and node != get_parent().get_parent().get_parent():

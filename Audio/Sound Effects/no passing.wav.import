@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/no passing.wav-f58472ab64665a9269f1b44a7c9c597c.sample"
+
+[deps]
+
+source_file="res://Audio/Sound Effects/no passing.wav"
+dest_files=[ "res://.import/no passing.wav-f58472ab64665a9269f1b44a7c9c597c.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=true
+edit/normalize=true
+edit/loop=false
+compress/mode=0
