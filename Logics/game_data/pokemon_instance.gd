@@ -4,14 +4,14 @@ extends Node
 export(int, "None, Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise, Caterpie, Metapod, Butterfree, Weedle, Kakuna, Beedrill, Pidgey, Pidgeotto, Pidgeot, Rattata, Raticate, Spearow, Fearow, Ekans, Arbok, Pikachu, Raichu, Sandshrew, Sandslash, Nidoran♀, Nidorina, Nidoqueen, Nidoran♂, Nidorino, Nidoking, Clefairy, Clefable, Vulpix, Ninetales, Jigglypuff, Wigglytuff, Zubat, Golbat, Oddish, Gloom, Vileplume, Paras, Parasect, Venonat, Venomoth, Diglett, Dugtrio, Meowth, Persian, Psyduck, Golduck, Mankey, Primeape, Growlithe, Arcanine, Poliwag, Poliwhirl, Poliwrath, Abra, Kadabra, Alakazam, Machop, Machoke, Machamp, Bellsprout, Weepinbell, Victreebel, Tentacool, Tentacruel, Geodude, Graveler, Golem, Ponyta, Rapidash, Slowpoke, Slowbro, Magnemite, Magneton, Farfetch’d, Doduo, Dodrio, Seel, Dewgong, Grimer, Muk, Shellder, Cloyster, Gastly, Haunter, Gengar, Onix, Drowzee, Hypno, Krabby, Kingler, Voltorb, Electrode, Exeggcute, Exeggutor, Cubone, Marowak, Hitmonlee, Hitmonchan, Lickitung, Koffing, Weezing, Rhyhorn, Rhydon, Chansey, Tangela, Kangaskhan, Horsea, Seadra, Goldeen, Seaking, Staryu, Starmie, Mr. Mime, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Gyarados, Lapras, Ditto, Eevee, Vaporeon, Jolteon, Flareon, Porygon, Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl, Snorlax, Articuno, Zapdos, Moltres, Dratini, Dragonair, Dragonite, Mewtwo")var pkm_id = 0
 var nickname = "" setget set_nick,get_nick
 export(int)var level = 1
-var hp
-var max_hp setget set_hp,get_hp
+var hp : int
+var max_hp : int setget set_hp,get_hp
 var status = CONST.STATUS.OK
-var attack setget set_attack,get_attack
-var speed setget set_speed,get_speed
-var defense setget set_defense,get_defense
-var special_attack setget set_special_attack,get_special_attack
-var special_defense setget set_special_defense,get_special_defense
+var attack : int setget set_attack,get_attack
+var speed : int setget set_speed,get_speed
+var defense : int setget set_defense,get_defense
+var special_attack : int setget set_special_attack,get_special_attack
+var special_defense : int setget set_special_defense,get_special_defense
 var dni = 45645634567
 var original_trainer = ""
 var expecience = 0
@@ -90,38 +90,38 @@ func set_hp(value):
 	max_hp = (((2.0*float(value)+float(hp_IVs)+(float(hp_EVs)/4.0))*float(level))/100.0)+float(level)+10.0
 
 func get_hp():
-	return int(max_hp)
+	return max_hp
 	
 func set_attack(value):
 	attack = (((2.0*float(value)+float(attack_IVs)+(float(attack_EVs)/4.0))*float(level))/100.0)+5.0
 	
 func get_attack():
-	return int(attack)
+	return attack
 	
 func set_special_attack(value):
 	special_attack = (((2.0*float(value)+float(spAttack_IVs)+(float(spAttack_EVs)/4.0))*float(level))/100.0)+5.0
 	
 func get_special_attack():
-	return int(special_attack)
+	return special_attack
 	
 func set_defense(value):
 	defense = (((2.0*float(value)+float(defense_IVs)+(float(defense_EVs)/4.0))*float(level))/100.0)+5.0
 	
 func get_defense():
-	return int(defense)
+	return defense
 	
 func set_special_defense(value):
 	special_defense = (((2.0*float(value)+float(spDefense_IVs)+(float(spDefense_EVs)/4.0))*float(level))/100.0)+5.0
 	
 func get_special_defense():
-	return int(special_defense)
+	return special_defense
 	
 func set_speed(value):
 	speed = (((2.0*float(value)+float(speed_IVs)+(float(speed_EVs)/4.0))*float(level))/100.0)+5.0
 	
 func get_speed():
-	return int(speed)
-
+	return speed
+	
 func set_nick(value):
 	nickname = value
 

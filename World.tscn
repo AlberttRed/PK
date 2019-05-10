@@ -7,7 +7,7 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
-actual_scene = "res://Pueblo_Paleta.tscn"
+actual_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -35,3 +35,4 @@ stream = ExtResource( 2 )
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/FadeIn = ExtResource( 3 )
 anims/FadeOut = ExtResource( 4 )
+

@@ -106,12 +106,12 @@ func exec(from = direction):
 		yield(GUI.msg, "finished")
 		GUI.start_battle(trainer.double_battle, GAME_DATA.trainer, trainer)#, null, trainer)
 	else:
-		player.can_interact = false
+		#player.can_interact = false
 		current_page.run()
 		yield(current_page, "finished")
 		if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
 			get_node("Sprite").frame = direction*4
-		player.can_interact = true
+		#player.can_interact = true
 	if eventTarget == ProjectSettings.get("Player"):
 		ProjectSettings.get("Player").active_events.erase(self)
 	GLOBAL.running_events.erase(self)

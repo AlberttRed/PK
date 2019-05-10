@@ -64,6 +64,8 @@ func run():
 		get_parent().cmd_move_on = true
 	set_physics_process(true)
 	print("dw")
+	if Target == ProjectSettings.get("Player"):
+		Target.can_interact = true
 	emit_signal("finished")
 
 func _physics_process(delta):
@@ -79,8 +81,8 @@ func _physics_process(delta):
 						yield(ProjectSettings.get("Player"), "jump")
 					set_physics_process(false)
 					Input.action_press("ui_" + move + "_event")
-					yield(ProjectSettings.get("Player"), "step")
-					Input.action_release("ui_" + move + "_event")
+					yield(ProjectSettings.get("Player"), "move")
+					#Input.action_release("ui_" + move + "_event")
 					i += 1
 			print("STOP ")
 			moved = true

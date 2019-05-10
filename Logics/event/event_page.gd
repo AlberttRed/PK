@@ -30,7 +30,7 @@ func exec_commands(commands):
 		elif (cmd.get_name().begins_with("cmd_msg")):
 			cmd.run()
 			yield(cmd, "finished")
-			if cmd.choices != null:
+			if cmd.choices != null and cmd.choices.size() != 0:# or (cmd.choices[0] != null and cmd.choices[0].size() != 0):
 				running_choice = true
 				print("exec commands from " + GLOBAL.get_choice_selected())
 				exec_commands(cmd.get_node(GLOBAL.get_choice_selected()).get_children())

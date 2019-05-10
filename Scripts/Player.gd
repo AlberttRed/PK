@@ -175,6 +175,10 @@ func _physics_process(delta):
 	else:
 		move_and_collide(direction * SPEED)
 		if get_position() == (startPos + Vector2(GRID * direction.x, GRID * direction.y)):
+			Input.action_release("ui_right_event")
+			Input.action_release("ui_left_event")
+			Input.action_release("ui_up_event")
+			Input.action_release("ui_down_event")
 			moving = false
 			GRID = 32
 			step2 = !step2
@@ -200,7 +204,8 @@ func _input(event):
 		GUI.show_menu()
 	
 	if event.is_action_pressed("ui_accept") and !GUI.is_visible():	
-		print(facing)
+		#print_pkmn_team()
+		print_pkmn_moves(0)
 		if facing == "up":
 			interact(intersect_point(get_position() + Vector2(0, -GRID)), 0)
 		elif facing == "left":
@@ -422,3 +427,13 @@ func intersect_point(position):
 	if weakref(ProjectSettings.get("Actual_Map")).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
 		return world.intersect_point(position, 32, [ProjectSettings.get("Actual_Map").get_area(get_tree())], 2147483647, true, true)
 	#return world.intersect_point(position, 32, [], 2147483647, true, true)
+	
+func print_pkmn_team():
+	for p in get_node("Trainer").get_children():
+		p.print_pokemon()
+
+func print_pkmn_moves(pokemon_party):
+	get_node("Trainer").get_child(pokemon_party).print_pokemon()
+	for m in get_node("Trainer").get_child(pokemon_party).movements:
+		print(m.get_name())
+		m.print_move()

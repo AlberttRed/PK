@@ -96,15 +96,16 @@ func make_wild(level):
 	if (learnable_indexes.size() > 4):
 		var moves = []
 		var idx = learnable_indexes.size()-4;
-		moves.push_back(learnable_indexes[idx])
-		moves.push_back(learnable_indexes[idx+1])
-		moves.push_back(learnable_indexes[idx+2])
+		moves.push_back(70)# FUERZA    learnable_indexes[idx])
+		moves.push_back(15)# CORTE     learnable_indexes[idx+1])
+		moves.push_back(57)# SURF      learnable_indexes[idx+2])
 		moves.push_back(learnable_indexes[idx+3])
 		learnable_indexes = moves
 
+	#if p.movements.size() == 0 or p.movements == []:
 	for idx in learnable_indexes:
 		var move = move_instance_script.new()
-		move.id = 1#learn_move_id[idx]
+		move.id = idx   #learn_move_id[idx]
 		move.pp = DB.moves[move.id].pp
 		move.max_pp = move.pp
 		p.movements.push_back(move)

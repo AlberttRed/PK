@@ -19,9 +19,10 @@ func _ready():
 func show_msg(text, wait = null, obj = null, sig="", choices_options = []):
 	player.can_interact = false
 	msg.accept = false
-	msg.show_msg(text,wait,obj,sig, choices_options.size() == 0 or choices_options[0] == null)
+	msg.show_msg(text,wait,obj,sig, choices_options.size() == 0 or (choices_options[0] == null or choices_options[0].size() == 0))
 	yield(msg, "finished")
-	if choices_options.size() > 0 and choices_options[0] != null:
+	if choices_options != [] and choices_options[0] != null and choices_options[0].size() > 0:
+		print("LELELEL: " + str(choices_options.size()))
 		show_choices(choices_options)
 		#clear_msg()
 	player.can_interact = true

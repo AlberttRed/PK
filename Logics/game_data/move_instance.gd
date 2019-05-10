@@ -31,3 +31,6 @@ func ShowAnimation(from,to):
 
 func is_type(type): return type == "Move" or .is_type(type)
 func    get_type(): return "Move"
+
+func print_move():
+	print(" ------ " + get_name() + " ------ ")
