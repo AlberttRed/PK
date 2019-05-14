@@ -1,12 +1,10 @@
 [gd_resource type="DynamicFont" load_steps=2 format=2]
 
-[ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://font/pkmnem.ttf" type="DynamicFontData" id=1]
 
 [resource]
-
 size = 26
-use_mipmaps = false
-use_filter = false
+outline_color = Color( 0.337255, 0.12549, 0.12549, 1 )
+use_mipmaps = true
 font_data = ExtResource( 1 )
-_sections_unfolded = [ "Font", "Settings" ]
 

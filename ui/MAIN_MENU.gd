@@ -24,33 +24,34 @@ func _ready():
 var index = 0
 
 func _process(delta):
-	if (INPUT.ui_down.is_action_just_pressed()): #Input.is_action_pressed("ui_down"):#
-		var i = index
-		while (i < entries.size()-1):
-			i+=1
-			if (entries[i].is_visible()):
-				index=i
-				break
-		update_styles()
-	if (INPUT.ui_up.is_action_just_pressed()):#Input.is_action_pressed("ui_up"):#(INPUT.up.is_action_just_pressed()):
-		var i = index
-		while (i > 0):
-			i-=1
-			if (entries[i].is_visible()):
-				index=i
-				break
-		update_styles()
-	
-	if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
-		emit_signal(signals[index])
-	if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
-		emit_signal("exit")
-	if (INPUT.ui_start.is_action_just_released() or start):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
-		start = true
-		if (INPUT.ui_start.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
+	if visible:
+		if (INPUT.ui_down.is_action_just_pressed()): #Input.is_action_pressed("ui_down"):#
+			var i = index
+			while (i < entries.size()-1):
+				i+=1
+				if (entries[i].is_visible()):
+					index=i
+					break
+			update_styles()
+		if (INPUT.ui_up.is_action_just_pressed()):#Input.is_action_pressed("ui_up"):#(INPUT.up.is_action_just_pressed()):
+			var i = index
+			while (i > 0):
+				i-=1
+				if (entries[i].is_visible()):
+					index=i
+					break
+			update_styles()
+		
+		if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
+			emit_signal(signals[index])
+		if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
 			emit_signal("exit")
-#	if Input.is_action_pressed("ui_start"):#(INPUT.ui_cancel.is_action_just_pressed()):
-#		emit_signal("exit")
+		if (INPUT.ui_start.is_action_just_released() or start):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
+			start = true
+			if (INPUT.ui_start.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
+				emit_signal("exit")
+	#	if Input.is_action_pressed("ui_start"):#(INPUT.ui_cancel.is_action_just_pressed()):
+	#		emit_signal("exit")
 
 		
 func update_styles():

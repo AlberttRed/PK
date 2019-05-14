@@ -13,105 +13,121 @@
 [ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot2.tres" type="Animation" id=11]
 [ext_resource path="res://ui/BattleAnimations/Stat_Up_Animation.tres" type="Animation" id=12]
 [ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=13]
-[ext_resource path="res://ui/BattlePictures/ball00.png" type="Texture" id=14]
+[ext_resource path="res://ui/Pictures/small_ball.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/Characters/trback002.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Battlebacks/enemybaseFieldSandNight.png" type="Texture" id=16]
-[ext_resource path="res://ui/BattleAnimations/1. Destructor/DestructorOK.tres" type="Animation" id=17]
-[ext_resource path="res://Sprites/Characters/trainer036.png" type="Texture" id=18]
-[ext_resource path="res://Sprites/Battlers/567.png" type="Texture" id=19]
-[ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=20]
-[ext_resource path="res://Sprites/Characters/trainer035.png" type="Texture" id=21]
-[ext_resource path="res://ui/BattlePictures/battlePlayerBoxS.png" type="Texture" id=22]
-[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=23]
-[ext_resource path="res://ui/BattlePictures/pixel.png" type="Texture" id=24]
-[ext_resource path="res://ui/BattlePictures/HPbar_overlay.png" type="Texture" id=25]
-[ext_resource path="res://ui/BattlePictures/EXPbar_overlay.png" type="Texture" id=26]
-[ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=27]
-[ext_resource path="res://ui/BattlePictures/battleStatuses.png" type="Texture" id=28]
-[ext_resource path="res://ui/BattlePictures/battlePlayerBoxD.png" type="Texture" id=29]
-[ext_resource path="res://ui/BattlePictures/battleFoeBoxS.png" type="Texture" id=30]
-[ext_resource path="res://ui/BattlePictures/battleFoeBoxD.png" type="Texture" id=31]
-[ext_resource path="res://ui/BattlePictures/battleLineup.png" type="Texture" id=32]
-[ext_resource path="res://ui/BattlePictures/ballnormal.png" type="Texture" id=33]
-[ext_resource path="res://ui/BattlePictures/ballstatus.PNG" type="Texture" id=34]
-[ext_resource path="res://ui/BattlePictures/ballfainted.png" type="Texture" id=35]
-[ext_resource path="res://ui/Battle_MessageBox_Style.tres" type="StyleBox" id=36]
-[ext_resource path="res://ui/Battle_Options_MessageBox_Style.tres" type="StyleBox" id=37]
-[ext_resource path="res://ui/HGSS_Font_Style.tres" type="DynamicFont" id=38]
-[ext_resource path="res://ui/BattlePictures/battleCommandButtons.png" type="Texture" id=39]
-[ext_resource path="res://ui/Battle_Moves_MessageBox_Style.tres" type="StyleBox" id=40]
-[ext_resource path="res://ui/BattlePictures/types.png" type="Texture" id=41]
-[ext_resource path="res://ui/BattlePictures/battleFightButtons.png" type="Texture" id=42]
-[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=43]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=44]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=45]
-[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=46]
-[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=47]
-[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=48]
-[ext_resource path="res://ui/BattlePictures/ball00_open.png" type="Texture" id=49]
+[ext_resource path="res://ui/Pictures/ball00.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Battlebacks/enemybaseFieldSandNight.png" type="Texture" id=17]
+[ext_resource path="res://ui/BattleAnimations/1. Destructor/DestructorOK.tres" type="Animation" id=18]
+[ext_resource path="res://Sprites/Characters/trainer036.png" type="Texture" id=19]
+[ext_resource path="res://Sprites/Battlers/567.png" type="Texture" id=20]
+[ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=21]
+[ext_resource path="res://Sprites/Characters/trainer035.png" type="Texture" id=22]
+[ext_resource path="res://ui/Pictures/battlePlayerBoxS.png" type="Texture" id=23]
+[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=24]
+[ext_resource path="res://ui/Pictures/pixel.png" type="Texture" id=25]
+[ext_resource path="res://ui/Pictures/HPbar_overlay.png" type="Texture" id=26]
+[ext_resource path="res://ui/Pictures/EXPbar_overlay.png" type="Texture" id=27]
+[ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=28]
+[ext_resource path="res://ui/Pictures/battleStatuses.png" type="Texture" id=29]
+[ext_resource path="res://ui/Pictures/battlePlayerBoxD.png" type="Texture" id=30]
+[ext_resource path="res://ui/Pictures/battleFoeBoxS.png" type="Texture" id=31]
+[ext_resource path="res://ui/Pictures/battleFoeBoxD.png" type="Texture" id=32]
+[ext_resource path="res://ui/Pictures/battleLineup.png" type="Texture" id=33]
+[ext_resource path="res://ui/Pictures/ballnormal.png" type="Texture" id=34]
+[ext_resource path="res://ui/Pictures/ballstatus.PNG" type="Texture" id=35]
+[ext_resource path="res://ui/Pictures/ballfainted.png" type="Texture" id=36]
+[ext_resource path="res://ui/Battle_MessageBox_Style.tres" type="StyleBox" id=37]
+[ext_resource path="res://ui/Battle_Options_MessageBox_Style.tres" type="StyleBox" id=38]
+[ext_resource path="res://ui/HGSS_Font_Style.tres" type="DynamicFont" id=39]
+[ext_resource path="res://ui/Pictures/battleCommandButtons.png" type="Texture" id=40]
+[ext_resource path="res://ui/Battle_Moves_MessageBox_Style.tres" type="StyleBox" id=41]
+[ext_resource path="res://ui/Pictures/types.png" type="Texture" id=42]
+[ext_resource path="res://ui/Pictures/battleFightButtons.png" type="Texture" id=43]
+[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=44]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=45]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=46]
+[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=47]
+[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=48]
+[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=49]
 [ext_resource path="res://ui/BattleAnimations/OverlayStatDown.png" type="Texture" id=50]
 [ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=51]
 
 [sub_resource type="DynamicFont" id=1]
 size = 26
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 
 [sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 39 )
-region_rect = Rect2( 0, 0, 130, 46 )
+texture = ExtResource( 40 )
+region_rect = Rect2( 0, 0, 260, 414 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 39 )
-region_rect = Rect2( 0, 46, 130, 46 )
+[sub_resource type="StyleBoxTexture" id=33]
+texture = ExtResource( 40 )
+region_rect = Rect2( 0, 46, 260, 414 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 39 )
-region_rect = Rect2( 0, 92, 130, 46 )
+texture = ExtResource( 40 )
+region_rect = Rect2( 0, 92, 260, 414 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 39 )
-region_rect = Rect2( 0, 138, 130, 46 )
+texture = ExtResource( 40 )
+region_rect = Rect2( 0, 138, 260, 414 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="DynamicFont" id=6]
 size = 26
 extra_spacing_space = -10
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 
 [sub_resource type="DynamicFont" id=7]
 size = 26
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 
 [sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 42 )
-region_rect = Rect2( 0, 828, 192, 46 )
+texture = ExtResource( 43 )
+region_rect = Rect2( 0, 0, 384, 874 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="DynamicFont" id=9]
 size = 22
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 42 )
-region_rect = Rect2( 0, 828, 192, 46 )
+[sub_resource type="StyleBoxTexture" id=34]
+texture = ExtResource( 43 )
+region_rect = Rect2( 0, 0, 384, 874 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="DynamicFont" id=11]
 size = 22
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 42 )
-region_rect = Rect2( 0, 828, 192, 46 )
+[sub_resource type="StyleBoxTexture" id=35]
+texture = ExtResource( 43 )
+region_rect = Rect2( 0, 0, 384, 874 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="DynamicFont" id=13]
 size = 22
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 42 )
-region_rect = Rect2( 0, 828, 192, 46 )
+[sub_resource type="StyleBoxTexture" id=36]
+texture = ExtResource( 43 )
+region_rect = Rect2( 0, 0, 384, 874 )
+axis_stretch_horizontal = 1
+axis_stretch_vertical = 1
 
 [sub_resource type="DynamicFont" id=15]
 size = 22
-font_data = ExtResource( 27 )
+font_data = ExtResource( 28 )
 
 [sub_resource type="AtlasTexture" id=16]
 
@@ -127,7 +143,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 20 ) ]
+"values": [ ExtResource( 21 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -139,7 +155,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 43 ), SubResource( 16 ) ]
+"values": [ ExtResource( 44 ), SubResource( 16 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -283,7 +299,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 20 ) ]
+"values": [ ExtResource( 21 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -295,7 +311,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 43 ), SubResource( 16 ) ]
+"values": [ ExtResource( 44 ), SubResource( 16 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -382,7 +398,7 @@ tracks/2/keys = {
 "times": PoolRealArray( 0, 1.1 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 14 ), ExtResource( 49 ) ]
+"values": [ null, null ]
 }
 tracks/3/type = "value"
 tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:scale")
@@ -1074,7 +1090,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 20 ) ]
+"values": [ ExtResource( 21 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -1151,7 +1167,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 20 ) ]
+"values": [ ExtResource( 21 ) ]
 }
 tracks/1/type = "value"
 tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
@@ -1281,7 +1297,6 @@ __meta__ = {
 }
 
 [node name="playerBase" type="Sprite" parent="Background"]
-editor/display_folded = true
 position = Vector2( -128, 240 )
 texture = ExtResource( 3 )
 centered = false
@@ -1298,7 +1313,7 @@ position = Vector2( 0, 72 )
 
 [node name="Sprite" type="Sprite" parent="Background/playerBase/pkmn_player"]
 material = ExtResource( 5 )
-position = Vector2( 208, -16 )
+position = Vector2( 156, -16 )
 texture = ExtResource( 6 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/playerBase/pkmn_player"]
@@ -1317,7 +1332,9 @@ centered = false
 hframes = 5
 
 [node name="pokeball" type="Sprite" parent="Background/playerBase/pkmn_player"]
-position = Vector2( -52.287, 7.54276 )
+visible = false
+position = Vector2( 154.543, -7.79248 )
+rotation = 7.85398
 texture = ExtResource( 14 )
 
 [node name="pkmn_player_ally" type="Node2D" parent="Background/playerBase"]
@@ -1345,11 +1362,11 @@ hframes = 5
 
 [node name="pokeball" type="Sprite" parent="Background/playerBase/pkmn_player_ally"]
 position = Vector2( -157.457, 79.6429 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 
 [node name="enemyBase" type="Sprite" parent="Background"]
 position = Vector2( 256, 112 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 centered = false
 script = ExtResource( 4 )
 __meta__ = {
@@ -1360,7 +1377,7 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/enemyBase/pkmn_enemy_ally"]
 anims/Destructor = ExtResource( 7 )
-anims/DestructorOK = ExtResource( 17 )
+anims/DestructorOK = ExtResource( 18 )
 anims/Hurt = ExtResource( 8 )
 anims/Stat_Up_Animation = ExtResource( 12 )
 
@@ -1370,22 +1387,22 @@ position = Vector2( 73.5032, 85.6775 )
 [node name="trainer" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
 visible = false
 position = Vector2( 84, -58 )
-texture = ExtResource( 18 )
+texture = ExtResource( 19 )
 centered = false
 region_rect = Rect2( 88, 59, 95, 45 )
 
 [node name="Sprite" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
 visible = false
 position = Vector2( 176, -34 )
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 
 [node name="pokeball" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
 visible = false
 position = Vector2( 76, 24 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 
 [node name="pkmn_enemy" type="Node2D" parent="Background/enemyBase"]
-material = ExtResource( 20 )
+material = ExtResource( 21 )
 use_parent_material = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Background/enemyBase/pkmn_enemy"]
@@ -1398,25 +1415,25 @@ position = Vector2( 70, 89 )
 
 [node name="Sprite" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
 position = Vector2( 128, -34 )
-texture = ExtResource( 19 )
+texture = ExtResource( 20 )
 
 [node name="pokeball" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
 visible = false
 position = Vector2( -76, 24 )
-texture = ExtResource( 14 )
+texture = ExtResource( 16 )
 
 [node name="trainer" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
 visible = false
 position = Vector2( 38, -58 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 centered = false
 region_rect = Rect2( 88, 59, 95, 45 )
 
 [node name="HPbar_playerS" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( 650, 236 )
-texture = ExtResource( 22 )
-script = ExtResource( 23 )
+texture = ExtResource( 23 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1428,7 +1445,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="health" type="TextureRect" parent="Background/HPbar_playerS/health_bar"]
@@ -1437,12 +1454,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="Background/HPbar_playerS/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="exp_bar" type="Node2D" parent="Background/HPbar_playerS"]
 
@@ -1451,7 +1468,7 @@ margin_left = -90.0
 margin_top = 33.0
 margin_right = 102.0
 margin_bottom = 39.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="exp" type="TextureRect" parent="Background/HPbar_playerS/exp_bar"]
@@ -1460,12 +1477,12 @@ margin_left = -90.0
 margin_top = 33.0
 margin_right = 102.0
 margin_bottom = 39.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="Background/HPbar_playerS/exp_bar"]
 position = Vector2( 6, 37 )
-texture = ExtResource( 26 )
+texture = ExtResource( 27 )
 
 [node name="lblActualHP" type="Label" parent="Background/HPbar_playerS"]
 margin_left = -4.0
@@ -1511,15 +1528,15 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="Background/HPbar_playerS"]
 position = Vector2( -50, 1 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
 
 [node name="HPbar_playerD" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( 642, 185 )
-texture = ExtResource( 29 )
-script = ExtResource( 23 )
+texture = ExtResource( 30 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1532,7 +1549,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="health" type="TextureRect" parent="Background/HPbar_playerD/health_bar"]
@@ -1541,12 +1558,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="Background/HPbar_playerD/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="lblLevel" type="Label" parent="Background/HPbar_playerD"]
 margin_left = 40.0
@@ -1571,7 +1588,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="Background/HPbar_playerD"]
 position = Vector2( -50, 12.6415 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
 
@@ -1590,8 +1607,8 @@ margin_bottom = -245.0
 [node name="HPbar_playerD2" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( 653, 239 )
-texture = ExtResource( 29 )
-script = ExtResource( 23 )
+texture = ExtResource( 30 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1604,7 +1621,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="health" type="TextureRect" parent="Background/HPbar_playerD2/health_bar"]
@@ -1613,12 +1630,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="Background/HPbar_playerD2/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="lblLevel" type="Label" parent="Background/HPbar_playerD2"]
 margin_left = 40.0
@@ -1643,7 +1660,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="Background/HPbar_playerD2"]
 position = Vector2( -50, 12.6415 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
 
@@ -1662,8 +1679,8 @@ margin_bottom = -278.0
 [node name="HPbar_enemyS" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( -140, 70 )
-texture = ExtResource( 30 )
-script = ExtResource( 23 )
+texture = ExtResource( 31 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1677,7 +1694,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="health" type="TextureRect" parent="Background/HPbar_enemyS/health_bar"]
@@ -1686,12 +1703,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="Background/HPbar_enemyS/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="lblLevel" type="Label" parent="Background/HPbar_enemyS"]
 margin_left = 24.0
@@ -1716,7 +1733,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="Background/HPbar_enemyS"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
 
@@ -1735,8 +1752,8 @@ margin_bottom = -109.0
 [node name="HPbar_enemyD" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( -134, 36 )
-texture = ExtResource( 31 )
-script = ExtResource( 23 )
+texture = ExtResource( 32 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1749,7 +1766,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="health" type="TextureRect" parent="Background/HPbar_enemyD/health_bar"]
@@ -1758,12 +1775,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="Background/HPbar_enemyD/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="lblLevel" type="Label" parent="Background/HPbar_enemyD"]
 margin_left = 24.0
@@ -1788,7 +1805,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="Background/HPbar_enemyD"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
 
@@ -1807,8 +1824,8 @@ margin_bottom = -75.0
 [node name="HPbar_enemyD2" type="Sprite" parent="Background"]
 editor/display_folded = true
 position = Vector2( -143, 90 )
-texture = ExtResource( 31 )
-script = ExtResource( 23 )
+texture = ExtResource( 32 )
+script = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1822,7 +1839,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="health" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar"]
@@ -1831,12 +1848,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 24 )
+texture = ExtResource( 25 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="Background/HPbar_enemyD2/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 25 )
+texture = ExtResource( 26 )
 
 [node name="lblLevel" type="Label" parent="Background/HPbar_enemyD2"]
 margin_left = 24.0
@@ -1861,7 +1878,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="Background/HPbar_enemyD2"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 28 )
+texture = ExtResource( 29 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
 
@@ -1887,31 +1904,31 @@ __meta__ = {
 [node name="party_bar" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -339.5, 23.5 )
 rotation = 3.14159
-texture = ExtResource( 32 )
+texture = ExtResource( 33 )
 
 [node name="ball1" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -502, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="ball2" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -470, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="ball3" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -438, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="ball4" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -406, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="ball5" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -490.5, 4.5 )
-texture = ExtResource( 34 )
+texture = ExtResource( 35 )
 
 [node name="ball6" type="Sprite" parent="Background/playerParty"]
 position = Vector2( -342, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="enemyParty" type="Node2D" parent="Background"]
 editor/display_folded = true
@@ -1922,50 +1939,49 @@ __meta__ = {
 
 [node name="party_bar" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 21.522, 23.3062 )
-texture = ExtResource( 32 )
+texture = ExtResource( 33 )
 
 [node name="ball1" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 182, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="ball2" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 150, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="ball3" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 118, 4.5 )
-texture = ExtResource( 34 )
+texture = ExtResource( 35 )
 
 [node name="ball4" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 86, 4.5 )
-texture = ExtResource( 33 )
+texture = ExtResource( 34 )
 
 [node name="ball5" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 54, 4.5 )
 rotation = 2.49671e-006
-texture = ExtResource( 35 )
+texture = ExtResource( 36 )
 
 [node name="ball6" type="Sprite" parent="Background/enemyParty"]
 position = Vector2( 22, 4.5 )
 rotation = 12.5664
-texture = ExtResource( 35 )
+texture = ExtResource( 36 )
 
 [node name="Panel_MessageBox" type="Panel" parent="."]
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-custom_styles/panel = ExtResource( 36 )
+custom_styles/panel = ExtResource( 37 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Panel_Commands" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-custom_styles/panel = ExtResource( 37 )
+custom_styles/panel = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1975,7 +1991,7 @@ margin_left = 21.0
 margin_top = 24.0
 margin_right = 229.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 38 )
+custom_fonts/font = ExtResource( 39 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = 14
 text = "¿Qué debería hacer Pikachu?"
@@ -2001,7 +2017,7 @@ margin_bottom = 94.0
 focus_neighbour_top = NodePath("../Luchar")
 focus_neighbour_right = NodePath("../Huir")
 focus_mode = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 33 )
 
 [node name="Mochila" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 378.0
@@ -2024,12 +2040,11 @@ focus_mode = 2
 custom_styles/panel = SubResource( 5 )
 
 [node name="Panel_Moves" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-custom_styles/panel = ExtResource( 40 )
+custom_styles/panel = ExtResource( 41 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2069,12 +2084,14 @@ valign = 1
 
 [node name="MoveType" type="Sprite" parent="Panel_Moves"]
 position = Vector2( 448, 36 )
-texture = ExtResource( 41 )
+texture = ExtResource( 42 )
 vframes = 24
 
 [node name="Moves" type="Node2D" parent="Panel_Moves"]
+editor/display_folded = true
 
 [node name="Move1" type="Panel" parent="Panel_Moves/Moves"]
+editor/display_folded = true
 visible = false
 margin_left = 4.0
 margin_top = 6.0
@@ -2108,7 +2125,7 @@ margin_bottom = 52.0
 focus_neighbour_left = NodePath("../Move1")
 focus_neighbour_bottom = NodePath("../Move4")
 focus_mode = 2
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 34 )
 
 [node name="lblMove2" type="Label" parent="Panel_Moves/Moves/Move2"]
 margin_left = 21.0
@@ -2133,7 +2150,7 @@ margin_bottom = 94.0
 focus_neighbour_top = NodePath("../Move1")
 focus_neighbour_right = NodePath("../Move4")
 focus_mode = 2
-custom_styles/panel = SubResource( 12 )
+custom_styles/panel = SubResource( 35 )
 
 [node name="lblMove3" type="Label" parent="Panel_Moves/Moves/Move3"]
 margin_left = 20.0
@@ -2158,7 +2175,7 @@ margin_bottom = 95.0
 focus_neighbour_left = NodePath("../Move3")
 focus_neighbour_top = NodePath("../Move2")
 focus_mode = 2
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 36 )
 
 [node name="lblMove4" type="Label" parent="Panel_Moves/Moves/Move4"]
 margin_left = 20.0
@@ -2175,15 +2192,15 @@ __meta__ = {
 
 [node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
 anims/Heal = SubResource( 17 )
-anims/ShowPokemon_enemy = ExtResource( 44 )
-anims/ShowPokemon_player = ExtResource( 45 )
+anims/ShowPokemon_enemy = ExtResource( 45 )
+anims/ShowPokemon_player = ExtResource( 46 )
 anims/ShowPokemon_player_wild = SubResource( 18 )
-anims/ShowTrainers_parties_animation = ExtResource( 46 )
+anims/ShowTrainers_parties_animation = ExtResource( 47 )
 anims/Show_Pokemon_back = SubResource( 19 )
 anims/Show_Pokemon_prova = SubResource( 20 )
-anims/Stat_Down = ExtResource( 47 )
+anims/Stat_Down = ExtResource( 48 )
 anims/Stat_Up = ExtResource( 12 )
-anims/Wild_Start = ExtResource( 48 )
+anims/Wild_Start = ExtResource( 49 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/Heal = SubResource( 21 )

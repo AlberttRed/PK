@@ -7,10 +7,11 @@ onready var menu = get_node("MAIN_MENU")
 onready var battle = get_node("BATTLE")
 onready var player=ProjectSettings.get("Player")
 onready var chs = get_node("CHOICES")
+onready var party = get_node("PARTY")
 
 func _ready():
 	add_user_signal("finished")
-#menu.connect("option", self, "_on_menu_options")
+	menu.connect("pokemon", self, "show_party")
 #	options.connect("text_speed_changed", self, "_on_text_speed_changed")
 #
 #func _init():
@@ -62,7 +63,7 @@ func show_menu():
 	#menu.set_process(false)
 
 func is_visible():
-	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible()#|| options.is_visible()
+	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible() || party.is_visible()#|| options.is_visible()
 
 #func _on_text_speed_changed(speed):
 #	get_node("MSG/Timer 2").set_wait_time(CONST.TEXT_SPEEDS[speed])
@@ -74,6 +75,17 @@ func is_visible():
 #	yield(options, "exit")
 #	menu.show()
 #	menu.set_process(true)
+
+func show_party():
+	menu.hide()
+	menu.set_process(false)
+	party.show_party()
+	party.set_process(true)
+	yield(party,"salir")
+	party.hide_party()
+	party.set_process(false)
+	menu.show()
+	menu.set_process(true)
 
 func start_battle(double, trainer1, trainer2, trainer3 = null, trainer4 = null):#wild_encounter(id, level):
 	battle.show()

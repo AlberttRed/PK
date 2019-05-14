@@ -65,6 +65,31 @@ is_playable = true
 
 [node name="pkm1" parent="Trainer" index="0"]
 pkm_id = 1
+hp = 10
+max_hp = 20
+
+[node name="pkm2" parent="Trainer" index="1"]
+gender = 1
+hp = 20
+max_hp = 20
+
+[node name="pkm3" parent="Trainer" index="2"]
+hp = 25
+max_hp = 20
+
+[node name="pkm4" parent="Trainer" index="3"]
+gender = 1
+hp = 25
+max_hp = 20
+
+[node name="pkm5" parent="Trainer" index="4"]
+hp = 21
+max_hp = 100
+
+[node name="pkm6" parent="Trainer" index="5"]
+gender = 1
+hp = 13
+max_hp = 20
 
 
 [editable path="Trainer"]

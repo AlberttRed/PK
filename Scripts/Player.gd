@@ -40,10 +40,14 @@ func _init():
 	add_user_signal("step")
 	add_user_signal("jump")
 	can_interact = true
-	
+		
 func _ready():
+	
 	trainer = get_node("Trainer")
 	GAME_DATA.trainer = trainer
+	for p in trainer.get_children():
+		GAME_DATA.party.push_back(p)
+
 	get_node("Sprite").visible = !Transparent
 	world = get_world_2d().get_direct_space_state()
 	sprite = get_node("Sprite")
