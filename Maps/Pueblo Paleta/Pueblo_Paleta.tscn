@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tilesets/TileSet_Outdoor_GBA.tres" type="TileSet" id=2]
@@ -13,24 +13,24 @@
 [ext_resource path="res://Sprites/trchar042.png" type="Texture" id=11]
 [ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=12]
 [ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Sprites/door1.png" type="Texture" id=14]
-[ext_resource path="res://animations/Open_door.tres" type="Animation" id=15]
-[ext_resource path="res://Logics/event/commands/cmd_play_animation.tscn" type="PackedScene" id=16]
-[ext_resource path="res://animations/Close_door.tres" type="Animation" id=17]
-[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=18]
-[ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Sprites/door2.png" type="Texture" id=20]
-[ext_resource path="res://Sprites/Characters/Object tree 1.png" type="Texture" id=21]
-[ext_resource path="res://cmd_cut.tscn" type="PackedScene" id=22]
-[ext_resource path="res://Logics/event/roca.scn" type="PackedScene" id=23]
-[ext_resource path="res://Area2D.gd" type="Script" id=24]
-[ext_resource path="res://Logics/effect_areas/ledge_area.scn" type="PackedScene" id=25]
-[ext_resource path="res://Logics/effect_areas/surf_area.scn" type="PackedScene" id=26]
+[ext_resource path="res://Cartell.png" type="Texture" id=14]
+[ext_resource path="res://Sprites/door1.png" type="Texture" id=15]
+[ext_resource path="res://animations/Open_door.tres" type="Animation" id=16]
+[ext_resource path="res://Logics/event/commands/cmd_play_animation.tscn" type="PackedScene" id=17]
+[ext_resource path="res://animations/Close_door.tres" type="Animation" id=18]
+[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=19]
+[ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=20]
+[ext_resource path="res://Sprites/door2.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Characters/Object tree 1.png" type="Texture" id=22]
+[ext_resource path="res://cmd_cut.tscn" type="PackedScene" id=23]
+[ext_resource path="res://Logics/event/roca.scn" type="PackedScene" id=24]
+[ext_resource path="res://Area2D.gd" type="Script" id=25]
+[ext_resource path="res://Logics/effect_areas/ledge_area.scn" type="PackedScene" id=26]
+[ext_resource path="res://Logics/effect_areas/surf_area.scn" type="PackedScene" id=27]
 
 [sub_resource type="Animation" id=1]
-resource_name = "Close_door"
-length = 0.5
-step = 0.15
+resource_name = "walk_down"
+length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
@@ -38,15 +38,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 2, 1, 0 ]
+"values": [ 1, 2, 3, 0 ]
 }
 
 [sub_resource type="Animation" id=2]
-resource_name = "Close_door"
-length = 0.5
+resource_name = "walk_down_step1"
+length = 0.3
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -55,15 +55,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 3, 2, 1, 0 ]
+"values": [ 2, 1, 2 ]
 }
 
 [sub_resource type="Animation" id=3]
-resource_name = "Open_door"
-length = 0.5
+resource_name = "walk_down_step2"
+length = 0.3
 step = 0.15
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -72,14 +72,159 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 0, 1, 2, 3 ]
+"values": [ 2, 3, 2 ]
 }
 
 [sub_resource type="Animation" id=4]
-resource_name = "Close_door"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 6, 7, 4 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "walk_left_step1"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 5, 6 ]
+}
+
+[sub_resource type="Animation" id=6]
+resource_name = "walk_left_step2"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 6 ]
+}
+
+[sub_resource type="Animation" id=7]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 9, 10, 11, 8 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_right_step1"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 9, 10 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "walk_right_step2"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 10 ]
+}
+
+[sub_resource type="Animation" id=10]
+length = 0.3
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 13, 14, 15, 12 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "walk_up_step1"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 13, 14 ]
+}
+
+[sub_resource type="Animation" id=12]
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 15, 12 ]
+}
+
+[sub_resource type="Animation" id=13]
 length = 0.5
 step = 0.15
 tracks/0/type = "value"
@@ -95,8 +240,23 @@ tracks/0/keys = {
 "values": [ 3, 2, 1, 0 ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "Open_door"
+[sub_resource type="Animation" id=14]
+length = 0.5
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=15]
 length = 0.5
 step = 0.15
 tracks/0/type = "value"
@@ -112,7 +272,39 @@ tracks/0/keys = {
 "values": [ 0, 1, 2, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=6]
+[sub_resource type="Animation" id=16]
+length = 0.5
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 3, 2, 1, 0 ]
+}
+
+[sub_resource type="Animation" id=17]
+length = 0.5
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3, 0.45 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="RectangleShape2D" id=18]
 extents = Vector2( 29.9707, 29.7674 )
 
 [node name="Pueblo_Paleta" type="Node2D"]
@@ -159,7 +351,7 @@ text = "lyrrr"
 choices = [  ]
 
 [node name="cmd_move" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 7 )]
-nodePath = NodePath("../../..")
+nodePath = NodePath("")
 movesArray = [ "left", "up", "up", "up", "right", "up", "up", "up", "up", "up" ]
 
 [node name="cmd_wait_move_completion" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 8 )]
@@ -173,7 +365,6 @@ Transparent = true
 nodePath = NodePath("../../..")
 
 [node name="Chica" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( -208, 144 )
 collision_layer = 3
 motion/sync_to_physics = true
@@ -211,20 +402,6 @@ choices = [  ]
 text = "dsds"
 choices = [  ]
 
-[node name="EVENT3" parent="Eventos_" instance=ExtResource( 12 )]
-editor/display_folded = true
-position = Vector2( -50, -80 )
-scale = Vector2( 0.5, 0.5 )
-gravity_point = true
-Pasable = false
-PlayerTouch = true
-
-[node name="event_page" parent="Eventos_/EVENT3/pages" index="0" instance=ExtResource( 5 )]
-
-[node name="cmd_move" parent="Eventos_/EVENT3/pages/event_page" instance=ExtResource( 7 )]
-nodePath = NodePath("")
-movesArray = [ "right", "down", "down", "right" ]
-
 [node name="EVENT2" parent="Eventos_" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( -240, -50 )
@@ -238,6 +415,50 @@ PlayerTouch = true
 world_scene = ""
 Map_XY = Vector2( -16, 48 )
 
+[node name="EVENT3" parent="Eventos_" instance=ExtResource( 12 )]
+position = Vector2( -50, -80 )
+scale = Vector2( 0.5, 0.5 )
+gravity_point = true
+Imagen = ExtResource( 14 )
+PlayerTouch = true
+
+[node name="event_page" parent="Eventos_/EVENT3/pages" index="0" instance=ExtResource( 5 )]
+
+[node name="cmd_move" parent="Eventos_/EVENT3/pages/event_page" instance=ExtResource( 7 )]
+nodePath = NodePath("../../../../Chico2")
+movesArray = [ "left", "left", "down", "right", "up", "left" ]
+
+[node name="Chico2" parent="Eventos_" instance=ExtResource( 3 )]
+position = Vector2( -80, -80 )
+Imagen = ExtResource( 4 )
+PlayerTouch = true
+sprite_cols = 4
+sprite_rows = 4
+
+[node name="Area2D" parent="Eventos_/Chico2" index="0"]
+editor/display_folded = false
+collision_layer = 2
+
+[node name="event_page" parent="Eventos_/Chico2/pages" index="0" instance=ExtResource( 5 )]
+
+[node name="cmd_move" parent="Eventos_/Chico2/pages/event_page" instance=ExtResource( 7 )]
+nodePath = NodePath("../../..")
+movesArray = [ "left", "left", "down", "right", "up", "left" ]
+
+[node name="AnimationPlayer" parent="Eventos_/Chico2" index="3"]
+anims/walk_down = SubResource( 1 )
+anims/walk_down_step1 = SubResource( 2 )
+anims/walk_down_step2 = SubResource( 3 )
+anims/walk_left = SubResource( 4 )
+anims/walk_left_step1 = SubResource( 5 )
+anims/walk_left_step2 = SubResource( 6 )
+anims/walk_right = SubResource( 7 )
+anims/walk_right_step1 = SubResource( 8 )
+anims/walk_right_step2 = SubResource( 9 )
+anims/walk_up = SubResource( 10 )
+anims/walk_up_step1 = SubResource( 11 )
+anims/walk_up_step2 = SubResource( 12 )
+
 [node name="Porta_Lab" parent="Eventos_" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 144, 80 )
@@ -245,17 +466,17 @@ Pasable = false
 PlayerTouch = true
 
 [node name="Sprite" parent="Eventos_/Porta_Lab" index="1"]
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 vframes = 4
 
 [node name="AnimationPlayer" parent="Eventos_/Porta_Lab" index="2"]
-anims/Close_door = SubResource( 1 )
-anims/Open_door = ExtResource( 15 )
+anims/Close_door = SubResource( 13 )
+anims/Open_door = ExtResource( 16 )
 
 [node name="event_page" parent="Eventos_/Porta_Lab/pages" index="0" instance=ExtResource( 5 )]
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 16 )]
-animation = ExtResource( 15 )
+[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 17 )]
+animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 9 )]
@@ -275,11 +496,11 @@ nodePath = NodePath("")
 Transparent = true
 nodePath = NodePath("")
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 16 )]
-animation = ExtResource( 17 )
+[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 17 )]
+animation = ExtResource( 18 )
 wait_finished = true
 
-[node name="cmd_FadeOut" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 18 )]
+[node name="cmd_FadeOut" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 19 )]
 speed = 4
 
 [node name="cmd_setTransparent2" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 10 )]
@@ -293,8 +514,8 @@ Map_XY = Vector2( 16, 176 )
 [node name="event_page2" parent="Eventos_/Porta_Lab/pages" index="1" instance=ExtResource( 5 )]
 condition1 = "exit_door"
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 16 )]
-animation = ExtResource( 15 )
+[node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 17 )]
+animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_set_through" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 9 )]
@@ -314,31 +535,33 @@ movesArray = [ "down" ]
 [node name="cmd_set_through2" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 9 )]
 nodePath = NodePath("")
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 16 )]
-animation = ExtResource( 17 )
+[node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 17 )]
+animation = ExtResource( 18 )
 wait_finished = true
 
-[node name="cmd_set_globalVariable" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 19 )]
+[node name="cmd_set_globalVariable" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 20 )]
 Gvariable_name = "exit_door"
 
 [node name="Porta_CasaRival" parent="Eventos_" instance=ExtResource( 12 )]
+editor/display_folded = true
 position = Vector2( 112, -112 )
 Pasable = false
 PlayerTouch = true
 
 [node name="Sprite" parent="Eventos_/Porta_CasaRival" index="1"]
 z_index = -1
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 vframes = 4
 
 [node name="AnimationPlayer" parent="Eventos_/Porta_CasaRival" index="2"]
-anims/Close_door = SubResource( 2 )
-anims/Open_door = SubResource( 3 )
+anims/Close_door = SubResource( 14 )
+anims/Open_door = SubResource( 15 )
 
 [node name="event_page" parent="Eventos_/Porta_CasaRival/pages" index="0" instance=ExtResource( 5 )]
+editor/display_folded = true
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 16 )]
-animation = ExtResource( 15 )
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 17 )]
+animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_set_through" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 9 )]
@@ -358,11 +581,11 @@ nodePath = NodePath("")
 Transparent = true
 nodePath = NodePath("")
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 16 )]
-animation = ExtResource( 17 )
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 17 )]
+animation = ExtResource( 18 )
 wait_finished = true
 
-[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 18 )]
+[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 19 )]
 speed = 4
 
 [node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 10 )]
@@ -380,8 +603,8 @@ condition1 = "exit_door"
 Through = true
 nodePath = NodePath("")
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 16 )]
-animation = ExtResource( 15 )
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 17 )]
+animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 10 )]
@@ -392,14 +615,14 @@ nodePath = NodePath("")
 nodePath = NodePath("")
 movesArray = [ "down" ]
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 16 )]
-animation = ExtResource( 17 )
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 17 )]
+animation = ExtResource( 18 )
 wait_finished = true
 
 [node name="cmd_set_through2" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 9 )]
 nodePath = NodePath("")
 
-[node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 19 )]
+[node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 20 )]
 Gvariable_name = "exit_door"
 
 [node name="Porta_CasaProta" parent="Eventos_" instance=ExtResource( 12 )]
@@ -409,18 +632,18 @@ Pasable = false
 PlayerTouch = true
 
 [node name="Sprite" parent="Eventos_/Porta_CasaProta" index="1"]
-texture = ExtResource( 20 )
+texture = ExtResource( 21 )
 vframes = 4
 
 [node name="AnimationPlayer" parent="Eventos_/Porta_CasaProta" index="2"]
-anims/Close_door = SubResource( 4 )
-anims/Open_door = SubResource( 5 )
+anims/Close_door = SubResource( 16 )
+anims/Open_door = SubResource( 17 )
 
 [node name="event_page" parent="Eventos_/Porta_CasaProta/pages" index="0" instance=ExtResource( 5 )]
 editor/display_folded = true
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 16 )]
-animation = ExtResource( 15 )
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 17 )]
+animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 9 )]
@@ -440,11 +663,11 @@ nodePath = NodePath("")
 Transparent = true
 nodePath = NodePath("")
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 16 )]
-animation = ExtResource( 17 )
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 17 )]
+animation = ExtResource( 18 )
 wait_finished = true
 
-[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 18 )]
+[node name="cmd_FadeOut" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 19 )]
 speed = 4
 
 [node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 10 )]
@@ -463,8 +686,8 @@ condition1 = "exit_door"
 Through = true
 nodePath = NodePath("")
 
-[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 16 )]
-animation = ExtResource( 15 )
+[node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 17 )]
+animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 10 )]
@@ -475,21 +698,21 @@ nodePath = NodePath("")
 nodePath = NodePath("")
 movesArray = [ "down" ]
 
-[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 16 )]
-animation = ExtResource( 17 )
+[node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 17 )]
+animation = ExtResource( 18 )
 wait_finished = true
 
 [node name="cmd_set_through2" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 9 )]
 nodePath = NodePath("")
 
-[node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 19 )]
+[node name="cmd_set_globalVariable" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 20 )]
 Gvariable_name = "exit_door"
 
 [node name="Arbol" parent="Eventos_" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( -82, 48 )
 Pasable = false
-Imagen = ExtResource( 21 )
+Imagen = ExtResource( 22 )
 Interact = true
 DirectionFix = true
 sprite_cols = 4
@@ -501,9 +724,9 @@ position = Vector2( 1.52588e-005, 3.8147e-006 )
 
 [node name="event_page" parent="Eventos_/Arbol/pages" index="0" instance=ExtResource( 5 )]
 
-[node name="cmd_cut" parent="Eventos_/Arbol/pages/event_page" instance=ExtResource( 22 )]
+[node name="cmd_cut" parent="Eventos_/Arbol/pages/event_page" instance=ExtResource( 23 )]
 
-[node name="Roca" parent="Eventos_" instance=ExtResource( 23 )]
+[node name="Roca" parent="Eventos_" instance=ExtResource( 24 )]
 editor/display_folded = true
 position = Vector2( 144, 112 )
 
@@ -529,18 +752,18 @@ tile_data = PoolIntArray( -720908, 11, 0, -720906, 11, 0, -720904, 11, 0, -72090
 visible = false
 position = Vector2( 6.00001, -56 )
 scale = Vector2( 12.8125, 10.75 )
-script = ExtResource( 24 )
+script = ExtResource( 25 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
 position = Vector2( 0, 2.97674 )
-shape = SubResource( 6 )
+shape = SubResource( 18 )
 
 [node name="Pasable" type="Node2D" parent="Area2D_"]
 
 [node name="EncounterAreas_" type="Node2D" parent="."]
 editor/display_folded = true
 
-[node name="ledge_area" parent="EncounterAreas_" instance=ExtResource( 25 )]
+[node name="ledge_area" parent="EncounterAreas_" instance=ExtResource( 26 )]
 editor/display_folded = true
 position = Vector2( -10, 10 )
 cells_jump = 2
@@ -551,13 +774,12 @@ polygon = PoolVector2Array( -20, -10, -20, 20, 10, 20, 10, -10 )
 
 [node name="PlayerTouch" type="Node2D" parent="EncounterAreas_/ledge_area"]
 
-[node name="surf_area" parent="EncounterAreas_" instance=ExtResource( 26 )]
+[node name="surf_area" parent="EncounterAreas_" instance=ExtResource( 27 )]
 cells_jump = 0
 direction = ""
 
 [node name="CollisionPolygon2D" parent="EncounterAreas_/surf_area" index="0"]
 polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
-
 
 [editable path="Eventos_/Chico"]
 
@@ -567,9 +789,11 @@ polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
 
 [editable path="Eventos_/Chica/pages/event_page/cmd_msg/Choice1/cmd_msg"]
 
+[editable path="Eventos_/EVENT2"]
+
 [editable path="Eventos_/EVENT3"]
 
-[editable path="Eventos_/EVENT2"]
+[editable path="Eventos_/Chico2"]
 
 [editable path="Eventos_/Porta_Lab"]
 

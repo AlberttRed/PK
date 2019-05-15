@@ -7,17 +7,23 @@ export(String) var condition3
 var running = false
 var running_choice = false
 var cmd_move_on = false
+var parentEvent = null
 
 
+func _ready():
+	add_to_group("PAGE")
+	
 func _init():
-	add_user_signal("finished")
+	add_user_signal("finished_page")
 	add_user_signal("executed")
 func run():
 	exec_commands(get_children())
+	#call_deferred("exec_commands", get_children())
 	while running:
-		yield(get_tree(), "idle_frame")	#yield(self,"executed")
-	print("page event finished000")
-	emit_signal("finished")
+		yield(get_tree(), "idle_frame")	
+	#yield(self,"executed")
+	print("page tregfgd finished")
+	emit_signal("finished_page")
 
 func exec_commands(commands):
 	running = true
@@ -26,7 +32,17 @@ func exec_commands(commands):
 		if (cmd.get_name().begins_with("cmd_change_page")):
 			get_parent().get_parent().set_page(get_parent().get_child(cmd.page))
 		elif (cmd.get_name().begins_with("cmd_move")):
-			cmd.run()
+			if cmd.nodePath.is_empty():#get_parent().get_parent().eventTarget == ProjectSettings.get("Player"):
+				ProjectSettings.get("Player").active_events.push_back(parentEvent)
+				ProjectSettings.get("Player").being_controlled = true
+				print("HE..RE")
+				cmd.run()
+				yield(cmd, "finished")
+				print("FINISH")
+				#ProjectSettings.get("Player").active_events.erase(get_parent().get_parent())
+			else:
+				cmd.call_deferred("run")
+				print("FINISH")
 		elif (cmd.get_name().begins_with("cmd_msg")):
 			cmd.run()
 			yield(cmd, "finished")
@@ -41,8 +57,14 @@ func exec_commands(commands):
 		else:
 			cmd.run()
 			yield(cmd, "finished")
-			print("cmd finished")
+		print("cmd finished")	
 	if !running_choice:
 		running = false
 	running_choice = false
-		
+	#emit_signal("executed")
+
+func is_executing():
+	for c in get_children():
+		if c.executing:
+			return true
+	return false

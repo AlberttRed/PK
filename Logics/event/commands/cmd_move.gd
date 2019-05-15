@@ -12,9 +12,10 @@ var can_interact = true setget set_can_interact,get_can_interact
 var moved = false
 const SPEED = 2
 const GRID = 32
+var executing = false
 
 var Event
-var originalEvent
+var parentEvent = null
 var world
 
 
@@ -41,17 +42,19 @@ func _init():
 	#set_physics_process(false)
 
 func _ready():
-	pass
-
+	set_physics_process(false)
+	add_to_group("CMD")
+	
 func run():
+	executing = true
 	set_physics_process(true)
 	print("move event started")
 	if GLOBAL.movingEvent == null:
 		if nodePath.is_empty():# == null:
 			Target = ProjectSettings.get("Player")
-			Target.can_interact = false
+			print("BEING CONTROLLED")
+			#Target.can_interact = false
 		else:
-			print(nodePath)
 			Target = get_node(nodePath)
 	else:
 		Target = GLOBAL.movingEvent
@@ -64,14 +67,10 @@ func run():
 		get_parent().cmd_move_on = true
 	set_physics_process(true)
 	print("dw")
-	if Target == ProjectSettings.get("Player"):
-		Target.can_interact = true
-	emit_signal("finished")
+	#emit_signal("finished")
 
 func _physics_process(delta):
-	print("AAAAAAAAAAAAAAAAAA")
 	if movesArray.size() != 0 and Target != null and !moved:
-		print("sa mou sa mou sa mou")
 		if Target == ProjectSettings.get("Player"):
 			if i < movesArray.size() and !moved and !moving:
 				moving = true
@@ -82,7 +81,7 @@ func _physics_process(delta):
 					set_physics_process(false)
 					Input.action_press("ui_" + move + "_event")
 					yield(ProjectSettings.get("Player"), "move")
-					#Input.action_release("ui_" + move + "_event")
+					Input.action_release("ui_" + move + "_event")
 					i += 1
 			print("STOP ")
 			moved = true
@@ -91,8 +90,8 @@ func _physics_process(delta):
 			set_physics_process(false)
 			while ProjectSettings.get("Player").animationPlayer.is_playing():
 				yield(get_tree(), "idle_frame")
-			print("move event finished")
-			emit_signal("finished_movement")
+			finish_move()
+			#emit_signal("finished_movement")
 			if get_parent() != null:
 				get_parent().cmd_move_on = false
 		else:
@@ -195,10 +194,10 @@ func _physics_process(delta):
 					step2 = !step2
 					if i >= movesArray.size():
 						moved = true
-						print("move event finished")
+						finish_move()
 						if get_parent() != null:
 							get_parent().cmd_move_on = false
-						emit_signal("finished_movement")
+						#emit_signal("finished_movement")
 						set_physics_process(false)
 	else:
 		i=0
@@ -207,8 +206,8 @@ func _physics_process(delta):
 			get_parent().cmd_move_on = false
 		set_physics_process(false)
 		#print("move event finished")
-		print("move event finished")
-		emit_signal("finished_movement")
+		finish_move()
+		#emit_signal("finished_movement")
 
 
 func colliderIsNotPasable(result):
@@ -253,3 +252,12 @@ func set_Target(t):
 
 func get_Target():
 	return Target
+	
+func finish_move():
+	if Target == ProjectSettings.get("Player"):
+		Target.can_interact = true
+		#Target.being_controlled = false
+	print("move event finished")
+	executing = false
+	if !parentEvent.running:
+		parentEvent.erase_from_player()

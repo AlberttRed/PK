@@ -9,14 +9,21 @@ var player
 export(bool) var Through = false
 export(bool) var Transparent = false
 
+
 export (bool)var Pasable = false
 export (Texture)var Imagen = null
 export (bool)var Interact = false
 export (bool)var DirectionFix = false
 export (bool)var PlayerTouch = false
 export (bool)var EventTouch = false
+export (bool)var AutoRun = false
+export (bool)var BlockPlayerAtEnd = false
+export (bool)var deleteAtEnd = false
+
 export (Vector2)var OffsetSprite = Vector2(0,4)
+
 const GRID = 32
+var running = false
 var eventTarget = null
 
 export (int)var sprite_cols = 1
@@ -76,45 +83,60 @@ func _ready():
 		trainer = get_node("Trainer")
 		
 	player=ProjectSettings.get("Player")
+	set_parent_event(get_node("pages"))
+	
 	if (get_node("pages").get_child_count() > 0):
 		current_page = get_node("pages").get_child(0)
 		
 func _process(delta):
-	pass
+	if AutoRun:
+		AutoRun = false
+		exec()
     # Destroy every colliding areas
 #    var colliding_areas = get_overlapping_areas()
 #    for area in colliding_areas:
 #        print(area.get_name())
 
 func exec(from = direction):
-	if eventTarget == ProjectSettings.get("Player"):
-		ProjectSettings.get("Player").active_events.push_back(self)
-	GLOBAL.running_events.push_back(self)
-	if (current_page == null):
-		return
-	if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
-		#if from == "up":
-			get_node("Sprite").frame = from
-		#elif from == "down":
-			#get_node("Sprite").frame = 12
-		#elif from == "left":
-			#get_node("Sprite").frame = 8
-		#elif from == "right":
-			#get_node("Sprite").frame = 4
-	if isTrainer and !trainer.is_defeated:
-		GUI.show_msg(trainer.before_battle_message)
-		yield(GUI.msg, "finished")
-		GUI.start_battle(trainer.double_battle, GAME_DATA.trainer, trainer)#, null, trainer)
-	else:
-		#player.can_interact = false
-		current_page.run()
-		yield(current_page, "finished")
+	if !running:
+#		if eventTarget == ProjectSettings.get("Player"):
+#			ProjectSettings.get("Player").active_events.push_back(self)
+		GLOBAL.running_events.push_back(self)
+		running = true
+		while player.get_moving():
+			yield(get_tree(), "idle_frame")
+		if (current_page == null):
+			return
 		if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
-			get_node("Sprite").frame = direction*4
-		#player.can_interact = true
-	if eventTarget == ProjectSettings.get("Player"):
-		ProjectSettings.get("Player").active_events.erase(self)
-	GLOBAL.running_events.erase(self)
+			#if from == "up":
+				get_node("Sprite").frame = from
+			#elif from == "down":
+				#get_node("Sprite").frame = 12
+			#elif from == "left":
+				#get_node("Sprite").frame = 8
+			#elif from == "right":
+				#get_node("Sprite").frame = 4
+		if isTrainer and !trainer.is_defeated:
+			GUI.show_msg(trainer.before_battle_message)
+			yield(GUI.msg, "finished")
+			GUI.start_battle(trainer.double_battle, GAME_DATA.trainer, trainer)#, null, trainer)
+		else:
+			#player.can_interact = false
+			current_page.run()
+			#yield(current_page, "finished_page")
+			if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
+				get_node("Sprite").frame = direction*4
+			player.set_can_interact(!BlockPlayerAtEnd)
+			#player.can_interact = true
+		
+		if ProjectSettings.get("Player").active_events.has(self) and !current_page.is_executing():
+			ProjectSettings.get("Player").active_events.erase(self)
+		GLOBAL.running_events.erase(self)
+		running = false
+		if deleteAtEnd:
+			remove()
+	else:
+		print("event " + get_name() + " is already running!")
 
 func exec_this_page(page):
 	if (page<0 or page>=get_node("pages").get_child_count()):
@@ -137,8 +159,27 @@ func _execPlayerTouch(target):
 		
 func trainerRange():
 	pass
+	
+func remove():
+	if is_inside_tree():
+    	queue_free()
+	else:
+    	call_deferred("free")
 
 func makePasable():
 	var n = Node2D.new()
 	n.set_name("Pasable")
 	get_node("Area2D").add_child(n)
+
+func erase_from_player():
+	if ProjectSettings.get("Player").active_events.has(self):
+		ProjectSettings.get("Player").active_events.erase(self)
+		
+func set_parent_event(pages):
+	if pages.get_child_count() > 0:
+		for p in pages.get_children():
+			set_parent_event(p)
+			
+	if pages.is_in_group("CMD") or pages.is_in_group("PAGE"):
+		pages.parentEvent = self
+	

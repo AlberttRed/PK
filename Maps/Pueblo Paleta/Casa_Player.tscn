@@ -164,7 +164,7 @@ speed = 4
 [node name="Mamá" parent="Eventos_" instance=ExtResource( 10 )]
 position = Vector2( 144, 16 )
 Imagen = ExtResource( 11 )
-Interact = true
+PlayerTouch = true
 sprite_cols = 4
 sprite_rows = 4
 direction = 1
@@ -195,7 +195,6 @@ scale = Vector2( 3.39583, 3.36351 )
 shape = SubResource( 3 )
 
 [node name="Pasable" type="Node2D" parent="Area2D_"]
-
 
 [editable path="Eventos_/Entrada"]
 

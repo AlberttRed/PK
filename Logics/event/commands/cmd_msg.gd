@@ -6,6 +6,11 @@ export(Array, String) var choices = null
 export(bool) var can_cancel = false
 export(String) var default_at_cancel = ""
 var running = false
+var parentEvent = null
+
+func _ready():
+	add_to_group("CMD")
+	
 func _init():
 	add_user_signal("finished")
 

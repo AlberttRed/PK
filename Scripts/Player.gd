@@ -34,6 +34,9 @@ var step = 0
 var jumping = false
 var surfing = false
 var pushing = false
+
+var being_controlled = false
+
 func _init():
 	ProjectSettings.set("Player", self)
 	add_user_signal("move")
@@ -175,14 +178,16 @@ func _physics_process(delta):
 	else:
 		move_and_collide(direction * SPEED)
 		if get_position() == (startPos + Vector2(GRID * direction.x, GRID * direction.y)):
-			Input.action_release("ui_right_event")
-			Input.action_release("ui_left_event")
-			Input.action_release("ui_up_event")
-			Input.action_release("ui_down_event")
 			moving = false
 			GRID = 32
 			step2 = !step2
-			emit_signal("move")
+#			Input.action_release("ui_right_event")
+#			Input.action_release("ui_left_event")
+#			Input.action_release("ui_up_event")
+#			Input.action_release("ui_down_event")
+			if active_events.size() > 0:
+				emit_signal("move")
+				print("STEP COMPLETED")
 			if GLOBAL.move_is_released():
 				GLOBAL.release_move()
 
@@ -205,7 +210,7 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_accept") and !GUI.is_visible():	
 		#print_pkmn_team()
-		print_pkmn_moves(0)
+		#print_pkmn_moves(0)
 		if facing == "up":
 			interact(intersect_point(get_position() + Vector2(0, -GRID)), 0)
 		elif facing == "left":
@@ -258,6 +263,7 @@ func interact(result, from):
 		print("INTERACT")
 		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.has_node("Interact"):
 			if dictionary.collider.is_in_group("NPC"):
+				dictionary.collider.get_parent().eventTarget = self
 				dictionary.collider.get_parent().exec(from)
 			elif dictionary.collider.is_in_group("surf_area") and !surfing:
 				surf()
@@ -265,15 +271,22 @@ func interact(result, from):
 				if dictionary.collider.get_name() == "Area2D":
 					dictionary.collider.get_parent().exec(from)
 				else:
+					dictionary.collider.eventTarget = self
 					dictionary.collider.exec(from)
 			
 func interact_at_collide(result):
 	for dictionary in result:
 		print("INTERACT AT COLLIDE")
 		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.is_in_group("Evento") and !dictionary.collider.is_in_group("Boulder"):
-			dictionary.collider.eventTarget = self
-			#print(dictionary.collider.get_name())
-			dictionary.collider.exec()
+			if dictionary.collider.is_in_group("NPC"):
+				if !dictionary.collider.get_parent().running:
+					dictionary.collider.get_parent().eventTarget = self
+					dictionary.collider.get_parent().exec()
+			else:
+				if !dictionary.collider.running:
+					dictionary.collider.eventTarget = self
+				#print(dictionary.collider.get_name())
+					dictionary.collider.exec()
 		elif typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.is_in_group("ledge_area"):
 			if dictionary.collider.direction == facing:
 				jump(dictionary.collider.direction, dictionary.collider.cells_jump)

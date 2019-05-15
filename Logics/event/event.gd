@@ -13,12 +13,14 @@ export (bool)var PlayerTouch = false
 export (bool)var EventTouch = false
 export (bool)var AutoRun = false
 export (bool)var BlockPlayerAtEnd = false
+export (bool)var deleteAtEnd = false
+
 var eventTarget = null
 
 const GRID = 32
 var running = false
 
-export (bool)var deleteAtEnd = false
+
 export (int)var sprite_cols = 1
 export (int)var sprite_rows = 1
 export (Vector2)var OffsetSprite = Vector2(0,4)
@@ -65,8 +67,10 @@ func _ready():
 		var n = Node2D.new()
 		n.set_name("EventTouch")
 		add_child(n)
+	
 		
 	player=ProjectSettings.get("Player")
+	set_parent_event(get_node("pages"))
 #	if (get_node("pages").get_child_count() > 0):
 #		print("PAGES IN")
 #		current_page = return_current_page(get_node("pages").get_child(0))
@@ -83,8 +87,9 @@ func _process(delta):
 func exec(from = initialFrame):
 	if !running:
 		print("event " + get_name() + " started")
-		if eventTarget == ProjectSettings.get("Player"):
-			ProjectSettings.get("Player").active_events.push_back(self)
+#		if eventTarget == ProjectSettings.get("Player"):
+#			ProjectSettings.get("Player").active_events.push_back(self)
+#			ProjectSettings.get("Player").being_controlled = true
 		GLOBAL.running_events.push_back(self)
 		running = true
 		current_page = return_current_page(get_node("pages").get_child(0))
@@ -101,23 +106,28 @@ func exec(from = initialFrame):
 				#get_node("Sprite").frame = 8
 			#elif from == "right":
 				#get_node("Sprite").frame = 4
-		player.set_can_interact(false)
+		#player.set_can_interact(false)
 		print(current_page.get_name())
 		current_page.run()
-		yield(current_page, "finished")
+		#current_page.run()
+#		while current_page.running:
+#			yield(get_tree(), "idle_frame")	
+		#yield(current_page, "finished_page")
 		if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
 			get_node("Sprite").frame = initialFrame
-		player.set_can_interact(!BlockPlayerAtEnd)
+		#player.set_can_interact(!BlockPlayerAtEnd)
 		print("event " + get_name() + " finished")
-		running = false
-		if eventTarget == ProjectSettings.get("Player"):
+		
+		if ProjectSettings.get("Player").active_events.has(self) and !current_page.is_executing():
 			ProjectSettings.get("Player").active_events.erase(self)
 		GLOBAL.running_events.erase(self)
+		running = false
 		if deleteAtEnd:
 			remove()
 	else:
 		print("event " + get_name() + " is already running!")
-
+	print("event " + get_name() + " finished")
+	
 func exec_this_page(page):
 	print("exec_this-page")
 	var p
@@ -172,3 +182,16 @@ func makePasable():
 		var n = Node2D.new()
 		n.set_name("Pasable")
 		add_child(n)
+
+func erase_from_player():
+	if ProjectSettings.get("Player").active_events.has(self):
+		ProjectSettings.get("Player").active_events.erase(self)
+		
+func set_parent_event(pages):
+	if pages.get_child_count() > 0:
+		for p in pages.get_children():
+			set_parent_event(p)
+			
+	if pages.is_in_group("CMD") or pages.is_in_group("PAGE"):
+		pages.parentEvent = self
+	
