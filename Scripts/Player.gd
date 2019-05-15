@@ -209,7 +209,8 @@ func _input(event):
 	
 	if event.is_action_pressed("ui_accept") and !GUI.is_visible():	
 		#print_pkmn_team()
-		print_pkmn_moves(0)
+		#print_pkmn_moves(0)
+		print("Habilidad: " + str(GAME_DATA.party[0].ability_id))
 		if facing == "up":
 			interact(intersect_point(get_position() + Vector2(0, -GRID)), 0)
 		elif facing == "left":
@@ -441,3 +442,9 @@ func print_pkmn_moves(pokemon_party):
 	for m in get_node("Trainer").get_child(pokemon_party).movements:
 		print(m.get_name())
 		m.print_move()
+		
+#func print_abilities():
+#	var abilities = ""
+#	for a in CONST.ABILITIES.new().get_property_list():
+#		abilities += str(a["name"]) + ", "
+#	print(abilities)

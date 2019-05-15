@@ -164,7 +164,7 @@ speed = 4
 [node name="Mamá" parent="Eventos_" instance=ExtResource( 10 )]
 position = Vector2( 144, 16 )
 Imagen = ExtResource( 11 )
-Interact = true
+PlayerTouch = true
 sprite_cols = 4
 sprite_rows = 4
 direction = 1
@@ -172,8 +172,8 @@ direction = 1
 [node name="event_page" parent="Eventos_/Mamá/pages" index="0" instance=ExtResource( 4 )]
 
 [node name="cmd_move" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 12 )]
-nodePath = NodePath("")
-movesArray = [ "right", "right" ]
+nodePath = NodePath("../../..")
+movesArray = [ "right", "right", "down", "down" ]
 
 [node name="cmd_wait_move_completion" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 13 )]
 
@@ -195,7 +195,6 @@ scale = Vector2( 3.39583, 3.36351 )
 shape = SubResource( 3 )
 
 [node name="Pasable" type="Node2D" parent="Area2D_"]
-
 
 [editable path="Eventos_/Entrada"]
 

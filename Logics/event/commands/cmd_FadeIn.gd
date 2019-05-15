@@ -12,7 +12,7 @@ func _ready():
 	pass
 
 func run():
-	var animation
+	#var animation
 	print("Fade In started")
 	animationPlayer.play("FadeIn", -1, 1*speed)
 #	animationPlayer.add_animation("FadeOut", "res://animations/FadeIn.tres")

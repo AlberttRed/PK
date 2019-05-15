@@ -8,9 +8,20 @@
 
 config_version=4
 
-_global_script_classes=[  ]
+_global_script_classes=[ {
+"base": "Node",
+"class": "Pokemon",
+"language": "GDScript",
+"path": "res://Logics/DB/pokemon.gd"
+}, {
+"base": "Node",
+"class": "Trainer",
+"language": "GDScript",
+"path": "res://Logics/event/Trainer.gd"
+} ]
 _global_script_class_icons={
-
+"Pokemon": "",
+"Trainer": ""
 }
 
 [application]
@@ -107,5 +118,6 @@ ui_down_event={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

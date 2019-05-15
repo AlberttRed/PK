@@ -22,8 +22,15 @@ export(StyleBox) var style_square_swap_sel
 export(StyleBox) var style_salir
 export(StyleBox) var style_salir_sel
 
+export(StyleBox) var style_actions_empty
+export(StyleBox) var style_actions_selected
+"ACTIONS/VBoxContainer/SALIR"
 onready var pkmns = [get_node("PKMN_0"),get_node("PKMN_1"),get_node("PKMN_2"),get_node("PKMN_3"),get_node("PKMN_4"),get_node("PKMN_5")]
+onready var actions_chs = [get_node("ACTIONS/VBoxContainer/DATOS"),get_node("ACTIONS/VBoxContainer/MOVER"),get_node("ACTIONS/VBoxContainer/OBJETO"),get_node("ACTIONS/VBoxContainer/SALIR")]
 onready var salir = get_node("Salir")
+onready var actions = get_node("ACTIONS")
+onready var msg = get_node("MSG")
+
 var signals = ["pokedex","pokemon","item","player","save","option","exit"]
 var start
 func _init():
@@ -40,13 +47,14 @@ func _ready():
 	connect("exit", self, "hide")
 
 var index = 0
-
+var actions_index = 0
 
 func show_party():
 	load_pokemon()
 	update_styles()
 	pkmns[0].grab_focus()
 	show()
+
 	
 func hide_party():
 	for p in range(GAME_DATA.party.size()):
@@ -69,36 +77,40 @@ func hide_party():
 				
 
 func _process(delta):
-#	if (INPUT.ui_down.is_action_just_pressed()): #Input.is_action_pressed("ui_down"):#
-#		var i = index
-#		while (i < pkmns.size()-1):
-#			i+=1
-#			if (pkmns[i].is_visible()):
-#				index=i
-#				break
-#		update_styles()
-#	if (INPUT.ui_up.is_action_just_pressed()):#Input.is_action_pressed("ui_up"):#(INPUT.up.is_action_just_pressed()):
-#		var i = index
-#		while (i > 0):
-#			i-=1
-#			if (pkmns[i].is_visible()):
-#				index=i
-#				break
-#		update_styles()
 	if visible:
-		if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
-			if get_focus_owner().get_name() == "Salir":
-					emit_signal("salir")
-			else:
-					pass
-					#show_actions
-		if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
-			index = -1
-			salir.grab_focus()
-			update_styles()
-	
-#	if Input.is_action_pressed("ui_start"):#(INPUT.ui_cancel.is_action_just_pressed()):
-#		emit_signal("exit")
+		if !actions.visible:
+			if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
+				if pkmns[index].get_name() == "Salir":
+						emit_signal("salir")
+				else:
+					show_actions()
+			if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
+				index = -1
+				salir.grab_focus()
+				update_styles()
+		elif actions.visible:
+#			if (INPUT.ui_down.is_action_just_pressed()): #Input.is_action_pressed("ui_down"):#
+#				var i = actions_index
+#				while (i < actions_chs.size()-1):
+#					i+=1
+#					if (actions_chs[i].is_visible()):
+#						actions_index=i
+#						break
+#				update_styles()
+#			if (INPUT.ui_up.is_action_just_pressed()):#Input.is_action_pressed("ui_up"):#(INPUT.up.is_action_just_pressed()):
+#				var i = actions_index
+#				while (i > 0):
+#					i-=1
+#					if (actions_chs[i].is_visible()):
+#						actions_index=i
+#						break
+			if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
+				print(actions_chs[actions_index].get_name())
+			if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
+				hide_actions()
+		
+	#	if Input.is_action_pressed("ui_start"):#(INPUT.ui_cancel.is_action_just_pressed()):
+	#		emit_signal("exit")
 
 		
 func update_styles():
@@ -149,6 +161,60 @@ func load_pokemon():
 		else:
 			pkmns[p].get_node("gender").texture = null
 			
+	load_focus()
+		
+func update_actions_styles():
+	for p in range(actions_chs.size()):
+		if (p==actions_index):
+			actions_chs[p].add_stylebox_override("panel", style_actions_selected)
+		else:
+			actions_chs[p].add_stylebox_override("panel",style_actions_empty)
+
+func show_actions():
+	print("pe")
+	pkmns[index].release_focus()
+	#index = -2
+	update_styles()
+	clear_focus()
+	actions_index = 0
+	actions_chs[actions_index].grab_focus()
+	actions.show()
+	update_actions_styles()
+	
+func hide_actions():
+	actions.hide()
+	load_focus()
+	actions_chs[actions_index].release_focus()
+	pkmns[index].grab_focus()
+	update_styles()
+	actions_index = 0
+	update_actions_styles()
+
+func _on_PKMN_focus_entered():
+	index = int(get_focus_owner().get_name().right(0))
+	update_styles()
+
+
+func _on_Salir_focus_entered():
+	index = -1
+	update_styles()
+
+
+func _on_actions_focus_entered():
+	match get_focus_owner().get_name():
+    "DATOS":
+        actions_index = 0
+    "MOVER":
+        actions_index = 1
+    "OBJETO":
+        actions_index = 2
+    "SALIR":
+        actions_index = 3
+	update_actions_styles()
+	
+func load_focus():
+	for p in pkmns:
+		p.set_focus_mode(2)
 	if GAME_DATA.party.size() == 1:
 		pkmns[0].set_focus_neighbour(MARGIN_BOTTOM, "../Salir")
 		pkmns[0].set_focus_neighbour(MARGIN_RIGHT, "../PKMN_0")
@@ -170,16 +236,19 @@ func load_pokemon():
 		pkmns[4].set_focus_neighbour(MARGIN_BOTTOM, "../Salir")
 		pkmns[5].set_focus_neighbour(MARGIN_BOTTOM, "../Salir")
 		
-		
-
-#func _on_Salir_focus_entered():
-#	index = -1
-
-func _on_PKMN_focus_entered():
-	index = int(get_focus_owner().get_name().right(0))
-	update_styles()
-
-
-func _on_Salir_focus_entered():
-	index = -1
-	update_styles()
+	
+func clear_focus():
+	for p in pkmns:
+		p.set_focus_mode(0)
+#		p.set_focus_neighbour(MARGIN_BOTTOM, "")
+#		p.set_focus_neighbour(MARGIN_TOP, "")
+#		p.set_focus_neighbour(MARGIN_LEFT, "")
+#		p.set_focus_neighbour(MARGIN_RIGHT, "")
+	
+func clear_actions_focus():
+	for a in actions_chs:
+		a.set_focus_mode(0)
+		a.set_focus_neighbour(MARGIN_BOTTOM, null)
+		a.set_focus_neighbour(MARGIN_TOP, null)
+		a.set_focus_neighbour(MARGIN_LEFT, null)
+		a.set_focus_neighbour(MARGIN_RIGHT, null)

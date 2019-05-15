@@ -19,7 +19,7 @@ func _process(delta):
 
 func run():
 	print("set through to " + str(Through) + " started")
-	if nodePath == null:
+	if nodePath.is_empty():
 		print("TARGET THROUGH: Player")
 		Target = ProjectSettings.get("Player")
 	else:

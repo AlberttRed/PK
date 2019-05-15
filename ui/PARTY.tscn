@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=2]
+[gd_scene load_steps=60 format=2]
 
 [ext_resource path="res://ui/Pictures/partybg.PNG" type="Texture" id=1]
 [ext_resource path="res://ui/PARTY.gd" type="Script" id=2]
@@ -16,16 +16,20 @@
 [ext_resource path="res://ui/Pictures/partyPanelRectSwap.png" type="Texture" id=14]
 [ext_resource path="res://ui/Pictures/partyCancel.png" type="Texture" id=15]
 [ext_resource path="res://ui/Pictures/partyCancelSel.png" type="Texture" id=16]
-[ext_resource path="res://font/df_party_lletraGran.tres" type="DynamicFont" id=17]
-[ext_resource path="res://font/pkmnem.ttf" type="DynamicFontData" id=18]
-[ext_resource path="res://font/df_party_lletraPetita.tres" type="DynamicFont" id=19]
-[ext_resource path="res://font/pkmnems.ttf" type="DynamicFontData" id=20]
-[ext_resource path="res://ui/Pictures/partyBall.PNG" type="Texture" id=21]
-[ext_resource path="res://Sprites/Icons/icon025.png" type="Texture" id=22]
-[ext_resource path="res://ui/Pictures/female_icon.png" type="Texture" id=23]
-[ext_resource path="res://ui/Pictures/HPbar_party.tscn" type="PackedScene" id=24]
-[ext_resource path="res://ui/MSG.tscn" type="PackedScene" id=25]
-[ext_resource path="res://ui/choice 1_old.png" type="Texture" id=26]
+[ext_resource path="res://ui/selarrow.png" type="Texture" id=17]
+[ext_resource path="res://font/df_party_lletraGran.tres" type="DynamicFont" id=18]
+[ext_resource path="res://font/pkmnem.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://font/df_party_lletraPetita.tres" type="DynamicFont" id=20]
+[ext_resource path="res://font/pkmnems.ttf" type="DynamicFontData" id=21]
+[ext_resource path="res://ui/Pictures/partyBall.PNG" type="Texture" id=22]
+[ext_resource path="res://Sprites/Icons/icon025.png" type="Texture" id=23]
+[ext_resource path="res://ui/Pictures/female_icon.png" type="Texture" id=24]
+[ext_resource path="res://ui/Pictures/HPbar_party.tscn" type="PackedScene" id=25]
+[ext_resource path="res://ui/MSG.tscn" type="PackedScene" id=26]
+[ext_resource path="res://ui/choice 1_old.png" type="Texture" id=27]
+[ext_resource path="res://ui/CHOICES.tscn" type="PackedScene" id=28]
+[ext_resource path="res://ui/choice.tscn" type="PackedScene" id=29]
+[ext_resource path="res://font/pkmnfl.ttf" type="DynamicFontData" id=30]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -83,44 +87,54 @@ region_rect = Rect2( 0, 0, 256, 98 )
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=21]
+[sub_resource type="StyleBoxTexture" id=15]
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 112, 48 )
 
-[sub_resource type="StyleBoxTexture" id=22]
+[sub_resource type="StyleBoxTexture" id=16]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 112, 48 )
 
-[sub_resource type="StyleBoxTexture" id=15]
+[sub_resource type="StyleBoxEmpty" id=30]
+
+[sub_resource type="StyleBoxTexture" id=31]
+texture = ExtResource( 17 )
+region_rect = Rect2( 0, 0, 14, 32 )
+margin_left = 12.0
+expand_margin_top = 2.0
+axis_stretch_vertical = 2
+draw_center = false
+
+[sub_resource type="StyleBoxTexture" id=17]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 256, 98 )
-
-[sub_resource type="DynamicFont" id=16]
-size = 26
-outline_color = Color( 0.00784314, 0, 0, 1 )
-use_mipmaps = true
-font_data = ExtResource( 18 )
-
-[sub_resource type="DynamicFont" id=17]
-size = 22
-font_data = ExtResource( 20 )
 
 [sub_resource type="DynamicFont" id=18]
 size = 26
 outline_color = Color( 0.00784314, 0, 0, 1 )
 use_mipmaps = true
-font_data = ExtResource( 18 )
+font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxTexture" id=19]
+[sub_resource type="DynamicFont" id=19]
+size = 22
+font_data = ExtResource( 21 )
+
+[sub_resource type="DynamicFont" id=20]
+size = 26
+outline_color = Color( 0.00784314, 0, 0, 1 )
+use_mipmaps = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=20]
+[sub_resource type="StyleBoxTexture" id=22]
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 112, 48 )
 
 [sub_resource type="StyleBoxTexture" id=23]
-texture = ExtResource( 26 )
+texture = ExtResource( 27 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 32.0
 margin_right = 32.0
@@ -131,7 +145,26 @@ margin_bottom = 32.0
 size = 26
 outline_color = Color( 0.337255, 0.12549, 0.12549, 1 )
 use_mipmaps = true
-font_data = ExtResource( 18 )
+font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxTexture" id=25]
+texture = ExtResource( 27 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 32.0
+margin_right = 32.0
+margin_top = 32.0
+margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id=28]
+margin_left = 12.0
+expand_margin_top = 2.0
+axis_stretch_vertical = 2
+draw_center = false
+
+[sub_resource type="DynamicFont" id=29]
+size = 24
+extra_spacing_top = 5
+font_data = ExtResource( 30 )
 
 [node name="PARTY" type="Panel"]
 margin_left = 0.371427
@@ -156,8 +189,10 @@ style_square_fainted = SubResource( 11 )
 style_square_fainted_sel = SubResource( 12 )
 style_square_swap = SubResource( 13 )
 style_square_swap_sel = SubResource( 14 )
-style_salir = SubResource( 21 )
-style_salir_sel = SubResource( 22 )
+style_salir = SubResource( 15 )
+style_salir_sel = SubResource( 16 )
+style_actions_empty = SubResource( 30 )
+style_actions_selected = SubResource( 31 )
 
 [node name="PKMN_0" type="Panel" parent="."]
 editor/display_folded = true
@@ -167,7 +202,7 @@ margin_bottom = 98.0
 focus_neighbour_right = NodePath("../PKMN_1")
 focus_neighbour_bottom = NodePath("../PKMN_2")
 focus_mode = 2
-custom_styles/panel = SubResource( 15 )
+custom_styles/panel = SubResource( 17 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -178,7 +213,7 @@ margin_left = 95.0
 margin_top = 20.408
 margin_right = 180.0
 margin_bottom = 66.408
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -187,7 +222,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_0/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -199,7 +234,7 @@ margin_left = 20.0
 margin_top = 67.0
 margin_right = 105.0
 margin_bottom = 113.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
@@ -209,7 +244,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_0/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -221,7 +256,7 @@ margin_left = 163.0
 margin_top = 64.0
 margin_right = 248.0
 margin_bottom = 110.0
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -230,7 +265,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_0/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -238,19 +273,19 @@ text = "58/58"
 
 [node name="ball" type="Sprite" parent="PKMN_0"]
 position = Vector2( 31.6, 28 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="pkmn" type="Sprite" parent="PKMN_0"]
 position = Vector2( 57.6, 34 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 hframes = 2
 
 [node name="gender" type="Sprite" parent="PKMN_0"]
 position = Vector2( 229, 32 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 
-[node name="health_bar" parent="PKMN_0" instance=ExtResource( 24 )]
+[node name="health_bar" parent="PKMN_0" instance=ExtResource( 25 )]
 editor/display_folded = true
 position = Vector2( 124, 56 )
 
@@ -264,7 +299,7 @@ margin_bottom = 114.0
 focus_neighbour_left = NodePath("../PKMN_0")
 focus_neighbour_bottom = NodePath("../PKMN_3")
 focus_mode = 2
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -274,7 +309,7 @@ margin_left = 95.0
 margin_top = 20.408
 margin_right = 180.0
 margin_bottom = 66.408
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -283,7 +318,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_1/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -294,7 +329,7 @@ margin_left = 20.0
 margin_top = 67.0
 margin_right = 105.0
 margin_bottom = 113.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
@@ -304,7 +339,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_1/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -316,7 +351,7 @@ margin_left = 163.0
 margin_top = 64.0
 margin_right = 248.0
 margin_bottom = 110.0
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -325,7 +360,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_1/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -333,19 +368,19 @@ text = "58/58"
 
 [node name="ball" type="Sprite" parent="PKMN_1"]
 position = Vector2( 31.6, 28 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="pkmn" type="Sprite" parent="PKMN_1"]
 position = Vector2( 57.6, 34 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 hframes = 2
 
 [node name="gender" type="Sprite" parent="PKMN_1"]
 position = Vector2( 229, 32 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 
-[node name="health_bar" parent="PKMN_1" instance=ExtResource( 24 )]
+[node name="health_bar" parent="PKMN_1" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
 [node name="PKMN_2" type="Panel" parent="."]
@@ -358,7 +393,7 @@ focus_neighbour_top = NodePath("../PKMN_0")
 focus_neighbour_right = NodePath("../PKMN_3")
 focus_neighbour_bottom = NodePath("../PKMN_4")
 focus_mode = 2
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -368,7 +403,7 @@ margin_left = 95.0
 margin_top = 20.408
 margin_right = 180.0
 margin_bottom = 66.408
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -377,7 +412,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_2/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -388,7 +423,7 @@ margin_left = 20.0
 margin_top = 67.0
 margin_right = 105.0
 margin_bottom = 113.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
@@ -398,7 +433,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_2/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -410,7 +445,7 @@ margin_left = 163.0
 margin_top = 64.0
 margin_right = 248.0
 margin_bottom = 110.0
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -419,7 +454,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_2/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -427,19 +462,19 @@ text = "58/58"
 
 [node name="ball" type="Sprite" parent="PKMN_2"]
 position = Vector2( 31.6, 28 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="pkmn" type="Sprite" parent="PKMN_2"]
 position = Vector2( 57.6, 34 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 hframes = 2
 
 [node name="gender" type="Sprite" parent="PKMN_2"]
 position = Vector2( 229, 32 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 
-[node name="health_bar" parent="PKMN_2" instance=ExtResource( 24 )]
+[node name="health_bar" parent="PKMN_2" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
 [node name="PKMN_3" type="Panel" parent="."]
@@ -453,7 +488,7 @@ focus_neighbour_left = NodePath("../PKMN_2")
 focus_neighbour_top = NodePath("../PKMN_1")
 focus_neighbour_bottom = NodePath("../PKMN_5")
 focus_mode = 2
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -463,7 +498,7 @@ margin_left = 95.0
 margin_top = 20.408
 margin_right = 180.0
 margin_bottom = 66.408
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -472,7 +507,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_3/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -483,7 +518,7 @@ margin_left = 20.0
 margin_top = 67.0
 margin_right = 105.0
 margin_bottom = 113.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
@@ -493,7 +528,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_3/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -505,7 +540,7 @@ margin_left = 163.0
 margin_top = 64.0
 margin_right = 248.0
 margin_bottom = 110.0
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -514,7 +549,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_3/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -522,19 +557,19 @@ text = "58/58"
 
 [node name="ball" type="Sprite" parent="PKMN_3"]
 position = Vector2( 31.6, 28 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="pkmn" type="Sprite" parent="PKMN_3"]
 position = Vector2( 57.6, 34 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 hframes = 2
 
 [node name="gender" type="Sprite" parent="PKMN_3"]
 position = Vector2( 229, 32 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 
-[node name="health_bar" parent="PKMN_3" instance=ExtResource( 24 )]
+[node name="health_bar" parent="PKMN_3" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
 [node name="PKMN_4" type="Panel" parent="."]
@@ -546,7 +581,7 @@ margin_bottom = 290.0
 focus_neighbour_top = NodePath("../PKMN_2")
 focus_neighbour_right = NodePath("../PKMN_5")
 focus_mode = 2
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -556,7 +591,7 @@ margin_left = 95.0
 margin_top = 20.408
 margin_right = 180.0
 margin_bottom = 66.408
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -565,7 +600,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_4/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -576,7 +611,7 @@ margin_left = 20.0
 margin_top = 67.0
 margin_right = 105.0
 margin_bottom = 113.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
@@ -586,7 +621,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_4/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -598,7 +633,7 @@ margin_left = 163.0
 margin_top = 64.0
 margin_right = 248.0
 margin_bottom = 110.0
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -607,7 +642,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_4/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -615,19 +650,19 @@ text = "58/58"
 
 [node name="ball" type="Sprite" parent="PKMN_4"]
 position = Vector2( 31.6, 28 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="pkmn" type="Sprite" parent="PKMN_4"]
 position = Vector2( 57.6, 34 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 hframes = 2
 
 [node name="gender" type="Sprite" parent="PKMN_4"]
 position = Vector2( 229, 32 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 
-[node name="health_bar" parent="PKMN_4" instance=ExtResource( 24 )]
+[node name="health_bar" parent="PKMN_4" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
 [node name="PKMN_5" type="Panel" parent="."]
@@ -641,7 +676,7 @@ focus_neighbour_left = NodePath("../PKMN_4")
 focus_neighbour_top = NodePath("../PKMN_3")
 focus_neighbour_bottom = NodePath("../Salir")
 focus_mode = 2
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 21 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -651,7 +686,7 @@ margin_left = 95.0
 margin_top = 20.408
 margin_right = 180.0
 margin_bottom = 66.408
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -660,7 +695,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_5/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -671,7 +706,7 @@ margin_left = 20.0
 margin_top = 67.0
 margin_right = 105.0
 margin_bottom = 113.0
-custom_fonts/font = ExtResource( 19 )
+custom_fonts/font = ExtResource( 20 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
@@ -681,7 +716,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_5/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 17 )
+custom_fonts/font = SubResource( 19 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -693,7 +728,7 @@ margin_left = 163.0
 margin_top = 64.0
 margin_right = 248.0
 margin_bottom = 110.0
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -702,7 +737,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_5/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 18 )
+custom_fonts/font = SubResource( 20 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -710,19 +745,19 @@ text = "58/58"
 
 [node name="ball" type="Sprite" parent="PKMN_5"]
 position = Vector2( 31.6, 28 )
-texture = ExtResource( 21 )
+texture = ExtResource( 22 )
 
 [node name="pkmn" type="Sprite" parent="PKMN_5"]
 position = Vector2( 57.6, 34 )
-texture = ExtResource( 22 )
+texture = ExtResource( 23 )
 hframes = 2
 
 [node name="gender" type="Sprite" parent="PKMN_5"]
 position = Vector2( 229, 32 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 23 )
+texture = ExtResource( 24 )
 
-[node name="health_bar" parent="PKMN_5" instance=ExtResource( 24 )]
+[node name="health_bar" parent="PKMN_5" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
 [node name="Salir" type="Panel" parent="."]
@@ -732,7 +767,7 @@ margin_top = 325.0
 margin_right = 510.0
 margin_bottom = 377.0
 focus_mode = 2
-custom_styles/panel = SubResource( 20 )
+custom_styles/panel = SubResource( 22 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -742,7 +777,7 @@ margin_left = 10.0
 margin_top = 14.0
 margin_right = 104.0
 margin_bottom = 44.0
-custom_fonts/font = ExtResource( 17 )
+custom_fonts/font = ExtResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -753,7 +788,7 @@ valign = 3
 [node name="Outline" type="Label" parent="Salir/Nombre2"]
 margin_right = 94.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 16 )
+custom_fonts/font = SubResource( 18 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -764,7 +799,8 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MSG" parent="." instance=ExtResource( 25 )]
+[node name="MSG" parent="." instance=ExtResource( 26 )]
+editor/display_folded = true
 margin_top = 318.0
 margin_right = 398.0
 custom_styles/panel = SubResource( 23 )
@@ -786,6 +822,64 @@ visible = false
 [node name="AnimationPlayer" parent="MSG/next" index="0"]
 root_node = NodePath("")
 
+[node name="ACTIONS" parent="." instance=ExtResource( 28 )]
+visible = false
+margin_left = 368.445
+margin_top = 202.893
+margin_right = 512.445
+margin_bottom = 383.893
+custom_styles/panel = SubResource( 25 )
+script = null
+
+[node name="DATOS" parent="ACTIONS/VBoxContainer" index="0" instance=ExtResource( 29 )]
+editor/display_folded = true
+margin_right = 116.0
+margin_bottom = 35.0
+focus_neighbour_bottom = NodePath("../MOVER")
+focus_mode = 2
+custom_styles/panel = SubResource( 28 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/DATOS" index="0"]
+text = "DATOS"
+
+[node name="MOVER" parent="ACTIONS/VBoxContainer" index="1" instance=ExtResource( 29 )]
+editor/display_folded = true
+margin_top = 39.0
+margin_right = 116.0
+margin_bottom = 74.0
+focus_neighbour_top = NodePath("../DATOS")
+focus_neighbour_bottom = NodePath("../OBJETO")
+focus_mode = 2
+custom_styles/panel = SubResource( 28 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/MOVER" index="0"]
+custom_fonts/font = SubResource( 29 )
+text = "MOVER"
+
+[node name="OBJETO" parent="ACTIONS/VBoxContainer" index="2" instance=ExtResource( 29 )]
+editor/display_folded = true
+margin_top = 78.0
+margin_right = 116.0
+margin_bottom = 113.0
+focus_neighbour_top = NodePath("../MOVER")
+focus_neighbour_bottom = NodePath("../SALIR")
+focus_mode = 2
+custom_styles/panel = SubResource( 28 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/OBJETO" index="0"]
+text = "OBJETO"
+
+[node name="SALIR" parent="ACTIONS/VBoxContainer" index="3" instance=ExtResource( 29 )]
+editor/display_folded = true
+margin_top = 117.0
+margin_right = 116.0
+margin_bottom = 155.0
+focus_neighbour_top = NodePath("../OBJETO")
+focus_mode = 2
+custom_styles/panel = SubResource( 28 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/SALIR" index="0"]
+text = "SALIR"
 [connection signal="focus_entered" from="PKMN_0" to="." method="_on_PKMN_focus_entered"]
 [connection signal="focus_entered" from="PKMN_1" to="." method="_on_PKMN_focus_entered"]
 [connection signal="focus_entered" from="PKMN_2" to="." method="_on_PKMN_focus_entered"]
@@ -793,9 +887,23 @@ root_node = NodePath("")
 [connection signal="focus_entered" from="PKMN_4" to="." method="_on_PKMN_focus_entered"]
 [connection signal="focus_entered" from="PKMN_5" to="." method="_on_PKMN_focus_entered"]
 [connection signal="focus_entered" from="Salir" to="." method="_on_Salir_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/DATOS" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/MOVER" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/OBJETO" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/SALIR" to="." method="_on_actions_focus_entered"]
 
 [editable path="PKMN_0/health_bar"]
 
 [editable path="PKMN_2/health_bar"]
 
 [editable path="MSG"]
+
+[editable path="ACTIONS"]
+
+[editable path="ACTIONS/VBoxContainer/DATOS"]
+
+[editable path="ACTIONS/VBoxContainer/MOVER"]
+
+[editable path="ACTIONS/VBoxContainer/OBJETO"]
+
+[editable path="ACTIONS/VBoxContainer/SALIR"]

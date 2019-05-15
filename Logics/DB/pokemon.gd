@@ -1,5 +1,6 @@
-
 extends Node
+
+class_name Pokemon
 
 export(int) var id = 0
 export(String) var internal_name = ""
