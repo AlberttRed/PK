@@ -4,94 +4,40 @@
 [ext_resource path="res://ui/CHOICES.gd" type="Script" id=2]
 [ext_resource path="res://ui/selarrow.png" type="Texture" id=3]
 
-[sub_resource type="StyleBoxTexture" id=1]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
+[sub_resource type="StyleBoxTexture" id=32]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 32.0
 margin_right = 32.0
 margin_top = 32.0
 margin_bottom = 32.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
-expand_margin_top = 0.0
-expand_margin_bottom = 0.0
-modulate_color = Color( 1, 1, 1, 1 )
-draw_center = true
-_sections_unfolded = [ "Margin" ]
 
-[sub_resource type="StyleBoxTexture" id=2]
-
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
+[sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 14, 32 )
 margin_left = 12.0
-margin_right = 0.0
-margin_top = 0.0
-margin_bottom = 0.0
-expand_margin_left = 0.0
-expand_margin_right = 0.0
 expand_margin_top = 2.0
-expand_margin_bottom = 0.0
 axis_stretch_vertical = 2
-modulate_color = Color( 1, 1, 1, 1 )
 draw_center = false
-_sections_unfolded = [ "Axis Stretch", "Content Margin", "Expand Margin", "Margin", "Modulate", "Resource" ]
 
-[sub_resource type="StyleBoxEmpty" id=3]
+[sub_resource type="StyleBoxEmpty" id=30]
 
-content_margin_left = -1.0
-content_margin_right = -1.0
-content_margin_top = -1.0
-content_margin_bottom = -1.0
-_sections_unfolded = [ "Resource" ]
-
-[node name="CHOICES" type="Panel" index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
-anchor_right = 0.0
-anchor_bottom = 0.0
+[node name="CHOICES" type="Panel"]
 margin_left = 404.0
 margin_top = 227.0
 margin_right = 505.0
 margin_bottom = 284.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 0
-mouse_default_cursor_shape = 0
-size_flags_horizontal = 1
 size_flags_vertical = 2
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 32 )
 script = ExtResource( 2 )
-_sections_unfolded = [ "Rect", "custom_styles" ]
-style_selected = SubResource( 2 )
-style_empty = SubResource( 3 )
+style_selected = SubResource( 31 )
+style_empty = SubResource( 30 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." index="0"]
-
-anchor_left = 0.0
-anchor_top = 0.0
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 14.0
 margin_top = 14.0
 margin_right = -14.0
 margin_bottom = -12.0
-rect_pivot_offset = Vector2( 0, 0 )
-rect_clip_content = false
-mouse_filter = 1
-mouse_default_cursor_shape = 0
 size_flags_horizontal = 3
-size_flags_vertical = 1
-alignment = 0
-_sections_unfolded = [ "Pause", "Rect" ]
-
-

@@ -172,8 +172,8 @@ direction = 1
 [node name="event_page" parent="Eventos_/Mamá/pages" index="0" instance=ExtResource( 4 )]
 
 [node name="cmd_move" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 12 )]
-nodePath = NodePath("")
-movesArray = [ "right", "right" ]
+nodePath = NodePath("../../..")
+movesArray = [ "right", "right", "down", "down" ]
 
 [node name="cmd_wait_move_completion" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 13 )]
 

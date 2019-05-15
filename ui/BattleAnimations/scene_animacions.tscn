@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Sprites/Battlebacks/battlebgCave.png" type="Texture" id=1]
 [ext_resource path="res://ui/BattleAnimations/shader_white.tres" type="Material" id=2]
-[ext_resource path="res://ui/BattlePictures/small_ball.png" type="Texture" id=3]
+[ext_resource path="res://ui/Pictures/small_ball.png" type="Texture" id=3]
 [ext_resource path="res://Sprites/Battlers/001b.png" type="Texture" id=4]
 [ext_resource path="res://ui/BattleAnimations/1. Destructor/destructor_frames.png" type="Texture" id=5]
 [ext_resource path="res://ui/BattleAnimations/1. Destructor/Destructor.tres" type="Animation" id=6]
@@ -11,6 +11,7 @@
 [ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot3.tres" type="Animation" id=9]
 [ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot4.tres" type="Animation" id=10]
 [ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot5.tres" type="Animation" id=11]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "Show_Pokemon_Slot1"

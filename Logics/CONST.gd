@@ -420,6 +420,11 @@ class MEDALS:
 	const PANTANO = "Pantano"
 	const VOLCAN = "Volcán"
 	const TIERRA = "Tierra"
+	
+class GENEROS:
+	const MACHO = 0
+	const HEMBRA = 1
+	const SIN_GENERO = 2
 
 func ready():
 	# Initialization here

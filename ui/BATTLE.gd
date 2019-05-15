@@ -114,7 +114,7 @@ func get_active_pokemon():
 #func _init(trainer, is_playable, trainer_node, pkmn_node, hp_bar_S_node, hp_bar_D_node, base_node, party_node, allies, enemies, doble):
 func start_battle(doble, trainer1, trainer2, trainer3 = null, trainer4 = null):
 	esCombateDoble = doble
-	GUI.msg.get_stylebox("panel", "" ).set_texture(load("res://ui/BattlePictures/battleMessage.png"))
+	GUI.msg.get_stylebox("panel", "" ).set_texture(load("res://ui/Pictures/battleMessage.png"))
 	battlers.push_back(Battler.new(trainer1,trainer1.is_playable,trainerplayer_sprite,[player_sprite, player_ally_sprite],HPbar_playerS,[HPbar_playerD1,HPbar_playerD2],player_base_sprite,player_party,trainer3,[trainer2, trainer4],doble,CONST.BATTLE.BACK_SINGLE_SPRITE_POS,[CONST.BATTLE.BACK_DOUBLE1_SPRITE_POS,CONST.BATTLE.BACK_DOUBLE2_SPRITE_POS],trainer1.battle_back_sprite,true,[null, null]))
 	battlers.push_back(Battler.new(trainer2,trainer2.is_playable,trainerenemy_sprite,[enemy_sprite,enemy_ally_sprite],HPbar_enemyS,[HPbar_enemyD1,HPbar_enemyD2],enemy_base_sprite,enemy_party,trainer4,[trainer1, trainer3],doble,CONST.BATTLE.FRONT_SINGLE_SPRITE_POS,[CONST.BATTLE.FRONT_DOUBLE1_SPRITE_POS,CONST.BATTLE.FRONT_DOUBLE2_SPRITE_POS],trainer2.battle_front_sprite,false,[pokeball1, pokeball2]))
 	if trainer3 != null:
@@ -931,7 +931,7 @@ class Battler:
 					
 				animation.add_track(Animation.TYPE_VALUE)
 				animation.track_set_path(0, "Background/" + base.name + "/" + p.pokeball_node.name + ":texture") #pkmn_player
-				animation.track_insert_key(0, 0.0, load("res://ui/BattlePictures/ball00_open.png"))
+				animation.track_insert_key(0, 0.0, load("res://ui/Pictures/ball00_open.png"))
 				
 				animation.add_track(Animation.TYPE_VALUE)
 				animation.track_set_path(1, "Background/" + base.name + "/" + p.node.name + ":scale") #pkmn_player

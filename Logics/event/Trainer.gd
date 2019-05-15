@@ -1,4 +1,5 @@
 extends Node
+class_name Trainer
 
 export(String)var Name
 export(Texture)var battle_front_sprite

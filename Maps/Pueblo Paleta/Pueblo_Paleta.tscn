@@ -329,7 +329,6 @@ tile_data = PoolIntArray( -655372, 10, 0, -655371, 41, 0, -655370, 10, 0, -65536
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="Chico" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 16, 208 )
 Imagen = ExtResource( 4 )
 Interact = true
@@ -640,7 +639,6 @@ anims/Close_door = SubResource( 16 )
 anims/Open_door = SubResource( 17 )
 
 [node name="event_page" parent="Eventos_/Porta_CasaProta/pages" index="0" instance=ExtResource( 5 )]
-editor/display_folded = true
 
 [node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 17 )]
 animation = ExtResource( 16 )
@@ -679,7 +677,6 @@ world_scene = "res://Maps/Pueblo Paleta/Casa_Player.tscn"
 Map_XY = Vector2( 16, 144 )
 
 [node name="event_page2" parent="Eventos_/Porta_CasaProta/pages" index="1" instance=ExtResource( 5 )]
-editor/display_folded = true
 condition1 = "exit_door"
 
 [node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 9 )]
