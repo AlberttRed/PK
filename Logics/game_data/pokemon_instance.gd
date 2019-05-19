@@ -1,42 +1,48 @@
 
 extends Node
 
-export(int, "None, Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise, Caterpie, Metapod, Butterfree, Weedle, Kakuna, Beedrill, Pidgey, Pidgeotto, Pidgeot, Rattata, Raticate, Spearow, Fearow, Ekans, Arbok, Pikachu, Raichu, Sandshrew, Sandslash, Nidoran♀, Nidorina, Nidoqueen, Nidoran♂, Nidorino, Nidoking, Clefairy, Clefable, Vulpix, Ninetales, Jigglypuff, Wigglytuff, Zubat, Golbat, Oddish, Gloom, Vileplume, Paras, Parasect, Venonat, Venomoth, Diglett, Dugtrio, Meowth, Persian, Psyduck, Golduck, Mankey, Primeape, Growlithe, Arcanine, Poliwag, Poliwhirl, Poliwrath, Abra, Kadabra, Alakazam, Machop, Machoke, Machamp, Bellsprout, Weepinbell, Victreebel, Tentacool, Tentacruel, Geodude, Graveler, Golem, Ponyta, Rapidash, Slowpoke, Slowbro, Magnemite, Magneton, Farfetch’d, Doduo, Dodrio, Seel, Dewgong, Grimer, Muk, Shellder, Cloyster, Gastly, Haunter, Gengar, Onix, Drowzee, Hypno, Krabby, Kingler, Voltorb, Electrode, Exeggcute, Exeggutor, Cubone, Marowak, Hitmonlee, Hitmonchan, Lickitung, Koffing, Weezing, Rhyhorn, Rhydon, Chansey, Tangela, Kangaskhan, Horsea, Seadra, Goldeen, Seaking, Staryu, Starmie, Mr. Mime, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Gyarados, Lapras, Ditto, Eevee, Vaporeon, Jolteon, Flareon, Porygon, Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl, Snorlax, Articuno, Zapdos, Moltres, Dratini, Dragonair, Dragonite, Mewtwo")var pkm_id = 0
+export(int, "None, Bulbasaur, Ivysaur, Venusaur, Charmander, Charmeleon, Charizard, Squirtle, Wartortle, Blastoise, Caterpie, Metapod, Butterfree, Weedle, Kakuna, Beedrill, Pidgey, Pidgeotto, Pidgeot, Rattata, Raticate, Spearow, Fearow, Ekans, Arbok, Pikachu, Raichu, Sandshrew, Sandslash, Nidoran♀, Nidorina, Nidoqueen, Nidoran♂, Nidorino, Nidoking, Clefairy, Clefable, Vulpix, Ninetales, Jigglypuff, Wigglytuff, Zubat, Golbat, Oddish, Gloom, Vileplume, Paras, Parasect, Venonat, Venomoth, Diglett, Dugtrio, Meowth, Persian, Psyduck, Golduck, Mankey, Primeape, Growlithe, Arcanine, Poliwag, Poliwhirl, Poliwrath, Abra, Kadabra, Alakazam, Machop, Machoke, Machamp, Bellsprout, Weepinbell, Victreebel, Tentacool, Tentacruel, Geodude, Graveler, Golem, Ponyta, Rapidash, Slowpoke, Slowbro, Magnemite, Magneton, Farfetch’d, Doduo, Dodrio, Seel, Dewgong, Grimer, Muk, Shellder, Cloyster, Gastly, Haunter, Gengar, Onix, Drowzee, Hypno, Krabby, Kingler, Voltorb, Electrode, Exeggcute, Exeggutor, Cubone, Marowak, Hitmonlee, Hitmonchan, Lickitung, Koffing, Weezing, Rhyhorn, Rhydon, Chansey, Tangela, Kangaskhan, Horsea, Seadra, Goldeen, Seaking, Staryu, Starmie, Mr. Mime, Scyther, Jynx, Electabuzz, Magmar, Pinsir, Tauros, Magikarp, Gyarados, Lapras, Ditto, Eevee, Vaporeon, Jolteon, Flareon, Porygon, Omanyte, Omastar, Kabuto, Kabutops, Aerodactyl, Snorlax, Articuno, Zapdos, Moltres, Dratini, Dragonair, Dragonite, Mewtwo")var pkm_id = 0 setget set_id,get_id
 var nickname = "" setget set_nick,get_nick
-export(int, 100)var level = 1
-export(int, "Macho, Hembra, Sin Genero") var gender = CONST.GENEROS.MACHO setget set_gender,get_gender
-export(int)var hp = 0
-export(int)var max_hp : int = 0 setget set_hp,get_hp
+export(int, 100)var level = 1 setget set_nivel,get_nivel
+export(int, "Macho, Hembra, Sin Genero") var gender = 0 setget set_gender,get_gender
+export(int)var hp = 0 setget set_actual_hp,get_actual_hp
+export(int)var max_hp : int = 0 setget set_total_hp,get_total_hp
 var status = CONST.STATUS.OK
+
 var attack : int setget set_attack,get_attack
 var speed : int setget set_speed,get_speed
 var defense : int setget set_defense,get_defense
 var special_attack : int setget set_special_attack,get_special_attack
 var special_defense : int setget set_special_defense,get_special_defense
-var dni = 45645634567
-var original_trainer = ""
-var expecience = 0
-var to_next_level = 250
+var dni = 45645634567 setget set_dni,get_dni
+var original_trainer = "Red" setget set_trainer,get_trainer #### De momento posem Red a piñon
+var experiencia_total = 0 setget set_experiencia,get_experiencia
+var exp_to_next_level = 250 setget set_exp_next,get_exp_next 
 var effectsFlags = []
+var fecha_captura = "18 de Nov. de 2018" setget set_fecha_captura,get_fecha_captura 
+var ruta_captura = "Ruta 1" setget set_ruta_captura,get_ruta_captura 
+var nivel_captura = 5 setget set_nivel_captura,get_nivel_captura 
 
 export(int, 252)var hp_EVs = 0
 export(int, 252)var attack_EVs = 0
-export(int, 252)var spAttack_EVs = 0
 export(int, 252)var defense_EVs = 0
+export(int, 252)var spAttack_EVs = 0
 export(int, 252)var spDefense_EVs = 0
 export(int, 252)var speed_EVs = 0
 
 export(int, 31)var hp_IVs = 0
 export(int, 31)var attack_IVs = 0
-export(int, 31)var spAttack_IVs = 0
 export(int, 31)var defense_IVs = 0
+export(int, 31)var spAttack_IVs = 0
 export(int, 31)var spDefense_IVs = 0
 export(int, 31)var speed_IVs = 0
 #IMPORTANT -- S'ha de sumar 1 l'ability_id ja que comença per 0
 export(int, "NONE, HEDOR , LLOVIZNA , IMPULSO , ARMADURA_BATALLA , ROBUSTEZ , HUMEDAD , FLEXIBILIDAD , VELO_ARENA , ELEC_ESTATICA , ABSORBE_ELEC , ABSORBE_AGUA , DESPISTE , ACLIMATACION , OJO_COMPUESTO , INSOMNIO , CAMBIO_COLOR , INMUNIDAD , ABSORBE_FUEGO , POLVO_ESCUDO , RITMO_PROPIO , VENTOSAS , INTIMIDACION , SOMBRA_TRAMPA , PIEL_TOSCA , SUPERGUARDA , LEVITACION , EFECTO_ESPORA , SINCRONIA , CUERPO_PURO , CURA_NATURAL , PARARRAYOS , DICHA , NADO_RAPIDO , CLOROFILA , ILUMINACION , RASTRO , POTENCIA , PUNTO_TOXICO , FOCO_INTERNO , ESCUDO_MAGMA , VELO_AGUA , IMAN , INSONORIZAR , CURA_LLUVIA , CHORRO_ARENA , PRESION , SEBO , MADRUGAR , CUERPO_LLAMA , FUGA , VISTA_LINCE , CORTE_FUERTE , RECOGIDA , AUSENTE , ENTUSIASMO , GRAN_ENCANTO , MAS , MENOS , PREDICCION , VISCOSIDAD , MUDAR , AGALLAS , ESCAMA_ESPECIAL , LODO_LIQUIDO , ESPESURA , MAR_LLAMAS , TORRENTE , ENJAMBRE , CABEZA_ROCA , SEQUIA , TRAMPA_ARENA , ESPIRITU_VITAL , HUMO_BLANCO , ENERGIA_PURA , CAPARAZON , BUCLE_AIRE , TUMBOS , ELECTROMOTOR , RIVALIDAD , IMPASIBLE , MANTO_NIVEO , GULA , IRASCIBLE , LIVIANO , IGNIFUGO , SIMPLE , PIEL_SECA , DESCARGA , PUNO_FERREO , ANTIDOTO , ADAPTABLE , ENCADENADO , HIDRATACION , PODER_SOLAR , PIES_RAPIDOS , NORMALIDAD , FRANCOTIRADOR , MURO_MAGICO , INDEFENSO , REZAGADO , EXPERTO , DEFENSA_HOJA , ZOQUETE , ROMPEMOLDES , AFORTUNADO , RESQUICIO , ANTICIPACION , ALERTA , IGNORANTE , CROMOLENTE , FILTRO , INICIO_LENTO , INTREPIDO , COLECTOR , GELIDO , ROCA_SOLIDA , NEVADA , RECOGEMIEL , CACHEO , AUDAZ , MULTITIPO , DON_FLORAL , MAL_SUENO , HURTO , POTENCIA_BRUTA , RESPONDON , NERVIOSISMO , COMPETITIVO , FLAQUEZA , CUERPO_MALDITO , ALMA_CURA , COMPIESCOLTA , ARMADURA_FRAGIL , METAL_PESADO , METAL_LIVIANO , COMPENSACION , IMPETU_TOXICO , IMPETU_ARDIENTE , COSECHA , TELEPATIA , VELETA , FUNDA , TOQUE_TOXICO , REGENERACION , SACAPECHO , IMPETU_ARENA , PIEL_MILAGRO , CALCULO_FINAL , ILUSION , IMPOSTOR , ALLANAMIENTO , MOMIA , AUTOESTIMA , JUSTICIERO , COBARDIA , ESPEJO_MAGICO , HERBIVORO , BROMISTA , PODER_ARENA , PUNTA_ACERO , MODO_DARUMA , TINOVICTORIA , TURBOLLAMA , TERRAVOLTAJE , VELO_AROMA , VELO_FLOR , CARRILLO , MUTATIPO , PELAJE_RECIO , PRESTIDIGITADOR , ANTIBALAS , TENACIDAD , MANDIBULA_FUERTE , PIEL_HELADA , VELO_DULCE , CAMBIO_TACTICO , ALAS_VENDAVAL , MEGADISPARADOR , MANTO_FRONDOSO , SIMBIOSIS , GARRA_DURA , PIEL_FEERICA , BABA , PIEL_CELESTE , AMOR_FILIAL , AURA_OSCURA , AURA_FEERICA , ROMPEAURA , MAR_DEL_ALBOR , TIERRA_DEL_OCASO , RAFAGA_DELTA , FIRMEZA , HUIDA , RETIRADA , HIDRORREFUERZO , ENSANAMIENTO , ESCUDO_LIMITADO , VIGILANTE , POMPA , ACERO_TEMPLADO , COLERA , QUITANIEVES , REMOTO , VOZ_FLUIDA , PRIMER_AUXILIO , PIEL_ELECTRICA , COLA_SURF , BANCO , DISFRAZ , FUERTE_AFECTO , AGRUPAMIENTO , CORROSION , LETARGO_PERENNE , REGIA_PRESENCIA , REVES , PAREJA_DE_BAILE , BATERIA , PELUCHE , CUERPO_VIVIDO , CORANIMA , RIZOS_REBELDES , RECEPTOR , REACCION_QUIMICA , ULTRAIMPULSO , SISTEMA_ALFA , ELECTROGENESIS , PSICOGENESIS , NEBULOGENESIS , HERBOGENESIS , GUARDIA_METALICA , GUARDIA_ESPECTRO , ARMADURA_PRISMA ")var ability_id setget set_ability,get_ability
-export(int)var nature_id
+export(int, "NONE", "ACTIVA", "AFABLE", "AGITADA", "ALEGRE", "ALOCADA", "AMABLE", "AUDAZ", "CAUTA", "DÓCIL", "FIRME", "FLOJA", "FUERTE", "GROSERA", "HURAÑA", "INGENUA", "MANSA", "MIEDOSA", "MODESTA", "OSADA", "PÍCARA", "PLÁCIDA", "RARA", "SERENA", "SERIA", "TÍMIDA")var nature_id setget set_naturaleza,get_naturaleza
 export(int)var held_item_id
-
+var EVs = []
+var IVs = []
+var personality = "" setget set_personality,get_personality
 var ally
 var enemies = []
 var base
@@ -78,22 +84,36 @@ func _init():
 	add_user_signal("hp_updated")
 	
 func _ready():
-	# Initialization here
-	pass
+	EVs = [hp_EVs, attack_EVs, defense_EVs, spAttack_EVs, spDefense_EVs, speed_EVs] 
+	IVs = [hp_IVs, attack_IVs, defense_IVs, spAttack_IVs, spDefense_IVs, speed_IVs]
+	personality = get_personality_text()
+	load_EVs()
 
+func get_id():
+	return pkm_id
+
+func set_id(p):
+	pkm_id = p
+	
 func get_name():
 	return DB.pokemons[pkm_id].Name
 	
-func get_level():
+func get_nivel():
 	return level
+	
+func set_nivel(l):
+	level = l
 
 func get_actual_hp():
 	return hp
+
+func set_actual_hp(h):
+	hp = h
 	
-func set_hp(value):
+func set_total_hp(value):
 	max_hp = (((2.0*float(value)+float(hp_IVs)+(float(hp_EVs)/4.0))*float(level))/100.0)+float(level)+10.0
 
-func get_hp():
+func get_total_hp():
 	return max_hp
 	
 func set_attack(value):
@@ -147,9 +167,72 @@ func get_nick():
 	else:
 		return nickname
 		
+func get_dni():
+	return dni
+	
+func set_dni(d):
+	dni = d
+	
+func get_highest_IV() -> int:
+	var highest_valor = -1
+	var highest_IVs = []
+	for iv in range(IVs.size()):
+		#print(str(iv) + ": " + str(IVs[iv])) 
+		if IVs[iv] > highest_valor:
+			highest_IVs.clear()
+			highest_IVs.push_back(iv)
+			highest_valor = IVs[iv]
+		elif IVs[iv] == highest_valor:
+			highest_IVs.push_back(iv)
+	#print("return ivs: " + str(highest_IVs))
+	return highest_IVs[randi() % highest_IVs.size()]
+	
+func get_personality_text():
+	var highest_IV = get_highest_IV()
+#	for n in range(5*highest_IV):
+	#print(get_name() + ": " + str(highest_IV))
+	for f in CONST.Personality_Table[highest_IV]:
+		if f[0].has(IVs[highest_IV]):
+			return f[1]
+func get_naturaleza():
+	return nature_id
+	
+func set_naturaleza(n):
+	nature_id = n
+	
+func get_trainer():
+	return original_trainer
+	
+func set_trainer(t):
+	original_trainer = t
+	
+func get_ruta_captura():
+	return ruta_captura
+	
+func set_ruta_captura(r):
+	ruta_captura = r
+
+func get_nivel_captura():
+	return nivel_captura
+	
+func set_nivel_captura(n):
+	nivel_captura = n
+
+func get_fecha_captura():
+	return fecha_captura
+	
+func set_fecha_captura(f):
+	fecha_captura = f
+	
+func get_personality():
+	return personality
+
+func set_personality(p):
+	personality = p
+			
 func print_pokemon():
 	print("----------- " + get_nick() + " Nv. " + str(level) + " -----------")
-	print("HP: " + str(get_hp()))
+	print("HP: " + str(get_total_hp()))
 	print("ATTACK: " + str(get_attack()))
 	print("DEFENSE: " + str(get_defense()))
 	print("SP. ATTACK: " + str(get_special_attack()))
@@ -201,6 +284,37 @@ func hasAlly():
 func hasFullHealth():
 	return hp == max_hp
 	
+func get_experiencia():
+	return experiencia_total
+
+func set_experiencia(e):
+	experiencia_total = e
+	
+func get_exp_next():
+	return exp_to_next_level
+
+func set_exp_next(e):
+	exp_to_next_level = e
+
+func load_EVs():
+#	if hp_EVs == 0: hp_EVs = DB.pokemons[pkm_id].hp_base
+#	if hp_EVs == 0: attack_EVs = DB.pokemons[pkm_id].attack_base
+#	if hp_EVs == 0: defense_EVs = DB.pokemons[pkm_id].defense_base
+#	if hp_EVs == 0: spAttack_EVs = DB.pokemons[pkm_id].special_attack_base	
+#	if hp_EVs == 0: spDefense_EVs = DB.pokemons[pkm_id].special_defense_base
+#	if hp_EVs == 0: speed_EVs = DB.pokemons[pkm_id].speed_base
+	
+	
+	hp = int(10.0 + (float(get_nivel()) / 100.0 * ((float(DB.pokemons[pkm_id].hp) * 2.0) + float(hp_IVs) + float(hp_EVs) ) ) + float(get_nivel()) )  
+	
+	print(" HP: 10 + (" + str(get_nivel()) + " / 100 * ((" + str(DB.pokemons[pkm_id].hp_base) + "* 2) + " + str(hp_IVs) + " + " + str(hp_EVs) + ")) + " + str(get_nivel()) )
+	attack = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].attack_base) * 2.0) + float(attack_IVs) + float(attack_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.ATA][get_naturaleza()]))
+	defense = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].defense_base) * 2.0) + float(defense_IVs) + float(defense_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.DEF][get_naturaleza()]))
+	special_attack = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].special_attack_base) * 2.0) + float(spAttack_IVs) + float(spAttack_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.ATAESP][get_naturaleza()]))
+	special_defense = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].special_defense_base) * 2.0) + float(spDefense_IVs) + float(spDefense_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.DEFESP][get_naturaleza()]))
+	speed = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].speed_base) * 2.0) + float(speed_IVs) + float(speed_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.VEL][get_naturaleza()]))	
+	max_hp = hp
+		
 func hasMove(move_id):
 	for m in movements:
 		if m.id == move_id:

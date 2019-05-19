@@ -1,6 +1,9 @@
 
 extends Panel
 
+const msgBox_normalSize = Vector2(398, 66)
+const msgBox_actionsSize = Vector2(370, 66)
+
 var style_selected
 var style_empty
 
@@ -27,12 +30,15 @@ export(StyleBox) var style_actions_selected
 "ACTIONS/VBoxContainer/SALIR"
 onready var pkmns = [get_node("PKMN_0"),get_node("PKMN_1"),get_node("PKMN_2"),get_node("PKMN_3"),get_node("PKMN_4"),get_node("PKMN_5")]
 onready var actions_chs = [get_node("ACTIONS/VBoxContainer/DATOS"),get_node("ACTIONS/VBoxContainer/MOVER"),get_node("ACTIONS/VBoxContainer/OBJETO"),get_node("ACTIONS/VBoxContainer/SALIR")]
+onready var summary = [get_node("SUMMARY/SUMMARY_1"),get_node("SUMMARY/SUMMARY_2"),get_node("SUMMARY/SUMMARY_3"),get_node("SUMMARY/SUMMARY_4"),get_node("SUMMARY/SUMMARY_5")]
 onready var salir = get_node("Salir")
 onready var actions = get_node("ACTIONS")
 onready var msg = get_node("MSG")
 
 var signals = ["pokedex","pokemon","item","player","save","option","exit"]
 var start
+var opened = false
+
 func _init():
 	add_user_signal("pokedex")
 	add_user_signal("pokemon")
@@ -44,21 +50,26 @@ func _init():
 
 func _ready():
 	hide()
+	for s in summary:
+		s.hide()
+	actions.hide()
 	connect("exit", self, "hide")
 
 var index = 0
 var actions_index = 0
+var summary_index = 0
 
 func show_party():
+	opened = false
 	load_pokemon()
 	update_styles()
 	pkmns[0].grab_focus()
 	show()
-
 	
 func hide_party():
 	for p in range(GAME_DATA.party.size()):
 		pkmns[p].visible = false
+	opened = false
 	hide()
 
 #func _input(event):
@@ -77,18 +88,22 @@ func hide_party():
 				
 
 func _process(delta):
+	if INPUT.ui_accept.is_action_just_released():
+		opened = true
 	if visible:
-		if !actions.visible:
+		if !actions.visible and !summary[0].visible:
 			if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
-				if pkmns[index].get_name() == "Salir":
+				if get_focus_owner().get_name() == "Salir":
 						emit_signal("salir")
-				else:
+				elif opened:
 					show_actions()
 			if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
+				if get_focus_owner().get_name() == "Salir":
+						emit_signal("salir")
 				index = -1
 				salir.grab_focus()
 				update_styles()
-		elif actions.visible:
+		elif actions.visible and !summary[0].visible:
 #			if (INPUT.ui_down.is_action_just_pressed()): #Input.is_action_pressed("ui_down"):#
 #				var i = actions_index
 #				while (i < actions_chs.size()-1):
@@ -105,10 +120,25 @@ func _process(delta):
 #						actions_index=i
 #						break
 			if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
-				print(actions_chs[actions_index].get_name())
+				if actions_index == 0:
+					print("SUMMARY")
+					show_summaries()
 			if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
 				hide_actions()
-		
+				pkmns[index].grab_focus()
+		elif summary[0].visible:
+			if (INPUT.ui_accept.is_action_just_pressed() or INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
+				hide_summaries()
+			
+			if (INPUT.ui_right.is_action_just_pressed()):
+				if summary_index < 4:
+					summary_index += 1
+					summary[summary_index].show()
+			elif (INPUT.ui_left.is_action_just_pressed()):
+				if summary_index > 0:
+					summary[summary_index].hide()
+					summary_index -= 1
+				
 	#	if Input.is_action_pressed("ui_start"):#(INPUT.ui_cancel.is_action_just_pressed()):
 	#		emit_signal("exit")
 
@@ -135,7 +165,9 @@ func update_styles():
 			pkmns[p].add_stylebox_override("panel", get("style_" + form + "_" + type))
 	if index == -1:
 		salir.add_stylebox_override("panel", style_salir_sel)
-		
+	msg.get_node("Label").text = "Elige un Pokémon."
+	msg.get_node("Label/Label2").text = "Elige un Pokémon."
+	msg.rect_size = msgBox_normalSize
 	
 func load_pokemon():
 	for p in range(GAME_DATA.party.size()):
@@ -143,15 +175,15 @@ func load_pokemon():
 		pkmns[p].get_node("Nombre").text = GAME_DATA.party[p].get_nick()
 		pkmns[p].get_node("Nombre/Outline").text = GAME_DATA.party[p].get_nick()
 		
-		pkmns[p].get_node("Nivel").text = "Nv." + str(GAME_DATA.party[p].get_level())
-		pkmns[p].get_node("Nivel/Outline").text = "Nv." + str(GAME_DATA.party[p].get_level())
+		pkmns[p].get_node("Nivel").text = "Nv." + str(GAME_DATA.party[p].get_nivel())
+		pkmns[p].get_node("Nivel/Outline").text = "Nv." + str(GAME_DATA.party[p].get_nivel())
 		
-		pkmns[p].get_node("HP").text = str(GAME_DATA.party[p].get_actual_hp()) + "/" + str(GAME_DATA.party[p].get_hp())
-		pkmns[p].get_node("HP/Outline").text = str(GAME_DATA.party[p].get_actual_hp()) + "/" + str(GAME_DATA.party[p].get_hp())
+		pkmns[p].get_node("HP").text = str(GAME_DATA.party[p].get_actual_hp()) + "/" + str(GAME_DATA.party[p].get_total_hp())
+		pkmns[p].get_node("HP/Outline").text = str(GAME_DATA.party[p].get_actual_hp()) + "/" + str(GAME_DATA.party[p].get_total_hp())
 		
 		pkmns[p].get_node("pkmn").texture = load("res://Sprites/Icons/icon" + str(GAME_DATA.party[p].pkm_id).pad_zeros(3) + ".png")
 		
-		var percentage = GAME_DATA.party[p].get_actual_hp() / GAME_DATA.party[p].get_hp()
+		var percentage = GAME_DATA.party[p].get_actual_hp() / GAME_DATA.party[p].get_total_hp()
 		pkmns[p].get_node("health_bar/health").rect_scale = Vector2(percentage, 1)
 		
 		if GAME_DATA.party[p].get_gender() == CONST.GENEROS.MACHO:
@@ -169,6 +201,9 @@ func update_actions_styles():
 			actions_chs[p].add_stylebox_override("panel", style_actions_selected)
 		else:
 			actions_chs[p].add_stylebox_override("panel",style_actions_empty)
+	msg.get_node("Label").text = "¿Qué hacer con " + GAME_DATA.party[index].get_name() + "?"
+	msg.get_node("Label/Label2").text = "¿Qué hacer con " + GAME_DATA.party[index].get_name() + "?"
+	msg.rect_size = msgBox_actionsSize
 
 func show_actions():
 	print("pe")
@@ -185,10 +220,10 @@ func hide_actions():
 	actions.hide()
 	load_focus()
 	actions_chs[actions_index].release_focus()
-	pkmns[index].grab_focus()
+	#pkmns[index].grab_focus()
+	update_actions_styles()
 	update_styles()
 	actions_index = 0
-	update_actions_styles()
 
 func _on_PKMN_focus_entered():
 	index = int(get_focus_owner().get_name().right(0))
@@ -252,3 +287,105 @@ func clear_actions_focus():
 		a.set_focus_neighbour(MARGIN_TOP, null)
 		a.set_focus_neighbour(MARGIN_LEFT, null)
 		a.set_focus_neighbour(MARGIN_RIGHT, null)
+		
+func show_summaries():
+	hide_actions()
+	load_summary()
+	summary[summary_index].show()
+	
+func hide_summaries():
+	summary_index = 0
+	for s in summary:
+		s.hide()
+	show_actions()
+		
+func load_summary():
+	for s in summary:
+		# ---- INFO GENERAL --------
+		s.get_node("Nombre").text = GAME_DATA.party[index].get_nick()
+		s.get_node("Nombre/Outline").text = GAME_DATA.party[index].get_nick()
+		
+		if GAME_DATA.party[index].get_gender() == CONST.GENEROS.MACHO:
+			s.get_node("Genero").texture = load("res://ui/Pictures/male_icon.png")
+		elif GAME_DATA.party[index].get_gender() == CONST.GENEROS.HEMBRA:
+			s.get_node("Genero").texture = load("res://ui/Pictures/female_icon.png")
+		else:
+			s.get_node("Genero").texture = null
+			
+		#--- falta pokeball
+		#--- falta objecte
+		#--- falta barra exp
+		s.get_node("Nivel").text = str(GAME_DATA.party[index].get_nivel())
+		s.get_node("Nivel/Outline").text = str(GAME_DATA.party[index].get_nivel())
+		s.get_node("Sprite").texture = load("res://Sprites/Battlers/" + str(GAME_DATA.party[index].pkm_id).pad_zeros(3) + ".png")
+		
+	# ---- SUMMARY 1 --------
+		
+	summary[0].get_node("dNumDex").text = str(GAME_DATA.party[index].get_id()).pad_zeros(3)
+	summary[0].get_node("dNumDex/Outline").text = str(GAME_DATA.party[index].get_id()).pad_zeros(3)
+	
+	summary[0].get_node("dEspecie").text = GAME_DATA.party[index].get_name()
+	summary[0].get_node("dEspecie/Outline").text = GAME_DATA.party[index].get_name()
+	
+	summary[0].get_node("Tipos/pTipo1/dTipo1").frame = GAME_DATA.party[index].get_type1()
+
+	if  GAME_DATA.party[index].get_type2() != CONST.TYPES.NONE:
+		summary[0].get_node("Tipos/pTipo2").visible = true
+		summary[0].get_node("Tipos/pTipo2/dTipo2").frame = GAME_DATA.party[index].get_type2()
+	else:
+		summary[0].get_node("Tipos/pTipo2").visible = false
+	
+	summary[0].get_node("dEO").text = GAME_DATA.party[index].get_trainer()
+	summary[0].get_node("dEO/Outline").text = GAME_DATA.party[index].get_trainer()
+	
+	summary[0].get_node("dID").text = str(GAME_DATA.party[index].get_dni())
+	summary[0].get_node("dID/Outline").text = str(GAME_DATA.party[index].get_dni())
+	
+	summary[0].get_node("dExperiencia").text = str(GAME_DATA.party[index].get_experiencia())
+	summary[0].get_node("dExperiencia/Outline").text = str(GAME_DATA.party[index].get_experiencia())
+	
+	summary[0].get_node("dSigNivel").text = str(GAME_DATA.party[index].get_exp_next())
+	summary[0].get_node("dSigNivel/Outline").text = str(GAME_DATA.party[index].get_exp_next())
+	
+	# ---- SUMMARY 2 --------
+
+	summary[1].get_node("Naturaleza").text = CONST.NaturesName[GAME_DATA.party[index].get_naturaleza()] + "."
+	summary[1].get_node("Naturaleza/Outline").text = CONST.NaturesName[GAME_DATA.party[index].get_naturaleza()] + "."
+	
+	summary[1].get_node("Labels/FechaCaptura").text = GAME_DATA.party[index].get_fecha_captura()
+	summary[1].get_node("Labels/FechaCaptura/Outline").text = GAME_DATA.party[index].get_fecha_captura()
+	
+	summary[1].get_node("Labels/RutaCaptura").text = GAME_DATA.party[index].get_ruta_captura()
+	summary[1].get_node("Labels/RutaCaptura/Outline").text = GAME_DATA.party[index].get_ruta_captura()
+	
+	summary[1].get_node("Labels/NivelCaptura").text = "Encontrado con Nv. " + str(GAME_DATA.party[index].get_nivel()) + "."
+	summary[1].get_node("Labels/NivelCaptura/Outline").text = "Encontrado con Nv. " + str(GAME_DATA.party[index].get_nivel()) + "."
+	
+	summary[1].get_node("DescNaturaleza").text = GAME_DATA.party[index].get_personality()
+	summary[1].get_node("DescNaturaleza/Outline").text = GAME_DATA.party[index].get_personality()
+	
+	# ---- SUMMARY 3 --------
+	
+	summary[2].get_node("dPS").text = str(GAME_DATA.party[index].get_actual_hp()) + "/" + str(GAME_DATA.party[index].get_total_hp())
+	summary[2].get_node("dPS/Outline").text = str(GAME_DATA.party[index].get_actual_hp()) + "/" + str(GAME_DATA.party[index].get_total_hp())
+	
+	summary[2].get_node("dAtaque").text = str(GAME_DATA.party[index].get_attack()) 
+	summary[2].get_node("dAtaque/Outline").text = str(GAME_DATA.party[index].get_attack()) 
+	
+	summary[2].get_node("dDefensa").text = str(GAME_DATA.party[index].get_defense()) 
+	summary[2].get_node("dDefensa/Outline").text = str(GAME_DATA.party[index].get_defense()) 
+	
+	summary[2].get_node("dAtEsp").text = str(GAME_DATA.party[index].get_special_attack()) 
+	summary[2].get_node("dAtEsp/Outline").text = str(GAME_DATA.party[index].get_special_attack()) 
+	
+	summary[2].get_node("dDefEsp").text = str(GAME_DATA.party[index].get_special_defense()) 
+	summary[2].get_node("dDefEsp/Outline").text = str(GAME_DATA.party[index].get_special_defense()) 
+	
+	summary[2].get_node("dVelocidad").text = str(GAME_DATA.party[index].get_speed()) 
+	summary[2].get_node("dVelocidad/Outline").text = str(GAME_DATA.party[index].get_speed()) 
+	
+	summary[2].get_node("dHabilidad").text = CONST.AbilitiesName[GAME_DATA.party[index].get_ability()]
+	summary[2].get_node("dHabilidad/Outline").text = CONST.AbilitiesName[GAME_DATA.party[index].get_ability()]
+	
+	summary[2].get_node("DescHabilidad").text = CONST.AbilitiesDesc[GAME_DATA.party[index].get_ability()]
+	summary[2].get_node("DescHabilidad/Outline").text = CONST.AbilitiesDesc[GAME_DATA.party[index].get_ability()]

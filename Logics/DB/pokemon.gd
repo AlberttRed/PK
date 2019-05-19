@@ -24,19 +24,19 @@ export(Array) var learn_type = []
 export(Array) var learn_lvl = []
 export(Array) var learn_move_id = []
 
-export(int) var hp = 0
-export(int) var attack= 0
-export(int) var defense = 0
-export(int) var special_attack = 0
-export(int) var special_defense = 0
-export(int) var speed = 0
-export(int) var total = 0
+export(int) var hp_base = 0
+export(int) var attack_base= 0
+export(int) var defense_base = 0
+export(int) var special_attack_base = 0
+export(int) var special_defense_base = 0
+export(int) var speed_base = 0
+export(int) var total_base = 0
 
 export(int) var hp_effort_EVs = 0
 export(int) var attack_effort_EVs= 0
 export(int) var defense_effort_EVs = 0
 export(int) var special_effort_attack_EVs = 0
-export(int) var special_effort_deffense_EVs = 0
+export(int) var special_effort_defense_EVs = 0
 export(int) var speed_effort_EVs = 0
 
 export(int) var gender_rate = 0  #probabilitat de que un pokemon sigui mascle o femella al trobarte'l. SI no te sexte = -1
@@ -72,18 +72,18 @@ func make_wild(level):
 	p.pkm_id = id
 	p.nickname = Name
 	p.level = level
-	p.max_hp=hp
+	p.max_hp=hp_base
 	p.hp = p.max_hp
-	p.attack = attack
-	p.defense = defense
-	p.speed = speed
-	p.special_attack = special_attack
-	p.special_defense = special_defense
+	p.attack = attack_base
+	p.defense = defense_base
+	p.speed = speed_base
+	p.special_attack = special_attack_base
+	p.special_defense = special_defense_base
 	randomize()
 	p.ability_id = get_ability()
 	p.dni = 34456547 #TODO:MARIANOGNU: how to generate unique id?
 	p.original_trainer = GAME_DATA.player_name
-	p.to_next_level = 300 #TODO:MARIANOGNU: how to calculate next level?
+	p.exp_to_next_level = 300 #TODO:MARIANOGNU: how to calculate next level?
 
 	var learnable_indexes = []
 

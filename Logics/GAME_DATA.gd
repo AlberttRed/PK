@@ -39,7 +39,7 @@ var player_default_sprite = preload("res://Sprites/trchar000.png")
 func _ready():
 #	party.push_back(DB.pokemons[7].make_wild(7))
 #	party.push_back(DB.pokemons[4].make_wild(16))
-	
+
 	medals.push_back(CONST.MEDALS.ROCA)
 	medals.push_back(CONST.MEDALS.CASCADA)
 	medals.push_back(CONST.MEDALS.TRUENO)

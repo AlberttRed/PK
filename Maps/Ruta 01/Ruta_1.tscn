@@ -11,8 +11,6 @@
 [ext_resource path="res://Area2D.gd" type="Script" id=9]
 [ext_resource path="res://Logics/effect_areas/enconter_area.scn" type="PackedScene" id=10]
 
-
-
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 31.3469, 13.0891 )
 
