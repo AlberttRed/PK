@@ -15,9 +15,9 @@ var party = []
 var tilesVisibility
 
 func _ready():
-	for p in get_children():
-		party.push_back(DB.pokemons[p.pkm_id].make_wild(p.level))
-
+#	for p in get_children():
+#		party.push_back(DB.pokemons[p.pkm_id].make_wild(p.level))
+	pass
 
 func is_type(type): return type == "Trainer" or .is_type(type)
 func    get_type(): return "Trainer"

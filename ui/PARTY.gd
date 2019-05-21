@@ -53,7 +53,7 @@ func _ready():
 	for s in summary:
 		s.hide()
 	actions.hide()
-	connect("exit", self, "hide")
+	#connect("exit", self, "hide")
 
 var index = 0
 var actions_index = 0

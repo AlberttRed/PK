@@ -78,14 +78,14 @@ func _run():
 		pkm.attack_base=int(d["stats"][4]["base_stat"])
 		pkm.defense_base=int(d["stats"][3]["base_stat"])
 		pkm.special_attack_base=int(d["stats"][2]["base_stat"])
-		pkm.special_deffense_base=int(d["stats"][1]["base_stat"])
+		pkm.special_defense_base=int(d["stats"][1]["base_stat"])
 		pkm.speed_base=int(d["stats"][0]["base_stat"])
 		pkm.hp_base=int(d["stats"][5]["base_stat"])
 		
 		pkm.attack_effort_EVs=int(d["stats"][4]["effort"])
 		pkm.defense_effort_EVs=int(d["stats"][3]["effort"])
 		pkm.special_effort_attack_EVs=int(d["stats"][2]["effort"])
-		pkm.special_effort_deffense_EVs=int(d["stats"][1]["effort"])
+		pkm.special_effort_defense_EVs=int(d["stats"][1]["effort"])
 		pkm.speed_effort_EVs=int(d["stats"][0]["effort"])
 		pkm.hp_effort_EVs=int(d["stats"][5]["effort"])
 		#pkm.catch_rate=int(d["catch_rate"])
@@ -205,7 +205,54 @@ func _run():
 		scn.pokedex = str(names)
 
 
+
 func get_json(uri):
+	var http2 = HTTPClient.new()
+	var err = http2.connect_to_host("https://pokeapi.co", 443)
+	if err != OK:
+		print("error")
+		return
+	# Wait until resolved and connected.
+	while http2.get_status() == HTTPClient.STATUS_CONNECTING or http2.get_status() == HTTPClient.STATUS_RESOLVING:
+		print("poll:" + str(http2.poll()))
+		print("Connecting...")
+		
+	print(http2.get_status())
+	
+	assert(http2.get_status() == HTTPClient.STATUS_CONNECTED) # Could not connect
+
+	# Some headers
+	var headers = [
+#		"User-Agent: Pirulo/1.0 (Godot)",
+#		"Accept: */*"
+	]
+#"/api/v2/pokemon/1"
+	err = http2.request(HTTPClient.METHOD_GET, uri, headers) # Request a page from the site (this one was chunked..)
+	assert(err == OK) # Make sure all is OK.
+	print(http2.get_status())
+	while (http2.get_status() == HTTPClient.STATUS_REQUESTING):
+		print("poll")
+		
+		http2.poll()
+		OS.delay_msec(500)
+	var rb = PoolByteArray()
+	while http2.get_status() == HTTPClient.STATUS_BODY:
+		http2.poll()
+		var chunk = http2.read_response_body_chunk() # Get a chunk.
+
+		if chunk.size() == 0:
+				# Got nothing, wait for buffers to fill a bit.
+			OS.delay_usec(1000)
+		else:
+			#print(chunk.get_string_from_ascii())
+			rb = rb + chunk
+	print("bytes got: ", rb.size())
+	var text = rb.get_string_from_ascii()
+	return text
+	
+	
+
+func get_json_old(uri):
 	var err = 0
 	var http = HTTPClient.new() # Create the Client.
 
@@ -216,7 +263,7 @@ func get_json(uri):
 	while http.get_status() == HTTPClient.STATUS_CONNECTING or http.get_status() == HTTPClient.STATUS_RESOLVING:
 		http.poll()
 		print("Connecting...")
-		OS.delay_msec(500)
+		#OS.delay_msec(500)
 
 	assert(http.get_status() == HTTPClient.STATUS_CONNECTED) # Could not connect
 
@@ -233,59 +280,60 @@ func get_json(uri):
 		# Keep polling for as long as the request is being processed.
 		http.poll()
 		print("Requesting...")
-		if not OS.has_feature("web"):
-			OS.delay_msec(500)
-		else:
-			# Synchronous HTTP requests are not supported on the web,
-			# so wait for the next main loop iteration.
-			yield(Engine.get_main_loop(), "idle_frame")
+		OS.delay_msec(500)
+#		if not OS.has_feature("web"):
+#			OS.delay_msec(500)
+#		else:
+#			# Synchronous HTTP requests are not supported on the web,
+#			# so wait for the next main loop iteration.
+#			yield(Engine.get_main_loop(), "idle_frame")
 
-	assert(http.get_status() == HTTPClient.STATUS_BODY or http.get_status() == HTTPClient.STATUS_CONNECTED) # Make sure request finished well.
+	#assert(http.get_status() == HTTPClient.STATUS_BODY or http.get_status() == HTTPClient.STATUS_CONNECTED) # Make sure request finished well.
 
-	print("response? ", http.has_response()) # Site might not have a response.
-
-	if http.has_response():
-		# If there is a response...
-
-		headers = http.get_response_headers_as_dictionary() # Get response headers.
-		print("code: ", http.get_response_code()) # Show response code.
-		print("**headers:\\n", headers) # Show headers.
-
-		# Getting the HTTP Body
-
-		if http.is_response_chunked():
-			# Does it use chunks?
-			print("Response is Chunked!")
-		else:
-		# Or just plain Content-Length
-			var bl = http.get_response_body_length()
-			print("Response Length: ",bl)
+#	print("response? ", http.has_response()) # Site might not have a response.
+#
+#	if http.has_response():
+#		# If there is a response...
+#
+#		headers = http.get_response_headers_as_dictionary() # Get response headers.
+#		print("code: ", http.get_response_code()) # Show response code.
+#		print("**headers:\\n", headers) # Show headers.
+#
+#		# Getting the HTTP Body
+#
+#		if http.is_response_chunked():
+#			# Does it use chunks?
+#			print("Response is Chunked!")
+#		else:
+#		# Or just plain Content-Length
+#			var bl = http.get_response_body_length()
+#			print("Response Length: ",bl)
 
 		# This method works for both anyway
 
-		var rb = PoolByteArray() # Array that will hold the data.
+	var rb = PoolByteArray() # Array that will hold the data.
 
-		while http.get_status() == HTTPClient.STATUS_BODY:
-			# While there is body left to be read
+	while http.get_status() == HTTPClient.STATUS_BODY:
+		# While there is body left to be read
+		
+		http.poll()
+		var chunk = http.read_response_body_chunk() # Get a chunk.
+
+		if chunk.size() == 0:
+			# Got nothing, wait for buffers to fill a bit.
+			OS.delay_usec(1000)
+		else:
 			
-			http.poll()
-			var chunk = http.read_response_body_chunk() # Get a chunk.
+			#print("rb: " + rb.get_string_from_ascii())
+			rb = rb + chunk # Append to read buffer.
 
-			if chunk.size() == 0:
-				# Got nothing, wait for buffers to fill a bit.
-				OS.delay_usec(1000)
-			else:
-				
-				print("rb: " + rb.get_string_from_ascii())
-				rb = rb + chunk # Append to read buffer.
-
-		# Done!
-		print(http.get_status())
-		print("bytes got: ", rb.size())
-		var text = rb.get_string_from_ascii()
-		print("Text: ", text)
-		return text
-	return ""
+	# Done!
+	#print(http.get_status())
+	print("bytes got: ", rb.size())
+	var text = rb.get_string_from_ascii()
+	print("Text: ", text)
+	return text
+	#return ""
 	
 #
 #	var err=0

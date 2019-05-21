@@ -778,6 +778,7 @@ direction = ""
 [node name="CollisionPolygon2D" parent="EncounterAreas_/surf_area" index="0"]
 polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
 
+
 [editable path="Eventos_/Chico"]
 
 [editable path="Eventos_/Chico/pages/event_page/cmd_msg2"]

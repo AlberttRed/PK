@@ -304,17 +304,18 @@ func load_EVs():
 #	if hp_EVs == 0: spDefense_EVs = DB.pokemons[pkm_id].special_defense_base
 #	if hp_EVs == 0: speed_EVs = DB.pokemons[pkm_id].speed_base
 	
-	
-	hp = int(10.0 + (float(get_nivel()) / 100.0 * ((float(DB.pokemons[pkm_id].hp) * 2.0) + float(hp_IVs) + float(hp_EVs) ) ) + float(get_nivel()) )  
-	
-	print(" HP: 10 + (" + str(get_nivel()) + " / 100 * ((" + str(DB.pokemons[pkm_id].hp_base) + "* 2) + " + str(hp_IVs) + " + " + str(hp_EVs) + ")) + " + str(get_nivel()) )
-	attack = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].attack_base) * 2.0) + float(attack_IVs) + float(attack_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.ATA][get_naturaleza()]))
-	defense = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].defense_base) * 2.0) + float(defense_IVs) + float(defense_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.DEF][get_naturaleza()]))
-	special_attack = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].special_attack_base) * 2.0) + float(spAttack_IVs) + float(spAttack_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.ATAESP][get_naturaleza()]))
-	special_defense = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].special_defense_base) * 2.0) + float(spDefense_IVs) + float(spDefense_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.DEFESP][get_naturaleza()]))
-	speed = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].speed_base) * 2.0) + float(speed_IVs) + float(speed_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.VEL][get_naturaleza()]))	
-	max_hp = hp
-		
+#
+#	hp = int(10.0 + (float(get_nivel()) / 100.0 * ((float(DB.pokemons[pkm_id].hp_base) * 2.0) + float(hp_IVs) + float(hp_EVs) ) ) + float(get_nivel()) )  
+#
+#	print(" HP: 10 + (" + str(get_nivel()) + " / 100 * ((" + str(DB.pokemons[pkm_id].hp_base) + "* 2) + " + str(hp_IVs) + " + " + str(hp_EVs) + ")) + " + str(get_nivel()) )
+#	attack = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].attack_base) * 2.0) + float(attack_IVs) + float(attack_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.ATA][get_naturaleza()]))
+#	defense = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].defense_base) * 2.0) + float(defense_IVs) + float(defense_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.DEF][get_naturaleza()]))
+#	special_attack = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].special_attack_base) * 2.0) + float(spAttack_IVs) + float(spAttack_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.ATAESP][get_naturaleza()]))
+#	special_defense = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].special_defense_base) * 2.0) + float(spDefense_IVs) + float(spDefense_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.DEFESP][get_naturaleza()]))
+#	speed = int(( 5.0 + ( float(get_nivel()) / 100.0 * ( (float(DB.pokemons[pkm_id].speed_base) * 2.0) + float(speed_IVs) + float(speed_EVs) ) ) ) * float(CONST.stat_effects_Natures[CONST.STATS.VEL][get_naturaleza()]))	
+#	max_hp = hp
+#
+	pass
 func hasMove(move_id):
 	for m in movements:
 		if m.id == move_id:

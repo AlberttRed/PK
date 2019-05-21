@@ -69,6 +69,7 @@ ability_id = 19
 nature_id = 11
 
 [node name="pkm2" parent="Trainer" index="1"]
+pkm_id = 2
 gender = 1
 hp = 20
 max_hp = 20
@@ -76,12 +77,14 @@ ability_id = 17
 nature_id = 22
 
 [node name="pkm3" parent="Trainer" index="2"]
+pkm_id = 3
 hp = 25
 max_hp = 20
 ability_id = 26
 nature_id = 19
 
 [node name="pkm4" parent="Trainer" index="3"]
+pkm_id = 4
 gender = 1
 hp = 25
 max_hp = 20
@@ -89,6 +92,7 @@ ability_id = 33
 nature_id = 20
 
 [node name="pkm5" parent="Trainer" index="4"]
+pkm_id = 6
 hp = 21
 max_hp = 100
 ability_id = 30
