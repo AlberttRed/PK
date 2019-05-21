@@ -20,7 +20,7 @@ func _run():
 	var names = PoolStringArray()
 	names.push_back("None")
 
-	for i in range(1):  #maxim son 721
+	for i in range(150):  #maxim son 721
 
 		var text = get_json("/api/v2/pokemon/"+str(i+1)+"/")
 #		var h = HTTPRequest.new()
@@ -29,7 +29,6 @@ func _run():
 		if (text == null || text == ""):
 			print ("skipping type #"+str(i+1))
 			continue
-		print("hola")
 		var pkm = Node.new() #load("res://Logics/DB/pokemon.gd") #poke_script.new()
 		pkm.set_script(preload("res://Logics/DB/pokemon.gd"))
 		container.add_child(pkm)
@@ -56,10 +55,15 @@ func _run():
 		
 		pkm.is_default = bool(d["is_default"])
 		
-		pkm.abilities = [null, null, null]
+		pkm.abilities = [null,null,null]
+		
 		for a in d["abilities"]:
-			pkm.abilities.insert(int(a["slot"]), int(a["ability"]["url"].split("/")[6]))
-			
+
+		#	print("abilities.size: " + str(pkm.abilities.size()))
+#			print("slot: " + str(a["slot"]-1) + ", ability: " + str(a["ability"]["url"].split("/")[6]))
+
+			pkm.abilities.insert(int(a["slot"])-1, int(a["ability"]["url"].split("/")[6]))
+			pkm.abilities.remove(int(a["slot"]))
 		# pkm.forms TO DO
 		pkm.held_items_id = Array()
 		pkm.held_items_rarity = Array()
@@ -214,10 +218,10 @@ func get_json(uri):
 		return
 	# Wait until resolved and connected.
 	while http2.get_status() == HTTPClient.STATUS_CONNECTING or http2.get_status() == HTTPClient.STATUS_RESOLVING:
-		print("poll:" + str(http2.poll()))
-		print("Connecting...")
+		http2.poll()
+		#print("Connecting...")
 		
-	print(http2.get_status())
+	#print(http2.get_status())
 	
 	assert(http2.get_status() == HTTPClient.STATUS_CONNECTED) # Could not connect
 
@@ -229,9 +233,9 @@ func get_json(uri):
 #"/api/v2/pokemon/1"
 	err = http2.request(HTTPClient.METHOD_GET, uri, headers) # Request a page from the site (this one was chunked..)
 	assert(err == OK) # Make sure all is OK.
-	print(http2.get_status())
+	#print(http2.get_status())
 	while (http2.get_status() == HTTPClient.STATUS_REQUESTING):
-		print("poll")
+		#print("poll")
 		
 		http2.poll()
 		OS.delay_msec(500)
@@ -262,7 +266,7 @@ func get_json_old(uri):
 	# Wait until resolved and connected.
 	while http.get_status() == HTTPClient.STATUS_CONNECTING or http.get_status() == HTTPClient.STATUS_RESOLVING:
 		http.poll()
-		print("Connecting...")
+		#print("Connecting...")
 		#OS.delay_msec(500)
 
 	assert(http.get_status() == HTTPClient.STATUS_CONNECTED) # Could not connect
@@ -279,7 +283,7 @@ func get_json_old(uri):
 	while http.get_status() == HTTPClient.STATUS_REQUESTING:
 		# Keep polling for as long as the request is being processed.
 		http.poll()
-		print("Requesting...")
+		#print("Requesting...")
 		OS.delay_msec(500)
 #		if not OS.has_feature("web"):
 #			OS.delay_msec(500)
@@ -329,7 +333,7 @@ func get_json_old(uri):
 
 	# Done!
 	#print(http.get_status())
-	print("bytes got: ", rb.size())
+	#print("bytes got: ", rb.size())
 	var text = rb.get_string_from_ascii()
 	print("Text: ", text)
 	return text

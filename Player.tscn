@@ -105,5 +105,4 @@ max_hp = 20
 ability_id = 35
 nature_id = 8
 
-
 [editable path="Trainer"]

@@ -45,7 +45,7 @@ const Personality_Table = [ [[[0, 5, 10, 15, 20, 25, 30],"Le encanta comer"], [[
 #							   None   Activa  Afable   Agitada Alegre Alocada Amable Audaz Cauta  Dócil  Firme  Floja  Fuerte Grosera Huraña  Ingenua  Mansa   Miedosa   Modesta   Osada   Pícara   Plácida   Rara   Serena   Seria   Tímida
 const stat_effects_Natures = [ [], [1, 	1, 		1, 		1,		1,		1,		1,	  1.1,	1,		1,	  1.1,	 1,		 1,		1,		1.1,	 1,		 1,		0.9,	   0.9,		0.9,	1.1,	   1,		1,	  0.9,		1,		1], # ATAQUE
 								[1, 	0.9, 	0.9, 	1.1,	1,		1,		0.9,   1,	1,		1,	   1,	1.1,	 1,		1,		0.9,	 1,		 1,		 1,			1,		1.1,	 1,		  1.1,		1,	   1,		1,		1], # DEFENSA
-								[1, 	1, 		1.1, 	0.9,	0.9,	1.1,	1,	   1,	0.9,	1,	  0.9,	 0,		 1,		1,		1,		 1,		1.1,	 1,		   1.1,		 1,		 1,		   1,		1,	   1,		1,		1], # ATAQUE ESPECIAL
+								[1, 	1, 		1.1, 	0.9,	0.9,	1.1,	1,	   1,	0.9,	1,	  0.9,	 1,		 1,		1,		1,		 1,		1.1,	 1,		   1.1,		 1,		 1,		   1,		1,	   1,		1,		1], # ATAQUE ESPECIAL
 								[1, 	1, 		1, 		1,		1,		0.9,	1.1,   1,	1.1	,	1,	   1,	0.9,	 1,	   1.1,		1,		0.9,	 1,		 1,			1,		 1,		0.9,	   1,		1,	  1.1,		1,		1], # DEFENSA ESPECIAL
 								[1, 	1.1, 	1, 		1,		1.1,	1,		1,	  0.9,	1,		1,	   1,	 1,		 1,	   0.9,		1,		1.1,	0.9,	1.1,		1,		 1,		 1,		  0.9,		1,	   1,		1,		1] ] # VELOCIDAD
 
