@@ -47,8 +47,9 @@ func _init():
 func _ready():
 	trainer = get_node("Trainer")
 	GAME_DATA.trainer = trainer
-	for p in trainer.get_children():
-		GAME_DATA.party.push_back(p)
+	GAME_DATA.party = trainer.get_party()
+#	for p in trainer.get_children():
+#		GAME_DATA.party.push_back(p)
 	
 	get_node("Sprite").visible = !Transparent
 	world = get_world_2d().get_direct_space_state()
@@ -214,6 +215,7 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !GUI.is_visible():	
 		#print_pkmn_team()
 		#print_pkmn_moves(0)
+		print_pkmn_team()
 		print(DB.pokemons[GAME_DATA.party[0].get_id()].Name + " HP: 10 + (" + str(GAME_DATA.party[0].get_nivel()) + " / 100 * ((" + str(DB.pokemons[GAME_DATA.party[0].get_id()].hp_base) + "* 2) + " + str(GAME_DATA.party[0].hp_IVs) + " + " + str(GAME_DATA.party[0].hp_EVs) + ")) + " + str(GAME_DATA.party[0].get_nivel()) )
 		if facing == "up":
 			interact(intersect_point(get_position() + Vector2(0, -GRID)), 0)
@@ -448,9 +450,4 @@ func intersect_point(position):
 func print_pkmn_team():
 	for p in get_node("Trainer").get_children():
 		p.print_pokemon()
-
-func print_pkmn_moves(pokemon_party):
-	get_node("Trainer").get_child(pokemon_party).print_pokemon()
-	for m in get_node("Trainer").get_child(pokemon_party).movements:
-		print(m.get_name())
-		m.print_move()
+		p.print_moves()

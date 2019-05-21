@@ -7,6 +7,7 @@ const Trainer = preload('res://Logics/event/Trainer.gd')
 var player_name = "RED"
 var trainer: Trainer
 var medals = []
+var player_id = randi() % 999999 + 1
 
 var party = []
 var box1 = []
@@ -48,4 +49,7 @@ func _ready():
 	medals.push_back(CONST.MEDALS.PANTANO)
 	medals.push_back(CONST.MEDALS.VOLCAN)
 	medals.push_back(CONST.MEDALS.TIERRA)
+	for p in party:
+		p.dni = player_id
+		p.original_trainer = player_name
 	

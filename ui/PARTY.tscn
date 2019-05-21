@@ -1440,6 +1440,8 @@ __meta__ = {
 }
 
 [node name="SUMMARY_3" type="Panel" parent="SUMMARY"]
+editor/display_folded = true
+visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
@@ -1745,8 +1747,6 @@ scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 34 )
 
 [node name="SUMMARY_4" type="Panel" parent="SUMMARY"]
-editor/display_folded = true
-visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
@@ -1830,7 +1830,6 @@ custom_colors/font_color_shadow = Color( 0.815686, 0.815686, 0.784314, 1 )
 text = "Ninguno"
 
 [node name="Move1" type="Panel" parent="SUMMARY/SUMMARY_4"]
-editor/display_folded = true
 margin_left = 243.0
 margin_top = 96.0
 margin_right = 492.0

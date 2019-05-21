@@ -83,6 +83,8 @@ func hasWorkingMoveEffect(e):
 func makeContact():
 	return contact_flag
 
+func get_pp():
+	return pp
 	
 func get_damage(from,to,r = null):
 	var Damage

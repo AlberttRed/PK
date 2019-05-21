@@ -2,6 +2,8 @@ extends Node
 
 class_name Pokemon
 
+const Pokemon = preload('res://Logics/game_data/pokemon_instance.gd')
+
 export(int) var id = 0
 export(String) var internal_name = ""
 export(String) var Name = ""
@@ -67,18 +69,19 @@ export(int) var habitat_id = 1
 var poke_instance_script = preload("res://logics/game_data/pokemon_instance.gd")
 var move_instance_script = preload("res://logics/game_data/move_instance.gd")
 
-func make_wild(level):
+
+func make_wild(level: int):
 	var p = poke_instance_script.new()
 	p.pkm_id = id
 	p.nickname = Name
 	p.level = level
-	p.max_hp=hp_base
-	p.hp = p.max_hp
-	p.attack = attack_base
-	p.defense = defense_base
-	p.speed = speed_base
-	p.special_attack = special_attack_base
-	p.special_defense = special_defense_base
+	p.hp_actual = p.hp
+#	p.hp=hp_base
+#	p.attack = attack_base
+#	p.defense = defense_base
+#	p.speed = speed_base
+#	p.special_attack = special_attack_base
+#	p.special_defense = special_defense_base
 	randomize()
 	p.ability_id = get_ability()
 	p.dni = 34456547 #TODO:MARIANOGNU: how to generate unique id?
@@ -112,11 +115,65 @@ func make_wild(level):
 		p.movements.push_back(move)
 	return p
 
+
+func new_pokemon(pkm):
+	randomize()
+	pkm.hp_actual = pkm.hp
+	if pkm.ability_id == null or pkm.ability_id == CONST.ABILITIES.NONE:
+		pkm.ability_id = get_ability()
+	pkm.gender = randi() % 3
+	print(pkm.ability_id)
+	if pkm.nature_id == CONST.NATURES.NONE:
+		pkm.nature_id = int(rand_range(1.000000, 25.999999))
+#	p.hp=hp_base
+#	p.attack = attack_base
+#	p.defense = defense_base
+#	p.speed = speed_base
+#	p.special_attack = special_attack_base
+#	p.special_defense = special_defense_base
+	#randomize()
+	pkm.exp_to_next_level = 300 #TODO:MARIANOGNU: how to calculate next level?
+
+	var learnable_indexes = []
+	
+	for i in range(learn_move_id.size()):
+		if (learn_type[i] == CONST.LEARN_LVL_UP):
+			if (learn_lvl[i] <= pkm.level):
+				learnable_indexes.push_back(i)
+	print(Name)
+
+	#learnable_indexes.sort_custom(self, "move_is_greater")
+	
+	if (learnable_indexes.size() > 4):
+		var moves = []
+		var idx = learnable_indexes.size()-4;
+		moves.push_back(70)# FUERZA    learnable_indexes[idx])
+		moves.push_back(15)# CORTE     learnable_indexes[idx+1])
+		moves.push_back(57)# SURF      learnable_indexes[idx+2])
+		moves.push_back(learnable_indexes[idx+3])
+		learnable_indexes = moves
+
+	#if p.movements.size() == 0 or p.movements == []:
+	for idx in learnable_indexes:
+		var move = move_instance_script.new()
+		move.id = idx   #learn_move_id[idx]
+		move.pp = DB.moves[move.id].pp
+		move.max_pp = move.pp
+		pkm.movements.push_back(move)
+	
+	return pkm
+
+
 func move_is_greater(a, b):
 	return learn_lvl[a]<=learn_lvl[b]
 	
 func get_ability():
 	var a = null
-	while a == null:
-		a = abilities[randi() % abilities.size()]
-	return a
+	print(abilities[0])
+	print(abilities[1])
+	print(abilities[2])
+	if abilities[1] != null or abilities[2] != null:
+		while a == null:
+			a = abilities[randi() % abilities.size()]
+		return a
+	return abilities[0]

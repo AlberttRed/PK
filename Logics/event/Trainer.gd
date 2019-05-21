@@ -11,12 +11,12 @@ export(bool)var is_defeated = false
 export(bool)var double_battle = false
 export(bool)var is_playable = false
 export(NodePath)var partner = null #Aqui hi lligarem l'NPC que fagi de parella a lhora del combat. A PARTIR DE L NPC AGAFAREM EL NODO TRAINER I ELS PKMN
-var party = []
+var party = [] setget ,get_party
 var tilesVisibility
 
 func _ready():
 	for p in get_children():
-		party.push_back(DB.pokemons[p.pkm_id].make_wild(p.level))
+		party.push_back(DB.pokemons[p.pkm_id].new_pokemon(p))
 	#pass
 
 func is_type(type): return type == "Trainer" or .is_type(type)
@@ -28,6 +28,8 @@ func has_pokemon(pk):
 			return true
 	return false
 	
+func get_party():
+	return party
 
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.

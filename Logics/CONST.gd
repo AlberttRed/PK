@@ -190,7 +190,7 @@ class MOVE_EFFECTS:
 	const EXCAVAR = 32
 
 class ABILITIES:
-
+	const NONE = 0
 	const HEDOR = 1
 	const LLOVIZNA = 2
 	const IMPULSO = 3
@@ -445,6 +445,7 @@ class GENEROS:
 	const SIN_GENERO = 2
 	
 class NATURES:
+	const NONE = 0
 	const ACTIVA = 1
 	const AFABLE = 2
 	const AGITADA = 3

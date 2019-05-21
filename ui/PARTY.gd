@@ -53,6 +53,10 @@ func _ready():
 	for s in summary:
 		s.hide()
 	actions.hide()
+	summary[3].get_node("Move1").visible = false
+	summary[3].get_node("Move2").visible = false
+	summary[3].get_node("Move3").visible = false
+	summary[3].get_node("Move4").visible = false
 	#connect("exit", self, "hide")
 
 var index = 0
@@ -183,7 +187,7 @@ func load_pokemon():
 		
 		pkmns[p].get_node("pkmn").texture = load("res://Sprites/Icons/icon" + str(GAME_DATA.party[p].pkm_id).pad_zeros(3) + ".png")
 		
-		var percentage = GAME_DATA.party[p].get_actual_hp() / GAME_DATA.party[p].get_total_hp()
+		var percentage = GAME_DATA.party[p].hp_actual / GAME_DATA.party[p].hp
 		pkmns[p].get_node("health_bar/health").rect_scale = Vector2(percentage, 1)
 		
 		if GAME_DATA.party[p].get_gender() == CONST.GENEROS.MACHO:
@@ -295,6 +299,10 @@ func show_summaries():
 	
 func hide_summaries():
 	summary_index = 0
+	summary[3].get_node("Move1").visible = false
+	summary[3].get_node("Move2").visible = false
+	summary[3].get_node("Move3").visible = false
+	summary[3].get_node("Move4").visible = false
 	for s in summary:
 		s.hide()
 	show_actions()
@@ -365,9 +373,9 @@ func load_summary():
 	summary[1].get_node("DescNaturaleza/Outline").text = GAME_DATA.party[index].get_personality()
 	
 	# ---- SUMMARY 3 --------
-	
-	summary[2].get_node("dPS").text = str(GAME_DATA.party[index].get_actual_hp()) + "/" + str(GAME_DATA.party[index].get_total_hp())
-	summary[2].get_node("dPS/Outline").text = str(GAME_DATA.party[index].get_actual_hp()) + "/" + str(GAME_DATA.party[index].get_total_hp())
+
+	summary[2].get_node("dPS").text = str(GAME_DATA.party[index].get_actual_hp()) + "/" + str(GAME_DATA.party[index].hp)
+	summary[2].get_node("dPS/Outline").text = str(GAME_DATA.party[index].get_actual_hp()) + "/" + str(GAME_DATA.party[index].hp)
 	
 	summary[2].get_node("dAtaque").text = str(GAME_DATA.party[index].get_attack()) 
 	summary[2].get_node("dAtaque/Outline").text = str(GAME_DATA.party[index].get_attack()) 
@@ -384,8 +392,17 @@ func load_summary():
 	summary[2].get_node("dVelocidad").text = str(GAME_DATA.party[index].get_speed()) 
 	summary[2].get_node("dVelocidad/Outline").text = str(GAME_DATA.party[index].get_speed()) 
 	
-	summary[2].get_node("dHabilidad").text = CONST.AbilitiesName[GAME_DATA.party[index].get_ability()]
-	summary[2].get_node("dHabilidad/Outline").text = CONST.AbilitiesName[GAME_DATA.party[index].get_ability()]
+	print(GAME_DATA.party[index].ability_id)
+	summary[2].get_node("dHabilidad").text = CONST.AbilitiesName[GAME_DATA.party[index].ability_id]
+	summary[2].get_node("dHabilidad/Outline").text = CONST.AbilitiesName[GAME_DATA.party[index].ability_id]
 	
 	summary[2].get_node("DescHabilidad").text = CONST.AbilitiesDesc[GAME_DATA.party[index].get_ability()]
 	summary[2].get_node("DescHabilidad/Outline").text = CONST.AbilitiesDesc[GAME_DATA.party[index].get_ability()]
+	
+	# ---- SUMMARY 3 --------
+	print(str(GAME_DATA.party[index].movements.size()))
+	for i in range(GAME_DATA.party[index].movements.size()):
+		print(i)
+		summary[3].get_node("Move" + str(i+1)).visible = true
+		summary[3].get_node("Move" + str(i+1) + "/Ataque").text = GAME_DATA.party[index].movements[i].get_name()
+		summary[3].get_node("Move" + str(i+1) + "/Ataque/Outline").text = GAME_DATA.party[index].movements[i].get_name()
