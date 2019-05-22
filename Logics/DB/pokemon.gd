@@ -11,12 +11,11 @@ export(String) var Name = ""
 export(int,"None, Normal, Fighting, Flying, Poison, Ground, Rock, Bug, Ghost, Steel, Fire, Water, Grass, Electric, Psychic, Ice, Dragon, Dark, Fairy") var type_a
 export(int,"None, Normal, Fighting, Flying, Poison, Ground, Rock, Bug, Ghost, Steel, Fire, Water, Grass, Electric, Psychic, Ice, Dragon, Dark, Fairy") var type_b
 
-
 export(int) var base_exprience = 0 #experiencia que guanyes al derrotar aquest pkmn
 export(int) var height = 0
 export(int) var weight = 0
 export(bool) var is_default = true # es la forma per defecte o no? Quan et trobis aquest pkmn en estat salvatge tindrà aquesta forma per defecte
-export(Array) var abilities = [null, null, null] #FALTA ENUM
+export(Array) var abilities = [] #FALTA ENUM
 export(Array) var forms = [] # TO DO
 export(Array) var held_items_id = [] #llista d objectes q pot portar el pokemon quan l'atrapes
 export(Array) var held_items_rarity = [] #probabilitat de que porti aquell objecte
@@ -82,6 +81,7 @@ func make_wild(level: int):
 #	p.speed = speed_base
 #	p.special_attack = special_attack_base
 #	p.special_defense = special_defense_base
+	print("ou mama")
 	randomize()
 	p.ability_id = get_ability()
 	p.dni = 34456547 #TODO:MARIANOGNU: how to generate unique id?
@@ -122,7 +122,7 @@ func new_pokemon(pkm):
 	if pkm.ability_id == null or pkm.ability_id == CONST.ABILITIES.NONE:
 		pkm.ability_id = get_ability()
 	pkm.gender = randi() % 3
-	print(pkm.ability_id)
+	#print(pkm.ability_id)
 	if pkm.nature_id == CONST.NATURES.NONE:
 		pkm.nature_id = int(rand_range(1.000000, 25.999999))
 #	p.hp=hp_base
@@ -169,11 +169,11 @@ func move_is_greater(a, b):
 	
 func get_ability():
 	var a = null
-	print(abilities[0])
-	print(abilities[1])
-	print(abilities[2])
-	if abilities[1] != null or abilities[2] != null:
+	#print(str(DB.pokemons[1].abilities[0]) + ", " + str(DB.pokemons[1].abilities[1]) + ", " + str(DB.pokemons[1].abilities[2]))
+#	print(abilities[1])
+#	print(abilities[2])
+	if abilities[0] != null or abilities[1] != null or abilities[2] != null:
 		while a == null:
 			a = abilities[randi() % abilities.size()]
 		return a
-	return abilities[0]
+	return CONST.ABILITIES.NONE

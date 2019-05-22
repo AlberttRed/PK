@@ -66,7 +66,6 @@ is_playable = true
 [node name="pkm1" parent="Trainer" index="0"]
 pkm_id = 1
 hp = 1
-ability_id = 2
 nature_id = 19
 
 [node name="pkm2" parent="Trainer" index="1"]
@@ -100,6 +99,5 @@ gender = 1
 hp = 13
 ability_id = 35
 nature_id = 8
-
 
 [editable path="Trainer"]

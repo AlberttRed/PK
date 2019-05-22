@@ -20,7 +20,7 @@ func _run():
 	var names = PoolStringArray()
 	names.push_back("None")
 
-	for i in range(3):  #maxim son 721
+	for i in range(4):  #maxim son 721
 
 		var text = get_json("/api/v2/pokemon/"+str(i+1)+"/")
 #		var h = HTTPRequest.new()
