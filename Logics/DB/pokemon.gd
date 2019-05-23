@@ -21,9 +21,9 @@ export(Array) var held_items_id = [] #llista d objectes q pot portar el pokemon 
 export(Array) var held_items_rarity = [] #probabilitat de que porti aquell objecte
 
 # ------------ MOVES    Només ens interessens els tipus 1,2,3,4, 6, 10
-export(Array) var learn_type = []
-export(Array) var learn_lvl = []
-export(Array) var learn_move_id = []
+export(Array) var learn_type = [null]
+export(Array) var learn_lvl = [null]
+export(Array) var learn_move_id = [null]
 
 export(int) var hp_base = 0
 export(int) var attack_base= 0
@@ -111,7 +111,7 @@ func make_wild(level: int):
 		var move = move_instance_script.new()
 		move.id = idx   #learn_move_id[idx]
 		move.pp = DB.moves[move.id].pp
-		move.max_pp = move.pp
+		move.pp_actual = move.pp
 		p.movements.push_back(move)
 	return p
 
@@ -121,8 +121,10 @@ func new_pokemon(pkm):
 	pkm.hp_actual = pkm.hp
 	if pkm.ability_id == null or pkm.ability_id == CONST.ABILITIES.NONE:
 		pkm.ability_id = get_ability()
-	pkm.gender = randi() % 3
-	#print(pkm.ability_id)
+	if pkm.gender == CONST.GENEROS.NON_SELECTED:
+		pkm.gender = rand_range(1.000000, 2.999999)
+		print(str(pkm.gender))
+		pkm.gender = int(pkm.gender)
 	if pkm.nature_id == CONST.NATURES.NONE:
 		pkm.nature_id = int(rand_range(1.000000, 25.999999))
 #	p.hp=hp_base
@@ -135,14 +137,23 @@ func new_pokemon(pkm):
 	pkm.exp_to_next_level = 300 #TODO:MARIANOGNU: how to calculate next level?
 
 	var learnable_indexes = []
-	
+
 	for i in range(learn_move_id.size()):
 		if (learn_type[i] == CONST.LEARN_LVL_UP):
 			if (learn_lvl[i] <= pkm.level):
-				learnable_indexes.push_back(i)
+				learnable_indexes.push_back(i)#DB.moves[learn_move_id[i]].id)
+				#print("Dins: " + str(DB.moves[learn_move_id[i]].id))
+#				print("i: " + str(i) + "pkm level: " + str(pkm.level))
+				print("learnable_indexes: " + str(DB.moves[learn_move_id[i]].Name) + ", move level: " + str(learn_lvl[i]))
+	learnable_indexes.sort_custom(self, "move_is_greater")
 	print(Name)
-
-	#learnable_indexes.sort_custom(self, "move_is_greater")
+	var temp_moves = []
+	for e in learnable_indexes:
+		temp_moves.push_back(DB.moves[learn_move_id[e]].id)
+		#print("Fora: " + str(e))
+#		print(learn_move_id[e])
+		print("learnable_indexes: " + str(DB.moves[learn_move_id[e]].Name))
+	learnable_indexes = temp_moves
 	
 	if (learnable_indexes.size() > 4):
 		var moves = []
@@ -158,7 +169,7 @@ func new_pokemon(pkm):
 		var move = move_instance_script.new()
 		move.id = idx   #learn_move_id[idx]
 		move.pp = DB.moves[move.id].pp
-		move.max_pp = move.pp
+		move.pp_actual = move.pp
 		pkm.movements.push_back(move)
 	
 	return pkm

@@ -165,8 +165,12 @@ func update_styles():
 		
 		if (p==index):
 			pkmns[p].add_stylebox_override("panel", get("style_" + form + "_" + type + "_sel"))
+			pkmns[p].get_node("ball").texture = load("res://ui/Pictures/partyBallSel.PNG")
+			pkmns[p].get_node("AnimationPlayer").play("PARTY_pkmn_icon_updown")
 		else:
 			pkmns[p].add_stylebox_override("panel", get("style_" + form + "_" + type))
+			pkmns[p].get_node("ball").texture = load("res://ui/Pictures/partyBall.PNG")
+			pkmns[p].get_node("AnimationPlayer").play("PARTY_pkmn_icon")
 	if index == -1:
 		salir.add_stylebox_override("panel", style_salir_sel)
 	msg.get_node("Label").text = "Elige un Pokémon."
@@ -299,14 +303,15 @@ func show_summaries():
 	
 func hide_summaries():
 	summary_index = 0
+	pkmns[index].grab_focus()
 	summary[3].get_node("Move1").visible = false
 	summary[3].get_node("Move2").visible = false
 	summary[3].get_node("Move3").visible = false
 	summary[3].get_node("Move4").visible = false
 	for s in summary:
 		s.hide()
-	show_actions()
-		
+	#show_actions()
+	hide_actions()
 func load_summary():
 	for s in summary:
 		# ---- INFO GENERAL --------
@@ -402,7 +407,10 @@ func load_summary():
 	# ---- SUMMARY 3 --------
 	print(str(GAME_DATA.party[index].movements.size()))
 	for i in range(GAME_DATA.party[index].movements.size()):
-		print(i)
+		print(GAME_DATA.party[index].movements[i].get_type_name())
 		summary[3].get_node("Move" + str(i+1)).visible = true
 		summary[3].get_node("Move" + str(i+1) + "/Ataque").text = GAME_DATA.party[index].movements[i].get_name()
 		summary[3].get_node("Move" + str(i+1) + "/Ataque/Outline").text = GAME_DATA.party[index].movements[i].get_name()
+		summary[3].get_node("Move" + str(i+1) + "/Tipo").frame = GAME_DATA.party[index].movements[i].get_move_type().id
+		summary[3].get_node("Move" + str(i+1) + "/dPP").text = str(GAME_DATA.party[index].movements[i].pp_actual) + "/" + str(GAME_DATA.party[index].movements[i].pp)
+		summary[3].get_node("Move" + str(i+1) + "/dPP/Outline").text = str(GAME_DATA.party[index].movements[i].pp_actual) + "/" + str(GAME_DATA.party[index].movements[i].pp)

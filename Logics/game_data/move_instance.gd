@@ -2,7 +2,7 @@ extends Node
 
 var id
 var pp = 5
-var max_pp = 5
+var pp_actual = 5
 var mod_pp = 0
 
 func get_name():
@@ -11,8 +11,10 @@ func get_power():
 	return DB.moves[id].power
 func get_acuracy():
 	return DB.moves[id].acuracy
+	
 func get_move_type():
 	return DB.types[DB.moves[id].type]
+	
 func get_type_name():
 	return DB.types[DB.moves[id].type].Name
 	

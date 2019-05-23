@@ -440,9 +440,10 @@ class MEDALS:
 	const TIERRA = "Tierra"
 	
 class GENEROS:
-	const MACHO = 0
-	const HEMBRA = 1
-	const SIN_GENERO = 2
+	const NON_SELECTED = 0
+	const MACHO = 1
+	const HEMBRA = 2
+	const SIN_GENERO = 3
 	
 class NATURES:
 	const NONE = 0

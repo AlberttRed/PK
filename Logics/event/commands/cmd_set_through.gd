@@ -5,7 +5,7 @@ export(NodePath) onready var nodePath
 var Target
 var i = 0
 var count = false
-
+var executing = false
 
 func _init():
 	add_user_signal("finished")
@@ -18,6 +18,7 @@ func _process(delta):
 		i += 1
 
 func run():
+	executing = true
 	print("set through to " + str(Through) + " started")
 	if nodePath.is_empty():
 		print("TARGET THROUGH: Player")
@@ -34,4 +35,5 @@ func run():
 	count = false
 	i = 0
 	print("set through to " + str(Through) + " finished")
+	executing = false
 	emit_signal("finished")

@@ -6,6 +6,7 @@ export(bool)var wait_finished = false
 var i = 0
 var count = false
 onready var animationPlayer = get_parent().get_parent().get_parent().get_node("AnimationPlayer")
+var executing = false
 
 func _init():
 	add_user_signal("finished")
@@ -18,6 +19,7 @@ func _process(delta):
 		i += 1
 
 func run():
+	executing = true
 	print("show animation started")
 	if animation != null:
 		animationPlayer.add_animation(animation.get_name(), animation)
@@ -32,4 +34,5 @@ func run():
 		count = false
 	animationPlayer.remove_animation(animation.get_name())
 	print("show animation finished")
+	executing = false
 	emit_signal("finished")

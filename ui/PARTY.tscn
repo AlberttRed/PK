@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=2]
+[gd_scene load_steps=83 format=2]
 
 [ext_resource path="res://ui/Pictures/partybg.PNG" type="Texture" id=1]
 [ext_resource path="res://ui/PARTY.gd" type="Script" id=2]
@@ -25,22 +25,24 @@
 [ext_resource path="res://Sprites/Icons/icon025.png" type="Texture" id=23]
 [ext_resource path="res://ui/Pictures/female_icon.png" type="Texture" id=24]
 [ext_resource path="res://ui/Pictures/HPbar_party.tscn" type="PackedScene" id=25]
-[ext_resource path="res://ui/MSG.tscn" type="PackedScene" id=26]
-[ext_resource path="res://ui/choice 1_old.png" type="Texture" id=27]
-[ext_resource path="res://ui/CHOICES.tscn" type="PackedScene" id=28]
-[ext_resource path="res://ui/choice.tscn" type="PackedScene" id=29]
-[ext_resource path="res://font/pkmnfl.ttf" type="DynamicFontData" id=30]
-[ext_resource path="res://ui/Pictures/summary1.png" type="Texture" id=31]
-[ext_resource path="res://font/font_summary_LetraBlanca.tscn" type="PackedScene" id=32]
-[ext_resource path="res://ui/Pictures/summaryball00.png" type="Texture" id=33]
-[ext_resource path="res://ui/Pictures/male_icon.png" type="Texture" id=34]
-[ext_resource path="res://font/font_summary_LetraNegra.tscn" type="PackedScene" id=35]
-[ext_resource path="res://Sprites/Battlers/025.png" type="Texture" id=36]
-[ext_resource path="res://ui/Pictures/types.png" type="Texture" id=37]
-[ext_resource path="res://ui/Pictures/summary2.PNG" type="Texture" id=38]
-[ext_resource path="res://ui/Pictures/summary3.PNG" type="Texture" id=39]
-[ext_resource path="res://ui/Pictures/summary4.png" type="Texture" id=40]
-[ext_resource path="res://ui/Pictures/summary5.png" type="Texture" id=41]
+[ext_resource path="res://ui/PARTY_pkmn_icon.tres" type="Animation" id=26]
+[ext_resource path="res://ui/PARTY_pkmn_icon_updown.tres" type="Animation" id=27]
+[ext_resource path="res://ui/MSG.tscn" type="PackedScene" id=28]
+[ext_resource path="res://ui/choice 1_old.png" type="Texture" id=29]
+[ext_resource path="res://ui/CHOICES.tscn" type="PackedScene" id=30]
+[ext_resource path="res://ui/choice.tscn" type="PackedScene" id=31]
+[ext_resource path="res://font/pkmnfl.ttf" type="DynamicFontData" id=32]
+[ext_resource path="res://ui/Pictures/summary1.png" type="Texture" id=33]
+[ext_resource path="res://font/font_summary_LetraBlanca.tscn" type="PackedScene" id=34]
+[ext_resource path="res://ui/Pictures/summaryball00.png" type="Texture" id=35]
+[ext_resource path="res://ui/Pictures/male_icon.png" type="Texture" id=36]
+[ext_resource path="res://font/font_summary_LetraNegra.tscn" type="PackedScene" id=37]
+[ext_resource path="res://Sprites/Battlers/025.png" type="Texture" id=38]
+[ext_resource path="res://ui/Pictures/types.png" type="Texture" id=39]
+[ext_resource path="res://ui/Pictures/summary2.PNG" type="Texture" id=40]
+[ext_resource path="res://ui/Pictures/summary3.PNG" type="Texture" id=41]
+[ext_resource path="res://ui/Pictures/summary4.png" type="Texture" id=42]
+[ext_resource path="res://ui/Pictures/summary5.png" type="Texture" id=43]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -145,7 +147,7 @@ texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 112, 48 )
 
 [sub_resource type="StyleBoxTexture" id=25]
-texture = ExtResource( 27 )
+texture = ExtResource( 29 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 32.0
 margin_right = 32.0
@@ -159,7 +161,7 @@ use_mipmaps = true
 font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxTexture" id=27]
-texture = ExtResource( 27 )
+texture = ExtResource( 29 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 32.0
 margin_right = 32.0
@@ -175,10 +177,10 @@ draw_center = false
 [sub_resource type="DynamicFont" id=29]
 size = 24
 extra_spacing_top = 5
-font_data = ExtResource( 30 )
+font_data = ExtResource( 32 )
 
 [sub_resource type="StyleBoxTexture" id=30]
-texture = ExtResource( 31 )
+texture = ExtResource( 33 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
 [sub_resource type="DynamicFont" id=31]
@@ -191,7 +193,7 @@ font_data = ExtResource( 19 )
 [sub_resource type="StyleBoxEmpty" id=33]
 
 [sub_resource type="StyleBoxTexture" id=34]
-texture = ExtResource( 38 )
+texture = ExtResource( 40 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
 [sub_resource type="DynamicFont" id=35]
@@ -200,17 +202,17 @@ use_mipmaps = true
 font_data = ExtResource( 19 )
 
 [sub_resource type="StyleBoxTexture" id=36]
-texture = ExtResource( 39 )
+texture = ExtResource( 41 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
 [sub_resource type="StyleBoxTexture" id=37]
-texture = ExtResource( 40 )
+texture = ExtResource( 42 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
 [sub_resource type="StyleBoxEmpty" id=38]
 
 [sub_resource type="StyleBoxTexture" id=39]
-texture = ExtResource( 41 )
+texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
 [node name="PARTY" type="Panel"]
@@ -242,8 +244,6 @@ style_actions_empty = SubResource( 17 )
 style_actions_selected = SubResource( 18 )
 
 [node name="PKMN_0" type="Panel" parent="."]
-editor/display_folded = true
-visible = false
 margin_right = 256.0
 margin_bottom = 98.0
 focus_neighbour_right = NodePath("../PKMN_1")
@@ -299,6 +299,7 @@ custom_constants/shadow_offset_y = 2
 text = "Nv.25"
 
 [node name="HP" type="Label" parent="PKMN_0"]
+editor/display_folded = true
 margin_left = 163.0
 margin_top = 64.0
 margin_right = 248.0
@@ -336,9 +337,12 @@ texture = ExtResource( 24 )
 editor/display_folded = true
 position = Vector2( 124, 56 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PKMN_0"]
+playback_speed = 3.0
+anims/PARTY_pkmn_icon = ExtResource( 26 )
+anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
+
 [node name="PKMN_1" type="Panel" parent="."]
-editor/display_folded = true
-visible = false
 margin_left = 256.0
 margin_top = 16.0
 margin_right = 512.0
@@ -418,9 +422,10 @@ position = Vector2( 31.6, 28 )
 texture = ExtResource( 22 )
 
 [node name="pkmn" type="Sprite" parent="PKMN_1"]
-position = Vector2( 57.6, 34 )
+position = Vector2( 59.6, 32 )
 texture = ExtResource( 23 )
 hframes = 2
+frame = 1
 
 [node name="gender" type="Sprite" parent="PKMN_1"]
 position = Vector2( 229, 32 )
@@ -430,8 +435,12 @@ texture = ExtResource( 24 )
 [node name="health_bar" parent="PKMN_1" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PKMN_1"]
+playback_speed = 3.0
+anims/PARTY_pkmn_icon = ExtResource( 26 )
+anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
+
 [node name="PKMN_2" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 96.0
 margin_right = 256.0
@@ -524,8 +533,12 @@ texture = ExtResource( 24 )
 [node name="health_bar" parent="PKMN_2" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PKMN_2"]
+playback_speed = 3.0
+anims/PARTY_pkmn_icon = ExtResource( 26 )
+anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
+
 [node name="PKMN_3" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 256.0
 margin_top = 112.0
@@ -610,6 +623,7 @@ texture = ExtResource( 22 )
 position = Vector2( 57.6, 34 )
 texture = ExtResource( 23 )
 hframes = 2
+frame = 1
 
 [node name="gender" type="Sprite" parent="PKMN_3"]
 position = Vector2( 229, 32 )
@@ -619,8 +633,12 @@ texture = ExtResource( 24 )
 [node name="health_bar" parent="PKMN_3" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PKMN_3"]
+playback_speed = 3.0
+anims/PARTY_pkmn_icon = ExtResource( 26 )
+anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
+
 [node name="PKMN_4" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 192.0
 margin_right = 256.0
@@ -712,8 +730,12 @@ texture = ExtResource( 24 )
 [node name="health_bar" parent="PKMN_4" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PKMN_4"]
+playback_speed = 3.0
+anims/PARTY_pkmn_icon = ExtResource( 26 )
+anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
+
 [node name="PKMN_5" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_left = 256.0
 margin_top = 208.0
@@ -807,6 +829,11 @@ texture = ExtResource( 24 )
 [node name="health_bar" parent="PKMN_5" instance=ExtResource( 25 )]
 position = Vector2( 124, 56 )
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PKMN_5"]
+playback_speed = 3.0
+anims/PARTY_pkmn_icon = ExtResource( 26 )
+anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
+
 [node name="Salir" type="Panel" parent="."]
 editor/display_folded = true
 margin_left = 398.0
@@ -846,7 +873,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="MSG" parent="." instance=ExtResource( 26 )]
+[node name="MSG" parent="." instance=ExtResource( 28 )]
 editor/display_folded = true
 margin_top = 318.0
 margin_right = 370.0
@@ -869,7 +896,7 @@ visible = false
 [node name="AnimationPlayer" parent="MSG/next" index="0"]
 root_node = NodePath("")
 
-[node name="ACTIONS" parent="." instance=ExtResource( 28 )]
+[node name="ACTIONS" parent="." instance=ExtResource( 30 )]
 editor/display_folded = true
 visible = false
 margin_left = 368.445
@@ -879,7 +906,7 @@ margin_bottom = 383.893
 custom_styles/panel = SubResource( 27 )
 script = null
 
-[node name="DATOS" parent="ACTIONS/VBoxContainer" index="0" instance=ExtResource( 29 )]
+[node name="DATOS" parent="ACTIONS/VBoxContainer" index="0" instance=ExtResource( 31 )]
 editor/display_folded = true
 margin_right = 116.0
 margin_bottom = 35.0
@@ -890,7 +917,7 @@ custom_styles/panel = SubResource( 28 )
 [node name="ChoiceText" parent="ACTIONS/VBoxContainer/DATOS" index="0"]
 text = "DATOS"
 
-[node name="MOVER" parent="ACTIONS/VBoxContainer" index="1" instance=ExtResource( 29 )]
+[node name="MOVER" parent="ACTIONS/VBoxContainer" index="1" instance=ExtResource( 31 )]
 editor/display_folded = true
 margin_top = 39.0
 margin_right = 116.0
@@ -904,7 +931,7 @@ custom_styles/panel = SubResource( 28 )
 custom_fonts/font = SubResource( 29 )
 text = "MOVER"
 
-[node name="OBJETO" parent="ACTIONS/VBoxContainer" index="2" instance=ExtResource( 29 )]
+[node name="OBJETO" parent="ACTIONS/VBoxContainer" index="2" instance=ExtResource( 31 )]
 editor/display_folded = true
 margin_top = 78.0
 margin_right = 116.0
@@ -917,7 +944,7 @@ custom_styles/panel = SubResource( 28 )
 [node name="ChoiceText" parent="ACTIONS/VBoxContainer/OBJETO" index="0"]
 text = "OBJETO"
 
-[node name="SALIR" parent="ACTIONS/VBoxContainer" index="3" instance=ExtResource( 29 )]
+[node name="SALIR" parent="ACTIONS/VBoxContainer" index="3" instance=ExtResource( 31 )]
 editor/display_folded = true
 margin_top = 117.0
 margin_right = 116.0
@@ -930,6 +957,7 @@ custom_styles/panel = SubResource( 28 )
 text = "SALIR"
 
 [node name="SUMMARY" type="Control" parent="."]
+editor/display_folded = true
 margin_right = 512.0
 margin_bottom = 384.0
 __meta__ = {
@@ -975,11 +1003,11 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nombre" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 32 )]
+[node name="Nombre" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 34 )]
 
 [node name="Pokeball" type="Sprite" parent="SUMMARY/SUMMARY_1"]
 position = Vector2( 29, 76 )
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -987,19 +1015,19 @@ __meta__ = {
 [node name="Genero" type="Sprite" parent="SUMMARY/SUMMARY_1"]
 position = Vector2( 183, 77 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 
-[node name="Nivel" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 35 )]
+[node name="Nivel" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 37 )]
 editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="SUMMARY/SUMMARY_1"]
 position = Vector2( 99.7798, 204.815 )
-texture = ExtResource( 36 )
+texture = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lObjeto" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 32 )]
+[node name="lObjeto" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 324.0
@@ -1010,7 +1038,7 @@ text = "Objeto"
 [node name="Outline" parent="SUMMARY/SUMMARY_1/lObjeto" index="0"]
 text = "Objeto"
 
-[node name="dObjeto" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 32 )]
+[node name="dObjeto" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 357.21
@@ -1036,7 +1064,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lNumDex" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 32 )]
+[node name="lNumDex" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 34 )]
 margin_left = 0.0
 margin_top = 0.0
 margin_right = 240.0
@@ -1046,7 +1074,7 @@ text = "Nº Dex"
 [node name="Outline" parent="SUMMARY/SUMMARY_1/Labels/lNumDex" index="0"]
 text = "Nº Dex"
 
-[node name="lEspecie" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 32 )]
+[node name="lEspecie" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 34 )]
 margin_left = 0.0
 margin_top = 32.0
 margin_right = 240.0
@@ -1056,7 +1084,7 @@ text = "Especie"
 [node name="Outline" parent="SUMMARY/SUMMARY_1/Labels/lEspecie" index="0"]
 text = "Especie"
 
-[node name="lTipo" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 32 )]
+[node name="lTipo" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 34 )]
 margin_left = 0.0
 margin_top = 64.0
 margin_right = 240.0
@@ -1066,7 +1094,7 @@ text = "Tipo"
 [node name="Outline" parent="SUMMARY/SUMMARY_1/Labels/lTipo" index="0"]
 text = "Tipo"
 
-[node name="lEO" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 32 )]
+[node name="lEO" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 34 )]
 margin_left = 0.0
 margin_top = 96.0
 margin_right = 240.0
@@ -1076,7 +1104,7 @@ text = "EO"
 [node name="Outline" parent="SUMMARY/SUMMARY_1/Labels/lEO" index="0"]
 text = "EO"
 
-[node name="lID" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 32 )]
+[node name="lID" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 34 )]
 margin_left = 0.0
 margin_top = 128.0
 margin_right = 240.0
@@ -1086,7 +1114,7 @@ text = "Nº ID"
 [node name="Outline" parent="SUMMARY/SUMMARY_1/Labels/lID" index="0"]
 text = "Nº ID"
 
-[node name="lExperiencia" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 32 )]
+[node name="lExperiencia" parent="SUMMARY/SUMMARY_1/Labels" instance=ExtResource( 34 )]
 margin_left = 0.0
 margin_top = 160.0
 margin_right = 240.0
@@ -1096,7 +1124,7 @@ text = "Puntos de Experiencia"
 [node name="Outline" parent="SUMMARY/SUMMARY_1/Labels/lExperiencia" index="0"]
 text = "Puntos de Experiencia"
 
-[node name="dNumDex" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 35 )]
+[node name="dNumDex" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 368.0
 margin_top = 81.0
@@ -1113,7 +1141,7 @@ text = "025"
 align = 1
 valign = 1
 
-[node name="dEspecie" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 35 )]
+[node name="dEspecie" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 368.0
 margin_top = 116.0
@@ -1151,7 +1179,7 @@ custom_styles/panel = SubResource( 32 )
 
 [node name="dTipo1" type="Sprite" parent="SUMMARY/SUMMARY_1/Tipos/pTipo1"]
 position = Vector2( 32, 14 )
-texture = ExtResource( 37 )
+texture = ExtResource( 39 )
 vframes = 24
 
 [node name="pTipo2" type="Panel" parent="SUMMARY/SUMMARY_1/Tipos"]
@@ -1164,10 +1192,10 @@ custom_styles/panel = SubResource( 33 )
 
 [node name="dTipo2" type="Sprite" parent="SUMMARY/SUMMARY_1/Tipos/pTipo2"]
 position = Vector2( 32, 14 )
-texture = ExtResource( 37 )
+texture = ExtResource( 39 )
 vframes = 24
 
-[node name="dEO" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 35 )]
+[node name="dEO" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 368.0
 margin_top = 180.0
@@ -1186,7 +1214,7 @@ custom_colors/font_color_shadow = Color( 0.533333, 0.658824, 0.815686, 1 )
 text = "Rojo"
 align = 1
 
-[node name="dID" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 35 )]
+[node name="dID" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 368.0
 margin_top = 213.0
@@ -1201,7 +1229,7 @@ margin_bottom = 22.0
 text = "55720"
 align = 1
 
-[node name="dExperiencia" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 35 )]
+[node name="dExperiencia" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 383.0
 margin_top = 276.0
@@ -1216,7 +1244,7 @@ margin_bottom = 14.0
 text = "250047"
 align = 2
 
-[node name="lSigNivel" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 32 )]
+[node name="lSigNivel" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 238.0
 margin_top = 309.0
@@ -1229,7 +1257,7 @@ margin_right = 240.0
 margin_bottom = 27.0
 text = "Para subir de nivel"
 
-[node name="dSigNivel" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 35 )]
+[node name="dSigNivel" parent="SUMMARY/SUMMARY_1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 383.0
 margin_top = 339.741
@@ -1283,27 +1311,27 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nombre" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 32 )]
+[node name="Nombre" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 34 )]
 editor/display_folded = true
 
 [node name="Pokeball" type="Sprite" parent="SUMMARY/SUMMARY_2"]
 position = Vector2( 29, 76 )
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nivel" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 35 )]
+[node name="Nivel" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 37 )]
 editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="SUMMARY/SUMMARY_2"]
 position = Vector2( 99.7798, 204.815 )
-texture = ExtResource( 36 )
+texture = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lObjeto" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 32 )]
+[node name="lObjeto" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 324.0
@@ -1314,7 +1342,7 @@ text = "Objeto"
 [node name="Outline" parent="SUMMARY/SUMMARY_2/lObjeto" index="0"]
 text = "Objeto"
 
-[node name="dObjeto" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 32 )]
+[node name="dObjeto" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 357.21
@@ -1339,7 +1367,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="LabelNaturaleza" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 35 )]
+[node name="LabelNaturaleza" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 0.0
@@ -1353,7 +1381,7 @@ margin_right = 133.0
 margin_bottom = 22.0
 text = "Naturaleza"
 
-[node name="FechaCaptura" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 35 )]
+[node name="FechaCaptura" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 32.0
@@ -1366,7 +1394,7 @@ margin_right = 133.0
 margin_bottom = 22.0
 text = "18 de Nov. de 2018"
 
-[node name="RutaCaptura" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 35 )]
+[node name="RutaCaptura" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 64.0
@@ -1383,7 +1411,7 @@ custom_colors/font_color = Color( 0.972549, 0.219608, 0.12549, 1 )
 custom_colors/font_color_shadow = Color( 0.878431, 0.596078, 0.564706, 1 )
 text = "Intro"
 
-[node name="NivelCaptura" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 35 )]
+[node name="NivelCaptura" parent="SUMMARY/SUMMARY_2/Labels" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 96.0
@@ -1396,7 +1424,7 @@ margin_right = 133.0
 margin_bottom = 22.0
 text = "Encontrado con Nv. 63."
 
-[node name="DescNaturaleza" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 35 )]
+[node name="DescNaturaleza" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 243.0
 margin_top = 245.0
@@ -1413,7 +1441,7 @@ text = "Muy persistente."
 valign = 3
 autowrap = true
 
-[node name="Naturaleza" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 35 )]
+[node name="Naturaleza" parent="SUMMARY/SUMMARY_2" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 360.452
 margin_top = 84.9902
@@ -1434,7 +1462,7 @@ text = "Seria."
 [node name="Genero" type="Sprite" parent="SUMMARY/SUMMARY_2"]
 position = Vector2( 183, 77 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1478,27 +1506,27 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nombre" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 32 )]
+[node name="Nombre" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 34 )]
 editor/display_folded = true
 
 [node name="Pokeball" type="Sprite" parent="SUMMARY/SUMMARY_3"]
 position = Vector2( 29, 76 )
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nivel" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="Nivel" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="SUMMARY/SUMMARY_3"]
 position = Vector2( 99.7798, 204.815 )
-texture = ExtResource( 36 )
+texture = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lObjeto" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 32 )]
+[node name="lObjeto" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 324.0
@@ -1510,7 +1538,7 @@ text = "Objeto"
 text = "Objeto
 "
 
-[node name="dObjeto" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 32 )]
+[node name="dObjeto" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 357.21
@@ -1526,7 +1554,7 @@ custom_colors/font_color_shadow = Color( 0.815686, 0.815686, 0.784314, 1 )
 text = "Ninguno
 "
 
-[node name="lPS" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 32 )]
+[node name="lPS" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 240.0
 margin_top = 80.0
@@ -1550,7 +1578,7 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lAtaque" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 32 )]
+[node name="lAtaque" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 0.0
@@ -1561,7 +1589,7 @@ text = "Ataque"
 [node name="Outline" parent="SUMMARY/SUMMARY_3/Labels/lAtaque" index="0"]
 text = "Ataque"
 
-[node name="lDefensa" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 32 )]
+[node name="lDefensa" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 32.0
@@ -1572,7 +1600,7 @@ text = "Defensa"
 [node name="Outline" parent="SUMMARY/SUMMARY_3/Labels/lDefensa" index="0"]
 text = "Defensa"
 
-[node name="lAtEsp" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 32 )]
+[node name="lAtEsp" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 64.0
@@ -1583,7 +1611,7 @@ text = "At. Esp."
 [node name="Outline" parent="SUMMARY/SUMMARY_3/Labels/lAtEsp" index="0"]
 text = "At. Esp."
 
-[node name="lDefEsp" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 32 )]
+[node name="lDefEsp" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 96.0
@@ -1594,7 +1622,7 @@ text = "Def. Esp."
 [node name="Outline" parent="SUMMARY/SUMMARY_3/Labels/lDefEsp" index="0"]
 text = "Def. Esp."
 
-[node name="lVelocidad" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 32 )]
+[node name="lVelocidad" parent="SUMMARY/SUMMARY_3/Labels" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 0.0
 margin_top = 128.0
@@ -1605,7 +1633,7 @@ text = "Velocidad"
 [node name="Outline" parent="SUMMARY/SUMMARY_3/Labels/lVelocidad" index="0"]
 text = "Velocidad"
 
-[node name="dPS" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="dPS" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 328.53
 margin_top = 75.7848
@@ -1622,7 +1650,7 @@ text = "122/122"
 align = 2
 valign = 1
 
-[node name="dAtaque" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="dAtaque" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 390.0
 margin_top = 123.943
@@ -1638,7 +1666,7 @@ margin_bottom = 22.129
 text = "88"
 align = 2
 
-[node name="dDefensa" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="dDefensa" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 390.378
 margin_top = 155.969
@@ -1653,7 +1681,7 @@ margin_bottom = 22.0
 text = "59"
 align = 2
 
-[node name="dAtEsp" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="dAtEsp" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 390.0
 margin_top = 188.0
@@ -1668,7 +1696,7 @@ margin_bottom = 22.0
 text = "78"
 align = 2
 
-[node name="dDefEsp" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="dDefEsp" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 390.85
 margin_top = 219.756
@@ -1681,7 +1709,7 @@ margin_right = 66.0
 margin_bottom = 22.0
 align = 2
 
-[node name="dVelocidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="dVelocidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 390.283
 margin_top = 252.039
@@ -1696,7 +1724,7 @@ margin_bottom = 22.0
 text = "134"
 align = 2
 
-[node name="lHbailidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 32 )]
+[node name="lHbailidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 224.039
 margin_top = 287.986
@@ -1709,7 +1737,7 @@ margin_right = 240.0
 margin_bottom = 27.0
 text = "Habilidad"
 
-[node name="dHabilidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="dHabilidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 margin_left = 363.311
 margin_top = 288.297
 margin_right = 507.311
@@ -1721,7 +1749,7 @@ margin_right = 144.0
 margin_bottom = 14.0
 text = "Elec. Estática"
 
-[node name="DescHabilidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 35 )]
+[node name="DescHabilidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
 editor/display_folded = true
 anchor_bottom = 1.0
 margin_left = 224.0
@@ -1744,9 +1772,11 @@ max_lines_visible = 2
 [node name="Genero" type="Sprite" parent="SUMMARY/SUMMARY_3"]
 position = Vector2( 183, 77 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 
 [node name="SUMMARY_4" type="Panel" parent="SUMMARY"]
+editor/display_folded = true
+visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
@@ -1783,27 +1813,27 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nombre" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 32 )]
+[node name="Nombre" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 34 )]
 editor/display_folded = true
 
 [node name="Pokeball" type="Sprite" parent="SUMMARY/SUMMARY_4"]
 position = Vector2( 29, 76 )
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nivel" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 35 )]
+[node name="Nivel" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 37 )]
 editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="SUMMARY/SUMMARY_4"]
 position = Vector2( 99.7798, 204.815 )
-texture = ExtResource( 36 )
+texture = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lObjeto" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 32 )]
+[node name="lObjeto" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 324.0
@@ -1814,7 +1844,7 @@ text = "Objeto"
 [node name="Outline" parent="SUMMARY/SUMMARY_4/lObjeto" index="0"]
 text = "Objeto"
 
-[node name="dObjeto" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 32 )]
+[node name="dObjeto" parent="SUMMARY/SUMMARY_4" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 356.999
@@ -1830,6 +1860,7 @@ custom_colors/font_color_shadow = Color( 0.815686, 0.815686, 0.784314, 1 )
 text = "Ninguno"
 
 [node name="Move1" type="Panel" parent="SUMMARY/SUMMARY_4"]
+editor/display_folded = true
 margin_left = 243.0
 margin_top = 96.0
 margin_right = 492.0
@@ -1842,14 +1873,15 @@ __meta__ = {
 
 [node name="Tipo" type="Sprite" parent="SUMMARY/SUMMARY_4/Move1"]
 position = Vector2( 37, 17 )
-texture = ExtResource( 37 )
+texture = ExtResource( 39 )
 vframes = 24
 frame = 14
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move1" instance=ExtResource( 35 )]
+[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move1" instance=ExtResource( 37 )]
+editor/display_folded = true
 margin_left = 73.2308
 margin_top = 4.56409
 margin_right = 243.231
@@ -1861,7 +1893,7 @@ margin_right = 170.0
 margin_bottom = 22.0
 text = "Agilidad"
 
-[node name="lPP" parent="SUMMARY/SUMMARY_4/Move1" instance=ExtResource( 35 )]
+[node name="lPP" parent="SUMMARY/SUMMARY_4/Move1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 45.0
 margin_top = 37.0
@@ -1876,7 +1908,7 @@ margin_bottom = 22.0
 text = "PP"
 align = 1
 
-[node name="dPP" parent="SUMMARY/SUMMARY_4/Move1" instance=ExtResource( 35 )]
+[node name="dPP" parent="SUMMARY/SUMMARY_4/Move1" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 112.192
 margin_top = 37.0
@@ -1905,14 +1937,14 @@ __meta__ = {
 
 [node name="Tipo" type="Sprite" parent="SUMMARY/SUMMARY_4/Move2"]
 position = Vector2( 37, 17 )
-texture = ExtResource( 37 )
+texture = ExtResource( 39 )
 vframes = 24
 frame = 13
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move2" instance=ExtResource( 35 )]
+[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move2" instance=ExtResource( 37 )]
 margin_left = 73.2308
 margin_top = 4.56409
 margin_right = 243.231
@@ -1924,7 +1956,7 @@ margin_right = 170.0
 margin_bottom = 22.0
 text = "Chispazo"
 
-[node name="lPP" parent="SUMMARY/SUMMARY_4/Move2" instance=ExtResource( 35 )]
+[node name="lPP" parent="SUMMARY/SUMMARY_4/Move2" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 45.0
 margin_top = 37.0
@@ -1939,7 +1971,7 @@ margin_bottom = 22.0
 text = "PP"
 align = 1
 
-[node name="dPP" parent="SUMMARY/SUMMARY_4/Move2" instance=ExtResource( 35 )]
+[node name="dPP" parent="SUMMARY/SUMMARY_4/Move2" instance=ExtResource( 37 )]
 margin_left = 112.192
 margin_top = 37.0
 margin_right = 217.192
@@ -1967,14 +1999,14 @@ __meta__ = {
 
 [node name="Tipo" type="Sprite" parent="SUMMARY/SUMMARY_4/Move3"]
 position = Vector2( 37, 17 )
-texture = ExtResource( 37 )
+texture = ExtResource( 39 )
 vframes = 24
 frame = 14
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move3" instance=ExtResource( 35 )]
+[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move3" instance=ExtResource( 37 )]
 margin_left = 73.2308
 margin_top = 4.56409
 margin_right = 243.231
@@ -1986,7 +2018,7 @@ margin_right = 170.0
 margin_bottom = 22.0
 text = "Pantalla Luz"
 
-[node name="lPP" parent="SUMMARY/SUMMARY_4/Move3" instance=ExtResource( 35 )]
+[node name="lPP" parent="SUMMARY/SUMMARY_4/Move3" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 45.0
 margin_top = 37.0
@@ -2001,7 +2033,7 @@ margin_bottom = 22.0
 text = "PP"
 align = 1
 
-[node name="dPP" parent="SUMMARY/SUMMARY_4/Move3" instance=ExtResource( 35 )]
+[node name="dPP" parent="SUMMARY/SUMMARY_4/Move3" instance=ExtResource( 37 )]
 margin_left = 112.192
 margin_top = 37.0
 margin_right = 217.192
@@ -2029,14 +2061,14 @@ __meta__ = {
 
 [node name="Tipo" type="Sprite" parent="SUMMARY/SUMMARY_4/Move4"]
 position = Vector2( 37, 17 )
-texture = ExtResource( 37 )
+texture = ExtResource( 39 )
 vframes = 24
 frame = 13
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move4" instance=ExtResource( 35 )]
+[node name="Ataque" parent="SUMMARY/SUMMARY_4/Move4" instance=ExtResource( 37 )]
 margin_left = 73.2308
 margin_top = 4.56409
 margin_right = 243.231
@@ -2048,7 +2080,7 @@ margin_right = 170.0
 margin_bottom = 22.0
 text = "Trueno"
 
-[node name="lPP" parent="SUMMARY/SUMMARY_4/Move4" instance=ExtResource( 35 )]
+[node name="lPP" parent="SUMMARY/SUMMARY_4/Move4" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 45.0
 margin_top = 37.0
@@ -2063,7 +2095,7 @@ margin_bottom = 22.0
 text = "PP"
 align = 1
 
-[node name="dPP" parent="SUMMARY/SUMMARY_4/Move4" instance=ExtResource( 35 )]
+[node name="dPP" parent="SUMMARY/SUMMARY_4/Move4" instance=ExtResource( 37 )]
 margin_left = 112.192
 margin_top = 37.0
 margin_right = 217.192
@@ -2080,7 +2112,7 @@ align = 2
 [node name="Genero" type="Sprite" parent="SUMMARY/SUMMARY_4"]
 position = Vector2( 183, 77 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 
 [node name="SUMMARY_5" type="Panel" parent="SUMMARY"]
 editor/display_folded = true
@@ -2121,27 +2153,27 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nombre" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 32 )]
+[node name="Nombre" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 34 )]
 editor/display_folded = true
 
 [node name="Pokeball" type="Sprite" parent="SUMMARY/SUMMARY_5"]
 position = Vector2( 29, 76 )
-texture = ExtResource( 33 )
+texture = ExtResource( 35 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="Nivel" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 35 )]
+[node name="Nivel" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 37 )]
 editor/display_folded = true
 
 [node name="Sprite" type="Sprite" parent="SUMMARY/SUMMARY_5"]
 position = Vector2( 99.7798, 204.815 )
-texture = ExtResource( 36 )
+texture = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="lObjeto" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 32 )]
+[node name="lObjeto" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 324.0
@@ -2152,7 +2184,7 @@ text = "Objeto"
 [node name="Outline" parent="SUMMARY/SUMMARY_5/lObjeto" index="0"]
 text = "Objeto"
 
-[node name="dObjeto" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 32 )]
+[node name="dObjeto" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 34 )]
 editor/display_folded = true
 margin_left = 19.0
 margin_top = 357.21
@@ -2167,7 +2199,7 @@ custom_colors/font_color = Color( 0.690196, 0.690196, 0.690196, 1 )
 custom_colors/font_color_shadow = Color( 0.815686, 0.815686, 0.784314, 1 )
 text = "Ninguno"
 
-[node name="lCintas" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 35 )]
+[node name="lCintas" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 235.694
 margin_top = 345.549
@@ -2179,7 +2211,7 @@ align = 1
 [node name="Outline" parent="SUMMARY/SUMMARY_5/lCintas" index="0"]
 text = "Núm. de Cintas:"
 
-[node name="dCintas" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 35 )]
+[node name="dCintas" parent="SUMMARY/SUMMARY_5" instance=ExtResource( 37 )]
 editor/display_folded = true
 margin_left = 440.0
 margin_top = 346.0
@@ -2193,7 +2225,7 @@ text = "0"
 [node name="Genero" type="Sprite" parent="SUMMARY/SUMMARY_5"]
 position = Vector2( 183, 77 )
 scale = Vector2( 0.4, 0.4 )
-texture = ExtResource( 34 )
+texture = ExtResource( 36 )
 
 [connection signal="focus_entered" from="PKMN_0" to="." method="_on_PKMN_focus_entered"]
 [connection signal="focus_entered" from="PKMN_1" to="." method="_on_PKMN_focus_entered"]

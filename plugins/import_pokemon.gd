@@ -19,8 +19,8 @@ func _run():
 		
 	var names = PoolStringArray()
 	names.push_back("None")
-
-	for i in range(4):  #maxim son 721
+	
+	for i in range(1):  #maxim son 721
 
 		var text = get_json("/api/v2/pokemon/"+str(i+1)+"/")
 #		var h = HTTPRequest.new()
@@ -71,13 +71,14 @@ func _run():
 			pkm.held_items_id.push_back(int(i["item"]["url"].split("/")[6]))
 			pkm.held_items_rarity.push_back(int(i["version_details"][0]["rarity"]))
 			
-		pkm.learn_type = Array()
-		pkm.learn_lvl = Array()
-		pkm.learn_move_id = Array()
+		pkm.learn_type = []
+		pkm.learn_lvl = []
+		pkm.learn_move_id = []
 		for m in d["moves"]:
-			pkm.learn_type.push_back(int(m["version_group_details"][0]["move_learn_method"]["url"].split("/")[6]))
-			pkm.learn_lvl.push_back(int(m["version_group_details"][0]["level_learned_at"]))
-			pkm.learn_move_id.push_back(int(m["move"]["url"].split("/")[6]))
+			if int(m["move"]["url"].split("/")[6]) < 622:
+				pkm.learn_type.push_back(int(m["version_group_details"][0]["move_learn_method"]["url"].split("/")[6]))
+				pkm.learn_lvl.push_back(int(m["version_group_details"][0]["level_learned_at"]))
+				pkm.learn_move_id.push_back(int(m["move"]["url"].split("/")[6]))
 			
 		pkm.attack_base=int(d["stats"][4]["base_stat"])
 		pkm.defense_base=int(d["stats"][3]["base_stat"])

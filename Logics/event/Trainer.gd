@@ -16,6 +16,7 @@ var tilesVisibility
 
 func _ready():
 	for p in get_children():
+		print("fora: " + p.nickname + str(p.level))
 		party.push_back(DB.pokemons[p.pkm_id].new_pokemon(p))
 	#pass
 
