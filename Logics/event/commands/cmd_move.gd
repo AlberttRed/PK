@@ -47,7 +47,7 @@ func _ready():
 	
 func run():
 	executing = true
-	set_physics_process(true)
+	#set_physics_process(true)
 	print("move event started")
 	if GLOBAL.movingEvent == null:
 		if nodePath.is_empty():# == null:
@@ -65,149 +65,71 @@ func run():
 	print(str(movesArray.size()) + " and " + str(Target) + " and " + str(!moved))
 	if get_parent() != null:
 		get_parent().cmd_move_on = true
-	set_physics_process(true)
+	EVENTS.add_movement(Target, movesArray)
 	print("dw")
-	#emit_signal("finished")
+	executing = false
+	emit_signal("finished")
 
-func _physics_process(delta):
-	if movesArray.size() != 0 and Target != null and !moved:
-		if Target == ProjectSettings.get("Player"):
-			if i < movesArray.size() and !moved and !moving:
-				moving = true
-				for move in movesArray:
-					print(str(i) + " UN PAS " + move)
-					if ProjectSettings.get("Player").jumping:
-						yield(ProjectSettings.get("Player"), "jump")
-					set_physics_process(false)
-					Input.action_press("ui_" + move + "_event")
-					yield(ProjectSettings.get("Player"), "move")
-					Input.action_release("ui_" + move + "_event")
-					i += 1
-			print("STOP ")
-			moved = true
-			moving = false
-			i = 0
-			set_physics_process(false)
-			while ProjectSettings.get("Player").animationPlayer.is_playing():
-				yield(get_tree(), "idle_frame")
-			finish_move()
-			#emit_signal("finished_movement")
-			if get_parent() != null:
-				get_parent().cmd_move_on = false
-		else:
-			resultUp = null
-			resultDown = null
-			resultLeft = null
-			resultRight = null
-
-			if !Target.Through:
-				resultUp = Target.world.intersect_point(Target.get_position() + Vector2(0, -GRID))
-				resultDown = Target.world.intersect_point(Target.get_position() + Vector2(0, GRID))
-				resultLeft = Target.world.intersect_point(Target.get_position() + Vector2(-GRID, 0))
-				resultRight = Target.world.intersect_point(Target.get_position() + Vector2(GRID, 0))
-			if !moving and i < movesArray.size():
-				if movesArray[i] == "up":# and can_interact and !GUI.is_visible():#!GUI.is_visible():
-					i += 1
-					up = true
-					down = false
-					left = false
-					right = false
-					if step2:
-						animationPlayer.play("walk_up_step2")
-					else:
-						animationPlayer.play("walk_up_step1")
-					if resultUp == null or resultUp.empty() or !colliderIsNotPasable(resultUp):# resultUp[resultUp.size()-1].collider.has_node("Pasable"):
-						moving = true
-						direction = Vector2(0, -1)
-						startPos = Target.get_position()
-						continuous = true
-					elif colliderIsPlayerTouch(resultUp) and colliderIsNotPasable(resultUp):
-		#					if can_interact:
-							interact_at_collide(resultUp)
-					emit_signal("step")
-				elif movesArray[i] == "down":# and can_interact and !GUI.is_visible():#!GUI.is_visible():
-					i += 1
-					if step2:
-						Target.get_node("AnimationPlayer").play("walk_down_step2")
-					else:
-						Target.get_node("AnimationPlayer").play("walk_down_step1")
-
-					if resultDown == null or resultDown.empty() or !colliderIsNotPasable(resultDown):#resultDown[resultDown.size()-1].collider.has_node("Pasable"):
-						moving = true
-						direction = Vector2(0, 1)
-						startPos = Target.get_position()
-						continuous = true
-					elif colliderIsPlayerTouch(resultDown) and colliderIsNotPasable(resultDown):
-		#					if can_interact:
-							interact_at_collide(resultDown)
-					up = false
-					down = true
-					left = false
-					right = false
-					emit_signal("step")
-				elif movesArray[i] == "left":# and can_interact and !GUI.is_visible():#!GUI.is_visible():
-					i += 1
-					if step2:
-						animationPlayer.play("walk_left_step2")
-					else:
-						animationPlayer.play("walk_left_step1")
-
-					if resultLeft == null or resultLeft.empty() or !colliderIsNotPasable(resultLeft):#resultLeft[resultLeft.size()-1].collider.has_node("Pasable"):
-						moving = true
-						direction = Vector2(-1, 0)
-						startPos = Target.get_position()
-						continuous = true
-					elif colliderIsPlayerTouch(resultLeft) and colliderIsNotPasable(resultLeft):
-		#					if can_interact:
-							interact_at_collide(resultLeft)
-					up = false
-					down = false
-					left = true
-					right = false
-					emit_signal("step")
-				elif movesArray[i] == "right":# and can_interact and !GUI.is_visible():#!GUI.is_visible():
-					i += 1
-					if step2:
-						animationPlayer.play("walk_right_step2")
-					else:
-						animationPlayer.play("walk_right_step1")
-					if resultRight == null or resultRight.empty() or !colliderIsNotPasable(resultRight):#resultRight[resultRight.size()-1].collider.has_node("Pasable"):
-						moving = true
-						direction = Vector2(1, 0)
-						startPos = Target.get_position()
-						continuous = true
-					elif colliderIsPlayerTouch(resultRight) and colliderIsNotPasable(resultRight):
-		#					if can_interact:
-							interact_at_collide(resultRight)
-					up = false
-					down = false
-					left = false
-					right = true
-					emit_signal("step")
-				else:
-					continuous = false
-			else:
-				Target.move_and_collide(direction * SPEED)
-				if Target.get_position() == (startPos + Vector2(GRID * direction.x, GRID * direction.y)):
-					moving = false
-					#print(get_position())
-					step2 = !step2
-					if i >= movesArray.size():
-						moved = true
-						finish_move()
-						if get_parent() != null:
-							get_parent().cmd_move_on = false
-						#emit_signal("finished_movement")
-						set_physics_process(false)
-	else:
-		i=0
-		moved = true
-		if get_parent() != null:
-			get_parent().cmd_move_on = false
-		set_physics_process(false)
-		#print("move event finished")
-		finish_move()
-		#emit_signal("finished_movement")
+#func _physics_process(delta):
+#	if movesArray.size() != 0 and Target != null and !moved:
+#		if Target == ProjectSettings.get("Player"):
+#			if i < movesArray.size() and !moved and !moving:
+#				set_physics_process(false)
+#				moving = true
+#				for move in movesArray:
+#					print(str(i) + " UN PAS " + move)
+#					if ProjectSettings.get("Player").jumping:
+#						yield(ProjectSettings.get("Player"), "jump")
+#					Input.action_press("ui_" + move + "_event_player")
+#					yield(ProjectSettings.get("Player"), "move")
+#					Input.action_release("ui_" + move + "_event_player")
+#					i += 1
+#			print("STOP ")
+#			moved = true
+#			moving = false
+#			i = 0
+##			set_physics_process(false)
+##			while ProjectSettings.get("Player").animationPlayer.is_playing():
+##				yield(get_tree(), "idle_frame")
+##			finish_move()
+##			#emit_signal("finished_movement")
+##			if get_parent() != null:
+##				get_parent().cmd_move_on = false
+#		else:
+#			if i < movesArray.size() and !moved and !moving:
+#				set_physics_process(false)
+#				Target.can_interact = true		
+#				moving = true
+#				Target.can_interact = true
+#				for move in movesArray:
+#					print(str(i) + " UN PAS " + move)
+#					if Target.jumping:
+#						yield(Target, "jump")
+#					Input.action_press("ui_" + move + "_event")
+#					yield(Target, "move")
+#					Input.action_release("ui_" + move + "_event")
+#					i += 1
+#				Target.can_interact = false
+#			print("STOP ")
+#			moved = true
+#			moving = false
+#			i = 0
+#			while Target.animationPlayer.is_playing():
+#				yield(get_tree(), "idle_frame")
+#			finish_move()
+#			#emit_signal("finished_movement")
+#			if get_parent() != null:
+#				get_parent().cmd_move_on = false
+#	else:
+#		i=0
+#		moved = true
+#		moving = false
+#		if get_parent() != null:
+#			get_parent().cmd_move_on = false
+#		set_physics_process(false)
+#		#print("move event finished")
+#		finish_move()
+#		#emit_signal("finished_movement")
 
 
 func colliderIsNotPasable(result):

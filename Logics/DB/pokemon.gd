@@ -144,7 +144,7 @@ func new_pokemon(pkm):
 				learnable_indexes.push_back(i)#DB.moves[learn_move_id[i]].id)
 				#print("Dins: " + str(DB.moves[learn_move_id[i]].id))
 #				print("i: " + str(i) + "pkm level: " + str(pkm.level))
-				print("learnable_indexes: " + str(DB.moves[learn_move_id[i]].Name) + ", move level: " + str(learn_lvl[i]))
+				#print("learnable_indexes: " + str(DB.moves[learn_move_id[i]].Name) + ", move level: " + str(learn_lvl[i]))
 	learnable_indexes.sort_custom(self, "move_is_greater")
 	print(Name)
 	var temp_moves = []
@@ -152,7 +152,7 @@ func new_pokemon(pkm):
 		temp_moves.push_back(DB.moves[learn_move_id[e]].id)
 		#print("Fora: " + str(e))
 #		print(learn_move_id[e])
-		print("learnable_indexes: " + str(DB.moves[learn_move_id[e]].Name))
+		#print("learnable_indexes: " + str(DB.moves[learn_move_id[e]].Name))
 	learnable_indexes = temp_moves
 	
 	if (learnable_indexes.size() > 4):

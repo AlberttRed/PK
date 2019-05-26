@@ -88,7 +88,7 @@ func _physics_process(delta):
 		resultLeft = intersect_point(get_position() + Vector2(-GRID, 0))
 		resultRight = intersect_point(get_position() + Vector2(GRID, 0))
 	if !moving:				
-		if ((Input.is_action_pressed("ui_up") and can_interact and active_events.size() == 0)  or Input.is_action_pressed("ui_up_event")) and !GUI.is_visible():	
+		if (Input.is_action_pressed("ui_up") and can_interact and active_events.size() == 0 and !GUI.is_visible())  or Input.is_action_pressed("ui_up_event_player"):	
 			facing = "up"			
 			if !jumping:
 				if step2:
@@ -108,7 +108,7 @@ func _physics_process(delta):
 			else:
 				print("PAM")
 			emit_signal("step")
-		elif ((Input.is_action_pressed("ui_down") and can_interact and active_events.size() == 0) or Input.is_action_pressed("ui_down_event")) and !GUI.is_visible():
+		elif (Input.is_action_pressed("ui_down") and can_interact and active_events.size() == 0 and !GUI.is_visible()) or Input.is_action_pressed("ui_down_event_player"):
 			facing = "down"
 			if !jumping:
 				if step2:
@@ -130,7 +130,7 @@ func _physics_process(delta):
 					print("collision")
 					interact_at_collide(resultDown)
 			emit_signal("step")
-		elif ((Input.is_action_pressed("ui_left") and can_interact and active_events.size() == 0) or Input.is_action_pressed("ui_left_event")) and !GUI.is_visible():#!GUI.is_visible():
+		elif (Input.is_action_pressed("ui_left") and can_interact and active_events.size() == 0 and !GUI.is_visible()) or Input.is_action_pressed("ui_left_event_player"):#!GUI.is_visible():
 			facing = "left"
 			if !jumping:
 				if step2:
@@ -155,7 +155,7 @@ func _physics_process(delta):
 				if can_interact:# and !Through:				
 					interact_at_collide(resultLeft)
 			emit_signal("step")
-		elif ((Input.is_action_pressed("ui_right") and can_interact and active_events.size() == 0) or Input.is_action_pressed("ui_right_event")) and !GUI.is_visible():
+		elif (Input.is_action_pressed("ui_right") and can_interact and active_events.size() == 0 and !GUI.is_visible()) or Input.is_action_pressed("ui_right_event_player"):
 			facing = "right"
 			if !jumping:
 				if step2:
@@ -215,8 +215,8 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !GUI.is_visible():	
 		#print_pkmn_team()
 		#print_pkmn_moves(0)
-		print_pkmn_team()
-		print(DB.pokemons[GAME_DATA.party[0].get_id()].Name + " HP: 10 + (" + str(GAME_DATA.party[0].get_nivel()) + " / 100 * ((" + str(DB.pokemons[GAME_DATA.party[0].get_id()].hp_base) + "* 2) + " + str(GAME_DATA.party[0].hp_IVs) + " + " + str(GAME_DATA.party[0].hp_EVs) + ")) + " + str(GAME_DATA.party[0].get_nivel()) )
+		#print_pkmn_team()
+		#print(DB.pokemons[GAME_DATA.party[0].get_id()].Name + " HP: 10 + (" + str(GAME_DATA.party[0].get_nivel()) + " / 100 * ((" + str(DB.pokemons[GAME_DATA.party[0].get_id()].hp_base) + "* 2) + " + str(GAME_DATA.party[0].hp_IVs) + " + " + str(GAME_DATA.party[0].hp_EVs) + ")) + " + str(GAME_DATA.party[0].get_nivel()) )
 		if facing == "up":
 			interact(intersect_point(get_position() + Vector2(0, -GRID)), 0)
 		elif facing == "left":
@@ -269,30 +269,36 @@ func interact(result, from):
 		print("INTERACT")
 		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.has_node("Interact"):
 			if dictionary.collider.is_in_group("NPC"):
-				dictionary.collider.get_parent().eventTarget = self
-				dictionary.collider.get_parent().exec(from)
+#				dictionary.collider.get_parent().eventTarget = self
+#				dictionary.collider.get_parent().exec(from)
+				EVENTS.add_event(dictionary.collider.get_parent(), self)
+				
 			elif dictionary.collider.is_in_group("surf_area") and !surfing:
 				surf()
 			else:
 				if dictionary.collider.get_name() == "Area2D":
-					dictionary.collider.get_parent().exec(from)
+					EVENTS.add_event(dictionary.collider.get_parent())
+					#dictionary.collider.get_parent().exec(from)
 				else:
-					dictionary.collider.eventTarget = self
-					dictionary.collider.exec(from)
+#					dictionary.collider.eventTarget = self
+#					dictionary.collider.exec(from)
+					EVENTS.add_event(dictionary.collider, self)
 			
 func interact_at_collide(result):
 	for dictionary in result:
 		print("INTERACT AT COLLIDE")
 		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.is_in_group("Evento") and !dictionary.collider.is_in_group("Boulder"):
 			if dictionary.collider.is_in_group("NPC"):
-				if !dictionary.collider.get_parent().running:
-					dictionary.collider.get_parent().eventTarget = self
-					dictionary.collider.get_parent().exec()
+#				if !dictionary.collider.get_parent().running:
+#					dictionary.collider.get_parent().eventTarget = self
+#					dictionary.collider.get_parent().exec()
+					EVENTS.add_event(dictionary.collider.get_parent(), self)
 			else:
-				if !dictionary.collider.running:
-					dictionary.collider.eventTarget = self
-				#print(dictionary.collider.get_name())
-					dictionary.collider.exec()
+#				if !dictionary.collider.running:
+#					dictionary.collider.eventTarget = self
+#				#print(dictionary.collider.get_name())
+#					dictionary.collider.exec()
+					EVENTS.add_event(dictionary.collider, self)
 		elif typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.is_in_group("ledge_area"):
 			if dictionary.collider.direction == facing:
 				jump(dictionary.collider.direction, dictionary.collider.cells_jump)

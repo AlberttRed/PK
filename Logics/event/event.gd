@@ -37,7 +37,9 @@ var teleport = false
 func set_page(page):
 	current_page = page
 
-
+func _init():
+	add_user_signal("event_finished")
+	
 func _ready():
 	add_to_group(get_parent().get_parent().get_name())
 	if Pasable:
@@ -85,48 +87,50 @@ func _process(delta):
 #        print(area.get_name())
 
 func exec(from = initialFrame):
-	if !running:
-		print("event " + get_name() + " started")
+	
+	print("event " + get_name() + " started")
 #		if eventTarget == ProjectSettings.get("Player"):
 #			ProjectSettings.get("Player").active_events.push_back(self)
 #			ProjectSettings.get("Player").being_controlled = true
-		GLOBAL.running_events.push_back(self)
-		running = true
-		current_page = return_current_page(get_node("pages").get_child(0))
-		while player.get_moving():
-			yield(get_tree(), "idle_frame")
-		if (current_page == null):
-			return
-		if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
-			#if from == "up":
-				get_node("Sprite").frame = from#0
-			#elif from == "down":
-				#get_node("Sprite").frame = 12
-			#elif from == "left":
-				#get_node("Sprite").frame = 8
-			#elif from == "right":
-				#get_node("Sprite").frame = 4
-		#player.set_can_interact(false)
-		print(current_page.get_name())
-		current_page.run()
-		#current_page.run()
+	GLOBAL.running_events.push_back(self)
+	#running = true
+	current_page = return_current_page(get_node("pages").get_child(0))
+	while player.get_moving():
+		yield(get_tree(), "idle_frame")
+	if (current_page == null):
+		return
+	if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
+		#if from == "up":
+			get_node("Sprite").frame = from#0
+		#elif from == "down":
+			#get_node("Sprite").frame = 12
+		#elif from == "left":
+			#get_node("Sprite").frame = 8
+		#elif from == "right":
+			#get_node("Sprite").frame = 4
+	#player.set_can_interact(false)
+	print(current_page.get_name())
+	current_page.run()
+	
+	#current_page.run()
 #		while current_page.running:
 #			yield(get_tree(), "idle_frame")	
-		#yield(current_page, "finished_page")
-		if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
-			get_node("Sprite").frame = initialFrame
-		#player.set_can_interact(!BlockPlayerAtEnd)
-		print("event " + get_name() + " finished")
-		
-		if ProjectSettings.get("Player").active_events.has(self) and !current_page.is_executing():
-			ProjectSettings.get("Player").active_events.erase(self)
-		GLOBAL.running_events.erase(self)
-		running = false
-		if deleteAtEnd:
-			remove()
-	else:
-		print("event " + get_name() + " is already running!")
+	yield(current_page, "finished_page")
+	print("AY ER MAI")
+	if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
+		get_node("Sprite").frame = initialFrame
+	#player.set_can_interact(!BlockPlayerAtEnd)
 	print("event " + get_name() + " finished")
+	
+	if ProjectSettings.get("Player").active_events.has(self) and !current_page.is_executing():
+		ProjectSettings.get("Player").active_events.erase(self)
+	GLOBAL.running_events.erase(self)
+	#running = false
+	if deleteAtEnd:
+		remove()
+
+	print("event " + get_name() + " finished")
+	emit_signal("event_finished")
 	
 func exec_this_page(page):
 	print("exec_this-page")

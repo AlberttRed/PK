@@ -36,8 +36,8 @@ func exec_commands(commands):
 				ProjectSettings.get("Player").active_events.push_back(parentEvent)
 				ProjectSettings.get("Player").being_controlled = true
 				print("HE..RE")
-				cmd.run()
-				yield(cmd, "finished")
+				cmd.call_deferred("run")
+				#yield(cmd, "finished")
 				print("FINISH")
 				#ProjectSettings.get("Player").active_events.erase(get_parent().get_parent())
 			else:

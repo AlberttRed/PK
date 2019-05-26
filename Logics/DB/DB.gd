@@ -23,8 +23,8 @@ func _ready():
 	var pkm_container = get_node("pokemons")
 	for pkm in pkm_container.get_children():
 #		if pkm.id == 1:
-		print(pkm.Name)
-		print(pkm.learn_move_id.size())
+#		print(pkm.Name)
+#		print(pkm.learn_move_id.size())
 #			print(str(pkm.abilities[0]) + ", " + str(pkm.abilities[1]) + ", " + str(pkm.abilities[2]))
 		pokemons.push_back(pkm)
 	var type_container = get_node("pokemon_types")

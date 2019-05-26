@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "EventSystem",
+"language": "GDScript",
+"path": "res://Logics/event/EventSystem.gd"
+}, {
+"base": "Node",
 "class": "Pokemon",
 "language": "GDScript",
 "path": "res://Logics/DB/pokemon.gd"
@@ -20,6 +25,7 @@ _global_script_classes=[ {
 "path": "res://Logics/event/Trainer.gd"
 } ]
 _global_script_class_icons={
+"EventSystem": "",
 "Pokemon": "",
 "Trainer": ""
 }
@@ -38,6 +44,7 @@ DB="*res://Logics/DB/DB.scn"
 GAME_DATA="*res://Logics/GAME_DATA.scn"
 INPUT="*res://Logics/INPUT.scn"
 GUI="*res://ui/GUI.tscn"
+EVENTS="*res://Logics/event/EventSystem.gd"
 
 [debug]
 
@@ -112,6 +119,22 @@ ui_left_event={
 "events": [  ]
 }
 ui_down_event={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_up_event_player={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_right_event_player={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_left_event_player={
+"deadzone": 0.5,
+"events": [  ]
+}
+ui_down_event_player={
 "deadzone": 0.5,
 "events": [  ]
 }
