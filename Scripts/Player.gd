@@ -14,6 +14,8 @@ export(Vector2) var inital_position = Vector2(0,0)
 var SPEED = 2
 var GRID = 32
 
+var move 
+
 var world
 
 var sprite
@@ -34,6 +36,7 @@ var step = 0
 var jumping = false
 var surfing = false
 var pushing = false
+var in_event = false
 
 var being_controlled = false
 
@@ -43,6 +46,9 @@ func _init():
 	add_user_signal("step")
 	add_user_signal("jump")
 	can_interact = true
+	move =  load("res://Logics/event/event_movement.gd").new()
+	move.set_name("move")
+	add_child(move)
 	
 func _ready():
 	trainer = get_node("Trainer")
@@ -67,7 +73,7 @@ func _ready():
 
 
 func _physics_process(delta):
-	if active_events.size() == 0 and !jumping and !surfing and !pushing:
+	if !being_controlled and !jumping and !surfing and !pushing: #active_events.size() == 0
 		if GLOBAL.move_is_continuous() or GLOBAL.is_last_move(facing):
 			step = 1
 		else:
@@ -77,7 +83,9 @@ func _physics_process(delta):
 	else:
 		#print("player in event " + event.get_name())
 		step = 1
-			
+		
+
+
 	resultUp = null
 	resultDown = null#world.intersect_point(Vector2(0, 0))
 	resultLeft = null#world.intersect_point(Vector2(0, 0))
@@ -88,7 +96,7 @@ func _physics_process(delta):
 		resultLeft = intersect_point(get_position() + Vector2(-GRID, 0))
 		resultRight = intersect_point(get_position() + Vector2(GRID, 0))
 	if !moving:				
-		if (Input.is_action_pressed("ui_up") and can_interact and active_events.size() == 0 and !GUI.is_visible())  or Input.is_action_pressed("ui_up_event_player"):	
+		if (Input.is_action_pressed("ui_up") and can_interact and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded)  or Input.is_action_pressed("ui_up_event_player"):	
 			facing = "up"			
 			if !jumping:
 				if step2:
@@ -108,7 +116,7 @@ func _physics_process(delta):
 			else:
 				print("PAM")
 			emit_signal("step")
-		elif (Input.is_action_pressed("ui_down") and can_interact and active_events.size() == 0 and !GUI.is_visible()) or Input.is_action_pressed("ui_down_event_player"):
+		elif (Input.is_action_pressed("ui_down") and !in_event and  can_interact and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded) or Input.is_action_pressed("ui_down_event_player"):
 			facing = "down"
 			if !jumping:
 				if step2:
@@ -126,22 +134,17 @@ func _physics_process(delta):
 				continuous = true
 			elif colliderIsPlayerTouch(resultDown) and colliderIsNotPasable(resultDown):
 				print("au")
-				if can_interact or active_events.size() != 0:
+				if can_interact or being_controlled:
 					print("collision")
 					interact_at_collide(resultDown)
 			emit_signal("step")
-		elif (Input.is_action_pressed("ui_left") and can_interact and active_events.size() == 0 and !GUI.is_visible()) or Input.is_action_pressed("ui_left_event_player"):#!GUI.is_visible():
+		elif (Input.is_action_pressed("ui_left") and can_interact and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded) or Input.is_action_pressed("ui_left_event_player"):#!GUI.is_visible():
 			facing = "left"
 			if !jumping:
 				if step2:
 					animationPlayer.play("walk_left_step2")
 				else:
 					animationPlayer.play("walk_left_step1")
-			#if !resultLeft == null:
-#				for r in resultLeft:
-#					print("RESULT LEFT: " + ProjectSettings.get("Actual_Map").area.get_name())#str(r.rid.get_id()))
-#			#print("area map: " + str(ProjectSettings.get("Actual_Map").area))
-			print("RESULT LEFT: " + str(resultLeft))
 			if resultLeft == null or resultLeft.empty() or !colliderIsNotPasable(resultLeft) or (isSurfingArea(resultLeft) and surfing):
 				if (!isSurfingArea(intersect_point(get_position() + Vector2(-GRID, 0))) and surfing):
 					quit_surf()
@@ -149,13 +152,13 @@ func _physics_process(delta):
 				direction = Vector2(-step, 0)
 				startPos = get_position()
 				continuous = true
-				print("OU MAMA")
+				#print("OU MAMA")
 			elif colliderIsPlayerTouch(resultLeft) and colliderIsNotPasable(resultLeft):
 				print("RESULT LEFT: " + str(resultLeft))
 				if can_interact:# and !Through:				
 					interact_at_collide(resultLeft)
 			emit_signal("step")
-		elif (Input.is_action_pressed("ui_right") and can_interact and active_events.size() == 0 and !GUI.is_visible()) or Input.is_action_pressed("ui_right_event_player"):
+		elif (Input.is_action_pressed("ui_right") and can_interact and !being_controlled and !GUI.is_visible()  and !ProjectSettings.get("Global_World").faded) or Input.is_action_pressed("ui_right_event_player"):
 			facing = "right"
 			if !jumping:
 				if step2:
@@ -189,7 +192,7 @@ func _physics_process(delta):
 #			Input.action_release("ui_left_event")
 #			Input.action_release("ui_up_event")
 #			Input.action_release("ui_down_event")
-			if active_events.size() > 0:
+			if being_controlled:
 				emit_signal("move")
 				print("STEP COMPLETED")
 			if GLOBAL.move_is_released():
@@ -269,36 +272,36 @@ func interact(result, from):
 		print("INTERACT")
 		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.has_node("Interact"):
 			if dictionary.collider.is_in_group("NPC"):
-#				dictionary.collider.get_parent().eventTarget = self
-#				dictionary.collider.get_parent().exec(from)
-				EVENTS.add_event(dictionary.collider.get_parent(), self)
+				dictionary.collider.get_parent().eventTarget = self
+				dictionary.collider.get_parent().exec(from)
+				#EVENTS.add_event(dictionary.collider.get_parent(), self)
 				
 			elif dictionary.collider.is_in_group("surf_area") and !surfing:
 				surf()
 			else:
 				if dictionary.collider.get_name() == "Area2D":
-					EVENTS.add_event(dictionary.collider.get_parent())
-					#dictionary.collider.get_parent().exec(from)
+					#EVENTS.add_event(dictionary.collider.get_parent())
+					dictionary.collider.get_parent().exec(from)
 				else:
-#					dictionary.collider.eventTarget = self
-#					dictionary.collider.exec(from)
-					EVENTS.add_event(dictionary.collider, self)
+					dictionary.collider.eventTarget = self
+					dictionary.collider.exec(from)
+				#	EVENTS.add_event(dictionary.collider, self)
 			
 func interact_at_collide(result):
 	for dictionary in result:
 		print("INTERACT AT COLLIDE")
 		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.is_in_group("Evento") and !dictionary.collider.is_in_group("Boulder"):
 			if dictionary.collider.is_in_group("NPC"):
-#				if !dictionary.collider.get_parent().running:
-#					dictionary.collider.get_parent().eventTarget = self
-#					dictionary.collider.get_parent().exec()
-					EVENTS.add_event(dictionary.collider.get_parent(), self)
+				if !dictionary.collider.get_parent().running:
+					dictionary.collider.get_parent().eventTarget = self
+					dictionary.collider.get_parent().exec()
+					#EVENTS.add_event(dictionary.collider.get_parent(), self)
 			else:
-#				if !dictionary.collider.running:
-#					dictionary.collider.eventTarget = self
-#				#print(dictionary.collider.get_name())
-#					dictionary.collider.exec()
-					EVENTS.add_event(dictionary.collider, self)
+				if !dictionary.collider.running:
+					dictionary.collider.eventTarget = self
+				#print(dictionary.collider.get_name())
+					dictionary.collider.exec()
+					#EVENTS.add_event(dictionary.collider, self)
 		elif typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.is_in_group("ledge_area"):
 			if dictionary.collider.direction == facing:
 				jump(dictionary.collider.direction, dictionary.collider.cells_jump)
@@ -307,6 +310,7 @@ func interact_at_collide(result):
 				push(dictionary.collider)
 				
 func set_can_interact(can):
+	print("CAN INTERACT SET: " + str(can))
 	can_interact = can
 
 func get_can_interact():

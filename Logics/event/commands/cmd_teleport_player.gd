@@ -41,7 +41,7 @@ func run():
 
 		
 				Player.set_position(Map_XY)
-							
+				
 				animationPlayer.play("FadeIn", -1, 2)	
 				while animationPlayer.is_playing():
 					yield(get_tree(), "idle_frame")

@@ -32,12 +32,14 @@ func _process(delta):
 #			#print("event " + actual_event.get_name() + " is already running!")
 
 func add_event(evento, runner = null):
-	print("Added event: " + str(evento.get_name()))
 	if running_events.find(evento) == -1:
 		if runner != null: 
 			evento.eventTarget = runner 
 		running_events.push_back(evento)
+		print("Added event: " + str(evento.get_name()))
 		print("size: " + str(running_events.size()))
+	else:
+		print("Event " + evento.get_name() + " is already loaded.")
 	
 func remove_event(evento):
 	running_events.erase(evento)
@@ -53,80 +55,58 @@ func remove_first():
 	event_runner = null
 	var e = running_events.front().get_name()
 	running_events.front().running = false
+#	if ProjectSettings.get("Player").active_events.has(running_events.pop_front()):
+#		ProjectSettings.get("Player").active_events.erase(running_events.pop_front())
 	running_events.pop_front()
 	print("Removed event: " + str(e))
+
 	
 func get_next_event():
 	return running_events.front()
 	
 func _physics_process(delta):
-	
-	if !movement_commands.empty():
+	if !movement_commands.empty() and !moving:
+		var moving_event = actual_event
+		var event_move = ""
 		print("lololololo")
 		var movesArray = movement_commands.front()
 		var Target = movement_target.front()
-		if movesArray.size() != 0 and Target != null and !moved:
-			if Target == ProjectSettings.get("Player"):
-				if i < movesArray.size() and !moved and !moving:
-					#set_physics_process(false)
-					moving = true
-					i = 0
-					for move in movesArray:
-						print(str(i) + " UN PAS " + move)
-						if ProjectSettings.get("Player").jumping:
-							yield(ProjectSettings.get("Player"), "jump")
-						Input.action_press("ui_" + move + "_event_player")
-						yield(ProjectSettings.get("Player"), "move")
-						Input.action_release("ui_" + move + "_event_player")
-						i += 1
-				print("STOP ")
-				moved = true
-				moving = false
-				i = 0
-	#			set_physics_process(false)
-	#			while ProjectSettings.get("Player").animationPlayer.is_playing():
-	#				yield(get_tree(), "idle_frame")
-	#			finish_move()
-	#			#emit_signal("finished_movement")
-	#			if get_parent() != null:
-	#				get_parent().cmd_move_on = false
-			else:
-				if i < movesArray.size() and !moved and !moving:
-					#set_physics_process(false)
-					Target.can_interact = true		
-					moving = true
-					Target.can_interact = true
-					for move in movesArray:
-						print(str(i) + " UN PAS " + move)
-						if Target.jumping:
-							yield(Target, "jump")
-						Input.action_press("ui_" + move + "_event")
-						yield(Target, "move")
-						Input.action_release("ui_" + move + "_event")
-						i += 1
-					Target.can_interact = false
-				print("STOP ")
-				moved = true
-				moving = false
-				i = 0
-				while Target.animationPlayer.is_playing():
-					yield(get_tree(), "idle_frame")
-	#			finish_move(Target)
-				remove_movement()
-	#			#emit_signal("finished_movement")
-	#			if get_parent() != null:
-	#				get_parent().cmd_move_on = false
-		else:
-			i=0
+		if Target == ProjectSettings.get("Player"):
+			event_move = "_player"
+		print(str(movesArray.size()) + ", " + str(moved) + ", " + str(Target))
+		if movesArray.size() != 0 and Target != null:# and !moved:
+			moving = true
+			Target.being_controlled = true
+
+			for move in movesArray:
+				print(str(i) + " UN PAS " + move)
+				if ProjectSettings.get("Player").jumping:
+					yield(ProjectSettings.get("Player"), "jump")
+				Input.action_press("ui_" + move + "_event" + event_move)
+				yield(Target, "move")
+				Input.action_release("ui_" + move + "_event" + event_move)
+			print("STOP ")
+			#moved = true
+			#moving = false
+#			set_physics_process(false)
+			while ProjectSettings.get("Player").animationPlayer.is_playing():
+				yield(get_tree(), "idle_frame")
+#			finish_move()
+#			#emit_signal("finished_movement")
+#			if get_parent() != null:
+#				get_parent().cmd_move_on = false
+			Target.being_controlled = false
+			remove_movement(moving_event)
+			moving_event = null
 			moved = true
 			moving = false
-#				if get_parent() != null:
-#					get_parent().cmd_move_on = false
-			set_physics_process(true)
-			#print("move event finished")
-			remove_movement()
-			#finish_move(Target)
-			#emit_signal("finished_movement")
+	#				if get_parent() != null:
+	#					get_parent().cmd_move_on = false
+
+		#print("move event finished")
+
+		#finish_move(Target)
+		#emit_signal("finished_movement")
 	#
 #func finish_move(Target):
 #
@@ -142,7 +122,9 @@ func add_movement(target, moves):
 	movement_commands.push_back(moves)
 	movement_target.push_back(target)
 	
-func remove_movement():
+func remove_movement(moveming_event):
+	if running_events.find(moveming_event) != -1:
+		running_events[running_events.find(moveming_event)].current_page.cmd_move_on = false
 	movement_commands.pop_front()
 	movement_target.pop_front()
 	set_physics_process(true)

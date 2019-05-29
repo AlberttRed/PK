@@ -37,7 +37,7 @@ var running = false
 var eventTarget = null
 var active_events = []
 
-
+var being_controlled = false
 var step2 = false
 var facing = ""
 var continuous = false
@@ -47,6 +47,8 @@ var step = 0
 var jumping = false
 var surfing = false
 var pushing = false
+
+var move
 
 export (int)var sprite_cols = 1
 export (int)var sprite_rows = 1
@@ -71,6 +73,9 @@ func _init():
 	add_user_signal("move")
 	add_user_signal("step")
 	add_user_signal("jump")
+	move =  load("res://Logics/event/event_movement.gd").new()
+	move.set_name("move")
+	add_child(move)
 
 func _ready():
 	add_to_group(get_parent().get_parent().get_name())
@@ -157,8 +162,8 @@ func exec(from = look):
 			#player.set_can_interact(!BlockPlayerAtEnd)
 			#player.can_interact = true
 		
-		if ProjectSettings.get("Player").active_events.has(self) and !current_page.is_executing():
-			ProjectSettings.get("Player").active_events.erase(self)
+#		if ProjectSettings.get("Player").active_events.has(self) and !current_page.is_executing():
+#			ProjectSettings.get("Player").active_events.erase(self)
 		GLOBAL.running_events.erase(self)
 		running = false
 		if deleteAtEnd:
@@ -237,7 +242,7 @@ func _physics_process(delta):
 		resultLeft = intersect_point(get_position() + Vector2(-GRID, 0))
 		resultRight = intersect_point(get_position() + Vector2(GRID, 0))
 	if !moving:				
-		if (can_interact and active_events.size() == 0 and Input.is_action_pressed("ui_up_event")): #and !GUI.is_visible():	
+		if (Input.is_action_pressed("ui_up_event")  and being_controlled): #and !GUI.is_visible():	
 			facing = "up"			
 			if !jumping:
 				if step2:
@@ -257,7 +262,7 @@ func _physics_process(delta):
 			else:
 				print("PAM")
 			emit_signal("step")
-		elif (can_interact and active_events.size() == 0 and Input.is_action_pressed("ui_down_event")):# and !GUI.is_visible():
+		elif (Input.is_action_pressed("ui_down_event")  and being_controlled):# and !GUI.is_visible():
 			facing = "down"
 			if !jumping:
 				if step2:
@@ -275,11 +280,11 @@ func _physics_process(delta):
 				continuous = true
 			elif colliderIsPlayerTouch(resultDown) and colliderIsNotPasable(resultDown):
 				#print("au")
-				if can_interact or active_events.size() != 0:
+				if can_interact or being_controlled:
 					#print("collision")
 					interact_at_collide(resultDown)
 			emit_signal("step")
-		elif (can_interact and active_events.size() == 0 and Input.is_action_pressed("ui_left_event")):# and !GUI.is_visible():#!GUI.is_visible():
+		elif (Input.is_action_pressed("ui_left_event")  and being_controlled):# and !GUI.is_visible():#!GUI.is_visible():
 			facing = "left"
 			if !jumping:
 				if step2:
@@ -304,7 +309,7 @@ func _physics_process(delta):
 				if can_interact:# and !Through:				
 					interact_at_collide(resultLeft)
 			emit_signal("step")
-		elif (can_interact and active_events.size() == 0 and Input.is_action_pressed("ui_right_event")):# and !GUI.is_visible():
+		elif (Input.is_action_pressed("ui_right_event") and being_controlled):# and !GUI.is_visible():
 			facing = "right"
 			if !jumping:
 				if step2:

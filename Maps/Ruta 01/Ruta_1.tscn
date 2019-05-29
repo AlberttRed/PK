@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tilesets/TileSet_Outdoor_GBA.tres" type="TileSet" id=2]
@@ -8,10 +8,43 @@
 [ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=6]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/Characters/trback001.png" type="Texture" id=8]
-[ext_resource path="res://Area2D.gd" type="Script" id=9]
-[ext_resource path="res://Logics/effect_areas/enconter_area.scn" type="PackedScene" id=10]
+[ext_resource path="res://Sprites/Characters/GBA/trchar067.png" type="Texture" id=9]
+[ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=10]
+[ext_resource path="res://Cartell.png" type="Texture" id=11]
+[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Area2D.gd" type="Script" id=14]
+[ext_resource path="res://Logics/effect_areas/enconter_area.scn" type="PackedScene" id=15]
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="Animation" id=1]
+resource_name = "cut"
+step = 0.25
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 4, 8, 12 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Sprite:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 1 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ false ]
+}
+
+[sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 31.3469, 13.0891 )
 
 [node name="Ruta_1" type="Node2D"]
@@ -32,12 +65,12 @@ tile_data = PoolIntArray( 262130, 45, 0, 262131, 42, 0, 196616, 45, 0, 196617, 4
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="NPC" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( -112, 80 )
 Imagen = ExtResource( 4 )
 Interact = true
 sprite_cols = 4
 sprite_rows = 4
-direction = 2
 
 [node name="pages" parent="Eventos_/NPC" index="1"]
 editor/display_folded = true
@@ -51,6 +84,53 @@ choices = [  ]
 [node name="Trainer" parent="Eventos_/NPC" instance=ExtResource( 7 )]
 battle_back_sprite = ExtResource( 8 )
 
+[node name="NPC2" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 16, 16 )
+Imagen = ExtResource( 9 )
+sprite_cols = 4
+sprite_rows = 4
+
+[node name="Area2D" parent="Eventos_/NPC2" index="0"]
+editor/display_folded = false
+
+[node name="event_page" parent="Eventos_/NPC2/pages" index="0" instance=ExtResource( 5 )]
+
+[node name="event" parent="Eventos_" instance=ExtResource( 10 )]
+position = Vector2( 144, -16 )
+Pasable = false
+Imagen = ExtResource( 11 )
+Interact = true
+
+[node name="shape" parent="Eventos_/event" index="0"]
+position = Vector2( 6.10352e-005, -1.52588e-005 )
+
+[node name="event_page" parent="Eventos_/event/pages" index="0" instance=ExtResource( 5 )]
+
+[node name="cmd_move" parent="Eventos_/event/pages/event_page" instance=ExtResource( 12 )]
+nodePath = NodePath("../../../../NPC2")
+movesArray = [ "right", "right", "right" ]
+
+[node name="cmd_wait_move_completion" parent="Eventos_/event/pages/event_page" instance=ExtResource( 13 )]
+
+[node name="event2" parent="Eventos_" instance=ExtResource( 10 )]
+position = Vector2( 176, -16 )
+Pasable = false
+Imagen = ExtResource( 11 )
+Interact = true
+
+[node name="shape" parent="Eventos_/event2" index="0"]
+position = Vector2( 3.05176e-005, -7.62939e-006 )
+
+[node name="AnimationPlayer" parent="Eventos_/event2" index="2"]
+anims/cut = SubResource( 1 )
+
+[node name="event_page" parent="Eventos_/event2/pages" index="0" instance=ExtResource( 5 )]
+
+[node name="cmd_move" parent="Eventos_/event2/pages/event_page" instance=ExtResource( 12 )]
+nodePath = NodePath("../../../../NPC2")
+movesArray = [ "down", "down" ]
+
 [node name="CapaAlta_" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
 cell_size = Vector2( 32, 32 )
@@ -62,18 +142,18 @@ editor/display_folded = true
 visible = false
 position = Vector2( -56, -13 )
 scale = Vector2( 12.25, 9.59375 )
-script = ExtResource( 9 )
+script = ExtResource( 14 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
 position = Vector2( 0, -3.51333 )
 scale = Vector2( 1, 2.32599 )
-shape = SubResource( 1 )
+shape = SubResource( 2 )
 
 [node name="Pasable" type="Node2D" parent="Area2D_"]
 
 [node name="EncounterAreas_" type="Node2D" parent="."]
 
-[node name="encounter_area" parent="EncounterAreas_" instance=ExtResource( 10 )]
+[node name="encounter_area" parent="EncounterAreas_" instance=ExtResource( 15 )]
 position = Vector2( -32, 176 )
 scale = Vector2( 1, 2.5 )
 pkm_id1 = 13
@@ -95,5 +175,11 @@ polygon = PoolVector2Array( -32, 0, 32, 0, 32, -64, -32, -64 )
 [editable path="Eventos_/NPC"]
 
 [editable path="Eventos_/NPC/Trainer"]
+
+[editable path="Eventos_/NPC2"]
+
+[editable path="Eventos_/event"]
+
+[editable path="Eventos_/event2"]
 
 [editable path="EncounterAreas_/encounter_area"]

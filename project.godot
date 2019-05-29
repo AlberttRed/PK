@@ -10,6 +10,11 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Node",
+"class": "EventMovement",
+"language": "GDScript",
+"path": "res://Logics/event/event_movement.gd"
+}, {
+"base": "Node",
 "class": "EventSystem",
 "language": "GDScript",
 "path": "res://Logics/event/EventSystem.gd"
@@ -25,6 +30,7 @@ _global_script_classes=[ {
 "path": "res://Logics/event/Trainer.gd"
 } ]
 _global_script_class_icons={
+"EventMovement": "",
 "EventSystem": "",
 "Pokemon": "",
 "Trainer": ""

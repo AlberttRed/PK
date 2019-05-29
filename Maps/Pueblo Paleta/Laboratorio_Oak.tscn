@@ -68,6 +68,7 @@ Imagen = ExtResource( 5 )
 position = Vector2( 16, 208 )
 Pasable = false
 PlayerTouch = true
+BlockPlayerAtEnd = true
 
 [node name="event_page" parent="Eventos_/event/pages" index="0" instance=ExtResource( 6 )]
 
@@ -83,7 +84,7 @@ Transparent = true
 nodePath = NodePath("")
 
 [node name="cmd_teleport_player" parent="Eventos_/event/pages/event_page" instance=ExtResource( 10 )]
-world_scene = "res://Pueblo_Paleta.tscn"
+world_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 Map_XY = Vector2( 144, 80 )
 
 [node name="CapaAlta_" type="TileMap" parent="."]

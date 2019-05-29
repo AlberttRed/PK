@@ -38,10 +38,10 @@ tile_data = PoolIntArray( -393219, 103, 0, -458752, 70, 0, -327685, 67, 0, -3276
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="Entrada" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 16, 176 )
 Pasable = false
 PlayerTouch = true
+BlockPlayerAtEnd = true
 
 [node name="event_page" parent="Eventos_/Entrada/pages" index="0" instance=ExtResource( 4 )]
 
@@ -66,7 +66,6 @@ Imagen = ExtResource( 10 )
 Interact = true
 sprite_cols = 4
 sprite_rows = 4
-direction = 2
 
 [node name="CapaAlta_" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
