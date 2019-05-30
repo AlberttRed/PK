@@ -573,7 +573,6 @@ tile_data = PoolIntArray( -655372, 10, 0, -655371, 41, 0, -655370, 10, 0, -65536
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="Chico" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 16, 208 )
 Imagen = ExtResource( 4 )
 Interact = true
@@ -588,11 +587,9 @@ collision_layer = 2
 
 [node name="cmd_msg2" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 6 )]
 text = "DFSVSDFSVSD"
-choices = [  ]
 
 [node name="cmd_msg3" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 6 )]
 text = "lyrrr"
-choices = [  ]
 
 [node name="cmd_move" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 7 )]
 nodePath = NodePath("")
@@ -634,17 +631,14 @@ default_at_cancel = "Choice2"
 
 [node name="cmd_msg" parent="Eventos_/Chica/pages/event_page/cmd_msg/Choice1" instance=ExtResource( 6 )]
 text = "aasda asda asdad adsad asdasd asdasd asasd asda dasdasd sa."
-choices = [  ]
 
 [node name="Choice2" type="Node" parent="Eventos_/Chica/pages/event_page/cmd_msg"]
 
 [node name="cmd_msg2" parent="Eventos_/Chica/pages/event_page/cmd_msg/Choice2" instance=ExtResource( 6 )]
 text = "VDSVDSVDSDSFV"
-choices = [  ]
 
 [node name="cmd_msg3" parent="Eventos_/Chica/pages/event_page" instance=ExtResource( 6 )]
 text = "dsds"
-choices = [  ]
 
 [node name="EVENT2" parent="Eventos_" instance=ExtResource( 12 )]
 editor/display_folded = true
@@ -743,7 +737,6 @@ collision_layer = 2
 
 [node name="cmd_msg" parent="Eventos_/Chico3/pages/event_page" instance=ExtResource( 6 )]
 text = "Hola!"
-choices = [  ]
 
 [node name="cmd_move" parent="Eventos_/Chico3/pages/event_page" instance=ExtResource( 7 )]
 nodePath = NodePath("../../..")
@@ -931,6 +924,7 @@ nodePath = NodePath("")
 Gvariable_name = "exit_door"
 
 [node name="Porta_CasaProta" parent="Eventos_" instance=ExtResource( 12 )]
+editor/display_folded = true
 position = Vector2( -176, -112 )
 Pasable = false
 PlayerTouch = true
@@ -1082,7 +1076,6 @@ direction = ""
 
 [node name="CollisionPolygon2D" parent="EncounterAreas_/surf_area" index="0"]
 polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
-
 
 [editable path="Eventos_/Chico"]
 

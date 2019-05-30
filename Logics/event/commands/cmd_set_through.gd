@@ -28,7 +28,7 @@ func run():
 		Target = get_node(nodePath)
 	Target.Through = Through
 	if Target != ProjectSettings.get("Player"):
-		GLOBAL.running_events.back().makePasable()
+		Target.makePasable()
 	while i < 1:
 		count = true
 		yield(get_tree(), "idle_frame")

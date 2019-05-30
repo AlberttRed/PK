@@ -957,7 +957,6 @@ custom_styles/panel = SubResource( 28 )
 text = "SALIR"
 
 [node name="SUMMARY" type="Control" parent="."]
-editor/display_folded = true
 margin_right = 512.0
 margin_bottom = 384.0
 __meta__ = {
@@ -1468,8 +1467,6 @@ __meta__ = {
 }
 
 [node name="SUMMARY_3" type="Panel" parent="SUMMARY"]
-editor/display_folded = true
-visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
@@ -1750,7 +1747,6 @@ margin_bottom = 14.0
 text = "Elec. Estática"
 
 [node name="DescHabilidad" parent="SUMMARY/SUMMARY_3" instance=ExtResource( 37 )]
-editor/display_folded = true
 anchor_bottom = 1.0
 margin_left = 224.0
 margin_top = 320.0
@@ -2226,7 +2222,6 @@ text = "0"
 position = Vector2( 183, 77 )
 scale = Vector2( 0.4, 0.4 )
 texture = ExtResource( 36 )
-
 [connection signal="focus_entered" from="PKMN_0" to="." method="_on_PKMN_focus_entered"]
 [connection signal="focus_entered" from="PKMN_1" to="." method="_on_PKMN_focus_entered"]
 [connection signal="focus_entered" from="PKMN_2" to="." method="_on_PKMN_focus_entered"]

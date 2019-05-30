@@ -244,12 +244,13 @@ func _physics_process(delta):
 	if !moving:				
 		if (Input.is_action_pressed("ui_up_event")  and being_controlled): #and !GUI.is_visible():	
 			facing = "up"			
-			if !jumping:
-				if step2:
-					animationPlayer.play("walk_up_step2")
-				else:
-					animationPlayer.play("walk_up_step1")
+			look(facing)
 			if resultUp == null or resultUp.empty() or !colliderIsNotPasable(resultUp) or (isSurfingArea(resultUp) and surfing):
+				if !jumping:
+					if step2:
+						animationPlayer.play("walk_up_step2")
+					else:
+						animationPlayer.play("walk_up_step1")
 				if (!isSurfingArea(intersect_point(get_position() + Vector2(0, -GRID))) and surfing):
 					quit_surf()
 				moving = true
@@ -264,13 +265,13 @@ func _physics_process(delta):
 			emit_signal("step")
 		elif (Input.is_action_pressed("ui_down_event")  and being_controlled):# and !GUI.is_visible():
 			facing = "down"
-			if !jumping:
-				if step2:
-					animationPlayer.play("walk_down_step2")
-				else:
-					animationPlayer.play("walk_down_step1")
-
+			look(facing)
 			if resultDown == null or resultDown.empty() or !colliderIsNotPasable(resultDown) or (isSurfingArea(resultDown) and surfing):
+				if !jumping:
+					if step2:
+						animationPlayer.play("walk_down_step2")
+					else:
+						animationPlayer.play("walk_down_step1")
 				#print("surfing: " + str(surfing) + " area: " + str(isSurfingArea(world.intersect_point(get_position() + Vector2(-GRID, 0)))))
 				if (!isSurfingArea(intersect_point(get_position() + Vector2(0, GRID))) and surfing):
 					quit_surf()
@@ -286,17 +287,18 @@ func _physics_process(delta):
 			emit_signal("step")
 		elif (Input.is_action_pressed("ui_left_event")  and being_controlled):# and !GUI.is_visible():#!GUI.is_visible():
 			facing = "left"
-			if !jumping:
-				if step2:
-					animationPlayer.play("walk_left_step2")
-				else:
-					animationPlayer.play("walk_left_step1")
+			look(facing)
 			#if !resultLeft == null:
 #				for r in resultLeft:
 #					print("RESULT LEFT: " + ProjectSettings.get("Actual_Map").area.get_name())#str(r.rid.get_id()))
 #			#print("area map: " + str(ProjectSettings.get("Actual_Map").area))
 			#print("RESULT LEFT: " + str(resultLeft))
 			if resultLeft == null or resultLeft.empty() or !colliderIsNotPasable(resultLeft) or (isSurfingArea(resultLeft) and surfing):
+				if !jumping:
+					if step2:
+						animationPlayer.play("walk_left_step2")
+					else:
+						animationPlayer.play("walk_left_step1")
 				if (!isSurfingArea(intersect_point(get_position() + Vector2(-GRID, 0))) and surfing):
 					quit_surf()
 				moving = true
@@ -311,13 +313,13 @@ func _physics_process(delta):
 			emit_signal("step")
 		elif (Input.is_action_pressed("ui_right_event") and being_controlled):# and !GUI.is_visible():
 			facing = "right"
-			if !jumping:
-				if step2:
-					animationPlayer.play("walk_right_step2")
-				else:
-					animationPlayer.play("walk_right_step1")
-
+			look(facing)
 			if resultRight == null or resultRight.empty() or !colliderIsNotPasable(resultRight) or (isSurfingArea(resultRight) and surfing):
+				if !jumping:
+					if step2:
+						animationPlayer.play("walk_right_step2")
+					else:
+						animationPlayer.play("walk_right_step1")
 				print("cap dins")
 				if (!isSurfingArea(intersect_point(get_position() + Vector2(GRID, 0))) and surfing):
 					quit_surf()

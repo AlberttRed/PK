@@ -6,6 +6,7 @@ const MAX_CHARS_PER_LINE = 41
 export(String,MULTILINE) var msg = "¡Hola a todos! ¡Bienvenidos al mundo de POKÉMON! ¡Me llamo OAK! ¡Pero la gente me llama el PROFESOR POKÉMON!"
 
 var label
+var label2
 var next
 var timer
 var a
@@ -18,6 +19,7 @@ func _init():
 	add_user_signal("finished_waiting")
 func _ready():
 	label = get_node("Label")
+	label2 = get_node("Label/Label2")
 	next = get_node("next")
 	timer = get_node("Timer 2")
 	#show_msg("¡Hola a todos! ¡Bienvenidos al mundo de POKÉMON! ¡Me llamo OAK! ¡Pero la gente me llama el PROFESOR POKÉMON!")
@@ -34,14 +36,19 @@ func show_msg(text="", wait = null, obj = null, sig = "", close = true):
 		next.hide()
 	var skp=0
 	label.visible_characters = 0
+	label2.visible_characters = 0
 	text = autoclip(text)
 	label.set_text(text)
+	label2.set_text(text)
 	label.scroll_following = true
+	label2.scroll_following = true
 	label.scroll_to_line(0)
+	label2.scroll_to_line(0)
 	var eol1=-1
 	var eol2=-1
 	while (label.visible_characters < label.text.length()-1):
 		label.visible_characters += 1
+		label2.visible_characters += 1
 		if (text[label.visible_characters]=='\n'):
 			print(str(label.visible_characters))
 			if (skp >= 1):
@@ -54,12 +61,14 @@ func show_msg(text="", wait = null, obj = null, sig = "", close = true):
 					next.get_node("AnimationPlayer").stop()	
 					next.hide()
 				label.scroll_to_line(skp)
+				label2.scroll_to_line(skp)
 			skp+=1
 			eol1=eol2
 			#eol2=label.visible_characters-1
 		timer.start()
 		yield(timer, "timeout")
 	label.visible_characters += 1
+	label2.visible_characters += 1
 	emit_signal("text_displayed")
 	if (obj != null and sig!=""):
 		yield(obj,sig)

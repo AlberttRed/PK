@@ -17,10 +17,10 @@ func _ready():
 #func _init():
 #	get_node("MSG").Panel = CONST.Window_StyleBox
 	
-func show_msg(text, wait = null, obj = null, sig="", choices_options = []):
+func show_msg(text, wait = null, obj = null, sig="", choices_options = [], close = false):
 	player.can_interact = false
 	msg.accept = false
-	msg.show_msg(text,wait,obj,sig, choices_options.size() == 0 or (choices_options[0] == null or choices_options[0].size() == 0))
+	msg.show_msg(text,wait,obj,sig, choices_options.size() == 0 or ((choices_options[0] == null or choices_options[0].size() == 0) and close == true))
 	yield(msg, "finished")
 	if choices_options != [] and choices_options[0] != null and choices_options[0].size() > 0:
 		print("LELELEL: " + str(choices_options.size()))
