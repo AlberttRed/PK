@@ -19,10 +19,11 @@ func run():
 	running = true
 	executing = true
 	GUI.show_msg(text, null, null, "", [choices,can_cancel,default_at_cancel], is_continuous_message())
-#	while (GUI.is_visible()):
-#		yield(get_tree(),"idle_frame")
-	yield(GUI, "finished")
+	while (GUI.is_visible()):# and !is_continuous_message()):
+		yield(get_tree(),"idle_frame")
+	#yield(GUI, "finished")
 	running = false
+	GUI.next = false
 	executing = false
 	emit_signal("finished")
 	

@@ -1,6 +1,8 @@
 
 extends CanvasLayer
 
+var next = false
+
 onready var msg = get_node("MSG")
 #onready var options = get_node("OPTIONS")
 onready var menu = get_node("MAIN_MENU")
@@ -17,10 +19,10 @@ func _ready():
 #func _init():
 #	get_node("MSG").Panel = CONST.Window_StyleBox
 	
-func show_msg(text, wait = null, obj = null, sig="", choices_options = [], close = false):
+func show_msg(text, wait = null, obj = null, sig="", choices_options = [], close = true):
 	player.can_interact = false
 	msg.accept = false
-	msg.show_msg(text,wait,obj,sig, choices_options.size() == 0 or ((choices_options[0] == null or choices_options[0].size() == 0) and close == true))
+	msg.show_msg(text,wait,obj,sig, choices_options, close)#choices_options.size() == 0 or ((choices_options[0] == null or choices_options[0].size() == 0) and close == true))
 	yield(msg, "finished")
 	if choices_options != [] and choices_options[0] != null and choices_options[0].size() > 0:
 		print("LELELEL: " + str(choices_options.size()))
@@ -91,3 +93,5 @@ func start_battle(double, trainer1, trainer2, trainer3 = null, trainer4 = null):
 	battle.show()
 	battle.start_battle(double, trainer1, trainer2, trainer3, trainer4)
 	#battle.wild_encounter(id, level)
+func next():
+	next = true
