@@ -77,20 +77,19 @@ func show_msg(text="", wait = null, obj = null, sig = "", options = [], close = 
 		next.show()
 		next.get_node("AnimationPlayer").play("Idle")
 		#if !writing:
-		while (!INPUT.ui_accept.is_action_just_pressed() and options == []):#(!Input.is_action_pressed("ui_accept")):
+		while (!INPUT.ui_accept.is_action_just_pressed()):# and options == []):#(!Input.is_action_pressed("ui_accept")):
 			yield(get_tree(), "idle_frame")
-		emit_signal("input")
 		next.get_node("AnimationPlayer").stop()		
 		next.hide()
-#		GUI.next()
-#		print("NEXT")
-		if close:
+		print(str(close) + " " + str(options))
+		if close and options[0] == null:
 			print("dew")
 			hide()
 	if wait != null:
 		wait(wait)
 		yield(self, "finished_waiting")
 		hide()
+	emit_signal("input")
 	emit_signal("finished")
 
 func clear_msg():

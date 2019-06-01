@@ -26,7 +26,7 @@ custom_colors/default_color = Color( 0.345098, 0.345098, 0.313726, 1 )
 custom_colors/font_color_shadow = Color( 0.658824, 0.721569, 0.721569, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
-custom_constants/line_separation = 12
+custom_constants/line_separation = 18
 tab_size = 2
 scroll_active = false
 
@@ -39,7 +39,7 @@ custom_colors/default_color = Color( 0.345098, 0.345098, 0.313726, 1 )
 custom_colors/font_color_shadow = Color( 0.658824, 0.721569, 0.721569, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
-custom_constants/line_separation = 12
+custom_constants/line_separation = 18
 tab_size = 2
 scroll_active = false
 

@@ -13,8 +13,10 @@ onready var party = get_node("PARTY")
 
 func _ready():
 	add_user_signal("finished")
+	add_user_signal("input")
 	menu.connect("pokemon", self, "show_party")
 #	options.connect("text_speed_changed", self, "_on_text_speed_changed")
+	#msg.connect("input", self, "send_input")
 #
 #func _init():
 #	get_node("MSG").Panel = CONST.Window_StyleBox
@@ -23,13 +25,13 @@ func show_msg(text, wait = null, obj = null, sig="", choices_options = [], close
 	player.can_interact = false
 	msg.accept = false
 	msg.show_msg(text,wait,obj,sig, choices_options, close)#choices_options.size() == 0 or ((choices_options[0] == null or choices_options[0].size() == 0) and close == true))
-	yield(msg, "finished")
+	yield(msg, "input")
 	if choices_options != [] and choices_options[0] != null and choices_options[0].size() > 0:
 		print("LELELEL: " + str(choices_options.size()))
 		show_choices(choices_options)
-		#clear_msg()
+		yield(self,"finished")
 	player.can_interact = true
-	emit_signal("finished")
+	emit_signal("input")
 
 func show_choices(choices):
 	player.can_interact = false
@@ -77,7 +79,10 @@ func is_visible():
 #	yield(options, "exit")
 #	menu.show()
 #	menu.set_process(true)
-
+#
+#func send_input():
+#	emit_signal("input")
+	
 func show_party():
 	menu.hide()
 	menu.set_process(false)

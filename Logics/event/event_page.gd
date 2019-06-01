@@ -54,6 +54,10 @@ func exec_commands(commands):
 				while running_choice:
 					yield(get_tree(), "idle_frame")
 				print("SACABO")
+			elif cmd.get_children().size() > 0:
+				for c in cmd.get_children():
+					c.run()
+					yield(c, "finished")
 			print("ups")
 		else:
 			cmd.run()

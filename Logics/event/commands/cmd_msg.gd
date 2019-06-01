@@ -18,21 +18,19 @@ func _init():
 func run():
 	running = true
 	executing = true
-	GUI.show_msg(text, null, null, "", [choices,can_cancel,default_at_cancel], is_continuous_message())
-	while (GUI.is_visible()):# and !is_continuous_message()):
-		yield(get_tree(),"idle_frame")
-	#yield(GUI, "finished")
+	GUI.show_msg(text, null, null, "", [choices,can_cancel,default_at_cancel], !is_continuous_message())#, is_continuous_message())
+	#while (GUI.is_visible()):# and !is_continuous_message()):
+		#yield(get_tree(),"idle_frame")
+	yield(GUI, "input")
 	running = false
 	GUI.next = false
 	executing = false
 	emit_signal("finished")
 	
 func is_continuous_message():
-	var idx = parentEvent.current_page.get_children().find(self)
-	if idx != -1 and idx+1 < parentEvent.current_page.get_children().size():
-		print("next cmd: " + str(parentEvent.current_page.get_child(idx+1).get_name()))
-		if "cmd_msg" in parentEvent.current_page.get_child(idx+1).get_name():
-			return false
-	return true
+	if get_child_count() > 0:
+		if "cmd_msg" in get_child(0).get_name():
+			return true
+	return false
 		
 

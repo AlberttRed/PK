@@ -573,6 +573,7 @@ tile_data = PoolIntArray( -655372, 10, 0, -655371, 41, 0, -655370, 10, 0, -65536
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="Chico" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 16, 208 )
 Imagen = ExtResource( 4 )
 Interact = true
@@ -586,9 +587,9 @@ collision_layer = 2
 [node name="event_page" parent="Eventos_/Chico/pages" index="0" instance=ExtResource( 5 )]
 
 [node name="cmd_msg2" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 6 )]
-text = "DFSVSDFSVSD"
+text = "Hola! Si buscas al profesor Oak lo encontrarás en la ruta de más arriba. Siempre le ha gustado salir a investigar nuevas espécies de Pokémon."
 
-[node name="cmd_msg3" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 6 )]
+[node name="cmd_msg3" parent="Eventos_/Chico/pages/event_page/cmd_msg2" instance=ExtResource( 6 )]
 text = "lyrrr"
 
 [node name="cmd_move" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 7 )]
@@ -606,7 +607,6 @@ Transparent = true
 nodePath = NodePath("../../..")
 
 [node name="Chica" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( -208, 144 )
 collision_layer = 3
 motion/sync_to_physics = true
