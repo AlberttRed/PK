@@ -40,6 +40,7 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, 4 )
 vframes = 4
 hframes = 4
+frame = 12
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 3 )]
 anims/jump = SubResource( 1 )
@@ -99,6 +100,5 @@ gender = 1
 hp = 13
 ability_id = 35
 nature_id = 8
-
 
 [editable path="Trainer"]

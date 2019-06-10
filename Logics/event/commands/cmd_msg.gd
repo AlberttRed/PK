@@ -27,6 +27,14 @@ func run():
 	executing = false
 	emit_signal("finished")
 	
+func _execPlayerTouch(target):
+		if target.get_parent().get_name() == "Player":
+			print("PLAYER TOUCH")
+			#eventTarget = target.get_parent()
+			#target.get_parent().event = self
+			#if Pasable:# or player.can_interact:
+			run()
+	
 func is_continuous_message():
 	if get_child_count() > 0:
 		if "cmd_msg" in get_child(0).get_name():

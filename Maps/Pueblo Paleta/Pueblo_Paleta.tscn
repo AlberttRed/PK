@@ -21,7 +21,7 @@
 [ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=19]
 [ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=20]
 [ext_resource path="res://Sprites/door2.png" type="Texture" id=21]
-[ext_resource path="res://Sprites/Characters/Object tree 1.png" type="Texture" id=22]
+[ext_resource path="res://Sprites/Arbol_corte.png" type="Texture" id=22]
 [ext_resource path="res://cmd_cut.tscn" type="PackedScene" id=23]
 [ext_resource path="res://Logics/event/roca.scn" type="PackedScene" id=24]
 [ext_resource path="res://Area2D.gd" type="Script" id=25]
@@ -607,6 +607,7 @@ Transparent = true
 nodePath = NodePath("../../..")
 
 [node name="Chica" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( -208, 144 )
 collision_layer = 3
 motion/sync_to_physics = true
@@ -645,12 +646,10 @@ editor/display_folded = true
 position = Vector2( -240, -50 )
 scale = Vector2( 0.5, 0.5 )
 gravity_point = true
-PlayerTouch = true
 
 [node name="event_page" parent="Eventos_/EVENT2/pages" index="0" instance=ExtResource( 5 )]
 
 [node name="cmd_teleport_player" parent="Eventos_/EVENT2/pages/event_page" instance=ExtResource( 13 )]
-world_scene = ""
 Map_XY = Vector2( -16, 48 )
 
 [node name="Interruptor2" parent="Eventos_" instance=ExtResource( 12 )]
@@ -658,14 +657,13 @@ editor/display_folded = true
 position = Vector2( -48, -112 )
 scale = Vector2( 0.5, 0.5 )
 gravity_point = true
-Pasable = false
-Imagen = ExtResource( 14 )
-Interact = true
 
 [node name="AnimationPlayer" parent="Eventos_/Interruptor2" index="2"]
 anims/cut = SubResource( 1 )
 
 [node name="event_page" parent="Eventos_/Interruptor2/pages" index="0" instance=ExtResource( 5 )]
+Imagen = ExtResource( 14 )
+Interact = true
 
 [node name="cmd_move" parent="Eventos_/Interruptor2/pages/event_page" instance=ExtResource( 7 )]
 nodePath = NodePath("../../../../Chico2")
@@ -676,14 +674,13 @@ editor/display_folded = true
 position = Vector2( -16, -112 )
 scale = Vector2( 0.5, 0.5 )
 gravity_point = true
-Pasable = false
-Imagen = ExtResource( 14 )
-Interact = true
 
 [node name="AnimationPlayer" parent="Eventos_/Interruptor1" index="2"]
 anims/cut = SubResource( 2 )
 
 [node name="event_page" parent="Eventos_/Interruptor1/pages" index="0" instance=ExtResource( 5 )]
+Imagen = ExtResource( 14 )
+Interact = true
 
 [node name="cmd_move" parent="Eventos_/Interruptor1/pages/event_page" instance=ExtResource( 7 )]
 nodePath = NodePath("../../../../Chico2")
@@ -759,8 +756,6 @@ anims/walk_up_step2 = SubResource( 26 )
 [node name="Porta_Lab" parent="Eventos_" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 144, 80 )
-Pasable = false
-PlayerTouch = true
 
 [node name="Sprite" parent="Eventos_/Porta_Lab" index="1"]
 texture = ExtResource( 15 )
@@ -771,6 +766,7 @@ anims/Close_door = SubResource( 27 )
 anims/Open_door = ExtResource( 16 )
 
 [node name="event_page" parent="Eventos_/Porta_Lab/pages" index="0" instance=ExtResource( 5 )]
+PlayerTouch = true
 
 [node name="cmd_play_animation" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 17 )]
 animation = ExtResource( 16 )
@@ -791,7 +787,6 @@ nodePath = NodePath("")
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 10 )]
 Transparent = true
-nodePath = NodePath("")
 
 [node name="cmd_play_animation2" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 17 )]
 animation = ExtResource( 18 )
@@ -801,8 +796,6 @@ wait_finished = true
 speed = 4
 
 [node name="cmd_setTransparent2" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 10 )]
-Transparent = false
-nodePath = NodePath("")
 
 [node name="cmd_teleport_player" parent="Eventos_/Porta_Lab/pages/event_page" instance=ExtResource( 13 )]
 world_scene = "res://Maps/Pueblo Paleta/Laboratorio_Oak.tscn"
@@ -820,8 +813,6 @@ Through = true
 nodePath = NodePath("")
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 10 )]
-Transparent = false
-nodePath = NodePath("")
 
 [node name="cmd_move" parent="Eventos_/Porta_Lab/pages/event_page2" instance=ExtResource( 7 )]
 nodePath = NodePath("")
@@ -842,8 +833,6 @@ Gvariable_name = "exit_door"
 [node name="Porta_CasaRival" parent="Eventos_" instance=ExtResource( 12 )]
 editor/display_folded = true
 position = Vector2( 112, -112 )
-Pasable = false
-PlayerTouch = true
 
 [node name="Sprite" parent="Eventos_/Porta_CasaRival" index="1"]
 z_index = -1
@@ -855,6 +844,7 @@ anims/Close_door = SubResource( 28 )
 anims/Open_door = SubResource( 29 )
 
 [node name="event_page" parent="Eventos_/Porta_CasaRival/pages" index="0" instance=ExtResource( 5 )]
+PlayerTouch = true
 
 [node name="cmd_play_animation" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 17 )]
 animation = ExtResource( 16 )
@@ -875,7 +865,6 @@ nodePath = NodePath("")
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 10 )]
 Transparent = true
-nodePath = NodePath("")
 
 [node name="cmd_play_animation2" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 17 )]
 animation = ExtResource( 18 )
@@ -885,8 +874,6 @@ wait_finished = true
 speed = 4
 
 [node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 10 )]
-Transparent = false
-nodePath = NodePath("")
 
 [node name="cmd_teleport_player" parent="Eventos_/Porta_CasaRival/pages/event_page" instance=ExtResource( 13 )]
 world_scene = "res://Maps/Pueblo Paleta/Casa_Rival.tscn"
@@ -904,8 +891,6 @@ animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 10 )]
-Transparent = false
-nodePath = NodePath("")
 
 [node name="cmd_move" parent="Eventos_/Porta_CasaRival/pages/event_page2" instance=ExtResource( 7 )]
 nodePath = NodePath("")
@@ -924,10 +909,7 @@ nodePath = NodePath("")
 Gvariable_name = "exit_door"
 
 [node name="Porta_CasaProta" parent="Eventos_" instance=ExtResource( 12 )]
-editor/display_folded = true
 position = Vector2( -176, -112 )
-Pasable = false
-PlayerTouch = true
 
 [node name="Sprite" parent="Eventos_/Porta_CasaProta" index="1"]
 texture = ExtResource( 21 )
@@ -938,6 +920,8 @@ anims/Close_door = SubResource( 30 )
 anims/Open_door = SubResource( 31 )
 
 [node name="event_page" parent="Eventos_/Porta_CasaProta/pages" index="0" instance=ExtResource( 5 )]
+editor/display_folded = true
+Pasable = true
 
 [node name="cmd_play_animation" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 17 )]
 animation = ExtResource( 16 )
@@ -958,7 +942,6 @@ nodePath = NodePath("")
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 10 )]
 Transparent = true
-nodePath = NodePath("")
 
 [node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 17 )]
 animation = ExtResource( 18 )
@@ -968,15 +951,16 @@ wait_finished = true
 speed = 4
 
 [node name="cmd_setTransparent2" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 10 )]
-Transparent = false
-nodePath = NodePath("")
 
 [node name="cmd_teleport_player" parent="Eventos_/Porta_CasaProta/pages/event_page" instance=ExtResource( 13 )]
 world_scene = "res://Maps/Pueblo Paleta/Casa_Player.tscn"
 Map_XY = Vector2( 16, 144 )
 
 [node name="event_page2" parent="Eventos_/Porta_CasaProta/pages" index="1" instance=ExtResource( 5 )]
+editor/display_folded = true
 condition1 = "exit_door"
+Pasable = true
+PlayerTouch = true
 
 [node name="cmd_set_through" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 9 )]
 Through = true
@@ -987,8 +971,6 @@ animation = ExtResource( 16 )
 wait_finished = true
 
 [node name="cmd_setTransparent" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 10 )]
-Transparent = false
-nodePath = NodePath("")
 
 [node name="cmd_move" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 7 )]
 nodePath = NodePath("")
@@ -1005,20 +987,13 @@ nodePath = NodePath("")
 Gvariable_name = "exit_door"
 
 [node name="Arbol" parent="Eventos_" instance=ExtResource( 12 )]
-editor/display_folded = true
 position = Vector2( -82, 48 )
-Pasable = false
-Imagen = ExtResource( 22 )
-Interact = true
-DirectionFix = true
-sprite_cols = 4
-sprite_rows = 4
-OffsetSprite = Vector2( 0, 12 )
 
 [node name="shape" parent="Eventos_/Arbol" index="0"]
 position = Vector2( 1.52588e-005, 3.8147e-006 )
 
 [node name="event_page" parent="Eventos_/Arbol/pages" index="0" instance=ExtResource( 5 )]
+Imagen = ExtResource( 22 )
 
 [node name="cmd_cut" parent="Eventos_/Arbol/pages/event_page" instance=ExtResource( 23 )]
 
@@ -1044,7 +1019,9 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -720908, 11, 0, -720906, 11, 0, -720904, 11, 0, -720902, 11, 0, -720900, 11, 0, -720898, 11, 0, -786430, 11, 0, -786428, 11, 0, -786426, 11, 0, -786424, 11, 0, -786422, 11, 0, -589836, 11, 0, -655350, 11, 0, -458764, 11, 0, -458759, 8, 0, -458758, 62, 0, -458757, 63, 0, -458756, 64, 0, -458755, 65, 0, -524286, 8, 0, -524285, 62, 0, -524284, 63, 0, -524283, 64, 0, -524282, 65, 0, -524278, 11, 0, -327692, 11, 0, -393206, 11, 0, -262152, 23, 0, -327679, 23, 0, -196620, 11, 0, -262134, 11, 0, -65548, 11, 0, -131071, 28, 0, -131070, 90, 0, -131069, 91, 0, -131068, 115, 0, -131067, 114, 0, -131062, 11, 0, 65524, 11, 0, 10, 11, 0, 196596, 11, 0, 131082, 11, 0, 327668, 11, 0, 262154, 11, 0, 458740, 11, 0, 393226, 11, 0, 589812, 11, 0, 589814, 11, 0, 589816, 11, 0, 524294, 11, 0, 524296, 11, 0, 524298, 11, 0 )
 
-[node name="Area2D_" type="Area2D" parent="."]
+[node name="Area2D_" type="Area2D" parent="." groups=[
+"Pasable",
+]]
 visible = false
 position = Vector2( 6.00001, -56 )
 scale = Vector2( 12.8125, 10.75 )
@@ -1053,8 +1030,6 @@ script = ExtResource( 25 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
 position = Vector2( 0, 2.97674 )
 shape = SubResource( 32 )
-
-[node name="Pasable" type="Node2D" parent="Area2D_"]
 
 [node name="EncounterAreas_" type="Node2D" parent="."]
 editor/display_folded = true
@@ -1088,6 +1063,8 @@ polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
 [editable path="Eventos_/EVENT2"]
 
 [editable path="Eventos_/Interruptor2"]
+
+[editable path="Eventos_/Interruptor2/pages/event_page"]
 
 [editable path="Eventos_/Interruptor1"]
 

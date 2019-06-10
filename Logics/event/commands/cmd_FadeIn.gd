@@ -4,6 +4,7 @@ extends Node2D
 export(int) var speed = 1
  
 onready var animationPlayer = ProjectSettings.get("Global_World").get_node("AnimationPlayer")
+var parentEvent = null
 
 func _init():
 	add_user_signal("finished")

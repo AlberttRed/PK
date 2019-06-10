@@ -2,12 +2,9 @@
 
 [ext_resource path="res://Logics/event/commands/cmd_FadeOut.gd" type="Script" id=1]
 
-[node name="cmd_FadeOut" type="Node2D"]
-
+[node name="cmd_FadeOut" type="Node2D" groups=[
+"CMD",
+]]
 position = Vector2( -16, 16 )
 z_index = -1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform", "Z Index" ]
-speed = 1
-
-

@@ -2,7 +2,8 @@ extends Node2D
 
 #export(String, FILE, "*.tres") var animation
 export(int) var speed = 1
- 
+var parentEvent = null
+
 onready var animationPlayer = ProjectSettings.get("Global_World").get_node("AnimationPlayer")
 
 func _init():

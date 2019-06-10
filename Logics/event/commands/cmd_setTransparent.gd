@@ -5,6 +5,7 @@ export(NodePath) onready var nodePath
 var Target
 var i = 0
 var count = false
+var parentEvent = null
 
 func _init():
 	add_user_signal("finished")

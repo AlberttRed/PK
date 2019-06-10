@@ -73,7 +73,7 @@ tracks/1/keys = {
 
 [sub_resource type="RectangleShape2D" id=3]
 
-[node name="Laboratorio_Oak" type="Node2D"]
+[node name="Casa_Player" type="Node2D"]
 script = ExtResource( 1 )
 
 [node name="CapaTerra_" type="TileMap" parent="."]
@@ -98,12 +98,10 @@ tile_data = PoolIntArray( -393219, 103, 0, -458752, 70, 0, -327685, 67, 0, -3276
 
 [node name="Entrada" parent="Eventos_" instance=ExtResource( 3 )]
 position = Vector2( 16, 176 )
-Pasable = false
-PlayerTouch = true
-BlockPlayerAtEnd = true
 deleteAtEnd = true
 
 [node name="event_page" parent="Eventos_/Entrada/pages" index="0" instance=ExtResource( 4 )]
+PlayerTouch = true
 
 [node name="cmd_FadeOut" parent="Eventos_/Entrada/pages/event_page" instance=ExtResource( 5 )]
 speed = 4
@@ -114,55 +112,51 @@ Gvariable_name = "exit_door"
 
 [node name="cmd_setTransparent" parent="Eventos_/Entrada/pages/event_page" instance=ExtResource( 7 )]
 Transparent = true
-nodePath = NodePath("")
 
 [node name="cmd_teleport_player" parent="Eventos_/Entrada/pages/event_page" instance=ExtResource( 8 )]
 world_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 Map_XY = Vector2( -176, -112 )
 
 [node name="Escales_pb" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 240, -48 )
-Pasable = false
-PlayerTouch = true
 
 [node name="AnimationPlayer" parent="Eventos_/Escales_pb" index="2"]
 anims/cut = SubResource( 1 )
 
 [node name="event_page" parent="Eventos_/Escales_pb/pages" index="0" instance=ExtResource( 4 )]
+Pasable = true
+PlayerTouch = true
 
 [node name="cmd_FadeOut" parent="Eventos_/Escales_pb/pages/event_page" instance=ExtResource( 5 )]
 speed = 4
 
 [node name="cmd_teleport_player" parent="Eventos_/Escales_pb/pages/event_page" instance=ExtResource( 8 )]
-world_scene = ""
 Map_XY = Vector2( 848, -48 )
 
 [node name="cmd_FadeIn" parent="Eventos_/Escales_pb/pages/event_page" instance=ExtResource( 9 )]
 speed = 4
 
 [node name="Escales_p1" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 816, -48 )
-Pasable = false
-PlayerTouch = true
 
 [node name="AnimationPlayer" parent="Eventos_/Escales_p1" index="2"]
 anims/cut = SubResource( 2 )
 
 [node name="event_page" parent="Eventos_/Escales_p1/pages" index="0" instance=ExtResource( 4 )]
+Pasable = true
+PlayerTouch = true
 
 [node name="cmd_FadeOut" parent="Eventos_/Escales_p1/pages/event_page" instance=ExtResource( 5 )]
 speed = 4
 
 [node name="cmd_teleport_player" parent="Eventos_/Escales_p1/pages/event_page" instance=ExtResource( 8 )]
-world_scene = ""
 Map_XY = Vector2( 208, -48 )
 
 [node name="cmd_FadeIn" parent="Eventos_/Escales_p1/pages/event_page" instance=ExtResource( 9 )]
 speed = 4
 
 [node name="Mamá" parent="Eventos_" instance=ExtResource( 10 )]
+editor/display_folded = true
 position = Vector2( 144, 16 )
 Imagen = ExtResource( 11 )
 PlayerTouch = true
@@ -172,7 +166,7 @@ sprite_rows = 4
 [node name="event_page" parent="Eventos_/Mamá/pages" index="0" instance=ExtResource( 4 )]
 
 [node name="cmd_move" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 12 )]
-nodePath = NodePath("../../..")
+nodePath = NodePath("../../../../../../Casa_Player/Eventos_/Mamá")
 movesArray = [ "right", "right", "down", "down" ]
 
 [node name="cmd_wait_move_completion" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 13 )]
@@ -195,7 +189,6 @@ scale = Vector2( 3.39583, 3.36351 )
 shape = SubResource( 3 )
 
 [node name="Pasable" type="Node2D" parent="Area2D_"]
-
 
 [editable path="Eventos_/Entrada"]
 

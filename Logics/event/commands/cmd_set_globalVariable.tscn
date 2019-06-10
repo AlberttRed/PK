@@ -2,10 +2,7 @@
 
 [ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.gd" type="Script" id=1]
 
-[node name="cmd_set_globalVariable" type="Node"]
-
+[node name="cmd_set_globalVariable" type="Node" groups=[
+"CMD",
+]]
 script = ExtResource( 1 )
-state = false
-Gvariable_name = null
-
-

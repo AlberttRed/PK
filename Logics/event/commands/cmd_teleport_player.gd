@@ -9,6 +9,7 @@ var wworld = null
 var aScene = null
 var i = 0
 var count = false
+var parentEvent = null
 
 onready var animationPlayer = ProjectSettings.get("Global_World").get_node("AnimationPlayer")
 

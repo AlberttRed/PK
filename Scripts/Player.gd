@@ -253,7 +253,10 @@ func isSurfingArea(result):
 
 func colliderIsNotPasable(result):
 	for r in result:
-		if !r.collider.has_node("Pasable"):
+		if  (r.collider.is_in_group("Evento") and r.collider.current_page.is_in_group("Pasable")):
+			print("PASABLE")
+			return false
+		else:
 			print(r.collider.get_name() + " is not pasable")
 			return true
 	print("PASABLE")
@@ -262,7 +265,7 @@ func colliderIsNotPasable(result):
 func colliderIsPlayerTouch(result):
 	for r in result:
 		print(r.collider.get_name())
-		if r.collider.get_name() != "Area2D_" and r.collider.has_node("PlayerTouch"):
+		if r.collider.get_name() != "Area2D_" and r.collider.is_in_group("Evento") and r.collider.current_page.is_in_group("PlayerTouch"):
 #			if r.collider.is_in_group("surf_area") and surfing:
 #				return false
 #			else:
@@ -275,7 +278,7 @@ func interact(result, from):
 	
 	for dictionary in result:
 		print("INTERACT")
-		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.has_node("Interact"):
+		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.current_page.is_in_group("Interact"):
 			if dictionary.collider.is_in_group("NPC"):
 				dictionary.collider.get_parent().eventTarget = self
 				dictionary.collider.get_parent().exec(from)

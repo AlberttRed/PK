@@ -2,7 +2,7 @@ extends Node
 #export(String, FILE, "*.tres") var animation
 export(bool) var state = false
 export(String) var Gvariable_name
-
+var parentEvent = null
 var i = 0
 var count = false
 
