@@ -18,7 +18,8 @@ func _init():
 
 func _ready():
 	Player = ProjectSettings.get("Player")
-
+	add_to_group("CMD")
+	
 func _process(delta):
 	if count:
 		i += 1

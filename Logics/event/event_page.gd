@@ -23,15 +23,15 @@ var parentEvent = null
 
 
 func _ready():
-
-	if Pasable:
-		makePasable()
+	pass
+#	if Pasable:
+#		makePasable()
 		#if Imagen.get_width() / 32 > 1:
 			#get_node("Sprite").hframes = (Imagen.get_width() / 32)/2
 			#get_node("Sprite").vframes = (Imagen.get_width() / 32)/2
 			#get_node("Sprite").offset = Vector2(0,-(Imagen.get_width() / 32)*2)
-	if Interact:
-		add_to_group("Interact")
+#	if Interact:
+#		add_to_group("Interact")
 
 func _init():
 	add_user_signal("finished_page")
@@ -118,9 +118,9 @@ func _execPlayerTouch(target):
 			#target.get_parent().event = null
 				#target.get_parent().event = null
 
-func makePasable():
-	if !is_in_group("Pasable"):
-		add_to_group("Pasable")
+#func makePasable():
+#	if !is_in_group("Pasable"):
+#		parentEvent.add_to_group("Pasable")
 
 func load_sprite():
 	if Imagen != null:

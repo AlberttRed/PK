@@ -206,9 +206,20 @@ func set_parent_event(pages):
 		pages.parentEvent = self
 	elif pages.is_in_group("PAGE"):
 		pages.parentEvent = self
+		pages.add_to_group("Evento")
 		if pages.PlayerTouch:
 			pages.add_to_group("PlayerTouch")
-			connect("area_entered",self,"_execPlayerTouch")
-		elif pages.EventTouch:
+			if !is_connected("area_entered",self,"_execPlayerTouch"):
+				connect("area_entered",self,"_execPlayerTouch")
+		if pages.EventTouch:
 			pages.add_to_group("EventTouch")
-			connect("area_entered",self,"_execEventTouch")
+			if !is_connected("area_entered",self,"_execEventTouch"):
+				connect("area_entered",self,"_execEventTouch")
+		if pages.Pasable:
+			pages.add_to_group("Pasable")
+		if pages.Interact:
+			pages.add_to_group("Interact")
+
+func is_in_group(parent):
+	return current_page.is_in_group(parent)
+			

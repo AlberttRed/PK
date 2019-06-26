@@ -25,7 +25,7 @@ func _execPlayerTouch(target):
 #			target.get_parent().can_interact = true
 		print("map_entered")
 		ProjectSettings.set("Actual_Map", parent_map)
-		print("Player touch Map: " + get_groups()[0])
+		print("Player touch Map: " + parent_map.get_name())
 		print("Parent map: " + parent_map.get_name())
 #		ProjectSettings.get("Actual_Map").init()
 		ProjectSettings.get("Actual_Map").set_connections()

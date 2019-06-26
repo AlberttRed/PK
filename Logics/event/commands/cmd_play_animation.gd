@@ -7,12 +7,13 @@ var i = 0
 var count = false
 onready var animationPlayer = get_parent().get_parent().get_parent().get_node("AnimationPlayer")
 var executing = false
+var parentEvent = null
 
 func _init():
 	add_user_signal("finished")
 	
 func _ready():
-	pass
+	add_to_group("CMD")
 
 func _process(delta):
 	if count:

@@ -10,7 +10,7 @@ func _init():
 	add_user_signal("finished")
 	
 func _ready():
-	pass
+	add_to_group("CMD")
 
 func run():
 	#var animation

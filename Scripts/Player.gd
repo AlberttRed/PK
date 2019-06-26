@@ -252,20 +252,37 @@ func isSurfingArea(result):
 		
 
 func colliderIsNotPasable(result):
+	var col
 	for r in result:
-		if  (r.collider.is_in_group("Evento") and r.collider.current_page.is_in_group("Pasable")):
-			print("PASABLE")
-			return false
+		if r.collider.is_in_group("Evento"):
+			if r.collider.is_in_group("NPC"):
+				col = r.collider.get_parent().current_page
+			else:
+				col = r.collider.current_page
 		else:
-			print(r.collider.get_name() + " is not pasable")
+			col = r.collider
+		
+		if col.is_in_group("Pasable"):
+				print("PASABLE")
+				return false
+		else:
+			print(col.get_name() + " is not pasable")
 			return true
-	print("PASABLE")
-	return false
+#	print("PASABLE")
+#	return false
 	
 func colliderIsPlayerTouch(result):
+	var col
 	for r in result:
+		if r.collider.is_in_group("Evento"):
+			if r.collider.is_in_group("NPC"):
+				col = r.collider.get_parent().current_page
+			else:
+				col = r.collider.current_page
+		else:
+			col = r.collider
 		print(r.collider.get_name())
-		if r.collider.get_name() != "Area2D_" and r.collider.is_in_group("Evento") and r.collider.current_page.is_in_group("PlayerTouch"):
+		if col.get_name() != "Area2D_" and col.is_in_group("PlayerTouch"):
 #			if r.collider.is_in_group("surf_area") and surfing:
 #				return false
 #			else:
@@ -275,24 +292,20 @@ func colliderIsPlayerTouch(result):
 	return false
 	
 func interact(result, from):
-	
+	var col
 	for dictionary in result:
+		if dictionary.collider.is_in_group("Evento") and dictionary.collider.is_in_group("NPC"):
+			col = dictionary.collider.get_parent()
+		else:
+			col = dictionary.collider
+			
 		print("INTERACT")
-		if typeof(dictionary.collider) == TYPE_OBJECT and dictionary.collider.current_page.is_in_group("Interact"):
-			if dictionary.collider.is_in_group("NPC"):
-				dictionary.collider.get_parent().eventTarget = self
-				dictionary.collider.get_parent().exec(from)
-				#EVENTS.add_event(dictionary.collider.get_parent(), self)
-				
-			elif dictionary.collider.is_in_group("surf_area") and !surfing:
+		if typeof(col) == TYPE_OBJECT and col.is_in_group("Interact"):
+			if col.is_in_group("surf_area") and !surfing:
 				surf()
 			else:
-				if dictionary.collider.get_name() == "Area2D":
-					#EVENTS.add_event(dictionary.collider.get_parent())
-					dictionary.collider.get_parent().exec(from)
-				else:
-					dictionary.collider.eventTarget = self
-					dictionary.collider.exec(from)
+				col.eventTarget = self
+				col.exec(from)
 				#	EVENTS.add_event(dictionary.collider, self)
 			
 func interact_at_collide(result):
@@ -462,9 +475,8 @@ func push(object):
 
 func intersect_point(position):
 	if weakref(ProjectSettings.get("Actual_Map")).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
-		return world.intersect_point(position, 32, [ProjectSettings.get("Actual_Map").get_area(get_tree())], 2147483647, true, true)
+		return world.intersect_point(position, 32, get_tree().get_root().get_node("World/CanvasModulate/Area2D_").get_children(), 2147483647, true, true)
 	#return world.intersect_point(position, 32, [], 2147483647, true, true)
-	
 func print_pkmn_team():
 	for p in get_node("Trainer").get_children():
 		p.print_pokemon()
