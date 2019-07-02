@@ -511,3 +511,19 @@ func interact_at_collide(result):
 				print("lmao")
 				push(dictionary.collider)
 				
+func get_current_page():
+	print("GET CURRENT PAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+	for c in get_node("pages").get_children():
+			if !c.condition1.empty():
+				print("CONDITION: " + c.condition1 + ": " + str(GLOBAL.get_node(c.condition1).get_state()))
+				if GLOBAL.get_node(c.condition1).get_state():
+					print(GLOBAL.get_node(c.condition1).get_state())
+					current_page = c
+			elif !c.condition2.empty():
+				if GLOBAL.get_node(c.condition2).get_state():
+					current_page = c
+			elif !c.condition3.empty():
+				if GLOBAL.get_node(c.condition3).get_state():
+					current_page = c
+	current_page = get_node("pages").get_child(0)
+	

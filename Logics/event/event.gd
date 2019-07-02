@@ -44,7 +44,7 @@ func _init():
 func _ready():
 	set_parent_event(get_node("pages"))
 	add_to_group(get_parent().get_parent().get_name())
-	current_page = get_current_page()
+	get_current_page()
 	current_page.load_sprite()
 #	if Pasable:
 #		makePasable()
@@ -101,7 +101,7 @@ func exec(from = initialFrame):
 		GLOBAL.running_events.push_back(self)
 		running = true
 		#running = true
-		current_page = get_current_page()
+		get_current_page()
 		#current_page = return_current_page(get_node("pages").get_child(0))
 		while player.get_moving():
 			yield(get_tree(), "idle_frame")
@@ -168,19 +168,20 @@ func _execPlayerTouch(target):
 
 func get_current_page():
 	print("GET CURRENT PAGEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+	current_page = get_node("pages").get_child(0)
 	for c in get_node("pages").get_children():
 			if !c.condition1.empty():
 				print("CONDITION: " + c.condition1 + ": " + str(GLOBAL.get_node(c.condition1).get_state()))
 				if GLOBAL.get_node(c.condition1).get_state():
 					print(GLOBAL.get_node(c.condition1).get_state())
-					return c
+					current_page = c
 			elif !c.condition2.empty():
 				if GLOBAL.get_node(c.condition2).get_state():
-					return c
+					current_page = c
 			elif !c.condition3.empty():
 				if GLOBAL.get_node(c.condition3).get_state():
-					return c
-	return get_node("pages").get_child(0)
+					current_page = c
+	
 	
 	
 	

@@ -52,6 +52,7 @@ func run():
 	emit_signal("finished_page")
 
 func exec_commands(commands):
+	ProjectSettings.get("Player").can_interact = false
 	running = true
 	for cmd in commands:
 		if cmd.is_in_group("CMD"):
@@ -94,6 +95,7 @@ func exec_commands(commands):
 		if !running_choice:
 			running = false
 		running_choice = false
+	ProjectSettings.get("Player").can_interact = true
 	emit_signal("executed")
 
 func is_executing():

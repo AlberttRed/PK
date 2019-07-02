@@ -190,3 +190,9 @@ func set_pkmn_selected(pkmn):
 
 func get_pkmn_selected():
 	return pkmn_selected
+	
+	
+func reload_events():
+	for c in get_tree().get_root().get_node("World/CanvasModulate/Eventos_").get_children():
+		if c.get_name() != "Player":
+			c.get_current_page()

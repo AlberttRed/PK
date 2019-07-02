@@ -39,11 +39,9 @@ tile_data = PoolIntArray( -393219, 103, 0, -458752, 70, 0, -327685, 67, 0, -3276
 
 [node name="Entrada" parent="Eventos_" instance=ExtResource( 3 )]
 position = Vector2( 16, 176 )
-Pasable = false
-PlayerTouch = true
-BlockPlayerAtEnd = true
 
 [node name="event_page" parent="Eventos_/Entrada/pages" index="0" instance=ExtResource( 4 )]
+PlayerTouch = true
 
 [node name="cmd_FadeOut" parent="Eventos_/Entrada/pages/event_page" instance=ExtResource( 5 )]
 speed = 4
@@ -54,7 +52,6 @@ Gvariable_name = "exit_door"
 
 [node name="cmd_setTransparent" parent="Eventos_/Entrada/pages/event_page" instance=ExtResource( 7 )]
 Transparent = true
-nodePath = NodePath("")
 
 [node name="cmd_teleport_player" parent="Eventos_/Entrada/pages/event_page" instance=ExtResource( 8 )]
 world_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
@@ -85,6 +82,5 @@ scale = Vector2( 3.39583, 3.36351 )
 shape = SubResource( 1 )
 
 [node name="Pasable" type="Node2D" parent="Area2D_"]
-
 
 [editable path="Eventos_/Entrada"]

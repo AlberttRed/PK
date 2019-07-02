@@ -25,8 +25,10 @@ func run():
 	if animation != null:
 		animationPlayer.add_animation(animation.get_name(), animation)
 		animationPlayer.play(animation.get_name())
+		yield(animationPlayer, "animation_finished")
 		if wait_finished:
 			while animationPlayer.is_playing():
+				print("pa")
 				yield(get_tree(), "idle_frame")
 			wait_finished = false
 		while i < 1:

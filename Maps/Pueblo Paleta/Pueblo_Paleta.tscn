@@ -974,6 +974,8 @@ wait_finished = true
 nodePath = NodePath("")
 movesArray = [ "down" ]
 
+[node name="cmd_wait_move_completion" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 8 )]
+
 [node name="cmd_play_animation2" parent="Eventos_/Porta_CasaProta/pages/event_page2" instance=ExtResource( 17 )]
 animation = ExtResource( 18 )
 wait_finished = true

@@ -263,7 +263,7 @@ func colliderIsNotPasable(result):
 			col = r.collider
 		
 		if col.is_in_group("Pasable"):
-				print("PASABLE")
+				print(col.get_name() + " IS PASABLE")
 				return false
 		else:
 			print(col.get_name() + " is not pasable")

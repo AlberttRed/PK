@@ -22,6 +22,8 @@ func run():
 	print("set Gvariable started")
 	if Gvariable_name != null:
 		GLOBAL.get_node(Gvariable_name).state = state
+		GLOBAL.reload_events()
+		print(GLOBAL.get_node(Gvariable_name).get_name() + " " + str(state))
 	while i < 1:
 		count = true
 		yield(get_tree(), "idle_frame")
