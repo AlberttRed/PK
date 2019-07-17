@@ -11,6 +11,7 @@ export (bool)var DirectionFix = false
 export (bool)var PlayerTouch = false
 export (bool)var EventTouch = false
 export (bool)var AutoRun = false
+export (bool)var Paralelo = false
 
 var initialFrame
 export (int)var sprite_cols = 1
@@ -49,10 +50,11 @@ func run():
 #		yield(get_tree(), "idle_frame")
 	yield(self,"executed")
 	print("page finished")
+	ProjectSettings.get("Player").can_interact = !Paralelo
 	emit_signal("finished_page")
 
 func exec_commands(commands):
-	ProjectSettings.get("Player").can_interact = false
+	ProjectSettings.get("Player").can_interact = Paralelo
 	running = true
 	for cmd in commands:
 		if cmd.is_in_group("CMD"):
@@ -95,7 +97,7 @@ func exec_commands(commands):
 		if !running_choice:
 			running = false
 		running_choice = false
-	ProjectSettings.get("Player").can_interact = true
+	ProjectSettings.get("Player").can_interact = !Paralelo
 	emit_signal("executed")
 
 func is_executing():

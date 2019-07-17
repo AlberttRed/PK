@@ -17,6 +17,8 @@ export (bool)var deleteAtEnd = false
 
 var eventTarget = null
 
+var move
+
 const GRID = 32
 var running = false
 var moving = false
@@ -39,7 +41,12 @@ func set_page(page):
 
 func _init():
 	add_user_signal("event_finished")
-
+	add_user_signal("move")
+	add_user_signal("step")
+	add_user_signal("jump")
+	move =  load("res://Logics/event/event_movement.gd").new()
+	move.set_name("move")
+	add_child(move)
 	
 func _ready():
 	set_parent_event(get_node("pages"))

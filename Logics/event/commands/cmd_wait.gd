@@ -15,3 +15,10 @@ func run():
 	t.start()
 	yield(t,"timeout")
 	emit_signal("finished")
+
+func wait(s):
+	var timer = Timer.new()
+	timer.set_wait_time(s)
+	timer.start()
+	yield(timer,"timeout")
+	emit_signal("finished")

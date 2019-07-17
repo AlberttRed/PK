@@ -34,15 +34,30 @@ func _process(delta):
 			moving = true
 			Target.being_controlled = true
 			while i < movesArray.size():
-				
-			#for i in range(movesArray.size()):
-				print(str(i) + " UN PAS " + movesArray[i])
-				if ProjectSettings.get("Player").jumping:
-					yield(ProjectSettings.get("Player"), "jump")
-				Input.action_press("ui_" + movesArray[i] + "_event" + event_move)
-				yield(Target, "move")
-
-				Input.action_release("ui_" + movesArray[i] + "_event" + event_move)
+				if movesArray[i].begins_with("wait"):					
+					var t = Timer.new()
+					var first_par = movesArray[i].find("(")+1
+					var second_par = movesArray[i].find(")")
+					var ms = movesArray[i].substr(movesArray[i].find("(")+1, second_par - first_par)
+					print(str(ms))
+					t.set_wait_time(float(ms)/10.0)
+					t.set_one_shot(true)
+					self.add_child(t)
+					t.start()
+					yield(t, "timeout")
+					print("TIME")
+				elif movesArray[i].begins_with("look"):					
+					var direction = movesArray[i].substr(movesArray[i].find("_")+1, movesArray[i].length() - movesArray[i].find("_")+1)
+					Target.look(direction)
+				else:
+				#for i in range(movesArray.size()):
+					print(str(i) + " UN PAS " + movesArray[i])
+					if ProjectSettings.get("Player").jumping:
+						yield(ProjectSettings.get("Player"), "jump")
+					Input.action_press("ui_" + movesArray[i] + "_event" + event_move)
+					yield(Target, "move")
+	
+					Input.action_release("ui_" + movesArray[i] + "_event" + event_move)
 				if movesArray == movement_commands:
 					i += 1
 				else:
