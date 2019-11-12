@@ -2,7 +2,7 @@ extends Node2D
 
 export(String, FILE, "*.tscn") var actual_scene
 export(Vector2) var initial_position
-var Player = preload("res://Player.tscn").instance()
+var Player = preload("res://Logics/event/Player_NEW.tscn").instance()#preload("res://Player.tscn").instance()
 
 var faded = false
 func _ready():
