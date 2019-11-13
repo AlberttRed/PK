@@ -52,4 +52,4 @@ func _on_MoveTween_tween_completed(object, key):
 		step = 2
 	else:
 		step = 1
-	$Sprite.frame = facing_idle[facing]
+#	$Sprite.frame = facing_idle[facing]
