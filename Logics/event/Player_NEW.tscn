@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Logics/event/Player_NEW.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/trchar000.png" type="Texture" id=2]
@@ -39,7 +39,7 @@ tracks/0/keys = {
 "values": [ 0, 3, 0, 1 ]
 }
 
-[sub_resource type="Animation" id=4]
+[sub_resource type="Animation" id=3]
 resource_name = "walk_down_step1_prova"
 length = 0.3
 step = 0.15
@@ -50,13 +50,13 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.23 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 1, 2 ]
+"values": [ 2, 1, 1 ]
 }
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=4]
 resource_name = "walk_down_step2_prova"
 length = 0.3
 step = 0.15
@@ -67,13 +67,115 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.07, 0.23 ),
+"times": PoolRealArray( 0, 0.15, 0.3 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 1,
-"values": [ 2, 3, 2 ]
+"values": [ 2, 3, 3 ]
 }
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="Animation" id=6]
+resource_name = "walk_left_step1_prova"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 5, 5 ]
+}
+
+[sub_resource type="Animation" id=7]
+resource_name = "walk_left_step2_prova"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 6, 7, 7 ]
+}
+
+[sub_resource type="Animation" id=8]
+resource_name = "walk_right_step1_prova"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 9, 9 ]
+}
+
+[sub_resource type="Animation" id=9]
+resource_name = "walk_right_step2_prova"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 10, 11, 11 ]
+}
+
+[sub_resource type="Animation" id=10]
+resource_name = "walk_up_step1_prova"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 14, 13, 13 ]
+}
+
+[sub_resource type="Animation" id=11]
+resource_name = "walk_up_step2_prova"
+length = 0.3
+step = 0.15
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.15, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 12, 15, 15 ]
+}
+
+[sub_resource type="RectangleShape2D" id=5]
 
 [node name="Player" type="Area2D" groups=[
 "Player",
@@ -90,13 +192,19 @@ texture = ExtResource( 2 )
 offset = Vector2( 0, 4 )
 vframes = 4
 hframes = 4
-frame = 11
+frame = 2
 
 [node name="AnimationPlayer" parent="." instance=ExtResource( 3 )]
 anims/jump = SubResource( 1 )
 anims/walk_down_prova = SubResource( 2 )
-anims/walk_down_step1_prova = SubResource( 4 )
-anims/walk_down_step2_prova = SubResource( 5 )
+anims/walk_down_step1_prova = SubResource( 3 )
+anims/walk_down_step2_prova = SubResource( 4 )
+anims/walk_left_step1_prova = SubResource( 6 )
+anims/walk_left_step2_prova = SubResource( 7 )
+anims/walk_right_step1_prova = SubResource( 8 )
+anims/walk_right_step2_prova = SubResource( 9 )
+anims/walk_up_step1_prova = SubResource( 10 )
+anims/walk_up_step2_prova = SubResource( 11 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
 current = true
@@ -147,7 +255,7 @@ ability_id = 35
 nature_id = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 5 )
 
 [node name="RayCastDown" type="RayCast2D" parent="."]
 enabled = true
@@ -166,6 +274,7 @@ enabled = true
 cast_to = Vector2( 0, -32 )
 
 [node name="MoveTween" type="Tween" parent="."]
+
 [connection signal="tween_completed" from="MoveTween" to="." method="_on_MoveTween_tween_completed"]
 
 [editable path="Trainer"]

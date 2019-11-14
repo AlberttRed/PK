@@ -30,7 +30,8 @@ func _process(delta):
 
 func move(dir):
 	facing = dir
-	$AnimationPlayer.play("walk_" + facing + "_step" + str(step))# + "_prova")
+	if !$AnimationPlayer.is_playing():
+		$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
 	if get_node(raycasts[dir]).is_colliding():
 		print("pum")
 		$Sprite.frame = facing_idle[dir]
@@ -42,7 +43,7 @@ func move(dir):
 	can_move = false
 	$MoveTween.interpolate_property(self, "position", position,
                       movement, 0.3,
-                      Tween.TRANS_LINEAR, Tween.EASE_IN_OUT)
+                      Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$MoveTween.start()
 	return true
 
@@ -52,4 +53,5 @@ func _on_MoveTween_tween_completed(object, key):
 		step = 2
 	else:
 		step = 1
-#	$Sprite.frame = facing_idle[facing]
+	if !Input.is_action_pressed("ui_" + facing) and !$AnimationPlayer.is_playing():
+		$Sprite.frame = facing_idle[facing]
