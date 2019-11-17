@@ -1,6 +1,8 @@
 
 extends Node
 
+const GRID_SIZE = 32
+
 const TEXT_SPEEDS = [0.1,0.15,0.2]
 
 const OPTION_TEXT_FAST=0

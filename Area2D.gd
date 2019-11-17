@@ -8,14 +8,15 @@ var parent_map
 	
 func _ready():
 	connect("area_entered",self,"_execPlayerTouch")
-
+	ProjectSettings.get("Player").update_maparea_exception(self)
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.
 #	pass
 
 func _execPlayerTouch(target):
-	if target.is_in_group("Player") and !is_in_group("NPC") and !is_in_group("Evento"):
+	
+	if (target.is_in_group("Player") or target.get_parent().is_in_group("Player")) and !is_in_group("NPC") and !is_in_group("Evento"):
 #		if ProjectSettings.get("Global_World").faded:
 #			target.get_parent().can_interact = false
 #			ProjectSettings.get("Global_World").get_node("AnimationPlayer").play("FadeIn", -1, 2)
@@ -29,8 +30,14 @@ func _execPlayerTouch(target):
 		print("Parent map: " + parent_map.get_name())
 #		ProjectSettings.get("Actual_Map").init()
 		ProjectSettings.get("Actual_Map").set_connections()
+		target.update_maparea_exception(self)
 #
 #
 		#load("res://" + get_groups()[0].replace(" ", "_") + ".tscn").instance().init()
 		#ProjectSettings.get("Actual_Map").init()
 		#get_parent().init()
+
+
+
+
+

@@ -2,18 +2,20 @@
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tilesets/TileSet_Indoor_GBA.tres" type="TileSet" id=2]
-[ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=3]
+[ext_resource path="res://Logics/event/event_old.scn" type="PackedScene" id=3]
 [ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=4]
 [ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=7]
 [ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Logics/event/commands/cmd_FadeIn.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Logics/event/NPC.scn" type="PackedScene" id=10]
+[ext_resource path="res://Logics/event/NPC_old.scn" type="PackedScene" id=10]
 [ext_resource path="res://Sprites/Characters/Mamá.png" type="Texture" id=11]
 [ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Area2D.gd" type="Script" id=14]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "cut"

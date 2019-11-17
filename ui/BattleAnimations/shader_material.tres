@@ -33,4 +33,3 @@ shader_param/whitening = 0.4
 shader_param/frame_size = 5
 shader_param/frames = 8
 shader_param/anim_time = 1.0
-

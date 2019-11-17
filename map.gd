@@ -60,7 +60,6 @@ func load_map(deletePrevious, scene = self, pos = null):
 #	ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
 #	ProjectSettings.set("Actual_Map", scene)	
 	init()
-	
 	strength_on = false
 	for N in scene.get_children():		
 		N.add_to_group(scene.get_name())
@@ -85,6 +84,9 @@ func load_map(deletePrevious, scene = self, pos = null):
 				evento.set_owner(target.get_node("CanvasModulate/Eventos_"))
 				evento.set_position(position)
 	target.get_node("CanvasModulate/Eventos_").remove_child(target.get_node("CanvasModulate/Eventos_/Eventos_"))
+	
+#	for encounter_area in target.get_node("CanvasModulate/EncounterAreas_/EncounterAreas_").get_children():
+#		encounter_area.add_to_group(scene.get_name())
 	
 	if scene == self:
 		if Player.get_parent() != null:
@@ -121,3 +123,7 @@ func get_area(tree):
 				
 
 
+
+
+func _on_Area2D__area_shape_entered(area_id, area, area_shape, self_shape):
+	pass # Replace with function body.

@@ -2,7 +2,7 @@
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tilesets/TileSet_Outdoor_GBA.tres" type="TileSet" id=2]
-[ext_resource path="res://Logics/event/NPC.scn" type="PackedScene" id=3]
+[ext_resource path="res://Logics/event/NPC_old.scn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/NPC 06.png" type="Texture" id=4]
 [ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=5]
 [ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=6]
@@ -11,7 +11,7 @@
 [ext_resource path="res://Logics/event/commands/cmd_set_through.tscn" type="PackedScene" id=9]
 [ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=10]
 [ext_resource path="res://Sprites/trchar042.png" type="Texture" id=11]
-[ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=12]
+[ext_resource path="res://Logics/event/event_old.scn" type="PackedScene" id=12]
 [ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=13]
 [ext_resource path="res://Cartell.png" type="Texture" id=14]
 [ext_resource path="res://Sprites/door1.png" type="Texture" id=15]
@@ -27,6 +27,8 @@
 [ext_resource path="res://Area2D.gd" type="Script" id=25]
 [ext_resource path="res://Logics/effect_areas/ledge_area.scn" type="PackedScene" id=26]
 [ext_resource path="res://Logics/effect_areas/surf_area.scn" type="PackedScene" id=27]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "cut"
@@ -552,7 +554,6 @@ tracks/0/keys = {
 extents = Vector2( 29.9707, 29.7674 )
 
 [node name="Pueblo_Paleta" type="Node2D"]
-editor/display_folded = true
 z_index = -1
 script = ExtResource( 1 )
 N_connection = "res://Maps/Ruta 01/Ruta_1.tscn"
@@ -1011,6 +1012,7 @@ tile_data = PoolIntArray( -720908, 11, 0, -720906, 11, 0, -720904, 11, 0, -72090
 
 [node name="Area2D_" type="Area2D" parent="." groups=[
 "Area",
+"Map_Area",
 ]]
 visible = false
 position = Vector2( 6.00001, -56 )
@@ -1022,10 +1024,8 @@ position = Vector2( 0, 2.97674 )
 shape = SubResource( 32 )
 
 [node name="EncounterAreas_" type="Node2D" parent="."]
-editor/display_folded = true
 
 [node name="ledge_area" parent="EncounterAreas_" instance=ExtResource( 26 )]
-editor/display_folded = true
 position = Vector2( -10, 10 )
 cells_jump = 2
 direction = "down"
@@ -1041,7 +1041,6 @@ direction = ""
 
 [node name="CollisionPolygon2D" parent="EncounterAreas_/surf_area" index="0"]
 polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
-
 
 [editable path="Eventos_/Chico"]
 

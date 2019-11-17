@@ -1,20 +1,21 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tilesets/TileSet_Outdoor_GBA.tres" type="TileSet" id=2]
-[ext_resource path="res://Logics/event/NPC.scn" type="PackedScene" id=3]
+[ext_resource path="res://Logics/event/NPC_old.scn" type="PackedScene" id=3]
 [ext_resource path="res://Sprites/trchar001.png" type="Texture" id=4]
 [ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=5]
 [ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=6]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Sprites/Characters/trback001.png" type="Texture" id=8]
 [ext_resource path="res://Sprites/Characters/GBA/trchar067.png" type="Texture" id=9]
-[ext_resource path="res://Logics/event/event.scn" type="PackedScene" id=10]
-[ext_resource path="res://Cartell.png" type="Texture" id=11]
-[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Area2D.gd" type="Script" id=14]
-[ext_resource path="res://Logics/effect_areas/enconter_area.scn" type="PackedScene" id=15]
+[ext_resource path="res://Logics/event/event_old.scn" type="PackedScene" id=10]
+[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Area2D.gd" type="Script" id=13]
+[ext_resource path="res://Logics/effect_areas/enconter_area.scn" type="PackedScene" id=14]
+
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "cut"
@@ -49,6 +50,7 @@ extents = Vector2( 31.3469, 13.0891 )
 
 [node name="Ruta_1" type="Node2D"]
 script = ExtResource( 1 )
+map_area = NodePath("Area2D_")
 
 [node name="CapaTerra_" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -63,6 +65,7 @@ format = 1
 tile_data = PoolIntArray( 262130, 45, 0, 262131, 42, 0, 196616, 45, 0, 196617, 42, 0, 327666, 46, 0, 327667, 47, 0, 327668, 57, 0, 327669, 57, 0, 327670, 57, 0, 327671, 57, 0, 327672, 57, 0, 327673, 57, 0, 327674, 57, 0, 327675, 57, 0, 327676, 57, 0, 327677, 57, 0, 262144, 57, 0, 262145, 57, 0, 262146, 57, 0, 262147, 57, 0, 262148, 57, 0, 262149, 57, 0, 262150, 57, 0, 262151, 57, 0, 262152, 46, 0, 262153, 47, 0, 393202, 48, 0, 393203, 49, 0, 327688, 48, 0, 327689, 49, 0, 458738, 10, 0, 458740, 10, 0, 458742, 10, 0, 458744, 10, 0, 458746, 10, 0, 458748, 10, 0, 393216, 10, 0, 393218, 10, 0, 393220, 10, 0, 393222, 10, 0, 393224, 10, 0, 524274, 45, 0, 524276, 45, 0, 524278, 45, 0, 524280, 45, 0, 524282, 45, 0, 524284, 45, 0, 458752, 45, 0, 458754, 45, 0, 458756, 45, 0, 458758, 45, 0, 458760, 45, 0 )
 
 [node name="Eventos_" type="YSort" parent="."]
+editor/display_folded = true
 
 [node name="NPC" parent="Eventos_" instance=ExtResource( 3 )]
 editor/display_folded = true
@@ -79,7 +82,6 @@ editor/display_folded = true
 
 [node name="cmd_msg" parent="Eventos_/NPC/pages/event_page" instance=ExtResource( 6 )]
 text = "Hola"
-choices = [  ]
 
 [node name="Trainer" parent="Eventos_/NPC" instance=ExtResource( 7 )]
 battle_back_sprite = ExtResource( 8 )
@@ -98,26 +100,20 @@ editor/display_folded = false
 
 [node name="event" parent="Eventos_" instance=ExtResource( 10 )]
 position = Vector2( 144, -16 )
-Pasable = false
-Imagen = ExtResource( 11 )
-Interact = true
 
 [node name="shape" parent="Eventos_/event" index="0"]
 position = Vector2( 6.10352e-005, -1.52588e-005 )
 
 [node name="event_page" parent="Eventos_/event/pages" index="0" instance=ExtResource( 5 )]
 
-[node name="cmd_move" parent="Eventos_/event/pages/event_page" instance=ExtResource( 12 )]
+[node name="cmd_move" parent="Eventos_/event/pages/event_page" instance=ExtResource( 11 )]
 nodePath = NodePath("../../../../NPC2")
 movesArray = [ "right", "right", "right" ]
 
-[node name="cmd_wait_move_completion" parent="Eventos_/event/pages/event_page" instance=ExtResource( 13 )]
+[node name="cmd_wait_move_completion" parent="Eventos_/event/pages/event_page" instance=ExtResource( 12 )]
 
 [node name="event2" parent="Eventos_" instance=ExtResource( 10 )]
 position = Vector2( 176, -16 )
-Pasable = false
-Imagen = ExtResource( 11 )
-Interact = true
 
 [node name="shape" parent="Eventos_/event2" index="0"]
 position = Vector2( 3.05176e-005, -7.62939e-006 )
@@ -127,7 +123,7 @@ anims/cut = SubResource( 1 )
 
 [node name="event_page" parent="Eventos_/event2/pages" index="0" instance=ExtResource( 5 )]
 
-[node name="cmd_move" parent="Eventos_/event2/pages/event_page" instance=ExtResource( 12 )]
+[node name="cmd_move" parent="Eventos_/event2/pages/event_page" instance=ExtResource( 11 )]
 nodePath = NodePath("../../../../NPC2")
 movesArray = [ "down", "down" ]
 
@@ -137,12 +133,13 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( 393202, 11, 0, 393203, 37, 0, 393204, 11, 0, 393205, 37, 0, 393206, 11, 0, 393207, 37, 0, 393208, 11, 0, 393209, 37, 0, 393210, 11, 0, 393211, 37, 0, 393212, 11, 0, 393213, 37, 0, 327680, 11, 0, 327681, 37, 0, 327682, 11, 0, 327683, 37, 0, 327684, 11, 0, 327685, 37, 0, 327686, 11, 0, 327687, 37, 0, 327688, 11, 0, 327689, 37, 0 )
 
-[node name="Area2D_" type="Area2D" parent="."]
-editor/display_folded = true
+[node name="Area2D_" type="Area2D" parent="." groups=[
+"Map_Area",
+]]
 visible = false
 position = Vector2( -56, -13 )
 scale = Vector2( 12.25, 9.59375 )
-script = ExtResource( 14 )
+script = ExtResource( 13 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
 position = Vector2( 0, -3.51333 )
@@ -153,7 +150,7 @@ shape = SubResource( 2 )
 
 [node name="EncounterAreas_" type="Node2D" parent="."]
 
-[node name="encounter_area" parent="EncounterAreas_" instance=ExtResource( 15 )]
+[node name="encounter_area" parent="EncounterAreas_" instance=ExtResource( 14 )]
 position = Vector2( -32, 176 )
 scale = Vector2( 1, 2.5 )
 pkm_id1 = 13
@@ -170,7 +167,6 @@ encounter_rate = 10.0
 
 [node name="CollisionPolygon2D" parent="EncounterAreas_/encounter_area" index="0"]
 polygon = PoolVector2Array( -32, 0, 32, 0, 32, -64, -32, -64 )
-
 
 [editable path="Eventos_/NPC"]
 

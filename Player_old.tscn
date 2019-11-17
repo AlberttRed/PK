@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=2]
 
-[ext_resource path="res://Scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Scripts/Player_old.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/trchar000.png" type="Texture" id=2]
 [ext_resource path="res://animations/walking_animationPlayer.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=4]

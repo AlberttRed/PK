@@ -20,9 +20,11 @@ export(float) var encounter_rate = 100
 var pkmn = []
 
 func _init():
-	add_to_group("encounter_area")
+	add_to_group("Encounter_Area")
+	
 
 func _ready():
+	ProjectSettings.get("Player").update_maparea_exception(self)
 	connect("area_entered", self, "on_area_enter")
 	connect("area_exited",self, "on_area_exit")
 	pkmn = [pkm_id1,pkm_id2,pkm_id3,pkm_id4,pkm_id5,pkm_id6,pkm_id7,pkm_id8,pkm_id9,pkm_id10]
@@ -32,12 +34,12 @@ func _ready():
 
 func on_area_enter(area):
 	if (area.is_in_group("Player")): #== Globals.get("player")):
-		area.get_parent().connect("move", self, "calculate_encounter")
+		area.connect("move", self, "calculate_encounter")
 
 
 func on_area_exit(area):
 	if (area.is_in_group("Player")):#if (area == Globals.get("player")):
-		area.get_parent().disconnect("move", self, "calculate_encounter")
+		area.disconnect("move", self, "calculate_encounter")
 #
 func calculate_encounter():
 	print("moved")

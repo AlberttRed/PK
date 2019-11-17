@@ -21,7 +21,7 @@ func _process(delta):
 		
 func _init():
 	add_user_signal("finished_movement")
-
+	CONST
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -140,9 +140,12 @@ func move_is_released():
 func get_last_move():
 	return last_action_pressed
 	
+#func is_last_move(player_facing):
+#	return ("ui_" + player_facing == last_action_pressed or "ui_" + player_facing + "_event" == last_action_pressed) and frames == 1
+
 func is_last_move(player_facing):
-	return ("ui_" + player_facing == last_action_pressed or "ui_" + player_facing + "_event" == last_action_pressed) and frames == 1
-	
+	return Input.is_action_pressed("ui_" + player_facing) or Input.is_action_pressed("ui_" + player_facing + "_event") or Input.is_action_pressed("ui_" + player_facing + "_player")
+
 func CanDoSurf():
 	if hasMedal(CONST.MEDALS.ALMA):
 		for p in ProjectSettings.get("Player").trainer.party:
