@@ -3,6 +3,8 @@ extends Node
 export(NodePath) var Evento
 export(Vector2) var Map_XY
 var t
+var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")

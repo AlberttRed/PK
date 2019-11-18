@@ -24,15 +24,7 @@ var parentEvent = null
 
 
 func _ready():
-	pass
-#	if Pasable:
-#		makePasable()
-		#if Imagen.get_width() / 32 > 1:
-			#get_node("Sprite").hframes = (Imagen.get_width() / 32)/2
-			#get_node("Sprite").vframes = (Imagen.get_width() / 32)/2
-			#get_node("Sprite").offset = Vector2(0,-(Imagen.get_width() / 32)*2)
-#	if Interact:
-#		add_to_group("Interact")
+	set_parent_page(self)
 
 func _init():
 	add_user_signal("finished_page")
@@ -58,20 +50,17 @@ func exec_commands(commands):
 	running = true
 	for cmd in commands:
 		if cmd.is_in_group("CMD"):
-			#print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")
 			print(cmd.get_name())
 			if (cmd.get_name().begins_with("cmd_change_page")):
-				get_parent().get_parent().set_page(get_parent().get_child(cmd.page))
+				parentEvent.set_page(get_parent().get_child(cmd.page))
 			elif (cmd.get_name().begins_with("cmd_move")):
 				cmd_move_on = true
-				if cmd.nodePath.is_empty():#get_parent().get_parent().eventTarget == ProjectSettings.get("Player"):
+				if cmd.nodePath.is_empty():
 					ProjectSettings.get("Player").active_events.push_back(parentEvent)
 					ProjectSettings.get("Player").being_controlled = true
 					print("HE..RE")
 					cmd.call_deferred("run")
-					#yield(cmd, "finished")
 					print("FINISH")
-					#ProjectSettings.get("Player").active_events.erase(get_parent().get_parent())
 				else:
 					cmd.call_deferred("run")
 					print("FINISH")
@@ -113,18 +102,9 @@ func _execEventTouch(target):
 
 func _execPlayerTouch(target):
 		print("lololo")
-		if target.get_parent().get_name() == "Player":
+		if target.get_name() == "Player":
 			print("PLAYER TOUCH")
-			#eventTarget = target.get_parent()
-			#target.get_parent().event = self
-			#if Pasable:# or player.can_interact:
 			run()
-			#target.get_parent().event = null
-				#target.get_parent().event = null
-
-#func makePasable():
-#	if !is_in_group("Pasable"):
-#		parentEvent.add_to_group("Pasable")
 
 func load_sprite():
 	if Imagen != null:
@@ -135,3 +115,10 @@ func load_sprite():
 		parentEvent.get_node("Sprite").offset = OffsetSprite
 		parentEvent.get_node("Sprite").set_position(Vector2(0,-24))
 
+func set_parent_page(commands):
+	if commands.get_child_count() > 0:
+		for c in commands.get_children():
+			set_parent_page(c)
+	if commands.is_in_group("CMD"):
+		commands.parentPage = self
+		

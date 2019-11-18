@@ -1,5 +1,6 @@
 extends Node
 var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")

@@ -6,8 +6,10 @@ export(Array, String) var choices = null
 export(bool) var can_cancel = false
 export(String) var default_at_cancel = ""
 var running = false
-var parentEvent = null
 var executing = false
+var parentEvent = null
+var parentPage = null
+
 
 func _ready():
 	add_to_group("CMD")

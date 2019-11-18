@@ -3,6 +3,8 @@ extends Node
 
 export(float) var time
 var t
+var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")

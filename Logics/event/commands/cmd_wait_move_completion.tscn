@@ -3,7 +3,4 @@
 [ext_resource path="res://cmd_wait_move_completion.gd" type="Script" id=1]
 
 [node name="cmd_wait_move_completion" type="Node"]
-
 script = ExtResource( 1 )
-
-

@@ -2,6 +2,8 @@ extends Node2D
 
 #export(String, FILE, "*.tres") var animation
 export(int) var speed = 1
+var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")

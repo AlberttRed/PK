@@ -10,6 +10,7 @@ var aScene = null
 var i = 0
 var count = false
 var parentEvent = null
+var parentPage = null
 
 onready var animationPlayer = ProjectSettings.get("Global_World").get_node("AnimationPlayer")
 

@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
-export(bool) var Through = false
-export(bool) var Transparent = false
+#export(bool) var Through = false
+#export(bool) var Transparent = false
 
 var direction = Vector2(0,0)
 var startPos = Vector2(0,0)
@@ -9,7 +9,7 @@ var moving = false setget set_moving,get_moving
 #var can_interact = false setget set_can_interact,get_can_interact
 #var event = null
 var active_events = []
-export(Vector2) var inital_position = Vector2(0,0)
+#export(Vector2) var inital_position = Vector2(0,0)
 
 var SPEED = 2
 var GRID = 32

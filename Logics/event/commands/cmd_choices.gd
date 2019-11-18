@@ -2,6 +2,8 @@
 extends Node
 
 export(Array, String) var choices
+var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")

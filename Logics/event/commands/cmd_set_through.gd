@@ -7,6 +7,7 @@ var i = 0
 var count = false
 var executing = false
 var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")

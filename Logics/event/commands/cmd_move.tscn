@@ -2,11 +2,5 @@
 
 [ext_resource path="res://Logics/event/commands/cmd_move.gd" type="Script" id=1]
 
-[node name="cmd_move" type="Node" index="0"]
-
+[node name="cmd_move" type="Node"]
 script = ExtResource( 1 )
-_sections_unfolded = [ "Pause" ]
-nodePath = null
-movesArray = null
-
-

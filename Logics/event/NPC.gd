@@ -1,8 +1,18 @@
 extends "res://Logics/event/Event.gd"
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
+var player
+var current_page
+
+func _init():
+	._init()
+	add_user_signal("event_finished")
+	
+func _ready():
+	set_parent_event(get_node("pages"))
+	add_to_group(get_parent().get_parent().get_name())
+	get_current_page()
+	current_page.load_sprite()
+	player=ProjectSettings.get("Player")
 
 func _physics_process(delta):# and !$MoveTween.is_active():
 	if being_controlled:
@@ -10,3 +20,106 @@ func _physics_process(delta):# and !$MoveTween.is_active():
 			if Input.is_action_pressed("ui_" + dir + "_event"):
 				can_move = false
 				move(dir)
+				
+func exec(from = initialFrame):
+	if !running:
+		player.in_event = true
+		print("Started event " + get_name())
+		GLOBAL.running_events.push_back(self)
+		running = true
+		get_current_page()
+		while player.get_moving():
+			yield(get_tree(), "idle_frame")
+		if (current_page == null):
+			return
+		if current_page.Imagen != null and current_page.Imagen.get_width() / 32 > 1 and !current_page.DirectionFix:
+			get_node("Sprite").frame = from#0
+		print(current_page.get_name())
+		current_page.run()
+		yield(current_page, "finished_page")
+		if current_page.Imagen != null and current_page.Imagen.get_width() / 32 > 1 and !current_page.DirectionFix:
+			current_page.get_node("Sprite").frame = initialFrame
+		player.set_can_interact(!BlockPlayerAtEnd)
+		player.in_event = BlockPlayerAtEnd
+		GLOBAL.running_events.erase(self)
+		running = false
+		print("Finalized event " + get_name())
+		emit_signal("event_finished")
+		
+		if deleteAtEnd:
+			remove()
+				
+func set_parent_event(pages):
+	if pages.get_child_count() > 0:
+		for p in pages.get_children():
+			set_parent_event(p)
+			
+	if pages.is_in_group("CMD"):
+		pages.parentEvent = self
+	elif pages.is_in_group("PAGE"):
+		pages.parentEvent = self
+		pages.add_to_group("Evento")
+		if pages.PlayerTouch:
+			pages.add_to_group("PlayerTouch")
+			if !is_connected("area_entered",self,"_execPlayerTouch"):
+				connect("area_entered",self,"_execPlayerTouch")
+		if pages.EventTouch:
+			pages.add_to_group("EventTouch")
+			if !is_connected("area_entered",self,"_execEventTouch"):
+				connect("area_entered",self,"_execEventTouch")
+		if pages.Pasable:
+			pages.add_to_group("Pasable")
+		if pages.Interact:
+			pages.add_to_group("Interact")
+			
+func exec_this_page(page):
+	print("exec_this-page")
+	var p
+	if (page<0 or page>=get_node("pages").get_child_count()):
+		return
+	p = get_node("pages").get_child(page)
+	player.set_can_interact(false)
+	p.run()
+	yield(p, "finished")
+	player.set_can_interact(!BlockPlayerAtEnd)
+
+
+func _execEventTouch(target):
+	if current_page.Pasable:
+		if target.is_in_group("Evento"):
+			exec()
+
+func _execPlayerTouch(target):
+		if target.get_parent().get_name() == "Player":
+			print("PLAYER TOUCH")
+			eventTarget = target.get_parent()
+			exec()
+
+func get_current_page():
+	current_page = $pages.get_child(0)
+	for c in $pages.get_children():
+			if !c.condition1.empty():
+				print("CONDITION: " + c.condition1 + ": " + str(GLOBAL.get_node(c.condition1).get_state()))
+				if GLOBAL.get_node(c.condition1).get_state():
+					print(GLOBAL.get_node(c.condition1).get_state())
+					current_page = c
+			elif !c.condition2.empty():
+				if GLOBAL.get_node(c.condition2).get_state():
+					current_page = c
+			elif !c.condition3.empty():
+				if GLOBAL.get_node(c.condition3).get_state():
+					current_page = c
+	
+
+func is_in_group(parent):
+	return current_page.is_in_group(parent)
+	
+#Funció per eliminar el nodo de l'evento. Només potfer queue_free() si està dins l SceneTree	
+func remove():
+	if is_inside_tree():
+    	queue_free()
+	else:
+    	call_deferred("free")
+
+func set_page(page):
+	current_page = page

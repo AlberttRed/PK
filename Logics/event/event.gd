@@ -19,6 +19,8 @@ var last_facing
 var can_interact = true setget set_can_interact,get_can_interact
 var being_controlled = false
 
+var move 
+
 var idles = {8: 'right',
              4: 'left',
              12: 'up',
@@ -38,9 +40,14 @@ var raycasts = {'right': 'RayCastRight',
                 'down': 'RayCastDown'}
 
 # Called when the node enters the scene tree for the first time.
+
 func _init():
-	ProjectSettings.set("Player", self)
 	add_user_signal("move")
+	add_user_signal("step")
+	add_user_signal("jump")
+	move =  load("res://Logics/event/event_movement.gd").new()
+	move.set_name("move")
+	add_child(move)
 
 func _ready():
 	facing = idles[$Sprite.frame]
@@ -80,8 +87,9 @@ func check_first_step():
 func _on_MoveTween_tween_completed(object, key):
 	print("CEST FINI")
 	can_move = true
-	while $AnimationPlayer.is_playing():
-			yield(get_tree(), "idle_frame")
+	if $AnimationPlayer.is_playing():
+			#yield(get_tree(), "idle_frame")
+			$AnimationPlayer.stop()
 	$Sprite.frame = facing_idle[facing]
 	if being_controlled:
 		emit_signal("move")
@@ -101,7 +109,7 @@ func walk_animation():
 				step = 2
 			else:
 				step = 1
-
+				
 func quit_surf():
 	print("quit")
 	get_node("Sprite").texture = GAME_DATA.player_default_sprite

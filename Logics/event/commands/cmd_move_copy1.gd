@@ -4,6 +4,8 @@ export(NodePath) onready var nodePath
 var Target
 #Cada posició será una comanda per moure el jugador. Comandes disponibles up, left, right, down, look_up, look_left, look_right, look_down
 export(Array, String) var movesArray
+var parentEvent = null
+var parentPage = null
 
 var direction = Vector2(0,0)
 var startPos = Vector2(0,0)

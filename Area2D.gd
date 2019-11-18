@@ -8,7 +8,7 @@ var parent_map
 	
 func _ready():
 	connect("area_entered",self,"_execPlayerTouch")
-	ProjectSettings.get("Player").update_maparea_exception(self)
+	#ProjectSettings.get("Player").update_maparea_exception(self)
 #func _process(delta):
 #	# Called every frame. Delta is time since last frame.
 #	# Update game logic here.

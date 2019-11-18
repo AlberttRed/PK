@@ -8,6 +8,7 @@ var count = false
 onready var animationPlayer = get_parent().get_parent().get_parent().get_node("AnimationPlayer")
 var executing = false
 var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")

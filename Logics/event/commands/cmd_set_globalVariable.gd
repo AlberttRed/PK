@@ -3,6 +3,7 @@ extends Node
 export(bool) var state = false
 export(String) var Gvariable_name
 var parentEvent = null
+var parentPage = null
 var i = 0
 var count = false
 

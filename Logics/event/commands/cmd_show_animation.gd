@@ -4,6 +4,8 @@ extends Node2D
 export(Animation) var animation
  
 onready var animationPlayer = get_node("AnimationPlayer")
+var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")
