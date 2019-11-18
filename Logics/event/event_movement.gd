@@ -29,17 +29,19 @@ func _process(delta):
 		#Target = movement_target.front()
 		if Target == ProjectSettings.get("Player"):
 			event_move = "_player"
-		print(str(movesArray.size()) + ", " + str(moving) + ", " + str(Target))
+		print(str(movesArray.size()) + ", " + str(moving) + ", " + str(Target.get_name()))
 		if movesArray.size() != 0 and Target != null:# and !moved:
 			moving = true
 			Target.being_controlled = true
 			while i < movesArray.size():
+				while !Target.can_move:
+					yield(get_tree(), "idle_frame")
 				if movesArray[i].begins_with("wait"):					
 					var t = Timer.new()
 					var first_par = movesArray[i].find("(")+1
 					var second_par = movesArray[i].find(")")
 					var ms = movesArray[i].substr(movesArray[i].find("(")+1, second_par - first_par)
-					print(str(ms))
+					print("waiting time: " + str(ms))
 					t.set_wait_time(float(ms)/10.0)
 					t.set_one_shot(true)
 					self.add_child(t)
@@ -52,12 +54,14 @@ func _process(delta):
 				else:
 				#for i in range(movesArray.size()):
 					print(str(i) + " UN PAS " + movesArray[i])
-					if ProjectSettings.get("Player").jumping:
-						yield(ProjectSettings.get("Player"), "jump")
+					if Target.jumping:
+						yield(Target, "jump")
 					Input.action_press("ui_" + movesArray[i] + "_event" + event_move)
 					yield(Target, "move")
-	
 					Input.action_release("ui_" + movesArray[i] + "_event" + event_move)
+					
+#					GLOBAL.input_action_press("ui_" + movesArray[i] + "_event" + event_move)
+#					yield(GLOBAL, "pressed")
 				if movesArray == movement_commands:
 					i += 1
 				else:
@@ -70,7 +74,7 @@ func _process(delta):
 #			#emit_signal("finished_movement")
 #			if get_parent() != null:
 #				get_parent().cmd_move_on = false
-			while ProjectSettings.get("Player").animationPlayer.is_playing():
+			while Target.get_node("AnimationPlayer").is_playing():
 					yield(get_tree(), "idle_frame")
 			Target.being_controlled = false
 			#remove_movement(moving_event)

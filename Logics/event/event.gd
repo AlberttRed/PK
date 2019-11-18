@@ -1,5 +1,7 @@
 extends Area2D
 
+export(bool) var Through = false
+
 var tile_size = 32
 var step = 1
 var step_speed = 0.3
@@ -7,6 +9,7 @@ var can_move = true
 var facing
 var movement = 0
 var direction
+var moved = false
 
 var jumping = false
 var surfing = false
@@ -42,9 +45,6 @@ var raycasts = {'right': 'RayCastRight',
 # Called when the node enters the scene tree for the first time.
 
 func _init():
-	add_user_signal("move")
-	add_user_signal("step")
-	add_user_signal("jump")
 	move =  load("res://Logics/event/event_movement.gd").new()
 	move.set_name("move")
 	add_child(move)
@@ -54,6 +54,7 @@ func _ready():
 	direction = get_node(raycasts[facing])
 
 func move(dir):
+	moved = false
 	direction = get_node(raycasts[dir])
 	last_facing = facing
 	facing = dir
@@ -68,6 +69,8 @@ func move(dir):
 		direction.interact_at_collide()
 	else:
 		check_first_step()
+	print("position: " + str(position))
+	print("movement: " + str(movement))
 	$MoveTween.interpolate_property(self, "position", position,
                       movement, step_speed,
                       Tween.TRANS_LINEAR, Tween.EASE_OUT)
@@ -83,20 +86,24 @@ func check_first_step():
 		movement = position + moves[facing] * tile_size
 		step_speed = 0.3
 		$AnimationPlayer.playback_speed = 1
+		moved = true
 
 func _on_MoveTween_tween_completed(object, key):
 	print("CEST FINI")
-	can_move = true
+	
+	
+
 	if $AnimationPlayer.is_playing():
-			#yield(get_tree(), "idle_frame")
-			$AnimationPlayer.stop()
+		#yield(get_tree(), "idle_frame")
+		$AnimationPlayer.stop()
 	$Sprite.frame = facing_idle[facing]
-	if being_controlled:
+	if being_controlled and moved:
 		emit_signal("move")
 	if GLOBAL.move_is_released():
 		first_input = true
 	else:
 		first_input = false 
+	can_move = true
 
 func walk_animation():
 	if jumping:
@@ -124,8 +131,8 @@ func update_maparea_exception(area):
 #	$RayCastUp.add_exception(area)
 
 
-func look():
-	$Sprite.frame = facing_idle[facing]
+func look(where):
+	$Sprite.frame = facing_idle[where]
 
 
 func set_can_interact(can):

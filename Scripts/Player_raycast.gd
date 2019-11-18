@@ -22,7 +22,10 @@ func _ready():
 
 # Actualitza l'intersact point per detectar si hi ha alguna colisió en la següent cel·la del mapa respecte a la posició actual del parent
 func update(cells=1):
-	result = intersect_point(direction, cells)
+	if body.Through:
+		result = null
+	else:
+		result = intersect_point(direction, cells)
 	
 func intersect_point(dir, cells=1):
 	if weakref(ProjectSettings.get("Actual_Map")).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
@@ -81,6 +84,8 @@ func interact_at_collide():
 			print("INTERACT AT COLLIDE")
 			if typeof(c) == TYPE_OBJECT and c.is_in_group("Evento") and !c.is_in_group("Boulder"):
 				if !c.running:
+					body.get_node("AnimationPlayer").stop()
+					body.can_interact = c.current_page.Paralelo
 					c.eventTarget = self
 					c.exec()
 					#EVENTS.add_event(dictionary.collider.get_parent(), self)

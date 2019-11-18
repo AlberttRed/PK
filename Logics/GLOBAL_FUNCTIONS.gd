@@ -21,6 +21,7 @@ func _process(delta):
 		
 func _init():
 	add_user_signal("finished_movement")
+	add_user_signal("pressed")
 	CONST
 func _ready():
 	# Called when the node is added to the scene for the first time.
@@ -144,7 +145,7 @@ func get_last_move():
 #	return ("ui_" + player_facing == last_action_pressed or "ui_" + player_facing + "_event" == last_action_pressed) and frames == 1
 
 func is_last_move(player_facing):
-	return Input.is_action_pressed("ui_" + player_facing) or Input.is_action_pressed("ui_" + player_facing + "_event") or Input.is_action_pressed("ui_" + player_facing + "_player")
+	return Input.is_action_pressed("ui_" + player_facing) or Input.is_action_pressed("ui_" + player_facing + "_event") or Input.is_action_pressed("ui_" + player_facing + "_event_player")
 
 func CanDoSurf():
 	if hasMedal(CONST.MEDALS.ALMA):
@@ -199,3 +200,15 @@ func reload_events():
 	for c in get_tree().get_root().get_node("World/CanvasModulate/Eventos_").get_children():
 		if c.get_name() != "Player":
 			c.get_current_page()
+			
+func input_action_press(action):
+		Input.action_press(action)
+		var t = Timer.new()
+		t.set_wait_time(float(0.3)*100)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		yield(t, "timeout")
+		print("ai mama")
+		Input.action_release(action)
+		emit_signal("pressed")

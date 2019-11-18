@@ -8,7 +8,11 @@
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
+position = Vector2( 0, -12 )
 texture = ExtResource( 3 )
+offset = Vector2( 0, 4 )
+vframes = 4
+hframes = 4
 
 [node name="Camera2D" type="Camera2D" parent="." index="9"]
 current = true

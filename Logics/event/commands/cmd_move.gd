@@ -60,7 +60,7 @@ func run():
 	else:
 		Target = GLOBAL.movingEvent
 	animationPlayer = Target.get_node("AnimationPlayer")
-	Target.world = Target.get_world_2d().get_direct_space_state()
+	Target.direction.update()#Target.world = Target.get_world_2d().get_direct_space_state()
 	i = 0
 	moved = false
 	print(str(movesArray.size()) + " and " + str(Target) + " and " + str(!moved))

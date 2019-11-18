@@ -2,9 +2,19 @@ extends "res://Logics/event/Event.gd"
 
 var player
 var current_page
+var running = false
+
+export(int, "NPC, Object")var event_type = 0
+export (bool)var BlockPlayerAtEnd = false
+export (bool)var deleteAtEnd = false
+
+var eventTarget = null
 
 func _init():
 	._init()
+	add_user_signal("move")
+	add_user_signal("step")
+	add_user_signal("jump")
 	add_user_signal("event_finished")
 	
 func _ready():
@@ -13,22 +23,28 @@ func _ready():
 	get_current_page()
 	current_page.load_sprite()
 	player=ProjectSettings.get("Player")
+	if event_type == CONST.EVENT.NPC:
+		$Sprite.offset = Vector2(0,4)
+		$Sprite.set_position(Vector2(0,-12))
+	elif event_type == CONST.EVENT.OBJECT:
+		$Sprite.offset = Vector2(0,0)
+		$Sprite.set_position(Vector2(0,0))
 
 func _physics_process(delta):# and !$MoveTween.is_active():
 	if being_controlled:
 		for dir in moves.keys():
-			if Input.is_action_pressed("ui_" + dir + "_event"):
-				can_move = false
-				move(dir)
+			if Input.is_action_pressed("ui_" + dir + "_event") and can_move:
+					can_move = false
+					move(dir)
 				
-func exec(from = initialFrame):
+func exec(from = facing_idle[facing]):
 	if !running:
 		player.in_event = true
 		print("Started event " + get_name())
 		GLOBAL.running_events.push_back(self)
 		running = true
 		get_current_page()
-		while player.get_moving():
+		while !player.can_move:
 			yield(get_tree(), "idle_frame")
 		if (current_page == null):
 			return
@@ -38,7 +54,7 @@ func exec(from = initialFrame):
 		current_page.run()
 		yield(current_page, "finished_page")
 		if current_page.Imagen != null and current_page.Imagen.get_width() / 32 > 1 and !current_page.DirectionFix:
-			current_page.get_node("Sprite").frame = initialFrame
+			current_page.get_node("Sprite").frame = facing_idle[facing]
 		player.set_can_interact(!BlockPlayerAtEnd)
 		player.in_event = BlockPlayerAtEnd
 		GLOBAL.running_events.erase(self)
@@ -92,7 +108,7 @@ func _execEventTouch(target):
 func _execPlayerTouch(target):
 		if target.get_parent().get_name() == "Player":
 			print("PLAYER TOUCH")
-			eventTarget = target.get_parent()
+			eventTarget = target
 			exec()
 
 func get_current_page():
