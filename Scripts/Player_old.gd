@@ -39,39 +39,39 @@ var pushing = false
 var in_event = false
 
 var being_controlled = false
-
-func _init():
-	ProjectSettings.set("Player", self)
-	add_user_signal("move")
-	add_user_signal("step")
-	add_user_signal("jump")
-	#can_interact = true
-	move =  load("res://Logics/event/event_movement.gd").new()
-	move.set_name("move")
-	add_child(move)
-	
-func _ready():
-	trainer = get_node("Trainer")
-	GAME_DATA.trainer = trainer
-	GAME_DATA.party = trainer.get_party()
-#	for p in trainer.get_children():
-#		GAME_DATA.party.push_back(p)
-	
-	get_node("Sprite").visible = !Transparent
-	world = get_world_2d().get_direct_space_state()
-	sprite = get_node("Sprite")
-	animationPlayer = get_node("AnimationPlayer")
-	if get_node("Sprite").frame == 0 or get_node("Sprite").frame == 2:
-		facing = "down"
-	elif get_node("Sprite").frame == 4 or get_node("Sprite").frame == 6:
-		facing = "left"
-	elif get_node("Sprite").frame == 8 or get_node("Sprite").frame == 10:
-		facing = "right"
-	elif get_node("Sprite").frame == 12 or get_node("Sprite").frame == 14:
-		facing = "up"
-	
 #
+#func _init():
+#	ProjectSettings.set("Player", self)
+#	add_user_signal("move")
+#	add_user_signal("step")
+#	add_user_signal("jump")
+#	#can_interact = true
+#	move =  load("res://Logics/event/event_movement.gd").new()
+#	move.set_name("move")
+#	add_child(move)
 #
+#func _ready():
+#	trainer = get_node("Trainer")
+#	GAME_DATA.trainer = trainer
+#	GAME_DATA.party = trainer.get_party()
+##	for p in trainer.get_children():
+##		GAME_DATA.party.push_back(p)
+	
+#	get_node("Sprite").visible = !Transparent
+#	world = get_world_2d().get_direct_space_state()
+#	sprite = get_node("Sprite")
+#	animationPlayer = get_node("AnimationPlayer")
+#	if get_node("Sprite").frame == 0 or get_node("Sprite").frame == 2:
+#		facing = "down"
+#	elif get_node("Sprite").frame == 4 or get_node("Sprite").frame == 6:
+#		facing = "left"
+#	elif get_node("Sprite").frame == 8 or get_node("Sprite").frame == 10:
+#		facing = "right"
+#	elif get_node("Sprite").frame == 12 or get_node("Sprite").frame == 14:
+#		facing = "up"
+#
+##
+##
 #func _physics_process(delta):
 ##	if !being_controlled and !jumping and !surfing and !pushing: #active_events.size() == 0
 ##		if GLOBAL.move_is_continuous() or GLOBAL.is_last_move(facing):

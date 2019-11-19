@@ -91,7 +91,7 @@ func interact_at_collide():
 					#EVENTS.add_event(dictionary.collider.get_parent(), self)
 			elif typeof(c) == TYPE_OBJECT and c.is_in_group("ledge_area"):
 				if c.direction == body.facing:
-					body.jump(c.direction, c.cells_jump)
+					body.jump(c.cells_jump)
 			elif typeof(c) == TYPE_OBJECT and c.is_in_group("Boulder"):
 					print("lmao")
 					body.push(c)

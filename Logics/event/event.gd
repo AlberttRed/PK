@@ -2,7 +2,7 @@ extends Area2D
 
 export(bool) var Through = false
 
-var tile_size = 32
+var tile_size = CONST.GRID_SIZE
 var step = 1
 var step_speed = 0.3
 var can_move = true
@@ -10,6 +10,7 @@ var facing
 var movement = 0
 var direction
 var moved = false
+var SPEED = 2
 
 var jumping = false
 var surfing = false
@@ -41,6 +42,15 @@ var raycasts = {'right': 'RayCastRight',
                 'left': 'RayCastLeft',
                 'up': 'RayCastUp',
                 'down': 'RayCastDown'}
+				
+var next_step = {13: 15,
+	             15: 13,
+	             11: 9,
+	             9: 11,
+				 7: 5,
+	             5: 7,
+				 3: 1,
+	             1: 3}
 
 # Called when the node enters the scene tree for the first time.
 
@@ -76,6 +86,36 @@ func move(dir):
                       Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$MoveTween.start()
 	return true
+	
+
+func jump(cells_jump):
+		var original_speed = SPEED
+
+		var jumping_frame = 0
+		print("start jump " + facing)
+		Through = true
+		direction.update()
+		
+		if !direction.is_colliding():
+			jumping_frame = next_step[$Sprite.frame]
+		jumping = true
+		$an.play("jump")
+		SPEED = SPEED/2
+		tile_size = tile_size*cells_jump
+		can_interact = false
+		GLOBAL.move(facing)
+		while $AnimationPlayer.is_playing():
+			get_node("Sprite").frame = jumping_frame
+			can_interact = false
+			yield(get_tree(), "idle_frame")
+		look(facing)
+		SPEED = original_speed
+		tile_size = CONST.GRID_SIZE
+		can_interact = true
+		Through = false
+		jumping = false
+		emit_signal("jump")
+		print("finished jump " + facing)
 
 func check_first_step():
 	if first_input and !GLOBAL.is_last_move(last_facing):
