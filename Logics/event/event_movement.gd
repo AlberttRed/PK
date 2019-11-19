@@ -12,7 +12,7 @@ var i = 0
 func _init():
 	set_process(true)
 	
-func add(_commands, _target, _parentEvent):
+func add(_commands, _target, _parentEvent = null):
 	if movesArray != _commands or Target != _target:
 		i = 0
 	movesArray = _commands
@@ -54,7 +54,7 @@ func _process(delta):
 				else:
 				#for i in range(movesArray.size()):
 					print(str(i) + " UN PAS " + movesArray[i])
-					if Target.jumping:
+					if Target.jumping and event != null:
 						yield(Target, "jump")
 					Input.action_press("ui_" + movesArray[i] + "_event" + event_move)
 					yield(Target, "move")
@@ -82,7 +82,8 @@ func _process(delta):
 			i = 0
 			movesArray = []
 			movement_commands = []
-			event.current_page.cmd_move_on = false
+			if event != null:
+				event.current_page.cmd_move_on = false
 			moving = false
 			set_process(false)
 			print("c'est fini")

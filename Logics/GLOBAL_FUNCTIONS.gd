@@ -22,7 +22,6 @@ func _process(delta):
 func _init():
 	add_user_signal("finished_movement")
 	add_user_signal("pressed")
-	CONST
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here

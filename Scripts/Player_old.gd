@@ -362,62 +362,62 @@ func get_moving():
 #			get_node("Sprite").frame = 8
 #		"down":
 #			get_node("Sprite").frame = 0
-			
-func jump(direction, cells_jump):
-		var original_speed = SPEED
-		#var original_grid = GRID
-		#var cell = 1
-		var jumping_frame = 0
-		print("start jump " + direction)
-		resultUp = intersect_point(get_position() + Vector2(0, -GRID*int(cells_jump)))
-		resultDown = intersect_point(get_position() + Vector2(0, GRID*int(cells_jump)))
-		resultLeft = intersect_point(get_position() + Vector2(-GRID*int(cells_jump), 0))
-		resultRight = intersect_point(get_position() + Vector2(GRID*int(cells_jump), 0))
-
-		if direction == "up" and (resultUp == null or resultUp.empty() or !colliderIsNotPasable(resultUp)):
-			match get_node("Sprite").frame:
-				13:
-					jumping_frame = 15
-				_:
-					jumping_frame = 13
-		elif direction == "right" and (resultRight == null or resultRight.empty() or !colliderIsNotPasable(resultRight)):
-			match get_node("Sprite").frame:
-				9:
-					jumping_frame = 11
-				_:
-					jumping_frame = 9
-		elif direction == "left" and (resultLeft == null or resultLeft.empty() or !colliderIsNotPasable(resultLeft)):
-			match get_node("Sprite").frame:
-				5:
-					jumping_frame = 7
-				_:
-					jumping_frame = 5
-		if direction == "down" and (resultDown == null or resultDown.empty() or !colliderIsNotPasable(resultDown)):
-			match get_node("Sprite").frame:
-				1:
-					jumping_frame = 3
-				_:
-					jumping_frame = 1
-		Through = true
-		jumping = true
-		animationPlayer.play("jump")
-		SPEED = SPEED/2
-		GRID = GRID*cells_jump
-		can_interact = false
-		GLOBAL.move(direction)
-		while animationPlayer.is_playing():
-			get_node("Sprite").frame = jumping_frame
-			can_interact = false
-			yield(get_tree(), "idle_frame")
-		look(direction)
-		SPEED = original_speed
-		#GRID = 32
-		can_interact = true
-		Through = false
-		jumping = false
-		emit_signal("jump")
-		print("finished jump " + direction)
-		
+#
+#func jump(direction, cells_jump):
+#		var original_speed = SPEED
+#		#var original_grid = GRID
+#		#var cell = 1
+#		var jumping_frame = 0
+#		print("start jump " + direction)
+#		resultUp = intersect_point(get_position() + Vector2(0, -GRID*int(cells_jump)))
+#		resultDown = intersect_point(get_position() + Vector2(0, GRID*int(cells_jump)))
+#		resultLeft = intersect_point(get_position() + Vector2(-GRID*int(cells_jump), 0))
+#		resultRight = intersect_point(get_position() + Vector2(GRID*int(cells_jump), 0))
+#
+#		if direction == "up" and (resultUp == null or resultUp.empty() or !colliderIsNotPasable(resultUp)):
+#			match get_node("Sprite").frame:
+#				13:
+#					jumping_frame = 15
+#				_:
+#					jumping_frame = 13
+#		elif direction == "right" and (resultRight == null or resultRight.empty() or !colliderIsNotPasable(resultRight)):
+#			match get_node("Sprite").frame:
+#				9:
+#					jumping_frame = 11
+#				_:
+#					jumping_frame = 9
+#		elif direction == "left" and (resultLeft == null or resultLeft.empty() or !colliderIsNotPasable(resultLeft)):
+#			match get_node("Sprite").frame:
+#				5:
+#					jumping_frame = 7
+#				_:
+#					jumping_frame = 5
+#		if direction == "down" and (resultDown == null or resultDown.empty() or !colliderIsNotPasable(resultDown)):
+#			match get_node("Sprite").frame:
+#				1:
+#					jumping_frame = 3
+#				_:
+#					jumping_frame = 1
+#		Through = true
+#		jumping = true
+#		animationPlayer.play("jump")
+#		SPEED = SPEED/2
+#		GRID = GRID*cells_jump
+#		can_interact = false
+#		GLOBAL.move(direction)
+#		while animationPlayer.is_playing():
+#			get_node("Sprite").frame = jumping_frame
+#			can_interact = false
+#			yield(get_tree(), "idle_frame")
+#		look(direction)
+#		SPEED = original_speed
+#		#GRID = 32
+#		can_interact = true
+#		Through = false
+#		jumping = false
+#		emit_signal("jump")
+#		print("finished jump " + direction)
+#
 func surf():
 	if GLOBAL.CanDoSurf():
 		GUI.show_msg("El agua tiene buena pinta... Quieres hacer Surf?", null, null, "", [["SÍ","NO"],true,"Choice2"])

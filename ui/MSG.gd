@@ -82,7 +82,7 @@ func show_msg(text="", wait = null, obj = null, sig = "", options = [], close = 
 		next.get_node("AnimationPlayer").stop()		
 		next.hide()
 		print(str(close) + " " + str(options))
-		if close and options[0] == null:
+		if close and options == null:
 			print("dew")
 			hide()
 	if wait != null:

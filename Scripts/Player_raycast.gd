@@ -82,7 +82,10 @@ func interact_at_collide():
 	if is_PlayerTouch() and isnot_Pasable() and body.can_interact:
 		for c in get_colliders():
 			print("INTERACT AT COLLIDE")
-			if typeof(c) == TYPE_OBJECT and c.is_in_group("Evento") and !c.is_in_group("Boulder"):
+			print(c.get_name())
+			print(str(c.is_in_group("Evento")))
+			print(str(c.is_in_group("Boulder")))
+			if typeof(c) == TYPE_OBJECT and c.is_in_group("Evento") and !c.has_node("Boulder"):
 				if !c.running:
 					body.get_node("AnimationPlayer").stop()
 					body.can_interact = c.current_page.Paralelo
@@ -90,11 +93,13 @@ func interact_at_collide():
 					c.exec()
 					#EVENTS.add_event(dictionary.collider.get_parent(), self)
 			elif typeof(c) == TYPE_OBJECT and c.is_in_group("ledge_area"):
-				if c.direction == body.facing:
+				if c.direction == body.get_direction() and GLOBAL.is_last_move(body.get_direction()):
 					body.jump(c.cells_jump)
-			elif typeof(c) == TYPE_OBJECT and c.is_in_group("Boulder"):
+			elif typeof(c) == TYPE_OBJECT and c.has_node("Boulder"):
 					print("lmao")
-					body.push(c)
+					if body.facing == body.get_direction():
+						print("BIMBA")
+						body.push(c)
 	
 
 #	func _physics_process(delta):# and !$MoveTween.is_active():

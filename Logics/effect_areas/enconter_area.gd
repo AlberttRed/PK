@@ -24,7 +24,7 @@ func _init():
 	
 
 func _ready():
-	ProjectSettings.get("Player").update_maparea_exception(self)
+#	ProjectSettings.get("Player").update_maparea_exception(self)
 	connect("area_entered", self, "on_area_enter")
 	connect("area_exited",self, "on_area_exit")
 	pkmn = [pkm_id1,pkm_id2,pkm_id3,pkm_id4,pkm_id5,pkm_id6,pkm_id7,pkm_id8,pkm_id9,pkm_id10]

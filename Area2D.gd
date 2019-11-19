@@ -30,7 +30,7 @@ func _execPlayerTouch(target):
 		print("Parent map: " + parent_map.get_name())
 #		ProjectSettings.get("Actual_Map").init()
 		ProjectSettings.get("Actual_Map").set_connections()
-		target.update_maparea_exception(self)
+#		target.update_maparea_exception(self)
 #
 #
 		#load("res://" + get_groups()[0].replace(" ", "_") + ".tscn").instance().init()

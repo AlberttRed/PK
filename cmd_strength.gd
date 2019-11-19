@@ -9,13 +9,16 @@ var GRID = 32
 var startPos
 var result
 var can_move
+var parentEvent = null
+var parentPage = null
 
 func _init():
 	add_user_signal("finished")
 	add_user_signal("moved")
 	set_physics_process(true)
+	
 func _ready():
-	Target = get_parent().get_parent().get_parent()
+	pass
 
 func run():
 	print("Strength started")
@@ -44,12 +47,12 @@ func run():
 			yield(get_tree(),"idle_frame")
 	print("Strength finished")
 	emit_signal("finished")
-
-func _physics_process(delta):
-	
-	if movesArray.size() != 0:
-		if result == null or result.empty() or can_move:
-			Target.move_and_collide(direction * 1)
-		if Target.get_position() == (startPos + Vector2(GRID * direction.x, GRID * direction.y)) or !can_move:
-			movesArray = []
-			emit_signal("moved")
+#
+#func _physics_process(delta):
+#
+#	if movesArray.size() != 0:
+#		if result == null or result.empty() or can_move:
+#			Target.move_and_collide(direction * 1)
+#		if Target.get_position() == (startPos + Vector2(GRID * direction.x, GRID * direction.y)) or !can_move:
+#			movesArray = []
+#			emit_signal("moved")

@@ -2,13 +2,7 @@
 
 [ext_resource path="res://cmd_strength.gd" type="Script" id=1]
 
-
-[node name="cmd_strength" type="Node2D" index="0"]
-
+[node name="cmd_strength" type="Node2D"]
 position = Vector2( -16, 16 )
 z_index = -1
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform", "Z Index" ]
-speed = 1
-
-

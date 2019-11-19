@@ -25,10 +25,22 @@ var being_controlled = false
 
 var move 
 
-var idles = {8: 'right',
+var directions = {8: 'right',
+			9: 'right',
+			10: 'right',
+			11: 'right',
              4: 'left',
+			5: 'left',
+			6: 'left',
+			7: 'left',
              12: 'up',
-             0: 'down'}
+			13: 'up',
+			14: 'up',
+			15: 'up',
+             0: 'down',
+			1: 'down',
+			2: 'down',
+			3: 'down'}
 
 var facing_idle = {'right': 8,
 	             'left': 4,
@@ -43,7 +55,8 @@ var raycasts = {'right': 'RayCastRight',
                 'up': 'RayCastUp',
                 'down': 'RayCastDown'}
 				
-var next_step = {13: 15,
+var next_step = {0:1,
+				13: 15,
 	             15: 13,
 	             11: 9,
 	             9: 11,
@@ -60,7 +73,7 @@ func _init():
 	add_child(move)
 
 func _ready():
-	facing = idles[$Sprite.frame]
+	facing = get_direction()
 	direction = get_node(raycasts[facing])
 
 func move(dir):
@@ -92,33 +105,39 @@ func jump(cells_jump):
 		var original_speed = SPEED
 
 		var jumping_frame = 0
-		print("start jump " + facing)
+		print("start jump " + get_direction())
 		Through = true
 		direction.update()
 		
-		if !direction.is_colliding():
-			jumping_frame = next_step[$Sprite.frame]
+		#if !direction.is_colliding():
+		jumping_frame = $Sprite.frame+1
 		jumping = true
-		$an.play("jump")
+	
 		SPEED = SPEED/2
-		tile_size = tile_size*cells_jump
+		tile_size = tile_size#*cells_jump
 		can_interact = false
-		GLOBAL.move(facing)
+		#GLOBAL.move(facing)
+		var moves = []
+		for i in range(cells_jump): # Similar to [1, 2] but does not allocate an array.
+			moves.append(get_direction())
+		move.add(moves, self)
+		$AnimationPlayer.play("jump")
 		while $AnimationPlayer.is_playing():
 			get_node("Sprite").frame = jumping_frame
 			can_interact = false
 			yield(get_tree(), "idle_frame")
-		look(facing)
+		look(get_direction())
 		SPEED = original_speed
 		tile_size = CONST.GRID_SIZE
 		can_interact = true
 		Through = false
 		jumping = false
 		emit_signal("jump")
-		print("finished jump " + facing)
+		print("finished jump " + get_direction())
+		print(str($Sprite.position))
 
 func check_first_step():
-	if first_input and !GLOBAL.is_last_move(last_facing):
+	if first_input and !GLOBAL.is_last_move(last_facing) and !jumping:
 		movement = position
 		step_speed = 0.15
 		$AnimationPlayer.playback_speed = 2
@@ -129,11 +148,9 @@ func check_first_step():
 		moved = true
 
 func _on_MoveTween_tween_completed(object, key):
-	print("CEST FINI")
-	
-	
-
-	if $AnimationPlayer.is_playing():
+	print("CEST FINI: " + str($Sprite.frame))
+	facing = get_direction()
+	if $AnimationPlayer.is_playing() and !jumping:
 		#yield(get_tree(), "idle_frame")
 		$AnimationPlayer.stop()
 	$Sprite.frame = facing_idle[facing]
@@ -146,29 +163,53 @@ func _on_MoveTween_tween_completed(object, key):
 	can_move = true
 
 func walk_animation():
-	if jumping:
-		$AnimationPlayer.play("idle_" + facing)
-	else:
-		if !$AnimationPlayer.is_playing():
-			print("animation step: " + str(step))
-			$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
-			if step == 1:
-				step = 2
-			else:
-				step = 1
+#	if jumping:
+#		$AnimationPlayer.play("idle_" + facing)
+#	else:
+	if !$AnimationPlayer.is_playing() and !jumping:
+		print("animation step: " + str(step))
+		$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
+		if step == 1:
+			step = 2
+		else:
+			step = 1
 				
+func push(object):
+	print(get_direction())
+	if !pushing and ProjectSettings.get("Actual_Map").strength_on:
+		pushing = true
+		var cmd = object.get_parent().get_node("pages/event_page/cmd_strength")
+		print("push")
+		#var cmd = object.get_parent().get_child(0).get_child(0).get_child(0)
+		
+		
+#		match facing:
+#			"up":
+#				cmd.direction = Vector2(0, -1)
+#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, -GRID), 32, [ ], 2147483647, true, true)
+#			"right":
+#				cmd.direction = Vector2(1, 0)
+#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(GRID, 0), 32, [ ], 2147483647, true, true)
+#			"left":
+#				cmd.direction = Vector2(-1, 0)
+#				cmd.result =  object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(-GRID, 0), 32, [ ], 2147483647, true, true)
+#			"down":
+#				cmd.direction = Vector2(0, 1)
+#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, GRID), 32, [ ], 2147483647, true, true)
+#		cmd.can_move = !colliderIsNotPasable(cmd.result)
+		#cmd.startPos = object.get_parent().get_position()
+		object.move.add(moves, self)
+		#cmd.movesArray = [get_direction()]
+#		GLOBAL.move_event(object.get_parent(), facing)
+		#yield(cmd, "moved")
+		#while !move.moved:
+			#yield(move.run(), "finished_movement")
+		print("apa siau")
+		
 func quit_surf():
 	print("quit")
-	get_node("Sprite").texture = GAME_DATA.player_default_sprite
+	$Sprite.texture = GAME_DATA.player_default_sprite
 	surfing = false
-
-func update_maparea_exception(area):
-	for dir in moves.keys():
-		pass#get_node(raycasts[dir]).add_exception(area)
-#	$RayCastDown.add_exception(area)
-#	$RayCastLeft.add_exception(area)
-#	$RayCastRight.add_exception(area)
-#	$RayCastUp.add_exception(area)
 
 
 func look(where):
@@ -189,4 +230,7 @@ func print_pkmn_team():
 		
 func teleport(position):
 	set_position(position)
+	
+func get_direction():
+	return directions[$Sprite.frame]
 	
