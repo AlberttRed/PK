@@ -418,21 +418,21 @@ func get_moving():
 #		emit_signal("jump")
 #		print("finished jump " + direction)
 #
-func surf():
-	if GLOBAL.CanDoSurf():
-		GUI.show_msg("El agua tiene buena pinta... Quieres hacer Surf?", null, null, "", [["SÍ","NO"],true,"Choice2"])
-		while (GUI.is_visible()):
-			yield(get_tree(),"idle_frame")
-		if GLOBAL.get_choice_selected() == "Choice1":
-			print("A surfear!")
-			can_interact = false
-			Through = true
-			surfing = true
-			GLOBAL.move(facing)
-			yield(ProjectSettings.get("Player"), "move")
-			get_node("Sprite").texture = GAME_DATA.player_surf_sprite
-			can_interact = true
-			Through = false
+#func surf():
+#	if GLOBAL.CanDoSurf():
+#		GUI.show_msg("El agua tiene buena pinta... Quieres hacer Surf?", null, null, "", [["SÍ","NO"],true,"Choice2"])
+#		while (GUI.is_visible()):
+#			yield(get_tree(),"idle_frame")
+#		if GLOBAL.get_choice_selected() == "Choice1":
+#			print("A surfear!")
+#			can_interact = false
+#			Through = true
+#			surfing = true
+#			GLOBAL.move(facing)
+#			yield(ProjectSettings.get("Player"), "move")
+#			get_node("Sprite").texture = GAME_DATA.player_surf_sprite
+#			can_interact = true
+#			Through = false
 
 #func quit_surf():
 #	print("quit")

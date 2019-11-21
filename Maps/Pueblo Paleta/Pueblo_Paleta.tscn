@@ -1766,8 +1766,12 @@ hframes = 4
 
 [node name="event_page" parent="Eventos_/Chico2/pages" index="0" instance=ExtResource( 5 )]
 Imagen = ExtResource( 26 )
+Interact = true
 sprite_cols = 4
 sprite_rows = 4
+
+[node name="cmd_msg" parent="Eventos_/Chico2/pages/event_page" instance=ExtResource( 6 )]
+text = "Hola."
 
 [node name="cmd_move" parent="Eventos_/Chico2/pages/event_page" instance=ExtResource( 7 )]
 nodePath = NodePath("../../..")
