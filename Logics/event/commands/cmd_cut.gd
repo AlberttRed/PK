@@ -9,11 +9,11 @@ func _init():
 	add_user_signal("finished")
 	
 func _ready():
-	pass
+	add_to_group("CMD")
 
 func run():
 	print("Cut started")
-	var animationPlayer = GLOBAL.running_events.back().get_node("AnimationPlayer")
+	var animationPlayer = parentEvent.get_node("AnimationPlayer")#GLOBAL.running_events.back().get_node("AnimationPlayer")
 	GUI.show_msg("aasda asda asdad adsad asdasd asdasd asasd asda dasdasd sa.")#GUI.show_msg("Parece que este arbol se puede cortar.")
 	while (GUI.is_visible()):
 		yield(get_tree(),"idle_frame")	

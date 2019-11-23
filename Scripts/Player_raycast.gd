@@ -32,14 +32,17 @@ func intersect_point(dir, cells=1):
 		return body.get_world_2d().get_direct_space_state().intersect_point(body.get_position() + (dir*cells), CONST.GRID_SIZE, get_tree().get_root().get_node("World/CanvasModulate/Area2D_").get_children(), 2147483647, true, true)
 
 func is_colliding():
+	#print("SURF: " + str(is_SurfingArea()) + " " + str(body.get_surfing()))
 	if result == null or result.empty() or !isnot_Pasable() or (is_SurfingArea() and body.surfing):
 		return false
 	else:
 		return true
 		
 func is_SurfingArea():
+	#print("SURFING?")
 	if result != null:
 		for c in get_colliders():
+			print(c.get_name())
 			if c.is_in_group("surf_area"):
 				return true
 	return false
@@ -64,7 +67,8 @@ func is_PlayerTouch():
 func get_colliders():
 	var colliders = []
 	for r in result:
-		colliders.append(r.collider)
+		if(r != null):
+			colliders.append(r.collider)
 	return colliders
 
 func interact():
@@ -74,7 +78,7 @@ func interact():
 		if typeof(c) == TYPE_OBJECT and c.is_in_group("Interact"):
 			if c.is_in_group("surf_area") and !body.surfing:
 				body.surf()
-			else:
+			elif !c.is_in_group("surf_area"):
 				c.eventTarget = self
 				c.exec(facing_inverse[body.facing])
 
@@ -83,8 +87,6 @@ func interact_at_collide():
 		for c in get_colliders():
 			print("INTERACT AT COLLIDE")
 			print(c.get_name())
-			print(str(c.is_in_group("Evento")))
-			print(str(c.is_in_group("Boulder")))
 			if typeof(c) == TYPE_OBJECT and c.is_in_group("Evento") and !c.has_node("Boulder"):
 				if !c.running:
 					body.get_node("AnimationPlayer").stop()

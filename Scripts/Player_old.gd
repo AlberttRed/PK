@@ -438,40 +438,40 @@ func get_moving():
 #	print("quit")
 #	get_node("Sprite").texture = GAME_DATA.player_default_sprite
 #	surfing = false
+##
+#func push(object):
+#	print(facing)
+#	if !pushing and ProjectSettings.get("Actual_Map").strength_on:
+#		pushing = true
+#		var cmd = object.get_parent().get_node("pages/event_page/cmd_strength")
+#		print("push")
+#		#var cmd = object.get_parent().get_child(0).get_child(0).get_child(0)
 #
-func push(object):
-	print(facing)
-	if !pushing and ProjectSettings.get("Actual_Map").strength_on:
-		pushing = true
-		var cmd = object.get_parent().get_node("pages/event_page/cmd_strength")
-		print("push")
-		#var cmd = object.get_parent().get_child(0).get_child(0).get_child(0)
-		
-		
-		match facing:
-			"up":
-				cmd.direction = Vector2(0, -1)
-				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, -GRID), 32, [ ], 2147483647, true, true)
-			"right":
-				cmd.direction = Vector2(1, 0)
-				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(GRID, 0), 32, [ ], 2147483647, true, true)
-			"left":
-				cmd.direction = Vector2(-1, 0)
-				cmd.result =  object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(-GRID, 0), 32, [ ], 2147483647, true, true)
-			"down":
-				cmd.direction = Vector2(0, 1)
-				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, GRID), 32, [ ], 2147483647, true, true)
-		cmd.can_move = !colliderIsNotPasable(cmd.result)
-		cmd.startPos = object.get_parent().get_position()
-		
-		cmd.movesArray = [facing]
-#		GLOBAL.move_event(object.get_parent(), facing)
-		yield(cmd, "moved")
-		#while !move.moved:
-			#yield(move.run(), "finished_movement")
-		print("apa siau")
-#		pushing = false
 #
+#		match facing:
+#			"up":
+#				cmd.direction = Vector2(0, -1)
+#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, -GRID), 32, [ ], 2147483647, true, true)
+#			"right":
+#				cmd.direction = Vector2(1, 0)
+#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(GRID, 0), 32, [ ], 2147483647, true, true)
+#			"left":
+#				cmd.direction = Vector2(-1, 0)
+#				cmd.result =  object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(-GRID, 0), 32, [ ], 2147483647, true, true)
+#			"down":
+#				cmd.direction = Vector2(0, 1)
+#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, GRID), 32, [ ], 2147483647, true, true)
+#		cmd.can_move = !colliderIsNotPasable(cmd.result)
+#		cmd.startPos = object.get_parent().get_position()
+#
+#		cmd.movesArray = [facing]
+##		GLOBAL.move_event(object.get_parent(), facing)
+#		yield(cmd, "moved")
+#		#while !move.moved:
+#			#yield(move.run(), "finished_movement")
+#		print("apa siau")
+##		pushing = false
+##
 #
 #func intersect_point(position):
 #	if weakref(ProjectSettings.get("Actual_Map")).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error

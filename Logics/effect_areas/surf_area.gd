@@ -6,7 +6,7 @@ export(String) var direction #setget set_cells_jump,get_cells_jump
 
 func _init():
 	add_to_group("surf_area")
-
+	add_to_group("Interact")
 func _ready():
 #	connect("area_entered", self, "on_area_enter")
 #	connect("area_exited",self, "on_area_exit")

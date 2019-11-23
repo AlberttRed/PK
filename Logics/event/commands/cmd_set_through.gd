@@ -30,7 +30,7 @@ func run():
 		Target = get_node(nodePath)
 	Target.Through = Through
 	if Target != ProjectSettings.get("Player"):
-		Target.makePasable()
+		Target.add_to_group("Pasable")
 	while i < 1:
 		count = true
 		yield(get_tree(), "idle_frame")

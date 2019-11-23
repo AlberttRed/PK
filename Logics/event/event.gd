@@ -1,6 +1,7 @@
 extends Area2D
 
 export(bool) var Through = false
+export(float) var speed_animation = 1.0
 
 var tile_size = CONST.GRID_SIZE
 var step = 1
@@ -13,7 +14,7 @@ var moved = false
 var SPEED = 2
 
 var jumping = false
-var surfing = false
+var surfing setget set_surfing,get_surfing
 var pushing = false
 var in_event = false
 
@@ -24,6 +25,8 @@ var can_interact = true setget set_can_interact,get_can_interact
 var being_controlled = false
 
 var move 
+
+var trainer
 
 var directions = {8: 'right',
 			9: 'right',
@@ -73,6 +76,7 @@ func _init():
 	add_child(move)
 
 func _ready():
+	trainer = $Trainer
 	facing = get_direction()
 	direction = get_node(raycasts[facing])
 
@@ -90,17 +94,18 @@ func move(dir):
 		$AnimationPlayer.playback_speed = 0.5
 		first_input = true
 		direction.interact_at_collide()
+		if being_controlled:
+			emit_signal("move")
 	else:
 		check_first_step()
 	print("position: " + str(position))
 	print("movement: " + str(movement))
 	$MoveTween.interpolate_property(self, "position", position,
-                      movement, step_speed,
+                      movement, step_speed/speed_animation,
                       Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$MoveTween.start()
 	return true
 	
-
 func jump(cells_jump):
 		var original_speed = SPEED
 
@@ -137,14 +142,14 @@ func jump(cells_jump):
 		print(str($Sprite.position))
 
 func check_first_step():
-	if first_input and !GLOBAL.is_last_move(last_facing) and !jumping:
+	if first_input and !GLOBAL.is_last_move(last_facing) and !jumping and !being_controlled:
 		movement = position
 		step_speed = 0.15
 		$AnimationPlayer.playback_speed = 2
 	else:
 		movement = position + moves[facing] * tile_size
 		step_speed = 0.3
-		$AnimationPlayer.playback_speed = 1
+		$AnimationPlayer.playback_speed = 1.0
 		moved = true
 
 func _on_MoveTween_tween_completed(object, key):
@@ -163,9 +168,6 @@ func _on_MoveTween_tween_completed(object, key):
 	can_move = true
 
 func walk_animation():
-#	if jumping:
-#		$AnimationPlayer.play("idle_" + facing)
-#	else:
 	if !$AnimationPlayer.is_playing() and !jumping:
 		print("animation step: " + str(step))
 		$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
@@ -175,35 +177,15 @@ func walk_animation():
 			step = 1
 				
 func push(object):
-	print(get_direction())
+	print(get_direction() + " " + str(pushing) + " " + str(ProjectSettings.get("Actual_Map").strength_on))
 	if !pushing and ProjectSettings.get("Actual_Map").strength_on:
 		pushing = true
-		var cmd = object.get_parent().get_node("pages/event_page/cmd_strength")
+		var cmd = object.get_node("pages/event_page/cmd_strength")
 		print("push")
-		#var cmd = object.get_parent().get_child(0).get_child(0).get_child(0)
-		
-		
-#		match facing:
-#			"up":
-#				cmd.direction = Vector2(0, -1)
-#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, -GRID), 32, [ ], 2147483647, true, true)
-#			"right":
-#				cmd.direction = Vector2(1, 0)
-#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(GRID, 0), 32, [ ], 2147483647, true, true)
-#			"left":
-#				cmd.direction = Vector2(-1, 0)
-#				cmd.result =  object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(-GRID, 0), 32, [ ], 2147483647, true, true)
-#			"down":
-#				cmd.direction = Vector2(0, 1)
-#				cmd.result = object.get_parent().world.intersect_point(object.get_parent().get_position() + Vector2(0, GRID), 32, [ ], 2147483647, true, true)
-#		cmd.can_move = !colliderIsNotPasable(cmd.result)
-		#cmd.startPos = object.get_parent().get_position()
-		object.move.add(moves, self)
-		#cmd.movesArray = [get_direction()]
-#		GLOBAL.move_event(object.get_parent(), facing)
-		#yield(cmd, "moved")
-		#while !move.moved:
-			#yield(move.run(), "finished_movement")
+		$AnimationPlayer.stop()
+		object.speed_animation = 0.5
+		object.move.add([get_direction()], object)
+		pushing = false
 		print("apa siau")
 
 func surf():
@@ -214,10 +196,11 @@ func surf():
 		if GLOBAL.get_choice_selected() == "Choice1":
 			print("A surfear!")
 			can_interact = false
-			Through = true
-			surfing = true
-			GLOBAL.move(facing)
-			yield(ProjectSettings.get("Player"), "move")
+			#Through = true
+			set_surfing(true)
+			#GLOBAL.move(facing)
+			move.add([get_direction()], self)
+			yield(self, "move")
 			$Sprite.texture = GAME_DATA.player_surf_sprite
 			can_interact = true
 			Through = false
@@ -225,7 +208,7 @@ func surf():
 func quit_surf():
 	print("quit")
 	$Sprite.texture = GAME_DATA.player_default_sprite
-	surfing = false
+	set_surfing(false)
 
 
 func look(where):
@@ -238,6 +221,13 @@ func set_can_interact(can):
 	
 func get_can_interact():
 	return can_interact
+	
+func set_surfing(surf):
+	print("SURFING SET: " + str(surf))
+	surfing = surf
+	
+func get_surfing():
+	return surfing
 	
 func print_pkmn_team():
 	for p in get_node("Trainer").get_children():

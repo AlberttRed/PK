@@ -14,7 +14,7 @@ func _init():
 	
 func _ready():
 	._ready()
-	GAME_DATA.trainer = $Trainer
+	GAME_DATA.trainer = trainer
 	GAME_DATA.party = $Trainer.get_party()
 	$Sprite.visible = !Transparent
 

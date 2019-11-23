@@ -63,7 +63,7 @@ var resultDown
 var resultLeft 
 var resultRight
 var resultDownJump
-export(int, "down", "left", "right", "up") var look = 0
+export(int, "down", "left", "right", "up") var look_dir = 0
 
 func set_page(page):
 	current_page = page
@@ -91,7 +91,7 @@ func _ready():
 		get_node("Sprite").vframes = sprite_rows
 		get_node("Sprite").offset = OffsetSprite
 		get_node("Sprite").set_position(Vector2(0,-24))#-24
-		get_node("Sprite").frame = look*4
+		get_node("Sprite").frame = look_dir*4
 		#if Imagen.get_width() / 32 > 1:
 			#get_node("Sprite").hframes = (Imagen.get_width() / 32)/2
 			#get_node("Sprite").vframes = (Imagen.get_width() / 32)/2
@@ -130,7 +130,7 @@ func _process(delta):
 #    for area in colliding_areas:
 #        print(area.get_name())
 
-func exec(from = look):
+func exec(from = look_dir):
 	if !running:
 #		if eventTarget == ProjectSettings.get("Player"):
 #			ProjectSettings.get("Player").active_events.push_back(self)
@@ -158,7 +158,7 @@ func exec(from = look):
 			current_page.run()
 			#yield(current_page, "finished_page")
 			if Imagen != null and Imagen.get_width() / 32 > 1 and !DirectionFix:
-				get_node("Sprite").frame = look*4
+				get_node("Sprite").frame = look_dir*4
 			#player.set_can_interact(!BlockPlayerAtEnd)
 			#player.can_interact = true
 		

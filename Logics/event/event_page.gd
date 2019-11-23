@@ -16,7 +16,7 @@ export (bool)var Paralelo = false
 var initialFrame
 export (int)var sprite_cols = 1
 export (int)var sprite_rows = 1
-#export (Vector2)var OffsetSprite = Vector2(0,4)
+export (Vector2)var OffsetSprite = Vector2(0,0)
 var running = false
 var running_choice = false
 var cmd_move_on = true
@@ -113,8 +113,11 @@ func load_sprite():
 		parentEvent.get_node("Sprite").texture = Imagen
 		parentEvent.get_node("Sprite").hframes = sprite_cols
 		parentEvent.get_node("Sprite").vframes = sprite_rows
-#		parentEvent.get_node("Sprite").offset = OffsetSprite
+		parentEvent.get_node("Sprite").offset = OffsetSprite
 #		parentEvent.get_node("Sprite").set_position(Vector2(0,-24))
+		if Imagen.get_height() / 32 > 1 and (sprite_cols == 1 and sprite_rows == 1):
+			parentEvent.get_node("Sprite").offset = parentEvent.get_node("Sprite").offset + (Vector2(0,-16*(Imagen.get_height() / 32 - 1)))
+			
 
 func set_parent_page(commands):
 	if commands.get_child_count() > 0:

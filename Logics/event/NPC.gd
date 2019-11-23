@@ -18,16 +18,17 @@ func _init():
 	add_user_signal("event_finished")
 	
 func _ready():
+	._ready()
 	set_parent_event(get_node("pages"))
 	add_to_group(get_parent().get_parent().get_name())
 	get_current_page()
 	current_page.load_sprite()
 	player=ProjectSettings.get("Player")
 	if event_type == CONST.EVENT.NPC:
-		$Sprite.offset = Vector2(0,4)
+		$Sprite.offset = $Sprite.offset + Vector2(0,4)
 		$Sprite.set_position(Vector2(0,-12))
 	elif event_type == CONST.EVENT.OBJECT:
-		$Sprite.offset = Vector2(0,0)
+		$Sprite.offset = $Sprite.offset + Vector2(0,0)
 		$Sprite.set_position(Vector2(0,0))
 
 func _physics_process(delta):# and !$MoveTween.is_active():
@@ -54,6 +55,7 @@ func exec(from = facing_idle[facing]):
 		current_page.run()
 		yield(current_page, "finished_page")
 		if current_page.Imagen != null and current_page.Imagen.get_width() / 32 > 1 and !current_page.DirectionFix:
+			print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + get_name() + " " + str(facing_idle[facing]))
 			current_page.get_node("Sprite").frame = facing_idle[facing]
 		player.set_can_interact(!BlockPlayerAtEnd)
 		player.in_event = BlockPlayerAtEnd
@@ -78,6 +80,7 @@ func set_parent_event(pages):
 		if pages.PlayerTouch:
 			pages.add_to_group("PlayerTouch")
 			if !is_connected("area_entered",self,"_execPlayerTouch"):
+				print("CONECTED PlayerTouch")
 				connect("area_entered",self,"_execPlayerTouch")
 		if pages.EventTouch:
 			pages.add_to_group("EventTouch")
@@ -106,7 +109,7 @@ func _execEventTouch(target):
 			exec()
 
 func _execPlayerTouch(target):
-		if target.get_parent().get_name() == "Player":
+		if target.get_name() == "Player":
 			print("PLAYER TOUCH")
 			eventTarget = target
 			exec()
@@ -136,6 +139,7 @@ func remove():
     	queue_free()
 	else:
     	call_deferred("free")
-
+	
 func set_page(page):
 	current_page = page
+

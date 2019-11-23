@@ -197,7 +197,7 @@ func get_pkmn_selected():
 	
 func reload_events():
 	for c in get_tree().get_root().get_node("World/CanvasModulate/Eventos_").get_children():
-		if c.get_name() != "Player":
+		if c.get_name() != "Player" and c.is_in_group("Evento"):
 			c.get_current_page()
 			
 func input_action_press(action):

@@ -1,79 +1,19 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tilesets/TileSet_Indoor_GBA.tres" type="TileSet" id=2]
-[ext_resource path="res://Logics/event/event_old.scn" type="PackedScene" id=3]
+[ext_resource path="res://Logics/event/NPC.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=4]
 [ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=7]
 [ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Logics/event/commands/cmd_FadeIn.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Logics/event/NPC_old.scn" type="PackedScene" id=10]
-[ext_resource path="res://Sprites/Characters/Mamá.png" type="Texture" id=11]
-[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=12]
-[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Area2D.gd" type="Script" id=14]
+[ext_resource path="res://Logics/event/commands/cmd_move.tscn" type="PackedScene" id=9]
+[ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Logics/event/commands/cmd_FadeIn.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Area2D.gd" type="Script" id=12]
 
-
-
-[sub_resource type="Animation" id=1]
-resource_name = "cut"
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 4, 8, 12 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=2]
-resource_name = "cut"
-step = 0.25
-tracks/0/type = "value"
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 4, 8, 12 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprite:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 13.3089, 10.1005 )
 
 [node name="Casa_Player" type="Node2D"]
@@ -100,9 +40,11 @@ tile_data = PoolIntArray( -393219, 103, 0, -458752, 70, 0, -327685, 67, 0, -3276
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="Entrada" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 16, 176 )
 
 [node name="event_page" parent="Eventos_/Entrada/pages" index="0" instance=ExtResource( 4 )]
+editor/display_folded = true
 PlayerTouch = true
 
 [node name="cmd_FadeOut" parent="Eventos_/Entrada/pages/event_page" instance=ExtResource( 5 )]
@@ -119,11 +61,21 @@ Transparent = true
 world_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 Map_XY = Vector2( -176, -112 )
 
-[node name="Escales_pb" parent="Eventos_" instance=ExtResource( 3 )]
-position = Vector2( 240, -48 )
+[node name="Mamá" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 144, 16 )
 
-[node name="AnimationPlayer" parent="Eventos_/Escales_pb" index="2"]
-anims/cut = SubResource( 1 )
+[node name="event_page" parent="Eventos_/Mamá/pages" index="0" instance=ExtResource( 4 )]
+
+[node name="cmd_move" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 9 )]
+nodePath = NodePath("../../../../../../Casa_Player/Eventos_/Mamá")
+movesArray = [ "right", "right", "down", "down" ]
+
+[node name="cmd_wait_move_completion" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 10 )]
+
+[node name="Escales_pb" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
+position = Vector2( 240, -48 )
 
 [node name="event_page" parent="Eventos_/Escales_pb/pages" index="0" instance=ExtResource( 4 )]
 Pasable = true
@@ -135,14 +87,12 @@ speed = 4
 [node name="cmd_teleport_player" parent="Eventos_/Escales_pb/pages/event_page" instance=ExtResource( 8 )]
 Map_XY = Vector2( 848, -48 )
 
-[node name="cmd_FadeIn" parent="Eventos_/Escales_pb/pages/event_page" instance=ExtResource( 9 )]
+[node name="cmd_FadeIn" parent="Eventos_/Escales_pb/pages/event_page" instance=ExtResource( 11 )]
 speed = 4
 
 [node name="Escales_p1" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 816, -48 )
-
-[node name="AnimationPlayer" parent="Eventos_/Escales_p1" index="2"]
-anims/cut = SubResource( 2 )
 
 [node name="event_page" parent="Eventos_/Escales_p1/pages" index="0" instance=ExtResource( 4 )]
 Pasable = true
@@ -154,24 +104,8 @@ speed = 4
 [node name="cmd_teleport_player" parent="Eventos_/Escales_p1/pages/event_page" instance=ExtResource( 8 )]
 Map_XY = Vector2( 208, -48 )
 
-[node name="cmd_FadeIn" parent="Eventos_/Escales_p1/pages/event_page" instance=ExtResource( 9 )]
+[node name="cmd_FadeIn" parent="Eventos_/Escales_p1/pages/event_page" instance=ExtResource( 11 )]
 speed = 4
-
-[node name="Mamá" parent="Eventos_" instance=ExtResource( 10 )]
-editor/display_folded = true
-position = Vector2( 144, 16 )
-Imagen = ExtResource( 11 )
-PlayerTouch = true
-sprite_cols = 4
-sprite_rows = 4
-
-[node name="event_page" parent="Eventos_/Mamá/pages" index="0" instance=ExtResource( 4 )]
-
-[node name="cmd_move" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 12 )]
-nodePath = NodePath("../../../../../../Casa_Player/Eventos_/Mamá")
-movesArray = [ "right", "right", "down", "down" ]
-
-[node name="cmd_wait_move_completion" parent="Eventos_/Mamá/pages/event_page" instance=ExtResource( 13 )]
 
 [node name="CapaAlta_" type="TileMap" parent="."]
 tile_set = ExtResource( 2 )
@@ -184,17 +118,17 @@ tile_data = PoolIntArray( -786418, 2, 0, -786417, 2, 0, -786416, 2, 0, -786415, 
 ]]
 position = Vector2( 16, 40 )
 scale = Vector2( 10.5, 9.25 )
-script = ExtResource( 14 )
+script = ExtResource( 12 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
-position = Vector2( 7.69631, -2.59201 )
+position = Vector2( 7.69631, -2.59459 )
 scale = Vector2( 3.39583, 3.36351 )
-shape = SubResource( 3 )
+shape = SubResource( 1 )
 
 [editable path="Eventos_/Entrada"]
+
+[editable path="Eventos_/Mamá"]
 
 [editable path="Eventos_/Escales_pb"]
 
 [editable path="Eventos_/Escales_p1"]
-
-[editable path="Eventos_/Mamá"]
