@@ -31,6 +31,9 @@ func _input(event):
 	if event.is_action_pressed("ui_accept") and !GUI.is_visible():	
 		direction.interact()
 
+	if event.is_action_pressed("ui_cancel") and !GUI.is_visible():	
+			print_player_variables()
+			
 func can_move(dir):
 	if (Input.is_action_pressed("ui_" + dir) and can_move and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded and can_interact) or (Input.is_action_pressed("ui_"  + dir + "_event_player") and can_move):
 		return true
@@ -38,3 +41,11 @@ func can_move(dir):
 	
 func set_initial_position(pos):
 	set_position(inital_position)
+
+func print_player_variables():
+	print("====== VARIABLES ======")
+	print("Through: " + str(Through))
+	print("Transparent: " + str(Transparent))
+	print("Position: " + str(position))
+	print("exit_door: " + str(GLOBAL.get_node("exit_door").state))
+	

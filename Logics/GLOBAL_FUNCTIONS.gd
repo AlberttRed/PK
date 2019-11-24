@@ -34,7 +34,7 @@ func destroy(node):
 		if n.is_in_group("Evento") and !n.is_in_group("NPC"):
 			if n.running:
 				n.hide()
-				n.deleteAtEnd = true
+				n.current_page.deleteAtEnd = true
 			else:
 				queue(n)
 		else:

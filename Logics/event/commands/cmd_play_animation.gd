@@ -29,7 +29,7 @@ func run():
 		yield(animationPlayer, "animation_finished")
 		if wait_finished:
 			while animationPlayer.is_playing():
-				print("pa")
+				#print("pa")
 				yield(get_tree(), "idle_frame")
 			wait_finished = false
 		while i < 1:

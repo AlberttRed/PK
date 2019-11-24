@@ -123,7 +123,7 @@ func new_pokemon(pkm):
 		pkm.ability_id = get_ability()
 	if pkm.gender == CONST.GENEROS.NON_SELECTED:
 		pkm.gender = rand_range(1.000000, 2.999999)
-		print(str(pkm.gender))
+		#print(str(pkm.gender))
 		pkm.gender = int(pkm.gender)
 	if pkm.nature_id == CONST.NATURES.NONE:
 		pkm.nature_id = int(rand_range(1.000000, 25.999999))
@@ -146,7 +146,7 @@ func new_pokemon(pkm):
 #				print("i: " + str(i) + "pkm level: " + str(pkm.level))
 				#print("learnable_indexes: " + str(DB.moves[learn_move_id[i]].Name) + ", move level: " + str(learn_lvl[i]))
 	learnable_indexes.sort_custom(self, "move_is_greater")
-	print(Name)
+	#print(Name)
 	var temp_moves = []
 	for e in learnable_indexes:
 		temp_moves.push_back(DB.moves[learn_move_id[e]].id)

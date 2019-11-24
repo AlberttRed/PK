@@ -23,10 +23,10 @@ func run():
 	executing = true
 	print("set through to " + str(Through) + " started")
 	if nodePath.is_empty():
-		print("TARGET THROUGH: Player")
+		#print("TARGET THROUGH: Player")
 		Target = ProjectSettings.get("Player")
 	else:
-		print("TARGET THROUGH: " + nodePath)
+		#print("TARGET THROUGH: " + nodePath)
 		Target = get_node(nodePath)
 	Target.Through = Through
 	if Target != ProjectSettings.get("Player"):

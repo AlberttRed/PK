@@ -6,7 +6,7 @@ var running = false
 
 export(int, "NPC, Object")var event_type = 0
 export (bool)var BlockPlayerAtEnd = false
-export (bool)var deleteAtEnd = false
+
 
 var eventTarget = null
 
@@ -64,8 +64,6 @@ func exec(from = facing_idle[facing]):
 		print("Finalized event " + get_name())
 		emit_signal("event_finished")
 		
-		if deleteAtEnd:
-			remove()
 				
 func set_parent_event(pages):
 	if pages.get_child_count() > 0:
@@ -80,7 +78,7 @@ func set_parent_event(pages):
 		if pages.PlayerTouch:
 			pages.add_to_group("PlayerTouch")
 			if !is_connected("area_entered",self,"_execPlayerTouch"):
-				print("CONECTED PlayerTouch")
+				#print("CONECTED PlayerTouch")
 				connect("area_entered",self,"_execPlayerTouch")
 		if pages.EventTouch:
 			pages.add_to_group("EventTouch")
@@ -100,6 +98,7 @@ func exec_this_page(page):
 	player.set_can_interact(false)
 	p.run()
 	yield(p, "finished")
+	print("aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa")
 	player.set_can_interact(!BlockPlayerAtEnd)
 
 
@@ -111,6 +110,7 @@ func _execEventTouch(target):
 func _execPlayerTouch(target):
 		if target.get_name() == "Player":
 			print("PLAYER TOUCH")
+			target.can_interact = current_page.Paralelo
 			eventTarget = target
 			exec()
 
@@ -135,6 +135,7 @@ func is_in_group(parent):
 	
 #Funció per eliminar el nodo de l'evento. Només potfer queue_free() si està dins l SceneTree	
 func remove():
+	print(get_name() + " DEW")
 	if is_inside_tree():
     	queue_free()
 	else:

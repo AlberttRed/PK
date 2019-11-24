@@ -51,6 +51,10 @@ func _process(delta):
 				elif movesArray[i].begins_with("look"):					
 					var direction = movesArray[i].substr(movesArray[i].find("_")+1, movesArray[i].length() - movesArray[i].find("_")+1)
 					Target.look(direction)
+				elif movesArray[i].begins_with("next"):					
+					Target.get_node("Sprite").frame = Target.get_node("Sprite").frame+1
+				elif movesArray[i].begins_with("previous"):					
+					Target.get_node("Sprite").frame = Target.get_node("Sprite").frame-1
 				else:
 				#for i in range(movesArray.size()):
 					print(str(i) + " UN PAS " + movesArray[i])

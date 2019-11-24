@@ -21,10 +21,10 @@ func _process(delta):
 func run():
 	print("set transparent to " + str(Transparent) + " started")
 	if nodePath.is_empty():
-		print("TARGET TANSPARENT: Player")
+		#print("TARGET TANSPARENT: Player")
 		Target = ProjectSettings.get("Player")
 	else:
-		print("TARGET TANSPARENT: " + nodePath)
+		#print("TARGET TANSPARENT: " + nodePath)
 		Target = get_node(nodePath)
 	Target.get_node("Sprite").visible = !Transparent
 	#Target.Transparent = Transparent

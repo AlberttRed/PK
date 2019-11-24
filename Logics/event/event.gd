@@ -98,8 +98,8 @@ func move(dir):
 			emit_signal("move")
 	else:
 		check_first_step()
-	print("position: " + str(position))
-	print("movement: " + str(movement))
+	#print("position: " + str(position))
+	#print("movement: " + str(movement))
 	$MoveTween.interpolate_property(self, "position", position,
                       movement, step_speed/speed_animation,
                       Tween.TRANS_LINEAR, Tween.EASE_OUT)
@@ -153,7 +153,7 @@ func check_first_step():
 		moved = true
 
 func _on_MoveTween_tween_completed(object, key):
-	print("CEST FINI: " + str($Sprite.frame))
+	#print("CEST FINI: " + str($Sprite.frame))
 	facing = get_direction()
 	if $AnimationPlayer.is_playing() and !jumping:
 		#yield(get_tree(), "idle_frame")
@@ -169,7 +169,7 @@ func _on_MoveTween_tween_completed(object, key):
 
 func walk_animation():
 	if !$AnimationPlayer.is_playing() and !jumping:
-		print("animation step: " + str(step))
+		#print("animation step: " + str(step))
 		$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
 		if step == 1:
 			step = 2

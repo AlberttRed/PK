@@ -12,6 +12,7 @@ export (bool)var PlayerTouch = false
 export (bool)var EventTouch = false
 export (bool)var AutoRun = false
 export (bool)var Paralelo = false
+export (bool)var deleteAtEnd = false
 
 var initialFrame
 export (int)var sprite_cols = 1
@@ -36,6 +37,8 @@ func _process(delta):
 		run()
 
 func run():
+	print("RUN " + get_name())
+	
 	#exec_commands(get_children())
 	call_deferred("exec_commands", get_children())
 #	while running:
@@ -46,11 +49,13 @@ func run():
 	emit_signal("finished_page")
 
 func exec_commands(commands):
-	ProjectSettings.get("Player").can_interact = Paralelo
+	#ProjectSettings.get("Player").can_interact = Paralelo
 	running = true
 	for cmd in commands:
+		print(str(cmd.get_name()+"111"))
+#	for cmd in commands:
+#		print(cmd.get_name()+str(222222))
 		if cmd.is_in_group("CMD"):
-			print(cmd.get_name())
 			if (cmd.get_name().begins_with("cmd_change_page")):
 				parentEvent.set_page(get_parent().get_child(cmd.page))
 			elif (cmd.get_name().begins_with("cmd_move")):
@@ -82,11 +87,13 @@ func exec_commands(commands):
 			else:
 				cmd.run()
 				yield(cmd, "finished")
-			print("cmd finished")
+			print(cmd.get_name() + " finished")
 		if !running_choice:
 			running = false
 		running_choice = false
-	ProjectSettings.get("Player").can_interact = !Paralelo
+	if deleteAtEnd:
+		parentEvent.remove()
+	#ProjectSettings.get("Player").can_interact = !Paralelo
 	emit_signal("executed")
 
 func is_executing():
@@ -108,7 +115,7 @@ func _execPlayerTouch(target):
 
 func load_sprite():
 	if Imagen != null:
-		print("LOADIN SPRITE: " + parentEvent.get_name())
+		#print("LOADIN SPRITE: " + parentEvent.get_name())
 		initialFrame = get_node("Sprite").frame
 		parentEvent.get_node("Sprite").texture = Imagen
 		parentEvent.get_node("Sprite").hframes = sprite_cols

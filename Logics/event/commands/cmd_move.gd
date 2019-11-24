@@ -53,7 +53,7 @@ func run():
 	if GLOBAL.movingEvent == null:
 		if nodePath.is_empty():# == null:
 			Target = ProjectSettings.get("Player")
-			print("BEING CONTROLLED")
+			#print("BEING CONTROLLED")
 			#Target.can_interact = false
 		else:
 			Target = get_node(nodePath)
@@ -63,7 +63,7 @@ func run():
 	Target.direction.update()#Target.world = Target.get_world_2d().get_direct_space_state()
 	i = 0
 	moved = false
-	print(str(movesArray.size()) + " and " + str(Target) + " and " + str(!moved))
+	#print(str(movesArray.size()) + " and " + str(Target) + " and " + str(!moved))
 	#get_parent().cmd_move_on = true
 	Target.move.add(movesArray, Target, parentEvent)
 	#EVENTS.add_movement(Target, movesArray)
