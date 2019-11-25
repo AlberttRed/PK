@@ -101,15 +101,19 @@ func interact_at_collide():
 					body.can_interact = c.current_page.Paralelo
 					c.eventTarget = self
 					c.exec()
+					return true
 					#EVENTS.add_event(dictionary.collider.get_parent(), self)
 			elif typeof(c) == TYPE_OBJECT and c.is_in_group("ledge_area"):
 				if c.direction == body.get_direction() and GLOBAL.is_last_move(body.get_direction()):
 					body.jump(c.cells_jump)
+					return true
 			elif typeof(c) == TYPE_OBJECT and c.has_node("Boulder"):
 					print("lmao")
 					if body.facing == body.get_direction():
 						print("BIMBA")
 						body.push(c)
+						return true
+	return false
 	
 func collides_with(object):
 	for c in colliders:

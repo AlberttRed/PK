@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://World.gd" type="Script" id=1]
-[ext_resource path="res://Audio/Sound Effects/no passing.wav" type="AudioStream" id=2]
+[ext_resource path="res://Audio/Generic/no passing.wav" type="AudioStream" id=2]
 [ext_resource path="res://animations/FadeIn.tres" type="Animation" id=3]
 [ext_resource path="res://FadeOut.tres" type="Animation" id=4]
+[ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=5]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -11,6 +12,7 @@ actual_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 initial_position = Vector2( -16, -48 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
+editor/display_folded = true
 
 [node name="CapaTerra_" type="TileMap" parent="CanvasModulate"]
 format = 1
@@ -37,3 +39,5 @@ stream = ExtResource( 2 )
 anims/FadeIn = ExtResource( 3 )
 anims/FadeOut = ExtResource( 4 )
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource( 5 )

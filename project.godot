@@ -48,6 +48,7 @@ GLOBAL="*res://Logics/GLOBAL.scn"
 CONST="*res://Logics/CONST.gd"
 DB="*res://Logics/DB/DB.scn"
 GAME_DATA="*res://Logics/GAME_DATA.scn"
+AUDIO_DATA="*res://Logics/AUDIO_DATA.scn"
 INPUT="*res://Logics/INPUT.scn"
 GUI="*res://ui/GUI.tscn"
 EVENTS="*res://Logics/event/EventSystem.gd"
@@ -147,5 +148,6 @@ ui_down_event_player={
 
 [rendering]
 
+quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"

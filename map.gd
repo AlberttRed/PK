@@ -10,6 +10,8 @@ export(Vector2) var S_connection_pos
 export(Vector2) var E_connection_pos
 export(Vector2) var W_connection_pos
 
+export(AudioStream) var music
+
 var Player = ProjectSettings.get("Player") 
 var target = ProjectSettings.get("Global_World")
 var comptador = 0
@@ -22,6 +24,7 @@ var strength_on = false
 
 #
 func init():
+	add_user_signal("loaded")
 	comptador += 1
 	target.get_node("CanvasModulate/CapaTerra_").z_index = -2
 	print("Map init count: " + str(comptador))
@@ -95,6 +98,7 @@ func load_map(deletePrevious, scene = self, pos = null):
 	loaded = true
 	if deletePrevious:
 		GLOBAL.destroy(ProjectSettings.get("Previous_Map"))
+	emit_signal("loaded")
 		
 func get_area(tree):
 	for n in tree.get_nodes_in_group(get_name()):

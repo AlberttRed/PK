@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Logics/event/Event.gd" type="Script" id=1]
 [ext_resource path="res://animations/walking_animationPlayer.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Sprites/Characters/trainer000.png" type="Texture" id=4]
 [ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Player_raycast.gd" type="Script" id=6]
+[ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=7]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle_down"
@@ -315,6 +316,9 @@ script = ExtResource( 6 )
 
 [node name="RayCastUp" type="Node2D" parent="."]
 script = ExtResource( 6 )
+
+[node name="AudioSystem" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource( 7 )
 [connection signal="tween_completed" from="MoveTween" to="." method="_on_MoveTween_tween_completed"]
 
 [editable path="Trainer"]

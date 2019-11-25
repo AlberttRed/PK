@@ -30,6 +30,10 @@ func _execPlayerTouch(target):
 		print("Parent map: " + parent_map.get_name())
 #		ProjectSettings.get("Actual_Map").init()
 		ProjectSettings.get("Actual_Map").set_connections()
+		if ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").get_stream() != null and ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").get_stream() != parent_map.music:
+			ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").stop_music(1.5)
+			yield(ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D"), "stopped")
+			ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").play_music(parent_map.music)
 #		target.update_maparea_exception(self)
 #
 #

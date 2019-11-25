@@ -96,7 +96,8 @@ func move(dir):
 		look(facing)
 		$AnimationPlayer.playback_speed = 0.5
 		first_input = true
-		direction.interact_at_collide()
+		if !direction.interact_at_collide():
+			$AudioSystem.play_sound(AUDIO_DATA.COLLISION_SOUND)
 		if being_controlled:
 			emit_signal("controlled_move")
 	else:
