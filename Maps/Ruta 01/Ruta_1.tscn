@@ -1449,6 +1449,7 @@ encounter_rate = 10.0
 [node name="CollisionPolygon2D" parent="EncounterAreas_/encounter_area" index="0"]
 polygon = PoolVector2Array( -32, 0, 32, 0, 32, -64, -32, -64 )
 
+
 [editable path="Eventos_/NPC"]
 
 [editable path="Eventos_/NPC/Trainer"]

@@ -3,6 +3,7 @@ extends Node2D
 onready var body = get_parent()
 var direction
 var result = null
+var colliders = []
 
 onready var directions = {'RayCastRight': Vector2(CONST.GRID_SIZE, 0),
              'RayCastLeft': Vector2(-CONST.GRID_SIZE, 0),
@@ -34,15 +35,18 @@ func intersect_point(dir, cells=1):
 func is_colliding():
 	#print("SURF: " + str(is_SurfingArea()) + " " + str(body.get_surfing()))
 	if result == null or result.empty() or !isnot_Pasable() or (is_SurfingArea() and body.surfing):
+		print_colliders()
 		return false
 	else:
+		print("COLLIDING")
+		print_colliders()
 		return true
 		
 func is_SurfingArea():
 	#print("SURFING?")
+	var i = 1
 	if result != null:
 		for c in get_colliders():
-			print(c.get_name())
 			if c.is_in_group("surf_area"):
 				return true
 	return false
@@ -50,10 +54,10 @@ func is_SurfingArea():
 func isnot_Pasable():
 	for c in get_colliders():
 		if c.is_in_group("Pasable"):
-			print(c.get_name() + " IS PASABLE")
+			#print(c.get_name() + " IS PASABLE")
 			return false
 		else:
-			print(c.get_name() + " is not pasable")
+			#print(c.get_name() + " is not pasable")
 			return true
 			
 func is_PlayerTouch():
@@ -65,11 +69,15 @@ func is_PlayerTouch():
 	return false
 
 func get_colliders():
-	var colliders = []
+	colliders = []
 	for r in result:
 		if(r != null):
 			colliders.append(r.collider)
 	return colliders
+	
+func print_colliders():
+	for c in colliders:
+		print(c.get_name())
 
 func interact():
 	update()
@@ -88,7 +96,7 @@ func interact_at_collide():
 			print("INTERACT AT COLLIDE")
 			print(c.get_name())
 			if typeof(c) == TYPE_OBJECT and c.is_in_group("Evento") and !c.has_node("Boulder"):
-				if !c.running:
+				if !c.running and body.facing == body.get_direction():
 					body.get_node("AnimationPlayer").stop()
 					body.can_interact = c.current_page.Paralelo
 					c.eventTarget = self
@@ -103,6 +111,11 @@ func interact_at_collide():
 						print("BIMBA")
 						body.push(c)
 	
+func collides_with(object):
+	for c in colliders:
+		if c == object:
+			return true
+	return false
 
 #	func _physics_process(delta):# and !$MoveTween.is_active():
 #		if is_colliding():

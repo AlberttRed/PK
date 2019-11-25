@@ -2,7 +2,7 @@ extends "res://Logics/event/Event.gd"
 
 var player
 var current_page
-var running = false
+var event_running = false
 
 export(int, "NPC, Object")var event_type = 0
 export (bool)var BlockPlayerAtEnd = false
@@ -16,6 +16,7 @@ func _init():
 	add_user_signal("step")
 	add_user_signal("jump")
 	add_user_signal("event_finished")
+	add_user_signal("controlled_move")
 	
 func _ready():
 	._ready()
@@ -39,11 +40,11 @@ func _physics_process(delta):# and !$MoveTween.is_active():
 					move(dir)
 				
 func exec(from = facing_idle[facing]):
-	if !running:
+	if !event_running:
 		player.in_event = true
 		print("Started event " + get_name())
 		GLOBAL.running_events.push_back(self)
-		running = true
+		event_running = true
 		get_current_page()
 		while !player.can_move:
 			yield(get_tree(), "idle_frame")
@@ -60,7 +61,7 @@ func exec(from = facing_idle[facing]):
 		player.set_can_interact(!BlockPlayerAtEnd)
 		player.in_event = BlockPlayerAtEnd
 		GLOBAL.running_events.erase(self)
-		running = false
+		event_running = false
 		print("Finalized event " + get_name())
 		emit_signal("event_finished")
 		

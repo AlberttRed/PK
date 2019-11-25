@@ -2618,6 +2618,9 @@ Map_XY = Vector2( -16, 48 )
 
 [node name="Porta_CasaProta" parent="Eventos_" instance=ExtResource( 8 )]
 
+[node name="event_page2" parent="Eventos_/Porta_CasaProta/pages" index="1"]
+editor/display_folded = true
+
 [node name="cmd_move2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="6"]
 nodePath = NodePath("../../..")
 
@@ -3023,6 +3026,7 @@ direction = ""
 
 [node name="CollisionPolygon2D" parent="EncounterAreas_/surf_area" index="0"]
 polygon = PoolVector2Array( -160, 190, -160, 290, -30, 290, -30, 190 )
+
 
 [editable path="Eventos_/Interruptor1"]
 

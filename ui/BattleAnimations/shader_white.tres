@@ -33,3 +33,4 @@ shader_param/whitening = 0.0
 shader_param/frame_size = 1
 shader_param/frames = null
 shader_param/anim_time = null
+

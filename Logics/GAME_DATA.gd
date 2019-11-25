@@ -35,6 +35,7 @@ var battle_front_sprite = preload("res://Sprites/Characters/trainer000.png")
 var battle_back_sprite = preload("res://Sprites/Characters/trback000.png")
 
 var player_surf_sprite = preload("res://Sprites/Characters/boy_dive_offset.png")
+var player_run_sprite = preload("res://Sprites/Characters/boy_run.png")
 var player_default_sprite = preload("res://Sprites/trchar000.png")
 
 func _ready():

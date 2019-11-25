@@ -15,7 +15,7 @@ var target = ProjectSettings.get("Global_World")
 var comptador = 0
 export(NodePath) var map_area
 var area
-
+var loaded = false
 var strength_on = false
 
 	
@@ -35,24 +35,24 @@ func init():
 func set_connections():
 	var Scene
 	if !N_connection.empty() and N_connection_pos != null:
-		if target.get_parent().get_tree().get_nodes_in_group(N_connection.split("/")[2].split(".")[0]).size() <= 0:		
-			print("N connected")
-			Scene = load(N_connection).instance()
+		Scene = load(N_connection).instance()
+		if target.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
+			print("N connected: " + str(Scene.get_name()))#str(N_connection.split("/")[3].split(".")[0]))
 			call_deferred("load_map", false, Scene, N_connection_pos)
 	if !S_connection.empty() and S_connection_pos != null:
-		if target.get_parent().get_tree().get_nodes_in_group(S_connection.split("/")[2].split(".")[0]).size() <= 0:		
-			print("S connected")
-			Scene = load(S_connection).instance()
+		Scene = load(S_connection).instance()
+		if target.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
+			print("S connected: " + str(Scene.get_name()))
 			load_map(false, Scene, S_connection_pos)
 	if !E_connection.empty() and E_connection_pos != null:
-		if target.get_parent().get_tree().get_nodes_in_group(E_connection.split("/")[2].split(".")[0]).size() <= 0:		
-			print("E connected")
-			Scene = load(E_connection).instance()
+		Scene = load(E_connection).instance()
+		if target.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
+			print("E connected: " + str(Scene.get_name()))
 			load_map(false, Scene, E_connection_pos)
 	if !W_connection.empty() and W_connection_pos != null:
-		if target.get_parent().get_tree().get_nodes_in_group(W_connection.split("/")[2].split(".")[0]).size() <= 0:		
-			print("W connected")
-			Scene = load(W_connection).instance()
+		Scene = load(W_connection).instance()
+		if target.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
+			print("W connected: " + str(Scene.get_name()))
 			load_map(false, Scene, W_connection_pos)
 		
 func load_map(deletePrevious, scene = self, pos = null):
@@ -92,7 +92,7 @@ func load_map(deletePrevious, scene = self, pos = null):
 		if Player.get_parent() != null:
 			Player.get_parent().remove_child(Player)
 		target.get_node("CanvasModulate/Eventos_").add_child(Player)
-		
+	loaded = true
 	if deletePrevious:
 		GLOBAL.destroy(ProjectSettings.get("Previous_Map"))
 		

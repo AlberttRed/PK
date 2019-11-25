@@ -61,7 +61,7 @@ func _process(delta):
 					if Target.jumping and event != null:
 						yield(Target, "jump")
 					Input.action_press("ui_" + movesArray[i] + "_event" + event_move)
-					yield(Target, "move")
+					yield(Target, "controlled_move")
 					Input.action_release("ui_" + movesArray[i] + "_event" + event_move)
 					
 #					GLOBAL.input_action_press("ui_" + movesArray[i] + "_event" + event_move)

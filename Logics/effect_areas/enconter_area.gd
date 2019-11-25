@@ -14,6 +14,7 @@ export(int,"None, bulbasaur, ivysaur, venusaur, charmander, charmeleon, charizar
 
 export var min_lvl = 1
 export var max_lvl = 5
+var Player = ProjectSettings.get("Player") 
 #
 export(float) var encounter_rate = 100
 
@@ -21,7 +22,7 @@ var pkmn = []
 
 func _init():
 	add_to_group("Encounter_Area")
-	
+	add_to_group("Pasable")
 
 func _ready():
 #	ProjectSettings.get("Player").update_maparea_exception(self)
@@ -42,12 +43,13 @@ func on_area_exit(area):
 		area.disconnect("move", self, "calculate_encounter")
 #
 func calculate_encounter():
-	print("moved")
-	var rate = rand_range(0,100)
-	if (rate <= encounter_rate):
-		var p = int(floor(rand_range(0, 10)))
-		if pkmn[p] > 0 && pkmn[p]<=751:
-			print("found! " + DB.pokemons[pkmn[p]].name)
+	if Player.direction.collides_with(self):
+		print("moved")
+		var rate = rand_range(0,100)
+		if (rate <= encounter_rate):
+			var p = int(floor(rand_range(0, 10)))
+			if pkmn[p] > 0 && pkmn[p]<=751:
+				print("found! " + DB.pokemons[pkmn[p]].name)
 # aquest es el bo			GUI.init_battle(GAME_DATA.party[0], DB.pokemons[pkmn[p]].make_wild(floor(rand_range(min_lvl,max_lvl+1))))
 			#GUI.wild_encounter(pkmn[p], floor(rand_range(min_lvl,max_lvl+1)))
 

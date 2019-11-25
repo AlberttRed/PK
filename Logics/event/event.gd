@@ -16,6 +16,8 @@ var SPEED = 2
 var jumping = false
 var surfing setget set_surfing,get_surfing
 var pushing = false
+var running = false setget set_running,get_running
+
 var in_event = false
 
 var first_input = true
@@ -91,11 +93,12 @@ func move(dir):
 		quit_surf()
 	if direction.is_colliding():
 		movement = position
+		look(facing)
 		$AnimationPlayer.playback_speed = 0.5
 		first_input = true
 		direction.interact_at_collide()
 		if being_controlled:
-			emit_signal("move")
+			emit_signal("controlled_move")
 	else:
 		check_first_step()
 	#print("position: " + str(position))
@@ -107,7 +110,7 @@ func move(dir):
 	return true
 	
 func jump(cells_jump):
-		var original_speed = SPEED
+		var original_speed = speed_animation#SPEED
 
 		var jumping_frame = 0
 		print("start jump " + get_direction())
@@ -117,8 +120,9 @@ func jump(cells_jump):
 		#if !direction.is_colliding():
 		jumping_frame = $Sprite.frame+1
 		jumping = true
-	
-		SPEED = SPEED/2
+		speed_animation = speed_animation/2.0
+		#$AnimationPlayer.playback_speed = $AnimationPlayer.playback_speed/2.0
+		#SPEED = SPEED/2
 		tile_size = tile_size#*cells_jump
 		can_interact = false
 		#GLOBAL.move(facing)
@@ -132,7 +136,8 @@ func jump(cells_jump):
 			can_interact = false
 			yield(get_tree(), "idle_frame")
 		look(get_direction())
-		SPEED = original_speed
+		speed_animation = original_speed
+		#SPEED = original_speed
 		tile_size = CONST.GRID_SIZE
 		can_interact = true
 		Through = false
@@ -148,8 +153,12 @@ func check_first_step():
 		$AnimationPlayer.playback_speed = 2
 	else:
 		movement = position + moves[facing] * tile_size
-		step_speed = 0.3
-		$AnimationPlayer.playback_speed = 1.0
+		if running:
+			step_speed = 0.15
+			$AnimationPlayer.playback_speed = 2.0
+		else:
+			step_speed = 0.3
+			$AnimationPlayer.playback_speed = 1.0
 		moved = true
 
 func _on_MoveTween_tween_completed(object, key):
@@ -160,14 +169,18 @@ func _on_MoveTween_tween_completed(object, key):
 		$AnimationPlayer.stop()
 	$Sprite.frame = facing_idle[facing]
 	if being_controlled and moved:
-		emit_signal("move")
+		emit_signal("controlled_move")
 	if GLOBAL.move_is_released():
 		first_input = true
 	else:
 		first_input = false 
 	can_move = true
+	emit_signal("move")
 
 func walk_animation():
+	if running:
+		$Sprite.texture = GAME_DATA.player_run_sprite
+		step_speed = 0.15
 	if !$AnimationPlayer.is_playing() and !jumping:
 		#print("animation step: " + str(step))
 		$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
@@ -228,6 +241,18 @@ func set_surfing(surf):
 	
 func get_surfing():
 	return surfing
+	
+func set_running(run):
+
+	if !run:
+		$Sprite.texture = GAME_DATA.player_default_sprite
+		step_speed = 0.3
+		
+	running = run
+	
+func get_running():
+	return running
+	
 	
 func print_pkmn_team():
 	for p in get_node("Trainer").get_children():
