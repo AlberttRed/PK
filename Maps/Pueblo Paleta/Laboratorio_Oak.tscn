@@ -1,17 +1,14 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://map.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Tilesets/TileSet_Indoor_GBA.tres" type="TileSet" id=2]
 [ext_resource path="res://Logics/event/event_old.scn" type="PackedScene" id=3]
-[ext_resource path="res://Sprites/Object ball.png" type="Texture" id=4]
-[ext_resource path="res://Sprites/pokedex.png" type="Texture" id=5]
-[ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=6]
-[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=7]
-[ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=9]
-[ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=10]
-[ext_resource path="res://Area2D.gd" type="Script" id=11]
-
+[ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=4]
+[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=7]
+[ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Area2D.gd" type="Script" id=9]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -37,54 +34,43 @@ format = 1
 tile_data = PoolIntArray( -458758, 8, 0, -458756, 21, 0, -524285, 4, 0, -524283, 4, 0, -393219, 103, 0, -458752, 70, 0, -458751, 70, 0, -458750, 72, 0, -458749, 76, 0, -458748, 77, 0, -458747, 76, 0, -458746, 77, 0, -327686, 92, 0, -327685, 67, 0, -327684, 95, 0, -327683, 96, 0, -393216, 71, 0, -393215, 71, 0, -393214, 73, 0, -393213, 74, 0, -393212, 75, 0, -393211, 74, 0, -393210, 75, 0, -262150, 93, 0, -262149, 66, 0, -327677, 78, 0, -327676, 79, 0, -327675, 78, 0, -327674, 79, 0, -196614, 56, 0, -131078, 56, 0, -131077, 88, 0, -131076, 89, 0, -65541, 90, 0, -65540, 91, 0, -131070, 97, 0, -131069, 98, 0, -131068, 99, 0, 131066, 80, 0, 131067, 74, 0, 131068, 75, 0, 131069, 74, 0, 131070, 75, 0, 65539, 75, 0, 65541, 75, 0, 65542, 80, 0, 196602, 82, 0, 196603, 78, 0, 196604, 79, 0, 196605, 78, 0, 196606, 79, 0, 131074, 78, 0, 131075, 79, 0, 131076, 78, 0, 131077, 79, 0, 131078, 82, 0 )
 
 [node name="Eventos_" type="YSort" parent="."]
+editor/display_folded = true
 
 [node name="pkb1" parent="Eventos_" instance=ExtResource( 3 )]
 position = Vector2( 80, -80 )
-Pasable = false
-Imagen = ExtResource( 4 )
 
 [node name="pkb2" parent="Eventos_" instance=ExtResource( 3 )]
 position = Vector2( 112, -80 )
-Pasable = false
-Imagen = ExtResource( 4 )
 
 [node name="pkb3" parent="Eventos_" instance=ExtResource( 3 )]
 position = Vector2( 144, -80 )
-Pasable = false
-Imagen = ExtResource( 4 )
 
 [node name="pokedex" parent="Eventos_" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( -48, -208 )
-Pasable = false
-Imagen = ExtResource( 5 )
 
 [node name="pokedex2" parent="Eventos_" instance=ExtResource( 3 )]
 editor/display_folded = true
 position = Vector2( -16, -208 )
-Pasable = false
-Imagen = ExtResource( 5 )
 
 [node name="event" parent="Eventos_" instance=ExtResource( 3 )]
+editor/display_folded = true
 position = Vector2( 16, 208 )
-Pasable = false
-PlayerTouch = true
 BlockPlayerAtEnd = true
 
-[node name="event_page" parent="Eventos_/event/pages" index="0" instance=ExtResource( 6 )]
+[node name="event_page" parent="Eventos_/event/pages" index="0" instance=ExtResource( 4 )]
 
-[node name="cmd_FadeOut" parent="Eventos_/event/pages/event_page" instance=ExtResource( 7 )]
+[node name="cmd_FadeOut" parent="Eventos_/event/pages/event_page" instance=ExtResource( 5 )]
 speed = 4
 
-[node name="cmd_set_globalVariable" parent="Eventos_/event/pages/event_page" instance=ExtResource( 8 )]
+[node name="cmd_set_globalVariable" parent="Eventos_/event/pages/event_page" instance=ExtResource( 6 )]
 state = true
 Gvariable_name = "exit_door"
 
-[node name="cmd_setTransparent" parent="Eventos_/event/pages/event_page" instance=ExtResource( 9 )]
+[node name="cmd_setTransparent" parent="Eventos_/event/pages/event_page" instance=ExtResource( 7 )]
 Transparent = true
-nodePath = NodePath("")
 
-[node name="cmd_teleport_player" parent="Eventos_/event/pages/event_page" instance=ExtResource( 10 )]
+[node name="cmd_teleport_player" parent="Eventos_/event/pages/event_page" instance=ExtResource( 8 )]
 world_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 Map_XY = Vector2( 144, 80 )
 
@@ -98,7 +84,7 @@ tile_data = PoolIntArray( -393222, 94, 0, -196613, 10, 0, -196612, 87, 0, 65530,
 visible = false
 position = Vector2( 16, 40 )
 scale = Vector2( 10.5, 9.25 )
-script = ExtResource( 11 )
+script = ExtResource( 9 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
 position = Vector2( 0.434529, -0.959457 )

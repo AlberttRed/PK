@@ -24,7 +24,7 @@ func run():
 	print("playing sound started")
 	parentEvent.get_node("AudioSystem").play_sound(sound)
 	if wait:
-		yield(parentEvent, "played")
+		yield(parentEvent.get_node("AudioSystem"), "played")
 	else:
 		while i < 1:
 			count = true

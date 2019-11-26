@@ -24,13 +24,14 @@ var strength_on = false
 
 #
 func init():
-	add_user_signal("loaded")
 	comptador += 1
 	target.get_node("CanvasModulate/CapaTerra_").z_index = -2
 	print("Map init count: " + str(comptador))
 	ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
 	ProjectSettings.set("Actual_Map", self)	
-
+	
+func _init():
+	add_user_signal("loaded")
 #	if Player.get_parent() != null:
 #		Player.get_parent().remove_child(Player)
 #		target.get_node("CanvasModulate/Eventos_").add_child(Player)

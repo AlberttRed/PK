@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/frlg_lab.ogg-4488ed1f2f8623f52d7e1039305c95a8.oggstr"
+
+[deps]
+
+source_file="res://Audio/Overworld/Music/frlg_lab.ogg"
+dest_files=[ "res://.import/frlg_lab.ogg-4488ed1f2f8623f52d7e1039305c95a8.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

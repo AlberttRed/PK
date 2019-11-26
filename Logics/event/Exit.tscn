@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://Logics/event/NPC.gd" type="Script" id=1]
 [ext_resource path="res://animations/walking_animationPlayer.tscn" type="PackedScene" id=2]
@@ -7,10 +7,13 @@
 [ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=5]
 [ext_resource path="res://Scripts/Player_raycast.gd" type="Script" id=6]
 [ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=7]
-[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=8]
-[ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=10]
-[ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Logics/event/commands/cmd_play_sound.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Audio/Generic/Teleport.WAV" type="AudioStream" id=9]
+[ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=10]
+[ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=11]
+[ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=12]
+[ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=13]
+[ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=14]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle_down"
@@ -496,17 +499,25 @@ script = ExtResource( 6 )
 [node name="event_page" parent="pages" instance=ExtResource( 7 )]
 PlayerTouch = true
 
-[node name="cmd_FadeOut" parent="pages/event_page" instance=ExtResource( 8 )]
+[node name="cmd_play_sound" parent="pages/event_page" instance=ExtResource( 8 )]
+sound = ExtResource( 9 )
+wait = true
+
+[node name="cmd_FadeOut" parent="pages/event_page" instance=ExtResource( 10 )]
 speed = 4
 
-[node name="cmd_set_globalVariable" parent="pages/event_page" instance=ExtResource( 9 )]
+[node name="cmd_set_globalVariable" parent="pages/event_page" instance=ExtResource( 11 )]
 state = true
 Gvariable_name = "exit_door"
 
-[node name="cmd_setTransparent" parent="pages/event_page" instance=ExtResource( 10 )]
+[node name="cmd_setTransparent" parent="pages/event_page" instance=ExtResource( 12 )]
 Transparent = true
 
-[node name="cmd_teleport_player" parent="pages/event_page" instance=ExtResource( 11 )]
+[node name="cmd_teleport_player" parent="pages/event_page" instance=ExtResource( 13 )]
 world_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 Map_XY = Vector2( -176, -112 )
+
+[node name="AudioSystem" type="AudioStreamPlayer2D" parent="."]
+script = ExtResource( 14 )
+
 [connection signal="tween_completed" from="MoveTween" to="." method="_on_MoveTween_tween_completed"]
