@@ -71,7 +71,7 @@ func _physics_process(delta):
 		print("lololololo")
 		var movesArray = movement_commands.front()
 		var Target = movement_target.front()
-		if Target == ProjectSettings.get("Player"):
+		if Target == GAME_DATA.PLAYER:#ProjectSettings.get("Player"):
 			event_move = "_player"
 		print(str(movesArray.size()) + ", " + str(moved) + ", " + str(Target))
 		if movesArray.size() != 0 and Target != null:# and !moved:
@@ -80,8 +80,9 @@ func _physics_process(delta):
 
 			for move in movesArray:
 				print(str(i) + " UN PAS " + move)
-				if ProjectSettings.get("Player").jumping:
-					yield(ProjectSettings.get("Player"), "jump")
+				if GAME_DATA.PLAYER.jumping:#ProjectSettings.get("Player").jumping:
+					yield(GAME_DATA.PLAYER, "jump")
+					#yield(ProjectSettings.get("Player"), "jump")
 				Input.action_press("ui_" + move + "_event" + event_move)
 				yield(Target, "move")
 				Input.action_release("ui_" + move + "_event" + event_move)
@@ -89,7 +90,8 @@ func _physics_process(delta):
 			#moved = true
 			#moving = false
 #			set_physics_process(false)
-			while ProjectSettings.get("Player").animationPlayer.is_playing():
+			#while ProjectSettings.get("Player").animationPlayer.is_playing():
+			while GAME_DATA.PLAYER.animationPlayer.is_playing():
 				yield(get_tree(), "idle_frame")
 #			finish_move()
 #			#emit_signal("finished_movement")

@@ -27,7 +27,7 @@ func _process(delta):
 		print("lololololo")
 		var movement_commands = movesArray
 		#Target = movement_target.front()
-		if Target == ProjectSettings.get("Player"):
+		if Target == GAME_DATA.PLAYER:#ProjectSettings.get("Player"):
 			event_move = "_player"
 		print(str(movesArray.size()) + ", " + str(moving) + ", " + str(Target.get_name()))
 		if movesArray.size() != 0 and Target != null:# and !moved:

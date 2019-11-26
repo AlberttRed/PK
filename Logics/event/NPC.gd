@@ -24,7 +24,8 @@ func _ready():
 	add_to_group(get_parent().get_parent().get_name())
 	get_current_page()
 	current_page.load_sprite()
-	player=ProjectSettings.get("Player")
+	#player=ProjectSettings.get("Player")
+	player=GAME_DATA.PLAYER
 	if event_type == CONST.EVENT.NPC:
 		$Sprite.offset = $Sprite.offset + Vector2(0,4)
 		$Sprite.set_position(Vector2(0,-12))

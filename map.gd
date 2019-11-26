@@ -12,7 +12,7 @@ export(Vector2) var W_connection_pos
 
 export(AudioStream) var music
 
-var Player = ProjectSettings.get("Player") 
+var Player = GAME_DATA.PLAYER 
 var target = ProjectSettings.get("Global_World")
 var comptador = 0
 export(NodePath) var map_area
@@ -27,8 +27,10 @@ func init():
 	comptador += 1
 	target.get_node("CanvasModulate/CapaTerra_").z_index = -2
 	print("Map init count: " + str(comptador))
-	ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
-	ProjectSettings.set("Actual_Map", self)	
+	#ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
+	GAME_DATA.PREVIOUS_MAP = GAME_DATA.ACTUAL_MAP
+	GAME_DATA.ACTUAL_MAP = self
+	#ProjectSettings.set("Actual_Map", self)	
 	
 func _init():
 	add_user_signal("loaded")
@@ -98,7 +100,8 @@ func load_map(deletePrevious, scene = self, pos = null):
 		target.get_node("CanvasModulate/Eventos_").add_child(Player)
 	loaded = true
 	if deletePrevious:
-		GLOBAL.destroy(ProjectSettings.get("Previous_Map"))
+		GLOBAL.destroy(GAME_DATA.PREVIOUS_MAP)
+		#GLOBAL.destroy(ProjectSettings.get("Previous_Map"))
 	emit_signal("loaded")
 		
 func get_area(tree):

@@ -191,8 +191,8 @@ func walk_animation():
 			step = 1
 				
 func push(object):
-	print(get_direction() + " " + str(pushing) + " " + str(ProjectSettings.get("Actual_Map").strength_on))
-	if !pushing and ProjectSettings.get("Actual_Map").strength_on:
+	print(get_direction() + " " + str(pushing) + " " + str(GAME_DATA.ACTUAL_MAP.strength_on))
+	if !pushing and GAME_DATA.ACTUAL_MAP.strength_on:
 		pushing = true
 		var cmd = object.get_node("pages/event_page/cmd_strength")
 		print("push")

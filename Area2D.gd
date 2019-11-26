@@ -29,7 +29,7 @@ func _execPlayerTouch(target):
 		print("Player touch Map: " + parent_map.get_name())
 		print("Parent map: " + parent_map.get_name())
 #		ProjectSettings.get("Actual_Map").init()
-		ProjectSettings.get("Actual_Map").set_connections()
+		GAME_DATA.ACTUAL_MAP.set_connections()
 		if ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").get_stream() != null and ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").get_stream() != parent_map.music:
 			ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").stop_music(1.5)
 			yield(ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D"), "stopped")

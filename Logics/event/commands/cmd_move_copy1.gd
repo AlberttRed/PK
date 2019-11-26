@@ -46,7 +46,8 @@ func _ready():
 func run():
 	print("move event started")
 	if nodePath == null:
-		Target = ProjectSettings.get("Player")
+		#Target = ProjectSettings.get("Player")
+		Target = GAME_DATA.PLAYER
 	else:
 		print(nodePath)
 		Target = get_node(nodePath)
@@ -73,7 +74,7 @@ func run():
 func _physics_process(delta):
 	if movesArray.size() != 0 and Target != null and !moved:
 
-		if !moving and i < movesArray.size() and Target == ProjectSettings.get("Player"):
+		if !moving and i < movesArray.size() and Target == GAME_DATA.PLAYER: #ProjectSettings.get("Player"):
 			GLOBAL.move(movesArray[i])
 			i += 1
 			get_parent().cmd_move_on = false

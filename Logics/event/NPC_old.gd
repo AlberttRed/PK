@@ -115,7 +115,8 @@ func _ready():
 		isTrainer = true
 		trainer = get_node("Trainer")
 		
-	player=ProjectSettings.get("Player")
+	#player=ProjectSettings.get("Player")
+	player=GAME_DATA.PLAYER
 	set_parent_event(get_node("pages"))
 	
 	if (get_node("pages").get_child_count() > 0):
@@ -207,8 +208,10 @@ func makePasable():
 	get_node("Area2D").add_child(n)
 
 func erase_from_player():
-	if ProjectSettings.get("Player").active_events.has(self):
-		ProjectSettings.get("Player").active_events.erase(self)
+#	if ProjectSettings.get("Player").active_events.has(self):
+#		ProjectSettings.get("Player").active_events.erase(self)
+	if GAME_DATA.PLAYER.active_events.has(self):
+			GAME_DATA.PLAYER.active_events.erase(self)
 		
 func set_parent_event(pages):
 	if pages.get_child_count() > 0:
@@ -384,8 +387,8 @@ func quit_surf():
 	surfing = false
 	
 func intersect_point(position):
-	if weakref(ProjectSettings.get("Actual_Map")).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
-		return world.intersect_point(position, 32, [ProjectSettings.get("Actual_Map").get_area(get_tree())], 2147483647, true, true)
+	if weakref(GAME_DATA.ACTUAL_MAP).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
+		return world.intersect_point(position, 32, [GAME_DATA.ACTUAL_MAP.get_area(get_tree())], 2147483647, true, true)
 	#return world.intersect_point(position, 32, [], 2147483647, true, true)
 
 func look(direction):
@@ -402,7 +405,7 @@ func look(direction):
 
 func push(object):
 	print(facing)
-	if !pushing and ProjectSettings.get("Actual_Map").strength_on:
+	if !pushing and GAME_DATA.ACTUAL_MAP.strength_on:
 		pushing = true
 		var cmd = object.get_parent().get_node("pages/event_page/cmd_strength")
 		print("push")

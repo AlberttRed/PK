@@ -12,7 +12,8 @@ func _init():
 	add_user_signal("step")
 	add_user_signal("jump")
 	add_user_signal("controlled_move")
-	ProjectSettings.set("Player", self)
+	GAME_DATA.PLAYER = self
+	#ProjectSettings.set("Player", self)
 	
 func _ready():
 	._ready()
@@ -57,3 +58,12 @@ func print_player_variables():
 	print("Position: " + str(position))
 	print("exit_door: " + str(GLOBAL.get_node("exit_door").state))
 	
+
+func save():
+    var save_dict = {
+        "filename" : get_filename(),
+        "parent" : get_parent().get_path(),
+        "pos_x" : position.x, # Vector2 is not supported by JSON
+        "pos_y" : position.y
+    }
+    return save_dict

@@ -14,7 +14,9 @@ export(int,"None, bulbasaur, ivysaur, venusaur, charmander, charmeleon, charizar
 
 export var min_lvl = 1
 export var max_lvl = 5
-var Player = ProjectSettings.get("Player") 
+#var Player = ProjectSettings.get("Player") 
+var Player = GAME_DATA.PLAYER
+
 #
 export(float) var encounter_rate = 100
 

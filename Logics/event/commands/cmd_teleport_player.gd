@@ -18,7 +18,8 @@ func _init():
 	add_user_signal("finished")
 
 func _ready():
-	Player = ProjectSettings.get("Player")
+	#Player = ProjectSettings.get("Player")
+	Player = GAME_DATA.PLAYER
 	add_to_group("CMD")
 	
 func _process(delta):

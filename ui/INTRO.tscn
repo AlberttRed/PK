@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/Pictures/Intro/black_screen.png" type="Texture" id=1]
+[ext_resource path="res://font/pkmnfl.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://ui/Pictures/Intro/big_chartest.png" type="Texture" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+use_filter = true
+extra_spacing_top = 5
+font_data = ExtResource( 2 )
+
+[node name="Control" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 3.78253
+margin_top = 2.16145
+margin_right = 3.78253
+margin_bottom = 2.16144
+
+[node name="Inicial" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+texture = ExtResource( 1 )
+centered = false
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Label" type="Label" parent="Inicial"]
+margin_left = 118.088
+margin_top = 121.493
+margin_right = 262.088
+margin_bottom = 246.493
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.270588, 0.239216, 0.239216, 1 )
+custom_constants/line_spacing = 20
+custom_constants/shadow_offset_y = 1
+text = "©2004
+©1995-2004
+©1995-2004
+©1995-2004"
+
+[node name="Label4" type="Label" parent="Inicial"]
+margin_left = 249.088
+margin_top = 120.493
+margin_right = 393.088
+margin_bottom = 205.493
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.270588, 0.239216, 0.239216, 1 )
+custom_constants/line_spacing = 20
+custom_constants/shadow_offset_y = 1
+text = "Pokémon
+Nintendo
+"
+
+[node name="Label5" type="Label" parent="Inicial"]
+margin_left = 249.088
+margin_top = 190.838
+margin_right = 403.088
+margin_bottom = 275.838
+custom_fonts/font = SubResource( 1 )
+custom_colors/font_color_shadow = Color( 0.270588, 0.239216, 0.239216, 1 )
+custom_constants/line_spacing = 20
+custom_constants/shadow_offset_y = 1
+text = "Creatures Inc.
+GAME FREAK inc.
+"
+
+[node name="Start" type="Sprite" parent="."]
+visible = false
+texture = ExtResource( 3 )
+centered = false
+
+[node name="Menu" type="Sprite" parent="."]

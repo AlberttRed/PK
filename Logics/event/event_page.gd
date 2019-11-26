@@ -45,7 +45,8 @@ func run():
 #		yield(get_tree(), "idle_frame")
 	yield(self,"executed")
 	print("page finished")
-	ProjectSettings.get("Player").can_interact = !Paralelo
+	#ProjectSettings.get("Player").can_interact = !Paralelo
+	GAME_DATA.PLAYER.can_interact = !Paralelo
 	emit_signal("finished_page")
 
 func exec_commands(commands):
@@ -61,8 +62,10 @@ func exec_commands(commands):
 			elif (cmd.get_name().begins_with("cmd_move")):
 				cmd_move_on = true
 				if cmd.nodePath.is_empty():
-					ProjectSettings.get("Player").active_events.push_back(parentEvent)
-					ProjectSettings.get("Player").being_controlled = true
+					GAME_DATA.PLAYER.active_events.push_back(parentEvent)
+					GAME_DATA.PLAYER.being_controlled = true
+#					ProjectSettings.get("Player").active_events.push_back(parentEvent)
+#					ProjectSettings.get("Player").being_controlled = true
 					print("HE..RE")
 					cmd.call_deferred("run")
 					print("FINISH")

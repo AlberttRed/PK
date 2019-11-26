@@ -23,7 +23,7 @@ func _ready():
 func run():
 	print("Strength started")
 	#var animationPlayer = GLOBAL.running_events.back().get_node("AnimationPlayer")
-	if !ProjectSettings.get("Actual_Map").strength_on:
+	if !GAME_DATA.ACTUAL_MAP.strength_on:
 		GUI.show_msg("Es una roca enorme, pero un POKéMON podría moverla.")
 		while (GUI.is_visible()):
 			yield(get_tree(),"idle_frame")	
@@ -38,7 +38,7 @@ func run():
 				GUI.show_msg("La FUERZA de " + GLOBAL.get_pkmn_selected().get_name() + " logró desplazar la roca a un lado.")
 				while (GUI.is_visible()):
 					yield(get_tree(),"idle_frame")	
-				ProjectSettings.get("Actual_Map").strength_on = true
+				GAME_DATA.ACTUAL_MAP.strength_on = true
 				GLOBAL.set_pkmn_selected(null)
 				print("A empujar!")
 	else:

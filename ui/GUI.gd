@@ -7,7 +7,7 @@ onready var msg = get_node("MSG")
 #onready var options = get_node("OPTIONS")
 onready var menu = get_node("MAIN_MENU")
 onready var battle = get_node("BATTLE")
-onready var player=ProjectSettings.get("Player")
+onready var player=GAME_DATA.PLAYER
 onready var chs = get_node("CHOICES")
 onready var party = get_node("PARTY")
 

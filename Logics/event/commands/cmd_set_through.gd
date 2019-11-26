@@ -24,12 +24,13 @@ func run():
 	print("set through to " + str(Through) + " started")
 	if nodePath.is_empty():
 		#print("TARGET THROUGH: Player")
-		Target = ProjectSettings.get("Player")
+		#Target = ProjectSettings.get("Player")
+		Target = GAME_DATA.PLAYER
 	else:
 		#print("TARGET THROUGH: " + nodePath)
 		Target = get_node(nodePath)
 	Target.Through = Through
-	if Target != ProjectSettings.get("Player"):
+	if Target != GAME_DATA.PLAYER:#ProjectSettings.get("Player"):
 		Target.add_to_group("Pasable")
 	while i < 1:
 		count = true

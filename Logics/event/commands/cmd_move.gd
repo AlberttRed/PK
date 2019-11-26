@@ -52,7 +52,8 @@ func run():
 	print("move event started")
 	if GLOBAL.movingEvent == null:
 		if nodePath.is_empty():# == null:
-			Target = ProjectSettings.get("Player")
+			Target = GAME_DATA.PLAYER
+			#Target = ProjectSettings.get("Player")
 			#print("BEING CONTROLLED")
 			#Target.can_interact = false
 		else:
@@ -176,7 +177,7 @@ func get_Target():
 	return Target
 	
 func finish_move():
-	if Target == ProjectSettings.get("Player"):
+	if Target == GAME_DATA.PLAYER: #ProjectSettings.get("Player"):
 		Target.can_interact = true
 		#Target.being_controlled = false
 	print("move event finished")

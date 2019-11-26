@@ -22,7 +22,8 @@ func run():
 	print("set transparent to " + str(Transparent) + " started")
 	if nodePath.is_empty():
 		#print("TARGET TANSPARENT: Player")
-		Target = ProjectSettings.get("Player")
+		#Target = ProjectSettings.get("Player")
+		Target = GAME_DATA.PLAYER
 	else:
 		#print("TARGET TANSPARENT: " + nodePath)
 		Target = get_node(nodePath)

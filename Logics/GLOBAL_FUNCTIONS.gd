@@ -149,7 +149,7 @@ func is_last_move(player_facing):
 
 func CanDoSurf():
 	if hasMedal(CONST.MEDALS.ALMA):
-		for p in ProjectSettings.get("Player").trainer.party:
+		for p in GAME_DATA.PLAYER.trainer.party:
 			print(p.get_name())
 			if p.hasMove(CONST.MOVES.SURF):
 				pkmn_selected = p
@@ -160,7 +160,7 @@ func CanDoSurf():
 	
 func CanDoCut():
 	if hasMedal(CONST.MEDALS.CASCADA):
-		for p in ProjectSettings.get("Player").trainer.party:
+		for p in GAME_DATA.PLAYER.trainer.party:
 			print(p.get_name())
 			if p.hasMove(CONST.MOVES.CORTE):
 				pkmn_selected = p
@@ -171,7 +171,7 @@ func CanDoCut():
 	
 func CanDoStrength():
 	if hasMedal(CONST.MEDALS.PANTANO):
-		for p in ProjectSettings.get("Player").trainer.party:
+		for p in GAME_DATA.PLAYER.trainer.party:
 			print(p.get_name())
 			if p.hasMove(CONST.MOVES.FUERZA):
 				pkmn_selected = p
