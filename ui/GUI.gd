@@ -15,6 +15,7 @@ func _ready():
 	add_user_signal("finished")
 	add_user_signal("input")
 	menu.connect("pokemon", self, "show_party")
+	menu.connect("save", self, "save")
 #	options.connect("text_speed_changed", self, "_on_text_speed_changed")
 	#msg.connect("input", self, "send_input")
 #
@@ -100,3 +101,7 @@ func start_battle(double, trainer1, trainer2, trainer3 = null, trainer4 = null):
 	#battle.wild_encounter(id, level)
 func next():
 	next = true
+	
+func save():
+	print("SAVING")
+	GAME_DATA.save_game()

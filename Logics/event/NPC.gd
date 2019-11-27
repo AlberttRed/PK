@@ -146,3 +146,27 @@ func remove():
 func set_page(page):
 	current_page = page
 
+
+func save():
+    var save_dict = {
+        "filename" : get_filename(),
+		"name" : get_name(),
+        "x_position" : actual_position.x, # Vector2 is not supported by JSON
+		"y_position" : actual_position.y, # Vector2 is not supported by JSON
+		"event_running" : event_running,
+		"Through" : Through,
+		"speed_animation" : speed_animation,
+		"step_speed" : step_speed,
+		"can_move" : can_move,
+		"facing" : facing,
+		"moved" : moved,
+		"jumping" : jumping,
+		"surfing" : surfing,
+		"pushing" : pushing,
+		"running" : running,
+		"in_event" : in_event,
+		"last_facing" : last_facing,
+		"can_interact" : can_interact,
+		"being_controlled" : being_controlled
+    }
+    return save_dict

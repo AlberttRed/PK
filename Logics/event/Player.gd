@@ -37,6 +37,9 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel") and !GUI.is_visible():	
 		set_running(true)
 		print("RUNNING")
+		GAME_DATA.load_game()
+		for e in GAME_DATA.EVENTS_LOADED.get_children():
+			print(e.get_name() + " " + str(e.actual_position))
 		print_player_variables()
 	elif event.is_action_released("ui_cancel") and !GUI.is_visible():
 		print("NOT RUNNING")
@@ -62,8 +65,23 @@ func print_player_variables():
 func save():
     var save_dict = {
         "filename" : get_filename(),
-        "parent" : get_parent().get_path(),
-        "pos_x" : position.x, # Vector2 is not supported by JSON
-        "pos_y" : position.y
+        "x_position" : actual_position.x, # Vector2 is not supported by JSON
+		"y_position" : actual_position.y, # Vector2 is not supported by JSON
+        "Transparent" : Transparent,
+		"active_events" : active_events,
+		"Through" : Through,
+		"speed_animation" : speed_animation,
+		"step_speed" : step_speed,
+		"can_move" : can_move,
+		"facing" : facing,
+		"moved" : moved,
+		"jumping" : jumping,
+		"surfing" : surfing,
+		"pushing" : pushing,
+		"running" : running,
+		"in_event" : in_event,
+		"last_facing" : last_facing,
+		"can_interact" : can_interact,
+		"being_controlled" : being_controlled
     }
     return save_dict

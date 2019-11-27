@@ -12,7 +12,6 @@ actual_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 initial_position = Vector2( -16, -48 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
-editor/display_folded = true
 
 [node name="CapaTerra_" type="TileMap" parent="CanvasModulate"]
 format = 1

@@ -4,6 +4,7 @@ extends Node
 const Pokemon = preload('res://Logics/DB/pokemon.gd')
 const Trainer = preload('res://Logics/event/Trainer.gd')
 
+
 var player_name = "RED"
 var trainer: Trainer
 var medals = []
@@ -13,6 +14,7 @@ var actual_position
 var ACTUAL_MAP
 var PREVIOUS_MAP
 var PLAYER
+var EVENTS_LOADED #Només fa referencia al node World/Canvas/Eventos_, falta fer el get_children()
 
 var party = []
 var box1 = []
@@ -65,7 +67,11 @@ func _ready():
 # dict of relevant variables
 func save_game():
 	var save_game = File.new()
-	save_game.open("user://savegame.save", File.WRITE)
+	var events_tosave = []
+	save_game.open("C://Users//aquer//Documents//G//savegame.save", File.WRITE) #C:\Users\aquer\Documents\G\savegame.save
+	
+	for e in EVENTS_LOADED.get_children():
+		events_tosave.append(e.call("save"))
 	
 	var game_data = {
 		"filename" : get_filename(),
@@ -73,7 +79,8 @@ func save_game():
 		"player_id" : player_id, # Vector2 is not supported by JSON
 		"player_name" : player_name,
 		'Player' : PLAYER.call("save"),
-		#'ACTUAL_MAP' : ACTUAL_MAP.call("save")
+		'ACTUAL_MAP' : ACTUAL_MAP.call("save"),
+		"EVENTS_LOADED" : events_tosave
 	}
 	save_game.store_line(to_json(game_data))
 	
@@ -87,7 +94,9 @@ func save_game():
 # is path independent.
 func load_game():
 	var save_game = File.new()
-	if not save_game.file_exists("user://savegame.save"):
+	#"C://Users//aquer//Documents//G//savegame.save"
+	#"user://savegame.save"
+	if not save_game.file_exists("C://Users//aquer//Documents//G//savegame.save"):
 		print("LOADING ERROR: No existex el fitxer.")
 		return # Error! We don't have a save to load.
 	# We need to revert the game state so we're not cloning objects
@@ -97,19 +106,30 @@ func load_game():
 #	var save_nodes = get_tree().get_nodes_in_group("Persist")
 #	for i in save_nodes:
 #		i.queue_free()
+#	if not save_game.eof_reached():
+#		var data = save_game.get_as_text()
+		#var current_line = parse_json(save_game.get_line())
+		#ACTUAL_MAP = load(current_line["filename"]).instance()
 		
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	save_game.open("user://savegame.save", File.READ)
-	while not save_game.eof_reached():
-		var current_line = parse_json(save_game.get_line())
-		# Firstly, we need to create the object and add it to the tree and set its position.
-		var new_object = load(current_line["filename"]).instance()
-		get_node(current_line["parent"]).add_child(new_object)
-		new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
-		# Now we set the remaining variables.
-		for i in current_line.keys():
-			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-				continue
-			new_object.set(i, current_line[i])
+	save_game.open("C://Users//aquer//Documents//G//savegame.save", File.READ)
+	if not save_game.eof_reached():
+		var data = parse_json(save_game.get_as_text())
+		PLAYER = load(data["Player"]["filename"]).instance()
+		PLAYER.position = Vector2(float(data["Player"]["x_position"]), float(data["Player"]["x_position"]))
+		print(str(data["Player"]["actual_position"]))
+#
+#	while not save_game.eof_reached():
+#
+#		var current_line = parse_json(save_game.get_line())
+#		# Firstly, we need to create the object and add it to the tree and set its position.
+#		var new_object = load(current_line["filename"]).instance()
+#		get_node(current_line["parent"]).add_child(new_object)
+#		new_object.position = Vector2(current_line["pos_x"], current_line["pos_y"])
+#		# Now we set the remaining variables.
+#		for i in current_line.keys():
+#			if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
+#				continue
+#			new_object.set(i, current_line[i])
 	save_game.close()

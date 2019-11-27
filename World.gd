@@ -8,6 +8,7 @@ var faded = false
 func _ready():
 	print("World get ready")
 	#add_child(load("res://Pueblo_Paleta.tscn").instance())
+	GAME_DATA.EVENTS_LOADED = $CanvasModulate/Eventos_
 	ProjectSettings.set("Global_World", self)
 	ProjectSettings.set("Eventos", get_node("CanvasModulate/Eventos_"))
 	GAME_DATA.ACTUAL_MAP = load(actual_scene).instance()

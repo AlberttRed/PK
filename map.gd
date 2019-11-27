@@ -126,6 +126,12 @@ func get_area(tree):
 #					N.set_position(pos)
 #				else:
 				#N.set_position(scene.get_position()				evento.set_position(position_ev)
+func save():
+	var game_data = {
+		"filename" : get_filename(),
+		"strength_on" : strength_on # Vector2 is not supported by JSON
+	}
+	return game_data
 
 				
 				

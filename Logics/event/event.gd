@@ -2,6 +2,7 @@ extends Area2D
 
 export(bool) var Through = false
 export(float) var speed_animation = 1.0
+var actual_position
 
 var tile_size = CONST.GRID_SIZE
 var step = 1
@@ -81,6 +82,7 @@ func _ready():
 	trainer = $Trainer
 	facing = get_direction()
 	direction = get_node(raycasts[facing])
+	actual_position = position
 
 func move(dir):
 	moved = false
