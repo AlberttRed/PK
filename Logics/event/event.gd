@@ -20,6 +20,7 @@ var pushing = false
 var running = false setget set_running,get_running
 
 var in_event = false
+var collided = false
 
 var first_input = true
 var last_facing
@@ -95,6 +96,7 @@ func move(dir):
 		quit_surf()
 	if direction.is_colliding():
 		movement = position
+		collided = true
 		look(facing)
 		$AnimationPlayer.playback_speed = 0.5
 		first_input = true
@@ -103,6 +105,7 @@ func move(dir):
 		if being_controlled:
 			emit_signal("controlled_move")
 	else:
+		collided = false
 		check_first_step()
 	#print("position: " + str(position))
 	#print("movement: " + str(movement))
@@ -167,9 +170,12 @@ func check_first_step():
 func _on_MoveTween_tween_completed(object, key):
 	#print("CEST FINI: " + str($Sprite.frame))
 	facing = get_direction()
-	if $AnimationPlayer.is_playing() and !jumping:
+	if $AnimationPlayer.is_playing() and !jumping and !collided:
 		#yield(get_tree(), "idle_frame")
 		$AnimationPlayer.stop()
+	elif collided:
+		while $AnimationPlayer.is_playing():
+			yield(get_tree(), "idle_frame")
 	$Sprite.frame = facing_idle[facing]
 	if being_controlled and moved:
 		emit_signal("controlled_move")

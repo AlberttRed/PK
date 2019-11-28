@@ -20,6 +20,11 @@ _global_script_classes=[ {
 "path": "res://Logics/event/EventSystem.gd"
 }, {
 "base": "Node",
+"class": "Item",
+"language": "GDScript",
+"path": "res://Logics/DB/item.gd"
+}, {
+"base": "Node",
 "class": "Pokemon",
 "language": "GDScript",
 "path": "res://Logics/DB/pokemon.gd"
@@ -32,6 +37,7 @@ _global_script_classes=[ {
 _global_script_class_icons={
 "EventMovement": "",
 "EventSystem": "",
+"Item": "",
 "Pokemon": "",
 "Trainer": ""
 }
