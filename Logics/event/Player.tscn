@@ -21,5 +21,4 @@ current = true
 drag_margin_h_enabled = false
 drag_margin_v_enabled = false
 
-
 [editable path="Trainer"]
