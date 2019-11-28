@@ -40,3 +40,4 @@ anims/FadeOut = ExtResource( 4 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 script = ExtResource( 5 )
+

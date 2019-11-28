@@ -68,10 +68,11 @@ func _ready():
 func save_game():
 	var save_game = File.new()
 	var events_tosave = []
-	save_game.open("C://Users//aquer//Documents//G//savegame.save", File.WRITE) #C:\Users\aquer\Documents\G\savegame.save
+	save_game.open("C://Users//alber//Documents//GitHubProjects//savegame.save", File.WRITE) #C:\Users\aquer\Documents\G\savegame.save
 	
 	for e in EVENTS_LOADED.get_children():
-		events_tosave.append(e.call("save"))
+		if e.get_name() != "Player":
+			events_tosave.append(e.call("save"))
 	
 	var game_data = {
 		"filename" : get_filename(),
@@ -96,7 +97,7 @@ func load_game():
 	var save_game = File.new()
 	#"C://Users//aquer//Documents//G//savegame.save"
 	#"user://savegame.save"
-	if not save_game.file_exists("C://Users//aquer//Documents//G//savegame.save"):
+	if not save_game.file_exists("C://Users//alber//Documents//GitHubProjects//savegame.save"):
 		print("LOADING ERROR: No existex el fitxer.")
 		return # Error! We don't have a save to load.
 	# We need to revert the game state so we're not cloning objects
@@ -113,12 +114,28 @@ func load_game():
 		
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	save_game.open("C://Users//aquer//Documents//G//savegame.save", File.READ)
+	save_game.open("C://Users//alber//Documents//GitHubProjects//savegame.save", File.READ)
 	if not save_game.eof_reached():
 		var data = parse_json(save_game.get_as_text())
 		PLAYER = load(data["Player"]["filename"]).instance()
 		PLAYER.position = Vector2(float(data["Player"]["x_position"]), float(data["Player"]["x_position"]))
-		print(str(data["Player"]["actual_position"]))
+		
+		ACTUAL_MAP = load(data["ACTUAL_MAP"]["filename"]).instance()
+		ACTUAL_MAP.strength_on = bool(data["ACTUAL_MAP"]["strength_on"])
+		EVENTS_LOADED = ProjectSettings.get("Global_World").get_node("CanvasModulate/Eventos_")
+
+		var i = 0
+		for e in EVENTS_LOADED.get_children():
+			if e.get_name() != "Player":
+				e.position = Vector2(float(data["EVENTS_LOADED"][i]["x_position"]), float(data["Player"]["x_position"]))
+				print(EVENTS_LOADED.get_children().size())
+				print("Evento actual:")
+				print(e.get_name())
+				print("Evento cargado:")
+				print(data["EVENTS_LOADED"][i]["name"])
+				i=i+1
+
+
 #
 #	while not save_game.eof_reached():
 #
