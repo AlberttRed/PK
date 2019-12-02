@@ -3,7 +3,8 @@ extends Node
 
 const Pokemon = preload('res://Logics/DB/pokemon.gd')
 const Trainer = preload('res://Logics/event/Trainer.gd')
-const Save_Directory = "C://Users//alber//Documents//GitHubProjects//"
+#C://Users//aquer//Documents//G//    C://Users//alber//Documents//
+const Save_Directory = "C://Users//aquer//Documents//G//"
 
 var player_name = "RED"
 var trainer: Trainer
@@ -48,7 +49,7 @@ var player_default_sprite = preload("res://Sprites/trchar000.png")
 func _ready():
 #	party.push_back(DB.pokemons[7].make_wild(7))
 #	party.push_back(DB.pokemons[4].make_wild(16))
-
+	add_user_signal("start")
 	medals.push_back(CONST.MEDALS.ROCA)
 	medals.push_back(CONST.MEDALS.CASCADA)
 	medals.push_back(CONST.MEDALS.TRUENO)
@@ -72,6 +73,7 @@ func save_game():
 
 	for e in EVENTS_LOADED.get_children():
 		if e.get_name() != "Player":
+			print(e.get_name() + ": " + str(e.actual_position))
 			events_tosave.append(e.call("save"))
 
 	var game_data = {
@@ -120,20 +122,22 @@ func load_game():
 
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
+
 	save_game.open(Save_Directory + "savegame.save", File.READ)
 	if not save_game.eof_reached():
 		var data = parse_json(save_game.get_as_text())
 		PLAYER = load(data["Player"]["filename"]).instance()
-		PLAYER.position = Vector2(float(data["Player"]["x_position"]), float(data["Player"]["x_position"]))
-
+		PLAYER.position = Vector2(float(data["Player"]["x_position"]), float(data["Player"]["y_position"]))
 		ACTUAL_MAP = load(data["ACTUAL_MAP"]["filename"]).instance()
+		ACTUAL_MAP.load_map(false)
+		yield(ACTUAL_MAP, "loaded")
 		ACTUAL_MAP.strength_on = bool(data["ACTUAL_MAP"]["strength_on"])
 		EVENTS_LOADED = ProjectSettings.get("Global_World").get_node("CanvasModulate/Eventos_")
 
 		var i = 0
 		for e in EVENTS_LOADED.get_children():
 			if e.get_name() != "Player":
-				e.position = Vector2(float(data["EVENTS_LOADED"][i]["x_position"]), float(data["Player"]["x_position"]))
+				e.position = Vector2(float(data["EVENTS_LOADED"][i]["x_position"]), float(data["EVENTS_LOADED"][i]["y_position"]))
 				print(EVENTS_LOADED.get_children().size())
 				print("Evento actual:")
 				print(e.get_name())
@@ -154,6 +158,7 @@ func load_game():
 #				continue
 #			new_object.set(i, current_line[i])
 	save_game.close()
+	emit_signal("start")
 	
 func new_game():
 	print("NEW GAME")
@@ -166,6 +171,6 @@ func new_game():
 	#ProjectSettings.get("Actual_Map").load_map(false)
 	yield(ACTUAL_MAP, "loaded")
 	#yield(ProjectSettings.get("Actual_Map"), "loaded")
-	$AudioStreamPlayer2D.play_music(ACTUAL_MAP.music)
-	
+	ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").play_music(ACTUAL_MAP.music)
+	emit_signal("start")
 	

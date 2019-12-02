@@ -37,7 +37,7 @@ func _input(event):
 	if event.is_action_pressed("ui_cancel") and !GUI.is_visible():	
 		set_running(true)
 		print("RUNNING")
-		GAME_DATA.load_game()
+		#GAME_DATA.load_game()
 		for e in GAME_DATA.EVENTS_LOADED.get_children():
 			print(e.get_name() + " " + str(e.actual_position))
 		print_player_variables()
