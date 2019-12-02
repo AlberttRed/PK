@@ -50,38 +50,38 @@ func queue(node):
 	else:
 		node.propagate_call("call_deferred", ["free"])
 		
-func move(which_key, last_movement = true):
-#	var event = InputEventKey.new()
-#	event.scancode = KEY_UP
-##	InputMap.add_action('ui_up')
-#	InputMap.action_add_event('ui_up', event)
-#	var event = InputEventKey.new()
-#	event.scancode = KEY_UP
-#	get_tree().input_event(event)
-
-	#Input.action_press("ui_up")
-	#ProjectSettings.get("Player").can_interact = true
-	#if ProjectSettings.get("Player").jumping:
-
-		#yield(get_tree().create_timer(5.0), "timeout")
-	#		if !Input.is_action_pressed("ui_up"):
-#		if move == which_key.size()-1:
-#			Input.action_release("ui_" + which_key[move] + "_event")		
-		#move += 1
+#func move(which_key, last_movement = true):
+##	var event = InputEventKey.new()
+##	event.scancode = KEY_UP
+###	InputMap.add_action('ui_up')
+##	InputMap.action_add_event('ui_up', event)
+##	var event = InputEventKey.new()
+##	event.scancode = KEY_UP
+##	get_tree().input_event(event)
+#
+#	#Input.action_press("ui_up")
+#	#ProjectSettings.get("Player").can_interact = true
+#	#if ProjectSettings.get("Player").jumping:
+#
+#		#yield(get_tree().create_timer(5.0), "timeout")
+#	#		if !Input.is_action_pressed("ui_up"):
+##		if move == which_key.size()-1:
+##			Input.action_release("ui_" + which_key[move] + "_event")		
+#		#move += 1
+##		yield(get_tree(), "idle_frame")
+##	Input.action_release("ui_" + which_key[which_key.size()-1] + "_event")
+#
+#	while i < 6:
+#		i += 1
+#		Input.action_press("ui_" + which_key + "_event")
 #		yield(get_tree(), "idle_frame")
-#	Input.action_release("ui_" + which_key[which_key.size()-1] + "_event")
-
-	while i < 6:
-		i += 1
-		Input.action_press("ui_" + which_key + "_event")
-		yield(get_tree(), "idle_frame")
-##		if !Input.is_action_pressed("ui_up"):
-#	if last_movement:
-	Input.action_release("ui_" + which_key + "_event")		
-#		#yield(get_tree(), "idle_frame")
-	i = 0
-	#ProjectSettings.get("Player").can_interact = false
-#	count = false
+###		if !Input.is_action_pressed("ui_up"):
+##	if last_movement:
+#	Input.action_release("ui_" + which_key + "_event")		
+##		#yield(get_tree(), "idle_frame")
+#	i = 0
+#	#ProjectSettings.get("Player").can_interact = false
+##	count = false
 
 func move_event(Target, facing, speed = 2, grid = 32):
 	var direction

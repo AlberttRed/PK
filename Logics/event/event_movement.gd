@@ -11,6 +11,7 @@ var i = 0
 # Called when the node enters the scene tree for the first time.
 func _init():
 	set_process(true)
+	add_user_signal("moved")
 	
 func add(_commands, _target, _parentEvent = null):
 	if movesArray != _commands or Target != _target:
@@ -34,7 +35,7 @@ func _process(delta):
 			moving = true
 			Target.being_controlled = true
 			while i < movesArray.size():
-				while !Target.can_move:
+				while !Target.can_move:# and !Target.jumping:
 					yield(get_tree(), "idle_frame")
 				if movesArray[i].begins_with("wait"):					
 					var t = Timer.new()
@@ -60,6 +61,7 @@ func _process(delta):
 					print(str(i) + " UN PAS " + movesArray[i])
 					if Target.jumping and event != null:
 						yield(Target, "jump")
+					print("Through: " + str(Target.Through))
 					Input.action_press("ui_" + movesArray[i] + "_event" + event_move)
 					yield(Target, "controlled_move")
 					Input.action_release("ui_" + movesArray[i] + "_event" + event_move)
@@ -89,6 +91,7 @@ func _process(delta):
 			if event != null:
 				event.current_page.cmd_move_on = false
 			moving = false
+			#emit_signal("moved")
 			set_process(false)
 			print("c'est fini")
 			

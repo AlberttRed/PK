@@ -591,7 +591,7 @@ func set_actions_priority():
 	for a in actions:
 		print(a.get_name())
 		
-func select_move_targets(move):
+func select_move_targets(_move):
 	return [active_pokemon.enemies[0]]
 	#if move.get_target_id() == CONST.MOVE_TARGETS.NORMAL:
 #	if active_pokemon.is_playable():
@@ -683,16 +683,16 @@ class Command:
 	var to
 	var object_action
 	var player
-	func _init(Name, from, object_action, to, player, priority = null):
-		self.Name = Name
-		self.from = from
-		self.to = to
-		self.object_action = object_action
-		self.player = player
+	func _init(_Name, _from, _object_action, _to, _player, _priority = null):
+		self.Name = _Name
+		self.from = _from
+		self.to = _to
+		self.object_action = _object_action
+		self.player = _player
 		if priority != null:
-			self.priority = priority
+			self.priority = _priority
 		else:
-			self.priority = object_action.get_priority()
+			self.priority = _object_action.get_priority()
 		print("new command")
 	
 	func get_name():
@@ -728,31 +728,31 @@ class Battler:
 	var trainer_sprite
 	var back
 	var pokeballs
-	func _init(trainer, is_playable, trainer_node, pkmn_node, hp_bar_S_node, hp_bar_D_node, base_node, party_node, allies, enemies, doble, single_position, double_position, trainer_sprite, back, pokeballs):
+	func _init(_trainer, _is_playable, _trainer_node, _pkmn_node, _hp_bar_S_node, _hp_bar_D_node, _base_node, _party_node, _allies, _enemies, _doble, _single_position, _double_position, _trainer_sprite, _back, _pokeballs):
 		add_user_signal("finished_waiting")
-		self.trainer = trainer
-		self.Name = trainer.get_name()
-		self.is_playable = is_playable
-		if trainer.get_type() == "Pokemon":
-			self.party = [trainer]
+		self.trainer = _trainer
+		self.Name = _trainer.get_name()
+		self.is_playable = _is_playable
+		if _trainer.get_type() == "Pokemon":
+			self.party = [_trainer]
 			self.is_trainer = false
 		else:
-			self.party = trainer.party
+			self.party = _trainer.party
 			self.is_trainer = true
-		self.doble = doble
-		self.trainer_node = trainer_node
-		self.pkmn_node = pkmn_node
-		self.base = base_node
-		self.party_node = party_node
-		self.single_position = single_position
-		self.double_position = double_position
-		self.allies = allies
+		self.doble = _doble
+		self.trainer_node = _trainer_node
+		self.pkmn_node = _pkmn_node
+		self.base = _base_node
+		self.party_node = _party_node
+		self.single_position = _single_position
+		self.double_position = _double_position
+		self.allies = _allies
 		self.animationPlayer = AnimationPlayer.new()
-		self.trainer_sprite = trainer_sprite
-		self.back = back
-		self.pokeballs = pokeballs
+		self.trainer_sprite = _trainer_sprite
+		self.back = _back
+		self.pokeballs = _pokeballs
 #		self.enemies = enemies
-		if doble:
+		if _doble:
 			if self.allies == null:
 				self.active_pokemon.push_back(get_first_pkmn())
 				self.active_pokemon.push_back(get_first_pkmn())
@@ -761,27 +761,27 @@ class Battler:
 		else:
 			self.active_pokemon.push_back(get_first_pkmn())
 
-		if doble:
+		if _doble:
 			if self.allies == null:#if active_pokemon.size() == 2:
-				active_pokemon[0].hp_bar = hp_bar_D_node[0]
-				active_pokemon[1].hp_bar = hp_bar_D_node[1]
+				active_pokemon[0].hp_bar = _hp_bar_D_node[0]
+				active_pokemon[1].hp_bar = _hp_bar_D_node[1]
 			else:
-				active_pokemon[0].hp_bar = hp_bar_D_node[0]
+				active_pokemon[0].hp_bar = _hp_bar_D_node[0]
 		else:
-			active_pokemon[0].hp_bar = hp_bar_S_node
+			active_pokemon[0].hp_bar = _hp_bar_S_node
 			
 		#if is_playable:	
 		if self.allies == null:#if active_pokemon.size() == 2:
-			active_pokemon[0].node = pkmn_node[0]
-			active_pokemon[0].pokeball_node = pokeballs[0]
+			active_pokemon[0].node = _pkmn_node[0]
+			active_pokemon[0].pokeball_node = _pokeballs[0]
 			active_pokemon[0].battle_double_position = self.double_position[0]#CONST.BATTLE.BACK_DOUBLE1_SPRITE_POS
 			if doble:
-				active_pokemon[1].node = pkmn_node[1]
-				active_pokemon[1].pokeball_node = pokeballs[1]
+				active_pokemon[1].node = _pkmn_node[1]
+				active_pokemon[1].pokeball_node = _pokeballs[1]
 				active_pokemon[1].battle_double_position = self.double_position[1]#CONST.BATTLE.BACK_DOUBLE2_SPRITE_POS
 		else:
-			active_pokemon[0].node = pkmn_node[0]
-			active_pokemon[0].pokeball_node = pokeballs[0]
+			active_pokemon[0].node = _pkmn_node[0]
+			active_pokemon[0].pokeball_node = _pokeballs[0]
 			active_pokemon[0].battle_double_position = self.double_position[0]
 			
 

@@ -101,7 +101,7 @@ func start_battle(double, trainer1, trainer2, trainer3 = null, trainer4 = null):
 	battle.show()
 	battle.start_battle(double, trainer1, trainer2, trainer3, trainer4)
 	#battle.wild_encounter(id, level)
-func next():
+func set_next():
 	next = true
 	
 func save():

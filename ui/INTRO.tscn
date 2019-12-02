@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=29 format=2]
 
 [ext_resource path="res://ui/INTRO.gd" type="Script" id=1]
 [ext_resource path="res://ui/choice 1_old.png" type="Texture" id=2]
@@ -18,8 +18,7 @@
 [ext_resource path="res://ui/Intro/fade_out_anim.tres" type="Animation" id=16]
 [ext_resource path="res://ui/Intro/press_enter_anim.tres" type="Animation" id=17]
 [ext_resource path="res://ui/Intro/start_screen_anim.tres" type="Animation" id=18]
-[ext_resource path="res://animations/FadeIn.tres" type="Animation" id=19]
-[ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=20]
+[ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=19]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
@@ -49,10 +48,10 @@ size = 24
 extra_spacing_top = 5
 font_data = ExtResource( 5 )
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=5]
 resource_name = "FadeIn"
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -63,24 +62,12 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
-}
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=6]
 resource_name = "FadeIn"
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("CanvasModulate:color")
+tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -91,20 +78,8 @@ tracks/0/keys = {
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ) ]
-}
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id=7]
 length = 4.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("Inicial/Label:self_modulate")
@@ -143,8 +118,7 @@ tracks/2/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "press_enter"
+[sub_resource type="Animation" id=8]
 length = 1.6
 loop = true
 tracks/0/type = "value"
@@ -160,7 +134,7 @@ tracks/0/keys = {
 "values": [ true, false, true ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=9]
 length = 2.8
 tracks/0/type = "value"
 tracks/0/path = NodePath("Inicial/press_start:position")
@@ -570,19 +544,18 @@ text = "NUEVA PARTIDA"
 valign = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-"anims/FadeIn (copy)" = SubResource( 8 )
-"anims/FadeOut (copy)" = SubResource( 9 )
+"anims/FadeIn (copy)" = SubResource( 5 )
+"anims/FadeOut (copy)" = SubResource( 6 )
 anims/complete_start_screen = ExtResource( 15 )
 anims/fade_out = ExtResource( 16 )
 anims/press_enter = ExtResource( 17 )
 anims/start_screen = ExtResource( 18 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/FadeIn = ExtResource( 19 )
-anims/fade_out = SubResource( 5 )
-anims/press_enter = SubResource( 6 )
-anims/start_screen = SubResource( 7 )
+anims/fade_out = SubResource( 7 )
+anims/press_enter = SubResource( 8 )
+anims/start_screen = SubResource( 9 )
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 3 )
-script = ExtResource( 20 )
+script = ExtResource( 19 )

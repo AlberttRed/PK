@@ -28,7 +28,7 @@ var last_facing
 var can_interact = true setget set_can_interact,get_can_interact
 var being_controlled = false
 
-var move 
+var move_event 
 
 var trainer
 
@@ -75,9 +75,9 @@ var next_step = {0:1,
 # Called when the node enters the scene tree for the first time.
 
 func _init():
-	move =  load("res://Logics/event/event_movement.gd").new()
-	move.set_name("move")
-	add_child(move)
+	move_event =  load("res://Logics/event/event_movement.gd").new()
+	move_event.set_name("move")
+	add_child(move_event)
 
 func _ready():
 	trainer = $Trainer
@@ -87,6 +87,7 @@ func _ready():
 
 func move(dir):
 	moved = false
+	collided = false
 	direction = get_node(raycasts[dir])
 	last_facing = facing
 	facing = dir
@@ -121,7 +122,7 @@ func jump(cells_jump):
 		var jumping_frame = 0
 		print("start jump " + get_direction())
 		Through = true
-		direction.update()
+	#	direction.update()
 		
 		#if !direction.is_colliding():
 		jumping_frame = $Sprite.frame+1
@@ -132,10 +133,11 @@ func jump(cells_jump):
 		tile_size = tile_size#*cells_jump
 		can_interact = false
 		#GLOBAL.move(facing)
-		var moves = []
+		var moves_to_do = []
 		for i in range(cells_jump): # Similar to [1, 2] but does not allocate an array.
-			moves.append(get_direction())
-		move.add(moves, self)
+			i=i
+			moves_to_do.append(get_direction())
+		move_event.add(moves_to_do, self)
 		$AnimationPlayer.play("jump")
 		while $AnimationPlayer.is_playing():
 			get_node("Sprite").frame = jumping_frame
@@ -145,6 +147,7 @@ func jump(cells_jump):
 		speed_animation = original_speed
 		#SPEED = original_speed
 		tile_size = CONST.GRID_SIZE
+		#yield(move_event, "moved")
 		can_interact = true
 		Through = false
 		jumping = false
@@ -173,7 +176,7 @@ func _on_MoveTween_tween_completed(object, key):
 	if $AnimationPlayer.is_playing() and !jumping and !collided:
 		#yield(get_tree(), "idle_frame")
 		$AnimationPlayer.stop()
-	elif collided:
+	elif collided and !jumping:
 		while $AnimationPlayer.is_playing():
 			yield(get_tree(), "idle_frame")
 	$Sprite.frame = facing_idle[facing]
@@ -203,11 +206,11 @@ func push(object):
 	print(get_direction() + " " + str(pushing) + " " + str(GAME_DATA.ACTUAL_MAP.strength_on))
 	if !pushing and GAME_DATA.ACTUAL_MAP.strength_on:
 		pushing = true
-		var cmd = object.get_node("pages/event_page/cmd_strength")
+		#var cmd = object.get_node("pages/event_page/cmd_strength")
 		print("push")
 		$AnimationPlayer.stop()
 		object.speed_animation = 0.5
-		object.move.add([get_direction()], object)
+		object.move_event.add([get_direction()], object)
 		pushing = false
 		print("apa siau")
 
@@ -222,7 +225,7 @@ func surf():
 			#Through = true
 			set_surfing(true)
 			#GLOBAL.move(facing)
-			move.add([get_direction()], self)
+			move_event.add([get_direction()], self)
 			yield(self, "move")
 			$Sprite.texture = GAME_DATA.player_surf_sprite
 			can_interact = true

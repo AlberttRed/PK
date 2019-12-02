@@ -139,5 +139,5 @@ func save():
 
 
 
-func _on_Area2D__area_shape_entered(area_id, area, area_shape, self_shape):
+func _on_Area2D__area_shape_entered(area_id, _area, area_shape, self_shape):
 	pass # Replace with function body.

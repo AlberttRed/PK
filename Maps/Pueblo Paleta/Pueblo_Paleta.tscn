@@ -3024,6 +3024,7 @@ cells_jump = 2
 direction = "down"
 
 [node name="CollisionPolygon2D" parent="EncounterAreas_/ledge_area" index="0"]
+position = Vector2( -1, 1 )
 polygon = PoolVector2Array( -20, -10, -20, 20, 10, 20, 10, -10 )
 
 [node name="PlayerTouch" type="Node2D" parent="EncounterAreas_/ledge_area"]

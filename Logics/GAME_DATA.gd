@@ -4,7 +4,7 @@ extends Node
 const Pokemon = preload('res://Logics/DB/pokemon.gd')
 const Trainer = preload('res://Logics/event/Trainer.gd')
 #C://Users//aquer//Documents//G//    C://Users//alber//Documents//
-const Save_Directory = "C://Users//aquer//Documents//G//"
+const Save_Directory = "C://Users//alber//Documents//"
 
 var player_name = "RED"
 var trainer: Trainer

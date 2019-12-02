@@ -11,7 +11,8 @@ class Move_Function001:# extends "res://Logics/game_data/move_instance.gd":#"res
 		add_user_signal("move_done")
 		
 	func ApplyDamage(move, from, to):
-		var damage
+		#
+		#var damage
 		move = DB.moves[move.id]
 		
 		to.update_HP(-move.get_damage(from,to))

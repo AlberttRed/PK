@@ -30,6 +30,7 @@ func update(cells=1):
 	
 func intersect_point(dir, cells=1):
 	if weakref(GAME_DATA.ACTUAL_MAP).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
+		print(str(body.get_position()+dir*cells))
 		return body.get_world_2d().get_direct_space_state().intersect_point(body.get_position() + (dir*cells), CONST.GRID_SIZE, get_tree().get_root().get_node("World/CanvasModulate/Area2D_").get_children(), 2147483647, true, true)
 
 func is_colliding():
@@ -43,8 +44,6 @@ func is_colliding():
 		return true
 		
 func is_SurfingArea():
-	#print("SURFING?")
-	var i = 1
 	if result != null:
 		for c in get_colliders():
 			if c.is_in_group("surf_area"):

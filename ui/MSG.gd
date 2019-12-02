@@ -44,8 +44,8 @@ func show_msg(text="", wait = null, obj = null, sig = "", options = [], close = 
 	label2.scroll_following = true
 	label.scroll_to_line(0)
 	label2.scroll_to_line(0)
-	var eol1=-1
-	var eol2=-1
+#	var eol1=-1
+	#var eol2=-1
 	while (label.visible_characters < label.text.length()-1):
 		label.visible_characters += 1
 		label2.visible_characters += 1
@@ -64,7 +64,7 @@ func show_msg(text="", wait = null, obj = null, sig = "", options = [], close = 
 				label.scroll_to_line(skp)
 				label2.scroll_to_line(skp)
 			skp+=1
-			eol1=eol2
+			#eol1=eol2
 			#eol2=label.visible_characters-1
 		timer.start()
 		yield(timer, "timeout")

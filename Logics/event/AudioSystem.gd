@@ -17,7 +17,7 @@ func play_music(music, fade_time = 0):
 		tween_in.interpolate_property(self, "volume_db", volume_db, 0, fade_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 		tween_in.start()
 	else:
-		volume_db = 0
+		volume_db = -80
 	set_stream(music)
 	play()
 	if fade_time == 0:

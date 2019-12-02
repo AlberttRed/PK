@@ -88,7 +88,7 @@ func get_pp():
 	
 func get_damage(from,to,r = null):
 	var Damage
-	var Modifier
+	#var Modifier
 	var Att = from.get_attack()
 	var Def = to.get_defense()
 	var STAB = 1.0

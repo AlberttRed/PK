@@ -13,9 +13,9 @@ func _ready():
 	if has_node("exp_bar"):
 		exp_bar = get_node("exp_bar/exp")
 
-func init(max_value, current_value):
-	self.max_value = max_value
-	self.current_value = clamp(current_value, 0, max_value)
+func init(_max_value, _current_value):
+	self.max_value = _max_value
+	self.current_value = clamp(_current_value, 0, _max_value)
 	
 	set_health()
 	
