@@ -11,6 +11,9 @@ func _ready():
 	GAME_DATA.EVENTS_LOADED = $CanvasModulate/Eventos_
 	ProjectSettings.set("Global_World", self)
 	ProjectSettings.set("Eventos", get_node("CanvasModulate/Eventos_"))
+	
+	GUI.start_intro()
+	
 	GAME_DATA.ACTUAL_MAP = load(actual_scene).instance()
 	#ProjectSettings.set("Actual_Map", load(actual_scene).instance())
 	print(GAME_DATA.ACTUAL_MAP.get_node("Area2D_").get_name())

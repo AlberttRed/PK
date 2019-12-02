@@ -12,6 +12,8 @@ onready var chs = get_node("CHOICES")
 onready var party = get_node("PARTY")
 
 func _ready():
+	$INTRO.connect("continue", GAME_DATA, "load_game")
+	$INTRO.connect("new_game", GAME_DATA, "new_game")
 	add_user_signal("finished")
 	add_user_signal("input")
 	menu.connect("pokemon", self, "show_party")
@@ -68,7 +70,7 @@ func show_menu():
 	#menu.set_process(false)
 
 func is_visible():
-	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible() || party.is_visible()#|| options.is_visible()
+	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible() || party.is_visible() || $INTRO.is_visible()#|| options.is_visible()
 
 #func _on_text_speed_changed(speed):
 #	get_node("MSG/Timer 2").set_wait_time(CONST.TEXT_SPEEDS[speed])
@@ -105,3 +107,7 @@ func next():
 func save():
 	print("SAVING")
 	GAME_DATA.save_game()
+	
+func start_intro():
+	$INTRO.start()
+	

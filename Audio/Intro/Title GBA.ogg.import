@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/Title GBA.ogg-9c1cf39578ba3632d6891e31cdcdab0e.oggstr"
+
+[deps]
+
+source_file="res://Audio/Intro/Title GBA.ogg"
+dest_files=[ "res://.import/Title GBA.ogg-9c1cf39578ba3632d6891e31cdcdab0e.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -3,7 +3,7 @@ extends Node
 
 const Pokemon = preload('res://Logics/DB/pokemon.gd')
 const Trainer = preload('res://Logics/event/Trainer.gd')
-
+const Save_Directory = "C://Users//alber//Documents//GitHubProjects//"
 
 var player_name = "RED"
 var trainer: Trainer
@@ -60,7 +60,7 @@ func _ready():
 	for p in party:
 		p.dni = player_id
 		p.original_trainer = player_name
-	
+
 # Note: This can be called from anywhere inside the tree. This function is
 # path independent.
 # Go through everything in the persist category and ask them to return a
@@ -68,12 +68,12 @@ func _ready():
 func save_game():
 	var save_game = File.new()
 	var events_tosave = []
-	save_game.open("C://Users//alber//Documents//GitHubProjects//savegame.save", File.WRITE) #C:\Users\aquer\Documents\G\savegame.save
-	
+	save_game.open(Save_Directory + "savegame.save", File.WRITE) #C:\Users\aquer\Documents\G\savegame.save
+
 	for e in EVENTS_LOADED.get_children():
 		if e.get_name() != "Player":
 			events_tosave.append(e.call("save"))
-	
+
 	var game_data = {
 		"filename" : get_filename(),
 		"parent" : get_parent().get_path(),
@@ -84,20 +84,26 @@ func save_game():
 		"EVENTS_LOADED" : events_tosave
 	}
 	save_game.store_line(to_json(game_data))
-	
+
 #	var save_nodes = get_tree().get_nodes_in_group("Persist")
 #	for i in save_nodes:
 #		var node_data = i.call("save");
 #		save_game.store_line(to_json(node_data))
 	save_game.close()
-	
+
+func save_exists():
+	var save_game = File.new()
+	if save_game.file_exists(Save_Directory + "savegame.save"):
+		return true
+	return false
+
 # Note: This can be called from anywhere inside the tree. This function
 # is path independent.
 func load_game():
 	var save_game = File.new()
 	#"C://Users//aquer//Documents//G//savegame.save"
 	#"user://savegame.save"
-	if not save_game.file_exists("C://Users//alber//Documents//GitHubProjects//savegame.save"):
+	if not save_game.file_exists(Save_Directory + "savegame.save"):
 		print("LOADING ERROR: No existex el fitxer.")
 		return # Error! We don't have a save to load.
 	# We need to revert the game state so we're not cloning objects
@@ -111,15 +117,15 @@ func load_game():
 #		var data = save_game.get_as_text()
 		#var current_line = parse_json(save_game.get_line())
 		#ACTUAL_MAP = load(current_line["filename"]).instance()
-		
+
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	save_game.open("C://Users//alber//Documents//GitHubProjects//savegame.save", File.READ)
+	save_game.open(Save_Directory + "savegame.save", File.READ)
 	if not save_game.eof_reached():
 		var data = parse_json(save_game.get_as_text())
 		PLAYER = load(data["Player"]["filename"]).instance()
 		PLAYER.position = Vector2(float(data["Player"]["x_position"]), float(data["Player"]["x_position"]))
-		
+
 		ACTUAL_MAP = load(data["ACTUAL_MAP"]["filename"]).instance()
 		ACTUAL_MAP.strength_on = bool(data["ACTUAL_MAP"]["strength_on"])
 		EVENTS_LOADED = ProjectSettings.get("Global_World").get_node("CanvasModulate/Eventos_")
@@ -134,8 +140,6 @@ func load_game():
 				print("Evento cargado:")
 				print(data["EVENTS_LOADED"][i]["name"])
 				i=i+1
-
-
 #
 #	while not save_game.eof_reached():
 #
@@ -150,3 +154,18 @@ func load_game():
 #				continue
 #			new_object.set(i, current_line[i])
 	save_game.close()
+	
+func new_game():
+	print("NEW GAME")
+	ACTUAL_MAP = load(ProjectSettings.get("Global_World").actual_scene).instance()
+	#ProjectSettings.set("Actual_Map", load(actual_scene).instance())
+	print(GAME_DATA.ACTUAL_MAP.get_node("Area2D_").get_name())
+	#print(ProjectSettings.get("Actual_Map").get_node("Area2D_").get_name())
+	ProjectSettings.get("Global_World").Player.set_position(ProjectSettings.get("Global_World").initial_position)
+	ACTUAL_MAP.load_map(false)
+	#ProjectSettings.get("Actual_Map").load_map(false)
+	yield(ACTUAL_MAP, "loaded")
+	#yield(ProjectSettings.get("Actual_Map"), "loaded")
+	$AudioStreamPlayer2D.play_music(ACTUAL_MAP.music)
+	
+	
