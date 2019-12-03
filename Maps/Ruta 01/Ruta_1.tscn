@@ -1296,6 +1296,7 @@ tile_data = PoolIntArray( -2031636, 10, 0, -2031634, 10, 0, -2031632, 10, 0, -20
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="NPC" parent="Eventos_" instance=ExtResource( 4 )]
+editor/display_folded = true
 position = Vector2( -111.889, 80.9476 )
 
 [node name="event_page" parent="Eventos_/NPC/pages" index="0" instance=ExtResource( 5 )]

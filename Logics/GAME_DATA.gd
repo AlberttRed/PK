@@ -4,7 +4,7 @@ extends Node
 const Pokemon = preload('res://Logics/DB/pokemon.gd')
 const Trainer = preload('res://Logics/event/Trainer.gd')
 #C://Users//aquer//Documents//G//    C://Users//alber//Documents//
-const Save_Directory = "C://Users//alber//Documents//"
+const Save_Directory = "C://Users//aquer//Documents//G//"
 
 var player_name = "RED"
 var trainer: Trainer
@@ -72,8 +72,8 @@ func save_game():
 	save_game.open(Save_Directory + "savegame.save", File.WRITE) #C:\Users\aquer\Documents\G\savegame.save
 
 	for e in EVENTS_LOADED.get_children():
-		if e.get_name() != "Player":
-			print(e.get_name() + ": " + str(e.actual_position))
+		if e.get_name() != "Player": #and e.is_in_group(ACTUAL_MAP.get_name()):
+			print(e.get_name() + ": " + str(e.get_groups()))
 			events_tosave.append(e.call("save"))
 
 	var game_data = {
@@ -135,16 +135,19 @@ func load_game():
 		EVENTS_LOADED = ProjectSettings.get("Global_World").get_node("CanvasModulate/Eventos_")
 
 		var i = 0
-		for e in EVENTS_LOADED.get_children():
-			if e.get_name() != "Player":
-				e.position = Vector2(float(data["EVENTS_LOADED"][i]["x_position"]), float(data["EVENTS_LOADED"][i]["y_position"]))
-				print(EVENTS_LOADED.get_children().size())
-				print("Evento actual:")
-				print(e.get_name())
-				print("Evento cargado:")
-				print(data["EVENTS_LOADED"][i]["name"])
-				i=i+1
-#
+		if EVENTS_LOADED.get_children() != []:
+			for e in EVENTS_LOADED.get_children():
+				if e.get_name() != "Player" and e.is_in_group(ACTUAL_MAP.get_name()):
+					e.position = Vector2(float(data["EVENTS_LOADED"][i]["x_position"]), float(data["EVENTS_LOADED"][i]["y_position"]))
+					print(EVENTS_LOADED.get_children().size())
+					print("Evento actual:")
+					print(e.get_name())
+					print("Evento cargado:")
+					print(data["EVENTS_LOADED"][i]["name"])
+					i=i+1
+		else:
+			print("No hi ha events guardats en el save.")
+		
 #	while not save_game.eof_reached():
 #
 #		var current_line = parse_json(save_game.get_line())

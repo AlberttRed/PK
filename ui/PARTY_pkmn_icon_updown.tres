@@ -4,7 +4,7 @@
 resource_name = "pkmn_icon_updown"
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("./pkmn:position")
+tracks/0/path = NodePath("pkmn:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -27,4 +27,3 @@ tracks/1/keys = {
 "update": 1,
 "values": [ 1, 1 ]
 }
-

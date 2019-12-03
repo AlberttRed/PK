@@ -1,0 +1,238 @@
+[gd_scene load_steps=29 format=2]
+
+[ext_resource path="res://ui/Pictures/bagbg1.png" type="Texture" id=1]
+[ext_resource path="res://ui/BAG.gd" type="Script" id=2]
+[ext_resource path="res://ui/Pictures/bagbg2.png" type="Texture" id=3]
+[ext_resource path="res://ui/Pictures/bagbg3.png" type="Texture" id=4]
+[ext_resource path="res://ui/Pictures/bagbg4.png" type="Texture" id=5]
+[ext_resource path="res://ui/Pictures/bagbg5.png" type="Texture" id=6]
+[ext_resource path="res://ui/Pictures/bagbg6.png" type="Texture" id=7]
+[ext_resource path="res://ui/Pictures/bagbg7.png" type="Texture" id=8]
+[ext_resource path="res://ui/Pictures/bagbg8.png" type="Texture" id=9]
+[ext_resource path="res://font/pkmnfl.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://ui/Pictures/bag1.PNG" type="Texture" id=11]
+[ext_resource path="res://ui/Pictures/bagSlider.png" type="Texture" id=12]
+[ext_resource path="res://ui/Pictures/leftarrow.png" type="Texture" id=13]
+[ext_resource path="res://ui/Pictures/rightarrow.png" type="Texture" id=14]
+[ext_resource path="res://ui/Pictures/bagSel.png" type="Texture" id=15]
+[ext_resource path="res://Sprites/Icons/itemBack.png" type="Texture" id=16]
+[ext_resource path="res://ui/MSG.tscn" type="PackedScene" id=17]
+[ext_resource path="res://ui/choice 1_old.png" type="Texture" id=18]
+[ext_resource path="res://font/pkmnem.ttf" type="DynamicFontData" id=19]
+[ext_resource path="res://ui/CHOICES.tscn" type="PackedScene" id=20]
+[ext_resource path="res://ui/choice.tscn" type="PackedScene" id=21]
+
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 1 )
+region_rect = Rect2( 0, 0, 512, 384 )
+
+[sub_resource type="DynamicFont" id=23]
+size = 22
+extra_spacing_top = 5
+font_data = ExtResource( 10 )
+
+[sub_resource type="StyleBoxTexture" id=8]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 32.0
+margin_right = 32.0
+margin_top = 32.0
+margin_bottom = 32.0
+
+[sub_resource type="DynamicFont" id=9]
+size = 26
+outline_color = Color( 0.337255, 0.12549, 0.12549, 1 )
+use_mipmaps = true
+font_data = ExtResource( 19 )
+
+[sub_resource type="StyleBoxTexture" id=10]
+texture = ExtResource( 18 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 32.0
+margin_right = 32.0
+margin_top = 32.0
+margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id=11]
+margin_left = 12.0
+expand_margin_top = 2.0
+axis_stretch_vertical = 2
+draw_center = false
+
+[sub_resource type="DynamicFont" id=12]
+size = 24
+extra_spacing_top = 5
+font_data = ExtResource( 10 )
+
+[node name="BAG" type="Panel"]
+margin_left = 0.371427
+margin_top = -0.229492
+margin_right = 512.371
+margin_bottom = 383.771
+custom_styles/panel = SubResource( 1 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_lock_": true
+}
+sprite_Bag1 = ExtResource( 1 )
+sprite_Bag2 = ExtResource( 3 )
+sprite_Bag3 = ExtResource( 4 )
+sprite_Bag4 = ExtResource( 5 )
+sprite_Bag5 = ExtResource( 6 )
+sprite_Bag6 = ExtResource( 7 )
+sprite_Bag7 = ExtResource( 8 )
+sprite_Bag8 = ExtResource( 9 )
+
+[node name="Categoria" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 183.0
+margin_right = 175.0
+margin_bottom = 208.0
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CATEGORIA"
+align = 1
+
+[node name="Item" type="Label" parent="."]
+margin_left = 210.0
+margin_top = 19.0
+margin_right = 447.0
+margin_bottom = 50.0
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "CERRAR"
+
+[node name="Descripcion" type="Label" parent="."]
+margin_left = 92.0
+margin_top = 295.0
+margin_right = 474.0
+margin_bottom = 376.0
+custom_fonts/font = SubResource( 23 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "DESCRIPCIÓN"
+
+[node name="Mochila_Sprite" type="Sprite" parent="."]
+position = Vector2( 88.7812, 83.8941 )
+texture = ExtResource( 11 )
+
+[node name="Slider" type="Sprite" parent="."]
+position = Vector2( 487.368, 90.5263 )
+texture = ExtResource( 12 )
+
+[node name="L_Arrow" type="Sprite" parent="."]
+position = Vector2( 17.3984, 88.8973 )
+texture = ExtResource( 13 )
+vframes = 8
+
+[node name="R_Arrow" type="Sprite" parent="."]
+position = Vector2( 159.122, 88.8973 )
+texture = ExtResource( 14 )
+vframes = 8
+
+[node name="Select" type="Sprite" parent="."]
+position = Vector2( 325.263, 32.6316 )
+texture = ExtResource( 15 )
+
+[node name="Item_Sprite" type="Sprite" parent="."]
+position = Vector2( 48, 337 )
+texture = ExtResource( 16 )
+
+[node name="MSG" parent="." instance=ExtResource( 17 )]
+editor/display_folded = true
+visible = false
+margin_top = 318.0
+margin_right = 370.0
+custom_styles/panel = SubResource( 8 )
+script = null
+
+[node name="Label" parent="MSG" index="0"]
+margin_left = 17.9383
+margin_right = 459.938
+custom_fonts/normal_font = SubResource( 9 )
+text = "Elige a un Pokémon."
+
+[node name="Label2" parent="MSG/Label" index="1"]
+text = "Elige a un Pokémon."
+
+[node name="next" parent="MSG" index="1"]
+editor/display_folded = true
+visible = false
+
+[node name="AnimationPlayer" parent="MSG/next" index="0"]
+root_node = NodePath("")
+
+[node name="ACTIONS" parent="." instance=ExtResource( 20 )]
+editor/display_folded = true
+visible = false
+margin_left = 368.445
+margin_top = 202.893
+margin_right = 512.445
+margin_bottom = 383.893
+custom_styles/panel = SubResource( 10 )
+script = null
+
+[node name="DATOS" parent="ACTIONS/VBoxContainer" index="0" instance=ExtResource( 21 )]
+editor/display_folded = true
+margin_right = 116.0
+margin_bottom = 35.0
+focus_neighbour_bottom = NodePath("../MOVER")
+focus_mode = 2
+custom_styles/panel = SubResource( 11 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/DATOS" index="0"]
+text = "DATOS"
+
+[node name="MOVER" parent="ACTIONS/VBoxContainer" index="1" instance=ExtResource( 21 )]
+editor/display_folded = true
+margin_top = 39.0
+margin_right = 116.0
+margin_bottom = 74.0
+focus_neighbour_top = NodePath("../DATOS")
+focus_neighbour_bottom = NodePath("../OBJETO")
+focus_mode = 2
+custom_styles/panel = SubResource( 11 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/MOVER" index="0"]
+custom_fonts/font = SubResource( 12 )
+text = "MOVER"
+
+[node name="OBJETO" parent="ACTIONS/VBoxContainer" index="2" instance=ExtResource( 21 )]
+editor/display_folded = true
+margin_top = 78.0
+margin_right = 116.0
+margin_bottom = 113.0
+focus_neighbour_top = NodePath("../MOVER")
+focus_neighbour_bottom = NodePath("../SALIR")
+focus_mode = 2
+custom_styles/panel = SubResource( 11 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/OBJETO" index="0"]
+text = "OBJETO"
+
+[node name="SALIR" parent="ACTIONS/VBoxContainer" index="3" instance=ExtResource( 21 )]
+editor/display_folded = true
+margin_top = 117.0
+margin_right = 116.0
+margin_bottom = 155.0
+focus_neighbour_top = NodePath("../OBJETO")
+focus_mode = 2
+custom_styles/panel = SubResource( 11 )
+
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/SALIR" index="0"]
+text = "SALIR"
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/DATOS" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/MOVER" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/OBJETO" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/SALIR" to="." method="_on_actions_focus_entered"]
+
+[editable path="MSG"]
+
+[editable path="ACTIONS"]
+
+[editable path="ACTIONS/VBoxContainer/DATOS"]
+
+[editable path="ACTIONS/VBoxContainer/MOVER"]
+
+[editable path="ACTIONS/VBoxContainer/OBJETO"]
+
+[editable path="ACTIONS/VBoxContainer/SALIR"]

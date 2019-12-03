@@ -8,6 +8,7 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
+play_intro = true
 actual_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
 initial_position = Vector2( -16, -48 )
 

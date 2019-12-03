@@ -5,7 +5,7 @@ resource_name = "pkmn_icon"
 length = 0.8
 loop = true
 tracks/0/type = "value"
-tracks/0/path = NodePath("./pkmn:frame")
+tracks/0/path = NodePath("pkmn:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -17,7 +17,7 @@ tracks/0/keys = {
 "values": [ 1, 0 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("./pkmn:position")
+tracks/1/path = NodePath("pkmn:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -28,4 +28,3 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 57.6, 34 ), Vector2( 57.6, 34 ) ]
 }
-

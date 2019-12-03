@@ -35,7 +35,7 @@ func _process(delta):
 			moving = true
 			Target.being_controlled = true
 			while i < movesArray.size():
-				while !Target.can_move:# and !Target.jumping:
+				while !Target.can_move and !Target.jumping:
 					yield(get_tree(), "idle_frame")
 				if movesArray[i].begins_with("wait"):					
 					var t = Timer.new()

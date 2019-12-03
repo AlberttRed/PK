@@ -127,7 +127,7 @@ func jump(cells_jump):
 		#if !direction.is_colliding():
 		jumping_frame = $Sprite.frame+1
 		jumping = true
-		speed_animation = speed_animation/2.0
+		speed_animation = speed_animation/1.2
 		#$AnimationPlayer.playback_speed = $AnimationPlayer.playback_speed/2.0
 		#SPEED = SPEED/2
 		tile_size = tile_size#*cells_jump
