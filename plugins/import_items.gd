@@ -20,7 +20,7 @@ func _run():
 	var names = PoolStringArray()
 	names.push_back("None")
 	
-	for i in range(1005):  #maxim son 721
+	for i in range(49):  #maxim son 1005
 
 		var text = get_json("/api/v2/item/"+str(i+1)+"/")
 #		var h = HTTPRequest.new()
@@ -34,19 +34,54 @@ func _run():
 		container.add_child(item)
 		item.set_owner(scn)
 		var d = parse_json(text)
-		item.set_name(str(d["id"]) + " - " + d["names"][4]["name"])
+		item.set_name(str(d["id"]) + " - " + str(d["names"][4]["name"]))
 		#var d = Dictionary()
 
-		print(d["names"][4]["name"])
+		print(str(d["id"]))
 		
-		item.id=d["id"]
+		item.id=int(d["id"])
 		item.internal_name=d["name"]
+		item.cost=int(d["cost"])
+		item.category=int(d["category"]["url"].split("/")[6])
 		item.Name=d["names"][4]["name"]
 		item.description = d["flavor_text_entries"][4]["text"]
-		
-		
-		print("loaded item: " + item.get_name())
+		var text2 = get_json("/api/v2/item-category/"+str(item.category)+"/")
+		if (text2 == null || text2 == "" || text2 == "Not Found"):
+			item.category = 0
+		else:
+			var d2 = parse_json(text2)
+			item.bag_pocket = int(d2["pocket"]["url"].split("/")[6])
 	
+		for a in d["attributes"]:
+			match str(a["name"]):
+				"countable":
+					item.countable = true
+				"consumable":
+					item.consumable = true
+				"usable-overworld":
+					item.overworld = true
+				"usable-in-battle":
+					item.battle = true
+				"holdable":
+					item.holdable = true
+				"holdable-passive":
+					item.holdable_passive = true
+				"holdable-active":
+					item.holdable_active = true
+				"underground":
+					item.underground = true
+#	var bag_pockets = ""
+#	for x in range(7):
+#		var text2 = get_json("/api/v2/item-pocket/"+str(x+1)+"/")
+#		if (text2 == null || text2 == "" || text2 == "Not Found"):
+#			print ("skipping specie #"+str(x+1))
+#			continue
+#		else:
+#			var d2 = parse_json(text2)
+#			bag_pockets = bag_pockets + str(d2["names"][1]["name"]).to_upper().replace(" ", "_") + ", "
+#			print("const " + str(d2["names"][1]["name"]).to_upper().replace(" ", "_") + " = " + str(x+1))
+#	print(bag_pockets)
+
 
 
 
@@ -90,8 +125,8 @@ func get_json(uri):
 		else:
 			#print(chunk.get_string_from_ascii())
 			rb = rb + chunk
-	print("bytes got: ", rb.size())
-	var text = rb.get_string_from_ascii()
+	#print("bytes got: ", rb.size())
+	var text = rb.get_string_from_utf8()
 	return text
 	
 	

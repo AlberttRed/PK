@@ -33,4 +33,34 @@ func _ready():
 	var move_container = get_node("pokemon_moves")
 	for move in move_container.get_children():
 		moves.push_back(move)
-		
+
+func add_item(item_id, cant = 1):
+	var item = get_item(item_id)
+	print("ADDING ITEM: " + str(item.Name))
+	for i in GAME_DATA.ITEMS:
+		if i.size() > 0 and i[0].id == item.id:
+			for x in range(cant):
+				x=x
+				i.append(item)
+			return
+	var new_slot = []
+	for x in range(cant):
+		x=x
+		new_slot.push_back(item)
+	GAME_DATA.ITEMS.push_back(new_slot)
+	
+			
+func get_item(item):
+	if typeof(item) == TYPE_INT:
+		return $items.get_children()[item-1]
+	elif typeof(item) == TYPE_STRING:
+		for i in $items.get_children():
+			if item in i.get_name().split("-")[1]:
+				return i
+	return null
+	
+func print_items():
+	
+	for i in GAME_DATA.ITEMS:
+		if i.size() > 0:
+			print(str(i.size()) + " " + i[0].Name)

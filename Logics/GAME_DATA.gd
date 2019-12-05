@@ -11,6 +11,7 @@ var trainer: Trainer
 var medals = []
 var player_id = randi() % 999999 + 1
 var actual_position
+var ITEMS = []
 
 var ACTUAL_MAP
 var PREVIOUS_MAP

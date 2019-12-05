@@ -487,7 +487,62 @@ class STATS:
 	const ATAESP = 3
 	const DEFESP = 4
 	const VEL = 5
+	
+class ITEM_CATEGORIES:
+	const STAT_BOOSTS = 1
+	const EFFORT_DROP = 2
+	const MEDICINE = 3
+	const OTHER = 4
+	const IN_A_PINCH = 5
+	const PICKY_HEALING = 6
+	const TYPE_PROTECTION = 7
+	const BAKING_ONLY = 8
+	const COLLECTIBLES = 9
+	const EVOLUTION = 10
+	const SPELUNKING = 11
+	const HELD_ITEMS = 12
+	const CHOICE = 13
+	const EFFORT_TRAINING = 14
+	const BAD_HELD_ITEMS = 15
+	const TRAINING = 16
+	const PLATES = 17
+	const SPECIES_SPECIFIC = 18
+	const TYPE_ENHANCEMENT = 19
+	const EVENT_ITEMS = 20
+	const GAMEPLAY = 21
+	const PLOT_ADVANCEMENT = 22
+	const UNUSED = 23
+	const LOOT = 24
+	const ALL_MAIL = 25
+	const VITAMINS = 26
+	const HEALING = 27
+	const PP_RECOVERY = 28
+	const REVIVAL = 29
+	const STATUS_CURES = 30
+	const MULCH = 32
+	const SPECIAL_BALLS = 33
+	const STANDARD_BALLS = 34
+	const DEX_COMPLETION = 35
+	const SCARVES = 36
+	const ALL_MACHINES = 37
+	const FLUTES = 38
+	const APRICORN_BALLS = 39
+	const APRICORN_BOX = 40
+	const DATA_CARDS = 41
+	const JEWELS = 42
+	const MIRACLE_SHOOTER = 43
+	const MEGA_STONES = 44
+	const MEMORIES = 45
 
+class BAG_POCKETS:
+	const ITEMS = 1
+	const MEDICINE = 2
+	const POKE_BALLS = 3
+	const TMS_AND_HMS = 4
+	const BERRIES = 5
+	const MAIL = 6
+	const BATTLE_ITEMS = 7
+	const KEY_ITEMS = 8
 func ready():
 	# Initialization here
 	pass

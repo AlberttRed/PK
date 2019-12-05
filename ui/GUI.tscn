@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://ui/GUI.gd" type="Script" id=1]
 [ext_resource path="res://ui/BATTLE.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://ui/PARTY.tscn" type="PackedScene" id=6]
 [ext_resource path="res://ui/INTRO.tscn" type="PackedScene" id=7]
 [ext_resource path="res://ui/panel_MAIN_MENU.tres" type="StyleBox" id=8]
+[ext_resource path="res://ui/BAG.tscn" type="PackedScene" id=9]
 
 [node name="GUI" type="CanvasLayer"]
 script = ExtResource( 1 )
@@ -29,5 +30,7 @@ visible = false
 visible = false
 style_selected = ExtResource( 8 )
 
+[node name="BAG" parent="." instance=ExtResource( 9 )]
+visible = false
 
 [editable path="MSG"]

@@ -10,6 +10,7 @@ onready var battle = get_node("BATTLE")
 onready var player=GAME_DATA.PLAYER
 onready var chs = get_node("CHOICES")
 onready var party = get_node("PARTY")
+onready var bag = get_node("BAG")
 
 func _ready():
 	$INTRO.connect("continue", GAME_DATA, "load_game")
@@ -18,6 +19,7 @@ func _ready():
 	add_user_signal("input")
 	menu.connect("pokemon", self, "show_party")
 	menu.connect("save", self, "save")
+	menu.connect("bag", self, "show_bag")
 #	options.connect("text_speed_changed", self, "_on_text_speed_changed")
 	#msg.connect("input", self, "send_input")
 #
@@ -70,7 +72,7 @@ func show_menu():
 	#menu.set_process(false)
 
 func is_visible():
-	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible() || party.is_visible() || $INTRO.is_visible()#|| options.is_visible()
+	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible() || party.is_visible() || $INTRO.is_visible() || bag.is_visible()#|| options.is_visible()
 
 #func _on_text_speed_changed(speed):
 #	get_node("MSG/Timer 2").set_wait_time(CONST.TEXT_SPEEDS[speed])
@@ -85,6 +87,18 @@ func is_visible():
 #
 #func send_input():
 #	emit_signal("input")
+
+func show_bag():
+	menu.hide()
+	menu.set_process(false)
+	bag.show_bag()
+	bag.set_process(true)
+	yield(bag,"salir")
+	bag.hide()
+	bag.set_process(false)
+	menu.show()
+	menu.set_process(true)
+
 	
 func show_party():
 	menu.hide()

@@ -6,12 +6,12 @@ export(StyleBox) var style_empty
 
 onready var entries = [get_node("VBoxContainer/Pokedex"),get_node("VBoxContainer/Pokemon"),get_node("VBoxContainer/Mochila"),get_node("VBoxContainer/Jugador"),get_node("VBoxContainer/Guardar"),get_node("VBoxContainer/Opciones"),get_node("VBoxContainer/Salir")]
 
-var signals = ["pokedex","pokemon","item","player","save","option","exit"]
+var signals = ["pokedex","pokemon","bag","player","save","option","exit"]
 var start
 func _init():
 	add_user_signal("pokedex")
 	add_user_signal("pokemon")
-	add_user_signal("item")
+	add_user_signal("bag")
 	add_user_signal("player")
 	add_user_signal("save")
 	add_user_signal("option")

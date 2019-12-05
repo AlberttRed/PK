@@ -17,6 +17,11 @@ func _init():
 	
 func _ready():
 	._ready()
+	DB.add_item(1)
+	DB.add_item(5)
+	DB.add_item(1)
+	DB.add_item("Hiperpoción", 5)
+	DB.add_item("Master Ball")
 	GAME_DATA.trainer = trainer
 	GAME_DATA.party = $Trainer.get_party()
 	$Sprite.visible = !Transparent
@@ -38,9 +43,10 @@ func _input(event):
 		set_running(true)
 		print("RUNNING")
 		#GAME_DATA.load_game()
-		for e in GAME_DATA.EVENTS_LOADED.get_children():
-			print(e.get_name() + " " + str(e.actual_position))
+#		for e in GAME_DATA.EVENTS_LOADED.get_children():
+#			print(e.get_name() + " " + str(e.actual_position))
 		print_player_variables()
+		DB.print_items()
 	elif event.is_action_released("ui_cancel") and !GUI.is_visible():
 		print("NOT RUNNING")
 		set_running(false)
