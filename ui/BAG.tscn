@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=42 format=2]
 
 [ext_resource path="res://ui/Pictures/bagbg1.png" type="Texture" id=1]
 [ext_resource path="res://ui/BAG.gd" type="Script" id=2]
@@ -9,18 +9,19 @@
 [ext_resource path="res://ui/Pictures/bagbg6.png" type="Texture" id=7]
 [ext_resource path="res://ui/Pictures/bagbg7.png" type="Texture" id=8]
 [ext_resource path="res://ui/Pictures/bagbg8.png" type="Texture" id=9]
-[ext_resource path="res://font/pkmnfl.ttf" type="DynamicFontData" id=10]
-[ext_resource path="res://ui/Pictures/bag1.PNG" type="Texture" id=11]
-[ext_resource path="res://ui/Pictures/bagSlider.png" type="Texture" id=12]
-[ext_resource path="res://ui/Pictures/leftarrow.png" type="Texture" id=13]
-[ext_resource path="res://ui/Pictures/rightarrow.png" type="Texture" id=14]
-[ext_resource path="res://ui/Pictures/bagSel.png" type="Texture" id=15]
-[ext_resource path="res://Sprites/Icons/itemBack.png" type="Texture" id=16]
-[ext_resource path="res://ui/MSG.tscn" type="PackedScene" id=17]
-[ext_resource path="res://ui/choice 1_old.png" type="Texture" id=18]
-[ext_resource path="res://font/pkmnem.ttf" type="DynamicFontData" id=19]
-[ext_resource path="res://ui/CHOICES.tscn" type="PackedScene" id=20]
-[ext_resource path="res://ui/choice.tscn" type="PackedScene" id=21]
+[ext_resource path="res://ui/selarrow.png" type="Texture" id=10]
+[ext_resource path="res://font/pkmnfl.ttf" type="DynamicFontData" id=11]
+[ext_resource path="res://ui/Pictures/bag1.PNG" type="Texture" id=12]
+[ext_resource path="res://ui/Pictures/bagSlider.png" type="Texture" id=13]
+[ext_resource path="res://ui/Pictures/leftarrow.png" type="Texture" id=14]
+[ext_resource path="res://ui/Pictures/rightarrow.png" type="Texture" id=15]
+[ext_resource path="res://ui/Pictures/bagSel.png" type="Texture" id=16]
+[ext_resource path="res://Sprites/Icons/itemBack.png" type="Texture" id=17]
+[ext_resource path="res://ui/MSG.tscn" type="PackedScene" id=18]
+[ext_resource path="res://ui/choice 1_old.png" type="Texture" id=19]
+[ext_resource path="res://font/pkmnem.ttf" type="DynamicFontData" id=20]
+[ext_resource path="res://ui/CHOICES.tscn" type="PackedScene" id=21]
+[ext_resource path="res://ui/choice.tscn" type="PackedScene" id=22]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 1 )
@@ -58,43 +59,63 @@ region_rect = Rect2( 0, 0, 512, 384 )
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
-[sub_resource type="DynamicFont" id=10]
-size = 22
-extra_spacing_top = 5
-font_data = ExtResource( 10 )
+[sub_resource type="StyleBoxEmpty" id=10]
 
 [sub_resource type="StyleBoxTexture" id=11]
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 48, 48 )
-margin_left = 32.0
-margin_right = 32.0
-margin_top = 32.0
-margin_bottom = 32.0
-
-[sub_resource type="DynamicFont" id=12]
-size = 26
-outline_color = Color( 0.337255, 0.12549, 0.12549, 1 )
-use_mipmaps = true
-font_data = ExtResource( 19 )
-
-[sub_resource type="StyleBoxTexture" id=13]
-texture = ExtResource( 18 )
-region_rect = Rect2( 0, 0, 48, 48 )
-margin_left = 32.0
-margin_right = 32.0
-margin_top = 32.0
-margin_bottom = 32.0
-
-[sub_resource type="StyleBoxTexture" id=14]
+texture = ExtResource( 10 )
+region_rect = Rect2( 0, 0, 14, 32 )
 margin_left = 12.0
 expand_margin_top = 2.0
 axis_stretch_vertical = 2
 draw_center = false
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=12]
 size = 24
 extra_spacing_top = 5
-font_data = ExtResource( 10 )
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=13]
+size = 24
+extra_spacing_top = 5
+font_data = ExtResource( 11 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 24
+extra_spacing_top = 5
+font_data = ExtResource( 11 )
+
+[sub_resource type="StyleBoxTexture" id=15]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 32.0
+margin_right = 32.0
+margin_top = 32.0
+margin_bottom = 32.0
+
+[sub_resource type="DynamicFont" id=16]
+size = 26
+outline_color = Color( 0.337255, 0.12549, 0.12549, 1 )
+use_mipmaps = true
+font_data = ExtResource( 20 )
+
+[sub_resource type="StyleBoxTexture" id=17]
+texture = ExtResource( 19 )
+region_rect = Rect2( 0, 0, 48, 48 )
+margin_left = 32.0
+margin_right = 32.0
+margin_top = 32.0
+margin_bottom = 32.0
+
+[sub_resource type="StyleBoxTexture" id=18]
+margin_left = 12.0
+expand_margin_top = 2.0
+axis_stretch_vertical = 2
+draw_center = false
+
+[sub_resource type="DynamicFont" id=19]
+size = 24
+extra_spacing_top = 5
+font_data = ExtResource( 11 )
 
 [node name="BAG" type="Panel"]
 margin_left = 0.371427
@@ -114,13 +135,15 @@ sprite_Bag5 = SubResource( 6 )
 sprite_Bag6 = SubResource( 7 )
 sprite_Bag7 = SubResource( 8 )
 sprite_Bag8 = SubResource( 9 )
+style_actions_empty = SubResource( 10 )
+style_actions_selected = SubResource( 11 )
 
 [node name="Categoria" type="Label" parent="."]
 margin_left = 7.0
 margin_top = 183.0
 margin_right = 175.0
 margin_bottom = 208.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CATEGORIA"
 align = 1
@@ -128,25 +151,26 @@ align = 1
 [node name="Descripcion" type="Label" parent="."]
 margin_left = 92.0
 margin_top = 295.0
-margin_right = 474.0
+margin_right = 479.0
 margin_bottom = 376.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "DESCRIPCIÓN"
+custom_constants/line_spacing = 7
+text = "La Poké Ball definitiva. Atrapa cualquier Pokémon salvaje y no falla nunca."
+autowrap = true
 
 [node name="ItemList" type="VBoxContainer" parent="."]
-editor/display_folded = true
-margin_left = 192.0
+margin_left = 195.0
 margin_top = 16.0
 margin_right = 456.0
 margin_bottom = 272.0
 
 [node name="Item" type="Label" parent="ItemList"]
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 28.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CERRAR MOCHILA"
 
@@ -157,17 +181,17 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Item2" type="Label" parent="ItemList"]
 margin_top = 32.0
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 60.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Quantity" type="Label" parent="ItemList/Item2"]
@@ -177,17 +201,17 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Item3" type="Label" parent="ItemList"]
 margin_top = 64.0
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 92.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Quantity" type="Label" parent="ItemList/Item3"]
@@ -197,17 +221,17 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Item4" type="Label" parent="ItemList"]
 margin_top = 96.0
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 124.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Quantity" type="Label" parent="ItemList/Item4"]
@@ -217,17 +241,17 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Item5" type="Label" parent="ItemList"]
 margin_top = 128.0
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 156.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Quantity" type="Label" parent="ItemList/Item5"]
@@ -237,17 +261,17 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Item6" type="Label" parent="ItemList"]
 margin_top = 160.0
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 188.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Quantity" type="Label" parent="ItemList/Item6"]
@@ -257,17 +281,17 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Item7" type="Label" parent="ItemList"]
 margin_top = 192.0
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 220.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Quantity" type="Label" parent="ItemList/Item7"]
@@ -277,17 +301,17 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Item8" type="Label" parent="ItemList"]
 margin_top = 224.0
-margin_right = 264.0
+margin_right = 261.0
 margin_bottom = 256.0
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 
 [node name="Quantity" type="Label" parent="ItemList/Item8"]
@@ -297,52 +321,51 @@ margin_right = 259.53
 margin_bottom = 25.7947
 size_flags_horizontal = 3
 size_flags_vertical = 7
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 align = 2
 
 [node name="Mochila_Sprite" type="Sprite" parent="."]
 position = Vector2( 88.7812, 83.8941 )
-texture = ExtResource( 11 )
+texture = ExtResource( 12 )
 
 [node name="Slider" type="Sprite" parent="."]
 position = Vector2( 487.368, 60 )
-texture = ExtResource( 12 )
+texture = ExtResource( 13 )
 
 [node name="L_Arrow" type="Sprite" parent="."]
 position = Vector2( 17.3984, 88.8973 )
-texture = ExtResource( 13 )
+texture = ExtResource( 14 )
 vframes = 8
 
 [node name="R_Arrow" type="Sprite" parent="."]
 position = Vector2( 159.122, 88.8973 )
-texture = ExtResource( 14 )
+texture = ExtResource( 15 )
 vframes = 8
 
 [node name="Select" type="Sprite" parent="."]
 position = Vector2( 325, 31 )
-texture = ExtResource( 15 )
+texture = ExtResource( 16 )
 
 [node name="Item_Sprite" type="Sprite" parent="."]
 position = Vector2( 48, 337 )
-texture = ExtResource( 16 )
+texture = ExtResource( 17 )
 
-[node name="MSG" parent="." instance=ExtResource( 17 )]
-editor/display_folded = true
+[node name="MSG" parent="." instance=ExtResource( 18 )]
 visible = false
 margin_top = 318.0
 margin_right = 370.0
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 15 )
 script = null
 
 [node name="Label" parent="MSG" index="0"]
 margin_left = 17.9383
 margin_right = 459.938
-custom_fonts/normal_font = SubResource( 12 )
-text = "Elige a un Pokémon."
+custom_fonts/normal_font = SubResource( 16 )
+text = "Has seleccionado: Poción."
 
 [node name="Label2" parent="MSG/Label" index="1"]
-text = "Elige a un Pokémon."
+text = "Has seleccionado: Poción."
 
 [node name="next" parent="MSG" index="1"]
 editor/display_folded = true
@@ -351,78 +374,73 @@ visible = false
 [node name="AnimationPlayer" parent="MSG/next" index="0"]
 root_node = NodePath("")
 
-[node name="ACTIONS" parent="." instance=ExtResource( 20 )]
-editor/display_folded = true
+[node name="ACTIONS" parent="." instance=ExtResource( 21 )]
 visible = false
 margin_left = 368.445
 margin_top = 202.893
 margin_right = 512.445
 margin_bottom = 383.893
-custom_styles/panel = SubResource( 13 )
+custom_styles/panel = SubResource( 17 )
 script = null
 
-[node name="DATOS" parent="ACTIONS/VBoxContainer" index="0" instance=ExtResource( 21 )]
-editor/display_folded = true
+[node name="USAR" parent="ACTIONS/VBoxContainer" index="0" instance=ExtResource( 22 )]
 margin_right = 116.0
 margin_bottom = 35.0
-focus_neighbour_bottom = NodePath("../MOVER")
+focus_neighbour_bottom = NodePath("../DAR")
 focus_mode = 2
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 18 )
 
-[node name="ChoiceText" parent="ACTIONS/VBoxContainer/DATOS" index="0"]
-text = "DATOS"
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/USAR" index="0"]
+text = "USAR"
 
-[node name="MOVER" parent="ACTIONS/VBoxContainer" index="1" instance=ExtResource( 21 )]
-editor/display_folded = true
+[node name="DAR" parent="ACTIONS/VBoxContainer" index="1" instance=ExtResource( 22 )]
 margin_top = 39.0
 margin_right = 116.0
 margin_bottom = 74.0
-focus_neighbour_top = NodePath("../DATOS")
-focus_neighbour_bottom = NodePath("../OBJETO")
+focus_neighbour_top = NodePath("../USAR")
+focus_neighbour_bottom = NodePath("../TIRAR")
 focus_mode = 2
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 18 )
 
-[node name="ChoiceText" parent="ACTIONS/VBoxContainer/MOVER" index="0"]
-custom_fonts/font = SubResource( 15 )
-text = "MOVER"
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/DAR" index="0"]
+custom_fonts/font = SubResource( 19 )
+text = "DAR"
 
-[node name="OBJETO" parent="ACTIONS/VBoxContainer" index="2" instance=ExtResource( 21 )]
-editor/display_folded = true
+[node name="TIRAR" parent="ACTIONS/VBoxContainer" index="2" instance=ExtResource( 22 )]
 margin_top = 78.0
 margin_right = 116.0
 margin_bottom = 113.0
-focus_neighbour_top = NodePath("../MOVER")
+focus_neighbour_top = NodePath("../DAR")
 focus_neighbour_bottom = NodePath("../SALIR")
 focus_mode = 2
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 18 )
 
-[node name="ChoiceText" parent="ACTIONS/VBoxContainer/OBJETO" index="0"]
-text = "OBJETO"
+[node name="ChoiceText" parent="ACTIONS/VBoxContainer/TIRAR" index="0"]
+text = "TIRAR"
 
-[node name="SALIR" parent="ACTIONS/VBoxContainer" index="3" instance=ExtResource( 21 )]
-editor/display_folded = true
+[node name="SALIR" parent="ACTIONS/VBoxContainer" index="3" instance=ExtResource( 22 )]
 margin_top = 117.0
 margin_right = 116.0
 margin_bottom = 155.0
-focus_neighbour_top = NodePath("../OBJETO")
+focus_neighbour_top = NodePath("../TIRAR")
 focus_mode = 2
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 18 )
 
 [node name="ChoiceText" parent="ACTIONS/VBoxContainer/SALIR" index="0"]
 text = "SALIR"
-[connection signal="focus_entered" from="ACTIONS/VBoxContainer/DATOS" to="." method="_on_actions_focus_entered"]
-[connection signal="focus_entered" from="ACTIONS/VBoxContainer/MOVER" to="." method="_on_actions_focus_entered"]
-[connection signal="focus_entered" from="ACTIONS/VBoxContainer/OBJETO" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/USAR" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/DAR" to="." method="_on_actions_focus_entered"]
+[connection signal="focus_entered" from="ACTIONS/VBoxContainer/TIRAR" to="." method="_on_actions_focus_entered"]
 [connection signal="focus_entered" from="ACTIONS/VBoxContainer/SALIR" to="." method="_on_actions_focus_entered"]
 
 [editable path="MSG"]
 
 [editable path="ACTIONS"]
 
-[editable path="ACTIONS/VBoxContainer/DATOS"]
+[editable path="ACTIONS/VBoxContainer/USAR"]
 
-[editable path="ACTIONS/VBoxContainer/MOVER"]
+[editable path="ACTIONS/VBoxContainer/DAR"]
 
-[editable path="ACTIONS/VBoxContainer/OBJETO"]
+[editable path="ACTIONS/VBoxContainer/TIRAR"]
 
 [editable path="ACTIONS/VBoxContainer/SALIR"]

@@ -10,6 +10,11 @@ export(StyleBox) var sprite_Bag6
 export(StyleBox) var sprite_Bag7
 export(StyleBox) var sprite_Bag8
 
+export(StyleBox) var style_actions_empty
+export(StyleBox) var style_actions_selected
+
+onready var actions_chs = [get_node("ACTIONS/VBoxContainer/USAR"),get_node("ACTIONS/VBoxContainer/DAR"),get_node("ACTIONS/VBoxContainer/TIRAR"),get_node("ACTIONS/VBoxContainer/SALIR")]
+
 onready var backgrounds = [null, sprite_Bag1, sprite_Bag2, sprite_Bag3, sprite_Bag4, sprite_Bag5, sprite_Bag6, sprite_Bag7, sprite_Bag8]
 onready var pockets = [null, [], [], [], [], [], [], [], []]
 var pocket_index = 1
@@ -17,6 +22,7 @@ var item_index = 0
 var selected_index = 1
 var actions_index = 0
 var items_on_screen = []
+var selected_item = null
 
 onready var actions = get_node("ACTIONS")
 onready var msg = get_node("MSG")
@@ -89,16 +95,20 @@ func _process(delta):
 					
 			if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
 				if opened:
-					pass#show_actions()
+					if item_index == 0:
+						emit_signal("salir")
+					else:
+						selected_item = pockets[pocket_index][item_index-1][0]
+						show_actions()
 			if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
 				emit_signal("salir")
 		elif actions.visible:
 			if (INPUT.ui_accept.is_action_just_pressed()):#Input.is_action_pressed("ui_accept"):#(INPUT.ui_accept.is_action_just_pressed()):
 				if actions_index == 0:
-					print("SUMMARY")
+					print("ÚSALO")
 					##show_summaries()
 			if (INPUT.ui_cancel.is_action_just_pressed()):#Input.is_action_pressed("ui_cancel"):#(INPUT.ui_cancel.is_action_just_pressed()):
-				pass#hide_actions()	update_styles()
+				hide_actions()
 
 func load_items():
 	for i in GAME_DATA.ITEMS:
@@ -157,9 +167,46 @@ func update_selected():
 	else:
 		$Descripcion.text = items_on_screen[selected_index-1][0].description
 
+func show_actions():
+	print("pe")
+	#index = -2
+	actions_index = 0
+	actions_chs[actions_index].grab_focus()
+	actions.show()
+	update_actions_styles()
+
+func hide_actions():
+	actions.hide()
+	actions_chs[actions_index].release_focus()
+	#pkmns[index].grab_focus()
+	update_actions_styles()
+	actions_index = 0
+	
 func update_silder():
 	var y_cord = 60.0
 	if items_on_screen.size() > 1 and pockets[pocket_index].size()+1 > 1:
 		print(str(116.0) + " * (" + str(item_index) + "+1) / (" + str(pockets[pocket_index].size()) + ")")
 		y_cord += 116.0 * (float(item_index+1)) / (pockets[pocket_index].size()+1)
 	$Slider.position.y = y_cord
+	
+func update_actions_styles():
+	for p in range(actions_chs.size()):
+		if (p==actions_index):
+			actions_chs[p].add_stylebox_override("panel", style_actions_selected)
+		else:
+			actions_chs[p].add_stylebox_override("panel",style_actions_empty)
+	msg.get_node("Label").text = "Has seleccionado: " + selected_item.Name + "."
+	msg.get_node("Label/Label2").text = "Has seleccionado: " + selected_item.Name + "."
+	#msg.rect_size = msgBox_actionsSize
+
+func _on_actions_focus_entered():
+	match get_focus_owner().get_name():
+    "USAR":
+        actions_index = 0
+    "DAR":
+        actions_index = 1
+    "TIRAR":
+        actions_index = 2
+    "SALIR":
+        actions_index = 3
+	update_actions_styles()

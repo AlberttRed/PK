@@ -44,73 +44,73 @@
 [ext_resource path="res://ui/Pictures/summary4.png" type="Texture" id=42]
 [ext_resource path="res://ui/Pictures/summary5.png" type="Texture" id=43]
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=20]
 texture = ExtResource( 1 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=21]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=22]
 texture = ExtResource( 4 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=23]
 texture = ExtResource( 5 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=5]
+[sub_resource type="StyleBoxTexture" id=24]
 texture = ExtResource( 6 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=6]
+[sub_resource type="StyleBoxTexture" id=25]
 texture = ExtResource( 7 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=26]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=8]
+[sub_resource type="StyleBoxTexture" id=27]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=28]
 texture = ExtResource( 10 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=10]
+[sub_resource type="StyleBoxTexture" id=29]
 texture = ExtResource( 11 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=30]
 texture = ExtResource( 12 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=12]
+[sub_resource type="StyleBoxTexture" id=31]
 texture = ExtResource( 13 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=13]
+[sub_resource type="StyleBoxTexture" id=32]
 texture = ExtResource( 14 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=14]
+[sub_resource type="StyleBoxTexture" id=33]
 texture = ExtResource( 8 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=15]
+[sub_resource type="StyleBoxTexture" id=34]
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 112, 48 )
 
-[sub_resource type="StyleBoxTexture" id=16]
+[sub_resource type="StyleBoxTexture" id=35]
 texture = ExtResource( 16 )
 region_rect = Rect2( 0, 0, 112, 48 )
 
-[sub_resource type="StyleBoxEmpty" id=17]
+[sub_resource type="StyleBoxEmpty" id=18]
 
-[sub_resource type="StyleBoxTexture" id=18]
+[sub_resource type="StyleBoxTexture" id=19]
 texture = ExtResource( 17 )
 region_rect = Rect2( 0, 0, 14, 32 )
 margin_left = 12.0
@@ -118,35 +118,35 @@ expand_margin_top = 2.0
 axis_stretch_vertical = 2
 draw_center = false
 
-[sub_resource type="StyleBoxTexture" id=19]
+[sub_resource type="StyleBoxTexture" id=36]
 texture = ExtResource( 3 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="DynamicFont" id=20]
+[sub_resource type="DynamicFont" id=37]
 size = 26
 outline_color = Color( 0.00784314, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="DynamicFont" id=21]
+[sub_resource type="DynamicFont" id=38]
 size = 22
 font_data = ExtResource( 21 )
 
-[sub_resource type="DynamicFont" id=22]
+[sub_resource type="DynamicFont" id=39]
 size = 26
 outline_color = Color( 0.00784314, 0, 0, 1 )
 use_mipmaps = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxTexture" id=23]
+[sub_resource type="StyleBoxTexture" id=40]
 texture = ExtResource( 9 )
 region_rect = Rect2( 0, 0, 256, 98 )
 
-[sub_resource type="StyleBoxTexture" id=24]
+[sub_resource type="StyleBoxTexture" id=41]
 texture = ExtResource( 15 )
 region_rect = Rect2( 0, 0, 112, 48 )
 
-[sub_resource type="StyleBoxTexture" id=25]
+[sub_resource type="StyleBoxTexture" id=42]
 texture = ExtResource( 29 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 32.0
@@ -154,13 +154,13 @@ margin_right = 32.0
 margin_top = 32.0
 margin_bottom = 32.0
 
-[sub_resource type="DynamicFont" id=26]
+[sub_resource type="DynamicFont" id=43]
 size = 26
 outline_color = Color( 0.337255, 0.12549, 0.12549, 1 )
 use_mipmaps = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxTexture" id=27]
+[sub_resource type="StyleBoxTexture" id=44]
 texture = ExtResource( 29 )
 region_rect = Rect2( 0, 0, 48, 48 )
 margin_left = 32.0
@@ -168,50 +168,50 @@ margin_right = 32.0
 margin_top = 32.0
 margin_bottom = 32.0
 
-[sub_resource type="StyleBoxTexture" id=28]
+[sub_resource type="StyleBoxTexture" id=45]
 margin_left = 12.0
 expand_margin_top = 2.0
 axis_stretch_vertical = 2
 draw_center = false
 
-[sub_resource type="DynamicFont" id=29]
+[sub_resource type="DynamicFont" id=46]
 size = 24
 extra_spacing_top = 5
 font_data = ExtResource( 32 )
 
-[sub_resource type="StyleBoxTexture" id=30]
+[sub_resource type="StyleBoxTexture" id=47]
 texture = ExtResource( 33 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
-[sub_resource type="DynamicFont" id=31]
+[sub_resource type="DynamicFont" id=48]
 size = 26
 use_mipmaps = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxEmpty" id=32]
+[sub_resource type="StyleBoxEmpty" id=49]
 
-[sub_resource type="StyleBoxEmpty" id=33]
+[sub_resource type="StyleBoxEmpty" id=50]
 
-[sub_resource type="StyleBoxTexture" id=34]
+[sub_resource type="StyleBoxTexture" id=51]
 texture = ExtResource( 40 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
-[sub_resource type="DynamicFont" id=35]
+[sub_resource type="DynamicFont" id=52]
 size = 26
 use_mipmaps = true
 font_data = ExtResource( 19 )
 
-[sub_resource type="StyleBoxTexture" id=36]
+[sub_resource type="StyleBoxTexture" id=53]
 texture = ExtResource( 41 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
-[sub_resource type="StyleBoxTexture" id=37]
+[sub_resource type="StyleBoxTexture" id=54]
 texture = ExtResource( 42 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
-[sub_resource type="StyleBoxEmpty" id=38]
+[sub_resource type="StyleBoxEmpty" id=55]
 
-[sub_resource type="StyleBoxTexture" id=39]
+[sub_resource type="StyleBoxTexture" id=56]
 texture = ExtResource( 43 )
 region_rect = Rect2( 0, 0, 512, 384 )
 
@@ -220,36 +220,37 @@ margin_left = 0.371427
 margin_top = -0.229492
 margin_right = 512.371
 margin_bottom = 383.771
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 20 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_lock_": true
 }
-style_rounded_normal = SubResource( 2 )
-style_rounded_normal_sel = SubResource( 3 )
-style_rounded_fainted = SubResource( 4 )
-style_rounded_fainted_sel = SubResource( 5 )
-style_rounded_swap = SubResource( 6 )
-style_rounded_swap_sel = SubResource( 7 )
-style_square_normal = SubResource( 8 )
-style_square_normal_sel = SubResource( 9 )
-style_square_empty = SubResource( 10 )
-style_square_fainted = SubResource( 11 )
-style_square_fainted_sel = SubResource( 12 )
-style_square_swap = SubResource( 13 )
-style_square_swap_sel = SubResource( 14 )
-style_salir = SubResource( 15 )
-style_salir_sel = SubResource( 16 )
-style_actions_empty = SubResource( 17 )
-style_actions_selected = SubResource( 18 )
+style_rounded_normal = SubResource( 21 )
+style_rounded_normal_sel = SubResource( 22 )
+style_rounded_fainted = SubResource( 23 )
+style_rounded_fainted_sel = SubResource( 24 )
+style_rounded_swap = SubResource( 25 )
+style_rounded_swap_sel = SubResource( 26 )
+style_square_normal = SubResource( 27 )
+style_square_normal_sel = SubResource( 28 )
+style_square_empty = SubResource( 29 )
+style_square_fainted = SubResource( 30 )
+style_square_fainted_sel = SubResource( 31 )
+style_square_swap = SubResource( 32 )
+style_square_swap_sel = SubResource( 33 )
+style_salir = SubResource( 34 )
+style_salir_sel = SubResource( 35 )
+style_actions_empty = SubResource( 18 )
+style_actions_selected = SubResource( 19 )
 
 [node name="PKMN_0" type="Panel" parent="."]
+editor/display_folded = true
 margin_right = 256.0
 margin_bottom = 98.0
 focus_neighbour_right = NodePath("../PKMN_1")
 focus_neighbour_bottom = NodePath("../PKMN_2")
 focus_mode = 2
-custom_styles/panel = SubResource( 19 )
+custom_styles/panel = SubResource( 36 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -269,7 +270,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_0/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -291,7 +292,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_0/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -313,7 +314,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_0/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -343,6 +344,7 @@ anims/PARTY_pkmn_icon = ExtResource( 26 )
 anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
 
 [node name="PKMN_1" type="Panel" parent="."]
+editor/display_folded = true
 margin_left = 256.0
 margin_top = 16.0
 margin_right = 512.0
@@ -350,7 +352,7 @@ margin_bottom = 114.0
 focus_neighbour_left = NodePath("../PKMN_0")
 focus_neighbour_bottom = NodePath("../PKMN_3")
 focus_mode = 2
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 40 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -369,7 +371,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_1/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -390,7 +392,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_1/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -411,7 +413,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_1/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -441,6 +443,7 @@ anims/PARTY_pkmn_icon = ExtResource( 26 )
 anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
 
 [node name="PKMN_2" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_top = 96.0
 margin_right = 256.0
@@ -449,7 +452,7 @@ focus_neighbour_top = NodePath("../PKMN_0")
 focus_neighbour_right = NodePath("../PKMN_3")
 focus_neighbour_bottom = NodePath("../PKMN_4")
 focus_mode = 2
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 40 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -468,7 +471,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_2/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -489,7 +492,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_2/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -510,7 +513,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_2/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -539,6 +542,7 @@ anims/PARTY_pkmn_icon = ExtResource( 26 )
 anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
 
 [node name="PKMN_3" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 256.0
 margin_top = 112.0
@@ -548,7 +552,7 @@ focus_neighbour_left = NodePath("../PKMN_2")
 focus_neighbour_top = NodePath("../PKMN_1")
 focus_neighbour_bottom = NodePath("../PKMN_5")
 focus_mode = 2
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 40 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -567,7 +571,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_3/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -588,7 +592,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_3/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -609,7 +613,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_3/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -639,6 +643,7 @@ anims/PARTY_pkmn_icon = ExtResource( 26 )
 anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
 
 [node name="PKMN_4" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_top = 192.0
 margin_right = 256.0
@@ -646,7 +651,7 @@ margin_bottom = 290.0
 focus_neighbour_top = NodePath("../PKMN_2")
 focus_neighbour_right = NodePath("../PKMN_5")
 focus_mode = 2
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 40 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -665,7 +670,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_4/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -686,7 +691,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_4/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -707,7 +712,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_4/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -736,6 +741,7 @@ anims/PARTY_pkmn_icon = ExtResource( 26 )
 anims/PARTY_pkmn_icon_updown = ExtResource( 27 )
 
 [node name="PKMN_5" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_left = 256.0
 margin_top = 208.0
@@ -745,7 +751,7 @@ focus_neighbour_left = NodePath("../PKMN_4")
 focus_neighbour_top = NodePath("../PKMN_3")
 focus_neighbour_bottom = NodePath("../Salir")
 focus_mode = 2
-custom_styles/panel = SubResource( 23 )
+custom_styles/panel = SubResource( 40 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -764,7 +770,7 @@ text = "Pikachu"
 [node name="Outline" type="Label" parent="PKMN_5/Nombre"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -785,7 +791,7 @@ text = "Nv.25"
 [node name="Outline" type="Label" parent="PKMN_5/Nivel"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 21 )
+custom_fonts/font = SubResource( 38 )
 custom_colors/font_color = Color( 1, 1, 1, 1 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
@@ -806,7 +812,7 @@ text = "58/58"
 [node name="Outline" type="Label" parent="PKMN_5/HP"]
 margin_right = 85.0
 margin_bottom = 46.0
-custom_fonts/font = SubResource( 22 )
+custom_fonts/font = SubResource( 39 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 0
 custom_constants/shadow_offset_y = 2
@@ -841,7 +847,7 @@ margin_top = 325.0
 margin_right = 510.0
 margin_bottom = 377.0
 focus_mode = 2
-custom_styles/panel = SubResource( 24 )
+custom_styles/panel = SubResource( 41 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -862,7 +868,7 @@ valign = 3
 [node name="Outline" type="Label" parent="Salir/Nombre2"]
 margin_right = 94.0
 margin_bottom = 30.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.188235, 0.188235, 0.188235, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -877,13 +883,13 @@ __meta__ = {
 editor/display_folded = true
 margin_top = 318.0
 margin_right = 370.0
-custom_styles/panel = SubResource( 25 )
+custom_styles/panel = SubResource( 42 )
 script = null
 
 [node name="Label" parent="MSG" index="0"]
 margin_left = 17.9383
 margin_right = 459.938
-custom_fonts/normal_font = SubResource( 26 )
+custom_fonts/normal_font = SubResource( 43 )
 text = "Elige a un Pokémon."
 
 [node name="Label2" parent="MSG/Label" index="1"]
@@ -897,13 +903,12 @@ visible = false
 root_node = NodePath("")
 
 [node name="ACTIONS" parent="." instance=ExtResource( 30 )]
-editor/display_folded = true
 visible = false
 margin_left = 368.445
 margin_top = 202.893
 margin_right = 512.445
 margin_bottom = 383.893
-custom_styles/panel = SubResource( 27 )
+custom_styles/panel = SubResource( 44 )
 script = null
 
 [node name="DATOS" parent="ACTIONS/VBoxContainer" index="0" instance=ExtResource( 31 )]
@@ -912,7 +917,7 @@ margin_right = 116.0
 margin_bottom = 35.0
 focus_neighbour_bottom = NodePath("../MOVER")
 focus_mode = 2
-custom_styles/panel = SubResource( 28 )
+custom_styles/panel = SubResource( 45 )
 
 [node name="ChoiceText" parent="ACTIONS/VBoxContainer/DATOS" index="0"]
 text = "DATOS"
@@ -925,10 +930,10 @@ margin_bottom = 74.0
 focus_neighbour_top = NodePath("../DATOS")
 focus_neighbour_bottom = NodePath("../OBJETO")
 focus_mode = 2
-custom_styles/panel = SubResource( 28 )
+custom_styles/panel = SubResource( 45 )
 
 [node name="ChoiceText" parent="ACTIONS/VBoxContainer/MOVER" index="0"]
-custom_fonts/font = SubResource( 29 )
+custom_fonts/font = SubResource( 46 )
 text = "MOVER"
 
 [node name="OBJETO" parent="ACTIONS/VBoxContainer" index="2" instance=ExtResource( 31 )]
@@ -939,7 +944,7 @@ margin_bottom = 113.0
 focus_neighbour_top = NodePath("../MOVER")
 focus_neighbour_bottom = NodePath("../SALIR")
 focus_mode = 2
-custom_styles/panel = SubResource( 28 )
+custom_styles/panel = SubResource( 45 )
 
 [node name="ChoiceText" parent="ACTIONS/VBoxContainer/OBJETO" index="0"]
 text = "OBJETO"
@@ -951,7 +956,7 @@ margin_right = 116.0
 margin_bottom = 155.0
 focus_neighbour_top = NodePath("../OBJETO")
 focus_mode = 2
-custom_styles/panel = SubResource( 28 )
+custom_styles/panel = SubResource( 45 )
 
 [node name="ChoiceText" parent="ACTIONS/VBoxContainer/SALIR" index="0"]
 text = "SALIR"
@@ -969,7 +974,7 @@ visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
-custom_styles/panel = SubResource( 30 )
+custom_styles/panel = SubResource( 47 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -980,7 +985,7 @@ margin_left = 25.0
 margin_top = 20.0
 margin_right = 216.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 31 )
+custom_fonts/font = SubResource( 48 )
 custom_colors/font_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 0
@@ -993,7 +998,7 @@ __meta__ = {
 [node name="Titulo" type="Label" parent="SUMMARY/SUMMARY_1/Titulo"]
 margin_right = 181.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -1174,7 +1179,7 @@ margin_left = 34.0
 margin_right = 98.0
 margin_bottom = 28.0
 rect_min_size = Vector2( 64, 28 )
-custom_styles/panel = SubResource( 32 )
+custom_styles/panel = SubResource( 49 )
 
 [node name="dTipo1" type="Sprite" parent="SUMMARY/SUMMARY_1/Tipos/pTipo1"]
 position = Vector2( 32, 14 )
@@ -1187,7 +1192,7 @@ margin_left = 68.0
 margin_right = 132.0
 margin_bottom = 29.0
 rect_min_size = Vector2( 64, 28 )
-custom_styles/panel = SubResource( 33 )
+custom_styles/panel = SubResource( 50 )
 
 [node name="dTipo2" type="Sprite" parent="SUMMARY/SUMMARY_1/Tipos/pTipo2"]
 position = Vector2( 32, 14 )
@@ -1277,7 +1282,7 @@ visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
-custom_styles/panel = SubResource( 34 )
+custom_styles/panel = SubResource( 51 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1288,7 +1293,7 @@ margin_left = 25.0
 margin_top = 20.0
 margin_right = 216.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 31 )
+custom_fonts/font = SubResource( 48 )
 custom_colors/font_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 0
@@ -1301,7 +1306,7 @@ __meta__ = {
 [node name="Titulo" type="Label" parent="SUMMARY/SUMMARY_2/Titulo"]
 margin_right = 181.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -1446,7 +1451,7 @@ margin_left = 360.452
 margin_top = 84.9902
 margin_right = 600.452
 margin_bottom = 98.9902
-custom_fonts/font = SubResource( 35 )
+custom_fonts/font = SubResource( 52 )
 custom_colors/font_color_shadow = Color( 0.878431, 0.596078, 0.564706, 1 )
 text = "Seria."
 valign = 1
@@ -1470,7 +1475,7 @@ __meta__ = {
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
-custom_styles/panel = SubResource( 36 )
+custom_styles/panel = SubResource( 53 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1481,7 +1486,7 @@ margin_left = 25.0
 margin_top = 20.0
 margin_right = 216.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 31 )
+custom_fonts/font = SubResource( 48 )
 custom_colors/font_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 0
@@ -1494,7 +1499,7 @@ __meta__ = {
 [node name="Titulo" type="Label" parent="SUMMARY/SUMMARY_3/Titulo"]
 margin_right = 181.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -1776,7 +1781,7 @@ visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
-custom_styles/panel = SubResource( 37 )
+custom_styles/panel = SubResource( 54 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1787,7 +1792,7 @@ margin_left = 25.0
 margin_top = 20.0
 margin_right = 216.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 31 )
+custom_fonts/font = SubResource( 48 )
 custom_colors/font_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 0
@@ -1800,7 +1805,7 @@ __meta__ = {
 [node name="Titulo" type="Label" parent="SUMMARY/SUMMARY_4/Titulo"]
 margin_right = 181.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
@@ -1862,7 +1867,7 @@ margin_top = 96.0
 margin_right = 492.0
 margin_bottom = 160.0
 rect_min_size = Vector2( 244, 64 )
-custom_styles/panel = SubResource( 38 )
+custom_styles/panel = SubResource( 55 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1926,7 +1931,7 @@ margin_top = 160.678
 margin_right = 491.502
 margin_bottom = 224.678
 rect_min_size = Vector2( 244, 64 )
-custom_styles/panel = SubResource( 38 )
+custom_styles/panel = SubResource( 55 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1988,7 +1993,7 @@ margin_top = 225.025
 margin_right = 491.502
 margin_bottom = 289.025
 rect_min_size = Vector2( 244, 64 )
-custom_styles/panel = SubResource( 38 )
+custom_styles/panel = SubResource( 55 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2050,7 +2055,7 @@ margin_top = 289.196
 margin_right = 492.399
 margin_bottom = 353.196
 rect_min_size = Vector2( 244, 64 )
-custom_styles/panel = SubResource( 38 )
+custom_styles/panel = SubResource( 55 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2116,7 +2121,7 @@ visible = false
 margin_top = -0.27739
 margin_right = 512.0
 margin_bottom = 383.723
-custom_styles/panel = SubResource( 39 )
+custom_styles/panel = SubResource( 56 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2127,7 +2132,7 @@ margin_left = 25.0
 margin_top = 20.0
 margin_right = 216.0
 margin_bottom = 48.0
-custom_fonts/font = SubResource( 31 )
+custom_fonts/font = SubResource( 48 )
 custom_colors/font_color = Color( 0.972549, 0.972549, 0.972549, 1 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 0
@@ -2140,7 +2145,7 @@ __meta__ = {
 [node name="Titulo" type="Label" parent="SUMMARY/SUMMARY_5/Titulo"]
 margin_right = 181.0
 margin_bottom = 27.0
-custom_fonts/font = SubResource( 20 )
+custom_fonts/font = SubResource( 37 )
 custom_colors/font_color_shadow = Color( 0.407843, 0.407843, 0.407843, 1 )
 custom_constants/shadow_offset_x = 2
 custom_constants/shadow_offset_y = 0
