@@ -1,9 +1,8 @@
-extends AudioStreamPlayer
+extends AudioStreamPlayer2D
 
 onready var tween_out = Tween.new()
 onready var tween_in = Tween.new()
-export(bool) var sound_on = true
-var sound = 0
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_user_signal("stopped")
@@ -12,17 +11,13 @@ func _ready():
 	add_child(tween_out)
 	tween_out.connect("tween_completed", self, "_on_TweenOut_tween_completed")
 	tween_in.connect("tween_completed", self, "_on_TweenIn_tween_completed")
-	if sound_on:
-		sound = 0
-	else:
-		sound = -80
 
 func play_music(music, fade_time = 0):
 	if fade_time != 0:
-		tween_in.interpolate_property(self, "volume_db", volume_db, sound, fade_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
+		tween_in.interpolate_property(self, "volume_db", volume_db, 0, fade_time, Tween.TRANS_LINEAR, Tween.EASE_IN_OUT, 0)
 		tween_in.start()
 	else:
-		volume_db = sound
+		volume_db = 0
 	set_stream(music)
 	play()
 	if fade_time == 0:

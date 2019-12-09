@@ -4,6 +4,7 @@ var player
 var current_page
 var event_running = false
 
+export(bool) var Trainer = false
 export(int, "NPC, Object")var event_type = 0
 export (bool)var BlockPlayerAtEnd = false
 
@@ -54,18 +55,24 @@ func exec(from = facing_idle[facing]):
 		if current_page.Imagen != null and current_page.Imagen.get_width() / 32 > 1 and !current_page.DirectionFix:
 			get_node("Sprite").frame = from#0
 		print(current_page.get_name())
-		current_page.run()
-		yield(current_page, "finished_page")
 		if current_page.Imagen != null and current_page.Imagen.get_width() / 32 > 1 and !current_page.DirectionFix:
 			print("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA" + get_name() + " " + str(facing_idle[facing]))
 			current_page.get_node("Sprite").frame = facing_idle[facing]
-		player.set_can_interact(!BlockPlayerAtEnd)
-		player.in_event = BlockPlayerAtEnd
-		GLOBAL.running_events.erase(self)
-		event_running = false
-		print("Finalized event " + get_name())
-		emit_signal("event_finished")
 		
+		if Trainer and !trainer.is_defeated:
+			GUI.show_msg(trainer.before_battle_message)
+			yield(GUI.msg, "finished")
+			GUI.start_battle(trainer.double_battle, GAME_DATA.trainer, trainer)#, null, trainer)
+		else:
+			current_page.run()
+			yield(current_page, "finished_page")
+			player.set_can_interact(!BlockPlayerAtEnd)
+			player.in_event = BlockPlayerAtEnd
+			GLOBAL.running_events.erase(self)
+			event_running = false
+			print("Finalized event " + get_name())
+			emit_signal("event_finished")
+			
 				
 func set_parent_event(pages):
 	if pages.get_child_count() > 0:

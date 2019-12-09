@@ -13,7 +13,8 @@
 [ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=11]
 [ext_resource path="res://Logics/event/commands/cmd_setTransparent.scn" type="PackedScene" id=12]
 [ext_resource path="res://cmd_teleport_player.tscn" type="PackedScene" id=13]
-[ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=14]
+[ext_resource path="res://Logics/event/AudioSystem2D.gd" type="Script" id=14]
+
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle_down"

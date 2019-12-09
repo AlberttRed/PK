@@ -827,8 +827,8 @@ class Battler:
 			
 			p.hp_bar.get_node("lblName").text = p.nickname
 			p.hp_bar.get_node("lblLevel").text = "Lv" + str(p.level)
-			p.hp_bar.get_node("lblActualHP").text = str(p.hp)
-			p.hp_bar.get_node("lblTotalHP").text = "/" + str(p.max_hp)
+			p.hp_bar.get_node("lblActualHP").text = str(p.hp_actual)
+			p.hp_bar.get_node("lblTotalHP").text = "/" + str(p.hp)
 			p.hp_bar.get_node("Status").texture = null
 	
 	func showPokemon(pokemons = active_pokemon):

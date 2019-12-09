@@ -18,7 +18,8 @@
 [ext_resource path="res://ui/Intro/fade_out_anim.tres" type="Animation" id=16]
 [ext_resource path="res://ui/Intro/press_enter_anim.tres" type="Animation" id=17]
 [ext_resource path="res://ui/Intro/start_screen_anim.tres" type="Animation" id=18]
-[ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=19]
+[ext_resource path="res://Logics/event/AudioSystem2D.gd" type="Script" id=19]
+
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )

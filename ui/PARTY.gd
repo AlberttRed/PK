@@ -173,8 +173,8 @@ func update_styles():
 			pkmns[p].get_node("AnimationPlayer").play("PARTY_pkmn_icon")
 	if index == -1:
 		salir.add_stylebox_override("panel", style_salir_sel)
-	msg.get_node("Label").text = "Elige un Pokémon."
-	msg.get_node("Label/Label2").text = "Elige un Pokémon."
+	msg.get_node("Label").set_text("Elige un Pokémon.")
+	#msg.get_node("Label/Label2").set"Elige un Pokémon."
 	msg.rect_size = msgBox_normalSize
 	
 func load_pokemon():
@@ -209,8 +209,8 @@ func update_actions_styles():
 			actions_chs[p].add_stylebox_override("panel", style_actions_selected)
 		else:
 			actions_chs[p].add_stylebox_override("panel",style_actions_empty)
-	msg.get_node("Label").text = "¿Qué hacer con " + GAME_DATA.party[index].get_name() + "?"
-	msg.get_node("Label/Label2").text = "¿Qué hacer con " + GAME_DATA.party[index].get_name() + "?"
+	msg.get_node("Label").set_text("¿Qué hacer con " + GAME_DATA.party[index].get_name() + "?")
+	#msg.get_node("Label/Label2").text = "¿Qué hacer con " + GAME_DATA.party[index].get_name() + "?"
 	msg.rect_size = msgBox_actionsSize
 
 func show_actions():

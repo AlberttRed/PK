@@ -38,5 +38,6 @@ stream = ExtResource( 2 )
 anims/FadeIn = ExtResource( 3 )
 anims/FadeOut = ExtResource( 4 )
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
 script = ExtResource( 5 )
+sound_on = false
