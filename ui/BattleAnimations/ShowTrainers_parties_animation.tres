@@ -1,13 +1,9 @@
 [gd_resource type="Animation" format=2]
 
 [resource]
-
 resource_name = "ShowTrainers_parties"
-length = 1.0
-loop = false
-step = 0.1
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase:position")
+tracks/0/path = NodePath("playerBase:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -19,7 +15,7 @@ tracks/0/keys = {
 "values": [ Vector2( -480, 240 ), Vector2( -128, 240 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase:position")
+tracks/1/path = NodePath("enemyBase:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -30,4 +26,3 @@ tracks/1/keys = {
 "update": 0,
 "values": [ Vector2( 520, 112 ), Vector2( 256, 112 ) ]
 }
-

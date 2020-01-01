@@ -17,6 +17,8 @@ func _ready():
 	else:
 		GAME_DATA.new_game()
 	yield(GAME_DATA, "start")
+#	$TransitionColor.rect_global_position = Vector2(0,0)
+#	$TransitionColor.rect_position = Vector2(0,0)
 #	GAME_DATA.ACTUAL_MAP = load(actual_scene).instance()
 #	#ProjectSettings.set("Actual_Map", load(actual_scene).instance())
 #	print(GAME_DATA.ACTUAL_MAP.get_node("Area2D_").get_name())

@@ -50,7 +50,10 @@ func _input(event):
 	elif event.is_action_released("ui_cancel") and !GUI.is_visible():
 		print("NOT RUNNING")
 		set_running(false)
-			
+	elif event.is_action_released("ui_screenshot") and !GUI.is_visible():
+		var image = get_viewport().get_texture().get_data()
+		image.flip_y()
+		image.save_png("C:/Users/alber/Saved Games/Pokemon Essentials Esp v16_2/screenshot.png")
 func can_move(dir):
 	if (Input.is_action_pressed("ui_" + dir) and can_move and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded and can_interact) or (Input.is_action_pressed("ui_"  + dir + "_event_player") and can_move):
 		return true

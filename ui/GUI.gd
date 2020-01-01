@@ -11,6 +11,7 @@ onready var player=GAME_DATA.PLAYER
 onready var chs = get_node("CHOICES")
 onready var party = get_node("PARTY")
 onready var bag = get_node("BAG")
+onready var transition = get_node("TRANSITION")
 
 func _ready():
 	$INTRO.connect("continue", GAME_DATA, "load_game")
@@ -72,7 +73,7 @@ func show_menu():
 	#menu.set_process(false)
 
 func is_visible():
-	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible() || party.is_visible() || $INTRO.is_visible() || bag.is_visible()#|| options.is_visible()
+	return msg.is_visible() || menu.is_visible() || battle.is_visible() || chs.is_visible() || party.is_visible() || $INTRO.is_visible() || bag.is_visible() || transition.is_visible()#|| options.is_visible()
 
 #func _on_text_speed_changed(speed):
 #	get_node("MSG/Timer 2").set_wait_time(CONST.TEXT_SPEEDS[speed])
@@ -115,6 +116,10 @@ func start_battle(double, trainer1, trainer2, trainer3 = null, trainer4 = null):
 	battle.show()
 	battle.start_battle(double, trainer1, trainer2, trainer3, trainer4)
 	#battle.wild_encounter(id, level)
+
+func init_battle():
+	battle.start_battle()
+	
 func set_next():
 	next = true
 	
@@ -125,3 +130,7 @@ func save():
 func start_intro():
 	$INTRO.start()
 	
+func play_transition(animation):
+	transition.play(animation)
+	yield(transition, "finished")
+	emit_signal("finished")

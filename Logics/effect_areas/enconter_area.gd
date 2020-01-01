@@ -51,7 +51,11 @@ func calculate_encounter():
 		if (rate <= encounter_rate):
 			var p = int(floor(rand_range(0, 10)))
 			if pkmn[p] > 0 && pkmn[p]<=751:
+				GAME_DATA.PLAYER.can_move = false
 				print("found! " + DB.pokemons[pkmn[p]].name)
+				GUI.play_transition("transition_wild_battle")
+				yield(GUI, "finished")
+				GUI.init_battle()
 # aquest es el bo			GUI.init_battle(GAME_DATA.party[0], DB.pokemons[pkmn[p]].make_wild(floor(rand_range(min_lvl,max_lvl+1))))
 			#GUI.wild_encounter(pkmn[p], floor(rand_range(min_lvl,max_lvl+1)))
 

@@ -1,140 +1,140 @@
-[gd_scene load_steps=84 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://ui/BATTLE.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Battlebacks/battlebgFieldNight.png" type="Texture" id=2]
-[ext_resource path="res://Sprites/Battlebacks/playerbaseFieldNight.png" type="Texture" id=3]
+[ext_resource path="res://Sprites/Battlebacks/enemybaseFieldNight.png" type="Texture" id=3]
 [ext_resource path="res://ui/battle/battleBase.gd" type="Script" id=4]
-[ext_resource path="res://ui/BattleAnimations/shader_white.tres" type="Material" id=5]
-[ext_resource path="res://Sprites/Battlers/025b.png" type="Texture" id=6]
-[ext_resource path="res://ui/BattleAnimations/1. Destructor/Destructor.tres" type="Animation" id=7]
-[ext_resource path="res://ui/BattleAnimations/Hurt.tres" type="Animation" id=8]
-[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot0.tres" type="Animation" id=9]
-[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot1.tres" type="Animation" id=10]
-[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot2.tres" type="Animation" id=11]
-[ext_resource path="res://ui/BattleAnimations/Stat_Up_Animation.tres" type="Animation" id=12]
-[ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=13]
-[ext_resource path="res://ui/Pictures/small_ball.png" type="Texture" id=14]
-[ext_resource path="res://Sprites/Characters/trback002.png" type="Texture" id=15]
-[ext_resource path="res://ui/Pictures/ball00.png" type="Texture" id=16]
-[ext_resource path="res://Sprites/Battlebacks/enemybaseFieldSandNight.png" type="Texture" id=17]
-[ext_resource path="res://ui/BattleAnimations/1. Destructor/DestructorOK.tres" type="Animation" id=18]
-[ext_resource path="res://Sprites/Characters/trainer036.png" type="Texture" id=19]
-[ext_resource path="res://Sprites/Battlers/567.png" type="Texture" id=20]
-[ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=21]
-[ext_resource path="res://Sprites/Characters/trainer035.png" type="Texture" id=22]
-[ext_resource path="res://ui/Pictures/battlePlayerBoxS.png" type="Texture" id=23]
-[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=24]
-[ext_resource path="res://ui/Pictures/pixel.png" type="Texture" id=25]
-[ext_resource path="res://ui/Pictures/HPbar_overlay.png" type="Texture" id=26]
-[ext_resource path="res://ui/Pictures/EXPbar_overlay.png" type="Texture" id=27]
+[ext_resource path="res://ui/BattleAnimations/1. Destructor/Destructor.tres" type="Animation" id=5]
+[ext_resource path="res://ui/BattleAnimations/1. Destructor/DestructorOK.tres" type="Animation" id=6]
+[ext_resource path="res://ui/BattleAnimations/Hurt.tres" type="Animation" id=7]
+[ext_resource path="res://ui/BattleAnimations/Stat_Up_Animation.tres" type="Animation" id=8]
+[ext_resource path="res://Sprites/Characters/trainer036.png" type="Texture" id=9]
+[ext_resource path="res://Sprites/Battlers/567.png" type="Texture" id=10]
+[ext_resource path="res://ui/Pictures/ball00.png" type="Texture" id=11]
+[ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=12]
+[ext_resource path="res://Sprites/Characters/trainer035.png" type="Texture" id=13]
+[ext_resource path="res://Sprites/Battlebacks/playerbaseFieldNight.png" type="Texture" id=14]
+[ext_resource path="res://ui/BattleAnimations/shader_white.tres" type="Material" id=15]
+[ext_resource path="res://Sprites/Battlers/025b.png" type="Texture" id=16]
+[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot0.tres" type="Animation" id=17]
+[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot1.tres" type="Animation" id=18]
+[ext_resource path="res://ui/BattleAnimations/Show_Pokemon_Slot2.tres" type="Animation" id=19]
+[ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=20]
+[ext_resource path="res://ui/Pictures/small_ball.png" type="Texture" id=21]
+[ext_resource path="res://Sprites/Characters/trback002.png" type="Texture" id=22]
+[ext_resource path="res://ui/Pictures/GRASS BATTLE.png" type="Texture" id=23]
+[ext_resource path="res://ui/Battle_Options_MessageBox_Style.tres" type="StyleBox" id=24]
+[ext_resource path="res://ui/HGSS_Font_Style.tres" type="DynamicFont" id=25]
+[ext_resource path="res://ui/Pictures/battleCommandButtons.png" type="Texture" id=26]
+[ext_resource path="res://ui/Battle_Moves_MessageBox_Style.tres" type="StyleBox" id=27]
 [ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=28]
-[ext_resource path="res://ui/Pictures/battleStatuses.png" type="Texture" id=29]
-[ext_resource path="res://ui/Pictures/battlePlayerBoxD.png" type="Texture" id=30]
-[ext_resource path="res://ui/Pictures/battleFoeBoxS.png" type="Texture" id=31]
-[ext_resource path="res://ui/Pictures/battleFoeBoxD.png" type="Texture" id=32]
-[ext_resource path="res://ui/Pictures/battleLineup.png" type="Texture" id=33]
-[ext_resource path="res://ui/Pictures/ballnormal.png" type="Texture" id=34]
-[ext_resource path="res://ui/Pictures/ballstatus.PNG" type="Texture" id=35]
-[ext_resource path="res://ui/Pictures/ballfainted.png" type="Texture" id=36]
-[ext_resource path="res://ui/Battle_MessageBox_Style.tres" type="StyleBox" id=37]
-[ext_resource path="res://ui/Battle_Options_MessageBox_Style.tres" type="StyleBox" id=38]
-[ext_resource path="res://ui/HGSS_Font_Style.tres" type="DynamicFont" id=39]
-[ext_resource path="res://ui/Pictures/battleCommandButtons.png" type="Texture" id=40]
-[ext_resource path="res://ui/Battle_Moves_MessageBox_Style.tres" type="StyleBox" id=41]
-[ext_resource path="res://ui/Pictures/types.png" type="Texture" id=42]
-[ext_resource path="res://ui/Pictures/battleFightButtons.png" type="Texture" id=43]
-[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=44]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=45]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=46]
-[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=47]
-[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=48]
-[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=49]
-[ext_resource path="res://ui/BattleAnimations/OverlayStatDown.png" type="Texture" id=50]
-[ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=51]
+[ext_resource path="res://ui/Pictures/types.png" type="Texture" id=29]
+[ext_resource path="res://ui/Pictures/battleFightButtons.png" type="Texture" id=30]
+[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=31]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=32]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=33]
+[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=34]
+[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=35]
+[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=36]
+[ext_resource path="res://ui/BattleAnimations/init_wild_battle.tres" type="Animation" id=37]
+[ext_resource path="res://ui/BattleAnimations/OverlayStatDown.png" type="Texture" id=38]
+[ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=39]
+[ext_resource path="res://ui/Pictures/battlePlayerBoxS.png" type="Texture" id=40]
+[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=41]
+[ext_resource path="res://ui/Pictures/pixel.png" type="Texture" id=42]
+[ext_resource path="res://ui/Pictures/HPbar_overlay.png" type="Texture" id=43]
+[ext_resource path="res://ui/Pictures/EXPbar_overlay.png" type="Texture" id=44]
+[ext_resource path="res://ui/Pictures/battleStatuses.png" type="Texture" id=45]
+[ext_resource path="res://ui/Pictures/battlePlayerBoxD.png" type="Texture" id=46]
+[ext_resource path="res://ui/Pictures/battleFoeBoxS.png" type="Texture" id=47]
+[ext_resource path="res://ui/Pictures/battleFoeBoxD.png" type="Texture" id=48]
+[ext_resource path="res://ui/Pictures/battleLineup.png" type="Texture" id=49]
+[ext_resource path="res://ui/Pictures/ballnormal.png" type="Texture" id=50]
+[ext_resource path="res://ui/Pictures/ballstatus.PNG" type="Texture" id=51]
+[ext_resource path="res://ui/Pictures/ballfainted.png" type="Texture" id=52]
 
-[sub_resource type="DynamicFont" id=1]
-size = 26
-font_data = ExtResource( 28 )
+[sub_resource type="StyleBoxFlat" id=34]
+bg_color = Color( 0.0588235, 0.505882, 0.709804, 1 )
 
-[sub_resource type="StyleBoxTexture" id=2]
-texture = ExtResource( 40 )
+[sub_resource type="StyleBoxTexture" id=1]
+texture = ExtResource( 26 )
 region_rect = Rect2( 0, 0, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=3]
-texture = ExtResource( 40 )
+[sub_resource type="StyleBoxTexture" id=2]
+texture = ExtResource( 26 )
 region_rect = Rect2( 0, 46, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=4]
-texture = ExtResource( 40 )
+[sub_resource type="StyleBoxTexture" id=3]
+texture = ExtResource( 26 )
 region_rect = Rect2( 0, 92, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=5]
-texture = ExtResource( 40 )
+[sub_resource type="StyleBoxTexture" id=4]
+texture = ExtResource( 26 )
 region_rect = Rect2( 0, 138, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=5]
 size = 26
 extra_spacing_space = -10
 font_data = ExtResource( 28 )
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=6]
 size = 26
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=8]
-texture = ExtResource( 43 )
+[sub_resource type="StyleBoxTexture" id=7]
+texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=10]
-texture = ExtResource( 43 )
+[sub_resource type="StyleBoxTexture" id=9]
+texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=10]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=12]
-texture = ExtResource( 43 )
+[sub_resource type="StyleBoxTexture" id=11]
+texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=13]
+[sub_resource type="DynamicFont" id=12]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=14]
-texture = ExtResource( 43 )
+[sub_resource type="StyleBoxTexture" id=13]
+texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=15]
+[sub_resource type="DynamicFont" id=14]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="AtlasTexture" id=16]
+[sub_resource type="AtlasTexture" id=15]
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=16]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -143,10 +143,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 21 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -155,10 +155,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 44 ), SubResource( 16 ) ]
+"values": [ ExtResource( 31 ), SubResource( 15 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -170,7 +170,7 @@ tracks/2/keys = {
 "values": [ 0.4, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -182,7 +182,7 @@ tracks/3/keys = {
 "values": [ 5, 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -194,7 +194,7 @@ tracks/4/keys = {
 "values": [ 8, 0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -206,10 +206,10 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=17]
 length = 1.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
+tracks/0/path = NodePath("playerBase/pkmn_player/trainer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -221,7 +221,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/pkmn_player/trainer:position")
+tracks/1/path = NodePath("playerBase/pkmn_player/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -233,7 +233,7 @@ tracks/1/keys = {
 "values": [ Vector2( 207, -80 ), Vector2( 10, -80 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/2/path = NodePath("playerBase/pkmn_player:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -245,10 +245,10 @@ tracks/2/keys = {
 "values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=18]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyParty/ball5:position")
+tracks/0/path = NodePath("enemyParty/ball5:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -260,10 +260,10 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=19]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/0/path = NodePath("playerBase/pkmn_player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -275,7 +275,7 @@ tracks/0/keys = {
 "values": [ Vector2( 10, -96 ), Vector2( 143.5, -96 ), Vector2( 180, -40 ), Vector2( 200, 50 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/pkmn_player:rotation_degrees")
+tracks/1/path = NodePath("playerBase/pkmn_player:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -287,10 +287,10 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=20]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -299,10 +299,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 21 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -311,10 +311,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 44 ), SubResource( 16 ) ]
+"values": [ ExtResource( 31 ), SubResource( 15 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -326,7 +326,7 @@ tracks/2/keys = {
 "values": [ 0.4, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -338,7 +338,7 @@ tracks/3/keys = {
 "values": [ 5, 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -350,7 +350,7 @@ tracks/4/keys = {
 "values": [ 8, 0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -362,10 +362,10 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=21]
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy_ally/pokeball:position")
+tracks/0/path = NodePath("enemyBase/pkmn_enemy_ally/pokeball:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -377,7 +377,7 @@ tracks/0/keys = {
 "values": [ Vector2( 125, 67 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy_ally/trainer:position")
+tracks/1/path = NodePath("enemyBase/pkmn_enemy_ally/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -389,7 +389,7 @@ tracks/1/keys = {
 "values": [ Vector2( 62.461, -47.388 ), Vector2( 235, -47.388 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy_ally/pokeball:texture")
+tracks/2/path = NodePath("enemyBase/pkmn_enemy_ally/pokeball:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -401,7 +401,7 @@ tracks/2/keys = {
 "values": [ null, null ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:scale")
+tracks/3/path = NodePath("enemyBase/pkmn_enemy:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -413,7 +413,7 @@ tracks/3/keys = {
 "values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 1, 1 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -425,7 +425,7 @@ tracks/4/keys = {
 "values": [ 1.0, 1.0, 0.0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:position")
+tracks/5/path = NodePath("enemyBase/pkmn_enemy:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -437,7 +437,7 @@ tracks/5/keys = {
 "values": [ Vector2( 235, -47.388 ), Vector2( 142.461, 52.612 ), Vector2( 62.461, -47.388 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Background/enemyParty/ball1:position")
+tracks/6/path = NodePath("enemyParty/ball1:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -449,7 +449,7 @@ tracks/6/keys = {
 "values": [ Vector2( 182, 4.5 ), Vector2( 182, 4.5 ), Vector2( 520, 4.5 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Background/enemyParty/ball2:position")
+tracks/7/path = NodePath("enemyParty/ball2:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -461,7 +461,7 @@ tracks/7/keys = {
 "values": [ Vector2( 150, 4.5 ), Vector2( 150, 4.5 ), Vector2( 520, 4.5 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Background/enemyParty/ball3:position")
+tracks/8/path = NodePath("enemyParty/ball3:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -473,7 +473,7 @@ tracks/8/keys = {
 "values": [ Vector2( 118, 4.5 ), Vector2( 118, 4.5 ), Vector2( 520, 4.5 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Background/enemyParty/ball4:position")
+tracks/9/path = NodePath("enemyParty/ball4:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -485,7 +485,7 @@ tracks/9/keys = {
 "values": [ Vector2( 86, 4.5 ), Vector2( 86, 4.5 ), Vector2( 520, 4.5 ) ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Background/enemyParty/ball5:position")
+tracks/10/path = NodePath("enemyParty/ball5:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -497,7 +497,7 @@ tracks/10/keys = {
 "values": [ Vector2( 54, 4.5 ), Vector2( 54, 4.5 ), Vector2( 520, 4.5 ) ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Background/enemyParty/ball6:position")
+tracks/11/path = NodePath("enemyParty/ball6:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -509,7 +509,7 @@ tracks/11/keys = {
 "values": [ Vector2( 22, 4.5 ), Vector2( 22, 4.5 ), Vector2( 520, 4.5 ) ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Background/enemyParty/ball1:modulate")
+tracks/12/path = NodePath("enemyParty/ball1:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -521,7 +521,7 @@ tracks/12/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Background/enemyParty/ball2:modulate")
+tracks/13/path = NodePath("enemyParty/ball2:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -533,7 +533,7 @@ tracks/13/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Background/enemyParty/ball3:modulate")
+tracks/14/path = NodePath("enemyParty/ball3:modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -545,7 +545,7 @@ tracks/14/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Background/enemyParty/ball4:modulate")
+tracks/15/path = NodePath("enemyParty/ball4:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -557,7 +557,7 @@ tracks/15/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Background/enemyParty/ball5:modulate")
+tracks/16/path = NodePath("enemyParty/ball5:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -569,7 +569,7 @@ tracks/16/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("Background/enemyParty/ball6:modulate")
+tracks/17/path = NodePath("enemyParty/ball6:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -581,7 +581,7 @@ tracks/17/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Background/enemyParty/ball1:rotation_degrees")
+tracks/18/path = NodePath("enemyParty/ball1:rotation_degrees")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -593,7 +593,7 @@ tracks/18/keys = {
 "values": [ 0.0, 720.0 ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("Background/enemyParty/ball2:rotation_degrees")
+tracks/19/path = NodePath("enemyParty/ball2:rotation_degrees")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -605,7 +605,7 @@ tracks/19/keys = {
 "values": [ 0.0, 720.0 ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("Background/enemyParty/ball3:rotation_degrees")
+tracks/20/path = NodePath("enemyParty/ball3:rotation_degrees")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -617,7 +617,7 @@ tracks/20/keys = {
 "values": [ 0.0, 720.0 ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("Background/enemyParty/ball4:rotation_degrees")
+tracks/21/path = NodePath("enemyParty/ball4:rotation_degrees")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -629,7 +629,7 @@ tracks/21/keys = {
 "values": [ 0.0, 720.0 ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("Background/enemyParty/ball5:rotation_degrees")
+tracks/22/path = NodePath("enemyParty/ball5:rotation_degrees")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -641,7 +641,7 @@ tracks/22/keys = {
 "values": [ 0.0, 720.0 ]
 }
 tracks/23/type = "value"
-tracks/23/path = NodePath("Background/enemyParty/ball6:rotation_degrees")
+tracks/23/path = NodePath("enemyParty/ball6:rotation_degrees")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/imported = false
@@ -653,7 +653,7 @@ tracks/23/keys = {
 "values": [ 0.0, 720.0 ]
 }
 tracks/24/type = "value"
-tracks/24/path = NodePath("Background/HPbar_enemyS:position")
+tracks/24/path = NodePath("HPbar_enemyS:position")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/imported = false
@@ -665,7 +665,7 @@ tracks/24/keys = {
 "values": [ Vector2( -140, 70 ), Vector2( 116, 70 ) ]
 }
 tracks/25/type = "value"
-tracks/25/path = NodePath("Background/enemyParty/party_bar:position")
+tracks/25/path = NodePath("enemyParty/party_bar:position")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/imported = false
@@ -677,7 +677,7 @@ tracks/25/keys = {
 "values": [ Vector2( 21.522, 23.3062 ), Vector2( 200, 23.3062 ) ]
 }
 tracks/26/type = "value"
-tracks/26/path = NodePath("Background/enemyParty/party_bar:modulate")
+tracks/26/path = NodePath("enemyParty/party_bar:modulate")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/imported = false
@@ -689,10 +689,10 @@ tracks/26/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=22]
 length = 1.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
+tracks/0/path = NodePath("playerBase/pkmn_player/trainer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -704,7 +704,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/pkmn_player/trainer:position")
+tracks/1/path = NodePath("playerBase/pkmn_player/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -716,7 +716,7 @@ tracks/1/keys = {
 "values": [ Vector2( 207, -80 ), Vector2( 10, -80 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/playerParty/party_bar:position")
+tracks/2/path = NodePath("playerParty/party_bar:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -728,7 +728,7 @@ tracks/2/keys = {
 "values": [ Vector2( -339.5, 23.5 ), Vector2( -600, 23.5 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/playerParty/ball1:position")
+tracks/3/path = NodePath("playerParty/ball1:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -740,7 +740,7 @@ tracks/3/keys = {
 "values": [ Vector2( -502, 4.5 ), Vector2( -840, 4.5 ) ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Background/playerParty/ball2:position")
+tracks/4/path = NodePath("playerParty/ball2:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -752,7 +752,7 @@ tracks/4/keys = {
 "values": [ Vector2( -470, 4.5 ), Vector2( -840, 4.5 ) ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Background/playerParty/ball3:position")
+tracks/5/path = NodePath("playerParty/ball3:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -764,7 +764,7 @@ tracks/5/keys = {
 "values": [ Vector2( -438, 4.5 ), Vector2( -840, 4.5 ) ]
 }
 tracks/6/type = "value"
-tracks/6/path = NodePath("Background/playerParty/ball4:position")
+tracks/6/path = NodePath("playerParty/ball4:position")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/imported = false
@@ -776,7 +776,7 @@ tracks/6/keys = {
 "values": [ Vector2( -406, 4.5 ), Vector2( -840, 4.5 ) ]
 }
 tracks/7/type = "value"
-tracks/7/path = NodePath("Background/playerParty/ball5:position")
+tracks/7/path = NodePath("playerParty/ball5:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/imported = false
@@ -788,7 +788,7 @@ tracks/7/keys = {
 "values": [ Vector2( -374, 4.5 ), Vector2( -840, 4.5 ) ]
 }
 tracks/8/type = "value"
-tracks/8/path = NodePath("Background/playerParty/ball6:position")
+tracks/8/path = NodePath("playerParty/ball6:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/imported = false
@@ -800,7 +800,7 @@ tracks/8/keys = {
 "values": [ Vector2( -342, 4.5 ), Vector2( -840, 4.5 ) ]
 }
 tracks/9/type = "value"
-tracks/9/path = NodePath("Background/playerParty/ball1:rotation_degrees")
+tracks/9/path = NodePath("playerParty/ball1:rotation_degrees")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/imported = false
@@ -812,7 +812,7 @@ tracks/9/keys = {
 "values": [ 0.0, -720.0 ]
 }
 tracks/10/type = "value"
-tracks/10/path = NodePath("Background/playerParty/ball2:rotation_degrees")
+tracks/10/path = NodePath("playerParty/ball2:rotation_degrees")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/imported = false
@@ -824,7 +824,7 @@ tracks/10/keys = {
 "values": [ 0.0, -720.0 ]
 }
 tracks/11/type = "value"
-tracks/11/path = NodePath("Background/playerParty/ball3:rotation_degrees")
+tracks/11/path = NodePath("playerParty/ball3:rotation_degrees")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/imported = false
@@ -836,7 +836,7 @@ tracks/11/keys = {
 "values": [ 0.0, -720.0 ]
 }
 tracks/12/type = "value"
-tracks/12/path = NodePath("Background/playerParty/ball4:rotation_degrees")
+tracks/12/path = NodePath("playerParty/ball4:rotation_degrees")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
@@ -848,7 +848,7 @@ tracks/12/keys = {
 "values": [ 0.0, -720.0 ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("Background/playerParty/ball5:rotation_degrees")
+tracks/13/path = NodePath("playerParty/ball5:rotation_degrees")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
@@ -860,7 +860,7 @@ tracks/13/keys = {
 "values": [ 0.0, -720.0 ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("Background/playerParty/ball6:rotation_degrees")
+tracks/14/path = NodePath("playerParty/ball6:rotation_degrees")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
@@ -872,7 +872,7 @@ tracks/14/keys = {
 "values": [ 0.0, -720.0 ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("Background/playerParty/ball1:modulate")
+tracks/15/path = NodePath("playerParty/ball1:modulate")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -884,7 +884,7 @@ tracks/15/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("Background/playerParty/party_bar:modulate")
+tracks/16/path = NodePath("playerParty/party_bar:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
@@ -896,7 +896,7 @@ tracks/16/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/17/type = "value"
-tracks/17/path = NodePath("Background/playerParty/ball2:modulate")
+tracks/17/path = NodePath("playerParty/ball2:modulate")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/imported = false
@@ -908,7 +908,7 @@ tracks/17/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/18/type = "value"
-tracks/18/path = NodePath("Background/playerParty/ball3:modulate")
+tracks/18/path = NodePath("playerParty/ball3:modulate")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/imported = false
@@ -920,7 +920,7 @@ tracks/18/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/19/type = "value"
-tracks/19/path = NodePath("Background/playerParty/ball4:modulate")
+tracks/19/path = NodePath("playerParty/ball4:modulate")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/imported = false
@@ -932,7 +932,7 @@ tracks/19/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/20/type = "value"
-tracks/20/path = NodePath("Background/playerParty/ball5:modulate")
+tracks/20/path = NodePath("playerParty/ball5:modulate")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/imported = false
@@ -944,7 +944,7 @@ tracks/20/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/21/type = "value"
-tracks/21/path = NodePath("Background/playerParty/ball6:modulate")
+tracks/21/path = NodePath("playerParty/ball6:modulate")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/imported = false
@@ -956,7 +956,7 @@ tracks/21/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/22/type = "value"
-tracks/22/path = NodePath("Background/HPbar_playerS:position")
+tracks/22/path = NodePath("HPbar_playerS:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/imported = false
@@ -968,10 +968,10 @@ tracks/22/keys = {
 "values": [ Vector2( 650, 236 ), Vector2( 396, 236 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=23]
 length = 1.2
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
+tracks/0/path = NodePath("playerBase/pkmn_player/trainer:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -983,7 +983,7 @@ tracks/0/keys = {
 "values": [ 1, 2, 3 ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/pkmn_player/trainer:position")
+tracks/1/path = NodePath("playerBase/pkmn_player/trainer:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -995,7 +995,7 @@ tracks/1/keys = {
 "values": [ Vector2( 207, -80 ), Vector2( 10, -80 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/2/path = NodePath("playerBase/pkmn_player:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1007,10 +1007,10 @@ tracks/2/keys = {
 "values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=24]
 length = 2.0
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/0/path = NodePath("playerBase/pkmn_player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1022,7 +1022,7 @@ tracks/0/keys = {
 "values": [ Vector2( -10, -96.663 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:position")
+tracks/1/path = NodePath("enemyBase/pkmn_enemy:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1034,7 +1034,7 @@ tracks/1/keys = {
 "values": [ Vector2( 235, -47.388 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/playerBase/pkmn_player/trainer:frame")
+tracks/2/path = NodePath("playerBase/pkmn_player/trainer:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1046,13 +1046,13 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=25]
 length = 1.5
 
-[sub_resource type="Animation" id=27]
+[sub_resource type="Animation" id=26]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase/pkmn_player:position")
+tracks/0/path = NodePath("playerBase/pkmn_player:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1064,7 +1064,7 @@ tracks/0/keys = {
 "values": [ Vector2( 10, -96 ), Vector2( 143.5, -96 ), Vector2( 180, -40 ), Vector2( 200, 50 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/playerBase/pkmn_player:rotation_degrees")
+tracks/1/path = NodePath("playerBase/pkmn_player:rotation_degrees")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1076,12 +1076,12 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=28]
+[sub_resource type="AtlasTexture" id=27]
 
-[sub_resource type="Animation" id=29]
+[sub_resource type="Animation" id=28]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1090,10 +1090,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 21 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1102,10 +1102,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 50 ), SubResource( 28 ) ]
+"values": [ ExtResource( 38 ), SubResource( 27 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1117,7 +1117,7 @@ tracks/2/keys = {
 "values": [ 0.4, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1129,7 +1129,7 @@ tracks/3/keys = {
 "values": [ 5, 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1141,7 +1141,7 @@ tracks/4/keys = {
 "values": [ -8, 0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -1153,12 +1153,12 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=30]
+[sub_resource type="AtlasTexture" id=29]
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=30]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/enemyBase/pkmn_enemy:material")
+tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1167,10 +1167,10 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ ExtResource( 21 ) ]
+"values": [ ExtResource( 12 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame1")
+tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1179,10 +1179,10 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 51 ), SubResource( 30 ) ]
+"values": [ ExtResource( 39 ), SubResource( 29 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/whitening")
+tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1194,7 +1194,7 @@ tracks/2/keys = {
 "values": [ 0.4, 0.0 ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frame_size")
+tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1206,7 +1206,7 @@ tracks/3/keys = {
 "values": [ 5, 0 ]
 }
 tracks/4/type = "value"
-tracks/4/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/frames")
+tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
@@ -1218,7 +1218,7 @@ tracks/4/keys = {
 "values": [ 8, 0 ]
 }
 tracks/5/type = "value"
-tracks/5/path = NodePath("Background/enemyBase/pkmn_enemy:material:shader_param/anim_time")
+tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/imported = false
@@ -1230,10 +1230,10 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=32]
+[sub_resource type="Animation" id=31]
 length = 1.5
 tracks/0/type = "value"
-tracks/0/path = NodePath("Background/playerBase:position")
+tracks/0/path = NodePath("playerBase:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
@@ -1245,7 +1245,7 @@ tracks/0/keys = {
 "values": [ Vector2( -500, 240 ), Vector2( -148, 240 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("Background/enemyBase:position")
+tracks/1/path = NodePath("enemyBase:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
@@ -1257,7 +1257,7 @@ tracks/1/keys = {
 "values": [ Vector2( 510, 111 ), Vector2( 257, 111 ) ]
 }
 tracks/2/type = "value"
-tracks/2/path = NodePath("Background/HPbar_enemyS:position")
+tracks/2/path = NodePath("HPbar_enemyS:position")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
@@ -1269,7 +1269,7 @@ tracks/2/keys = {
 "values": [ Vector2( -140, 70 ), Vector2( -140, 70 ), Vector2( 116, 70 ) ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("Background/HPbar_playerS:position")
+tracks/3/path = NodePath("HPbar_playerS:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
@@ -1281,6 +1281,13 @@ tracks/3/keys = {
 "values": [ Vector2( 650, 236 ), Vector2( 650, 236 ), Vector2( 396, 236 ) ]
 }
 
+[sub_resource type="StyleBoxFlat" id=33]
+bg_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFont" id=32]
+size = 26
+font_data = ExtResource( 28 )
+
 [node name="BATTLE" type="Control"]
 margin_right = 40.0
 margin_bottom = 40.0
@@ -1290,14 +1297,14 @@ __meta__ = {
 }
 
 [node name="Background" type="Sprite" parent="."]
+position = Vector2( -3.05176e-005, 0 )
 texture = ExtResource( 2 )
 centered = false
-__meta__ = {
-"_edit_lock_": true
-}
+region_enabled = true
+region_rect = Rect2( -256, 0, 768, 384 )
 
-[node name="playerBase" type="Sprite" parent="Background"]
-position = Vector2( -128, 240 )
+[node name="enemyBase" type="Sprite" parent="."]
+position = Vector2( -258, 112 )
 texture = ExtResource( 3 )
 centered = false
 script = ExtResource( 4 )
@@ -1305,683 +1312,170 @@ __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pkmn_player" type="Node2D" parent="Background/playerBase"]
-self_modulate = Color( 1, 1, 1, 0 )
-
-[node name="FrameAnimations" type="Node2D" parent="Background/playerBase/pkmn_player"]
-position = Vector2( 0, 72 )
-
-[node name="Sprite" type="Sprite" parent="Background/playerBase/pkmn_player"]
-material = ExtResource( 5 )
-position = Vector2( 156, -16 )
-texture = ExtResource( 6 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/playerBase/pkmn_player"]
-anims/Destructor = ExtResource( 7 )
-anims/Hurt = ExtResource( 8 )
-anims/Show_Pokemon_Slot0 = ExtResource( 9 )
-anims/Show_Pokemon_Slot1 = ExtResource( 10 )
-anims/Show_Pokemon_Slot2 = ExtResource( 11 )
-anims/Stat_Up_Animation = ExtResource( 12 )
-
-[node name="trainer" type="Sprite" parent="Background/playerBase/pkmn_player"]
+[node name="pkmn_enemy_ally" type="Node2D" parent="enemyBase"]
 visible = false
-position = Vector2( 144, -80 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enemyBase/pkmn_enemy_ally"]
+anims/Destructor = ExtResource( 5 )
+anims/DestructorOK = ExtResource( 6 )
+anims/Hurt = ExtResource( 7 )
+anims/Stat_Up_Animation = ExtResource( 8 )
+
+[node name="FrameAnimations" type="Node2D" parent="enemyBase/pkmn_enemy_ally"]
+position = Vector2( 73.5032, 85.6775 )
+
+[node name="trainer" type="Sprite" parent="enemyBase/pkmn_enemy_ally"]
+visible = false
+position = Vector2( 62.461, -47.388 )
+texture = ExtResource( 9 )
+centered = false
+region_rect = Rect2( 88, 59, 95, 45 )
+
+[node name="Sprite" type="Sprite" parent="enemyBase/pkmn_enemy_ally"]
+position = Vector2( 176, -34 )
+texture = ExtResource( 10 )
+
+[node name="pokeball" type="Sprite" parent="enemyBase/pkmn_enemy_ally"]
+position = Vector2( 125, 67 )
+texture = ExtResource( 11 )
+
+[node name="pkmn_enemy" type="Node2D" parent="enemyBase"]
+editor/display_folded = true
+visible = false
+material = ExtResource( 12 )
+use_parent_material = true
+position = Vector2( 235, -47.388 )
+scale = Vector2( 1e-005, 1e-005 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="enemyBase/pkmn_enemy"]
+anims/Destructor = ExtResource( 5 )
+anims/Hurt = ExtResource( 7 )
+anims/Stat_Up_Animation = ExtResource( 8 )
+
+[node name="FrameAnimations" type="Node2D" parent="enemyBase/pkmn_enemy"]
+position = Vector2( 70, 89 )
+
+[node name="Sprite" type="Sprite" parent="enemyBase/pkmn_enemy"]
+position = Vector2( 128, -34 )
+texture = ExtResource( 10 )
+
+[node name="pokeball" type="Sprite" parent="enemyBase/pkmn_enemy"]
+visible = false
+position = Vector2( -76, 24 )
+texture = ExtResource( 11 )
+
+[node name="trainer" type="Sprite" parent="enemyBase/pkmn_enemy"]
+visible = false
+position = Vector2( 38, -58 )
 texture = ExtResource( 13 )
 centered = false
-hframes = 5
+region_rect = Rect2( 88, 59, 95, 45 )
 
-[node name="pokeball" type="Sprite" parent="Background/playerBase/pkmn_player"]
-visible = false
-position = Vector2( 154.543, -7.79248 )
-rotation = 7.85398
+[node name="playerBase" type="Sprite" parent="."]
+editor/display_folded = true
+position = Vector2( 500, 240 )
 texture = ExtResource( 14 )
-
-[node name="pkmn_player_ally" type="Node2D" parent="Background/playerBase"]
-
-[node name="FrameAnimations" type="Node2D" parent="Background/playerBase/pkmn_player_ally"]
-
-[node name="Sprite" type="Sprite" parent="Background/playerBase/pkmn_player_ally"]
-position = Vector2( 288, 0 )
-texture = ExtResource( 6 )
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/playerBase/pkmn_player_ally"]
-anims/Destructor = ExtResource( 7 )
-anims/Hurt = ExtResource( 8 )
-anims/Show_Pokemon_Slot0 = ExtResource( 9 )
-anims/Show_Pokemon_Slot1 = ExtResource( 10 )
-anims/Show_Pokemon_Slot2 = ExtResource( 11 )
-anims/Stat_Up_Animation = ExtResource( 12 )
-
-[node name="trainer" type="Sprite" parent="Background/playerBase/pkmn_player_ally"]
-visible = false
-position = Vector2( 224, -80 )
-texture = ExtResource( 15 )
-centered = false
-hframes = 5
-
-[node name="pokeball" type="Sprite" parent="Background/playerBase/pkmn_player_ally"]
-position = Vector2( -157.457, 79.6429 )
-texture = ExtResource( 16 )
-
-[node name="enemyBase" type="Sprite" parent="Background"]
-position = Vector2( 256, 112 )
-texture = ExtResource( 17 )
 centered = false
 script = ExtResource( 4 )
 __meta__ = {
 "_edit_lock_": true
 }
 
-[node name="pkmn_enemy_ally" type="Node2D" parent="Background/enemyBase"]
+[node name="pkmn_player" type="Node2D" parent="playerBase"]
+self_modulate = Color( 1, 1, 1, 0 )
+__meta__ = {
+"_edit_lock_": true
+}
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/enemyBase/pkmn_enemy_ally"]
-anims/Destructor = ExtResource( 7 )
-anims/DestructorOK = ExtResource( 18 )
-anims/Hurt = ExtResource( 8 )
-anims/Stat_Up_Animation = ExtResource( 12 )
+[node name="FrameAnimations" type="Node2D" parent="playerBase/pkmn_player"]
+position = Vector2( 0, 72 )
 
-[node name="FrameAnimations" type="Node2D" parent="Background/enemyBase/pkmn_enemy_ally"]
-position = Vector2( 73.5032, 85.6775 )
-
-[node name="trainer" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
+[node name="Sprite" type="Sprite" parent="playerBase/pkmn_player"]
 visible = false
-position = Vector2( 84, -58 )
-texture = ExtResource( 19 )
-centered = false
-region_rect = Rect2( 88, 59, 95, 45 )
-
-[node name="Sprite" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
-visible = false
-position = Vector2( 176, -34 )
-texture = ExtResource( 20 )
-
-[node name="pokeball" type="Sprite" parent="Background/enemyBase/pkmn_enemy_ally"]
-visible = false
-position = Vector2( 76, 24 )
+material = ExtResource( 15 )
+position = Vector2( 156, -16 )
 texture = ExtResource( 16 )
 
-[node name="pkmn_enemy" type="Node2D" parent="Background/enemyBase"]
-material = ExtResource( 21 )
-use_parent_material = true
+[node name="AnimationPlayer" type="AnimationPlayer" parent="playerBase/pkmn_player"]
+anims/Destructor = ExtResource( 5 )
+anims/Hurt = ExtResource( 7 )
+anims/Show_Pokemon_Slot0 = ExtResource( 17 )
+anims/Show_Pokemon_Slot1 = ExtResource( 18 )
+anims/Show_Pokemon_Slot2 = ExtResource( 19 )
+anims/Stat_Up_Animation = ExtResource( 8 )
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Background/enemyBase/pkmn_enemy"]
-anims/Destructor = ExtResource( 7 )
-anims/Hurt = ExtResource( 8 )
-anims/Stat_Up_Animation = ExtResource( 12 )
-
-[node name="FrameAnimations" type="Node2D" parent="Background/enemyBase/pkmn_enemy"]
-position = Vector2( 70, 89 )
-
-[node name="Sprite" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
-position = Vector2( 128, -34 )
+[node name="trainer" type="Sprite" parent="playerBase/pkmn_player"]
+position = Vector2( 256, -16 )
 texture = ExtResource( 20 )
+hframes = 5
 
-[node name="pokeball" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
+[node name="pokeball" type="Sprite" parent="playerBase/pkmn_player"]
 visible = false
-position = Vector2( -76, 24 )
+position = Vector2( 154.543, -7.79248 )
+rotation = 7.85398
+texture = ExtResource( 21 )
+
+[node name="pkmn_player_ally" type="Node2D" parent="playerBase"]
+editor/display_folded = true
+visible = false
+
+[node name="FrameAnimations" type="Node2D" parent="playerBase/pkmn_player_ally"]
+
+[node name="Sprite" type="Sprite" parent="playerBase/pkmn_player_ally"]
+position = Vector2( 288, 0 )
 texture = ExtResource( 16 )
 
-[node name="trainer" type="Sprite" parent="Background/enemyBase/pkmn_enemy"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="playerBase/pkmn_player_ally"]
+anims/Destructor = ExtResource( 5 )
+anims/Hurt = ExtResource( 7 )
+anims/Show_Pokemon_Slot0 = ExtResource( 17 )
+anims/Show_Pokemon_Slot1 = ExtResource( 18 )
+anims/Show_Pokemon_Slot2 = ExtResource( 19 )
+anims/Stat_Up_Animation = ExtResource( 8 )
+
+[node name="trainer" type="Sprite" parent="playerBase/pkmn_player_ally"]
 visible = false
-position = Vector2( 38, -58 )
+position = Vector2( 224, -80 )
 texture = ExtResource( 22 )
 centered = false
-region_rect = Rect2( 88, 59, 95, 45 )
+hframes = 5
 
-[node name="HPbar_playerS" type="Sprite" parent="Background"]
-editor/display_folded = true
-position = Vector2( 650, 236 )
-texture = ExtResource( 23 )
-script = ExtResource( 24 )
-__meta__ = {
-"_edit_lock_": true
-}
+[node name="pokeball" type="Sprite" parent="playerBase/pkmn_player_ally"]
+position = Vector2( -157.457, 79.6429 )
+texture = ExtResource( 11 )
 
-[node name="health_bar" type="Node2D" parent="Background/HPbar_playerS"]
-
-[node name="background" type="TextureRect" parent="Background/HPbar_playerS/health_bar"]
-margin_left = 3.0
-margin_top = -7.0
-margin_right = 106.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="health" type="TextureRect" parent="Background/HPbar_playerS/health_bar"]
-modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-margin_left = 6.0
-margin_top = -7.0
-margin_right = 102.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/health_bar"]
-position = Vector2( 40, 1 )
-texture = ExtResource( 26 )
-
-[node name="exp_bar" type="Node2D" parent="Background/HPbar_playerS"]
-
-[node name="background" type="TextureRect" parent="Background/HPbar_playerS/exp_bar"]
-margin_left = -90.0
-margin_top = 33.0
-margin_right = 102.0
-margin_bottom = 39.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="exp" type="TextureRect" parent="Background/HPbar_playerS/exp_bar"]
-modulate = Color( 0.282353, 0.564706, 0.972549, 1 )
-margin_left = -90.0
-margin_top = 33.0
-margin_right = 102.0
-margin_bottom = 39.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerS/exp_bar"]
-position = Vector2( 6, 37 )
-texture = ExtResource( 27 )
-
-[node name="lblActualHP" type="Label" parent="Background/HPbar_playerS"]
-margin_left = -4.0
-margin_top = -3.0
-margin_right = 60.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "40"
-align = 2
-valign = 1
-
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerS"]
-margin_left = 61.0
-margin_top = -3.0
-margin_right = 125.0
-margin_bottom = 29.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "/40"
-valign = 1
-
-[node name="lblLevel" type="Label" parent="Background/HPbar_playerS"]
-margin_left = 40.0
-margin_top = -33.0
-margin_right = 104.0
-margin_bottom = -10.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nv20"
-align = 2
-valign = 1
-
-[node name="lblName" type="Label" parent="Background/HPbar_playerS"]
-margin_left = -95.0
-margin_top = -33.0
-margin_right = 29.0
-margin_bottom = -10.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Pikachu"
-valign = 1
-
-[node name="Status" type="Sprite" parent="Background/HPbar_playerS"]
-position = Vector2( -50, 1 )
-texture = ExtResource( 29 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 44, 16 )
-
-[node name="HPbar_playerD" type="Sprite" parent="Background"]
-editor/display_folded = true
-position = Vector2( 642, 185 )
-texture = ExtResource( 30 )
-script = ExtResource( 24 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD"]
-position = Vector2( 0, 12 )
-
-[node name="background" type="TextureRect" parent="Background/HPbar_playerD/health_bar"]
-margin_left = 3.0
-margin_top = -7.0
-margin_right = 106.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="health" type="TextureRect" parent="Background/HPbar_playerD/health_bar"]
-modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-margin_left = 6.0
-margin_top = -7.0
-margin_right = 102.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerD/health_bar"]
-position = Vector2( 40, 1 )
-texture = ExtResource( 26 )
-
-[node name="lblLevel" type="Label" parent="Background/HPbar_playerD"]
-margin_left = 40.0
-margin_top = -24.0
-margin_right = 104.0
-margin_bottom = -1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nv20"
-align = 2
-valign = 1
-
-[node name="lblName" type="Label" parent="Background/HPbar_playerD"]
-margin_left = -95.0
-margin_top = -25.0
-margin_right = 29.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Pikachu"
-valign = 1
-
-[node name="Status" type="Sprite" parent="Background/HPbar_playerD"]
-position = Vector2( -50, 12.6415 )
-texture = ExtResource( 29 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 44, 16 )
-
-[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD"]
-margin_left = 145.0
-margin_top = -250.0
-margin_right = 185.0
-margin_bottom = -236.0
-
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD"]
-margin_left = 114.0
-margin_top = -259.0
-margin_right = 154.0
-margin_bottom = -245.0
-
-[node name="HPbar_playerD2" type="Sprite" parent="Background"]
-editor/display_folded = true
-position = Vector2( 653, 239 )
-texture = ExtResource( 30 )
-script = ExtResource( 24 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="health_bar" type="Node2D" parent="Background/HPbar_playerD2"]
-position = Vector2( 0, 12 )
-
-[node name="background" type="TextureRect" parent="Background/HPbar_playerD2/health_bar"]
-margin_left = 3.0
-margin_top = -7.0
-margin_right = 106.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="health" type="TextureRect" parent="Background/HPbar_playerD2/health_bar"]
-modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-margin_left = 6.0
-margin_top = -7.0
-margin_right = 102.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="overlay" type="Sprite" parent="Background/HPbar_playerD2/health_bar"]
-position = Vector2( 40, 1 )
-texture = ExtResource( 26 )
-
-[node name="lblLevel" type="Label" parent="Background/HPbar_playerD2"]
-margin_left = 40.0
-margin_top = -24.0
-margin_right = 104.0
-margin_bottom = -1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nv20"
-align = 2
-valign = 1
-
-[node name="lblName" type="Label" parent="Background/HPbar_playerD2"]
-margin_left = -95.0
-margin_top = -25.0
-margin_right = 29.0
-margin_bottom = -2.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Pikachu"
-valign = 1
-
-[node name="Status" type="Sprite" parent="Background/HPbar_playerD2"]
-position = Vector2( -50, 12.6415 )
-texture = ExtResource( 29 )
-region_enabled = true
-region_rect = Rect2( 0, 0, 44, 16 )
-
-[node name="lblActualHP" type="Label" parent="Background/HPbar_playerD2"]
-margin_left = 89.0
-margin_top = -281.0
-margin_right = 129.0
-margin_bottom = -267.0
-
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_playerD2"]
-margin_left = 113.0
-margin_top = -292.0
-margin_right = 153.0
-margin_bottom = -278.0
-
-[node name="HPbar_enemyS" type="Sprite" parent="Background"]
-editor/display_folded = true
-position = Vector2( -140, 70 )
-texture = ExtResource( 31 )
-script = ExtResource( 24 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyS"]
-editor/display_folded = true
-position = Vector2( -18, 12 )
-
-[node name="background" type="TextureRect" parent="Background/HPbar_enemyS/health_bar"]
-margin_left = 3.0
-margin_top = -7.0
-margin_right = 106.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="health" type="TextureRect" parent="Background/HPbar_enemyS/health_bar"]
-modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-margin_left = 6.0
-margin_top = -7.0
-margin_right = 102.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="overlay" type="Sprite" parent="Background/HPbar_enemyS/health_bar"]
-position = Vector2( 40, 1 )
-texture = ExtResource( 26 )
-
-[node name="lblLevel" type="Label" parent="Background/HPbar_enemyS"]
-margin_left = 24.0
-margin_top = -22.0
-margin_right = 88.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nv20"
-align = 2
-valign = 1
-
-[node name="lblName" type="Label" parent="Background/HPbar_enemyS"]
-margin_left = -110.0
-margin_top = -22.0
-margin_right = -46.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Abra"
-valign = 1
-
-[node name="Status" type="Sprite" parent="Background/HPbar_enemyS"]
-position = Vector2( -68, 13 )
-texture = ExtResource( 29 )
-region_enabled = true
-region_rect = Rect2( 0, 16, 44, 16 )
-
-[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyS"]
-margin_left = 1153.0
-margin_top = -112.0
-margin_right = 1193.0
-margin_bottom = -98.0
-
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyS"]
-margin_left = 1177.0
-margin_top = -123.0
-margin_right = 1217.0
-margin_bottom = -109.0
-
-[node name="HPbar_enemyD" type="Sprite" parent="Background"]
-editor/display_folded = true
-position = Vector2( -134, 36 )
-texture = ExtResource( 32 )
-script = ExtResource( 24 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD"]
-position = Vector2( -18, 12 )
-
-[node name="background" type="TextureRect" parent="Background/HPbar_enemyD/health_bar"]
-margin_left = 3.0
-margin_top = -7.0
-margin_right = 106.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="health" type="TextureRect" parent="Background/HPbar_enemyD/health_bar"]
-modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-margin_left = 6.0
-margin_top = -7.0
-margin_right = 102.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD/health_bar"]
-position = Vector2( 40, 1 )
-texture = ExtResource( 26 )
-
-[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD"]
-margin_left = 24.0
-margin_top = -22.0
-margin_right = 88.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nv20"
-align = 2
-valign = 1
-
-[node name="lblName" type="Label" parent="Background/HPbar_enemyD"]
-margin_left = -110.0
-margin_top = -22.0
-margin_right = -46.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Abra"
-valign = 1
-
-[node name="Status" type="Sprite" parent="Background/HPbar_enemyD"]
-position = Vector2( -68, 13 )
-texture = ExtResource( 29 )
-region_enabled = true
-region_rect = Rect2( 0, 16, 44, 16 )
-
-[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD"]
-margin_left = 1419.0
-margin_top = -78.0
-margin_right = 1459.0
-margin_bottom = -64.0
-
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD"]
-margin_left = 1443.0
-margin_top = -89.0
-margin_right = 1483.0
-margin_bottom = -75.0
-
-[node name="HPbar_enemyD2" type="Sprite" parent="Background"]
-editor/display_folded = true
-position = Vector2( -143, 90 )
-texture = ExtResource( 32 )
-script = ExtResource( 24 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="health_bar" type="Node2D" parent="Background/HPbar_enemyD2"]
-editor/display_folded = true
-position = Vector2( -18, 12 )
-
-[node name="background" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar"]
-margin_left = 3.0
-margin_top = -7.0
-margin_right = 106.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="health" type="TextureRect" parent="Background/HPbar_enemyD2/health_bar"]
-modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
-margin_left = 6.0
-margin_top = -7.0
-margin_right = 102.0
-margin_bottom = 7.0
-texture = ExtResource( 25 )
-expand = true
-
-[node name="overlay" type="Sprite" parent="Background/HPbar_enemyD2/health_bar"]
-position = Vector2( 40, 1 )
-texture = ExtResource( 26 )
-
-[node name="lblLevel" type="Label" parent="Background/HPbar_enemyD2"]
-margin_left = 24.0
-margin_top = -22.0
-margin_right = 88.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Nv20"
-align = 2
-valign = 1
-
-[node name="lblName" type="Label" parent="Background/HPbar_enemyD2"]
-margin_left = -110.0
-margin_top = -22.0
-margin_right = -46.0
-margin_bottom = 1.0
-custom_fonts/font = SubResource( 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "Abra"
-valign = 1
-
-[node name="Status" type="Sprite" parent="Background/HPbar_enemyD2"]
-position = Vector2( -68, 13 )
-texture = ExtResource( 29 )
-region_enabled = true
-region_rect = Rect2( 0, 16, 44, 16 )
-
-[node name="lblTotalHP" type="Label" parent="Background/HPbar_enemyD2"]
-margin_left = 1457.0
-margin_top = -143.0
-margin_right = 1497.0
-margin_bottom = -129.0
-
-[node name="lblActualHP" type="Label" parent="Background/HPbar_enemyD2"]
-margin_left = 1433.0
-margin_top = -132.0
-margin_right = 1473.0
-margin_bottom = -118.0
-
-[node name="playerParty" type="Node2D" parent="Background"]
-editor/display_folded = true
-position = Vector2( 820, 230 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="party_bar" type="Sprite" parent="Background/playerParty"]
-position = Vector2( -339.5, 23.5 )
-rotation = 3.14159
-texture = ExtResource( 33 )
-
-[node name="ball1" type="Sprite" parent="Background/playerParty"]
-position = Vector2( -502, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="ball2" type="Sprite" parent="Background/playerParty"]
-position = Vector2( -470, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="ball3" type="Sprite" parent="Background/playerParty"]
-position = Vector2( -438, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="ball4" type="Sprite" parent="Background/playerParty"]
-position = Vector2( -406, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="ball5" type="Sprite" parent="Background/playerParty"]
-position = Vector2( -490.5, 4.5 )
-texture = ExtResource( 35 )
-
-[node name="ball6" type="Sprite" parent="Background/playerParty"]
-position = Vector2( -342, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="enemyParty" type="Node2D" parent="Background"]
-editor/display_folded = true
-position = Vector2( 10, 105 )
-__meta__ = {
-"_edit_lock_": true
-}
-
-[node name="party_bar" type="Sprite" parent="Background/enemyParty"]
-position = Vector2( 21.522, 23.3062 )
-texture = ExtResource( 33 )
-
-[node name="ball1" type="Sprite" parent="Background/enemyParty"]
-position = Vector2( 182, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="ball2" type="Sprite" parent="Background/enemyParty"]
-position = Vector2( 150, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="ball3" type="Sprite" parent="Background/enemyParty"]
-position = Vector2( 118, 4.5 )
-texture = ExtResource( 35 )
-
-[node name="ball4" type="Sprite" parent="Background/enemyParty"]
-position = Vector2( 86, 4.5 )
-texture = ExtResource( 34 )
-
-[node name="ball5" type="Sprite" parent="Background/enemyParty"]
-position = Vector2( 54, 4.5 )
-rotation = 2.49671e-006
-texture = ExtResource( 36 )
-
-[node name="ball6" type="Sprite" parent="Background/enemyParty"]
-position = Vector2( 22, 4.5 )
-rotation = 12.5664
-texture = ExtResource( 36 )
-
-[node name="Panel_MessageBox" type="Panel" parent="."]
-margin_top = 288.0
+[node name="Fade" type="Panel" parent="."]
+visible = false
 margin_right = 512.0
 margin_bottom = 384.0
-custom_styles/panel = ExtResource( 37 )
+custom_styles/panel = SubResource( 34 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Decoration" type="Sprite" parent="."]
+modulate = Color( 0.419608, 0.419608, 0.419608, 1 )
+position = Vector2( -516, 200 )
+texture = ExtResource( 23 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="Decoration2" type="Sprite" parent="."]
+modulate = Color( 0.419608, 0.419608, 0.419608, 1 )
+position = Vector2( 1030, 200 )
+texture = ExtResource( 23 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Panel_Commands" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-custom_styles/panel = ExtResource( 38 )
+custom_styles/panel = ExtResource( 24 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1991,7 +1485,7 @@ margin_left = 21.0
 margin_top = 24.0
 margin_right = 229.0
 margin_bottom = 82.0
-custom_fonts/font = ExtResource( 39 )
+custom_fonts/font = ExtResource( 25 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_constants/line_spacing = 14
 text = "¿Qué debería hacer Pikachu?"
@@ -2007,7 +1501,7 @@ margin_bottom = 52.0
 focus_neighbour_right = NodePath("../Mochila")
 focus_neighbour_bottom = NodePath("../Pokemon")
 focus_mode = 2
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 1 )
 
 [node name="Pokemon" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 252.0
@@ -2017,7 +1511,7 @@ margin_bottom = 94.0
 focus_neighbour_top = NodePath("../Luchar")
 focus_neighbour_right = NodePath("../Huir")
 focus_mode = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="Mochila" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 378.0
@@ -2027,7 +1521,7 @@ margin_bottom = 52.0
 focus_neighbour_left = NodePath("../Luchar")
 focus_neighbour_bottom = NodePath("../Huir")
 focus_mode = 2
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Huir" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 378.0
@@ -2037,14 +1531,15 @@ margin_bottom = 94.0
 focus_neighbour_left = NodePath("../Pokemon")
 focus_neighbour_top = NodePath("../Mochila")
 focus_mode = 2
-custom_styles/panel = SubResource( 5 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="Panel_Moves" type="Panel" parent="."]
+editor/display_folded = true
 visible = false
 margin_top = 288.0
 margin_right = 512.0
 margin_bottom = 384.0
-custom_styles/panel = ExtResource( 41 )
+custom_styles/panel = ExtResource( 27 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2054,7 +1549,7 @@ margin_left = 398.0
 margin_top = 44.0
 margin_right = 443.0
 margin_bottom = 82.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PP:"
 align = 1
@@ -2065,7 +1560,7 @@ margin_left = 433.0
 margin_top = 47.0
 margin_right = 460.0
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "40"
 align = 2
@@ -2076,7 +1571,7 @@ margin_left = 458.0
 margin_top = 47.0
 margin_right = 494.0
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "/40"
 align = 2
@@ -2084,7 +1579,7 @@ valign = 1
 
 [node name="MoveType" type="Sprite" parent="Panel_Moves"]
 position = Vector2( 448, 36 )
-texture = ExtResource( 42 )
+texture = ExtResource( 29 )
 vframes = 24
 
 [node name="Moves" type="Node2D" parent="Panel_Moves"]
@@ -2100,14 +1595,14 @@ margin_bottom = 52.0
 focus_neighbour_right = NodePath("../Move2")
 focus_neighbour_bottom = NodePath("../Move3")
 focus_mode = 2
-custom_styles/panel = SubResource( 8 )
+custom_styles/panel = SubResource( 7 )
 
 [node name="lblMove1" type="Label" parent="Panel_Moves/Moves/Move1"]
 margin_left = 21.0
 margin_top = 14.0
 margin_right = 172.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Impactrueno"
 align = 1
@@ -2125,14 +1620,14 @@ margin_bottom = 52.0
 focus_neighbour_left = NodePath("../Move1")
 focus_neighbour_bottom = NodePath("../Move4")
 focus_mode = 2
-custom_styles/panel = SubResource( 10 )
+custom_styles/panel = SubResource( 9 )
 
 [node name="lblMove2" type="Label" parent="Panel_Moves/Moves/Move2"]
 margin_left = 21.0
 margin_top = 14.0
 margin_right = 172.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 10 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gruñido"
 align = 1
@@ -2150,14 +1645,14 @@ margin_bottom = 94.0
 focus_neighbour_top = NodePath("../Move1")
 focus_neighbour_right = NodePath("../Move4")
 focus_mode = 2
-custom_styles/panel = SubResource( 12 )
+custom_styles/panel = SubResource( 11 )
 
 [node name="lblMove3" type="Label" parent="Panel_Moves/Moves/Move3"]
 margin_left = 20.0
 margin_top = 14.0
 margin_right = 171.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 12 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Onda Trueno"
 align = 1
@@ -2175,14 +1670,14 @@ margin_bottom = 95.0
 focus_neighbour_left = NodePath("../Move3")
 focus_neighbour_top = NodePath("../Move2")
 focus_mode = 2
-custom_styles/panel = SubResource( 14 )
+custom_styles/panel = SubResource( 13 )
 
 [node name="lblMove4" type="Label" parent="Panel_Moves/Moves/Move4"]
 margin_left = 20.0
 margin_top = 13.0
 margin_right = 171.0
 margin_bottom = 39.0
-custom_fonts/font = SubResource( 15 )
+custom_fonts/font = SubResource( 14 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Rayo"
 align = 1
@@ -2191,28 +1686,583 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
-anims/Heal = SubResource( 17 )
-anims/ShowPokemon_enemy = ExtResource( 45 )
-anims/ShowPokemon_player = ExtResource( 46 )
-anims/ShowPokemon_player_wild = SubResource( 18 )
-anims/ShowTrainers_parties_animation = ExtResource( 47 )
-anims/Show_Pokemon_back = SubResource( 19 )
-anims/Show_Pokemon_prova = SubResource( 20 )
-anims/Stat_Down = ExtResource( 48 )
-anims/Stat_Up = ExtResource( 12 )
-anims/Wild_Start = ExtResource( 49 )
+anims/Heal = SubResource( 16 )
+anims/ShowPokemon_enemy = ExtResource( 32 )
+anims/ShowPokemon_player = ExtResource( 33 )
+anims/ShowPokemon_player_wild = SubResource( 17 )
+anims/ShowTrainers_parties_animation = ExtResource( 34 )
+anims/Show_Pokemon_back = SubResource( 18 )
+anims/Show_Pokemon_prova = SubResource( 19 )
+anims/Stat_Down = ExtResource( 35 )
+anims/Stat_Up = ExtResource( 8 )
+anims/Wild_Start = ExtResource( 36 )
+anims/init_wild_battle = ExtResource( 37 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/Heal = SubResource( 21 )
-anims/ShowPokemon_enemy = SubResource( 22 )
-anims/ShowPokemon_player = SubResource( 23 )
-anims/ShowPokemon_player_wild = SubResource( 24 )
-anims/ShowTrainers_parties = SubResource( 25 )
-anims/Show_Pokemon_back = SubResource( 26 )
-anims/Show_Pokemon_prova = SubResource( 27 )
-anims/Stat_Down = SubResource( 29 )
-anims/Stat_Up = SubResource( 31 )
-anims/Wild_Start = SubResource( 32 )
+anims/Heal = SubResource( 20 )
+anims/ShowPokemon_enemy = SubResource( 21 )
+anims/ShowPokemon_player = SubResource( 22 )
+anims/ShowPokemon_player_wild = SubResource( 23 )
+anims/ShowTrainers_parties = SubResource( 24 )
+anims/Show_Pokemon_back = SubResource( 25 )
+anims/Show_Pokemon_prova = SubResource( 26 )
+anims/Stat_Down = SubResource( 28 )
+anims/Stat_Up = SubResource( 30 )
+anims/Wild_Start = SubResource( 31 )
+
+[node name="Panel_MessageBox" type="Panel" parent="."]
+margin_top = 384.0
+margin_right = 512.0
+margin_bottom = 480.0
+custom_styles/panel = SubResource( 33 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="HPbar_playerS" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 396, 236 )
+texture = ExtResource( 40 )
+script = ExtResource( 41 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="HPbar_playerS"]
+
+[node name="background" type="TextureRect" parent="HPbar_playerS/health_bar"]
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="health" type="TextureRect" parent="HPbar_playerS/health_bar"]
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="overlay" type="Sprite" parent="HPbar_playerS/health_bar"]
+position = Vector2( 40, 1 )
+texture = ExtResource( 43 )
+
+[node name="exp_bar" type="Node2D" parent="HPbar_playerS"]
+
+[node name="background" type="TextureRect" parent="HPbar_playerS/exp_bar"]
+margin_left = -90.0
+margin_top = 33.0
+margin_right = 102.0
+margin_bottom = 39.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="exp" type="TextureRect" parent="HPbar_playerS/exp_bar"]
+modulate = Color( 0.282353, 0.564706, 0.972549, 1 )
+margin_left = -90.0
+margin_top = 33.0
+margin_right = 102.0
+margin_bottom = 39.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="overlay" type="Sprite" parent="HPbar_playerS/exp_bar"]
+position = Vector2( 6, 37 )
+texture = ExtResource( 44 )
+
+[node name="lblActualHP" type="Label" parent="HPbar_playerS"]
+margin_left = -4.0
+margin_top = -3.0
+margin_right = 60.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "40"
+align = 2
+valign = 1
+
+[node name="lblTotalHP" type="Label" parent="HPbar_playerS"]
+margin_left = 61.0
+margin_top = -3.0
+margin_right = 125.0
+margin_bottom = 29.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "/40"
+valign = 1
+
+[node name="lblLevel" type="Label" parent="HPbar_playerS"]
+margin_left = 40.0
+margin_top = -33.0
+margin_right = 104.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+
+[node name="lblName" type="Label" parent="HPbar_playerS"]
+margin_left = -95.0
+margin_top = -33.0
+margin_right = 29.0
+margin_bottom = -10.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pikachu"
+valign = 1
+
+[node name="Status" type="Sprite" parent="HPbar_playerS"]
+position = Vector2( -50, 1 )
+texture = ExtResource( 45 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 44, 16 )
+
+[node name="HPbar_playerD" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 642, 185 )
+texture = ExtResource( 46 )
+script = ExtResource( 41 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="HPbar_playerD"]
+position = Vector2( 0, 12 )
+
+[node name="background" type="TextureRect" parent="HPbar_playerD/health_bar"]
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="health" type="TextureRect" parent="HPbar_playerD/health_bar"]
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="overlay" type="Sprite" parent="HPbar_playerD/health_bar"]
+position = Vector2( 40, 1 )
+texture = ExtResource( 43 )
+
+[node name="lblLevel" type="Label" parent="HPbar_playerD"]
+margin_left = 40.0
+margin_top = -24.0
+margin_right = 104.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+
+[node name="lblName" type="Label" parent="HPbar_playerD"]
+margin_left = -95.0
+margin_top = -25.0
+margin_right = 29.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pikachu"
+valign = 1
+
+[node name="Status" type="Sprite" parent="HPbar_playerD"]
+position = Vector2( -50, 12.6415 )
+texture = ExtResource( 45 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 44, 16 )
+
+[node name="lblActualHP" type="Label" parent="HPbar_playerD"]
+margin_left = 145.0
+margin_top = -250.0
+margin_right = 185.0
+margin_bottom = -236.0
+
+[node name="lblTotalHP" type="Label" parent="HPbar_playerD"]
+margin_left = 114.0
+margin_top = -259.0
+margin_right = 154.0
+margin_bottom = -245.0
+
+[node name="HPbar_playerD2" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 653, 239 )
+texture = ExtResource( 46 )
+script = ExtResource( 41 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="HPbar_playerD2"]
+position = Vector2( 0, 12 )
+
+[node name="background" type="TextureRect" parent="HPbar_playerD2/health_bar"]
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="health" type="TextureRect" parent="HPbar_playerD2/health_bar"]
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="overlay" type="Sprite" parent="HPbar_playerD2/health_bar"]
+position = Vector2( 40, 1 )
+texture = ExtResource( 43 )
+
+[node name="lblLevel" type="Label" parent="HPbar_playerD2"]
+margin_left = 40.0
+margin_top = -24.0
+margin_right = 104.0
+margin_bottom = -1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+
+[node name="lblName" type="Label" parent="HPbar_playerD2"]
+margin_left = -95.0
+margin_top = -25.0
+margin_right = 29.0
+margin_bottom = -2.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Pikachu"
+valign = 1
+
+[node name="Status" type="Sprite" parent="HPbar_playerD2"]
+position = Vector2( -50, 12.6415 )
+texture = ExtResource( 45 )
+region_enabled = true
+region_rect = Rect2( 0, 0, 44, 16 )
+
+[node name="lblActualHP" type="Label" parent="HPbar_playerD2"]
+margin_left = 89.0
+margin_top = -281.0
+margin_right = 129.0
+margin_bottom = -267.0
+
+[node name="lblTotalHP" type="Label" parent="HPbar_playerD2"]
+margin_left = 113.0
+margin_top = -292.0
+margin_right = 153.0
+margin_bottom = -278.0
+
+[node name="HPbar_enemyS" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 116, 70 )
+texture = ExtResource( 47 )
+script = ExtResource( 41 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="HPbar_enemyS"]
+editor/display_folded = true
+position = Vector2( -18, 12 )
+
+[node name="background" type="TextureRect" parent="HPbar_enemyS/health_bar"]
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="health" type="TextureRect" parent="HPbar_enemyS/health_bar"]
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="overlay" type="Sprite" parent="HPbar_enemyS/health_bar"]
+position = Vector2( 40, 1 )
+texture = ExtResource( 43 )
+
+[node name="lblLevel" type="Label" parent="HPbar_enemyS"]
+margin_left = 24.0
+margin_top = -22.0
+margin_right = 88.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+
+[node name="lblName" type="Label" parent="HPbar_enemyS"]
+margin_left = -110.0
+margin_top = -22.0
+margin_right = -46.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Abra"
+valign = 1
+
+[node name="Status" type="Sprite" parent="HPbar_enemyS"]
+position = Vector2( -68, 13 )
+texture = ExtResource( 45 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 44, 16 )
+
+[node name="lblActualHP" type="Label" parent="HPbar_enemyS"]
+margin_left = 1153.0
+margin_top = -112.0
+margin_right = 1193.0
+margin_bottom = -98.0
+
+[node name="lblTotalHP" type="Label" parent="HPbar_enemyS"]
+margin_left = 1177.0
+margin_top = -123.0
+margin_right = 1217.0
+margin_bottom = -109.0
+
+[node name="HPbar_enemyD" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( -134, 36 )
+texture = ExtResource( 48 )
+script = ExtResource( 41 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="HPbar_enemyD"]
+position = Vector2( -18, 12 )
+
+[node name="background" type="TextureRect" parent="HPbar_enemyD/health_bar"]
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="health" type="TextureRect" parent="HPbar_enemyD/health_bar"]
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="overlay" type="Sprite" parent="HPbar_enemyD/health_bar"]
+position = Vector2( 40, 1 )
+texture = ExtResource( 43 )
+
+[node name="lblLevel" type="Label" parent="HPbar_enemyD"]
+margin_left = 24.0
+margin_top = -22.0
+margin_right = 88.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+
+[node name="lblName" type="Label" parent="HPbar_enemyD"]
+margin_left = -110.0
+margin_top = -22.0
+margin_right = -46.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Abra"
+valign = 1
+
+[node name="Status" type="Sprite" parent="HPbar_enemyD"]
+position = Vector2( -68, 13 )
+texture = ExtResource( 45 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 44, 16 )
+
+[node name="lblActualHP" type="Label" parent="HPbar_enemyD"]
+margin_left = 1419.0
+margin_top = -78.0
+margin_right = 1459.0
+margin_bottom = -64.0
+
+[node name="lblTotalHP" type="Label" parent="HPbar_enemyD"]
+margin_left = 1443.0
+margin_top = -89.0
+margin_right = 1483.0
+margin_bottom = -75.0
+
+[node name="HPbar_enemyD2" type="Sprite" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( -143, 90 )
+texture = ExtResource( 48 )
+script = ExtResource( 41 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="health_bar" type="Node2D" parent="HPbar_enemyD2"]
+editor/display_folded = true
+position = Vector2( -18, 12 )
+
+[node name="background" type="TextureRect" parent="HPbar_enemyD2/health_bar"]
+margin_left = 3.0
+margin_top = -7.0
+margin_right = 106.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="health" type="TextureRect" parent="HPbar_enemyD2/health_bar"]
+modulate = Color( 0.0941176, 0.752941, 0.12549, 1 )
+margin_left = 6.0
+margin_top = -7.0
+margin_right = 102.0
+margin_bottom = 7.0
+texture = ExtResource( 42 )
+expand = true
+
+[node name="overlay" type="Sprite" parent="HPbar_enemyD2/health_bar"]
+position = Vector2( 40, 1 )
+texture = ExtResource( 43 )
+
+[node name="lblLevel" type="Label" parent="HPbar_enemyD2"]
+margin_left = 24.0
+margin_top = -22.0
+margin_right = 88.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Nv20"
+align = 2
+valign = 1
+
+[node name="lblName" type="Label" parent="HPbar_enemyD2"]
+margin_left = -110.0
+margin_top = -22.0
+margin_right = -46.0
+margin_bottom = 1.0
+custom_fonts/font = SubResource( 32 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Abra"
+valign = 1
+
+[node name="Status" type="Sprite" parent="HPbar_enemyD2"]
+position = Vector2( -68, 13 )
+texture = ExtResource( 45 )
+region_enabled = true
+region_rect = Rect2( 0, 16, 44, 16 )
+
+[node name="lblTotalHP" type="Label" parent="HPbar_enemyD2"]
+margin_left = 1457.0
+margin_top = -143.0
+margin_right = 1497.0
+margin_bottom = -129.0
+
+[node name="lblActualHP" type="Label" parent="HPbar_enemyD2"]
+margin_left = 1433.0
+margin_top = -132.0
+margin_right = 1473.0
+margin_bottom = -118.0
+
+[node name="playerParty" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 820, 230 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="party_bar" type="Sprite" parent="playerParty"]
+position = Vector2( -339.5, 23.5 )
+rotation = 3.14159
+texture = ExtResource( 49 )
+
+[node name="ball1" type="Sprite" parent="playerParty"]
+position = Vector2( -502, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="ball2" type="Sprite" parent="playerParty"]
+position = Vector2( -470, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="ball3" type="Sprite" parent="playerParty"]
+position = Vector2( -438, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="ball4" type="Sprite" parent="playerParty"]
+position = Vector2( -406, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="ball5" type="Sprite" parent="playerParty"]
+position = Vector2( -374, 4.5 )
+texture = ExtResource( 51 )
+
+[node name="ball6" type="Sprite" parent="playerParty"]
+position = Vector2( -342, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="enemyParty" type="Node2D" parent="."]
+editor/display_folded = true
+visible = false
+position = Vector2( 10, 105 )
+__meta__ = {
+"_edit_lock_": true
+}
+
+[node name="party_bar" type="Sprite" parent="enemyParty"]
+position = Vector2( 21.522, 23.3062 )
+texture = ExtResource( 49 )
+
+[node name="ball1" type="Sprite" parent="enemyParty"]
+position = Vector2( 182, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="ball2" type="Sprite" parent="enemyParty"]
+position = Vector2( 150, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="ball3" type="Sprite" parent="enemyParty"]
+position = Vector2( 118, 4.5 )
+texture = ExtResource( 51 )
+
+[node name="ball4" type="Sprite" parent="enemyParty"]
+position = Vector2( 86, 4.5 )
+texture = ExtResource( 50 )
+
+[node name="ball5" type="Sprite" parent="enemyParty"]
+position = Vector2( 54, 4.5 )
+rotation = 2.49671e-006
+texture = ExtResource( 52 )
+
+[node name="ball6" type="Sprite" parent="enemyParty"]
+position = Vector2( 22, 4.5 )
+texture = ExtResource( 52 )
 [connection signal="focus_entered" from="Panel_Commands/Commands/Luchar" to="." method="_on_Luchar_focus_entered"]
 [connection signal="focus_entered" from="Panel_Commands/Commands/Pokemon" to="." method="_on_Pokmon_focus_entered"]
 [connection signal="focus_entered" from="Panel_Commands/Commands/Mochila" to="." method="_on_Mochila_focus_entered"]
