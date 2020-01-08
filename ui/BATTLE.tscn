@@ -53,85 +53,85 @@
 [ext_resource path="res://ui/Pictures/ballstatus.PNG" type="Texture" id=51]
 [ext_resource path="res://ui/Pictures/ballfainted.png" type="Texture" id=52]
 
-[sub_resource type="StyleBoxFlat" id=34]
+[sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0588235, 0.505882, 0.709804, 1 )
 
-[sub_resource type="StyleBoxTexture" id=1]
+[sub_resource type="StyleBoxTexture" id=2]
 texture = ExtResource( 26 )
 region_rect = Rect2( 0, 0, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=2]
+[sub_resource type="StyleBoxTexture" id=3]
 texture = ExtResource( 26 )
 region_rect = Rect2( 0, 46, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=3]
+[sub_resource type="StyleBoxTexture" id=4]
 texture = ExtResource( 26 )
 region_rect = Rect2( 0, 92, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="StyleBoxTexture" id=4]
+[sub_resource type="StyleBoxTexture" id=5]
 texture = ExtResource( 26 )
 region_rect = Rect2( 0, 138, 260, 414 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=5]
+[sub_resource type="DynamicFont" id=6]
 size = 26
 extra_spacing_space = -10
 font_data = ExtResource( 28 )
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=7]
 size = 26
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=7]
+[sub_resource type="StyleBoxTexture" id=8]
 texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=9]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=9]
+[sub_resource type="StyleBoxTexture" id=10]
 texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=11]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=11]
+[sub_resource type="StyleBoxTexture" id=12]
 texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=12]
+[sub_resource type="DynamicFont" id=13]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="StyleBoxTexture" id=13]
+[sub_resource type="StyleBoxTexture" id=14]
 texture = ExtResource( 30 )
 region_rect = Rect2( 0, 0, 384, 874 )
 axis_stretch_horizontal = 1
 axis_stretch_vertical = 1
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=15]
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=16]
 
-[sub_resource type="Animation" id=16]
+[sub_resource type="Animation" id=17]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
@@ -155,7 +155,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 31 ), SubResource( 15 ) ]
+"values": [ ExtResource( 31 ), SubResource( 16 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -206,7 +206,7 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=17]
+[sub_resource type="Animation" id=18]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerBase/pkmn_player/trainer:frame")
@@ -245,7 +245,7 @@ tracks/2/keys = {
 "values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
 }
 
-[sub_resource type="Animation" id=18]
+[sub_resource type="Animation" id=19]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("enemyParty/ball5:position")
@@ -260,7 +260,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
-[sub_resource type="Animation" id=19]
+[sub_resource type="Animation" id=20]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerBase/pkmn_player:position")
@@ -287,7 +287,7 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
 }
 
-[sub_resource type="Animation" id=20]
+[sub_resource type="Animation" id=21]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
@@ -311,7 +311,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 31 ), SubResource( 15 ) ]
+"values": [ ExtResource( 31 ), SubResource( 16 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -362,7 +362,7 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=21]
+[sub_resource type="Animation" id=22]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("enemyBase/pkmn_enemy_ally/pokeball:position")
@@ -689,7 +689,7 @@ tracks/26/keys = {
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 
-[sub_resource type="Animation" id=22]
+[sub_resource type="Animation" id=23]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerBase/pkmn_player/trainer:frame")
@@ -968,7 +968,7 @@ tracks/22/keys = {
 "values": [ Vector2( 650, 236 ), Vector2( 396, 236 ) ]
 }
 
-[sub_resource type="Animation" id=23]
+[sub_resource type="Animation" id=24]
 length = 1.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerBase/pkmn_player/trainer:frame")
@@ -1007,7 +1007,7 @@ tracks/2/keys = {
 "values": [ Vector2( -10, -96.663 ), Vector2( 179.941, -96.663 ) ]
 }
 
-[sub_resource type="Animation" id=24]
+[sub_resource type="Animation" id=25]
 length = 2.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerBase/pkmn_player:position")
@@ -1046,10 +1046,10 @@ tracks/2/keys = {
 "values": [ 0 ]
 }
 
-[sub_resource type="Animation" id=25]
+[sub_resource type="Animation" id=26]
 length = 1.5
 
-[sub_resource type="Animation" id=26]
+[sub_resource type="Animation" id=27]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerBase/pkmn_player:position")
@@ -1076,9 +1076,9 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=27]
+[sub_resource type="AtlasTexture" id=28]
 
-[sub_resource type="Animation" id=28]
+[sub_resource type="Animation" id=29]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
@@ -1102,7 +1102,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 38 ), SubResource( 27 ) ]
+"values": [ ExtResource( 38 ), SubResource( 28 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -1153,9 +1153,9 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=29]
+[sub_resource type="AtlasTexture" id=30]
 
-[sub_resource type="Animation" id=30]
+[sub_resource type="Animation" id=31]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
@@ -1179,7 +1179,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 1.5 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 1,
-"values": [ ExtResource( 39 ), SubResource( 29 ) ]
+"values": [ ExtResource( 39 ), SubResource( 30 ) ]
 }
 tracks/2/type = "value"
 tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
@@ -1230,7 +1230,7 @@ tracks/5/keys = {
 "values": [ 1.0, 0.0 ]
 }
 
-[sub_resource type="Animation" id=31]
+[sub_resource type="Animation" id=32]
 length = 1.5
 tracks/0/type = "value"
 tracks/0/path = NodePath("playerBase:position")
@@ -1284,7 +1284,7 @@ tracks/3/keys = {
 [sub_resource type="StyleBoxFlat" id=33]
 bg_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFont" id=32]
+[sub_resource type="DynamicFont" id=34]
 size = 26
 font_data = ExtResource( 28 )
 
@@ -1448,7 +1448,7 @@ texture = ExtResource( 11 )
 visible = false
 margin_right = 512.0
 margin_bottom = 384.0
-custom_styles/panel = SubResource( 34 )
+custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1501,7 +1501,7 @@ margin_bottom = 52.0
 focus_neighbour_right = NodePath("../Mochila")
 focus_neighbour_bottom = NodePath("../Pokemon")
 focus_mode = 2
-custom_styles/panel = SubResource( 1 )
+custom_styles/panel = SubResource( 2 )
 
 [node name="Pokemon" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 252.0
@@ -1511,7 +1511,7 @@ margin_bottom = 94.0
 focus_neighbour_top = NodePath("../Luchar")
 focus_neighbour_right = NodePath("../Huir")
 focus_mode = 2
-custom_styles/panel = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
 
 [node name="Mochila" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 378.0
@@ -1521,7 +1521,7 @@ margin_bottom = 52.0
 focus_neighbour_left = NodePath("../Luchar")
 focus_neighbour_bottom = NodePath("../Huir")
 focus_mode = 2
-custom_styles/panel = SubResource( 3 )
+custom_styles/panel = SubResource( 4 )
 
 [node name="Huir" type="Panel" parent="Panel_Commands/Commands"]
 margin_left = 378.0
@@ -1531,7 +1531,7 @@ margin_bottom = 94.0
 focus_neighbour_left = NodePath("../Pokemon")
 focus_neighbour_top = NodePath("../Mochila")
 focus_mode = 2
-custom_styles/panel = SubResource( 4 )
+custom_styles/panel = SubResource( 5 )
 
 [node name="Panel_Moves" type="Panel" parent="."]
 editor/display_folded = true
@@ -1549,7 +1549,7 @@ margin_left = 398.0
 margin_top = 44.0
 margin_right = 443.0
 margin_bottom = 82.0
-custom_fonts/font = SubResource( 5 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "PP:"
 align = 1
@@ -1560,7 +1560,7 @@ margin_left = 433.0
 margin_top = 47.0
 margin_right = 460.0
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "40"
 align = 2
@@ -1571,7 +1571,7 @@ margin_left = 458.0
 margin_top = 47.0
 margin_right = 494.0
 margin_bottom = 79.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 7 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "/40"
 align = 2
@@ -1595,14 +1595,14 @@ margin_bottom = 52.0
 focus_neighbour_right = NodePath("../Move2")
 focus_neighbour_bottom = NodePath("../Move3")
 focus_mode = 2
-custom_styles/panel = SubResource( 7 )
+custom_styles/panel = SubResource( 8 )
 
 [node name="lblMove1" type="Label" parent="Panel_Moves/Moves/Move1"]
 margin_left = 21.0
 margin_top = 14.0
 margin_right = 172.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Impactrueno"
 align = 1
@@ -1620,14 +1620,14 @@ margin_bottom = 52.0
 focus_neighbour_left = NodePath("../Move1")
 focus_neighbour_bottom = NodePath("../Move4")
 focus_mode = 2
-custom_styles/panel = SubResource( 9 )
+custom_styles/panel = SubResource( 10 )
 
 [node name="lblMove2" type="Label" parent="Panel_Moves/Moves/Move2"]
 margin_left = 21.0
 margin_top = 14.0
 margin_right = 172.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Gruñido"
 align = 1
@@ -1645,14 +1645,14 @@ margin_bottom = 94.0
 focus_neighbour_top = NodePath("../Move1")
 focus_neighbour_right = NodePath("../Move4")
 focus_mode = 2
-custom_styles/panel = SubResource( 11 )
+custom_styles/panel = SubResource( 12 )
 
 [node name="lblMove3" type="Label" parent="Panel_Moves/Moves/Move3"]
 margin_left = 20.0
 margin_top = 14.0
 margin_right = 171.0
 margin_bottom = 40.0
-custom_fonts/font = SubResource( 12 )
+custom_fonts/font = SubResource( 13 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Onda Trueno"
 align = 1
@@ -1670,14 +1670,14 @@ margin_bottom = 95.0
 focus_neighbour_left = NodePath("../Move3")
 focus_neighbour_top = NodePath("../Move2")
 focus_mode = 2
-custom_styles/panel = SubResource( 13 )
+custom_styles/panel = SubResource( 14 )
 
 [node name="lblMove4" type="Label" parent="Panel_Moves/Moves/Move4"]
 margin_left = 20.0
 margin_top = 13.0
 margin_right = 171.0
 margin_bottom = 39.0
-custom_fonts/font = SubResource( 14 )
+custom_fonts/font = SubResource( 15 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Rayo"
 align = 1
@@ -1686,29 +1686,29 @@ __meta__ = {
 }
 
 [node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
-anims/Heal = SubResource( 16 )
+anims/Heal = SubResource( 17 )
 anims/ShowPokemon_enemy = ExtResource( 32 )
 anims/ShowPokemon_player = ExtResource( 33 )
-anims/ShowPokemon_player_wild = SubResource( 17 )
+anims/ShowPokemon_player_wild = SubResource( 18 )
 anims/ShowTrainers_parties_animation = ExtResource( 34 )
-anims/Show_Pokemon_back = SubResource( 18 )
-anims/Show_Pokemon_prova = SubResource( 19 )
+anims/Show_Pokemon_back = SubResource( 19 )
+anims/Show_Pokemon_prova = SubResource( 20 )
 anims/Stat_Down = ExtResource( 35 )
 anims/Stat_Up = ExtResource( 8 )
 anims/Wild_Start = ExtResource( 36 )
 anims/init_wild_battle = ExtResource( 37 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
-anims/Heal = SubResource( 20 )
-anims/ShowPokemon_enemy = SubResource( 21 )
-anims/ShowPokemon_player = SubResource( 22 )
-anims/ShowPokemon_player_wild = SubResource( 23 )
-anims/ShowTrainers_parties = SubResource( 24 )
-anims/Show_Pokemon_back = SubResource( 25 )
-anims/Show_Pokemon_prova = SubResource( 26 )
-anims/Stat_Down = SubResource( 28 )
-anims/Stat_Up = SubResource( 30 )
-anims/Wild_Start = SubResource( 31 )
+anims/Heal = SubResource( 21 )
+anims/ShowPokemon_enemy = SubResource( 22 )
+anims/ShowPokemon_player = SubResource( 23 )
+anims/ShowPokemon_player_wild = SubResource( 24 )
+anims/ShowTrainers_parties = SubResource( 25 )
+anims/Show_Pokemon_back = SubResource( 26 )
+anims/Show_Pokemon_prova = SubResource( 27 )
+anims/Stat_Down = SubResource( 29 )
+anims/Stat_Up = SubResource( 31 )
+anims/Wild_Start = SubResource( 32 )
 
 [node name="Panel_MessageBox" type="Panel" parent="."]
 margin_top = 384.0
@@ -1780,7 +1780,7 @@ margin_left = -4.0
 margin_top = -3.0
 margin_right = 60.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "40"
 align = 2
@@ -1791,7 +1791,7 @@ margin_left = 61.0
 margin_top = -3.0
 margin_right = 125.0
 margin_bottom = 29.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "/40"
 valign = 1
@@ -1801,7 +1801,7 @@ margin_left = 40.0
 margin_top = -33.0
 margin_right = 104.0
 margin_bottom = -10.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
@@ -1812,7 +1812,7 @@ margin_left = -95.0
 margin_top = -33.0
 margin_right = 29.0
 margin_bottom = -10.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pikachu"
 valign = 1
@@ -1862,7 +1862,7 @@ margin_left = 40.0
 margin_top = -24.0
 margin_right = 104.0
 margin_bottom = -1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
@@ -1873,7 +1873,7 @@ margin_left = -95.0
 margin_top = -25.0
 margin_right = 29.0
 margin_bottom = -2.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pikachu"
 valign = 1
@@ -1935,7 +1935,7 @@ margin_left = 40.0
 margin_top = -24.0
 margin_right = 104.0
 margin_bottom = -1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
@@ -1946,7 +1946,7 @@ margin_left = -95.0
 margin_top = -25.0
 margin_right = 29.0
 margin_bottom = -2.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Pikachu"
 valign = 1
@@ -2009,7 +2009,7 @@ margin_left = 24.0
 margin_top = -22.0
 margin_right = 88.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
@@ -2020,7 +2020,7 @@ margin_left = -110.0
 margin_top = -22.0
 margin_right = -46.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Abra"
 valign = 1
@@ -2082,7 +2082,7 @@ margin_left = 24.0
 margin_top = -22.0
 margin_right = 88.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
@@ -2093,7 +2093,7 @@ margin_left = -110.0
 margin_top = -22.0
 margin_right = -46.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Abra"
 valign = 1
@@ -2156,7 +2156,7 @@ margin_left = 24.0
 margin_top = -22.0
 margin_right = 88.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Nv20"
 align = 2
@@ -2167,7 +2167,7 @@ margin_left = -110.0
 margin_top = -22.0
 margin_right = -46.0
 margin_bottom = 1.0
-custom_fonts/font = SubResource( 32 )
+custom_fonts/font = SubResource( 34 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Abra"
 valign = 1

@@ -26,7 +26,7 @@ void fragment()
 	
 }"
 
-[sub_resource type="AtlasTexture" id=15]
+[sub_resource type="AtlasTexture" id=2]
 
 [resource]
 shader = SubResource( 1 )
@@ -35,4 +35,4 @@ shader_param/whitening = 0.0
 shader_param/frame_size = 0
 shader_param/frames = 0
 shader_param/anim_time = 0.0
-shader_param/frame1 = SubResource( 15 )
+shader_param/frame1 = SubResource( 2 )
