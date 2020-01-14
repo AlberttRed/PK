@@ -33,13 +33,19 @@ _global_script_classes=[ {
 "class": "Trainer",
 "language": "GDScript",
 "path": "res://Logics/event/Trainer.gd"
+}, {
+"base": "Reference",
+"class": "Trainer2",
+"language": "GDScript",
+"path": "res://Logics/event/Trainer_class.gd"
 } ]
 _global_script_class_icons={
 "EventMovement": "",
 "EventSystem": "",
 "Item": "",
 "Pokemon": "",
-"Trainer": ""
+"Trainer": "",
+"Trainer2": ""
 }
 
 [application]

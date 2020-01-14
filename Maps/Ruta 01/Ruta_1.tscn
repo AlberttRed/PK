@@ -41,6 +41,7 @@ tile_data = PoolIntArray( -2031636, 10, 0, -2031634, 10, 0, -2031632, 10, 0, -20
 [node name="Eventos_" type="YSort" parent="."]
 
 [node name="NPC" parent="Eventos_" instance=ExtResource( 4 )]
+editor/display_folded = true
 position = Vector2( -111.889, 80.9476 )
 Trainer = true
 
@@ -48,9 +49,6 @@ Trainer = true
 texture = ExtResource( 5 )
 vframes = 4
 hframes = 4
-
-[node name="Trainer" parent="Eventos_/NPC" index="2"]
-is_playable = false
 
 [node name="event_page" parent="Eventos_/NPC/pages" index="0" instance=ExtResource( 6 )]
 Imagen = ExtResource( 5 )
@@ -102,7 +100,28 @@ encounter_rate = 10.0
 [node name="CollisionPolygon2D" parent="EncounterAreas_/encounter_area" index="0"]
 polygon = PoolVector2Array( -32, 0, 32, 0, 32, -64, -32, -64 )
 
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="EncounterAreas_/encounter_area"]
+position = Vector2( 64.683, -19 )
+polygon = PoolVector2Array( 0, 0, 160, 0, 160, -25.6, 224, -25.6, 224, -51.2, 64, -51.2, 64, -25.6, 0, -25.6, 0, 0 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="EncounterAreas_/encounter_area"]
+position = Vector2( -351.317, -19 )
+polygon = PoolVector2Array( 0, 0, 224, 0, 224, -25.6, 288, -25.6, 288, -51.2, 64, -51.2, 64, -25.6, 0, -25.6, 0, 0 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="EncounterAreas_/encounter_area"]
+position = Vector2( -32, -108 )
+polygon = PoolVector2Array( 0, 0, 192, 0, 192, -25.6, 192, -25.6, 192, -64, 0, -64, 0, -25.6, 0, -25.6, 0, 0 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="EncounterAreas_/encounter_area"]
+position = Vector2( 96, -250 )
+polygon = PoolVector2Array( 0, 0, 192, 0, 192, -25.6, 192, -25.6, 192, -64, 0, -64, 0, -25.6, 0, -25.6, 0, 0 )
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="EncounterAreas_/encounter_area"]
+position = Vector2( 96, -339.6 )
+polygon = PoolVector2Array( 192, 0, 192, -25.6, 192, -25.6, 192, -64, -192, -64, -192, 0 )
+
 [node name="ledge_area" parent="EncounterAreas_" instance=ExtResource( 10 )]
+editor/display_folded = true
 cells_jump = 2
 direction = "down"
 
@@ -112,6 +131,44 @@ polygon = PoolVector2Array( 221.484, -32, 221.484, 0, -162.516, 0, -162.516, -32
 
 [node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
 position = Vector2( -16, 0 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( 496, -160 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( 80, -352 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( 251.596, -512 )
+scale = Vector2( 1.58069, 1 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( 187.596, -672 )
+scale = Vector2( 1.58069, 1 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( 187.596, -832 )
+scale = Vector2( 1.58069, 1 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( 443.596, -832 )
+scale = Vector2( 1.58069, 1 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( -220.68, -352 )
+scale = Vector2( 0.433572, 1 )
+polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="EncounterAreas_/ledge_area"]
+position = Vector2( 929.856, -352 )
+scale = Vector2( 2.79615, 1 )
 polygon = PoolVector2Array( -367.316, -32, -239.316, -32, -239.316, 0, -367.316, 0, -367.316, -32 )
 
 [editable path="Eventos_/NPC"]

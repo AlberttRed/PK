@@ -5,52 +5,39 @@
 [ext_resource path="res://Logics/game_data/pokemon_instance.gd" type="Script" id=3]
 
 [node name="Trainer" type="Node"]
-
 script = ExtResource( 1 )
 Name = "Aura"
 battle_front_sprite = ExtResource( 2 )
-battle_back_sprite = null
 before_battle_message = "¡Te encontré! ¡Prepárate para luchar!"
 init_battle_message = "¡Voy a enseñarte lo que es una entrenadora pokémon de verdad!"
 end_battle_message = "¡No puede ser! Menuda suerte has tenido."
-is_defeated = false
-double_battle = false
-is_playable = false
 
-[node name="pkm1" type="Node" parent="." index="0"]
-
+[node name="pkm1" type="Node" parent="."]
 script = ExtResource( 3 )
 pkm_id = 26
 level = 15
 
-[node name="pkm2" type="Node" parent="." index="1"]
-
+[node name="pkm2" type="Node" parent="."]
 script = ExtResource( 3 )
 pkm_id = 37
 level = 23
 
-[node name="pkm3" type="Node" parent="." index="2"]
-
+[node name="pkm3" type="Node" parent="."]
 script = ExtResource( 3 )
 pkm_id = 34
 level = 54
 
-[node name="pkm4" type="Node" parent="." index="3"]
-
+[node name="pkm4" type="Node" parent="."]
 script = ExtResource( 3 )
 pkm_id = 39
 level = 7
 
-[node name="pkm5" type="Node" parent="." index="4"]
-
+[node name="pkm5" type="Node" parent="."]
 script = ExtResource( 3 )
 pkm_id = 42
 level = 25
 
-[node name="pkm6" type="Node" parent="." index="5"]
-
+[node name="pkm6" type="Node" parent="."]
 script = ExtResource( 3 )
 pkm_id = 43
 level = 10
-
-

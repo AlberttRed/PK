@@ -14,11 +14,14 @@ export(int,"None, bulbasaur, ivysaur, venusaur, charmander, charmeleon, charizar
 
 export var min_lvl = 1
 export var max_lvl = 5
+
+export var double = false
 #var Player = ProjectSettings.get("Player") 
 var Player = GAME_DATA.PLAYER
 
 #
 export(float) var encounter_rate = 100
+var Trainer = preload("res://Logics/event/Trainer_class.gd")
 
 var pkmn = []
 
@@ -55,7 +58,11 @@ func calculate_encounter():
 				print("found! " + DB.pokemons[pkmn[p]].name)
 				GUI.play_transition("transition_wild_battle")
 				yield(GUI, "finished")
-				GUI.init_battle()
+				var wild_pkmns = []
+				wild_pkmns.push_back(DB.pokemons[pkmn[p]].make_wild(floor(rand_range(min_lvl,max_lvl+1))))
+				if double:
+					wild_pkmns.push_back(DB.pokemons[pkmn[p]].make_wild(floor(rand_range(min_lvl,max_lvl+1))))
+				GUI.init_battle(double, GAME_DATA.trainer, Trainer.new("wild", null, null, null, null, null, false, double, false, false, wild_pkmns, false))
 # aquest es el bo			GUI.init_battle(GAME_DATA.party[0], DB.pokemons[pkmn[p]].make_wild(floor(rand_range(min_lvl,max_lvl+1))))
 			#GUI.wild_encounter(pkmn[p], floor(rand_range(min_lvl,max_lvl+1)))
 

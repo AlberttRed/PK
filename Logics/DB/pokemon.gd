@@ -62,6 +62,9 @@ export(String,MULTILINE) var description = ""
 
 export(int) var habitat_id = 1
 
+export(int) var battlerPlayerY = 0
+export(int) var battlerEnemyY = 0
+export(int) var battlerAltitude = 0
 #export(String) var ev_yield = ""
 
 
@@ -109,7 +112,8 @@ func make_wild(level: int):
 	#if p.movements.size() == 0 or p.movements == []:
 	for idx in learnable_indexes:
 		var move = move_instance_script.new()
-		move.id = idx   #learn_move_id[idx]
+		move.id = learn_move_id[idx]
+		print("Move: " + str(move.id))
 		move.pp = DB.moves[move.id].pp
 		move.pp_actual = move.pp
 		p.movements.push_back(move)
@@ -149,6 +153,7 @@ func new_pokemon(pkm):
 	#print(Name)
 	var temp_moves = []
 	for e in learnable_indexes:
+		print("move: " + str(DB.moves[learn_move_id[e]].id))
 		temp_moves.push_back(DB.moves[learn_move_id[e]].id)
 		#print("Fora: " + str(e))
 #		print(learn_move_id[e])

@@ -4,17 +4,19 @@
 [ext_resource path="res://Logics/event/Player.gd" type="Script" id=2]
 [ext_resource path="res://Sprites/trchar000.png" type="Texture" id=3]
 
-[node name="Player" index="0" groups=[
+[node name="Player" groups=[
 "Player",
 ] instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
-position = Vector2( 0, -12 )
 texture = ExtResource( 3 )
 offset = Vector2( 0, 4 )
 vframes = 4
 hframes = 4
+
+[node name="Trainer" parent="." index="2"]
+editor/display_folded = false
 
 [node name="Camera2D" type="Camera2D" parent="." index="9"]
 current = true

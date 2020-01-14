@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=86 format=2]
 
 [ext_resource path="res://ui/BATTLE.gd" type="Script" id=1]
 [ext_resource path="res://Sprites/Battlebacks/battlebgFieldNight.png" type="Texture" id=2]
@@ -12,7 +12,7 @@
 [ext_resource path="res://Sprites/Battlers/567.png" type="Texture" id=10]
 [ext_resource path="res://ui/Pictures/ball00.png" type="Texture" id=11]
 [ext_resource path="res://ui/BattleAnimations/shader_material.tres" type="Material" id=12]
-[ext_resource path="res://Sprites/Characters/trainer035.png" type="Texture" id=13]
+[ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=13]
 [ext_resource path="res://Sprites/Battlebacks/playerbaseFieldNight.png" type="Texture" id=14]
 [ext_resource path="res://ui/BattleAnimations/shader_white.tres" type="Material" id=15]
 [ext_resource path="res://Sprites/Battlers/025b.png" type="Texture" id=16]
@@ -30,28 +30,822 @@
 [ext_resource path="res://font/pkmndp.ttf" type="DynamicFontData" id=28]
 [ext_resource path="res://ui/Pictures/types.png" type="Texture" id=29]
 [ext_resource path="res://ui/Pictures/battleFightButtons.png" type="Texture" id=30]
-[ext_resource path="res://ui/BattleAnimations/OverlayHeal.png" type="Texture" id=31]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=32]
-[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=33]
-[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=34]
-[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=35]
-[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=36]
-[ext_resource path="res://ui/BattleAnimations/init_wild_battle.tres" type="Animation" id=37]
-[ext_resource path="res://ui/BattleAnimations/OverlayStatDown.png" type="Texture" id=38]
-[ext_resource path="res://ui/BattleAnimations/OverlayStatUp.png" type="Texture" id=39]
-[ext_resource path="res://ui/Pictures/battlePlayerBoxS.png" type="Texture" id=40]
-[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=41]
-[ext_resource path="res://ui/Pictures/pixel.png" type="Texture" id=42]
-[ext_resource path="res://ui/Pictures/HPbar_overlay.png" type="Texture" id=43]
-[ext_resource path="res://ui/Pictures/EXPbar_overlay.png" type="Texture" id=44]
-[ext_resource path="res://ui/Pictures/battleStatuses.png" type="Texture" id=45]
-[ext_resource path="res://ui/Pictures/battlePlayerBoxD.png" type="Texture" id=46]
-[ext_resource path="res://ui/Pictures/battleFoeBoxS.png" type="Texture" id=47]
-[ext_resource path="res://ui/Pictures/battleFoeBoxD.png" type="Texture" id=48]
-[ext_resource path="res://ui/Pictures/battleLineup.png" type="Texture" id=49]
-[ext_resource path="res://ui/Pictures/ballnormal.png" type="Texture" id=50]
-[ext_resource path="res://ui/Pictures/ballstatus.PNG" type="Texture" id=51]
-[ext_resource path="res://ui/Pictures/ballfainted.png" type="Texture" id=52]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_enemy.tres" type="Animation" id=31]
+[ext_resource path="res://ui/BattleAnimations/ShowPokemon_player.tres" type="Animation" id=32]
+[ext_resource path="res://ui/BattleAnimations/ShowTrainers_parties_animation.tres" type="Animation" id=33]
+[ext_resource path="res://ui/BattleAnimations/Stat_Down.tres" type="Animation" id=34]
+[ext_resource path="res://animations/Battle/wild_start.tres" type="Animation" id=35]
+[ext_resource path="res://ui/BattleAnimations/init_wild_battle.tres" type="Animation" id=36]
+[ext_resource path="res://ui/Pictures/battlePlayerBoxS.png" type="Texture" id=37]
+[ext_resource path="res://ui/battle/battle_HPbar.gd" type="Script" id=38]
+[ext_resource path="res://ui/Pictures/pixel.png" type="Texture" id=39]
+[ext_resource path="res://ui/Pictures/HPbar_overlay.png" type="Texture" id=40]
+[ext_resource path="res://ui/Pictures/EXPbar_overlay.png" type="Texture" id=41]
+[ext_resource path="res://ui/Pictures/battleStatuses.png" type="Texture" id=42]
+[ext_resource path="res://ui/Pictures/battlePlayerBoxD.png" type="Texture" id=43]
+[ext_resource path="res://ui/Pictures/battleFoeBoxS.png" type="Texture" id=44]
+[ext_resource path="res://ui/Pictures/battleFoeBoxD.png" type="Texture" id=45]
+[ext_resource path="res://ui/Pictures/battleLineup.png" type="Texture" id=46]
+[ext_resource path="res://ui/Pictures/ballnormal.png" type="Texture" id=47]
+[ext_resource path="res://ui/Pictures/ballstatus.PNG" type="Texture" id=48]
+[ext_resource path="res://ui/Pictures/ballfainted.png" type="Texture" id=49]
+
+[sub_resource type="Animation" id=35]
+resource_name = "Destructor"
+tracks/0/type = "value"
+tracks/0/path = NodePath("pkmn/FrameAnimations/bubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -29.6047, -39.3306 ), Vector2( -34.8751, -39.3306 ), Vector2( -38.434, -40.6247 ), Vector2( -42.6399, -41.5953 ), Vector2( -48.1738, -42.9129 ), Vector2( -52.0562, -42.9129 ), Vector2( -58.8504, -42.5894 ), Vector2( -63.5937, -42.0624 ), Vector2( -80.986, -34.4203 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("pkmn/FrameAnimations/bubble2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -19.3074, -29.7104 ), Vector2( -22.4697, -28.1293 ), Vector2( -26.0285, -29.4234 ), Vector2( -28.6168, -28.4528 ), Vector2( -30.7249, -27.6623 ), Vector2( -33.6367, -25.7211 ), Vector2( -36.8721, -24.1034 ), Vector2( -40.5613, -21.4682 ), Vector2( -53.4738, -14.6167 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("pkmn/FrameAnimations/bubble3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10.5388, -15.8998 ), Vector2( -12.647, -13.2646 ), Vector2( -14.2647, -11.6469 ), Vector2( -15.5588, -9.70572 ), Vector2( -18.9845, -7.33404 ), Vector2( -21.2493, -5.39284 ), Vector2( -24.161, -2.48103 ), Vector2( -27.8503, -0.10936 ), Vector2( -34.9653, 5.68808 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("pkmn/FrameAnimations/bubble4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("pkmn/FrameAnimations/bubble:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.883789, 0.78125, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("pkmn/FrameAnimations/bubble2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("pkmn/FrameAnimations/bubble3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("pkmn/FrameAnimations/bubble4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("pkmn/FrameAnimations/bubble5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("pkmn/FrameAnimations/bubble6:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("pkmn/FrameAnimations/bubble7:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("pkmn/FrameAnimations/bubble8:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("pkmn/FrameAnimations/star:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.968814, 0.976563, 0.728607, 1 ), Color( 0.984131, 1, 0.492188, 1 ), Color( 0.980103, 1, 0.363281, 1 ), Color( 0.96875, 1, 0, 1 ), Color( 0.96875, 1, 0, 0.389725 ), Color( 0.96875, 1, 0, 0.259804 ), Color( 0.96875, 1, 0, 0.129922 ), Color( 0.96875, 1, 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("pkmn/FrameAnimations/bubble5:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.03331, -19.9761 ), Vector2( -1.23708, -18.6585 ), Vector2( -2.85474, -19.6291 ), Vector2( -2.85474, -19.6291 ), Vector2( -3.38177, -18.048 ), Vector2( -5.32297, -16.7538 ), Vector2( -8.23477, -14.8126 ), Vector2( -10.87, -12.441 ), Vector2( -16.9309, -6.90706 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("pkmn/FrameAnimations/bubble6:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17.4416, -49.6043 ), Vector2( 20.0299, -51.869 ), Vector2( 23.2652, -54.1338 ), Vector2( 24.8463, -56.2419 ), Vector2( 28.8894, -59.0958 ), Vector2( 32.7718, -62.0076 ), Vector2( 35.934, -63.3252 ), Vector2( 52.0087, -74.9201 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("pkmn/FrameAnimations/bubble7:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 27.947, -60.2967 ), Vector2( 31.8294, -62.885 ), Vector2( 36.0353, -65.7968 ), Vector2( 39.7246, -67.1144 ), Vector2( 45.1946, -69.4926 ), Vector2( 48.7535, -72.0809 ), Vector2( 52.7063, -74.9796 ), Vector2( 75.896, -89.2097 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("pkmn/FrameAnimations/bubble8:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.5703, -36.4605 ), Vector2( 40.0116, -37.4311 ), Vector2( 51.0117, -40.6664 ), Vector2( 53.6469, -41.1934 ), Vector2( 61.9708, -40.7178 ), Vector2( 66.1767, -40.7178 ), Vector2( 70.6565, -41.2448 ), Vector2( 90.4205, -41.7718 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("pkmn/FrameAnimations/star:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.6, 0.6 ), Vector2( 0.7, 0.7 ), Vector2( 0.8, 0.8 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("pkmn/FrameAnimations/bubble:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.3, 0.3 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("pkmn/FrameAnimations/bubble2:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.15, 0.15 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("pkmn/FrameAnimations/bubble3:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.15, 0.15 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("pkmn/FrameAnimations/bubble4:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("pkmn/FrameAnimations/bubble5:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("pkmn/FrameAnimations/bubble6:scale")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("pkmn/FrameAnimations/bubble7:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("pkmn/FrameAnimations/bubble8:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 0.65, 0.65 ), Vector2( 0.55, 0.55 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("pkmn/Sprite:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ), Vector2( 1, 0.9 ), Vector2( 1, 0.95 ), Vector2( 1, 1 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("pkmn/Sprite:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 7 ), Vector2( 0, 14 ), Vector2( 0, 7 ), Vector2( 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=36]
+resource_name = "DestructorOK"
+tracks/0/type = "value"
+tracks/0/path = NodePath("./FrameAnimations/bubble:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -29.6047, -39.3306 ), Vector2( -34.8751, -39.3306 ), Vector2( -38.434, -40.6247 ), Vector2( -42.6399, -41.5953 ), Vector2( -48.1738, -42.9129 ), Vector2( -52.0562, -42.9129 ), Vector2( -58.8504, -42.5894 ), Vector2( -63.5937, -42.0624 ), Vector2( -80.986, -34.4203 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("./FrameAnimations/bubble2:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -19.3074, -29.7104 ), Vector2( -22.4697, -28.1293 ), Vector2( -26.0285, -29.4234 ), Vector2( -28.6168, -28.4528 ), Vector2( -30.7249, -27.6623 ), Vector2( -33.6367, -25.7211 ), Vector2( -36.8721, -24.1034 ), Vector2( -40.5613, -21.4682 ), Vector2( -53.4738, -14.6167 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("./FrameAnimations/bubble3:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( -10.5388, -15.8998 ), Vector2( -12.647, -13.2646 ), Vector2( -14.2647, -11.6469 ), Vector2( -15.5588, -9.70572 ), Vector2( -18.9845, -7.33404 ), Vector2( -21.2493, -5.39284 ), Vector2( -24.161, -2.48103 ), Vector2( -27.8503, -0.10936 ), Vector2( -34.9653, 5.68808 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("./FrameAnimations/bubble4:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ), Vector2( 8.55009, -20.7523 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("./FrameAnimations/bubble:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.883789, 0.78125, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath("./FrameAnimations/bubble2:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/6/type = "value"
+tracks/6/path = NodePath("./FrameAnimations/bubble3:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.439216, 0.34902, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/7/type = "value"
+tracks/7/path = NodePath("./FrameAnimations/bubble4:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.1, 0.4, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/8/type = "value"
+tracks/8/path = NodePath("./FrameAnimations/bubble5:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
+"times": PoolRealArray( 0, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/9/type = "value"
+tracks/9/path = NodePath("./FrameAnimations/bubble6:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("./FrameAnimations/bubble7:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("./FrameAnimations/bubble8:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 1, 1, 1, 0.480392 ), Color( 1, 1, 1, 1 ), Color( 1, 0.882353, 0.780392, 1 ), Color( 1, 0.764706, 0.560784, 1 ), Color( 1, 0.584314, 0.517647, 1 ), Color( 1, 0.298039, 0.184314, 0 ) ]
+}
+tracks/12/type = "value"
+tracks/12/path = NodePath("./FrameAnimations/star:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 0 ), Color( 0.968814, 0.976563, 0.728607, 1 ), Color( 0.984131, 1, 0.492188, 1 ), Color( 0.980103, 1, 0.363281, 1 ), Color( 0.96875, 1, 0, 1 ), Color( 0.96875, 1, 0, 0.389725 ), Color( 0.96875, 1, 0, 0.259804 ), Color( 0.96875, 1, 0, 0.129922 ), Color( 0.96875, 1, 0, 0 ) ]
+}
+tracks/13/type = "value"
+tracks/13/path = NodePath("./FrameAnimations/bubble5:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 4.03331, -19.9761 ), Vector2( -1.23708, -18.6585 ), Vector2( -2.85474, -19.6291 ), Vector2( -2.85474, -19.6291 ), Vector2( -3.38177, -18.048 ), Vector2( -5.32297, -16.7538 ), Vector2( -8.23477, -14.8126 ), Vector2( -10.87, -12.441 ), Vector2( -16.9309, -6.90706 ) ]
+}
+tracks/14/type = "value"
+tracks/14/path = NodePath("./FrameAnimations/bubble6:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 17.4416, -49.6043 ), Vector2( 20.0299, -51.869 ), Vector2( 23.2652, -54.1338 ), Vector2( 24.8463, -56.2419 ), Vector2( 28.8894, -59.0958 ), Vector2( 32.7718, -62.0076 ), Vector2( 35.934, -63.3252 ), Vector2( 52.0087, -74.9201 ) ]
+}
+tracks/15/type = "value"
+tracks/15/path = NodePath("./FrameAnimations/bubble7:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 27.947, -60.2967 ), Vector2( 31.8294, -62.885 ), Vector2( 36.0353, -65.7968 ), Vector2( 39.7246, -67.1144 ), Vector2( 45.1946, -69.4926 ), Vector2( 48.7535, -72.0809 ), Vector2( 52.7063, -74.9796 ), Vector2( 75.896, -89.2097 ) ]
+}
+tracks/16/type = "value"
+tracks/16/path = NodePath("./FrameAnimations/bubble8:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/keys = {
+"times": PoolRealArray( 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 32.5703, -36.4605 ), Vector2( 40.0116, -37.4311 ), Vector2( 51.0117, -40.6664 ), Vector2( 53.6469, -41.1934 ), Vector2( 61.9708, -40.7178 ), Vector2( 66.1767, -40.7178 ), Vector2( 70.6565, -41.2448 ), Vector2( 90.4205, -41.7718 ) ]
+}
+tracks/17/type = "value"
+tracks/17/path = NodePath("./FrameAnimations/star:scale")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.6, 0.6 ), Vector2( 0.7, 0.7 ), Vector2( 0.8, 0.8 ), Vector2( 0.9, 0.9 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1.2, 1.2 ) ]
+}
+tracks/18/type = "value"
+tracks/18/path = NodePath("./FrameAnimations/bubble:scale")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
+"times": PoolRealArray( 0, 0.3, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.3, 0.3 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/19/type = "value"
+tracks/19/path = NodePath("./FrameAnimations/bubble2:scale")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.15, 0.15 ) ]
+}
+tracks/20/type = "value"
+tracks/20/path = NodePath("./FrameAnimations/bubble3:scale")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
+"times": PoolRealArray( 0, 0.3, 0.4, 0.6, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.45, 0.45 ), Vector2( 0.4, 0.4 ), Vector2( 0.15, 0.15 ) ]
+}
+tracks/21/type = "value"
+tracks/21/path = NodePath("./FrameAnimations/bubble4:scale")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ) ]
+}
+tracks/22/type = "value"
+tracks/22/path = NodePath("./FrameAnimations/bubble5:scale")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/23/type = "value"
+tracks/23/path = NodePath("./FrameAnimations/bubble6:scale")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.2, 0.2 ) ]
+}
+tracks/24/type = "value"
+tracks/24/path = NodePath("./FrameAnimations/bubble7:scale")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.6, 0.6 ), Vector2( 0.55, 0.55 ), Vector2( 0.5, 0.5 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/25/type = "value"
+tracks/25/path = NodePath("./FrameAnimations/bubble8:scale")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 0.7, 0.7 ), Vector2( 0.65, 0.65 ), Vector2( 0.55, 0.55 ), Vector2( 0.1, 0.1 ) ]
+}
+tracks/26/type = "value"
+tracks/26/path = NodePath("Sprite:scale")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 1, 1 ), Vector2( 1, 0.95 ), Vector2( 1, 0.9 ), Vector2( 1, 0.95 ), Vector2( 1, 1 ) ]
+}
+tracks/27/type = "value"
+tracks/27/path = NodePath("Sprite:position")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/keys = {
+"times": PoolRealArray( 0, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Vector2( 0, 0 ), Vector2( 0, 7 ), Vector2( 0, 14 ), Vector2( 0, 7 ), Vector2( 0, 0 ) ]
+}
+tracks/28/type = "value"
+tracks/28/path = NodePath("FrameAnimations/star:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( -1.98605, -28.9966 ) ]
+}
+
+[sub_resource type="Animation" id=37]
+resource_name = "Hurt"
+length = 0.65
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ), Color( 0, 0, 0, 1 ), Color( 1, 1, 1, 1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.15, 0.2, 0.35, 0.4, 0.55, 0.6, 0.65 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1 ),
+"update": 1,
+"values": [ true, false, true, false, true, false, true, true ]
+}
+
+[sub_resource type="AtlasTexture" id=38]
+
+[sub_resource type="Animation" id=39]
+resource_name = "Stat_Up"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:material")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 12 ), null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material:shader_param/frame1")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ ExtResource( 13 ), SubResource( 38 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader_param/whitening")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 0.4, 0.0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:material:shader_param/frame_size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 5, 0 ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath(".:material:shader_param/frames")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 8, 0 ]
+}
+tracks/5/type = "value"
+tracks/5/path = NodePath(".:material:shader_param/anim_time")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
+"times": PoolRealArray( 0, 1.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ 1.0, 0.0 ]
+}
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.0588235, 0.505882, 0.709804, 1 )
@@ -129,82 +923,8 @@ axis_stretch_vertical = 1
 size = 22
 font_data = ExtResource( 28 )
 
-[sub_resource type="AtlasTexture" id=16]
-
 [sub_resource type="Animation" id=17]
 length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 12 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 31 ), SubResource( 16 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.4, 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 5, 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 8, 0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1.0, 0.0 ]
-}
 
 [sub_resource type="Animation" id=18]
 length = 1.2
@@ -289,78 +1009,6 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id=21]
 length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 12 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 31 ), SubResource( 16 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.4, 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 5, 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 8, 0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1.0, 0.0 ]
-}
 
 [sub_resource type="Animation" id=22]
 length = 2.0
@@ -401,151 +1049,151 @@ tracks/2/keys = {
 "values": [ null, null ]
 }
 tracks/3/type = "value"
-tracks/3/path = NodePath("enemyBase/pkmn_enemy:scale")
+tracks/3/path = NodePath("enemyParty/ball1:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/keys = {
-"times": PoolRealArray( 0, 1.1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1e-005, 1e-005 ), Vector2( 1e-005, 1e-005 ), Vector2( 1, 1 ) ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 1.1, 1.4, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ 1.0, 1.0, 0.0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("enemyBase/pkmn_enemy:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1.1, 1.5 ),
-"transitions": PoolRealArray( 1, 1, 1 ),
-"update": 0,
-"values": [ Vector2( 235, -47.388 ), Vector2( 142.461, 52.612 ), Vector2( 62.461, -47.388 ) ]
-}
-tracks/6/type = "value"
-tracks/6/path = NodePath("enemyParty/ball1:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/keys = {
 "times": PoolRealArray( 0, 0.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 182, 4.5 ), Vector2( 182, 4.5 ), Vector2( 520, 4.5 ) ]
 }
-tracks/7/type = "value"
-tracks/7/path = NodePath("enemyParty/ball2:position")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/keys = {
+tracks/4/type = "value"
+tracks/4/path = NodePath("enemyParty/ball2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
 "times": PoolRealArray( 0, 0.2, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 150, 4.5 ), Vector2( 150, 4.5 ), Vector2( 520, 4.5 ) ]
 }
-tracks/8/type = "value"
-tracks/8/path = NodePath("enemyParty/ball3:position")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/keys = {
+tracks/5/type = "value"
+tracks/5/path = NodePath("enemyParty/ball3:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/keys = {
 "times": PoolRealArray( 0, 0.5, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 118, 4.5 ), Vector2( 118, 4.5 ), Vector2( 520, 4.5 ) ]
 }
-tracks/9/type = "value"
-tracks/9/path = NodePath("enemyParty/ball4:position")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/keys = {
+tracks/6/type = "value"
+tracks/6/path = NodePath("enemyParty/ball4:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/keys = {
 "times": PoolRealArray( 0, 0.7, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 86, 4.5 ), Vector2( 86, 4.5 ), Vector2( 520, 4.5 ) ]
 }
-tracks/10/type = "value"
-tracks/10/path = NodePath("enemyParty/ball5:position")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/keys = {
+tracks/7/type = "value"
+tracks/7/path = NodePath("enemyParty/ball5:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
 "times": PoolRealArray( 0, 0.9, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 54, 4.5 ), Vector2( 54, 4.5 ), Vector2( 520, 4.5 ) ]
 }
-tracks/11/type = "value"
-tracks/11/path = NodePath("enemyParty/ball6:position")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/keys = {
+tracks/8/type = "value"
+tracks/8/path = NodePath("enemyParty/ball6:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/keys = {
 "times": PoolRealArray( 0, 1.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1, 1 ),
 "update": 0,
 "values": [ Vector2( 22, 4.5 ), Vector2( 22, 4.5 ), Vector2( 520, 4.5 ) ]
 }
+tracks/9/type = "value"
+tracks/9/path = NodePath("enemyParty/ball1:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/10/type = "value"
+tracks/10/path = NodePath("enemyParty/ball2:modulate")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
+tracks/11/type = "value"
+tracks/11/path = NodePath("enemyParty/ball3:modulate")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/keys = {
+"times": PoolRealArray( 0.1, 1 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+}
 tracks/12/type = "value"
-tracks/12/path = NodePath("enemyParty/ball1:modulate")
+tracks/12/path = NodePath("enemyParty/ball4:modulate")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/imported = false
 tracks/12/enabled = true
 tracks/12/keys = {
-"times": PoolRealArray( 0.1, 1 ),
+"times": PoolRealArray( 0.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/13/type = "value"
-tracks/13/path = NodePath("enemyParty/ball2:modulate")
+tracks/13/path = NodePath("enemyParty/ball5:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/keys = {
-"times": PoolRealArray( 0.1, 1 ),
+"times": PoolRealArray( 0.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/14/type = "value"
-tracks/14/path = NodePath("enemyParty/ball3:modulate")
+tracks/14/path = NodePath("enemyParty/ball6:modulate")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/imported = false
 tracks/14/enabled = true
 tracks/14/keys = {
-"times": PoolRealArray( 0.1, 1 ),
+"times": PoolRealArray( 0.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
 }
 tracks/15/type = "value"
-tracks/15/path = NodePath("enemyParty/ball4:modulate")
+tracks/15/path = NodePath("enemyParty/ball1:rotation_degrees")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/imported = false
@@ -554,135 +1202,99 @@ tracks/15/keys = {
 "times": PoolRealArray( 0.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
+"values": [ 0.0, 720.0 ]
 }
 tracks/16/type = "value"
-tracks/16/path = NodePath("enemyParty/ball5:modulate")
+tracks/16/path = NodePath("enemyParty/ball2:rotation_degrees")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/imported = false
 tracks/16/enabled = true
 tracks/16/keys = {
-"times": PoolRealArray( 0.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/17/type = "value"
-tracks/17/path = NodePath("enemyParty/ball6:modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/keys = {
-"times": PoolRealArray( 0.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Color( 1, 1, 1, 1 ), Color( 1, 1, 1, 0 ) ]
-}
-tracks/18/type = "value"
-tracks/18/path = NodePath("enemyParty/ball1:rotation_degrees")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/keys = {
-"times": PoolRealArray( 0.1, 1.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 720.0 ]
-}
-tracks/19/type = "value"
-tracks/19/path = NodePath("enemyParty/ball2:rotation_degrees")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/keys = {
 "times": PoolRealArray( 0.2, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 720.0 ]
 }
-tracks/20/type = "value"
-tracks/20/path = NodePath("enemyParty/ball3:rotation_degrees")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/keys = {
+tracks/17/type = "value"
+tracks/17/path = NodePath("enemyParty/ball3:rotation_degrees")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/keys = {
 "times": PoolRealArray( 0.5, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 720.0 ]
 }
-tracks/21/type = "value"
-tracks/21/path = NodePath("enemyParty/ball4:rotation_degrees")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/keys = {
+tracks/18/type = "value"
+tracks/18/path = NodePath("enemyParty/ball4:rotation_degrees")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/keys = {
 "times": PoolRealArray( 0.7, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 720.0 ]
 }
-tracks/22/type = "value"
-tracks/22/path = NodePath("enemyParty/ball5:rotation_degrees")
-tracks/22/interp = 1
-tracks/22/loop_wrap = true
-tracks/22/imported = false
-tracks/22/enabled = true
-tracks/22/keys = {
+tracks/19/type = "value"
+tracks/19/path = NodePath("enemyParty/ball5:rotation_degrees")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/keys = {
 "times": PoolRealArray( 0.9, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 720.0 ]
 }
-tracks/23/type = "value"
-tracks/23/path = NodePath("enemyParty/ball6:rotation_degrees")
-tracks/23/interp = 1
-tracks/23/loop_wrap = true
-tracks/23/imported = false
-tracks/23/enabled = true
-tracks/23/keys = {
+tracks/20/type = "value"
+tracks/20/path = NodePath("enemyParty/ball6:rotation_degrees")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/keys = {
 "times": PoolRealArray( 1.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ 0.0, 720.0 ]
 }
-tracks/24/type = "value"
-tracks/24/path = NodePath("HPbar_enemyS:position")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/keys = {
+tracks/21/type = "value"
+tracks/21/path = NodePath("HPbar_enemyS:position")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/keys = {
 "times": PoolRealArray( 1.5, 1.8 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -140, 70 ), Vector2( 116, 70 ) ]
 }
-tracks/25/type = "value"
-tracks/25/path = NodePath("enemyParty/party_bar:position")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/keys = {
+tracks/22/type = "value"
+tracks/22/path = NodePath("enemyParty/party_bar:position")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/keys = {
 "times": PoolRealArray( 0.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 21.522, 23.3062 ), Vector2( 200, 23.3062 ) ]
 }
-tracks/26/type = "value"
-tracks/26/path = NodePath("enemyParty/party_bar:modulate")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/keys = {
+tracks/23/type = "value"
+tracks/23/path = NodePath("enemyParty/party_bar:modulate")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/keys = {
 "times": PoolRealArray( 0.1, 1.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
@@ -1022,24 +1634,12 @@ tracks/0/keys = {
 "values": [ Vector2( -10, -96.663 ) ]
 }
 tracks/1/type = "value"
-tracks/1/path = NodePath("enemyBase/pkmn_enemy:position")
+tracks/1/path = NodePath("playerBase/pkmn_player/trainer:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ Vector2( 235, -47.388 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("playerBase/pkmn_player/trainer:frame")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
 "times": PoolRealArray( 2 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
@@ -1076,159 +1676,11 @@ tracks/1/keys = {
 "values": [ 0.0, 180.0, 360.0, 540.0, 720.0, 900.0 ]
 }
 
-[sub_resource type="AtlasTexture" id=28]
-
 [sub_resource type="Animation" id=29]
 length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 12 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 38 ), SubResource( 28 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.4, 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 5, 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ -8, 0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1.0, 0.0 ]
-}
-
-[sub_resource type="AtlasTexture" id=30]
 
 [sub_resource type="Animation" id=31]
 length = 1.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("enemyBase/pkmn_enemy:material")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ ExtResource( 12 ) ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame1")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ ExtResource( 39 ), SubResource( 30 ) ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/whitening")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0.4, 0.0 ]
-}
-tracks/3/type = "value"
-tracks/3/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frame_size")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 5, 0 ]
-}
-tracks/4/type = "value"
-tracks/4/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/frames")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 8, 0 ]
-}
-tracks/5/type = "value"
-tracks/5/path = NodePath("enemyBase/pkmn_enemy:material:shader_param/anim_time")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/keys = {
-"times": PoolRealArray( 0, 1.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1.0, 0.0 ]
-}
 
 [sub_resource type="Animation" id=32]
 length = 1.5
@@ -1297,20 +1749,17 @@ __meta__ = {
 }
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( -3.05176e-005, 0 )
+position = Vector2( -25.6, 0 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
 region_rect = Rect2( -256, 0, 768, 384 )
 
 [node name="enemyBase" type="Sprite" parent="."]
-position = Vector2( -258, 112 )
+position = Vector2( -206.4, 111 )
 texture = ExtResource( 3 )
 centered = false
 script = ExtResource( 4 )
-__meta__ = {
-"_edit_lock_": true
-}
 
 [node name="pkmn_enemy_ally" type="Node2D" parent="enemyBase"]
 visible = false
@@ -1332,28 +1781,32 @@ centered = false
 region_rect = Rect2( 88, 59, 95, 45 )
 
 [node name="Sprite" type="Sprite" parent="enemyBase/pkmn_enemy_ally"]
-position = Vector2( 176, -34 )
+position = Vector2( 128, -34 )
 texture = ExtResource( 10 )
 
 [node name="pokeball" type="Sprite" parent="enemyBase/pkmn_enemy_ally"]
+visible = false
 position = Vector2( 125, 67 )
 texture = ExtResource( 11 )
 
 [node name="pkmn_enemy" type="Node2D" parent="enemyBase"]
-editor/display_folded = true
-visible = false
-material = ExtResource( 12 )
-use_parent_material = true
-position = Vector2( 235, -47.388 )
-scale = Vector2( 1e-005, 1e-005 )
+position = Vector2( 0, -1.58667 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enemyBase/pkmn_enemy"]
-anims/Destructor = ExtResource( 5 )
-anims/Hurt = ExtResource( 7 )
-anims/Stat_Up_Animation = ExtResource( 8 )
+anims/Destructor = SubResource( 35 )
+anims/DestructorOK = SubResource( 36 )
+anims/Hurt = SubResource( 37 )
+anims/Stat_Up_Animation = SubResource( 39 )
 
 [node name="FrameAnimations" type="Node2D" parent="enemyBase/pkmn_enemy"]
-position = Vector2( 70, 89 )
+position = Vector2( 73.5032, 85.6775 )
+
+[node name="trainer" type="Sprite" parent="enemyBase/pkmn_enemy"]
+visible = false
+position = Vector2( 62.461, -47.388 )
+texture = ExtResource( 9 )
+centered = false
+region_rect = Rect2( 88, 59, 95, 45 )
 
 [node name="Sprite" type="Sprite" parent="enemyBase/pkmn_enemy"]
 position = Vector2( 128, -34 )
@@ -1361,19 +1814,12 @@ texture = ExtResource( 10 )
 
 [node name="pokeball" type="Sprite" parent="enemyBase/pkmn_enemy"]
 visible = false
-position = Vector2( -76, 24 )
+position = Vector2( 125, 67 )
 texture = ExtResource( 11 )
-
-[node name="trainer" type="Sprite" parent="enemyBase/pkmn_enemy"]
-visible = false
-position = Vector2( 38, -58 )
-texture = ExtResource( 13 )
-centered = false
-region_rect = Rect2( 88, 59, 95, 45 )
 
 [node name="playerBase" type="Sprite" parent="."]
 editor/display_folded = true
-position = Vector2( 500, 240 )
+position = Vector2( 435.2, 240 )
 texture = ExtResource( 14 )
 centered = false
 script = ExtResource( 4 )
@@ -1445,7 +1891,6 @@ position = Vector2( -157.457, 79.6429 )
 texture = ExtResource( 11 )
 
 [node name="Fade" type="Panel" parent="."]
-visible = false
 margin_right = 512.0
 margin_bottom = 384.0
 custom_styles/panel = SubResource( 1 )
@@ -1687,16 +2132,16 @@ __meta__ = {
 
 [node name="AnimationPlayer1" type="AnimationPlayer" parent="."]
 anims/Heal = SubResource( 17 )
-anims/ShowPokemon_enemy = ExtResource( 32 )
-anims/ShowPokemon_player = ExtResource( 33 )
+anims/ShowPokemon_enemy = ExtResource( 31 )
+anims/ShowPokemon_player = ExtResource( 32 )
 anims/ShowPokemon_player_wild = SubResource( 18 )
-anims/ShowTrainers_parties_animation = ExtResource( 34 )
+anims/ShowTrainers_parties_animation = ExtResource( 33 )
 anims/Show_Pokemon_back = SubResource( 19 )
 anims/Show_Pokemon_prova = SubResource( 20 )
-anims/Stat_Down = ExtResource( 35 )
+anims/Stat_Down = ExtResource( 34 )
 anims/Stat_Up = ExtResource( 8 )
-anims/Wild_Start = ExtResource( 36 )
-anims/init_wild_battle = ExtResource( 37 )
+anims/Wild_Start = ExtResource( 35 )
+anims/init_wild_battle = ExtResource( 36 )
 
 [node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
 anims/Heal = SubResource( 21 )
@@ -1723,8 +2168,8 @@ __meta__ = {
 editor/display_folded = true
 visible = false
 position = Vector2( 396, 236 )
-texture = ExtResource( 40 )
-script = ExtResource( 41 )
+texture = ExtResource( 37 )
+script = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1736,7 +2181,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="health" type="TextureRect" parent="HPbar_playerS/health_bar"]
@@ -1745,12 +2190,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="HPbar_playerS/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 43 )
+texture = ExtResource( 40 )
 
 [node name="exp_bar" type="Node2D" parent="HPbar_playerS"]
 
@@ -1759,7 +2204,7 @@ margin_left = -90.0
 margin_top = 33.0
 margin_right = 102.0
 margin_bottom = 39.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="exp" type="TextureRect" parent="HPbar_playerS/exp_bar"]
@@ -1768,12 +2213,12 @@ margin_left = -90.0
 margin_top = 33.0
 margin_right = 102.0
 margin_bottom = 39.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="HPbar_playerS/exp_bar"]
 position = Vector2( 6, 37 )
-texture = ExtResource( 44 )
+texture = ExtResource( 41 )
 
 [node name="lblActualHP" type="Label" parent="HPbar_playerS"]
 margin_left = -4.0
@@ -1819,7 +2264,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="HPbar_playerS"]
 position = Vector2( -50, 1 )
-texture = ExtResource( 45 )
+texture = ExtResource( 42 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
 
@@ -1827,8 +2272,8 @@ region_rect = Rect2( 0, 0, 44, 16 )
 editor/display_folded = true
 visible = false
 position = Vector2( 642, 185 )
-texture = ExtResource( 46 )
-script = ExtResource( 41 )
+texture = ExtResource( 43 )
+script = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1841,7 +2286,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="health" type="TextureRect" parent="HPbar_playerD/health_bar"]
@@ -1850,12 +2295,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="HPbar_playerD/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 43 )
+texture = ExtResource( 40 )
 
 [node name="lblLevel" type="Label" parent="HPbar_playerD"]
 margin_left = 40.0
@@ -1880,7 +2325,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="HPbar_playerD"]
 position = Vector2( -50, 12.6415 )
-texture = ExtResource( 45 )
+texture = ExtResource( 42 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
 
@@ -1900,8 +2345,8 @@ margin_bottom = -245.0
 editor/display_folded = true
 visible = false
 position = Vector2( 653, 239 )
-texture = ExtResource( 46 )
-script = ExtResource( 41 )
+texture = ExtResource( 43 )
+script = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1914,7 +2359,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="health" type="TextureRect" parent="HPbar_playerD2/health_bar"]
@@ -1923,12 +2368,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="HPbar_playerD2/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 43 )
+texture = ExtResource( 40 )
 
 [node name="lblLevel" type="Label" parent="HPbar_playerD2"]
 margin_left = 40.0
@@ -1953,7 +2398,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="HPbar_playerD2"]
 position = Vector2( -50, 12.6415 )
-texture = ExtResource( 45 )
+texture = ExtResource( 42 )
 region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
 
@@ -1973,8 +2418,8 @@ margin_bottom = -278.0
 editor/display_folded = true
 visible = false
 position = Vector2( 116, 70 )
-texture = ExtResource( 47 )
-script = ExtResource( 41 )
+texture = ExtResource( 44 )
+script = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -1988,7 +2433,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="health" type="TextureRect" parent="HPbar_enemyS/health_bar"]
@@ -1997,12 +2442,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="HPbar_enemyS/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 43 )
+texture = ExtResource( 40 )
 
 [node name="lblLevel" type="Label" parent="HPbar_enemyS"]
 margin_left = 24.0
@@ -2027,7 +2472,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="HPbar_enemyS"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 45 )
+texture = ExtResource( 42 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
 
@@ -2047,8 +2492,8 @@ margin_bottom = -109.0
 editor/display_folded = true
 visible = false
 position = Vector2( -134, 36 )
-texture = ExtResource( 48 )
-script = ExtResource( 41 )
+texture = ExtResource( 45 )
+script = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2061,7 +2506,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="health" type="TextureRect" parent="HPbar_enemyD/health_bar"]
@@ -2070,12 +2515,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="HPbar_enemyD/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 43 )
+texture = ExtResource( 40 )
 
 [node name="lblLevel" type="Label" parent="HPbar_enemyD"]
 margin_left = 24.0
@@ -2100,7 +2545,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="HPbar_enemyD"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 45 )
+texture = ExtResource( 42 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
 
@@ -2120,8 +2565,8 @@ margin_bottom = -75.0
 editor/display_folded = true
 visible = false
 position = Vector2( -143, 90 )
-texture = ExtResource( 48 )
-script = ExtResource( 41 )
+texture = ExtResource( 45 )
+script = ExtResource( 38 )
 __meta__ = {
 "_edit_lock_": true
 }
@@ -2135,7 +2580,7 @@ margin_left = 3.0
 margin_top = -7.0
 margin_right = 106.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="health" type="TextureRect" parent="HPbar_enemyD2/health_bar"]
@@ -2144,12 +2589,12 @@ margin_left = 6.0
 margin_top = -7.0
 margin_right = 102.0
 margin_bottom = 7.0
-texture = ExtResource( 42 )
+texture = ExtResource( 39 )
 expand = true
 
 [node name="overlay" type="Sprite" parent="HPbar_enemyD2/health_bar"]
 position = Vector2( 40, 1 )
-texture = ExtResource( 43 )
+texture = ExtResource( 40 )
 
 [node name="lblLevel" type="Label" parent="HPbar_enemyD2"]
 margin_left = 24.0
@@ -2174,7 +2619,7 @@ valign = 1
 
 [node name="Status" type="Sprite" parent="HPbar_enemyD2"]
 position = Vector2( -68, 13 )
-texture = ExtResource( 45 )
+texture = ExtResource( 42 )
 region_enabled = true
 region_rect = Rect2( 0, 16, 44, 16 )
 
@@ -2201,31 +2646,31 @@ __meta__ = {
 [node name="party_bar" type="Sprite" parent="playerParty"]
 position = Vector2( -339.5, 23.5 )
 rotation = 3.14159
-texture = ExtResource( 49 )
+texture = ExtResource( 46 )
 
 [node name="ball1" type="Sprite" parent="playerParty"]
 position = Vector2( -502, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="ball2" type="Sprite" parent="playerParty"]
 position = Vector2( -470, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="ball3" type="Sprite" parent="playerParty"]
 position = Vector2( -438, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="ball4" type="Sprite" parent="playerParty"]
 position = Vector2( -406, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="ball5" type="Sprite" parent="playerParty"]
 position = Vector2( -374, 4.5 )
-texture = ExtResource( 51 )
+texture = ExtResource( 48 )
 
 [node name="ball6" type="Sprite" parent="playerParty"]
 position = Vector2( -342, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="enemyParty" type="Node2D" parent="."]
 editor/display_folded = true
@@ -2237,32 +2682,32 @@ __meta__ = {
 
 [node name="party_bar" type="Sprite" parent="enemyParty"]
 position = Vector2( 21.522, 23.3062 )
-texture = ExtResource( 49 )
+texture = ExtResource( 46 )
 
 [node name="ball1" type="Sprite" parent="enemyParty"]
 position = Vector2( 182, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="ball2" type="Sprite" parent="enemyParty"]
 position = Vector2( 150, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="ball3" type="Sprite" parent="enemyParty"]
 position = Vector2( 118, 4.5 )
-texture = ExtResource( 51 )
+texture = ExtResource( 48 )
 
 [node name="ball4" type="Sprite" parent="enemyParty"]
 position = Vector2( 86, 4.5 )
-texture = ExtResource( 50 )
+texture = ExtResource( 47 )
 
 [node name="ball5" type="Sprite" parent="enemyParty"]
 position = Vector2( 54, 4.5 )
 rotation = 2.49671e-006
-texture = ExtResource( 52 )
+texture = ExtResource( 49 )
 
 [node name="ball6" type="Sprite" parent="enemyParty"]
 position = Vector2( 22, 4.5 )
-texture = ExtResource( 52 )
+texture = ExtResource( 49 )
 [connection signal="focus_entered" from="Panel_Commands/Commands/Luchar" to="." method="_on_Luchar_focus_entered"]
 [connection signal="focus_entered" from="Panel_Commands/Commands/Pokemon" to="." method="_on_Pokmon_focus_entered"]
 [connection signal="focus_entered" from="Panel_Commands/Commands/Mochila" to="." method="_on_Mochila_focus_entered"]
