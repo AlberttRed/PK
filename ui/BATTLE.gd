@@ -609,6 +609,7 @@ func is_wild_battle():
 		count += 1
 	return true
 
+
 func set_pokemons():
 	pokemons.push_back(battlers[0].party[0])
 	player_active_pokemons.push_back(battlers[0].party[0])
@@ -979,6 +980,15 @@ class Battler:
 				if !self.is_trainer:
 					print("AAAAAAAAAAAA")
 					p.node.get_node("Sprite").texture = load("res://Sprites/Battlers/" + str(p.pkm_id).pad_zeros(3) + ".png")
+					p.node.get_node("Sprite").position = self.single_position + Vector2(0, p.get_battlerEnemyY()+p.get_battlerAltitude())#p.get_battlerEnemyY()*2)
+	
+					#if doble:
+#						final_position = p.battle_double_position
+#					else: + Vector2(0, p.get_battlerEnemyY()*2)
+#						if back:
+#							final_position = p.back_single_position
+#						else:
+#							final_position = p.front_single_position + Vector2(0, p.get_battlerEnemyY()*2)
 				else:
 					if GUI.battle.get_node("AnimationPlayer" + str(i)).is_playing():
 						animplayer = GUI.battle.get_node("AnimationPlayer" + str(i+1))
@@ -995,7 +1005,7 @@ class Battler:
 						if back:
 							final_position = p.back_single_position
 						else:
-							final_position = p.front_single_position	
+							final_position = p.front_single_position + Vector2(0, p.battlerEnemyY*2)
 	
 					animation.add_track(Animation.TYPE_VALUE)
 					animation.track_set_path(0, "Background/" + base.name + "/" + p.pokeball_node.name + ":texture") #pkmn_player

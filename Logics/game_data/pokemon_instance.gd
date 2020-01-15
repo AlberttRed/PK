@@ -286,6 +286,12 @@ func get_type2():
 func get_types():
 	return [DB.pokemons[pkm_id].type_a, DB.pokemons[pkm_id].type_b]
 	
+func get_battlerEnemyY():
+	return DB.pokemons[pkm_id].battlerEnemyY
+	
+func get_battlerAltitude():
+	return DB.pokemons[pkm_id].battlerAltitude
+	
 func is_status(s):
 	return status == s
 	
