@@ -115,6 +115,25 @@ class BATTLE:
 	const DOUBLE_FRONT_SLOT_1 = 4
 	const DOUBLE_FRONT_SLOT_2 = 5
 	
+class BATTLE_BACKGROUNDS:
+
+	const FIELD = 0
+	const FOREST = 1
+	const CAVE = 2
+	const CAVEDARK = 3
+	const CHAMPION = 4
+	const ELITEA = 5
+	const ELITEB = 6
+	const ELITEC = 7
+	const ELITED = 8
+	const INDOORA = 9
+	const INDOORB = 10
+	const INDOORC = 11
+	const MOUNTAIN = 12
+	const SNOW = 13
+	const UNDERWATER = 14
+	const WATER = 15
+	
 class DAMAGE_CLASS:
 	
 	const ESTADO = 1

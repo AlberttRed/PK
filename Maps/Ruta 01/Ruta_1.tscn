@@ -18,6 +18,7 @@ extents = Vector2( 31.3469, 13.0891 )
 position = Vector2( -32.6835, 720 )
 script = ExtResource( 1 )
 music = ExtResource( 2 )
+pkmn_Land = [ 13, 13, 13, 10, 10, 10, 11, 11, 14, 14 ]
 map_area = NodePath("Area2D_")
 
 [node name="CapaTerra_" type="TileMap" parent="."]
@@ -85,16 +86,6 @@ shape = SubResource( 1 )
 [node name="encounter_area" parent="EncounterAreas_" instance=ExtResource( 9 )]
 position = Vector2( -32, 176 )
 scale = Vector2( 1, 2.5 )
-pkm_id1 = 129
-pkm_id2 = 129
-pkm_id3 = 129
-pkm_id4 = 129
-pkm_id5 = 129
-pkm_id6 = 129
-pkm_id7 = 129
-pkm_id8 = 10
-pkm_id9 = 10
-pkm_id10 = 15
 encounter_rate = 10.0
 
 [node name="CollisionPolygon2D" parent="EncounterAreas_/encounter_area" index="0"]
