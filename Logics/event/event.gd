@@ -36,41 +36,41 @@ var directions = {8: 'right',
 			9: 'right',
 			10: 'right',
 			11: 'right',
-             4: 'left',
+			 4: 'left',
 			5: 'left',
 			6: 'left',
 			7: 'left',
-             12: 'up',
+			 12: 'up',
 			13: 'up',
 			14: 'up',
 			15: 'up',
-             0: 'down',
+			 0: 'down',
 			1: 'down',
 			2: 'down',
 			3: 'down'}
 
 var facing_idle = {'right': 8,
-	             'left': 4,
-	             'up': 12,
-	             'down': 0}
+				 'left': 4,
+				 'up': 12,
+				 'down': 0}
 var moves = {'right': Vector2(1, 0),
-             'left': Vector2(-1, 0),
-             'up': Vector2(0, -1),
-             'down': Vector2(0, 1)}
+			 'left': Vector2(-1, 0),
+			 'up': Vector2(0, -1),
+			 'down': Vector2(0, 1)}
 var raycasts = {'right': 'RayCastRight',
-                'left': 'RayCastLeft',
-                'up': 'RayCastUp',
-                'down': 'RayCastDown'}
+				'left': 'RayCastLeft',
+				'up': 'RayCastUp',
+				'down': 'RayCastDown'}
 				
 var next_step = {0:1,
 				13: 15,
-	             15: 13,
-	             11: 9,
-	             9: 11,
+				 15: 13,
+				 11: 9,
+				 9: 11,
 				 7: 5,
-	             5: 7,
+				 5: 7,
 				 3: 1,
-	             1: 3}
+				 1: 3}
 
 # Called when the node enters the scene tree for the first time.
 
@@ -111,8 +111,8 @@ func move(dir):
 	#print("position: " + str(position))
 	#print("movement: " + str(movement))
 	$MoveTween.interpolate_property(self, "position", position,
-                      movement, step_speed/speed_animation,
-                      Tween.TRANS_LINEAR, Tween.EASE_OUT)
+					  movement, step_speed/speed_animation,
+					  Tween.TRANS_LINEAR, Tween.EASE_OUT)
 	$MoveTween.start()
 	return true
 	

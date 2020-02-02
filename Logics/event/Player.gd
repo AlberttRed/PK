@@ -72,11 +72,11 @@ func print_player_variables():
 	
 
 func save():
-    var save_dict = {
-        "filename" : get_filename(),
-        "x_position" : actual_position.x, # Vector2 is not supported by JSON
+	var save_dict = {
+		"filename" : get_filename(),
+		"x_position" : actual_position.x, # Vector2 is not supported by JSON
 		"y_position" : actual_position.y, # Vector2 is not supported by JSON
-        "Transparent" : Transparent,
+		"Transparent" : Transparent,
 		"active_events" : active_events,
 		"Through" : Through,
 		"speed_animation" : speed_animation,
@@ -92,5 +92,5 @@ func save():
 		"last_facing" : last_facing,
 		"can_interact" : can_interact,
 		"being_controlled" : being_controlled
-    }
-    return save_dict
+	}
+	return save_dict

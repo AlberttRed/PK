@@ -39,7 +39,7 @@ var pocket_name = {1: 'Objetos',
 			2: 'Medicinas',
 			3: 'Poké Balls',
 			4: 'MTs Y MOs',
-             5: 'Bayas',
+			 5: 'Bayas',
 			6: 'Mails',
 			7: 'Combate',
 			8: 'Obj. Clave',}
@@ -217,12 +217,12 @@ func update_actions_styles():
 
 func _on_actions_focus_entered():
 	match get_focus_owner().get_name():
-    "USAR":
-        actions_index = 0
-    "DAR":
-        actions_index = 1
-    "TIRAR":
-        actions_index = 2
-    "SALIR":
-        actions_index = 3
+		"USAR":
+			actions_index = 0
+		"DAR":
+			actions_index = 1
+		"TIRAR":
+			actions_index = 2
+		"SALIR":
+			actions_index = 3
 	update_actions_styles()

@@ -6,15 +6,15 @@ var result = null
 var colliders = []
 
 onready var directions = {'RayCastRight': Vector2(CONST.GRID_SIZE, 0),
-             'RayCastLeft': Vector2(-CONST.GRID_SIZE, 0),
-             'RayCastUp': Vector2(0, -CONST.GRID_SIZE),
-             'RayCastDown': Vector2(0, CONST.GRID_SIZE)}
+			 'RayCastLeft': Vector2(-CONST.GRID_SIZE, 0),
+			 'RayCastUp': Vector2(0, -CONST.GRID_SIZE),
+			 'RayCastDown': Vector2(0, CONST.GRID_SIZE)}
 			
 #Guardem el contrari del facing. Si el body interecciona miran cap adalt (up, = 12), li tornem l'invers, que seria cap avall (down, = 0)
 var facing_inverse = {'right': 4,
-	             'left': 8,
-	             'up': 1,
-	             'down': 12}
+				 'left': 8,
+				 'up': 1,
+				 'down': 12}
 			
 			
 # Called when the node enters the scene tree for the first time.

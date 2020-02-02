@@ -245,14 +245,14 @@ func _on_Salir_focus_entered():
 
 func _on_actions_focus_entered():
 	match get_focus_owner().get_name():
-    "DATOS":
-        actions_index = 0
-    "MOVER":
-        actions_index = 1
-    "OBJETO":
-        actions_index = 2
-    "SALIR":
-        actions_index = 3
+		"DATOS":
+			actions_index = 0
+		"MOVER":
+			actions_index = 1
+		"OBJETO":
+			actions_index = 2
+		"SALIR":
+			actions_index = 3
 	update_actions_styles()
 	
 func load_focus():

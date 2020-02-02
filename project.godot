@@ -67,7 +67,6 @@ EVENTS="*res://Logics/event/EventSystem.gd"
 
 [debug]
 
-gdscript/warnings/unused_class_variable=false
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
@@ -165,6 +164,5 @@ ui_screenshot={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
