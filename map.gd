@@ -12,6 +12,19 @@ export(Vector2) var W_connection_pos
 
 export(AudioStream) var music
 
+export(Array, int) var pkmn_Land
+export(Array, int) var pkmn_LandMorning
+export(Array, int) var pkmn_LandDay
+export(Array, int) var pkmn_LandNight
+export(Array, int) var pkmn_Cave
+export(Array, int) var pkmn_BugContest 
+export(Array, int) var pkmn_RockSmash 
+export(Array, int) var pkmn_OldRod 
+export(Array, int) var pkmn_GoodRod 
+export(Array, int) var pkmn_SuperRod 
+export(Array, int) var pkmn_HeadbuttLow
+export(Array, int) var pkmn_HeadbuttHigh
+
 var Player = GAME_DATA.PLAYER 
 var target = ProjectSettings.get("Global_World")
 var comptador = 0
