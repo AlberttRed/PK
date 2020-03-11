@@ -12,7 +12,7 @@ export(Vector2) var W_connection_pos
 
 export(AudioStream) var music
 
-export(Array, int) var pkmn_Land
+export(Array, Array) var pkmn_Land
 export(Array, int) var pkmn_LandMorning
 export(Array, int) var pkmn_LandDay
 export(Array, int) var pkmn_LandNight

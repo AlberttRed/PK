@@ -2498,6 +2498,7 @@ script = ExtResource( 1 )
 N_connection = "res://Maps/Ruta 01/Ruta_1.tscn"
 N_connection_pos = Vector2( 64, -608 )
 music = ExtResource( 2 )
+pkmn_Land = [ [  ], [  ], [  ], [  ] ]
 map_area = NodePath("Area2D_")
 
 [node name="CapaTerra_" type="TileMap" parent="."]
@@ -2513,12 +2514,10 @@ format = 1
 tile_data = PoolIntArray( -655378, 10, 0, -655376, 10, 0, -655374, 10, 0, -655372, 10, 0, -655371, 41, 0, -655370, 10, 0, -655369, 41, 0, -655368, 10, 0, -655367, 41, 0, -655366, 10, 0, -655365, 41, 0, -655364, 10, 0, -655363, 41, 0, -655362, 10, 0, -655361, 41, 0, -720894, 10, 0, -720893, 41, 0, -720892, 10, 0, -720891, 41, 0, -720890, 10, 0, -720889, 41, 0, -720888, 10, 0, -720887, 41, 0, -720886, 10, 0, -720885, 41, 0, -720884, 10, 0, -720882, 10, 0, -720880, 10, 0, -524306, 10, 0, -524304, 10, 0, -524302, 10, 0, -524300, 10, 0, -524299, 41, 0, -589814, 10, 0, -589813, 41, 0, -589812, 10, 0, -589810, 10, 0, -589808, 10, 0, -393234, 10, 0, -393232, 10, 0, -393230, 10, 0, -393228, 10, 0, -393227, 41, 0, -393223, 7, 0, -458750, 7, 0, -458742, 10, 0, -458741, 41, 0, -458740, 10, 0, -458738, 10, 0, -458736, 10, 0, -393214, 59, 0, -262162, 10, 0, -262160, 10, 0, -262158, 10, 0, -262156, 10, 0, -262155, 41, 0, -262151, 74, 0, -327678, 74, 0, -327670, 10, 0, -327668, 10, 0, -327666, 10, 0, -327664, 10, 0, -196616, 22, 0, -196615, 76, 0, -196613, 81, 0, -196612, 82, 0, -196611, 83, 0, -262143, 22, 0, -262142, 76, 0, -262140, 81, 0, -262139, 82, 0, -262138, 83, 0, -131090, 10, 0, -131088, 10, 0, -131086, 10, 0, -131084, 10, 0, -131083, 41, 0, -196598, 10, 0, -196596, 10, 0, -196594, 10, 0, -196592, 10, 0, -18, 10, 0, -16, 10, 0, -14, 10, 0, -12, 10, 0, -11, 41, 0, -65535, 29, 0, -65526, 10, 0, -65524, 10, 0, -65522, 10, 0, -65520, 10, 0, 65529, 15, 0, 65530, 15, 0, 65531, 15, 0, 65532, 15, 0, 65533, 24, 0, 65535, 30, 0, 131054, 10, 0, 131056, 10, 0, 131058, 10, 0, 131060, 10, 0, 131061, 41, 0, 131065, 25, 0, 131066, 25, 0, 131067, 25, 0, 131068, 25, 0, 65543, 98, 0, 65546, 10, 0, 65547, 41, 0, 65548, 10, 0, 65550, 10, 0, 65552, 10, 0, 196601, 25, 0, 196602, 25, 0, 196603, 25, 0, 196604, 25, 0, 131077, 95, 0, 262126, 10, 0, 262128, 10, 0, 262130, 10, 0, 262132, 10, 0, 262133, 41, 0, 262137, 26, 0, 196618, 10, 0, 196619, 41, 0, 196620, 10, 0, 196622, 10, 0, 196624, 10, 0, 327672, 18, 0, 393198, 10, 0, 393200, 10, 0, 393202, 10, 0, 393204, 10, 0, 393205, 41, 0, 327681, 15, 0, 327682, 15, 0, 327683, 15, 0, 327684, 24, 0, 327685, 15, 0, 327686, 15, 0, 327690, 10, 0, 327691, 41, 0, 327692, 10, 0, 327694, 10, 0, 327696, 10, 0, 458747, 120, 0, 458748, 121, 0, 458749, 121, 0, 458750, 122, 0, 524270, 10, 0, 524272, 10, 0, 524274, 10, 0, 524276, 10, 0, 524277, 41, 0, 524283, 123, 0, 524284, 125, 0, 524285, 125, 0, 524286, 124, 0, 458762, 10, 0, 458763, 41, 0, 458764, 10, 0, 458766, 10, 0, 458768, 10, 0, 589814, 36, 0, 589815, 37, 0, 589816, 36, 0, 589817, 37, 0, 589819, 123, 0, 589820, 125, 0, 589821, 125, 0, 589822, 124, 0, 524295, 37, 0, 524296, 36, 0, 524297, 37, 0, 655342, 10, 0, 655344, 10, 0, 655346, 10, 0, 655348, 10, 0, 655350, 10, 0, 655352, 10, 0, 655354, 21, 0, 655359, 15, 0, 589824, 15, 0, 589825, 15, 0, 589826, 15, 0, 589827, 15, 0, 589828, 15, 0, 589829, 20, 0, 589830, 10, 0, 589832, 10, 0, 589834, 10, 0, 589836, 10, 0, 589838, 10, 0, 589840, 10, 0, 720890, 19, 0, 655365, 17, 0 )
 
 [node name="Eventos_" type="YSort" parent="."]
-editor/display_folded = true
 
 [node name="Interruptor1" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( -16, -112 )
 event_type = 1
 
@@ -2536,7 +2535,6 @@ movesArray = [ "right", "right", "right", "right" ]
 [node name="Interruptor2" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( -48, -112 )
 event_type = 1
 
@@ -2581,7 +2579,6 @@ movesArray = [ "right", "right", "wait(4)", "look_up", "wait(4)", "look_down", "
 [node name="Interruptor3" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( -240, -48 )
 event_type = 1
 
@@ -2621,10 +2618,6 @@ PlayerTouch = true
 Map_XY = Vector2( -16, 48 )
 
 [node name="Porta_CasaProta" parent="Eventos_" instance=ExtResource( 9 )]
-editor/display_folded = true
-
-[node name="event_page2" parent="Eventos_/Porta_CasaProta/pages" index="1"]
-editor/display_folded = true
 
 [node name="cmd_move2" parent="Eventos_/Porta_CasaProta/pages/event_page2" index="6"]
 nodePath = NodePath("../../..")
@@ -2635,7 +2628,6 @@ stream = ExtResource( 10 )
 [node name="Porta_CasaRival" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 112, -112 )
 event_type = 1
 
@@ -2672,7 +2664,6 @@ anims/walk_up_step2 = SubResource( 77 )
 anims/walk_up_step2_prova = SubResource( 78 )
 
 [node name="event_page" parent="Eventos_/Porta_CasaRival/pages" index="0" instance=ExtResource( 6 )]
-editor/display_folded = true
 Imagen = ExtResource( 11 )
 PlayerTouch = true
 sprite_rows = 4
@@ -2733,7 +2724,6 @@ Gvariable_name = "exit_door"
 [node name="Porta_Lab" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 144, 79.8162 )
 event_type = 1
 
@@ -2770,7 +2760,6 @@ anims/walk_up_step2 = SubResource( 103 )
 anims/walk_up_step2_prova = SubResource( 104 )
 
 [node name="event_page" parent="Eventos_/Porta_Lab/pages" index="0" instance=ExtResource( 6 )]
-editor/display_folded = true
 Imagen = ExtResource( 20 )
 PlayerTouch = true
 sprite_rows = 4
@@ -2808,7 +2797,6 @@ world_scene = "res://Maps/Pueblo Paleta/Laboratorio_Oak.tscn"
 Map_XY = Vector2( 16, 176 )
 
 [node name="event_page2" parent="Eventos_/Porta_Lab/pages" index="1" instance=ExtResource( 6 )]
-editor/display_folded = true
 condition1 = "exit_door"
 Pasable = true
 Imagen = ExtResource( 20 )
@@ -2836,7 +2824,6 @@ Gvariable_name = "exit_door"
 [node name="Chico2" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 
 [node name="Sprite" parent="Eventos_/Chico2" index="0"]
 texture = ExtResource( 21 )
@@ -2859,7 +2846,6 @@ movesArray = [ "left", "left", "down", "right", "up", "left" ]
 [node name="Chico" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( 16, 207.389 )
 
 [node name="Sprite" parent="Eventos_/Chico" index="0"]
@@ -2924,7 +2910,6 @@ nodePath = NodePath("../../../../Chico2")
 [node name="Chica" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 4 )]
-editor/display_folded = true
 position = Vector2( -209.164, 144 )
 
 [node name="Sprite" parent="Eventos_/Chica" index="0"]
@@ -2986,7 +2971,6 @@ text = "VDSVDSVDSDSFV"
 text = "dsds"
 
 [node name="Arbol" parent="Eventos_" instance=ExtResource( 24 )]
-editor/display_folded = true
 
 [node name="event_page" parent="Eventos_/Arbol/pages" index="0"]
 OffsetSprite = Vector2( 0, -16 )
@@ -2994,7 +2978,6 @@ OffsetSprite = Vector2( 0, -16 )
 [node name="Roca" parent="Eventos_" groups=[
 "Player",
 ] instance=ExtResource( 25 )]
-editor/display_folded = true
 position = Vector2( 144, 112 )
 
 [node name="CapaAlta_" type="TileMap" parent="."]
@@ -3007,7 +2990,6 @@ tile_data = PoolIntArray( -720914, 11, 0, -720912, 11, 0, -720910, 11, 0, -72090
 "Area",
 "Map_Area",
 ]]
-editor/display_folded = true
 visible = false
 position = Vector2( 6.00001, -56 )
 scale = Vector2( 12.8125, 10.75 )

@@ -26,7 +26,7 @@ export var double = false
 var Player = GAME_DATA.PLAYER
 
 #
-export(float) var encounter_rate = 100
+export(float) var density = 100 #Quantitat d'encuentros que apareixen. Com mes alt es el numero, mes sovint.
 var Trainer = preload("res://Logics/event/Trainer_class.gd")
 
 var pkmn = []
@@ -39,7 +39,7 @@ func _ready():
 #	ProjectSettings.get("Player").update_maparea_exception(self)
 	connect("area_entered", self, "on_area_enter")
 	connect("area_exited",self, "on_area_exit")
-	pkmn = [pkm_id1,pkm_id2,pkm_id3,pkm_id4,pkm_id5,pkm_id6,pkm_id7,pkm_id8,pkm_id9,pkm_id10]
+	#pkmn = [pkm_id1,pkm_id2,pkm_id3,pkm_id4,pkm_id5,pkm_id6,pkm_id7,pkm_id8,pkm_id9,pkm_id10]
 #	Globals.get("player").add_exeception(self)
 #	for mov in get_tree().get_nodes_in_group("movable"):
 #		mov.add_exeception(self)
