@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/Outside.tsx-9880d8f80f0b871f91b128df37d69be0.res"
+
+[deps]
+
+source_file="res://Sprites/Tilesets/Outside.tsx"
+dest_files=[ "res://.import/Outside.tsx-9880d8f80f0b871f91b128df37d69be0.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=true
+image_flags=0
+embed_internal_images=false
+save_tiled_properties=true
+apply_offset=false
+post_import_script=""

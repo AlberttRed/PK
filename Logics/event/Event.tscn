@@ -8,7 +8,6 @@
 [ext_resource path="res://Scripts/Player_raycast.gd" type="Script" id=6]
 [ext_resource path="res://Logics/event/AudioSystem2D.gd" type="Script" id=7]
 
-
 [sub_resource type="Animation" id=1]
 resource_name = "idle_down"
 length = 0.3
@@ -260,7 +259,6 @@ anims/walk_up_step1_prova = SubResource( 13 )
 anims/walk_up_step2_prova = SubResource( 14 )
 
 [node name="Trainer" parent="." instance=ExtResource( 3 )]
-editor/display_folded = true
 battle_front_sprite = ExtResource( 4 )
 battle_back_sprite = ExtResource( 5 )
 is_playable = true

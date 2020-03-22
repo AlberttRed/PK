@@ -126,7 +126,7 @@ func _process(delta):
 	if AutoRun:
 		AutoRun = false
 		exec()
-    # Destroy every colliding areas
+	# Destroy every colliding areas
 #    var colliding_areas = get_overlapping_areas()
 #    for area in colliding_areas:
 #        print(area.get_name())
@@ -198,9 +198,9 @@ func trainerRange():
 	
 func remove():
 	if is_inside_tree():
-    	queue_free()
+		queue_free()
 	else:
-    	call_deferred("free")
+		call_deferred("free")
 
 func makePasable():
 	var n = Node2D.new()

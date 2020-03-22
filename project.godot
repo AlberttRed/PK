@@ -76,6 +76,10 @@ gdscript/warnings/return_value_discarded=false
 window/size/width=512
 window/size/height=384
 
+[editor_plugins]
+
+enabled=PoolStringArray( "vnen.tiled_importer" )
+
 [importer_defaults]
 
 texture={
@@ -95,6 +99,26 @@ texture={
 "size_limit": 0,
 "stream": false,
 "svg/scale": 1.0
+}
+vnen.tiled_tileset_importer={
+"apply_offset": false,
+"custom_properties": true,
+"embed_internal_images": false,
+"image_flags": 0,
+"post_import_script": "",
+"save_tiled_properties": false,
+"tile_metadata": true
+}
+vnen.tiled_importer={
+"add_background": false,
+"collision_layer": 1,
+"custom_properties": true,
+"embed_internal_images": false,
+"image_flags": 0,
+"post_import_script": "",
+"save_tiled_properties": false,
+"tile_metadata": true,
+"uv_clip": true
 }
 
 [input]
@@ -164,6 +188,9 @@ ui_screenshot={
 
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
+
+[tiled_importer]
+
+enable_json_format=true

@@ -188,6 +188,7 @@ func _on_MoveTween_tween_completed(object, key):
 		first_input = false 
 	can_move = true
 	emit_signal("move")
+	direction.is_encounter_area()
 	actual_position = position
 
 func walk_animation():

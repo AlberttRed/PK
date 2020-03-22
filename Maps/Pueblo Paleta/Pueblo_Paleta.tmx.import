@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/Pueblo_Paleta.tmx-7fd8d33840553cc2f1b459e7531fe0e4.scn"
+
+[deps]
+
+source_file="res://Maps/Pueblo Paleta/Pueblo_Paleta.tmx"
+dest_files=[ "res://.import/Pueblo_Paleta.tmx-7fd8d33840553cc2f1b459e7531fe0e4.scn" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=true
+uv_clip=false
+image_flags=0
+collision_layer=1
+embed_internal_images=false
+save_tiled_properties=true
+add_background=false
+post_import_script=""

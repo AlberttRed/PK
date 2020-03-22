@@ -168,7 +168,7 @@ func new_game():
 	print("NEW GAME")
 	ACTUAL_MAP = load(ProjectSettings.get("Global_World").actual_scene).instance()
 	#ProjectSettings.set("Actual_Map", load(actual_scene).instance())
-	print(GAME_DATA.ACTUAL_MAP.get_node("Area2D_").get_name())
+	print(GAME_DATA.ACTUAL_MAP.get_node("MapArea_").get_name())
 	#print(ProjectSettings.get("Actual_Map").get_node("Area2D_").get_name())
 	ProjectSettings.get("Global_World").Player.set_position(ProjectSettings.get("Global_World").initial_position)
 	ACTUAL_MAP.load_map(false)

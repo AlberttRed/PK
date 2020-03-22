@@ -34,7 +34,6 @@ format = 1
 tile_data = PoolIntArray( -458758, 8, 0, -458756, 21, 0, -524285, 4, 0, -524283, 4, 0, -393219, 103, 0, -458752, 70, 0, -458751, 70, 0, -458750, 72, 0, -458749, 76, 0, -458748, 77, 0, -458747, 76, 0, -458746, 77, 0, -327686, 92, 0, -327685, 67, 0, -327684, 95, 0, -327683, 96, 0, -393216, 71, 0, -393215, 71, 0, -393214, 73, 0, -393213, 74, 0, -393212, 75, 0, -393211, 74, 0, -393210, 75, 0, -262150, 93, 0, -262149, 66, 0, -327677, 78, 0, -327676, 79, 0, -327675, 78, 0, -327674, 79, 0, -196614, 56, 0, -131078, 56, 0, -131077, 88, 0, -131076, 89, 0, -65541, 90, 0, -65540, 91, 0, -131070, 97, 0, -131069, 98, 0, -131068, 99, 0, 131066, 80, 0, 131067, 74, 0, 131068, 75, 0, 131069, 74, 0, 131070, 75, 0, 65539, 75, 0, 65541, 75, 0, 65542, 80, 0, 196602, 82, 0, 196603, 78, 0, 196604, 79, 0, 196605, 78, 0, 196606, 79, 0, 131074, 78, 0, 131075, 79, 0, 131076, 78, 0, 131077, 79, 0, 131078, 82, 0 )
 
 [node name="Eventos_" type="YSort" parent="."]
-editor/display_folded = true
 
 [node name="pkb1" parent="Eventos_" instance=ExtResource( 3 )]
 position = Vector2( 80, -80 )
@@ -46,15 +45,12 @@ position = Vector2( 112, -80 )
 position = Vector2( 144, -80 )
 
 [node name="pokedex" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( -48, -208 )
 
 [node name="pokedex2" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( -16, -208 )
 
 [node name="event" parent="Eventos_" instance=ExtResource( 3 )]
-editor/display_folded = true
 position = Vector2( 16, 208 )
 BlockPlayerAtEnd = true
 
@@ -80,18 +76,17 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -393222, 94, 0, -196613, 10, 0, -196612, 87, 0, 65530, 15, 0, 65531, 4, 0, 65532, 77, 0, 65533, 4, 0, 65534, 77, 0, 2, 4, 0, 3, 77, 0, 4, 4, 0, 5, 77, 0, 6, 15, 0, 327674, 20, 0, 262150, 20, 0 )
 
-[node name="Area2D_" type="Area2D" parent="."]
+[node name="MapArea_" type="Area2D" parent="."]
 visible = false
 position = Vector2( 16, 40 )
 scale = Vector2( 10.5, 9.25 )
 script = ExtResource( 9 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea_"]
 position = Vector2( 0.434529, -0.959457 )
 scale = Vector2( 3.39583, 3.36351 )
 shape = SubResource( 1 )
 
-[node name="Pasable" type="Node2D" parent="Area2D_"]
-
+[node name="Pasable" type="Node2D" parent="MapArea_"]
 
 [editable path="Eventos_/event"]

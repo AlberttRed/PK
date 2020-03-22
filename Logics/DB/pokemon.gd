@@ -153,7 +153,7 @@ func new_pokemon(pkm):
 	#print(Name)
 	var temp_moves = []
 	for e in learnable_indexes:
-		print("move: " + str(DB.moves[learn_move_id[e]].id))
+		#print("move: " + str(DB.moves[learn_move_id[e]].id))
 		temp_moves.push_back(DB.moves[learn_move_id[e]].id)
 		#print("Fora: " + str(e))
 #		print(learn_move_id[e])

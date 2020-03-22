@@ -8,8 +8,9 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
+disable_battles = true
 actual_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
-initial_position = Vector2( -16, -48 )
+initial_position = Vector2( 1360, 1392 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 
@@ -27,9 +28,9 @@ format = 1
 [node name="CapaAlta_" type="TileMap" parent="CanvasModulate"]
 format = 1
 
-[node name="Area2D_" type="Node2D" parent="CanvasModulate"]
+[node name="MapArea_" type="Node2D" parent="CanvasModulate"]
 
-[node name="EncounterAreas_" type="Node2D" parent="CanvasModulate"]
+[node name="Areas_" type="Node2D" parent="CanvasModulate"]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="CanvasModulate"]
 stream = ExtResource( 2 )

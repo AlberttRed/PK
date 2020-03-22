@@ -15,12 +15,7 @@ offset = Vector2( 0, 4 )
 vframes = 4
 hframes = 4
 
-[node name="Trainer" parent="." index="2"]
-editor/display_folded = false
-
 [node name="Camera2D" type="Camera2D" parent="." index="9"]
 current = true
-drag_margin_h_enabled = false
-drag_margin_v_enabled = false
 
 [editable path="Trainer"]

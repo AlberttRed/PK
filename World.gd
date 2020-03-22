@@ -1,6 +1,7 @@
 extends Node2D
 
 export(bool) var play_intro = false
+export(bool) var disable_battles = false
 export(String, FILE, "*.tscn") var actual_scene
 export(Vector2) var initial_position
 var Player = preload("res://Logics/event/Player.tscn").instance()#preload("res://Player.tscn").instance()

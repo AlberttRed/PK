@@ -564,6 +564,28 @@ class BAG_POCKETS:
 	const MAIL = 6
 	const BATTLE_ITEMS = 7
 	const KEY_ITEMS = 8
+	
+class ENCOUNTER_METHODS:
+	const LAND = 0
+	const LAND_MORNING = 1
+	const LAND_DAY = 2
+	const LAND_NIGHT = 3
+	const WATER = 4
+	const CAVE = 5
+	const BUG_CONTEST = 6
+	const ROCK_SMASH = 7
+	const OLD_ROD = 8
+	const GOOD_ROD = 9
+	const SUPER_ROD = 10
+	const HEADBUTT_LOW = 11
+	const HEADBUTT_HIGH = 12
+	
+class TILE_TYPE:
+	const NONE = 0
+	const ENCOUNTER = 1
+	const SURF = 2
+	const LEDGE = 3
+	
 func ready():
 	# Initialization here
 	pass

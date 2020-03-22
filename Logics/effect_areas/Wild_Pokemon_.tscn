@@ -1,0 +1,59 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Logics/wild_pkmn.gd" type="Script" id=1]
+
+[node name="Wild_Pokemon_" type="Node"]
+
+[node name="LAND" type="Node" parent="."]
+
+[node name="pkmn1" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn2" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn3" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn4" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn5" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn6" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn7" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn8" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn9" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="pkmn10" type="Node" parent="LAND"]
+script = ExtResource( 1 )
+
+[node name="LAND_MORNING" type="Node" parent="."]
+
+[node name="LAND_DAY" type="Node" parent="."]
+
+[node name="LAND_NIGHT" type="Node" parent="."]
+
+[node name="CAVE" type="Node" parent="."]
+
+[node name="BUG_CONTEST" type="Node" parent="."]
+
+[node name="ROCK_SMASH" type="Node" parent="."]
+
+[node name="OLD_ROD" type="Node" parent="."]
+
+[node name="GOOD_ROD" type="Node" parent="."]
+
+[node name="SUPER_ROD" type="Node" parent="."]
+
+[node name="HEADBUTT_LOW " type="Node" parent="."]
+
+[node name="HEADBUTT_HIGH" type="Node" parent="."]

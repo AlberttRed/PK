@@ -4,7 +4,7 @@ export(Vector2) var inital_position = Vector2(0,0)
 
 var active_events = []
 export(bool) var Transparent = false
-
+var in_bug_contest = false
 
 func _init():
 	._init()
