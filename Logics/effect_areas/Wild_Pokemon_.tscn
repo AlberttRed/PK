@@ -2,7 +2,9 @@
 
 [ext_resource path="res://Logics/wild_pkmn.gd" type="Script" id=1]
 
-[node name="Wild_Pokemon_" type="Node"]
+[node name="Wild_Pokemon_" type="Node" groups=[
+"ignore",
+]]
 
 [node name="LAND" type="Node" parent="."]
 

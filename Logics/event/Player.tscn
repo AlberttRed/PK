@@ -15,6 +15,10 @@ offset = Vector2( 0, 4 )
 vframes = 4
 hframes = 4
 
+[node name="CollisionShape2D" parent="." index="3" groups=[
+"Player",
+]]
+
 [node name="Camera2D" type="Camera2D" parent="." index="9"]
 current = true
 

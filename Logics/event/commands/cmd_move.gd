@@ -57,6 +57,7 @@ func run():
 			#print("BEING CONTROLLED")
 			#Target.can_interact = false
 		else:
+			print("AAAAAA")
 			Target = get_node(nodePath)
 	else:
 		Target = GLOBAL.movingEvent

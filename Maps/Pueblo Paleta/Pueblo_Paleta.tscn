@@ -1,4 +1,4 @@
-[gd_scene load_steps=285 format=2]
+[gd_scene load_steps=286 format=2]
 
 [ext_resource path="res://animations/walking_animationPlayer.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=2]
@@ -26,6 +26,7 @@
 [ext_resource path="res://Logics/event/NPC.gd" type="Script" id=24]
 [ext_resource path="res://Sprites/Characters/trback000.png" type="Texture" id=25]
 [ext_resource path="res://Area2D.gd" type="Script" id=26]
+[ext_resource path="res://Maps/Ruta 01/Ruta_1.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Sprites/Characters/trainer000.png" type="Texture" id=29]
 [ext_resource path="res://Logics/event/AudioSystem2D.gd" type="Script" id=30]
 [ext_resource path="res://animations/cut.tres" type="Animation" id=31]
@@ -72418,7 +72419,7 @@ extents = Vector2( 29.9707, 29.7674 )
 
 [node name="Pueblo_Paleta" type="Node2D"]
 script = ExtResource( 35 )
-N_connection = "res://Maps/Ruta 01/Ruta_1.tscn"
+N_connection = ExtResource( 27 )
 N_connection_pos = Vector2( 864, -128 )
 music = ExtResource( 36 )
 map_area = NodePath("MapArea_")
@@ -73115,7 +73116,7 @@ sprite_rows = 4
 text = "Hola."
 
 [node name="cmd_move" parent="Eventos_/Chico2/pages/event_page" instance=ExtResource( 7 )]
-nodePath = NodePath("../../../../../../Eventos_/Chico2")
+nodePath = NodePath("../../..")
 movesArray = [ "left", "left", "down", "right", "up", "left" ]
 
 [node name="AudioSystem" type="AudioStreamPlayer2D" parent="Eventos_/Chico2"]
@@ -73199,18 +73200,18 @@ text = "Hola! Si buscas al profesor Oak lo encontrarás en la ruta de más arrib
 text = "lyrrr"
 
 [node name="cmd_move" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 7 )]
-nodePath = NodePath("../../../../../../Eventos_/Chico")
+nodePath = NodePath("../../..")
 movesArray = [ "left", "up", "up", "up", "right", "up", "up", "up", "up", "up" ]
 
 [node name="cmd_wait_move_completion" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 15 )]
 
 [node name="cmd_set_through" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 14 )]
 Through = true
-nodePath = NodePath("../../../../../../Eventos_/Chico")
+nodePath = NodePath("../../..")
 
 [node name="cmd_setTransparent" parent="Eventos_/Chico/pages/event_page" instance=ExtResource( 16 )]
 Transparent = true
-nodePath = NodePath("../../../../../../Eventos_/Chico2")
+nodePath = NodePath("../../..")
 
 [node name="AudioSystem" type="AudioStreamPlayer2D" parent="Eventos_/Chico"]
 script = ExtResource( 30 )
@@ -73483,6 +73484,34 @@ shape = SubResource( 250 )
 
 [node name="Areas_" type="Node2D" parent="."]
 position = Vector2( 1440, 1440 )
+
+[node name="Wild_Pokemon_" type="Node" parent="." groups=[
+"ignore",
+]]
+
+[node name="LAND" type="Node" parent="Wild_Pokemon_"]
+
+[node name="LAND_MORNING" type="Node" parent="Wild_Pokemon_"]
+
+[node name="LAND_DAY" type="Node" parent="Wild_Pokemon_"]
+
+[node name="LAND_NIGHT" type="Node" parent="Wild_Pokemon_"]
+
+[node name="CAVE" type="Node" parent="Wild_Pokemon_"]
+
+[node name="BUG_CONTEST" type="Node" parent="Wild_Pokemon_"]
+
+[node name="ROCK_SMASH" type="Node" parent="Wild_Pokemon_"]
+
+[node name="OLD_ROD" type="Node" parent="Wild_Pokemon_"]
+
+[node name="GOOD_ROD" type="Node" parent="Wild_Pokemon_"]
+
+[node name="SUPER_ROD" type="Node" parent="Wild_Pokemon_"]
+
+[node name="HEADBUTT_LOW " type="Node" parent="Wild_Pokemon_"]
+
+[node name="HEADBUTT_HIGH" type="Node" parent="Wild_Pokemon_"]
 [connection signal="tween_completed" from="Eventos_/Interruptor1/MoveTween" to="Eventos_/Interruptor1" method="_on_MoveTween_tween_completed"]
 [connection signal="tween_completed" from="Eventos_/Interruptor2/MoveTween" to="Eventos_/Interruptor2" method="_on_MoveTween_tween_completed"]
 [connection signal="tween_completed" from="Eventos_/Interruptor3/MoveTween" to="Eventos_/Interruptor3" method="_on_MoveTween_tween_completed"]

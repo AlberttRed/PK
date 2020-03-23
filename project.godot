@@ -67,6 +67,7 @@ EVENTS="*res://Logics/event/EventSystem.gd"
 
 [debug]
 
+settings/fps/force_fps=30
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false

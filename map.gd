@@ -1,7 +1,7 @@
 extends Node2D
 var Trainer = preload("res://Logics/event/Trainer_class.gd")
 
-export(String, FILE, "*.tscn") var N_connection
+export(PackedScene) var N_connection
 export(String, FILE, "*.tscn") var S_connection
 export(String, FILE, "*.tscn") var E_connection
 export(String, FILE, "*.tscn") var W_connection
@@ -14,7 +14,7 @@ export(Vector2) var W_connection_pos
 export(AudioStream) var music
 
 var tile_offset = Vector2(0, 0)
-
+var N
 #export(Array, Array) var pkmn_Land
 #export(Array, int) var pkmn_LandMorning
 #export(Array, int) var pkmn_LandDay
@@ -48,9 +48,9 @@ func init():
 	GAME_DATA.PREVIOUS_MAP = GAME_DATA.ACTUAL_MAP
 	GAME_DATA.ACTUAL_MAP = self
 	#ProjectSettings.set("Actual_Map", self)	
-	
+
 func _init():
-	
+	#N = N_connection.instance()
 	add_user_signal("loaded")
 	add_user_signal("connected")
 #	if Player.get_parent() != null:
@@ -59,12 +59,13 @@ func _init():
 	
 func set_connections():
 	var Scene
-	if !N_connection.empty() and N_connection_pos != null:
+	if N_connection != null and N_connection_pos != null:
 		print("NNNNNNNNNNNNNNNNNNNNN " + self.get_name())
-		Scene = load(N_connection).instance()
-		#if world.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
-		#	print("N connected: " + str(Scene.get_name()))#str(N_connection.split("/")[3].split(".")[0]))
-		call_deferred("load_map", false, Scene, N_connection_pos)
+		Scene = N_connection
+		var scene_name = N_connection.get_path().split("/")[4].split(".")[0]
+		if world.get_parent().get_tree().get_nodes_in_group(scene_name).size() <= 0:		
+			print("N connected: " + str(scene_name))#str(N_connection.split("/")[3].split(".")[0]))
+			call_deferred("load_map", false, Scene.instance(), N_connection_pos)
 	if !S_connection.empty() and S_connection_pos != null:
 		print("SSSSSSSSSSSSSSSSSSSSS")
 		Scene = load(S_connection).instance()
@@ -90,13 +91,11 @@ func load_map(deletePrevious, scene = self, pos = null):
 
 	init()
 
-	if pos == null:
-#		scene.set_position(Vector2(0, 0))
-		pass
-	var actual
-	if pos != null:
-		tile_offset = -pos
-		var position
+
+#	if pos != null:
+#		print("set " + scene.get_name() + " tile offset: " + str(-pos))
+#		scene.tile_offset = -pos
+
 	
 
 #		world.add_child(scene)
@@ -108,11 +107,6 @@ func load_map(deletePrevious, scene = self, pos = null):
 
 		
 	strength_on = false
-	var scene2
-	if pos != null:
-		scene2 = actual
-	else:
-		scene2 = scene
 	
 	for N in scene.get_children() :		
 		if !N.is_in_group("ignore"):
@@ -194,7 +188,8 @@ func save():
 				
 				
 func reposition(scene, pos):
-	tile_offset = -pos
+	print("set " + scene.get_name() + " tile offset: " + str(-pos))
+	scene.tile_offset = -pos
 	print(str(get_children()))
 	print("scene position: " + str(scene.get_position()))
 	for c in world.get_node("CanvasModulate").get_children():
@@ -218,24 +213,24 @@ func calculate_encounter(double, encounter_method = -1):
 			method = encounter_method
 		else:
 			method = select_method()
-			
-		var pkmns = wild_pokemon.get_child(method)
-		#if Player.direction.collides_with(self):
-		var rate = rand_range(0,100)
-		if (rate <= land_density):
-			var p = int(floor(rand_range(0, pkmns.get_children().size())))
-			var chosen_pokemon = pkmns.get_child(p)
-			if chosen_pokemon.pkmn_id > 0 && chosen_pokemon.pkmn_id <=751:
-				GAME_DATA.PLAYER.can_move = false
-				print("found! " + DB.pokemons[chosen_pokemon.pkmn_id].name)
-				GUI.play_transition("transition_wild_battle")
-				yield(GUI, "finished")
-				var wild_pkmns = []
-				wild_pkmns.push_back(DB.pokemons[chosen_pokemon.pkmn_id].make_wild(floor(rand_range(chosen_pokemon.min_lvl,chosen_pokemon.max_lvl+1))))
-				if double:
+		if method != null:
+			var pkmns = get_node("Wild_Pokemon_").get_child(method)
+			#if Player.direction.collides_with(self):
+			var rate = rand_range(0,100)
+			if (rate <= land_density) and pkmns.get_child_count() > 0:
+				var p = int(floor(rand_range(0, pkmns.get_child_count())))
+				var chosen_pokemon = pkmns.get_child(p)
+				if chosen_pokemon != null and chosen_pokemon.pkmn_id > 0 and chosen_pokemon.pkmn_id <=751:
+					GAME_DATA.PLAYER.can_move = false
+					print("found! " + DB.pokemons[chosen_pokemon.pkmn_id].name)
+					GUI.play_transition("transition_wild_battle")
+					yield(GUI, "finished")
+					var wild_pkmns = []
 					wild_pkmns.push_back(DB.pokemons[chosen_pokemon.pkmn_id].make_wild(floor(rand_range(chosen_pokemon.min_lvl,chosen_pokemon.max_lvl+1))))
-				
-				GUI.init_battle(double, GAME_DATA.trainer, Trainer.new("wild", null, null, null, null, null, false, double, false, false, wild_pkmns, false))
+					if double:
+						wild_pkmns.push_back(DB.pokemons[chosen_pokemon.pkmn_id].make_wild(floor(rand_range(chosen_pokemon.min_lvl,chosen_pokemon.max_lvl+1))))
+					
+					GUI.init_battle(double, GAME_DATA.trainer, Trainer.new("wild", null, null, null, null, null, false, double, false, false, wild_pkmns, false))
 	# aquest es el bo			
 				#GUI.init_battle(GAME_DATA.party[0], DB.pokemons[pkmn[p]].make_wild(floor(rand_range(chosen_pokemon.min_lvl,chosen_pokemon.max_lvl+1))))
 				#GUI.wild_encounter(pkmn[p], floor(rand_range(min_lvl,max_lvl+1)))
@@ -268,13 +263,14 @@ func select_method():
 #		return selected_method
 
 func isCave():
-	return wild_pokemon.get_node("CAVE").get_child_count() > 0
+	print(get_children()[0].get_name())
+	return get_node("Wild_Pokemon_").get_node("CAVE").get_child_count() > 0
 	
 func isGrass():
 	return has_encounter_type("LAND") or has_encounter_type("LAND_MORNING") or has_encounter_type("LAND_DAY") or has_encounter_type("LAND_NIGHT")
 
 func has_encounter_type(type):
-	return wild_pokemon.get_node(type).get_child_count() > 0
+	return get_node("Wild_Pokemon_").get_node(type).get_child_count() > 0
 	
 func _on_Area2D__area_shape_entered(area_id, _area, area_shape, self_shape):
 	pass # Replace with function body.

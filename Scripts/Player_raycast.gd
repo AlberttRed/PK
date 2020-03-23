@@ -2,8 +2,8 @@ extends Node2D
 
 onready var body = get_parent()
 var direction
-var result = null
-var tile_result = null
+var result = preload("res://Logics/result.tscn").instance()
+var tile_result = preload("res://Logics/result.tscn").instance()
 var colliders = []
 
 onready var directions = {'RayCastRight': Vector2(CONST.GRID_SIZE, 0),
@@ -24,6 +24,9 @@ func _ready():
 
 # Actualitza l'intersact point per detectar si hi ha alguna colisió en la següent cel·la del mapa respecte a la posició actual del parent
 func update(cells=1):
+	print("update!")
+	if body.movement == body.get_position():
+		cells = 0
 	tile_result = intersect_tile(direction, cells)
 	get_tiles_prop_byProp("Tipo")
 	if body.Through:
@@ -33,11 +36,40 @@ func update(cells=1):
 	
 func intersect_point(dir, cells=1):
 	if weakref(GAME_DATA.ACTUAL_MAP).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
-		print(str(body.get_position()+dir*cells))
+		#print(str(body.get_position()+dir*cells))
 		return body.get_world_2d().get_direct_space_state().intersect_point(body.get_position() + (dir*cells), CONST.GRID_SIZE, get_tree().get_root().get_node("World/CanvasModulate/MapArea_").get_children(), 2147483647, true, true)
 		
+func intersect_tile(dir, cells=1):
+	#tile_result.clear()
+	var tiles = {}
+	var tile_meta = null
+	
+	#print("map offset: " + str(GAME_DATA.ACTUAL_MAP.tile_offset))
+	var position = body.get_position()+dir*cells+Vector2(0, 32) + GAME_DATA.ACTUAL_MAP.tile_offset
+	#print("tile check position =" + str(position))
+	var scene_nodes = get_tree().get_nodes_in_group(GAME_DATA.ACTUAL_MAP.get_name())
+	print("scene nodes map: " + GAME_DATA.ACTUAL_MAP.get_name())
+	for c in scene_nodes:
+		if c.get_class() == "TileMap":
+			print(c.get_name())
+			#for c2 in c.get_children():
+				#print(c2.get_name())
+			if c.tile_set.has_meta("tile_meta"):
+				tile_meta = c.tile_set.get_meta("tile_meta")
+			
+				var tile_id = (c.get_cellv(c.world_to_map(position)))
+				if typeof(tile_meta) == TYPE_DICTIONARY and tile_id in tile_meta:
+					tiles[tile_id] = tile_meta[tile_id]
+#					for prop in tile_meta[tile_id]:
+#						print("Tile ID: " + str(tile_id))
+#						print(prop + " " + str(tile_meta[tile_id][prop]))#tile_meta[0]))
+	if tiles.size() == 0:
+		return null
+	else:
+		return tiles
+
 func is_colliding():
-	print(result)
+	#print(result)
 	if  (is_SurfingArea() and !body.surfing):
 		return true
 	if is_ledge() and !body.jumping:
@@ -86,7 +118,8 @@ func get_colliders():
 	if result != null:
 		for r in result:
 			if(r != null):
-				colliders.append(r.collider)
+				if !r.collider.is_in_group("Player"):
+					colliders.append(r.collider)
 	return colliders
 	
 func print_colliders():
@@ -94,7 +127,9 @@ func print_colliders():
 		print(c.get_name())
 
 func interact():
-	update()
+	#update()
+	result = intersect_point(direction, 1)
+	tile_result = intersect_tile(direction, 1)
 	for c in get_colliders():
 		print("INTERACT")
 		if typeof(c) == TYPE_OBJECT and c.is_in_group("Interact"):
@@ -140,29 +175,6 @@ func collides_with(object):
 		if c == object:
 			return true
 	return false
-	
-func intersect_tile(dir, cells=1):
-	var tiles = {}
-	var tile_meta = null
-	var position = body.get_position()+dir*cells+Vector2(0, 32) + GAME_DATA.ACTUAL_MAP.tile_offset
-	print("tile check position =" + str(position))
-	for c in ProjectSettings.get("Global_World").get_node("CanvasModulate").get_children():
-		if c.get_class() == "TileMap":
-			for c2 in c.get_children():
-				#print(c2.get_name())
-				if c2.tile_set.has_meta("tile_meta"):
-					tile_meta = c2.tile_set.get_meta("tile_meta")
-				
-				var tile_id = (c2.get_cellv(c2.world_to_map(position)))
-				if typeof(tile_meta) == TYPE_DICTIONARY and tile_id in tile_meta:
-					tiles[tile_id] = tile_meta[tile_id]
-#					for prop in tile_meta[tile_id]:
-#						print("Tile ID: " + str(tile_id))
-#						print(prop + " " + str(tile_meta[tile_id][prop]))#tile_meta[0]))
-	if tiles.size() == 0:
-		return null
-	else:
-		return tiles
 
 func get_tile_prop_byTileId(tile_id, prop):
 	return tile_result[tile_id][prop]
@@ -194,7 +206,7 @@ func is_ledge():
 	return false
 	
 func is_encounter_area():
-	for c in get_tiles_prop_byProp("Tipo", intersect_tile(direction, 0)):
+	for c in get_tiles_prop_byProp("Tipo"):#, intersect_tile(direction, 0)):
 		if c == CONST.TILE_TYPE.ENCOUNTER:
 			GAME_DATA.ACTUAL_MAP.calculate_encounter(get_tile_prop_byProp("Double"))
 			return true

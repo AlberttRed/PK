@@ -9,7 +9,7 @@ var step = 1
 var step_speed = 0.3
 var can_move = true
 var facing
-var movement = 0
+var movement = Vector2(0, 0)#0
 var direction
 var moved = false
 var SPEED = 2
@@ -91,6 +91,7 @@ func move(dir):
 	direction = get_node(raycasts[dir])
 	last_facing = facing
 	facing = dir
+	check_first_step()
 	direction.update()
 	walk_animation()
 	if !direction.is_SurfingArea() and surfing:
@@ -107,7 +108,6 @@ func move(dir):
 			emit_signal("controlled_move")
 	else:
 		collided = false
-		check_first_step()
 	#print("position: " + str(position))
 	#print("movement: " + str(movement))
 	$MoveTween.interpolate_property(self, "position", position,
