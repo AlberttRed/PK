@@ -110,7 +110,7 @@ func load_map(deletePrevious, scene = self, pos = null):
 	
 	for N in scene.get_children() :		
 		if !N.is_in_group("ignore"):
-			print("N tratada: " + N.get_name())
+			#print("N tratada: " + N.get_name())
 			N.add_to_group(scene.get_name())
 
 			if (N.get_name().split("_")[0].replace("@", "") + "_") == "MapArea_":
@@ -188,23 +188,21 @@ func save():
 				
 				
 func reposition(scene, pos):
-	print("set " + scene.get_name() + " tile offset: " + str(-pos))
+	#print("set " + scene.get_name() + " tile offset: " + str(-pos))
 	scene.tile_offset = -pos
-	print(str(get_children()))
-	print("scene position: " + str(scene.get_position()))
+	#print(str(get_children()))
+	#print("scene position: " + str(scene.get_position()))
 	for c in world.get_node("CanvasModulate").get_children():
-		print(c.get_name() + " selected")
+	#	print(c.get_name() + " selected")
 		for n in c.get_children():
-			print("childs: " + str(n.get_name()) + " " + str(n.get_groups()))
+			#print("childs: " + str(n.get_name()) + " " + str(n.get_groups()))
 			if n.get_class() != "Node" and n.get_class() != "AnimationPlayer" and n.get_class() != "Tween": 
 				if n.is_in_group(scene.get_name()):
-					print(n.get_name() + " repositioned")
-					print("Before " + str(n.get_position()))
+				#	print(n.get_name() + " repositioned")
+				#	print("Before " + str(n.get_position()))
 					n.set_position(n.get_position() + pos)
-					print("After " + str(n.get_position()))
-					if n.get_class() == "TileMap":
-						print("updated tiles")
-						n.update_bitmask_region()
+				#	print("After " + str(n.get_position()))
+
 
 func calculate_encounter(double, encounter_method = -1):
 	if !ProjectSettings.get("Global_World").disable_battles:

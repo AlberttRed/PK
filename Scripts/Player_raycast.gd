@@ -27,8 +27,11 @@ func update(cells=1):
 	print("update!")
 	if body.movement == body.get_position():
 		cells = 0
-	tile_result = intersect_tile(direction, cells)
+	intersect_tile(direction, cells)
+	#tile_result = intersect_tile(direction, cells)
+	print("FIRST")
 	get_tiles_prop_byProp("Tipo")
+	print("END FIRST")
 	if body.Through:
 		result = null
 	else:
@@ -40,10 +43,10 @@ func intersect_point(dir, cells=1):
 		return body.get_world_2d().get_direct_space_state().intersect_point(body.get_position() + (dir*cells), CONST.GRID_SIZE, get_tree().get_root().get_node("World/CanvasModulate/MapArea_").get_children(), 2147483647, true, true)
 		
 func intersect_tile(dir, cells=1):
-	#tile_result.clear()
+	tile_result.clear_all()
 	var tiles = {}
 	var tile_meta = null
-	
+
 	#print("map offset: " + str(GAME_DATA.ACTUAL_MAP.tile_offset))
 	var position = body.get_position()+dir*cells+Vector2(0, 32) + GAME_DATA.ACTUAL_MAP.tile_offset
 	#print("tile check position =" + str(position))
@@ -60,13 +63,21 @@ func intersect_tile(dir, cells=1):
 				var tile_id = (c.get_cellv(c.world_to_map(position)))
 				if typeof(tile_meta) == TYPE_DICTIONARY and tile_id in tile_meta:
 					tiles[tile_id] = tile_meta[tile_id]
+					var tile = tile_meta[tile_id]
+					for prop in tile:
+						var value = tile[prop]
+						tile_result.add(prop, value)
+						print(prop)
+						print(value)
+						for c in tile_result.get_children():
+							print("inserted: " + c.get_name() + ": " + str(value))
 #					for prop in tile_meta[tile_id]:
 #						print("Tile ID: " + str(tile_id))
 #						print(prop + " " + str(tile_meta[tile_id][prop]))#tile_meta[0]))
-	if tiles.size() == 0:
-		return null
-	else:
-		return tiles
+#	if tiles.size() == 0:
+#		return null
+#	else:
+#		return tiles
 
 func is_colliding():
 	#print(result)
@@ -90,11 +101,11 @@ func is_colliding():
 #	return false
 	
 func is_SurfingArea():
-	if tile_result != null:
-		for c in get_tiles_prop_byProp("Tipo"):
-			if c == CONST.TILE_TYPE.SURF:
-				return true
-	return false
+#	if tile_result != null:
+#		for c in get_tiles_prop_byProp("Tipo"):
+	return get_tiles_prop_byProp("Tipo") == CONST.TILE_TYPE.SURF
+#				return true
+#	return false
 	
 func isnot_Pasable():
 	for c in get_colliders():
@@ -129,7 +140,7 @@ func print_colliders():
 func interact():
 	#update()
 	result = intersect_point(direction, 1)
-	tile_result = intersect_tile(direction, 1)
+	intersect_tile(direction, 1)
 	for c in get_colliders():
 		print("INTERACT")
 		if typeof(c) == TYPE_OBJECT and c.is_in_group("Interact"):
@@ -138,10 +149,9 @@ func interact():
 			elif !c.is_in_group("surf_area"):
 				c.eventTarget = self
 				c.exec(facing_inverse[body.facing])
-	for c in get_tiles_prop_byProp("Tipo"):
+	if get_tiles_prop_byProp("Tipo") == CONST.TILE_TYPE.SURF and !body.surfing:
 		print("INTERACT")
-		if c == CONST.TILE_TYPE.SURF and !body.surfing:
-			body.surf()
+		body.surf()
 
 func interact_at_collide():
 	if is_PlayerTouch() and isnot_Pasable() and body.can_interact:
@@ -162,12 +172,11 @@ func interact_at_collide():
 						print("BIMBA")
 						body.push(c)
 						return true
-	for c in get_tiles_prop_byProp("Tipo"):
-		print("INTERACT")
-		if c == CONST.TILE_TYPE.LEDGE and body.can_interact:
-			if get_tiles_prop_byProp("Direction")[0] == body.get_direction() and GLOBAL.is_last_move(body.get_direction()):
-					body.jump(get_tiles_prop_byProp("Cells_jump")[0])
-					return true
+	if get_tiles_prop_byProp("Tipo") == CONST.TILE_TYPE.LEDGE and body.can_interact:
+		print("INTERACT AT COLLIDE")
+		if get_tiles_prop_byProp("Direction") == body.get_direction() and GLOBAL.is_last_move(body.get_direction()):
+				body.jump(get_tiles_prop_byProp("Cells_jump"))
+				return true
 	return false
 	
 func collides_with(object):
@@ -180,36 +189,42 @@ func get_tile_prop_byTileId(tile_id, prop):
 	return tile_result[tile_id][prop]
 	
 func get_tiles_prop_byProp(prop, res = tile_result):
-	var props = []
-	if res != null:
-		for i in res:
-			var tile = res[i]
-			print("tile id: " + str(i))
-			if tile.get(prop) != null:
-				print(tile[prop])
-				props.append(tile[prop])
-	return props
+	print("tiles by prop: ")
+	for c in res.get_children():
+		print("tile result has:" + c.get_name() + ": " + str(c.value))
+#	var props = []
+#	if res != null:
+#		for i in res:
+#			var tile = res[i]
+#			print("tile id: " + str(i))
+#			if tile.get(prop) != null:
+#				print(tile[prop])
+#				props.append(tile[prop])
+	return res.get(prop)
 	
 func get_tile_prop_byProp(prop, res = tile_result):
-	if res != null:
-		for i in res:
-			var tile = res[i]
-			print("tile id: " + str(i))
-			if tile.get(prop) != null:
-				return tile[prop]
-	return null
-		
+	print("tiles by prop: ")
+	for c in res.get_children():
+		print("tile result has:" + c.get_name() + ": " + str(c.value))
+#	if res != null:
+#		for i in res:
+#			var tile = res[i]
+#			print("tile id: " + str(i))
+#			if tile.get(prop) != null:
+#				return tile[prop]
+#	return null
+	return res.get(prop)
 func is_ledge():
-	for c in get_tiles_prop_byProp("Tipo"):
-		if c == CONST.TILE_TYPE.LEDGE:
-			return true
-	return false
-	
+	#for c in get_tiles_prop_byProp("Tipo"):
+	return get_tiles_prop_byProp("Tipo") == CONST.TILE_TYPE.LEDGE
+#			return true
+#	return false
+#
 func is_encounter_area():
-	for c in get_tiles_prop_byProp("Tipo"):#, intersect_tile(direction, 0)):
-		if c == CONST.TILE_TYPE.ENCOUNTER:
-			GAME_DATA.ACTUAL_MAP.calculate_encounter(get_tile_prop_byProp("Double"))
-			return true
+	#for c in get_tiles_prop_byProp("Tipo"):#, intersect_tile(direction, 0)):
+	if get_tiles_prop_byProp("Tipo") == CONST.TILE_TYPE.ENCOUNTER:
+		GAME_DATA.ACTUAL_MAP.calculate_encounter(get_tile_prop_byProp("Double"))
+		return true
 	return false
 		
 #	func _physics_process(delta):# and !$MoveTween.is_active():
