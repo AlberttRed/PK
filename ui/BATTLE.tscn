@@ -1735,7 +1735,7 @@ tracks/3/keys = {
 "values": [ Vector2( 650, 236 ), Vector2( 650, 236 ), Vector2( 396, 236 ) ]
 }
 
-[sub_resource type="StyleBoxFlat" id=37]
+[sub_resource type="StyleBoxFlat" id=35]
 bg_color = Color( 0, 0, 0, 1 )
 
 [sub_resource type="DynamicFont" id=36]
@@ -1751,20 +1751,19 @@ __meta__ = {
 }
 
 [node name="Background" type="Sprite" parent="."]
-position = Vector2( -153.6, 0 )
+position = Vector2( -3.05176e-05, 0 )
 texture = ExtResource( 2 )
 centered = false
 region_enabled = true
 region_rect = Rect2( -256, 0, 768, 384 )
 
 [node name="enemyBase" type="Sprite" parent="."]
-position = Vector2( 51.6, 111 )
+position = Vector2( -258, 111 )
 texture = ExtResource( 3 )
 centered = false
 script = ExtResource( 4 )
 
 [node name="pkmn_enemy_ally" type="Node2D" parent="enemyBase"]
-editor/display_folded = true
 visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="enemyBase/pkmn_enemy_ally"]
@@ -1827,8 +1826,7 @@ position = Vector2( 132, 64 )
 texture = ExtResource( 15 )
 
 [node name="playerBase" type="Sprite" parent="."]
-editor/display_folded = true
-position = Vector2( 111.2, 240 )
+position = Vector2( 500, 240 )
 texture = ExtResource( 16 )
 centered = false
 script = ExtResource( 4 )
@@ -1871,7 +1869,6 @@ rotation = 7.85398
 texture = ExtResource( 23 )
 
 [node name="pkmn_player_ally" type="Node2D" parent="playerBase"]
-editor/display_folded = true
 visible = false
 
 [node name="FrameAnimations" type="Node2D" parent="playerBase/pkmn_player_ally"]
@@ -1910,7 +1907,7 @@ __meta__ = {
 
 [node name="Decoration" type="Sprite" parent="."]
 modulate = Color( 0.419608, 0.419608, 0.419608, 1 )
-position = Vector2( -206.8, 200 )
+position = Vector2( -516, 200 )
 texture = ExtResource( 25 )
 __meta__ = {
 "_edit_lock_": true
@@ -1918,14 +1915,13 @@ __meta__ = {
 
 [node name="Decoration2" type="Sprite" parent="."]
 modulate = Color( 0.419608, 0.419608, 0.419608, 1 )
-position = Vector2( 720.8, 200 )
+position = Vector2( 1030, 200 )
 texture = ExtResource( 25 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="Panel_Commands" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 288.0
 margin_right = 512.0
@@ -1989,7 +1985,6 @@ focus_mode = 2
 custom_styles/panel = SubResource( 10 )
 
 [node name="Panel_Moves" type="Panel" parent="."]
-editor/display_folded = true
 visible = false
 margin_top = 288.0
 margin_right = 512.0
@@ -2038,10 +2033,8 @@ texture = ExtResource( 31 )
 vframes = 24
 
 [node name="Moves" type="Node2D" parent="Panel_Moves"]
-editor/display_folded = true
 
 [node name="Move1" type="Panel" parent="Panel_Moves/Moves"]
-editor/display_folded = true
 visible = false
 margin_left = 4.0
 margin_top = 6.0
@@ -2066,7 +2059,6 @@ __meta__ = {
 }
 
 [node name="Move2" type="Panel" parent="Panel_Moves/Moves"]
-editor/display_folded = true
 visible = false
 margin_left = 192.0
 margin_top = 6.0
@@ -2091,7 +2083,6 @@ __meta__ = {
 }
 
 [node name="Move3" type="Panel" parent="Panel_Moves/Moves"]
-editor/display_folded = true
 visible = false
 margin_left = 4.0
 margin_top = 48.0
@@ -2116,7 +2107,6 @@ __meta__ = {
 }
 
 [node name="Move4" type="Panel" parent="Panel_Moves/Moves"]
-editor/display_folded = true
 visible = false
 margin_left = 192.0
 margin_top = 49.0
@@ -2169,15 +2159,14 @@ anims/Wild_Start = SubResource( 34 )
 margin_top = 384.0
 margin_right = 512.0
 margin_bottom = 480.0
-custom_styles/panel = SubResource( 37 )
+custom_styles/panel = SubResource( 35 )
 __meta__ = {
 "_edit_lock_": true
 }
 
 [node name="HPbar_playerS" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
-position = Vector2( 396, 236 )
+position = Vector2( 650, 236 )
 texture = ExtResource( 39 )
 script = ExtResource( 40 )
 __meta__ = {
@@ -2279,7 +2268,6 @@ region_enabled = true
 region_rect = Rect2( 0, 0, 44, 16 )
 
 [node name="HPbar_playerD" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 642, 185 )
 texture = ExtResource( 45 )
@@ -2352,7 +2340,6 @@ margin_right = 154.0
 margin_bottom = -245.0
 
 [node name="HPbar_playerD2" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 653, 239 )
 texture = ExtResource( 45 )
@@ -2425,9 +2412,8 @@ margin_right = 153.0
 margin_bottom = -278.0
 
 [node name="HPbar_enemyS" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
-position = Vector2( 116, 70 )
+position = Vector2( -140, 70 )
 texture = ExtResource( 46 )
 script = ExtResource( 40 )
 __meta__ = {
@@ -2435,7 +2421,6 @@ __meta__ = {
 }
 
 [node name="health_bar" type="Node2D" parent="HPbar_enemyS"]
-editor/display_folded = true
 position = Vector2( -18, 12 )
 
 [node name="background" type="TextureRect" parent="HPbar_enemyS/health_bar"]
@@ -2499,7 +2484,6 @@ margin_right = 1217.0
 margin_bottom = -109.0
 
 [node name="HPbar_enemyD" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( -134, 36 )
 texture = ExtResource( 47 )
@@ -2572,7 +2556,6 @@ margin_right = 1483.0
 margin_bottom = -75.0
 
 [node name="HPbar_enemyD2" type="Sprite" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( -143, 90 )
 texture = ExtResource( 47 )
@@ -2582,7 +2565,6 @@ __meta__ = {
 }
 
 [node name="health_bar" type="Node2D" parent="HPbar_enemyD2"]
-editor/display_folded = true
 position = Vector2( -18, 12 )
 
 [node name="background" type="TextureRect" parent="HPbar_enemyD2/health_bar"]
@@ -2646,7 +2628,6 @@ margin_right = 1473.0
 margin_bottom = -118.0
 
 [node name="playerParty" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 820, 230 )
 __meta__ = {
@@ -2683,7 +2664,6 @@ position = Vector2( -342, 4.5 )
 texture = ExtResource( 49 )
 
 [node name="enemyParty" type="Node2D" parent="."]
-editor/display_folded = true
 visible = false
 position = Vector2( 10, 105 )
 __meta__ = {
@@ -2712,7 +2692,7 @@ texture = ExtResource( 49 )
 
 [node name="ball5" type="Sprite" parent="enemyParty"]
 position = Vector2( 54, 4.5 )
-rotation = 2.49671e-006
+rotation = 2.49671e-06
 texture = ExtResource( 51 )
 
 [node name="ball6" type="Sprite" parent="enemyParty"]

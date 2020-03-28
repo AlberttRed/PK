@@ -89,7 +89,6 @@ func _ready():
 	add_user_signal("action_selected")
 	add_user_signal("initialized")
 	add_user_signal("turn_finished")
-	
 	ProjectSettings.set("Battle_AnimationPlayer", anim)
 	hide()
 #	commands.connect("fight", commands, "hide")
@@ -243,16 +242,24 @@ func init_wild_battle(double):
 			else:
 				active_pokemon = b.active_pokemon[0]
 
-				battlers[0].showPokemon()
+				#battlers[0].showPokemon()
+				battlers[0].set_pkmns()
 				if battlers[2] != null:
-					battlers[2].showPokemon()				
-				battlers[1].showPokemon()
+					battlers[2].set_pkmns()
+					#battlers[2].showPokemon()				
+				battlers[1].set_pkmns()
+				#battlers[1].showPokemon()
 				if battlers[3] != null:
-					battlers[3].showPokemon()
-
+					battlers[3].set_pkmns()
+					#battlers[3].showPokemon()
+	anim.set_current_animation("init_wild_battle")
+#	print(anim.get_current_animation_position())
+#	anim.seek(0, true)
 	anim.play("init_wild_battle")
 	while anim.is_playing():
 		yield(get_tree(), "idle_frame")
+		
+	
 				#enemy = battlers[1]
 	#			if b.is_playable:
 	#				player_sprite.texture = load("res://Sprites/Battlers/" + str(active_pokemon.pkm_id).pad_zeros(3) + "b.png")#.set_frame(0)
@@ -896,6 +903,48 @@ class Battler:
 			p.hp_bar.get_node("lblTotalHP").text = "/" + str(p.hp)
 			p.hp_bar.get_node("Status").texture = null
 
+
+	func set_pkmns(pokemons = active_pokemon):
+	
+		if doble:
+			if allies != null and allies.active_pokemon.size() > 0:
+				active_pokemon[0].ally = allies.active_pokemon[0]
+			elif allies == null:
+				active_pokemon[0].ally = active_pokemon[1]
+				active_pokemon[1].ally = active_pokemon[0]
+	
+		for p in pokemons:
+			p.print_pokemon()
+			p.hp_bar.init(p.get_total_hp(), p.get_actual_hp())
+			p.enemies.clear()
+			if enemies.size() == 1:
+				for p_en in enemies[0].active_pokemon:
+					p.enemies.push_back(p_en)
+			elif enemies.size() == 2:
+				for e in enemies:
+					for p_en in enemies[0].active_pokemon:
+						p.enemies.push_back(p_en)
+	
+			if back:
+				p.node.get_node("Sprite").texture = load("res://Sprites/Battlers/" + str(p.pkm_id).pad_zeros(3) + "b.png")
+			else:
+				p.node.get_node("Sprite").texture = load("res://Sprites/Battlers/" + str(p.pkm_id).pad_zeros(3) + ".png")
+				p.node.get_node("Sprite").position = self.single_position + Vector2(0, p.get_battlerEnemyY()+p.get_battlerAltitude())#p.get_battlerEnemyY()*2)
+	
+	
+	
+		
+		
+		
+
+
+
+
+
+
+
+
+
 	func showPokemon(pokemons = active_pokemon):
 		var final_position
 		#var anim = ProjectSettings.get("Battle_AnimationPlayer")
@@ -975,6 +1024,7 @@ class Battler:
 #				animation.track_insert_key(6, 1.0, p.hp_bar.get_position())
 #				animation.track_insert_key(6, 1.5,  p.hp_bar.get_position() - Vector2(254,0))
 				if self.is_trainer:
+					print("NOOOOOOOOOOOOOO")
 					animplayer.play("Show_Pokemon_Slot" + str(p.battle_position))
 			else:
 				if !self.is_trainer:
@@ -1062,6 +1112,7 @@ class Battler:
 	
 					animplayer.play(p.node.name)#"Show_Pokemon_back")
 			i += 1
+
 
 #		wait(10)
 #		yield(self, "finished_waiting")	
