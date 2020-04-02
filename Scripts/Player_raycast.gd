@@ -144,11 +144,13 @@ func interact():
 	for c in get_colliders():
 		print("INTERACT")
 		if typeof(c) == TYPE_OBJECT and c.is_in_group("Interact"):
+			c.add_child(c.pages)
 			if c.is_in_group("surf_area") and !body.surfing:
 				body.surf()
 			elif !c.is_in_group("surf_area"):
 				c.eventTarget = self
 				c.exec(facing_inverse[body.facing])
+			
 	if get_tiles_prop_byProp("Tipo") == CONST.TILE_TYPE.SURF and !body.surfing:
 		print("INTERACT")
 		body.surf()

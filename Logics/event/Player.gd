@@ -13,6 +13,8 @@ func _init():
 	add_user_signal("jump")
 	add_user_signal("controlled_move")
 	GAME_DATA.PLAYER = self
+	set_physics_process(false)
+	set_physics_process_internal(false)
 	#ProjectSettings.set("Player", self)
 	
 func _ready():
@@ -27,10 +29,23 @@ func _ready():
 	$Sprite.visible = !Transparent
 
 func _physics_process(delta):# and !$MoveTween.is_active():
-		for dir in moves.keys():
-			if can_move(dir):
-					can_move = false
-					move(dir)
+
+#		for dir in moves.keys():
+#			if can_move(dir):
+#					can_move = false
+#					move(dir)
+	if (Input.is_action_pressed("ui_right") and can_move and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded and can_interact) or (Input.is_action_pressed("ui_right_event_player") and can_move):
+		can_move = false
+		move("right")
+	elif (Input.is_action_pressed("ui_left") and can_move and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded and can_interact) or (Input.is_action_pressed("ui_left_event_player") and can_move):
+		can_move = false
+		move("left")
+	elif (Input.is_action_pressed("ui_up") and can_move and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded and can_interact) or (Input.is_action_pressed("ui_up_event_player") and can_move):
+		can_move = false
+		move("up")
+	elif (Input.is_action_pressed("ui_down") and can_move and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded and can_interact) or (Input.is_action_pressed("ui_down_event_player") and can_move):
+		can_move = false
+		move("down")
 
 func _input(event):
 	if event.is_action_pressed("ui_start") and !GUI.is_visible():
@@ -54,6 +69,9 @@ func _input(event):
 		var image = get_viewport().get_texture().get_data()
 		image.flip_y()
 		image.save_png("C:/Users/aquer/Saved Games/Pokemon Essentials Esp v16_2/screenshot.png")
+
+
+
 func can_move(dir):
 	if (Input.is_action_pressed("ui_" + dir) and can_move and !being_controlled and !GUI.is_visible() and !ProjectSettings.get("Global_World").faded and can_interact) or (Input.is_action_pressed("ui_"  + dir + "_event_player") and can_move):
 		return true
@@ -94,3 +112,6 @@ func save():
 		"being_controlled" : being_controlled
 	}
 	return save_dict
+	
+func set_all_process(state):
+	pass

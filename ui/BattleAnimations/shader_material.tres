@@ -28,8 +28,3 @@ void fragment()
 
 [resource]
 shader = SubResource( 1 )
-shader_param/color = null
-shader_param/whitening = null
-shader_param/frame_size = null
-shader_param/frames = null
-shader_param/anim_time = null

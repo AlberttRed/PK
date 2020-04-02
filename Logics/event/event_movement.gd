@@ -22,6 +22,7 @@ func add(_commands, _target, _parentEvent = null):
 	set_process(true)
 	
 func _process(delta):
+	print("process " + self.get_name())
 	if !movesArray.empty() and !moving:
 		#var moving_event = actual_event
 		var event_move = ""
@@ -62,10 +63,12 @@ func _process(delta):
 					if Target.jumping and event != null:
 						yield(Target, "jump")
 					print("Through: " + str(Target.Through))
+					Target.set_all_process(true)
 					Input.action_press("ui_" + movesArray[i] + "_event" + event_move)
 					yield(Target, "controlled_move")
+					print("aaaaaaaaaaaasasasas")
 					Input.action_release("ui_" + movesArray[i] + "_event" + event_move)
-					
+					Target.set_all_process(false)
 #					GLOBAL.input_action_press("ui_" + movesArray[i] + "_event" + event_move)
 #					yield(GLOBAL, "pressed")
 				if movesArray == movement_commands:
@@ -91,7 +94,10 @@ func _process(delta):
 			if event != null:
 				event.current_page.cmd_move_on = false
 			moving = false
+			
 			#emit_signal("moved")
 			set_process(false)
 			print("c'est fini")
+			Target.release_move()
+			event.finished_command()
 			

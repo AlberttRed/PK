@@ -15,6 +15,7 @@ func _ready():
 	add_to_group("CMD")
 
 func _process(delta):
+	print("process1 " + self.get_name())
 	if count:
 		i += 1
 

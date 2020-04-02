@@ -77,7 +77,7 @@ var next_step = {0:1,
 func _init():
 	move_event =  load("res://Logics/event/event_movement.gd").new()
 	move_event.set_name("move")
-	add_child(move_event)
+	
 
 func _ready():
 	trainer = $Trainer
@@ -91,9 +91,10 @@ func move(dir):
 	direction = get_node(raycasts[dir])
 	last_facing = facing
 	facing = dir
+	walk_animation()
 	check_first_step()
 	direction.update()
-	walk_animation()
+	
 	if !direction.is_SurfingArea() and surfing:
 		quit_surf()
 	if direction.is_colliding():
@@ -137,6 +138,7 @@ func jump(cells_jump):
 		for i in range(cells_jump): # Similar to [1, 2] but does not allocate an array.
 			i=i
 			moves_to_do.append(get_direction())
+		add_child(move_event)
 		move_event.add(moves_to_do, self)
 		$AnimationPlayer.play("jump")
 		while $AnimationPlayer.is_playing():
@@ -152,21 +154,22 @@ func jump(cells_jump):
 		Through = false
 		jumping = false
 		emit_signal("jump")
+		remove_child(move_event)
 		print("finished jump " + get_direction())
 		print(str($Sprite.position))
 
 func check_first_step():
 	if first_input and !GLOBAL.is_last_move(last_facing) and !jumping and !being_controlled:
 		movement = position
-		step_speed = 0.15
+		step_speed = float($AnimationPlayer.current_animation_length) / 2.0
 		$AnimationPlayer.playback_speed = 2
 	else:
 		movement = position + moves[facing] * tile_size
 		if running:
-			step_speed = 0.15
+			step_speed = float($AnimationPlayer.current_animation_length) / 2.0
 			$AnimationPlayer.playback_speed = 2.0
 		else:
-			step_speed = 0.3
+			step_speed = float($AnimationPlayer.current_animation_length)
 			$AnimationPlayer.playback_speed = 1.0
 		moved = true
 
@@ -260,7 +263,7 @@ func set_running(run):
 
 	if !run:
 		$Sprite.texture = GAME_DATA.player_default_sprite
-		step_speed = 0.3
+		step_speed = float($AnimationPlayer.current_animation_length)
 		
 	running = run
 	
@@ -279,3 +282,8 @@ func teleport(position):
 func get_direction():
 	return directions[$Sprite.frame]
 	
+func init_move():
+	add_child(move_event)
+	
+func release_move():
+	remove_child(move_event)

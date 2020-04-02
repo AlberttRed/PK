@@ -3,11 +3,13 @@ extends "res://Logics/event/Event.gd"
 var player
 var current_page
 var event_running = false
+var finished_cmds_count = 0
 
 export(bool) var Trainer = false
 export(int, "NPC, Object")var event_type = 0
 export (bool)var BlockPlayerAtEnd = false
 
+var pages
 
 var eventTarget = null
 
@@ -33,8 +35,13 @@ func _ready():
 	elif event_type == CONST.EVENT.OBJECT:
 		$Sprite.offset = $Sprite.offset + Vector2(0,0)
 		$Sprite.set_position(Vector2(0,0))
+	pages = get_node("pages")
+	remove_child(pages)
+	set_all_process(false)
+	
 
 func _physics_process(delta):# and !$MoveTween.is_active():
+	print("physics_process " + self.get_name())
 	if being_controlled:
 		for dir in moves.keys():
 			if Input.is_action_pressed("ui_" + dir + "_event") and can_move:
@@ -68,10 +75,10 @@ func exec(from = facing_idle[facing]):
 			yield(current_page, "finished_page")
 			player.set_can_interact(!BlockPlayerAtEnd)
 			player.in_event = BlockPlayerAtEnd
-			GLOBAL.running_events.erase(self)
-			event_running = false
-			print("Finalized event " + get_name())
-			emit_signal("event_finished")
+#			GLOBAL.running_events.erase(self)
+#			event_running = false
+#			print("Finalized event " + get_name())
+#			emit_signal("event_finished")
 			
 				
 func set_parent_event(pages):
@@ -177,3 +184,23 @@ func save():
 		"being_controlled" : being_controlled
 	}
 	return save_dict
+
+func finished_command():
+	finished_cmds_count = finished_cmds_count+1
+	print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+	print("cmds_finished: " + str(finished_cmds_count) + ", total cmds: " + str(current_page.get_children().size()))
+	for c in current_page.get_children():
+		print(c.get_name())
+	if finished_cmds_count == current_page.get_children().size():
+		GLOBAL.running_events.erase(self)
+		event_running = false
+		finished_cmds_count = 0
+		print("OUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
+		print("Finalized event " + get_name())
+		remove_child(pages)
+		emit_signal("event_finished")
+		
+func set_all_process(state):
+	set_process(state)
+	set_physics_process(state)
+	set_physics_process_internal(state)

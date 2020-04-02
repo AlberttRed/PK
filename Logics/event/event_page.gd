@@ -32,6 +32,7 @@ func _init():
 	add_user_signal("executed")
 
 func _process(delta):
+	print("process " + self.get_name())
 	if AutoRun:
 		AutoRun = false
 		run()
