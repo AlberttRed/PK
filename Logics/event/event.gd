@@ -285,7 +285,9 @@ func get_direction():
 	return directions[$Sprite.frame]
 	
 func init_move():
+	print("ADD " + get_name() + " move event")
 	add_child(move_event)
 	
 func release_move():
+	print("DELETE " + get_name() + " move event")
 	remove_child(move_event)

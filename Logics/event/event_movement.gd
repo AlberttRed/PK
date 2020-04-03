@@ -3,14 +3,14 @@ extends Node
 class_name EventMovement
 var event
 var Target
-var movesArray :Array = []
+var movesArray :Array
 var moved = false
 var moving = false
 var i = 0
 
 # Called when the node enters the scene tree for the first time.
 func _init():
-	set_process(true)
+	#set_process(true)
 	add_user_signal("moved")
 	
 func add(_commands, _target, _parentEvent = null):
@@ -19,16 +19,14 @@ func add(_commands, _target, _parentEvent = null):
 	movesArray = _commands
 	Target = _target
 	event = _parentEvent
-	print(movesArray)
-	if event != null:
-		event.init_move()
-	elif Target != null:
+#	if event != null:
+#		event.init_move()
+	if Target != null:
 		Target.init_move()
-	set_process(true)
+	#set_process(true)
 	
 func _process(delta):
 	print("process " + self.get_name())
-	print(movesArray)
 	if !movesArray.empty() and !moving:
 		#var moving_event = actual_event
 		var event_move = ""

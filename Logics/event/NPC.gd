@@ -199,6 +199,7 @@ func finished_command():
 		emit_signal("event_finished")
 		
 func set_all_process(state):
+	print("SET " + get_name() + " ALL PROCESS " + str(state))
 	set_process(state)
 	set_physics_process(state)
 	set_physics_process_internal(state)
