@@ -24,14 +24,14 @@ func _ready():
 
 # Actualitza l'intersact point per detectar si hi ha alguna colisió en la següent cel·la del mapa respecte a la posició actual del parent
 func update(cells=1):
-	print("update!")
+	#print("update!")
 	if body.movement == body.get_position():
 		cells = 0
 	intersect_tile(direction, cells)
 	#tile_result = intersect_tile(direction, cells)
-	print("FIRST")
+	#print("FIRST")
 	get_tiles_prop_byProp("Tipo")
-	print("END FIRST")
+	#print("END FIRST")
 	if body.Through:
 		result = null
 	else:
@@ -51,10 +51,10 @@ func intersect_tile(dir, cells=1):
 	var position = body.get_position()+dir*cells+Vector2(0, 32) + GAME_DATA.ACTUAL_MAP.tile_offset
 	#print("tile check position =" + str(position))
 	var scene_nodes = get_tree().get_nodes_in_group(GAME_DATA.ACTUAL_MAP.get_name())
-	print("scene nodes map: " + GAME_DATA.ACTUAL_MAP.get_name())
+	#print("scene nodes map: " + GAME_DATA.ACTUAL_MAP.get_name())
 	for c in scene_nodes:
 		if c.get_class() == "TileMap":
-			print(c.get_name())
+	#		print(c.get_name())
 			#for c2 in c.get_children():
 				#print(c2.get_name())
 			if c.tile_set.has_meta("tile_meta"):
@@ -67,10 +67,10 @@ func intersect_tile(dir, cells=1):
 					for prop in tile:
 						var value = tile[prop]
 						tile_result.add(prop, value)
-						print(prop)
-						print(value)
-						for c in tile_result.get_children():
-							print("inserted: " + c.get_name() + ": " + str(value))
+	#					print(prop)
+	#					print(value)
+#						for c in tile_result.get_children():
+	#						print("inserted: " + c.get_name() + ": " + str(value))
 #					for prop in tile_meta[tile_id]:
 #						print("Tile ID: " + str(tile_id))
 #						print(prop + " " + str(tile_meta[tile_id][prop]))#tile_meta[0]))
@@ -142,9 +142,9 @@ func interact():
 	result = intersect_point(direction, 1)
 	intersect_tile(direction, 1)
 	for c in get_colliders():
-		print("INTERACT")
+		print("INTERACT " + c.get_name())
 		if typeof(c) == TYPE_OBJECT and c.is_in_group("Interact"):
-			c.add_child(c.pages)
+			c.add_child(c.event_pages)
 			if c.is_in_group("surf_area") and !body.surfing:
 				body.surf()
 			elif !c.is_in_group("surf_area"):
@@ -165,6 +165,7 @@ func interact_at_collide():
 					body.get_node("AnimationPlayer").stop()
 					body.can_interact = c.current_page.Paralelo
 					c.eventTarget = self
+					c.add_child(c.event_pages)
 					c.exec()
 					return true
 					#EVENTS.add_event(dictionary.collider.get_parent(), self)
@@ -191,9 +192,9 @@ func get_tile_prop_byTileId(tile_id, prop):
 	return tile_result[tile_id][prop]
 	
 func get_tiles_prop_byProp(prop, res = tile_result):
-	print("tiles by prop: ")
-	for c in res.get_children():
-		print("tile result has:" + c.get_name() + ": " + str(c.value))
+#	print("tiles by prop: ")
+#	for c in res.get_children():
+#		print("tile result has:" + c.get_name() + ": " + str(c.value))
 #	var props = []
 #	if res != null:
 #		for i in res:
@@ -205,10 +206,10 @@ func get_tiles_prop_byProp(prop, res = tile_result):
 	return res.get(prop)
 	
 func get_tile_prop_byProp(prop, res = tile_result):
-	print("tiles by prop: ")
-	for c in res.get_children():
-		print("tile result has:" + c.get_name() + ": " + str(c.value))
-#	if res != null:
+	#print("tiles by prop: ")
+#	for c in res.get_children():
+#		print("tile result has:" + c.get_name() + ": " + str(c.value))
+##	if res != null:
 #		for i in res:
 #			var tile = res[i]
 #			print("tile id: " + str(i))

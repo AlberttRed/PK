@@ -42,8 +42,8 @@ func _on_TweenOut_tween_completed(object, key):
 func _on_TweenIn_tween_completed(object, key):
 	emit_signal("played")
 	
-func play_sound(sound):
-	set_stream(sound)
+func play_sound(sound_to_play):
+	set_stream(sound_to_play)
 	play()
 	yield(self, "finished")
 	stop()

@@ -31,4 +31,5 @@ func run():
 		yield(get_tree(), "idle_frame")
 	count = false
 	print("set Gvariable finished")
+	parentEvent.finished_command()
 	emit_signal("finished")

@@ -35,4 +35,5 @@ func run():
 		yield(get_tree(), "idle_frame")
 	count = false
 	print("set transparent to " + str(Transparent) + " finished")
+	parentEvent.finished_command()
 	emit_signal("finished")

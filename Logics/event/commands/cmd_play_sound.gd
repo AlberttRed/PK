@@ -34,4 +34,5 @@ func run():
 	i = 0
 	print("playing sound finished")
 	executing = false
+	parentEvent.finished_command()
 	emit_signal("finished")

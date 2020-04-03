@@ -9,7 +9,7 @@ export(bool) var Trainer = false
 export(int, "NPC, Object")var event_type = 0
 export (bool)var BlockPlayerAtEnd = false
 
-var pages
+var event_pages
 
 var eventTarget = null
 
@@ -35,8 +35,8 @@ func _ready():
 	elif event_type == CONST.EVENT.OBJECT:
 		$Sprite.offset = $Sprite.offset + Vector2(0,0)
 		$Sprite.set_position(Vector2(0,0))
-	pages = get_node("pages")
-	remove_child(pages)
+	event_pages = get_node("pages")
+	remove_child(event_pages)
 	set_all_process(false)
 	
 
@@ -189,15 +189,13 @@ func finished_command():
 	finished_cmds_count = finished_cmds_count+1
 	print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
 	print("cmds_finished: " + str(finished_cmds_count) + ", total cmds: " + str(current_page.get_children().size()))
-	for c in current_page.get_children():
-		print(c.get_name())
-	if finished_cmds_count == current_page.get_children().size():
+	if finished_cmds_count == current_page.get_children().size() - 2: #Li resto dos pq l'event_page té un Sprite i AnimationPlayer que no se d'on surten...
 		GLOBAL.running_events.erase(self)
 		event_running = false
 		finished_cmds_count = 0
 		print("OUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
 		print("Finalized event " + get_name())
-		remove_child(pages)
+		remove_child(event_pages)
 		emit_signal("event_finished")
 		
 func set_all_process(state):

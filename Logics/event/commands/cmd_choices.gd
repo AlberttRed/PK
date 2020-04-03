@@ -14,6 +14,7 @@ func run():
 	while (GUI.is_visible()):
 		yield(get_tree(),"idle_frame")
 	print("show choices finished")
+	parentEvent.finished_command()
 	emit_signal("finished")
 	
 

@@ -22,4 +22,5 @@ func run():
 		while animationPlayer.is_playing():
 			yield(get_tree(), "idle_frame")
 	print("show animation finished")
+	parentEvent.finished_command()
 	emit_signal("finished")

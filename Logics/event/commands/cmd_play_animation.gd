@@ -40,4 +40,5 @@ func run():
 	animationPlayer.remove_animation(animation.get_name())
 	print("show animation finished")
 	executing = false
+	parentEvent.finished_command()
 	emit_signal("finished")

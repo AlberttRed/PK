@@ -224,6 +224,7 @@ func set_parent_event(pages):
 
 
 func _physics_process(delta):
+	print("juju")
 #	if !jumping and !surfing and !pushing:
 #		if GLOBAL.move_is_continuous():
 #			step = 1

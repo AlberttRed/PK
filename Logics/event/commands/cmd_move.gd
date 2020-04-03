@@ -67,7 +67,8 @@ func run():
 	moved = false
 	#print(str(movesArray.size()) + " and " + str(Target) + " and " + str(!moved))
 	#get_parent().cmd_move_on = true
-	Target.init_move()
+	print(movesArray)
+	print(Target.get_name())
 	Target.move_event.add(movesArray, Target, parentEvent)
 	#EVENTS.add_movement(Target, movesArray)
 	executing = false

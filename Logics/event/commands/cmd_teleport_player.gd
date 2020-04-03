@@ -61,6 +61,7 @@ func run():
 	i = 0
 	count = false
 	print("teleport event finished")
+	parentEvent.finished_command()
 	emit_signal("finished")
 
 		

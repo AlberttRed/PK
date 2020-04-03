@@ -15,7 +15,9 @@ var moving = false
 var i = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	set_physics_process(true)
+	set_physics_process(false)
+	set_physics_process_internal(false)
+	set_process(false)
 
 func _process(delta):
 	if !running_events.empty() or running_events.size() != 0:
@@ -65,6 +67,7 @@ func get_next_event():
 	return running_events.front()
 	
 func _physics_process(delta):
+	print("ou mama")
 	if !movement_commands.empty() and !moving:
 		var moving_event = actual_event
 		var event_move = ""
@@ -129,4 +132,4 @@ func remove_movement(moveming_event):
 		running_events[running_events.find(moveming_event)].current_page.cmd_move_on = false
 	movement_commands.pop_front()
 	movement_target.pop_front()
-	set_physics_process(true)
+#	set_physics_process(true)

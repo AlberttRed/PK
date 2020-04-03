@@ -30,4 +30,5 @@ func run():
 			GLOBAL.running_events.back().deleteAtEnd = true
 			#can_interact = true
 	print("Cut finished")
+	parentEvent.finished_command()
 	emit_signal("finished")

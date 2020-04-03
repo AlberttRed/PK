@@ -91,10 +91,10 @@ func move(dir):
 	direction = get_node(raycasts[dir])
 	last_facing = facing
 	facing = dir
-	walk_animation()
+
 	check_first_step()
 	direction.update()
-	
+	walk_animation()
 	if !direction.is_SurfingArea() and surfing:
 		quit_surf()
 	if direction.is_colliding():
@@ -161,20 +161,20 @@ func jump(cells_jump):
 func check_first_step():
 	if first_input and !GLOBAL.is_last_move(last_facing) and !jumping and !being_controlled:
 		movement = position
-		step_speed = float($AnimationPlayer.current_animation_length) / 2.0
+		step_speed = 0.15#float($AnimationPlayer.current_animation_length) / 2.0
 		$AnimationPlayer.playback_speed = 2
 	else:
 		movement = position + moves[facing] * tile_size
 		if running:
-			step_speed = float($AnimationPlayer.current_animation_length) / 2.0
+			step_speed = 0.15# float($AnimationPlayer.current_animation_length) / 2.0
 			$AnimationPlayer.playback_speed = 2.0
 		else:
-			step_speed = float($AnimationPlayer.current_animation_length)
+			step_speed = 0.3#float($AnimationPlayer.current_animation_length)
 			$AnimationPlayer.playback_speed = 1.0
 		moved = true
 
 func _on_MoveTween_tween_completed(object, key):
-	#print("CEST FINI: " + str($Sprite.frame))
+	
 	facing = get_direction()
 	if $AnimationPlayer.is_playing() and !jumping and !collided:
 		#yield(get_tree(), "idle_frame")
@@ -215,6 +215,7 @@ func push(object):
 		$AnimationPlayer.stop()
 		object.speed_animation = 0.5
 		object.move_event.add([get_direction()], object)
+		
 		pushing = false
 		print("apa siau")
 
@@ -231,6 +232,7 @@ func surf():
 			#GLOBAL.move(facing)
 			move_event.add([get_direction()], self)
 			yield(self, "move")
+			
 			$Sprite.texture = GAME_DATA.player_surf_sprite
 			can_interact = true
 			Through = false
@@ -263,7 +265,7 @@ func set_running(run):
 
 	if !run:
 		$Sprite.texture = GAME_DATA.player_default_sprite
-		step_speed = float($AnimationPlayer.current_animation_length)
+		step_speed = 0.3#float($AnimationPlayer.current_animation_length)
 		
 	running = run
 	

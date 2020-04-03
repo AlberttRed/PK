@@ -67,6 +67,7 @@ EVENTS="*res://Logics/event/EventSystem.gd"
 
 [debug]
 
+settings/stdout/print_fps=true
 gdscript/warnings/unused_argument=false
 gdscript/warnings/unused_signal=false
 gdscript/warnings/return_value_discarded=false
@@ -186,9 +187,12 @@ ui_screenshot={
  ]
 }
 
+[physics]
+
+common/physics_fps=120
+
 [rendering]
 
-quality/driver/driver_name="GLES2"
 quality/2d/use_pixel_snap=true
 environment/default_environment="res://default_env.tres"
 

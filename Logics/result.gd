@@ -9,7 +9,7 @@ func _ready():
 
 
 func clear_all():
-	print("result cleared!")
+	#print("result cleared!")
 	for c in get_children():
 		remove_child(c)
 		GLOBAL.queue(c)

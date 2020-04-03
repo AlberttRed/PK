@@ -22,4 +22,5 @@ func wait(s):
 	timer.set_wait_time(s)
 	timer.start()
 	yield(timer,"timeout")
+	parentEvent.finished_command()
 	emit_signal("finished")

@@ -26,4 +26,5 @@ func run():
 		yield(get_tree(), "idle_frame")
 	ProjectSettings.get("Global_World").faded = false
 	print("Fade In finished")
+	parentEvent.finished_command()
 	emit_signal("finished")

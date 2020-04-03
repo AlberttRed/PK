@@ -40,4 +40,5 @@ func run():
 	i = 0
 	print("set through to " + str(Through) + " finished")
 	executing = false
+	parentEvent.finished_command()
 	emit_signal("finished")

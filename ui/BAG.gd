@@ -121,10 +121,6 @@ func load_items():
 	for p in pockets:
 		if p != null:
 			p.clear()
-	var pocket_index = 1
-	var item_index = 0
-	var selected_index = 1
-	var actions_index = 0
 	for i in GAME_DATA.ITEMS:
 		pockets[i[0].bag_pocket].push_back(i)
 	print_pockets()

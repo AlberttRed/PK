@@ -19,10 +19,16 @@ func add(_commands, _target, _parentEvent = null):
 	movesArray = _commands
 	Target = _target
 	event = _parentEvent
+	print(movesArray)
+	if event != null:
+		event.init_move()
+	elif Target != null:
+		Target.init_move()
 	set_process(true)
 	
 func _process(delta):
 	print("process " + self.get_name())
+	print(movesArray)
 	if !movesArray.empty() and !moving:
 		#var moving_event = actual_event
 		var event_move = ""
@@ -91,13 +97,16 @@ func _process(delta):
 			i = 0
 			movesArray = []
 			movement_commands = []
-			if event != null:
-				event.current_page.cmd_move_on = false
+			
 			moving = false
 			
 			#emit_signal("moved")
 			set_process(false)
 			print("c'est fini")
 			Target.release_move()
-			event.finished_command()
+			if event != null:
+				event.current_page.cmd_move_on = false
+				event.finished_command()
+
+			
 			

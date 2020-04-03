@@ -72,6 +72,7 @@ func run():
 
 
 func _physics_process(delta):
+	print("Lol")
 	if movesArray.size() != 0 and Target != null and !moved:
 
 		if !moving and i < movesArray.size() and Target == GAME_DATA.PLAYER: #ProjectSettings.get("Player"):

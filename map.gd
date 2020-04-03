@@ -117,6 +117,8 @@ func load_map(deletePrevious, scene = self, pos = null):
 				N.parent_map = scene
 
 			scene.remove_child(N)
+			
+			print("ADD " + N.get_name() + " INTO " + world.get_node("CanvasModulate").get_node(N.get_name()).get_name())
 			world.get_node("CanvasModulate").get_node(N.get_name()).add_child(N)
 			N.set_owner(world.get_node("CanvasModulate").get_node(N.get_name().split("_")[0].replace("@", "") + "_"))
 	
@@ -130,7 +132,7 @@ func load_map(deletePrevious, scene = self, pos = null):
 
 	for evento in world.get_node("CanvasModulate/Eventos_/Eventos_").get_children():
 			#var position = evento.get_position()
-
+			
 				#p.propagate_call("set_physics_process", false)
 			evento.add_to_group(scene.get_name())
 			world.get_node("CanvasModulate/Eventos_/Eventos_").remove_child(evento)
