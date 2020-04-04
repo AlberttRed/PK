@@ -11,6 +11,11 @@ export(Vector2) var S_connection_pos
 export(Vector2) var E_connection_pos
 export(Vector2) var W_connection_pos
 
+var N_scene = null
+var S_scene = null
+var E_scene = null
+var W_scene = null
+
 export(AudioStream) var music
 
 var tile_offset = Vector2(0, 0)
@@ -31,7 +36,7 @@ var N
 var Player = GAME_DATA.PLAYER 
 var world = ProjectSettings.get("Global_World")
 var comptador = 0
-export(NodePath) var map_area
+#export(NodePath) var map_area
 onready var wild_pokemon = get_node("Wild_Pokemon_")
 export(int) var land_density = 30
 
@@ -40,13 +45,13 @@ var loaded = false
 var strength_on = false
 
 func init():
-	
 	comptador += 1
 	world.get_node("CanvasModulate/CapaTerra_").z_index = -2
 	print("Map init count: " + str(comptador))
 	#ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
 	GAME_DATA.PREVIOUS_MAP = GAME_DATA.ACTUAL_MAP
 	GAME_DATA.ACTUAL_MAP = self
+	print("LOADING ACTUAL MAP: " + GAME_DATA.ACTUAL_MAP.get_name())
 	#ProjectSettings.set("Actual_Map", self)	
 
 func _init():
@@ -65,32 +70,38 @@ func set_connections():
 		var scene_name = N_connection.get_path().split("/")[4].split(".")[0]
 		if world.get_parent().get_tree().get_nodes_in_group(scene_name).size() <= 0:		
 			print("N connected: " + str(scene_name))#str(N_connection.split("/")[3].split(".")[0]))
-			call_deferred("load_map", false, Scene.instance(), N_connection_pos)
+			N_scene = Scene.instance()
+			call_deferred("load_map", false, N_scene, N_connection_pos)
 	if !S_connection.empty() and S_connection_pos != null:
 		print("SSSSSSSSSSSSSSSSSSSSS")
 		Scene = load(S_connection).instance()
 		if world.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
 			print("S connected: " + str(Scene.get_name()))
-			load_map(false, Scene, S_connection_pos)
+			S_scene = Scene.instance()
+			load_map(false, S_scene, S_connection_pos)
 	if !E_connection.empty() and E_connection_pos != null:
 		print("EEEEEEEEEEEEEEEEEEEEEE")
 		Scene = load(E_connection).instance()
 		if world.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
 			print("E connected: " + str(Scene.get_name()))
-			load_map(false, Scene, E_connection_pos)
+			E_scene = Scene.instance()
+			load_map(false, E_scene, E_connection_pos)
 	if !W_connection.empty() and W_connection_pos != null:
 		print("WWWWWWWWWWWWWWWWWWWWWWWW")
 		Scene = load(W_connection).instance()
 		if world.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
 			print("W connected: " + str(Scene.get_name()))
-			load_map(false, Scene, W_connection_pos)
+			W_scene = Scene.instance()
+			load_map(false, W_scene, W_connection_pos)
 
 		
 func load_map(deletePrevious, scene = self, pos = null):
 	#print("Loaded Map: " + scene.get_name())
-
+	
 	init()
-
+#	if deletePrevious:
+#			print("DELETED " + GAME_DATA.PREVIOUS_MAP.get_name())
+#			GLOBAL.destroy(GAME_DATA.PREVIOUS_MAP)
 
 #	if pos != null:
 #		print("set " + scene.get_name() + " tile offset: " + str(-pos))
@@ -109,15 +120,17 @@ func load_map(deletePrevious, scene = self, pos = null):
 	strength_on = false
 	
 	for N in scene.get_children() :		
+		print("looping load: " + scene.get_name())
 		if !N.is_in_group("ignore"):
 			#print("N tratada: " + N.get_name())
 			N.add_to_group(scene.get_name())
 
 			if (N.get_name().split("_")[0].replace("@", "") + "_") == "MapArea_":
+				area = N
 				N.parent_map = scene
 
 			scene.remove_child(N)
-			
+			print(N.get_name())
 			print("ADD " + N.get_name() + " INTO " + world.get_node("CanvasModulate").get_node(N.get_name()).get_name())
 			world.get_node("CanvasModulate").get_node(N.get_name()).add_child(N)
 			N.set_owner(world.get_node("CanvasModulate").get_node(N.get_name().split("_")[0].replace("@", "") + "_"))
@@ -156,6 +169,9 @@ func load_map(deletePrevious, scene = self, pos = null):
 #		print("scene child: " + c.get_name())
 	#world.remove_child(scene)
 	if deletePrevious:
+		print("DELETED " + GAME_DATA.PREVIOUS_MAP.get_name())
+		if GAME_DATA.PREVIOUS_MAP.N_scene != null:
+			GLOBAL.destroy(GAME_DATA.PREVIOUS_MAP.N_scene)
 		GLOBAL.destroy(GAME_DATA.PREVIOUS_MAP)
 		#GLOBAL.destroy(ProjectSettings.get("Previous_Map"))
 	emit_signal("loaded")
@@ -192,17 +208,19 @@ func save():
 				
 				
 func reposition(scene, pos):
+	print("REPOSITION SCENE " + scene.get_name())
 	#print("set " + scene.get_name() + " tile offset: " + str(-pos))
 	scene.tile_offset = -pos
 	#print(str(get_children()))
 	#print("scene position: " + str(scene.get_position()))
+	
 	for c in world.get_node("CanvasModulate").get_children():
-	#	print(c.get_name() + " selected")
+		print(c.get_name() + " selected")
 		for n in c.get_children():
-			#print("childs: " + str(n.get_name()) + " " + str(n.get_groups()))
-			if n.get_class() != "Node" and n.get_class() != "AnimationPlayer" and n.get_class() != "Tween": 
-				if n.is_in_group(scene.get_name()):
-				#	print(n.get_name() + " repositioned")
+			print("childs: " + str(n.get_name()) + " " + str(n.get_groups()))
+			if n.get_class() != "Node" and n.get_class() != "AnimationPlayer" and n.get_class() != "Tween":
+				if n.get_groups().has(scene.get_name()):
+					print(n.get_name() + " repositioned")
 				#	print("Before " + str(n.get_position()))
 					n.set_position(n.get_position() + pos)
 				#	print("After " + str(n.get_position()))

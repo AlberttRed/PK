@@ -72,18 +72,17 @@ cell_size = Vector2( 32, 32 )
 format = 1
 tile_data = PoolIntArray( -786418, 2, 0, -786417, 2, 0, -786416, 2, 0, -720882, 2, 0, -720881, 2, 0, -655346, 2, 0, -655345, 2, 0, -589809, 2, 0, -524274, 2, 0, -524273, 2, 0, -393222, 94, 0, -458738, 2, 0, -196613, 86, 0, -196612, 87, 0, -196610, 27, 0, -262143, 37, 0, -262137, 32, 0, 65530, 81, 0, 65531, 76, 0, 65532, 77, 0, 65533, 76, 0, 65534, 77, 0, 2, 76, 0, 3, 77, 0, 5, 77, 0, 6, 81, 0, 262140, 20, 0, 196616, 20, 0, 262150, 84, 0 )
 
-[node name="Area2D_" type="Area2D" parent="."]
+[node name="MapArea_" type="Area2D" parent="."]
 visible = false
 position = Vector2( 16, 40 )
 scale = Vector2( 10.5, 9.25 )
 script = ExtResource( 12 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D_"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea_"]
 position = Vector2( 0.434529, -0.959457 )
 scale = Vector2( 3.39583, 3.36351 )
 shape = SubResource( 1 )
 
-[node name="Pasable" type="Node2D" parent="Area2D_"]
-
+[node name="Pasable" type="Node2D" parent="MapArea_"]
 
 [editable path="Eventos_/Entrada"]

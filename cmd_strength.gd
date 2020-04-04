@@ -46,7 +46,7 @@ func run():
 		while (GUI.is_visible()):
 			yield(get_tree(),"idle_frame")
 	print("Strength finished")
-	parentEvent.finished_command()
+	parentPage.finished_command()
 	emit_signal("finished")
 #
 #func _physics_process(delta):

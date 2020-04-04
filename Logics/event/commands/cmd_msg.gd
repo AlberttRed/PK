@@ -27,7 +27,7 @@ func run():
 	running = false
 	GUI.next = false
 	executing = false
-	parentEvent.finished_command()
+	parentPage.finished_command()
 	emit_signal("finished")
 	
 func _execPlayerTouch(target):

@@ -14,7 +14,10 @@ texture = ExtResource( 3 )
 offset = Vector2( 0, 4 )
 vframes = 4
 hframes = 4
-frame = 10
+frame = 1
+
+[node name="AnimationPlayer" parent="." index="1"]
+method_call_mode = 1
 
 [node name="CollisionShape2D" parent="." index="3" groups=[
 "Player",

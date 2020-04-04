@@ -111,6 +111,8 @@ func move(dir):
 		collided = false
 	#print("position: " + str(position))
 	#print("movement: " + str(movement))
+	while !$AnimationPlayer.is_playing():
+			yield(get_tree(), "idle_frame")
 	$MoveTween.interpolate_property(self, "position", position,
 					  movement, step_speed/speed_animation,
 					  Tween.TRANS_LINEAR, Tween.EASE_OUT)
@@ -169,7 +171,7 @@ func check_first_step():
 			step_speed = 0.15# float($AnimationPlayer.current_animation_length) / 2.0
 			$AnimationPlayer.playback_speed = 2.0
 		else:
-			step_speed = 0.3#float($AnimationPlayer.current_animation_length)
+			step_speed = 0.25#float($AnimationPlayer.current_animation_length)
 			$AnimationPlayer.playback_speed = 1.0
 		moved = true
 
@@ -195,10 +197,12 @@ func _on_MoveTween_tween_completed(object, key):
 	actual_position = position
 
 func walk_animation():
+	print("WAAAAAAAAAAAAAAAALK")
 	if running:
 		$Sprite.texture = GAME_DATA.player_run_sprite
 		step_speed = 0.15
 	if !$AnimationPlayer.is_playing() and !jumping:
+		print("PLAY!")
 		#print("animation step: " + str(step))
 		$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
 		if step == 1:
@@ -284,10 +288,12 @@ func teleport(position):
 func get_direction():
 	return directions[$Sprite.frame]
 	
+#Afegim el move_event en el tree perque s'executi el _process
 func init_move():
 	print("ADD " + get_name() + " move event")
 	add_child(move_event)
-	
+
+#Eliminem el move_event en el tree perque s'aturi el _process	
 func release_move():
 	print("DELETE " + get_name() + " move event")
 	remove_child(move_event)

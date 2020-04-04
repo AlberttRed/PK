@@ -17,6 +17,7 @@ func run():
 	#var animation
 	print("Fade Out started")
 	animationPlayer.play("FadeOut", -1, 1*speed)
+
 #	animationPlayer.add_animation("FadeOut", "res://animations/FadeIn.tres")
 #	animationPlayer.set_current_animation("FadeOut")
 #	animationPlayer.play("FadeOut")
@@ -25,5 +26,5 @@ func run():
 		yield(get_tree(), "idle_frame")
 	ProjectSettings.get("Global_World").faded = true
 	print("Fade Out finished")
-	parentEvent.finished_command()
+	parentPage.finished_command()
 	emit_signal("finished")

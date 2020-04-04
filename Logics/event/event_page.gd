@@ -14,6 +14,8 @@ export (bool)var AutoRun = false
 export (bool)var Paralelo = false
 export (bool)var deleteAtEnd = false
 
+var finished_cmds_count = 0
+
 var initialFrame
 export (int)var sprite_cols = 1
 export (int)var sprite_rows = 1
@@ -45,10 +47,7 @@ func run():
 #	while running:
 #		yield(get_tree(), "idle_frame")
 	yield(self,"executed")
-	print("page finished")
-	#ProjectSettings.get("Player").can_interact = !Paralelo
-	GAME_DATA.PLAYER.can_interact = !Paralelo
-	emit_signal("finished_page")
+	
 
 func exec_commands(commands):
 	#ProjectSettings.get("Player").can_interact = Paralelo
@@ -122,12 +121,16 @@ func load_sprite():
 		#print("LOADIN SPRITE: " + parentEvent.get_name())
 		initialFrame = get_node("Sprite").frame
 		parentEvent.get_node("Sprite").texture = Imagen
-		parentEvent.get_node("Sprite").hframes = sprite_cols
-		parentEvent.get_node("Sprite").vframes = sprite_rows
-		parentEvent.get_node("Sprite").offset = OffsetSprite
+#		parentEvent.get_node("Sprite").hframes = sprite_cols
+#		parentEvent.get_node("Sprite").vframes = sprite_rows
+#		parentEvent.get_node("Sprite").offset = OffsetSprite
+		get_node("Sprite").hframes = sprite_cols
+		get_node("Sprite").vframes = sprite_rows
+		get_node("Sprite").offset = OffsetSprite
 #		parentEvent.get_node("Sprite").set_position(Vector2(0,-24))
 		if Imagen.get_height() / 32 > 1 and (sprite_cols == 1 and sprite_rows == 1):
-			parentEvent.get_node("Sprite").offset = parentEvent.get_node("Sprite").offset + (Vector2(0,-16*(Imagen.get_height() / 32 - 1)))
+			#parentEvent.get_node("Sprite").offset = parentEvent.get_node("Sprite").offset + (Vector2(0,-16*(Imagen.get_height() / 32 - 1)))
+			get_node("Sprite").offset = get_node("Sprite").offset + (Vector2(0,-16*(Imagen.get_height() / 32 - 1)))
 			
 
 func set_parent_page(commands):
@@ -137,3 +140,17 @@ func set_parent_page(commands):
 	if commands.is_in_group("CMD"):
 		commands.parentPage = self
 		
+#Es crida cada vegada que finalitza un cmd. Una vegada s'han executats tots el cmd de la pagina
+# s'atura l'event i fa un remove_child de les pagines perque s'aturin els _process dels cmds
+func finished_command():
+	finished_cmds_count = finished_cmds_count+1
+	print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+	print("cmds_finished: " + str(finished_cmds_count) + ", total cmds: " + str(get_children().size()))
+	if finished_cmds_count == get_children().size() - 2: #Li resto dos pq l'event_page té un Sprite i AnimationPlayer que no se d'on surten...
+		
+		print("page finished")
+		finished_cmds_count = 0
+		#ProjectSettings.get("Player").can_interact = !Paralelo
+		GAME_DATA.PLAYER.can_interact = !Paralelo
+		parentEvent.finished_page()
+		emit_signal("finished_page")

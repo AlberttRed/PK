@@ -29,8 +29,9 @@ func _ready():
 	
 func destroy(node):
 	queue(node)
-	print("DELETED: " + node.get_name())
+	print("DELETING: " + node.get_name())
 	for n in get_tree().get_nodes_in_group(node.get_name()):
+		print("DELETED " + n.get_name())
 		if n.is_in_group("Evento") and !n.is_in_group("NPC"):
 			print(n.get_name() + " " + str(n.event_running))
 			if n.event_running:

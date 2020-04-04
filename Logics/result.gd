@@ -28,7 +28,7 @@ func get(prop):
 	if has_node(prop):
 		return get_node(prop).value
 	else:
-		print("El result no té la propietat: " + str(prop))
+		#print("El result no té la propietat: " + str(prop))
 		return null
 	
 func has(prop):

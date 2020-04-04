@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/Casa_Player.tmx-c9cd5773d4586270c08d53dd59046be8.scn"
+
+[deps]
+
+source_file="res://Maps/Pueblo Paleta/Casa_Player.tmx"
+dest_files=[ "res://.import/Casa_Player.tmx-c9cd5773d4586270c08d53dd59046be8.scn" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=true
+uv_clip=true
+image_flags=0
+collision_layer=1
+embed_internal_images=false
+save_tiled_properties=false
+add_background=false
+post_import_script=""

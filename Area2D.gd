@@ -17,8 +17,9 @@ func _ready():
 func _execPlayerTouch(target):
 	
 	if (target.is_in_group("Player") or target.get_parent().is_in_group("Player")) and !is_in_group("NPC") and !is_in_group("Evento"):
-
+		
 		print("map_entered")
+		print(get_groups())
 		GAME_DATA.ACTUAL_MAP = parent_map
 		print("Player touch Map: " + parent_map.get_name())
 		print("Parent map: " + parent_map.get_name())
@@ -30,5 +31,6 @@ func _execPlayerTouch(target):
 			ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").play_music(parent_map.music)
 
 
-
+func set_disable(state):
+	$CollisionShape2D.disabled = state
 

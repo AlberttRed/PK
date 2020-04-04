@@ -3,7 +3,7 @@ extends "res://Logics/event/Event.gd"
 var player
 var current_page
 var event_running = false
-var finished_cmds_count = 0
+var finished_pages_count = 0
 
 export(bool) var Trainer = false
 export(int, "NPC, Object")var event_type = 0
@@ -54,6 +54,7 @@ func exec(from = facing_idle[facing]):
 		print("Started event " + get_name())
 		GLOBAL.running_events.push_back(self)
 		event_running = true
+		add_child(event_pages)
 		get_current_page()
 		while !player.can_move:
 			yield(get_tree(), "idle_frame")
@@ -73,8 +74,9 @@ func exec(from = facing_idle[facing]):
 		else:
 			current_page.run()
 			yield(current_page, "finished_page")
-			player.set_can_interact(!BlockPlayerAtEnd)
-			player.in_event = BlockPlayerAtEnd
+#			player.set_can_interact(!BlockPlayerAtEnd)
+#			player.in_event = BlockPlayerAtEnd
+#			print("OU MAMA")
 #			GLOBAL.running_events.erase(self)
 #			event_running = false
 #			print("Finalized event " + get_name())
@@ -185,18 +187,25 @@ func save():
 	}
 	return save_dict
 
-func finished_command():
-	finished_cmds_count = finished_cmds_count+1
-	print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
-	print("cmds_finished: " + str(finished_cmds_count) + ", total cmds: " + str(current_page.get_children().size()))
-	if finished_cmds_count == current_page.get_children().size() - 2: #Li resto dos pq l'event_page té un Sprite i AnimationPlayer que no se d'on surten...
-		GLOBAL.running_events.erase(self)
-		event_running = false
-		finished_cmds_count = 0
-		print("OUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
-		print("Finalized event " + get_name())
-		remove_child(event_pages)
-		emit_signal("event_finished")
+
+#Es crida cada vegada que finalitza un cmd. Una vegada s'han executats tots el cmd de la pagina
+# s'atura l'event i fa un remove_child de les pagines perque s'aturin els _process dels cmds
+func finished_page():
+	#finished_pages_count = finished_pages_count+1
+	#print("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE")
+	#print("pages_finished: " + str(finished_pages_count) + ", total pages: " + str(event_pages.get_children().size()))
+	#if finished_pages_count == event_pages.get_children().size(): #Li resto dos pq l'event_page té un Sprite i AnimationPlayer que no se d'on surten...
+		
+	player.set_can_interact(!BlockPlayerAtEnd)
+	player.in_event = BlockPlayerAtEnd
+	
+	GLOBAL.running_events.erase(self)
+	event_running = false
+	finished_pages_count = 0
+	print("OUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUUU")
+	print("Finalized event " + get_name())
+	remove_child(event_pages)
+	emit_signal("event_finished")
 		
 func set_all_process(state):
 	print("SET " + get_name() + " ALL PROCESS " + str(state))

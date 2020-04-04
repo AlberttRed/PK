@@ -7,9 +7,11 @@
 [ext_resource path="res://Logics/event/AudioSystem.gd" type="Script" id=5]
 
 [node name="World" type="Node2D"]
+position = Vector2( -2.05066, -2.05054 )
 script = ExtResource( 1 )
+disable_battles = true
 actual_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
-initial_position = Vector2( 1360, 1392 )
+initial_position = Vector2( 496, 240 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 

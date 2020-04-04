@@ -4830,21 +4830,33 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0.0909091" y="-0.0909091" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="953">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="-0.136377" y="-0.0909091" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="954">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="D:/Documents/GitHubProjects/PK/Sprites/Tilesets/temp.tx" x="0.0454409" y="0.0909091"/>
+  </objectgroup>
  </tile>
  <tile id="955">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="-0.0454682" y="-0.0909091" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="956">
   <properties>
@@ -4860,6 +4872,9 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0.13635" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="959">
   <properties>
@@ -4890,11 +4905,17 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0.0454409" y="-0.0909091" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="965">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" template="../../../../Tiled/template.tx" x="0.13635" y="-0.0909091"/>
+  </objectgroup>
  </tile>
  <tile id="966">
   <properties>
@@ -4920,6 +4941,9 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="-0.0454682" y="-1.77636e-15" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="971">
   <properties>
@@ -6430,11 +6454,17 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1273">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1274">
   <properties>
@@ -6445,11 +6475,17 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1276">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1277">
   <properties>
@@ -6460,21 +6496,33 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1279">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1280">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1281">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1282">
   <properties>
@@ -6510,11 +6558,17 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1289">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1290">
   <properties>
@@ -6558,16 +6612,25 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1298">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1299">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1300">
   <properties>
@@ -6593,11 +6656,17 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1305">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1306">
   <properties>
@@ -7993,26 +8062,41 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1585">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1586">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1587">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1588">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1589">
   <properties>
@@ -8033,26 +8117,41 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1593">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="3.55271e-15" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1594">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1595">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1596">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1597">
   <properties>
@@ -8073,26 +8172,41 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1601">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1602">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1603">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1604">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1605">
   <properties>
@@ -8113,6 +8227,9 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1609">
   <properties>
@@ -8123,16 +8240,25 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1611">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1612">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1613">
   <properties>
@@ -8153,16 +8279,25 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1617">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1618">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1619">
   <properties>
@@ -8193,11 +8328,17 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1625">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="1626">
   <properties>
@@ -15553,136 +15694,217 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3097">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3098">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3099">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3100">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3101">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3102">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3103">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3104">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3105">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3106">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3107">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="2" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3108">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3109">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3110">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3111">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3112">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3113">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3114">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3115">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3116">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3117">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3118">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3119">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3120">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3121">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3122">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3123">
   <properties>
@@ -15693,21 +15915,33 @@
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3125">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3126">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3127">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
+  <objectgroup draworder="index" id="2">
+   <object id="1" x="0" y="0" width="31.7273" height="32"/>
+  </objectgroup>
  </tile>
  <tile id="3128">
   <properties>

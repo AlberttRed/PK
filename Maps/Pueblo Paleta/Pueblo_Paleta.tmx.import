@@ -13,10 +13,10 @@ dest_files=[ "res://.import/Pueblo_Paleta.tmx-7fd8d33840553cc2f1b459e7531fe0e4.s
 
 custom_properties=true
 tile_metadata=true
-uv_clip=false
+uv_clip=true
 image_flags=0
 collision_layer=1
 embed_internal_images=false
-save_tiled_properties=true
+save_tiled_properties=false
 add_background=false
 post_import_script=""

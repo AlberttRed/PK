@@ -99,12 +99,12 @@ func _process(delta):
 			moving = false
 			
 			#emit_signal("moved")
-			set_process(false)
+			#set_process(false)
 			print("c'est fini")
 			Target.release_move()
 			if event != null:
 				event.current_page.cmd_move_on = false
-				event.finished_command()
+				event.current_page.finished_command()
 
 			
 			

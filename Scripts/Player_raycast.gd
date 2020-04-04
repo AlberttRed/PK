@@ -30,7 +30,7 @@ func update(cells=1):
 	intersect_tile(direction, cells)
 	#tile_result = intersect_tile(direction, cells)
 	#print("FIRST")
-	get_tiles_prop_byProp("Tipo")
+	#get_tiles_prop_byProp("Tipo")
 	#print("END FIRST")
 	if body.Through:
 		result = null
@@ -38,7 +38,7 @@ func update(cells=1):
 		result = intersect_point(direction, cells)
 	
 func intersect_point(dir, cells=1):
-	if weakref(GAME_DATA.ACTUAL_MAP).get_ref(): #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
+	if weakref(GAME_DATA.ACTUAL_MAP).get_ref() and cells != 0: #Comprovem que l'Acual Map s'hagi actualitzat en el cas de canviar de mapa i aixi evitar que doni error
 		#print(str(body.get_position()+dir*cells))
 		return body.get_world_2d().get_direct_space_state().intersect_point(body.get_position() + (dir*cells), CONST.GRID_SIZE, get_tree().get_root().get_node("World/CanvasModulate/MapArea_").get_children(), 2147483647, true, true)
 		
@@ -67,8 +67,8 @@ func intersect_tile(dir, cells=1):
 					for prop in tile:
 						var value = tile[prop]
 						tile_result.add(prop, value)
-	#					print(prop)
-	#					print(value)
+						print(prop)
+						print(value)
 #						for c in tile_result.get_children():
 	#						print("inserted: " + c.get_name() + ": " + str(value))
 #					for prop in tile_meta[tile_id]:
@@ -135,7 +135,7 @@ func get_colliders():
 	
 func print_colliders():
 	for c in colliders:
-		print(c.get_name())
+		print(c)
 
 func interact():
 	#update()
@@ -144,7 +144,7 @@ func interact():
 	for c in get_colliders():
 		print("INTERACT " + c.get_name())
 		if typeof(c) == TYPE_OBJECT and c.is_in_group("Interact"):
-			c.add_child(c.event_pages)
+			#c.add_child(c.event_pages)
 			if c.is_in_group("surf_area") and !body.surfing:
 				body.surf()
 			elif !c.is_in_group("surf_area"):
@@ -165,7 +165,7 @@ func interact_at_collide():
 					body.get_node("AnimationPlayer").stop()
 					body.can_interact = c.current_page.Paralelo
 					c.eventTarget = self
-					c.add_child(c.event_pages)
+					#c.add_child(c.event_pages)
 					c.exec()
 					return true
 					#EVENTS.add_event(dictionary.collider.get_parent(), self)

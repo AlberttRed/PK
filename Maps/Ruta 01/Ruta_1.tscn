@@ -248,13 +248,11 @@ extents = Vector2( 31.3469, 28.007 )
 [node name="Ruta_1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 music = ExtResource( 5 )
-map_area = NodePath("MapArea_")
 
 [node name="Eventos_" type="YSort" parent="." index="3"]
-position = Vector2( 543.257, 569.758 )
 
 [node name="NPC" type="Area2D" parent="Eventos_" index="0"]
-position = Vector2( 240.743, 278.242 )
+position = Vector2( 784, 848 )
 script = ExtResource( 9 )
 Trainer = true
 

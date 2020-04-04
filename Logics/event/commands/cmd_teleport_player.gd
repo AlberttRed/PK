@@ -34,9 +34,14 @@ func run():
 #			yield(get_tree(), "idle_frame")
 		if !world_scene.empty():
 #			Player.get_parent().remove_child(Player)
+				print("act: " + GAME_DATA.ACTUAL_MAP.get_name())
+				for n in ProjectSettings.get("Global_World").get_node("CanvasModulate").get_node("MapArea_").get_children():
+					if n.is_in_group(GAME_DATA.ACTUAL_MAP.get_name()):
+						ProjectSettings.get("Global_World").get_node("CanvasModulate").get_node("MapArea_").remove_child(n)
+				GAME_DATA.ACTUAL_MAP.area.queue_free()
 				Scene = load(world_scene).instance()
+				print("Scene to teleport: " + Scene.get_name())
 	#			print("World: " + wworld.get_name())
-				Player.set_position(Vector2(99999,99999))
 				Scene.load_map(true)
 #				for node in get_tree().get_nodes_in_group(ProjectSettings.get("Previous_Map").get_name()):
 #					if node.get_name() != "Eventos_" and node != get_parent().get_parent().get_parent():
@@ -61,7 +66,7 @@ func run():
 	i = 0
 	count = false
 	print("teleport event finished")
-	parentEvent.finished_command()
+	parentPage.finished_command()
 	emit_signal("finished")
 
 		

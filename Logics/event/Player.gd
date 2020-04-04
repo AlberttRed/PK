@@ -74,6 +74,8 @@ func print_player_variables():
 	print("Through: " + str(Through))
 	print("Transparent: " + str(Transparent))
 	print("Can interact: " + str(can_interact))
+	print("Can move: " + str(can_move))
+	print("Being Controlled: " + str(being_controlled))
 	print("Position: " + str(position))
 	print("exit_door: " + str(GLOBAL.get_node("exit_door").state))
 	

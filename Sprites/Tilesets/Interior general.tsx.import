@@ -1,0 +1,20 @@
+[remap]
+
+importer="vnen.tiled_tileset_importer"
+type="TileSet"
+path="res://.import/Interior general.tsx-5a8aa18cdda77dcd0aea36a54d984948.res"
+
+[deps]
+
+source_file="res://Sprites/Tilesets/Interior general.tsx"
+dest_files=[ "res://.import/Interior general.tsx-5a8aa18cdda77dcd0aea36a54d984948.res" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=true
+image_flags=0
+embed_internal_images=false
+save_tiled_properties=true
+apply_offset=false
+post_import_script=""
