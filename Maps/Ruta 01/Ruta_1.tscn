@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=2]
+[gd_scene load_steps=35 format=2]
 
 [ext_resource path="res://Maps/Ruta 01/Ruta_1.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Logics/wild_pkmn.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://Area2D.gd" type="Script" id=4]
 [ext_resource path="res://Audio/Overworld/Music/frlg_pallet_ok.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Maps/Ciudad Verde/Ciudad_Verde.tscn" type="PackedScene" id=7]
 [ext_resource path="res://animations/walking_animationPlayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Logics/event/NPC.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Player_raycast.gd" type="Script" id=10]
@@ -15,6 +16,8 @@
 [ext_resource path="res://Sprites/Characters/GBA/trchar004.png" type="Texture" id=14]
 [ext_resource path="res://Logics/event/event_page.scn" type="PackedScene" id=15]
 [ext_resource path="res://Logics/event/commands/cmd_msg.scn" type="PackedScene" id=16]
+[ext_resource path="res://Maps/Pueblo Paleta/capa_eventos.gd" type="Script" id=17]
+[ext_resource path="res://Maps/Pueblo Paleta/capa.gd" type="Script" id=18]
 
 [sub_resource type="Animation" id=1]
 resource_name = "idle_down"
@@ -243,13 +246,33 @@ tracks/0/keys = {
 extents = Vector2( 15.9966, 15.9859 )
 
 [sub_resource type="RectangleShape2D" id=16]
-extents = Vector2( 31.3469, 28.007 )
+extents = Vector2( 31.3469, 28.399 )
 
 [node name="Ruta_1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+N_connection = ExtResource( 7 )
+N_connection_pos = Vector2( -190, -1280 )
 music = ExtResource( 5 )
 
-[node name="Eventos_" type="YSort" parent="." index="3"]
+[node name="CapaTerra_" parent="." index="0" groups=[
+"Ruta_1",
+]]
+script = ExtResource( 18 )
+
+[node name="CapaTerra2_" parent="." index="1" groups=[
+"Ruta_1",
+]]
+script = ExtResource( 18 )
+
+[node name="CapaTerra3_" parent="." index="2" groups=[
+"Ruta_1",
+]]
+script = ExtResource( 18 )
+
+[node name="Eventos_" type="YSort" parent="." index="3" groups=[
+"Ruta_1",
+]]
+script = ExtResource( 17 )
 
 [node name="NPC" type="Area2D" parent="Eventos_" index="0"]
 position = Vector2( 784, 848 )
@@ -315,8 +338,14 @@ text = "Hola"
 [node name="AudioSystem" type="AudioStreamPlayer2D" parent="Eventos_/NPC" index="10"]
 script = ExtResource( 13 )
 
+[node name="CapaAlta_" parent="." index="4" groups=[
+"Ruta_1",
+]]
+script = ExtResource( 18 )
+
 [node name="MapArea_" type="Area2D" parent="." index="5" groups=[
 "Map_Area",
+"Ruta_1",
 ]]
 position = Vector2( -77.8016, 746.73 )
 scale = Vector2( 12.25, 9.59375 )
@@ -329,7 +358,9 @@ shape = SubResource( 16 )
 
 [node name="Pasable" type="Node2D" parent="MapArea_" index="1"]
 
-[node name="Areas_" type="Node2D" parent="." index="6"]
+[node name="Areas_" type="Node2D" parent="." index="6" groups=[
+"Ruta_1",
+]]
 position = Vector2( 640, 992 )
 
 [node name="Wild_Pokemon_" type="Node" parent="." index="7" groups=[

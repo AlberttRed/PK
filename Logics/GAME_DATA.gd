@@ -13,6 +13,7 @@ var player_id = randi() % 999999 + 1
 var actual_position
 var ITEMS = []
 
+var WORLD
 var ACTUAL_MAP
 var PREVIOUS_MAP
 var PLAYER
@@ -166,15 +167,22 @@ func load_game():
 	
 func new_game():
 	print("NEW GAME")
-	ACTUAL_MAP = load(ProjectSettings.get("Global_World").actual_scene).instance()
+	var scene = load(WORLD.actual_scene).instance()
 	#ProjectSettings.set("Actual_Map", load(actual_scene).instance())
-	print(GAME_DATA.ACTUAL_MAP.get_node("MapArea_").get_name())
+	#print(ACTUAL_MAP.get_node("MapArea_").get_name())
 	#print(ProjectSettings.get("Actual_Map").get_node("Area2D_").get_name())
-	ProjectSettings.get("Global_World").Player.set_position(ProjectSettings.get("Global_World").initial_position)
-	ACTUAL_MAP.load_map(false)
+	PLAYER.set_position(WORLD.initial_position)
+	#ACTUAL_MAP.load_map(false)
+	WORLD.load_map(scene, false)
+	if GAME_DATA.PLAYER.get_parent() != null:
+		GAME_DATA.PLAYER.get_parent().remove_child(GAME_DATA.PLAYER)
+	GAME_DATA.WORLD.EVENTOS.add_child(GAME_DATA.PLAYER)
+	#GLOBAL.load_map(false, ACTUAL_MAP)
+	#GLOBAL.start(false, ACTUAL_MAP)
+	
 	#ProjectSettings.get("Actual_Map").load_map(false)
-	yield(ACTUAL_MAP, "loaded")
+	#yield(ACTUAL_MAP, "loaded")
 	#yield(ProjectSettings.get("Actual_Map"), "loaded")
-	ProjectSettings.get("Global_World").get_node("AudioStreamPlayer2D").play_music(ACTUAL_MAP.music)
+	WORLD.get_node("AudioStreamPlayer2D").play_music(scene.music)
 	emit_signal("start")
 	

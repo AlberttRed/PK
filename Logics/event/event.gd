@@ -86,6 +86,7 @@ func _ready():
 	actual_position = position
 
 func move(dir):
+	#print("move")
 	moved = false
 	collided = false
 	direction = get_node(raycasts[dir])
@@ -197,12 +198,12 @@ func _on_MoveTween_tween_completed(object, key):
 	actual_position = position
 
 func walk_animation():
-	print("WAAAAAAAAAAAAAAAALK")
+	#print("WAAAAAAAAAAAAAAAALK")
 	if running:
 		$Sprite.texture = GAME_DATA.player_run_sprite
 		step_speed = 0.15
 	if !$AnimationPlayer.is_playing() and !jumping:
-		print("PLAY!")
+		#print("PLAY!")
 		#print("animation step: " + str(step))
 		$AnimationPlayer.play("walk_" + facing + "_step" + str(step) + "_prova")
 		if step == 1:

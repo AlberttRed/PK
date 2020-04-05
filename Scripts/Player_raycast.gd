@@ -48,6 +48,7 @@ func intersect_tile(dir, cells=1):
 	var tile_meta = null
 
 	#print("map offset: " + str(GAME_DATA.ACTUAL_MAP.tile_offset))
+	print(GAME_DATA.ACTUAL_MAP.get_name() + " " + str(GAME_DATA.ACTUAL_MAP.tile_offset))
 	var position = body.get_position()+dir*cells+Vector2(0, 32) + GAME_DATA.ACTUAL_MAP.tile_offset
 	#print("tile check position =" + str(position))
 	var scene_nodes = get_tree().get_nodes_in_group(GAME_DATA.ACTUAL_MAP.get_name())
@@ -67,8 +68,8 @@ func intersect_tile(dir, cells=1):
 					for prop in tile:
 						var value = tile[prop]
 						tile_result.add(prop, value)
-						print(prop)
-						print(value)
+						#print(prop)
+						#print(value)
 #						for c in tile_result.get_children():
 	#						print("inserted: " + c.get_name() + ": " + str(value))
 #					for prop in tile_meta[tile_id]:
@@ -135,7 +136,7 @@ func get_colliders():
 	
 func print_colliders():
 	for c in colliders:
-		print(c)
+		print("pricnt colliders " + str(c))
 
 func interact():
 	#update()

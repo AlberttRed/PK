@@ -19,11 +19,11 @@ func _init():
 	
 func _ready():
 	._ready()
-	DB.add_item(1)
-	DB.add_item(5)
-	DB.add_item(1)
-	DB.add_item("Hiperpoción", 5)
-	DB.add_item("Master Ball")
+#	DB.add_item(1)
+#	DB.add_item(5)
+#	DB.add_item(1)
+#	DB.add_item("Hiperpoción", 5)
+#	DB.add_item("Master Ball")
 	GAME_DATA.trainer = trainer
 	GAME_DATA.party = $Trainer.get_party()
 	$Sprite.visible = !Transparent
@@ -78,7 +78,8 @@ func print_player_variables():
 	print("Being Controlled: " + str(being_controlled))
 	print("Position: " + str(position))
 	print("exit_door: " + str(GLOBAL.get_node("exit_door").state))
-	
+	for a in GAME_DATA.WORLD.MAP_AREA.get_children():
+		print(str(a.get_groups()))
 
 func save():
 	var save_dict = {

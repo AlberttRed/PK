@@ -1,4 +1,4 @@
-[gd_scene load_steps=278 format=2]
+[gd_scene load_steps=280 format=2]
 
 [ext_resource path="res://FadeOut.tres" type="Animation" id=1]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=2]
@@ -36,6 +36,8 @@
 [ext_resource path="res://animations/Open_door.tres" type="Animation" id=34]
 [ext_resource path="res://animations/cut.tres" type="Animation" id=35]
 [ext_resource path="res://animations/Close_door.tres" type="Animation" id=36]
+[ext_resource path="res://Maps/Pueblo Paleta/capa.gd" type="Script" id=37]
+[ext_resource path="res://Maps/Pueblo Paleta/capa_eventos.gd" type="Script" id=38]
 
 [sub_resource type="Animation" id=1]
 length = 0.3
@@ -3743,7 +3745,20 @@ N_connection = ExtResource( 26 )
 N_connection_pos = Vector2( 0, -1280 )
 music = ExtResource( 24 )
 
-[node name="Eventos_" type="YSort" parent="." index="2"]
+[node name="CapaTerra_" parent="." index="0" groups=[
+"Pueblo_Paleta",
+]]
+script = ExtResource( 37 )
+
+[node name="CapaTerra2_" parent="." index="1" groups=[
+"Pueblo_Paleta",
+]]
+script = ExtResource( 37 )
+
+[node name="Eventos_" type="YSort" parent="." index="2" groups=[
+"Pueblo_Paleta",
+]]
+script = ExtResource( 38 )
 
 [node name="Interruptor1" type="Area2D" parent="Eventos_" index="0"]
 position = Vector2( 528, 208 )
@@ -4735,9 +4750,15 @@ sprite_rows = 4
 
 [node name="Boulder" type="Node2D" parent="Eventos_/Roca" index="10"]
 
+[node name="CapaAlta_" parent="." index="3" groups=[
+"Pueblo_Paleta",
+]]
+script = ExtResource( 37 )
+
 [node name="MapArea_" type="Area2D" parent="." index="4" groups=[
 "Area",
 "Map_Area",
+"Pueblo_Paleta",
 ]]
 position = Vector2( 608, 288 )
 scale = Vector2( 12.8125, 10.75 )
@@ -4747,7 +4768,9 @@ script = ExtResource( 4 )
 position = Vector2( 0, 2.97675 )
 shape = SubResource( 241 )
 
-[node name="Areas_" type="Node2D" parent="." index="5"]
+[node name="Areas_" type="Node2D" parent="." index="5" groups=[
+"Pueblo_Paleta",
+]]
 position = Vector2( 1440, 1440 )
 
 [node name="Wild_Pokemon_" type="Node" parent="." index="6" groups=[

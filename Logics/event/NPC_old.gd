@@ -531,3 +531,5 @@ func get_current_page():
 					current_page = c
 	current_page = get_node("pages").get_child(0)
 	
+func initialize():
+	pass

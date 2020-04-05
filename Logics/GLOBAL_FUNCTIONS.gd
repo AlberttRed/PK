@@ -14,6 +14,8 @@ var frames = 0
 var framesToWait = 5
 var beingPressed = false
 var movingEvent = null
+var threads = [Thread.new(), Thread.new(), Thread.new(),Thread.new(),Thread.new(),Thread.new()]
+var active_thread = 0
 
 func _process(delta):
 	if count:
@@ -23,9 +25,10 @@ func _init():
 	add_user_signal("finished_movement")
 	add_user_signal("pressed")
 func _ready():
+	pass
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
-	pass
+
 	
 func destroy(node):
 	queue(node)
@@ -213,3 +216,161 @@ func input_action_press(action):
 		print("ai mama")
 		Input.action_release(action)
 		emit_signal("pressed")
+		
+func starts(deletePrevious, scene = self, pos = null):
+	threads[active_thread].start(self, "_map", [deletePrevious, scene, pos])
+	active_thread = active_thread + 1
+
+func _map(userdata):
+	load_map(userdata[0], userdata[1], userdata[2])
+	
+		
+func load_map(deletePrevious, scene = self, pos = null):
+	#print("Loaded Map: " + scene.get_name())
+#
+#	scene.init()
+#	if deletePrevious:
+#			print("DELETED " + GAME_DATA.PREVIOUS_MAP.get_name())
+#			GLOBAL.destroy(GAME_DATA.PREVIOUS_MAP)
+
+#	if pos != null:
+#		print("set " + scene.get_name() + " tile offset: " + str(-pos))
+#		scene.tile_offset = -pos
+
+	
+
+#		world.add_child(scene)
+#		scene.set_position(pos)
+#		var capa = scene.get_node("CapaTerra_")
+#		scene.remove_child(capa)
+#		world.get_node("CanvasModulate").get_node(capa.get_name().split("_")[0].replace("@", "") + "_").add_child(capa)
+#		capa.add_to_group(scene.get_name())
+
+#
+#	scene.strength_on = false
+#	if pos != null:
+#		scene.tile_offset = -pos
+#		scene.position = scene.get_position() + pos
+#
+#	for N in scene.get_children() :		
+#		if N.get_class() != "Node":
+#			if pos != null:
+#				N.visible = false
+#		#print("looping load: " + scene.get_name())
+##		if !N.is_in_group("ignore"):
+##			#print("N tratada: " + N.get_name())
+##
+#			N.add_to_group(scene.get_name())
+#
+#			#if (N.get_name().split("_")[0].replace("@", "") + "_") == "MapArea_":
+#			if N.get_name() == "MapArea_":
+#				scene.area = N
+#				N.parent_map = scene
+#
+#			scene.remove_child(N)
+#			#print(N.get_name())
+#			#print("ADD " + N.get_name() + " INTO " + world.get_node("CanvasModulate").get_node(N.get_name()).get_name())
+#			ProjectSettings.get("Global_World").get_node("CanvasModulate").get_node(N.get_name()).add_child(N)
+#			#N.set_owner(world.get_node("CanvasModulate").get_node(N.get_name().split("_")[0].replace("@", "") + "_"))
+	for N in scene.get_children() :		
+		if pos != null:
+			if N.get_groups().has(scene.get_name()):
+				#print(n.get_name() + " repositioned")
+			#	print("Before " + str(n.get_position()))
+				N.set_position(N.get_position() + pos)
+			#	print("After " + str(n.get_position()))
+				if N.get_class() != "Node" and !N.visible:
+					print(scene.get_name() + " showwww")
+					N.visible = true
+
+	#ProjectSettings.get("Global_World").get_node("CanvasModulate/Eventos_/Eventos_").remove_and_skip()	
+		
+				#if N.get_name() == "Eventos_":
+#				N.remove_and_skip()
+		#			if pos != null:
+#				N.set_position(pos)
+#			else:
+#				if (N.get_name().split("_")[0].replace("@", "") + "_") == "MapArea_" or (N.get_name().split("_")[0].replace("@", "") + "_") == "Areas_":# and scene == self:
+#					N.set_position(area_pos)
+#				else:
+#					N.set_position(scene.get_position())
+
+#	for evento in world.get_node("CanvasModulate/Eventos_/Eventos_").get_children():
+#			#var position = evento.get_position()
+#
+#				#p.propagate_call("set_physics_process", false)
+#			evento.add_to_group(scene.get_name())
+#			world.get_node("CanvasModulate/Eventos_/Eventos_").remove_child(evento)
+#			world.get_node("CanvasModulate/Eventos_").add_child(evento)
+#			evento.set_owner(world.get_node("CanvasModulate/Eventos_"))
+
+	#world.get_node("CanvasModulate/Eventos_").remove_child(world.get_node("CanvasModulate/Eventos_/Eventos_"))
+#	for encounter_area in target.get_node("CanvasModulate/EncounterAreas_/EncounterAreas_").get_children():
+#		encounter_area.add_to_group(scene.get_name())
+#	if pos != null:
+#		reposition(scene, pos)	
+#	if pos == null:
+#		if GAME_DATA.PLAYER.get_parent() != null:
+#			GAME_DATA.PLAYER.get_parent().remove_child(GAME_DATA.PLAYER)
+#		ProjectSettings.get("Global_World").get_node("CanvasModulate/Eventos_").add_child(GAME_DATA.PLAYER)
+#
+#	scene.loaded = true
+	
+	
+#	print("DELETE SCENE : " + scene.get_name())
+#	for c in scene.get_children():
+#		print("scene child: " + c.get_name())
+	#world.remove_child(scene)
+	if deletePrevious:
+		#print("DELETED " + GAME_DATA.PREVIOUS_MAP.get_name())
+		if GAME_DATA.PREVIOUS_MAP.N_scene != null:
+			GLOBAL.destroy(GAME_DATA.PREVIOUS_MAP.N_scene)
+		GLOBAL.destroy(GAME_DATA.PREVIOUS_MAP)
+		#GLOBAL.destroy(ProjectSettings.get("Previous_Map"))
+	scene.emit_signal("loaded")
+
+func set_connections(scene_from):
+	var Scene
+	if scene_from.N_connection != null and scene_from.N_connection_pos != null:
+		#print("NNNNNNNNNNNNNNNNNNNNN " + self.get_name())
+		Scene = scene_from.N_connection
+		var scene_name = scene_from.N_connection.get_path().split("/")[4].split(".")[0]
+		if ProjectSettings.get("Global_World").get_parent().get_tree().get_nodes_in_group(scene_name).size() <= 0:		
+			#print("N connected: " + str(scene_name))#str(N_connection.split("/")[3].split(".")[0]))
+			
+			#print(get_name() + " " + str(position))
+			
+			#world.thread.start(self, "_load_connection", [false, Scene, N_connection_pos + position])
+			
+			#if world.loading:
+			scene_from.N_scene = Scene.instance()
+			#start(self, "_map", [false, scene_from.N_scene, scene_from.N_connection_pos + scene_from.position])
+			call_deferred("load_map", false, scene_from.N_scene, scene_from.N_connection_pos + scene_from.position)
+			#else:
+				#print("NOT LOADING")
+			#	world.thread.start(self, "_thread_function", [false, Scene, N_connection_pos + position])
+#
+		#	world.thread.start(self, "load_map", [false, N_scene, N_connection_pos + position])
+			#thread.wait_to_finish()
+			#yield(self.load_map(false, N_scene, N_connection_pos + position), "loaded")
+#	if !S_connection.empty() and S_connection_pos != null:
+#		print("SSSSSSSSSSSSSSSSSSSSS")
+#		Scene = load(S_connection).instance()
+#		if world.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
+#			print("S connected: " + str(Scene.get_name()))
+#			S_scene = Scene.instance()
+#			load_map(false, S_scene, S_connection_pos)
+#	if !E_connection.empty() and E_connection_pos != null:
+#		print("EEEEEEEEEEEEEEEEEEEEEE")
+#		Scene = load(E_connection).instance()
+#		if world.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
+#			print("E connected: " + str(Scene.get_name()))
+#			E_scene = Scene.instance()
+#			load_map(false, E_scene, E_connection_pos)
+#	if !W_connection.empty() and W_connection_pos != null:
+#		print("WWWWWWWWWWWWWWWWWWWWWWWW")
+#		Scene = load(W_connection).instance()
+#		if world.get_parent().get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
+#			print("W connected: " + str(Scene.get_name()))
+#			W_scene = Scene.instance()
+#			load_map(false, W_scene, W_connection_pos)

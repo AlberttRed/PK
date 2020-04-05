@@ -136,7 +136,7 @@ func get_current_page():
 	current_page = $pages.get_child(0)
 	for c in $pages.get_children():
 			if !c.condition1.empty():
-				print("CONDITION: " + c.condition1 + ": " + str(GLOBAL.get_node(c.condition1).get_state()))
+				#print("CONDITION: " + c.condition1 + ": " + str(GLOBAL.get_node(c.condition1).get_state()))
 				if GLOBAL.get_node(c.condition1).get_state():
 					print(GLOBAL.get_node(c.condition1).get_state())
 					current_page = c
@@ -208,7 +208,10 @@ func finished_page():
 	emit_signal("event_finished")
 		
 func set_all_process(state):
-	print("SET " + get_name() + " ALL PROCESS " + str(state))
+	#print("SET " + get_name() + " ALL PROCESS " + str(state))
 	set_process(state)
 	set_physics_process(state)
 	set_physics_process_internal(state)
+
+func initialize(o):
+	pass

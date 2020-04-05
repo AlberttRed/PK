@@ -1,0 +1,109 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Area2D.gd" type="Script" id=1]
+[ext_resource path="res://map.gd" type="Script" id=2]
+[ext_resource path="res://Logics/wild_pkmn.gd" type="Script" id=3]
+[ext_resource path="res://Maps/Ciudad Verde/Ciudad_Verde.tmx" type="PackedScene" id=4]
+[ext_resource path="res://Maps/Pueblo Paleta/capa.gd" type="Script" id=5]
+[ext_resource path="res://Maps/Pueblo Paleta/capa_eventos.gd" type="Script" id=6]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 64.6475, 28.3575 )
+
+[node name="Ciudad_Verde" instance=ExtResource( 4 )]
+script = ExtResource( 2 )
+
+[node name="CapaTerra_" parent="." index="0" groups=[
+"Ciudad_Verde",
+]]
+script = ExtResource( 5 )
+
+[node name="CapaTerra2_" parent="." index="1" groups=[
+"Ciudad_Verde",
+]]
+script = ExtResource( 5 )
+
+[node name="Eventos_" type="YSort" parent="." index="2" groups=[
+"Ciudad_Verde",
+]]
+script = ExtResource( 6 )
+
+[node name="CapaAlta_" parent="." index="3" groups=[
+"Ciudad_Verde",
+]]
+script = ExtResource( 5 )
+
+[node name="MapArea_" type="Area2D" parent="." index="4" groups=[
+"Ciudad_Verde",
+"Map_Area",
+]]
+position = Vector2( 392.207, 294.155 )
+scale = Vector2( 12.25, 9.59375 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea_" index="0"]
+position = Vector2( 32.8822, 32.6723 )
+scale = Vector2( 1, 2.32599 )
+shape = SubResource( 1 )
+
+[node name="Areas_" type="Node2D" parent="." index="5" groups=[
+"Ciudad_Verde",
+]]
+
+[node name="Wild_Pokemon_" type="Node" parent="." index="6" groups=[
+"ignore",
+]]
+
+[node name="LAND" type="Node" parent="Wild_Pokemon_" index="0"]
+
+[node name="pkmn1" type="Node" parent="Wild_Pokemon_/LAND" index="0"]
+script = ExtResource( 3 )
+
+[node name="pkmn2" type="Node" parent="Wild_Pokemon_/LAND" index="1"]
+script = ExtResource( 3 )
+
+[node name="pkmn3" type="Node" parent="Wild_Pokemon_/LAND" index="2"]
+script = ExtResource( 3 )
+
+[node name="pkmn4" type="Node" parent="Wild_Pokemon_/LAND" index="3"]
+script = ExtResource( 3 )
+
+[node name="pkmn5" type="Node" parent="Wild_Pokemon_/LAND" index="4"]
+script = ExtResource( 3 )
+
+[node name="pkmn6" type="Node" parent="Wild_Pokemon_/LAND" index="5"]
+script = ExtResource( 3 )
+
+[node name="pkmn7" type="Node" parent="Wild_Pokemon_/LAND" index="6"]
+script = ExtResource( 3 )
+
+[node name="pkmn8" type="Node" parent="Wild_Pokemon_/LAND" index="7"]
+script = ExtResource( 3 )
+
+[node name="pkmn9" type="Node" parent="Wild_Pokemon_/LAND" index="8"]
+script = ExtResource( 3 )
+
+[node name="pkmn10" type="Node" parent="Wild_Pokemon_/LAND" index="9"]
+script = ExtResource( 3 )
+
+[node name="LAND_MORNING" type="Node" parent="Wild_Pokemon_" index="1"]
+
+[node name="LAND_DAY" type="Node" parent="Wild_Pokemon_" index="2"]
+
+[node name="LAND_NIGHT" type="Node" parent="Wild_Pokemon_" index="3"]
+
+[node name="CAVE" type="Node" parent="Wild_Pokemon_" index="4"]
+
+[node name="BUG_CONTEST" type="Node" parent="Wild_Pokemon_" index="5"]
+
+[node name="ROCK_SMASH" type="Node" parent="Wild_Pokemon_" index="6"]
+
+[node name="OLD_ROD" type="Node" parent="Wild_Pokemon_" index="7"]
+
+[node name="GOOD_ROD" type="Node" parent="Wild_Pokemon_" index="8"]
+
+[node name="SUPER_ROD" type="Node" parent="Wild_Pokemon_" index="9"]
+
+[node name="HEADBUTT_LOW " type="Node" parent="Wild_Pokemon_" index="10"]
+
+[node name="HEADBUTT_HIGH" type="Node" parent="Wild_Pokemon_" index="11"]

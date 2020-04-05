@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <tileset version="1.2" tiledversion="1.3.3" name="Outside" tilewidth="32" tileheight="32" tilecount="4032" columns="8">
  <image source="Images/Outside_tiled.png" width="256" height="16128"/>
+ <terraintypes>
+  <terrain name="Camí clar" tile="162"/>
+  <terrain name="Camí Blanc" tile="274"/>
+  <terrain name="Herba clara" tile="50"/>
+ </terraintypes>
  <tile id="0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
@@ -208,22 +213,22 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="41">
+ <tile id="41" terrain=",,,2">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="42">
+ <tile id="42" terrain=",,2,2">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="43">
+ <tile id="43" terrain=",,2,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="44">
+ <tile id="44" terrain="2,2,2,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -233,7 +238,7 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="46">
+ <tile id="46" terrain="2,2,,2">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -248,17 +253,17 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="49">
+ <tile id="49" terrain=",2,,2">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="50">
+ <tile id="50" terrain="2,2,2,2">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="51">
+ <tile id="51" terrain="2,,2,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -288,22 +293,22 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="57">
+ <tile id="57" terrain=",2,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="58">
+ <tile id="58" terrain="2,2,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="59">
+ <tile id="59" terrain="2,,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="60">
+ <tile id="60" terrain="2,,2,2">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -313,7 +318,7 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="62">
+ <tile id="62" terrain=",2,2,2">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -774,22 +779,22 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="153">
+ <tile id="153" terrain=",,,0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="154">
+ <tile id="154" terrain=",,0,0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="155">
+ <tile id="155" terrain=",,0,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="156">
+ <tile id="156" terrain="0,0,0,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -799,7 +804,7 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="158">
+ <tile id="158" terrain="0,0,,0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -814,17 +819,17 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="161">
+ <tile id="161" terrain=",0,,0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="162">
+ <tile id="162" terrain="0,0,0,0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="163">
+ <tile id="163" terrain="0,,0,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -854,22 +859,22 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="169">
+ <tile id="169" terrain=",0,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="170">
+ <tile id="170" terrain="0,0,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="171">
+ <tile id="171" terrain="0,,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="172">
+ <tile id="172" terrain="0,,0,0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -879,7 +884,7 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="174">
+ <tile id="174" terrain=",0,0,0">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -1337,22 +1342,22 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="265">
+ <tile id="265" terrain=",,,1">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="266">
+ <tile id="266" terrain=",,1,1">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="267">
+ <tile id="267" terrain=",,1,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="268">
+ <tile id="268" terrain="1,1,1,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -1362,7 +1367,7 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="270">
+ <tile id="270" terrain="1,1,,1">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -1377,17 +1382,17 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="273">
+ <tile id="273" terrain=",1,,1">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="274">
+ <tile id="274" terrain="1,1,1,1">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="275">
+ <tile id="275" terrain="1,,1,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -1417,22 +1422,22 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="281">
+ <tile id="281" terrain=",1,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="282">
+ <tile id="282" terrain="1,1,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="283">
+ <tile id="283" terrain="1,,,">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="284">
+ <tile id="284" terrain="1,,1,1">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
@@ -1442,7 +1447,7 @@
    <property name="Tipo" type="int" value="0"/>
   </properties>
  </tile>
- <tile id="286">
+ <tile id="286" terrain=",1,1,1">
   <properties>
    <property name="Tipo" type="int" value="0"/>
   </properties>
