@@ -1,59 +1,59 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Area2D.gd" type="Script" id=1]
-[ext_resource path="res://map.gd" type="Script" id=2]
-[ext_resource path="res://Logics/wild_pkmn.gd" type="Script" id=3]
-[ext_resource path="res://Maps/Ciudad Verde/Ciudad_Verde.tmx" type="PackedScene" id=4]
-[ext_resource path="res://Maps/Pueblo Paleta/capa.gd" type="Script" id=5]
-[ext_resource path="res://Maps/Pueblo Paleta/capa_eventos.gd" type="Script" id=6]
+[ext_resource path="res://Maps/Pueblo Paleta/capa_eventos.gd" type="Script" id=2]
+[ext_resource path="res://Maps/Pueblo Paleta/capa.gd" type="Script" id=3]
+[ext_resource path="res://Logics/wild_pkmn.gd" type="Script" id=4]
+[ext_resource path="res://map.gd" type="Script" id=5]
+[ext_resource path="res://Maps/Ruta 02/Ruta_2.tmx" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 64.6475, 28.3575 )
+extents = Vector2( 31.3469, 57.1549 )
 
-[node name="Ciudad_Verde" instance=ExtResource( 4 )]
-script = ExtResource( 2 )
-N_connection = "Ruta_2"
-W_connection = "Ruta_22"
-N_connection_pos = Vector2( -64, -2560 )
-S_connection_pos = Vector2( 192, 1280 )
-W_connection_pos = Vector2( -1696, 192 )
+[node name="Ruta_2" instance=ExtResource( 6 )]
+script = ExtResource( 5 )
+S_connection = "Ciudad_Verde"
+S_connection_pos = Vector2( 64, 2560 )
 
 [node name="CapaTerra_" parent="." index="0" groups=[
-"Ciudad_Verde",
+"Ruta_2",
 ]]
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="CapaTerra2_" parent="." index="1" groups=[
-"Ciudad_Verde",
+"Ruta_2",
 ]]
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="Eventos_" type="YSort" parent="." index="2" groups=[
-"Ciudad_Verde",
+"Ruta_2",
 ]]
-script = ExtResource( 6 )
+script = ExtResource( 2 )
 
 [node name="CapaAlta_" parent="." index="3" groups=[
-"Ciudad_Verde",
+"Ruta_2",
 ]]
-script = ExtResource( 5 )
+script = ExtResource( 3 )
 
 [node name="MapArea_" type="Area2D" parent="." index="4" groups=[
-"Ciudad_Verde",
 "Map_Area",
+"Ruta_2",
 ]]
-position = Vector2( 392.207, 294.155 )
+position = Vector2( 180.259, 1248.47 )
 scale = Vector2( 12.25, 9.59375 )
 script = ExtResource( 1 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="MapArea_" index="0"]
-position = Vector2( 32.8822, 32.6723 )
+position = Vector2( 51.5694, -0.0794983 )
 scale = Vector2( 1, 2.32599 )
 shape = SubResource( 1 )
 
+[node name="Pasable" type="Node2D" parent="MapArea_" index="1"]
+
 [node name="Areas_" type="Node2D" parent="." index="5" groups=[
-"Ciudad_Verde",
+"Ruta_2",
 ]]
+position = Vector2( 640, 992 )
 
 [node name="Wild_Pokemon_" type="Node" parent="." index="6" groups=[
 "ignore",
@@ -62,34 +62,64 @@ shape = SubResource( 1 )
 [node name="LAND" type="Node" parent="Wild_Pokemon_" index="0"]
 
 [node name="pkmn1" type="Node" parent="Wild_Pokemon_/LAND" index="0"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 10
+min_lvl = 4
+max_lvl = 7
 
 [node name="pkmn2" type="Node" parent="Wild_Pokemon_/LAND" index="1"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 10
+min_lvl = 4
+max_lvl = 7
 
 [node name="pkmn3" type="Node" parent="Wild_Pokemon_/LAND" index="2"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 10
+min_lvl = 4
+max_lvl = 7
 
 [node name="pkmn4" type="Node" parent="Wild_Pokemon_/LAND" index="3"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 13
+min_lvl = 4
+max_lvl = 7
 
 [node name="pkmn5" type="Node" parent="Wild_Pokemon_/LAND" index="4"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 13
+min_lvl = 4
+max_lvl = 7
 
 [node name="pkmn6" type="Node" parent="Wild_Pokemon_/LAND" index="5"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 13
+min_lvl = 4
+max_lvl = 7
 
 [node name="pkmn7" type="Node" parent="Wild_Pokemon_/LAND" index="6"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 11
+min_lvl = 5
+max_lvl = 8
 
 [node name="pkmn8" type="Node" parent="Wild_Pokemon_/LAND" index="7"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 11
+min_lvl = 5
+max_lvl = 8
 
 [node name="pkmn9" type="Node" parent="Wild_Pokemon_/LAND" index="8"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 14
+min_lvl = 5
+max_lvl = 8
 
 [node name="pkmn10" type="Node" parent="Wild_Pokemon_/LAND" index="9"]
-script = ExtResource( 3 )
+script = ExtResource( 4 )
+pkmn_id = 14
+min_lvl = 5
+max_lvl = 8
 
 [node name="LAND_MORNING" type="Node" parent="Wild_Pokemon_" index="1"]
 

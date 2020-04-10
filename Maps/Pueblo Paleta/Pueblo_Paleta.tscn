@@ -1,4 +1,4 @@
-[gd_scene load_steps=280 format=2]
+[gd_scene load_steps=279 format=2]
 
 [ext_resource path="res://FadeOut.tres" type="Animation" id=1]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=2]
@@ -25,7 +25,6 @@
 [ext_resource path="res://Sprites/Characters/GBA/NPC 06.png" type="Texture" id=23]
 [ext_resource path="res://Audio/Overworld/Music/frlg_pallet_ok.ogg" type="AudioStream" id=24]
 [ext_resource path="res://Logics/event/commands/cmd_play_animation.tscn" type="PackedScene" id=25]
-[ext_resource path="res://Maps/Ruta 01/Ruta_1.tscn" type="PackedScene" id=26]
 [ext_resource path="res://Logics/event/commands/cmd_set_globalVariable.tscn" type="PackedScene" id=27]
 [ext_resource path="res://Logics/event/commands/cmd_wait_move_completion.tscn" type="PackedScene" id=28]
 [ext_resource path="res://animations/cmd_FadeOut.tscn" type="PackedScene" id=29]
@@ -3741,7 +3740,7 @@ extents = Vector2( 29.9707, 32.3511 )
 
 [node name="Pueblo_Paleta" instance=ExtResource( 30 )]
 script = ExtResource( 6 )
-N_connection = ExtResource( 26 )
+N_connection = "Ruta_1"
 N_connection_pos = Vector2( 0, -1280 )
 music = ExtResource( 24 )
 

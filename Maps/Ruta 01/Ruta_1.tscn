@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=34 format=2]
 
 [ext_resource path="res://Maps/Ruta 01/Ruta_1.tmx" type="PackedScene" id=1]
 [ext_resource path="res://Logics/wild_pkmn.gd" type="Script" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://Area2D.gd" type="Script" id=4]
 [ext_resource path="res://Audio/Overworld/Music/frlg_pallet_ok.ogg" type="AudioStream" id=5]
 [ext_resource path="res://Logics/event/Trainer.tscn" type="PackedScene" id=6]
-[ext_resource path="res://Maps/Ciudad Verde/Ciudad_Verde.tscn" type="PackedScene" id=7]
 [ext_resource path="res://animations/walking_animationPlayer.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Logics/event/NPC.gd" type="Script" id=9]
 [ext_resource path="res://Scripts/Player_raycast.gd" type="Script" id=10]
@@ -250,8 +249,9 @@ extents = Vector2( 31.3469, 28.399 )
 
 [node name="Ruta_1" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
-N_connection = ExtResource( 7 )
+N_connection = "Ciudad_Verde"
 N_connection_pos = Vector2( -190, -1280 )
+S_connection_pos = Vector2( 0, -1280 )
 music = ExtResource( 5 )
 
 [node name="CapaTerra_" parent="." index="0" groups=[

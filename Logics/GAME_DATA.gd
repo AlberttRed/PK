@@ -4,7 +4,7 @@ extends Node
 const Pokemon = preload('res://Logics/DB/pokemon.gd')
 const Trainer = preload('res://Logics/event/Trainer.gd')
 #C://Users//aquer//Documents//G//    C://Users//alber//Documents//
-const Save_Directory = "C://Users//aquer//Documents//G//"
+const Save_Directory = ""
 
 var player_name = "RED"
 var trainer: Trainer
@@ -19,6 +19,14 @@ var PREVIOUS_MAP
 var PLAYER
 var EVENTS_LOADED #Només fa referencia al node World/Canvas/Eventos_, falta fer el get_children()
 
+const NAMES_MAPS = ['Pueblo_Paleta', 'Ruta_1','Ciudad_Verde','Ruta_2','Ruta_22']
+
+var MAPS = {'Pueblo_Paleta': load("res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn").instance(),
+					'Ruta_1': load("res://Maps/Ruta 01/Ruta_1.tscn").instance(),
+					'Ciudad_Verde': load("res://Maps/Ciudad Verde/Ciudad_Verde.tscn").instance(),
+					'Ruta_2': load("res://Maps/Ruta 02/Ruta_2.tscn").instance(),
+					'Ruta_22': load("res://Maps/Ruta 22/Ruta_22.tscn").instance()}
+const lol = 1
 var party = []
 var box1 = []
 var box2 = []
@@ -167,16 +175,21 @@ func load_game():
 	
 func new_game():
 	print("NEW GAME")
-	var scene = load(WORLD.actual_scene).instance()
+	#var scene = load(WORLD.actual_scene).instance()
+	var scene = MAPS[WORLD.actual_scene]# WORLD.actual_scene.instance()
 	#ProjectSettings.set("Actual_Map", load(actual_scene).instance())
 	#print(ACTUAL_MAP.get_node("MapArea_").get_name())
 	#print(ProjectSettings.get("Actual_Map").get_node("Area2D_").get_name())
 	PLAYER.set_position(WORLD.initial_position)
 	#ACTUAL_MAP.load_map(false)
-	WORLD.load_map(scene, false)
-	if GAME_DATA.PLAYER.get_parent() != null:
-		GAME_DATA.PLAYER.get_parent().remove_child(GAME_DATA.PLAYER)
-	GAME_DATA.WORLD.EVENTOS.add_child(GAME_DATA.PLAYER)
+	if GAME_DATA.PLAYER.get_parent() != GAME_DATA.WORLD.EVENTOS:
+		#GAME_DATA.PLAYER.get_parent().remove_child(GAME_DATA.PLAYER)
+		GAME_DATA.WORLD.EVENTOS.add_child(GAME_DATA.PLAYER)
+	#WORLD.load_map(scene, false)
+	WORLD.load_maps()
+#	if GAME_DATA.PLAYER.get_parent() != null:
+#		GAME_DATA.PLAYER.get_parent().remove_child(GAME_DATA.PLAYER)
+#	GAME_DATA.WORLD.EVENTOS.add_child(GAME_DATA.PLAYER)
 	#GLOBAL.load_map(false, ACTUAL_MAP)
 	#GLOBAL.start(false, ACTUAL_MAP)
 	

@@ -49,8 +49,9 @@ func _input(event):
 		#GAME_DATA.load_game()
 #		for e in GAME_DATA.EVENTS_LOADED.get_children():
 #			print(e.get_name() + " " + str(e.actual_position))
-		print_player_variables()
-		DB.print_items()
+#		print_player_variables()
+#		DB.print_items()
+		#print_world()
 	elif event.is_action_released("ui_cancel") and !GUI.is_visible():
 		print("NOT RUNNING")
 		set_running(false)
@@ -80,7 +81,31 @@ func print_player_variables():
 	print("exit_door: " + str(GLOBAL.get_node("exit_door").state))
 	for a in GAME_DATA.WORLD.MAP_AREA.get_children():
 		print(str(a.get_groups()))
-
+		
+func print_world():
+	print("---- CAPA TERRA   ----")
+	for c in GAME_DATA.WORLD.CAPA_TERRA.get_children():
+		print(c.get_name() + " " + str(c.get_groups()) + " " + str(c.get_position()))
+	print("---- CAPA TERRA 2 ----")
+	for c in GAME_DATA.WORLD.CAPA_TERRA2.get_children():
+		print(c.get_name() + " " + str(c.get_groups()) + " " + str(c.get_position()))
+	print("---- CAPA TERRA 3 ----")
+	for c in GAME_DATA.WORLD.CAPA_TERRA3.get_children():
+		print(c.get_name() + " " + str(c.get_groups()) + " " + str(c.get_position()))
+	print("---- EVENTOS      ----")
+	for c in GAME_DATA.WORLD.EVENTOS.get_children():
+		print(c.get_name() + " " + str(c.get_groups()) + " " + str(c.get_position()))
+	print("---- CAPA ALTA    ----")
+	for c in GAME_DATA.WORLD.CAPA_ALTA.get_children():
+		print(c.get_name() + " " + str(c.get_groups()) + " " + str(c.get_position()))
+	print("---- MAP AREA     ----")
+	for c in GAME_DATA.WORLD.MAP_AREA.get_children():
+		print(c.get_name() + " " + str(c.get_groups()) + " " + str(c.get_position()))
+	print(GAME_DATA.ACTUAL_MAP.get_name())
+	print("Offsets: " + str(GAME_DATA.WORLD.offsets))
+	print("Player: " + str(position))
+	print("Actual map: " + GAME_DATA.ACTUAL_MAP.get_name())
+	
 func save():
 	var save_dict = {
 		"filename" : get_filename(),

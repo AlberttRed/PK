@@ -1,0 +1,22 @@
+[remap]
+
+importer="vnen.tiled_importer"
+type="PackedScene"
+path="res://.import/Ruta_22.tmx-8865963b21fa32c46ee72c6074d84a8b.scn"
+
+[deps]
+
+source_file="res://Maps/Ruta 22/Ruta_22.tmx"
+dest_files=[ "res://.import/Ruta_22.tmx-8865963b21fa32c46ee72c6074d84a8b.scn" ]
+
+[params]
+
+custom_properties=true
+tile_metadata=true
+uv_clip=true
+image_flags=0
+collision_layer=1
+embed_internal_images=false
+save_tiled_properties=false
+add_background=false
+post_import_script=""

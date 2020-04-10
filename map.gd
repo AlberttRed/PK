@@ -1,10 +1,11 @@
 extends Node2D
 var Trainer = preload("res://Logics/event/Trainer_class.gd")
 
-export(PackedScene) var N_connection
-export(String, FILE, "*.tscn") var S_connection
-export(String, FILE, "*.tscn") var E_connection
-export(String, FILE, "*.tscn") var W_connection
+export(String) var N_connection
+export(String) var S_connection
+export(String) var E_connection
+export(String) var W_connection
+#export(String, FILE, "*.tscn") var S_connection
 
 export(Vector2) var N_connection_pos
 export(Vector2) var S_connection_pos
@@ -17,7 +18,7 @@ var E_scene = null
 var W_scene = null
 
 export(AudioStream) var music
-
+var is_connection = false
 var tile_offset = Vector2(0, 0)
 var N
 
@@ -30,69 +31,110 @@ var loaded = false
 var connections_loaded = false
 var strength_on = false
 
-
+func _ready():
+	get_node("MapArea_").parentMap = self
+	connect("loaded", self, "_on_loaded")
+	set_process(false)
 func init():
 
 	comptador += 1
 	GAME_DATA.WORLD.get_node("CanvasModulate/CapaTerra_").z_index = -2
-	if GAME_DATA.ACTUAL_MAP != null:#ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
-		GAME_DATA.PREVIOUS_MAP = GAME_DATA.ACTUAL_MAP
-	GAME_DATA.ACTUAL_MAP = self
+#	if GAME_DATA.ACTUAL_MAP != null:#ProjectSettings.set("Previous_Map", ProjectSettings.get("Actual_Map"))
+#		GAME_DATA.PREVIOUS_MAP = GAME_DATA.ACTUAL_MAP
+	#GAME_DATA.ACTUAL_MAP = self
 
 
 func _init():
+	add_user_signal("do_load")
 	add_user_signal("loaded")
 	add_user_signal("connected")
 	
+func _process(delta):
+	print("map proces, loading " + N_scene.get_name())
+	GAME_DATA.WORLD.load_map(N_scene, false, get_position() + N_connection_pos)
+	yield(get_tree(),"idle_frame")
+	set_process(false)
+	print("STOP")
+	
 func set_connections():
 	var Scene
-	if N_connection != null and N_connection_pos != null:
+	if !N_connection.empty() and N_connection_pos != null:
 		Scene = N_connection
-		var scene_name = N_connection.get_path().split("/")[4].split(".")[0]
+		var scene_name = N_connection#N_connection.get_path().split("/")[4].split(".")[0]
 		#print(scene_name + " " + str(get_tree().get_nodes_in_group(scene_name).size()))
-		if get_tree().get_nodes_in_group(scene_name).size() <= 0:		
-			N_scene = Scene.instance()
+		if get_tree().get_nodes_in_group(scene_name).size() <= 0:	
+			#print(scene_name)	
+			N_scene = GAME_DATA.MAPS[scene_name]#.instance()#Scene.instance()
+			N_scene.visible = false
+			#GAME_DATA.WORLD.update_map_children(scene.position, N_scene)
+			N_scene.is_connection = true
+			#set_process(true)
 			GAME_DATA.WORLD.load_map(N_scene, false, get_position() + N_connection_pos)
 			connections_loaded = true
 	if !S_connection.empty() and S_connection_pos != null:
-		print("SSSSSSSSSSSSSSSSSSSSS")
-		Scene = load(S_connection).instance()
-		if get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
-			print("S connected: " + str(Scene.get_name()))
-			S_scene = Scene.instance()
-			load_map(false, S_scene, S_connection_pos)
+		Scene = S_connection
+		var scene_name = S_connection#S_connection.get_path().split("/")[4].split(".")[0]
+		#print(scene_name + " " + str(get_tree().get_nodes_in_group(scene_name).size()))
+		if get_tree().get_nodes_in_group(scene_name).size() <= 0:		
+			S_scene = GAME_DATA.MAPS[scene_name]#.instance()#Scene.instance()
+			S_scene.visible = false
+			#GAME_DATA.WORLD.update_map_children(scene.position, S_scene)
+			S_scene.is_connection = true
+			set_process(true)
+			#GAME_DATA.WORLD.load_map(S_scene, false, get_position() + S_connection_pos)
+			connections_loaded = true
 	if !E_connection.empty() and E_connection_pos != null:
-		print("EEEEEEEEEEEEEEEEEEEEEE")
-		Scene = load(E_connection).instance()
-		if get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
-			print("E connected: " + str(Scene.get_name()))
-			E_scene = Scene.instance()
-			load_map(false, E_scene, E_connection_pos)
+		Scene = E_connection
+		var scene_name = E_connection#E_connection.get_path().split("/")[4].split(".")[0]
+		#print(scene_name + " " + str(get_tree().get_nodes_in_group(scene_name).size()))
+		if get_tree().get_nodes_in_group(scene_name).size() <= 0:		
+			E_scene = GAME_DATA.MAPS[scene_name]#.instance()#Scene.instance()
+			E_scene.visible = false
+			#GAME_DATA.WORLD.update_map_children(scene.position, E_scene)
+			E_scene.is_connection = true
+			set_process(true)
+			#GAME_DATA.WORLD.load_map(E_scene, false, get_position() + E_connection_pos)
+			connections_loaded = true
 	if !W_connection.empty() and W_connection_pos != null:
-		print("WWWWWWWWWWWWWWWWWWWWWWWW")
-		Scene = load(W_connection).instance()
-		if get_tree().get_nodes_in_group(Scene.get_name()).size() <= 0:		
-			print("W connected: " + str(Scene.get_name()))
-			W_scene = Scene.instance()
-			load_map(false, W_scene, W_connection_pos)
+		print("connect W!")
+		Scene = W_connection
+		var scene_name = W_connection#W_connection.get_path().split("/")[4].split(".")[0]
+		#print(scene_name + " " + str(get_tree().get_nodes_in_group(scene_name).size()))
+		if get_tree().get_nodes_in_group(scene_name).size() <= 0:		
+			W_scene = GAME_DATA.MAPS[scene_name]#.instance()#Scene.instance()
+			W_scene.visible = false
+			#GAME_DATA.WORLD.update_map_children(scene.position, W_scene)
+			W_scene.is_connection = true
+			#set_process(true)
+			GAME_DATA.WORLD.load_map(W_scene, false, get_position() + W_connection_pos)
+			connections_loaded = true
 
 		
 func load_map(deletePrevious, scene = self, pos = null):
 	init()
+	print("LOADING " + scene.get_name())
 	var scene_name = scene.get_name()
 	strength_on = false
 	if pos != null:
-		#print("POSITION " + scene.get_name())
-		scene.tile_offset = -scene.get_position() - pos
+#		print("POSITION " + scene.get_name())
+#		print("POSITION " + scene.get_name() + " " + str(pos))
+		scene.tile_offset = scene.get_position() - pos
 		scene.set_position(scene.get_position() + pos)
+	GAME_DATA.WORLD.offsets.push_back(scene.tile_offset)
+#	if GAME_DATA.WORLD.has_node("Pueblo Paleta"):
+#		print("Pueblo Paleta " + str(GAME_DATA.WORLD.get_node("Pueblo Paleta").tile_offset))
+#	if GAME_DATA.WORLD.has_node("Ruta_1"):
+#		print("Ruta 1 " + str(GAME_DATA.WORLD.get_node("Ruta_1").tile_offset))
+#	if GAME_DATA.WORLD.has_node("Ciudad Verde"):
+#		print("Ciudad Verde " + str(GAME_DATA.WORLD.get_node("Ciudad Verde").tile_offset))
+	
+	#get_tree().call_group(scene_name, "reparent", scene.position)
+	
+	GAME_DATA.WORLD.update_map_children(scene.position, scene)
+	if !GAME_DATA.WORLD.loading:
+		pass
+#	if scene.get_name() != "Ciudad_Verde":
 
-	get_tree().call_group(scene_name, "reparent", scene.position)
-
-	if scene.get_name() != "Ciudad_Verde":
-		if GAME_DATA.PLAYER.get_parent() != null:
-			GAME_DATA.PLAYER.get_parent().remove_child(GAME_DATA.PLAYER)
-		GAME_DATA.WORLD.EVENTOS.add_child(GAME_DATA.PLAYER)
-	loaded = true
 	if deletePrevious:
 		#print("DELETED " + GAME_DATA.PREVIOUS_MAP.get_name())
 		if GAME_DATA.PREVIOUS_MAP.N_scene != null:
@@ -171,3 +213,7 @@ func isGrass():
 func has_encounter_type(type):
 	return get_node("Wild_Pokemon_").get_node(type).get_child_count() > 0
 	
+func _on_loaded():
+	loaded = true
+	if is_connection:
+		is_connection = false

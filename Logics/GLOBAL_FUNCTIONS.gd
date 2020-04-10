@@ -53,7 +53,16 @@ func queue(node):
 		node.propagate_call("queue_free", [])
 	else:
 		node.propagate_call("call_deferred", ["free"])
-		
+
+func normal_name(foo):		
+	var regex = RegEx.new()
+	regex.compile("@(\\w+)@\\d+")
+	var result = regex.search(foo)
+	if result:
+		print(result.get_string())
+		return result.get_string()
+	else:
+		return null
 #func move(which_key, last_movement = true):
 ##	var event = InputEventKey.new()
 ##	event.scancode = KEY_UP

@@ -10,7 +10,7 @@
 position = Vector2( -2.05066, -2.05054 )
 script = ExtResource( 1 )
 disable_battles = true
-actual_scene = "res://Maps/Pueblo Paleta/Pueblo_Paleta.tscn"
+actual_scene = "Pueblo_Paleta"
 initial_position = Vector2( 496, 240 )
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]

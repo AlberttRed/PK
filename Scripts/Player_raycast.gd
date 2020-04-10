@@ -28,10 +28,6 @@ func update(cells=1):
 	if body.movement == body.get_position():
 		cells = 0
 	intersect_tile(direction, cells)
-	#tile_result = intersect_tile(direction, cells)
-	#print("FIRST")
-	#get_tiles_prop_byProp("Tipo")
-	#print("END FIRST")
 	if body.Through:
 		result = null
 	else:
@@ -46,9 +42,6 @@ func intersect_tile(dir, cells=1):
 	tile_result.clear_all()
 	var tiles = {}
 	var tile_meta = null
-
-	#print("map offset: " + str(GAME_DATA.ACTUAL_MAP.tile_offset))
-	print(GAME_DATA.ACTUAL_MAP.get_name() + " " + str(GAME_DATA.ACTUAL_MAP.tile_offset))
 	var position = body.get_position()+dir*cells+Vector2(0, 32) + GAME_DATA.ACTUAL_MAP.tile_offset
 	#print("tile check position =" + str(position))
 	var scene_nodes = get_tree().get_nodes_in_group(GAME_DATA.ACTUAL_MAP.get_name())

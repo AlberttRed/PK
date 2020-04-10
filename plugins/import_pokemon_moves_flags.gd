@@ -2,7 +2,7 @@ tool
 
 extends EditorScript
 
-#var type_script = load("res://logics/DB/pokemon_move.gd")
+#var type_script = load("res://Logics/DB/pokemon_move.gd")
 
 func _run():
 	var scn = get_scene()

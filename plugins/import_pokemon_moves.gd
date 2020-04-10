@@ -2,7 +2,7 @@ tool
 
 extends EditorScript
 
-#var type_script = load("res://logics/DB/pokemon_move.gd")
+#var type_script = load("res://Logics/DB/pokemon_move.gd")
 
 func _run():
 	var scn = get_scene()
@@ -30,9 +30,9 @@ func _run():
 		if (text == null || text == ""):
 			print ("skipping type #"+str(i+1))
 			continue
-		print("hola")
+		print(text)
 		var p_move = Node.new()
-		p_move.set_script(preload("res://logics/DB/pokemon_move.gd"))# = type_script.new()
+		p_move.set_script(preload("res://Logics/DB/pokemon_move.gd"))# = type_script.new()
 		container.add_child(p_move)
 		p_move.set_owner(scn)
 		
@@ -116,7 +116,7 @@ func get_json(uri):
 	var err = 0
 	var http = HTTPClient.new() # Create the Client
 	
-	err = http.connect_to_host("https://www.pokeapi.co",443) # Connect to host/port
+	err = http.connect_to_host("https://pokeapi.co",443) # Connect to host/port
 	assert(err == OK) # Make sure connection was OK
 	
 	# Wait until resolved and connected

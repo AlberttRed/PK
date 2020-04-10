@@ -68,8 +68,8 @@ export(int) var battlerAltitude = 0
 #export(String) var ev_yield = ""
 
 
-var poke_instance_script = preload("res://logics/game_data/pokemon_instance.gd")
-var move_instance_script = preload("res://logics/game_data/move_instance.gd")
+var poke_instance_script = preload("res://Logics/game_data/pokemon_instance.gd")
+var move_instance_script = preload("res://Logics/game_data/move_instance.gd")
 
 
 func make_wild(level: int):
